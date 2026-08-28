@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Linkit has a high-risk name collision with adjacent products",
+    "category": "entity-disambiguation",
+    "severity": "high",
+    "evidence": "A Bing search for 'Linkit linkitapp.in Hardik Gupta' returned Linkit's own result alongside unrelated Linkit entities including linkit.co, linkitapp.app, linkitdev.com, and linkitnow.in; linkitnow.in is also a creator link-in-bio product. Linkit's Organization JSON-LD identifies the founder and support email but contains no sameAs, alternateName, or geographic/industry disambiguating marker.",
+    "source_skill": "trust-corroboration-graph",
+    "suggested_action": {
+      "summary": "Add machine-readable identity links and a distinctive category marker to Linkit's Organization schema.",
+      "priority": "high",
+      "how_to_fix": "Add sameAs links to the official founder/company profiles, use an alternateName such as 'Linkit by Hardik Gupta' where accurate, and include a clear industry/category and location marker. Use the same wording in the About and Contact pages."
+    }
+  },
+  {
+    "title": "Core product and pricing claims have little independent corroboration",
+    "category": "corroboration",
+    "severity": "high",
+    "evidence": "The site claims a link-in-bio platform with portfolio mode, AI visitor chatbot, analytics, storefront tools, and Free Forever pricing. In the live Bing search, independent results included founder LinkedIn posts and a Peerlist founder profile, but no independent result confirmed the full product feature set or the Free Forever pricing claim; the detailed claims remain supported primarily by linkitapp.in itself.",
+    "source_skill": "trust-corroboration-graph",
+    "suggested_action": {
+      "summary": "Build independent references for Linkit's identity, feature set, and pricing model.",
+      "priority": "high",
+      "how_to_fix": "Secure accurate third-party listings or coverage that name Linkit, its canonical domain, founder, category, and major features. Keep those profiles current and link them from the site's Organization sameAs property."
+    }
+  }
+]

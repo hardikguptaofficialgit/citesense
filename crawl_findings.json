@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Core page content is heavily dependent on client-side rendering",
+    "category": "render-gap",
+    "severity": "high",
+    "evidence": "The homepage, /pricing, and /discover each returned HTTP 200 but only 12 raw-text words. Browser inspection after JavaScript execution showed the homepage rendering its product description, feature sections, creator profile, and 24 links, confirming that core content is absent from the initial HTML.",
+    "source_skill": "crawl-render-audit",
+    "suggested_action": {
+      "summary": "Server-render or statically emit the primary product and profile content in the initial HTML.",
+      "priority": "high",
+      "how_to_fix": "Render the page title, value proposition, feature descriptions, key profile content, and important links on the server or at build time, while retaining client-side hydration for interactivity. Recheck raw HTML word count and crawler extraction after deployment."
+    }
+  },
+  {
+    "title": "Pricing page has no Product or Offer structured data",
+    "category": "structured-data",
+    "severity": "high",
+    "evidence": "https://linkitapp.in/pricing contains two valid JSON-LD blocks, but browser inspection and the scan found only WebSite and Organization types. The rendered page exposes the transactional claim 'Rs 0 forever' and a Free Forever plan without Product, Offer, price, or priceCurrency markup.",
+    "source_skill": "crawl-render-audit",
+    "suggested_action": {
+      "summary": "Add Product and Offer JSON-LD for the Free Forever plan.",
+      "priority": "high",
+      "how_to_fix": "Add a Product entity for Linkit and an Offer with price 0, the correct priceCurrency, availability, and a stable pricing URL. Keep the same facts visible in HTML and ensure the JSON-LD is present before hydration."
+    }
+  }
+]

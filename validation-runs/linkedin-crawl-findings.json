@@ -1,0 +1,15 @@
+﻿[
+  {
+    "title": "Major AI crawlers are blocked from LinkedIn public pages",
+    "category": "crawlability",
+    "severity": "high",
+    "fingerprint": "robots:linkedin:major-ai-crawlers:root",
+    "evidence": "Direct site evidence: https://www.linkedin.com/robots.txt was fetched during this audit. For /, /about-us, and /help/linkedin it returns explicit Disallow: / decisions for GPTBot, ChatGPT-User, ClaudeBot, Claude-Web, PerplexityBot, Google-Extended, and CCBot. OAI-SearchBot is allowed, so this is a broad partial crawler-access restriction rather than a universal block.",
+    "source_skill": "crawl-render-audit",
+    "suggested_action": {
+      "summary": "If wider AI discovery is a business goal, allow selected retrieval/search user agents to crawl the public, non-member pages that contain LinkedIn’s authoritative product and help information.",
+      "priority": "high",
+      "how_to_fix": "In robots.txt, replace the blanket Disallow: / only for intentionally supported agents with scoped Allow rules for public paths (for example, selected /help/ and /about/ paths). Keep member, profile, feed, search, and authentication paths disallowed; test each intended path with the crawler policy before publishing."
+    }
+  }
+]

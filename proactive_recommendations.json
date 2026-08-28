@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Expose a compact product summary in initial HTML",
+    "rationale": "The site already has strong visible product messaging and an llms.txt file, but crawlers that do not execute JavaScript see almost none of that context.",
+    "suggested_action": {
+      "summary": "Place a concise server-rendered summary of Linkit's audience, category, and flagship features in the page source.",
+      "priority": "high",
+      "how_to_fix": "Include a short semantic paragraph and a small list of core features in the initial HTML, then hydrate the richer interactive layout around it."
+    }
+  },
+  {
+    "title": "Add a first-party changelog and FAQ knowledge layer",
+    "rationale": "The site has Releases and support-oriented product claims in llms.txt; turning common questions into crawlable FAQ content would improve answerability for feature, pricing, and setup queries.",
+    "suggested_action": {
+      "summary": "Publish crawlable FAQs for pricing, setup, privacy, and feature boundaries, with FAQPage markup where eligible.",
+      "priority": "medium",
+      "how_to_fix": "Link the FAQ and dated release entries from the homepage, keep answers in HTML, and add valid FAQPage or Article structured data only where the visible content qualifies."
+    }
+  }
+]
