@@ -1,15 +1,134 @@
 {
-  "site": "https://www.iana.org/domains/example",
-  "audited_at": "2026-08-28T19:34:43Z",
+  "site": "https://www.iana.org",
+  "audited_at": "2026-08-29T17:51:35Z",
   "summary": {
-    "total_findings": 0,
+    "total_findings": 4,
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
-    "discoverability_findings": 0,
-    "engagement_findings": 0
+    "medium": 3,
+    "low": 1,
+    "discoverability_findings": 3,
+    "engagement_findings": 1
   },
-  "findings": [],
-  "proactive_recommendations": []
+  "findings": [
+    {
+      "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+      "category": "crawlability",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://www.iana.org/sitemap.xml via http_get_sitemap_check [2026-08-29T17:49:58Z]: Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "crawl:missing-xml-sitemap",
+      "suggested_action": {
+        "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+        "priority": "medium",
+        "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt."
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.iana.org/sitemap.xml",
+        "observation": "Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-08-29T17:49:58Z",
+        "confidence": "high"
+      },
+      "id": "F-001"
+    },
+    {
+      "title": "Missing Schema.org Organization structured data on root landing page",
+      "category": "structured-data",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://www.iana.org/ via jsonld_schema_extractor [2026-08-29T17:49:58Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "schema:root-organization-missing",
+      "suggested_action": {
+        "summary": "Add Organization JSON-LD markup to the homepage.",
+        "priority": "medium",
+        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles."
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.iana.org/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-08-29T17:49:58Z",
+        "confidence": "high"
+      },
+      "id": "F-002"
+    },
+    {
+      "title": "Missing meta description on key landing page",
+      "category": "structured-data",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://www.iana.org/ via html_meta_inspector [2026-08-29T17:49:58Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "meta:missing-description:/",
+      "suggested_action": {
+        "summary": "Add an informative meta description tag.",
+        "priority": "medium",
+        "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings."
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.iana.org/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-08-29T17:49:58Z",
+        "confidence": "high"
+      },
+      "id": "F-003"
+    },
+    {
+      "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://www.iana.org/domains/root via breadcrumb_markup_inspector [2026-08-29T17:49:58Z]: Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:missing-breadcrumbs:/domains/root",
+      "suggested_action": {
+        "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+        "priority": "low",
+        "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.iana.org/domains/root",
+        "observation": "Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-08-29T17:49:58Z",
+        "confidence": "medium"
+      },
+      "id": "F-004"
+    }
+  ],
+  "proactive_recommendations": [
+    {
+      "title": "Publish an llms.txt file to guide AI assistants to authoritative documentation",
+      "rationale": "Emerging AI web standards like /llms.txt provide large language models with a curated, markdown-formatted directory of core brand documentation and APIs.",
+      "suggested_action": {
+        "summary": "Create an llms.txt file in the root web directory.",
+        "priority": "low",
+        "how_to_fix": "Add an /llms.txt file containing markdown links to your primary product, documentation, pricing, and company overview pages."
+      }
+    }
+  ]
 }

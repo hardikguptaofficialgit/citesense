@@ -1,15 +1,150 @@
 {
-  "site": "https://react.dev/",
-  "audited_at": "2026-08-28T19:34:47Z",
+  "site": "https://react.dev",
+  "audited_at": "2026-08-29T17:51:51Z",
   "summary": {
-    "total_findings": 0,
+    "total_findings": 5,
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "discoverability_findings": 0,
-    "engagement_findings": 0
+    "high": 1,
+    "medium": 3,
+    "low": 1,
+    "discoverability_findings": 4,
+    "engagement_findings": 1
   },
-  "findings": [],
-  "proactive_recommendations": []
+  "findings": [
+    {
+      "title": "Inconsistent founding year claimed across site pages (2017, 2019)",
+      "category": "internal-consistency",
+      "severity": "high",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "high",
+      "evidence": "Observed at https://react.dev/blog via cross_page_fact_comparison [2026-08-29T17:51:48Z]: Different pages state contradictory founding years: https://react.dev/blog: 2019; https://react.dev/community/team: 2017. (Confidence: high)",
+      "source_skill": "freshness-corroboration",
+      "fingerprint": "consistency:founding-year-mismatch",
+      "suggested_action": {
+        "summary": "Unify the company founding year across all web pages and structured data.",
+        "priority": "high",
+        "how_to_fix": "Identify the authoritative founding date and update all occurrences on the homepage, About page, footer, and Organization JSON-LD."
+      },
+      "source_skills": [
+        "freshness-corroboration"
+      ],
+      "evidence_details": {
+        "url": "https://react.dev/blog",
+        "observation": "Different pages state contradictory founding years: https://react.dev/blog: 2019; https://react.dev/community/team: 2017.",
+        "method": "cross_page_fact_comparison",
+        "timestamp": "2026-08-29T17:51:48Z",
+        "confidence": "high"
+      },
+      "id": "F-001"
+    },
+    {
+      "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+      "category": "crawlability",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://react.dev/sitemap.xml via http_get_sitemap_check [2026-08-29T17:51:48Z]: Request to https://react.dev/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "crawl:missing-xml-sitemap",
+      "suggested_action": {
+        "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+        "priority": "medium",
+        "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt."
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://react.dev/sitemap.xml",
+        "observation": "Request to https://react.dev/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-08-29T17:51:48Z",
+        "confidence": "high"
+      },
+      "id": "F-002"
+    },
+    {
+      "title": "Missing Schema.org Organization structured data on root landing page",
+      "category": "structured-data",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://react.dev/ via jsonld_schema_extractor [2026-08-29T17:51:48Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "schema:root-organization-missing",
+      "suggested_action": {
+        "summary": "Add Organization JSON-LD markup to the homepage.",
+        "priority": "medium",
+        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles."
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://react.dev/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-08-29T17:51:48Z",
+        "confidence": "high"
+      },
+      "id": "F-003"
+    },
+    {
+      "title": "Core claim lacks independent external corroboration: \"Founded in 2019\"",
+      "category": "corroboration",
+      "severity": "medium",
+      "status": "likely-risk",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://react.dev via external_knowledge_graph_search [2026-08-29T17:51:51Z]: Searched external sources for claim \"Founded in 2019\"; found 0 independent authoritative supporting sources. Only source is brand-owned channels. (Confidence: high)",
+      "source_skill": "trust-corroboration-graph",
+      "fingerprint": "trust:uncorroborated-fact:Founded in 2019",
+      "suggested_action": {
+        "summary": "Establish external corroboration on authoritative third-party platforms.",
+        "priority": "medium",
+        "how_to_fix": "Verify company details and notable claims on Wikipedia/Wikidata, Crunchbase, LinkedIn company page, and industry registries."
+      },
+      "source_skills": [
+        "trust-corroboration-graph"
+      ],
+      "evidence_details": {
+        "url": "https://react.dev",
+        "observation": "Searched external sources for claim \"Founded in 2019\"; found 0 independent authoritative supporting sources. Only source is brand-owned channels.",
+        "method": "external_knowledge_graph_search",
+        "timestamp": "2026-08-29T17:51:51Z",
+        "confidence": "high"
+      },
+      "id": "F-004"
+    },
+    {
+      "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://react.dev/community/team via breadcrumb_markup_inspector [2026-08-29T17:51:48Z]: Page at deep route (/community/team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:missing-breadcrumbs:/community/team",
+      "suggested_action": {
+        "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+        "priority": "low",
+        "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://react.dev/community/team",
+        "observation": "Page at deep route (/community/team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-08-29T17:51:48Z",
+        "confidence": "medium"
+      },
+      "id": "F-005"
+    }
+  ]
 }

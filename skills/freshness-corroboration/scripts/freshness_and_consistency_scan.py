@@ -1,94 +1,198 @@
 #!/usr/bin/env python3
-"""freshness_and_consistency_scan.py -- Appendix D temporal half: is this fact stale, and
-does the site agree with itself? Internal signals only. Usage: python3 freshness_and_consistency_scan.py <url1> [<url2> ...]"""
-import sys, re, json, urllib.request, urllib.error
+"""
+freshness_and_consistency_scan.py -- Evaluates internal temporal freshness and cross-page consistency.
+Claim-based freshness: detects actual stale or conflicting claims instead of treating missing dateModified as a defect.
+Emits structured CandidateFindings.
+"""
+import os
+import sys
+import json
+import re
 from datetime import datetime, timezone
+from typing import List, Dict, Any, Optional
 
-TIMEOUT = 10
+current_dir = os.path.dirname(os.path.abspath(__file__))
+crawl_scripts_dir = os.path.abspath(os.path.join(current_dir, "../../crawl-render-audit/scripts"))
+for d in (current_dir, crawl_scripts_dir):
+    if d not in sys.path:
+        sys.path.insert(0, d)
+
+from audit_common import safe_fetch, visible_text
+from models import create_candidate_finding, CandidateFinding
+from site_inventory import SiteInventory, get_or_crawl_inventory
+
 CURRENT_YEAR = datetime.now(timezone.utc).year
-FOUNDING_RE = re.compile(r"\b(?:founded|established|since|est\.?)\s+(?:in\s+)?((19|20)\d{2})\b", re.I)
-PHONE_RE = re.compile(r"\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}")
-COPYRIGHT_RE = re.compile(r"(?:\xa9|&copy;|\(c\)|copyright)\s*((19|20)\d{2})", re.I)
-AWARD_RE = re.compile(r"\b(award|winner|best\s+\w+|#1|top\s+\d)\b[^.]{0,80}?((19|20)\d{2})", re.I)
-DATED_CLAIM_RE = re.compile(r"\b(?:price|pricing|from|available|availability|in stock|currently|now serving|current(?:ly)?|as of|award|winner|certified)\b[^.!?]{0,100}?\b((?:19|20)\d{2})\b", re.I)
 
-def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "brand-ai-readiness-audit/1.0 (+read-only audit)"})
-    try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-            return resp.status, resp.read().decode("utf-8", errors="replace")
-    except urllib.error.HTTPError as e:
-        return e.code, ""
-    except Exception as e:
-        return None, str(e)
 
-def strip_tags_get_text(html):
-    html = re.sub(r"(?is)<(script|style|noscript)[^>]*>.*?</\1>", " ", html)
-    return re.sub(r"\s+", " ", re.sub(r"(?s)<[^>]+>", " ", html)).strip()
+def evaluate_freshness_and_consistency(inventory: SiteInventory) -> List[Dict[str, Any]]:
+    """Evaluates cross-page consistency and claim-based freshness across SiteInventory pages."""
+    findings = []
+    pages = inventory.pages
 
-def extract_jsonld_dates(html):
-    blocks = re.findall(r'(?is)<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', html)
-    dates = {}
-    for b in blocks:
-        try: data = json.loads(b.strip())
-        except json.JSONDecodeError: continue
-        for n in (data if isinstance(data, list) else [data]):
-            if not isinstance(n, dict): continue
-            for k in ("dateModified", "datePublished"):
-                if k in n: dates[k] = n[k]
-    return dates
+    # 1. Cross-page consistency checks (Founding year, phone numbers, addresses)
+    founding_by_page = {}
+    phone_by_page = {}
+    stale_claims_by_page = {}
 
-def scan_page(url):
-    status, html = fetch(url)
-    if status != 200:
-        return {"url": url, "fetch_status": status, "error": "could not fetch"}
-    text = strip_tags_get_text(html)
-    modified_meta = re.search(r'<meta[^>]+property=["\']article:modified_time["\'][^>]+content=["\'](.*?)["\']', html, re.I)
-    last_updated_visible = re.search(r"last\s+updated\s*[:\-]?\s*([A-Za-z0-9 ,/\-]{4,25})", text, re.I)
-    jsonld_dates = extract_jsonld_dates(html)
-    founding_matches = sorted(set(m.group(1) for m in FOUNDING_RE.finditer(text)))
-    phone_matches = sorted(set(m.group(0) for m in PHONE_RE.finditer(text)))
-    copyright_matches = sorted(set(m.group(1) for m in COPYRIGHT_RE.finditer(text)))
-    award_candidates = [{"context": m.group(0)[:120], "year": m.group(2)} for m in AWARD_RE.finditer(text)]
-    dated_claims = [{"context":m.group(0)[:160],"year":int(m.group(1)),"age_years":CURRENT_YEAR-int(m.group(1))} for m in DATED_CLAIM_RE.finditer(text)]
-    stale_copyright = None
-    if copyright_matches:
-        newest = max(int(y) for y in copyright_matches)
-        if CURRENT_YEAR - newest >= 2:
-            stale_copyright = {"found_year": newest, "current_year": CURRENT_YEAR, "gap_years": CURRENT_YEAR - newest}
-    return {"url": url, "fetch_status": status, "jsonld_dates": jsonld_dates,
-            "article_modified_time_meta": modified_meta.group(1) if modified_meta else None,
-            "visible_last_updated_text": last_updated_visible.group(1).strip() if last_updated_visible else None,
-            "founding_year_mentions": founding_matches, "phone_number_mentions": phone_matches,
-            "copyright_year_mentions": copyright_matches, "stale_copyright": stale_copyright,
-            "award_mention_candidates": award_candidates, "dated_claim_candidates": dated_claims,
-            "stale_dated_claim_candidates":[x for x in dated_claims if x["age_years"] >= 2]}
+    for url, snap in pages.items():
+        if snap.get("status_code") != 200:
+            continue
+        dates_info = snap.get("dates_and_claims", {})
+        
+        # Founding years
+        f_years = dates_info.get("founding_years", [])
+        if f_years:
+            founding_by_page[url] = set(str(y) for y in f_years)
 
-def cross_page_consistency(pages):
-    issues = []
-    founding_by_page = {p["url"]: set(p.get("founding_year_mentions", [])) for p in pages if "founding_year_mentions" in p}
-    all_years = set()
-    for years in founding_by_page.values(): all_years |= years
-    if len(all_years) > 1:
-        issues.append({"type": "founding_year_mismatch", "years_found": sorted(all_years),
-                       "by_page": {u: sorted(y) for u, y in founding_by_page.items() if y}})
-    def norm(p): return re.sub(r"\D", "", p)
-    phone_by_page = {p["url"]: set(p.get("phone_number_mentions", [])) for p in pages if "phone_number_mentions" in p}
-    normalized_groups = {}
-    for phones in phone_by_page.values():
-        for p in phones: normalized_groups.setdefault(norm(p), set()).add(p)
-    if len(normalized_groups) > 1:
-        issues.append({"type": "phone_number_mismatch",
-                       "distinct_numbers_found": {k: sorted(v) for k, v in normalized_groups.items()},
-                       "by_page": {u: sorted(p) for u, p in phone_by_page.items() if p}})
-    return issues
+        # Phone numbers
+        phones = dates_info.get("phones", [])
+        if phones:
+            phone_by_page[url] = set(phones)
+
+        # Stale dated claims (e.g. promotions, pricing, webinars from >= 2 years ago)
+        stale_claims = dates_info.get("stale_dated_claims", [])
+        if stale_claims:
+            stale_claims_by_page[url] = stale_claims
+
+    # Check for founding year mismatch
+    all_founding_years = set()
+    for yrs in founding_by_page.values():
+        all_founding_years |= yrs
+
+    if len(all_founding_years) > 1:
+        details = []
+        for u, yrs in founding_by_page.items():
+            details.append(f"{u}: {', '.join(sorted(yrs))}")
+        f = create_candidate_finding(
+            title=f"Inconsistent founding year claimed across site pages ({', '.join(sorted(all_founding_years))})",
+            category="internal-consistency",
+            severity="high",
+            url=list(founding_by_page.keys())[0],
+            observation=f"Different pages state contradictory founding years: {'; '.join(details)}.",
+            method="cross_page_fact_comparison",
+            source_skill="freshness-corroboration",
+            action_summary="Unify the company founding year across all web pages and structured data.",
+            action_priority="high",
+            action_how_to_fix="Identify the authoritative founding date and update all occurrences on the homepage, About page, footer, and Organization JSON-LD.",
+            fingerprint="consistency:founding-year-mismatch",
+            status="confirmed",
+            confidence="high",
+            impact="high"
+        )
+        findings.append(f.to_dict())
+
+    # Check for phone number normalization mismatch (ignoring formatting differences)
+    def norm_phone(p: str) -> str:
+        return re.sub(r"\D", "", p)
+
+    normalized_phone_groups = {}
+    for u, phs in phone_by_page.items():
+        for p in phs:
+            norm = norm_phone(p)
+            if len(norm) >= 7:  # Valid phone length
+                normalized_phone_groups.setdefault(norm, set()).add((u, p))
+
+    if len(normalized_phone_groups) > 1:
+        distinct_numbers = list(normalized_phone_groups.keys())
+        if len(distinct_numbers) > 1:
+            details = [f"Number {k}: found on {len(v)} page(s)" for k, v in normalized_phone_groups.items()]
+            f = create_candidate_finding(
+                title="Conflicting primary contact phone numbers published across site",
+                category="internal-consistency",
+                severity="medium",
+                url=list(phone_by_page.keys())[0],
+                observation=f"Multiple distinct phone numbers are published across different pages without branch context: {'; '.join(details)}.",
+                method="cross_page_contact_comparison",
+                source_skill="freshness-corroboration",
+                action_summary="Standardize customer service and contact phone numbers.",
+                action_priority="medium",
+                action_how_to_fix="Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+                fingerprint="consistency:phone-number-mismatch",
+                status="likely-risk",
+                confidence="medium",
+                impact="medium"
+            )
+            findings.append(f.to_dict())
+
+    # 2. Claim-based Freshness (Actual expired promotions / stale dated claims)
+    for url, stale_claims in stale_claims_by_page.items():
+        # Pick top 2 most prominent stale claims
+        for claim in stale_claims[:2]:
+            year = claim.get("year")
+            age = claim.get("age_years", 0)
+            context = claim.get("context", "")
+            if age >= 2 and any(k in context.lower() for k in ("price", "pricing", "current", "event", "webinar", "sale", "discount", "promo", "roadmap")):
+                f = create_candidate_finding(
+                    title=f"Outdated time-sensitive claim or promotion found on active page ({year})",
+                    category="freshness",
+                    severity="medium",
+                    url=url,
+                    observation=f"Page contains active time-sensitive statement referencing {year} ({age} years old): \"{context}\".",
+                    method="dated_claim_temporal_analysis",
+                    source_skill="freshness-corroboration",
+                    action_summary="Update or archive expired time-sensitive offers and claims.",
+                    action_priority="medium",
+                    action_how_to_fix=f"Review the text referencing {year} on {url} and update with current pricing/event information or remove expired promotions.",
+                    fingerprint=f"freshness:stale-claim:{year}:{url}",
+                    status="confirmed",
+                    confidence="high",
+                    impact="medium"
+                )
+                findings.append(f.to_dict())
+
+    # 3. Severely outdated copyright notice (e.g. gap >= 3 years)
+    for url, snap in pages.items():
+        dates_info = snap.get("dates_and_claims", {})
+        newest_copy = dates_info.get("newest_copyright_year")
+        if newest_copy and (CURRENT_YEAR - newest_copy >= 3):
+            f = create_candidate_finding(
+                title=f"Stale copyright notice ({newest_copy}) on active site",
+                category="freshness",
+                severity="low",
+                url=url,
+                observation=f"Footer copyright notice references {newest_copy} (gap of {CURRENT_YEAR - newest_copy} years), presenting a stale signal to search and AI crawlers.",
+                method="copyright_year_detector",
+                source_skill="freshness-corroboration",
+                action_summary="Update the site footer copyright year.",
+                action_priority="low",
+                action_how_to_fix=f"Update the copyright notice on {url} to the current year ({CURRENT_YEAR}) or use dynamic server-rendered date generation.",
+                fingerprint=f"freshness:stale-copyright:{url}",
+                status="confirmed",
+                confidence="high",
+                impact="low"
+            )
+            findings.append(f.to_dict())
+
+    return findings
+
 
 def main():
     if len(sys.argv) < 2:
-        print(json.dumps({"error": "usage: freshness_and_consistency_scan.py <url1> [<url2> ...]"})); sys.exit(1)
-    pages = [scan_page(u) for u in sys.argv[1:]]
-    print(json.dumps({"current_year_reference": CURRENT_YEAR, "pages": pages,
-                       "cross_page_consistency_issues": cross_page_consistency(pages)}, indent=2))
+        print(json.dumps({"error": "usage: freshness_and_consistency_scan.py <url_or_inventory_json> [url2 ...] [--findings-only]"})); sys.exit(1)
+
+    target = sys.argv[1]
+    if target.endswith(".json") and os.path.exists(target):
+        inventory = SiteInventory.load_json(target)
+    else:
+        inventory = SiteInventory(target)
+        urls = [arg for arg in sys.argv[1:] if arg.startswith("http")]
+        if len(urls) > 1:
+            inventory.crawl_site(max_pages=len(urls), additional_paths=[re.sub(r"^https?://[^/]+", "", u) for u in urls])
+        else:
+            inventory.crawl_site(max_pages=5)
+
+    findings = evaluate_freshness_and_consistency(inventory)
+
+    if "--findings-only" in sys.argv:
+        print(json.dumps(findings, indent=2))
+    else:
+        out = {
+            "current_year_reference": CURRENT_YEAR,
+            "pages_analyzed": len(inventory.pages),
+            "findings": findings
+        }
+        print(json.dumps(out, indent=2))
+
 
 if __name__ == "__main__":
     main()

@@ -1,26 +1,15 @@
 [
   {
-    "title": "Linkit has a high-risk name collision with adjacent products",
+    "title": "Missing sameAs entity disambiguation and governance structure on root domain",
     "category": "entity-disambiguation",
-    "severity": "high",
-    "evidence": "A Bing search for 'Linkit linkitapp.in Hardik Gupta' returned Linkit's own result alongside unrelated Linkit entities including linkit.co, linkitapp.app, linkitdev.com, and linkitnow.in; linkitnow.in is also a creator link-in-bio product. Linkit's Organization JSON-LD identifies the founder and support email but contains no sameAs, alternateName, or geographic/industry disambiguating marker.",
+    "severity": "medium",
+    "evidence": "The root domain homepage https://www.mozilla.org/en-US/ and about page https://www.mozilla.org/en-US/about/ lack sameAs entity links and Schema.org disambiguation to distinguish Mozilla Foundation (non-profit parent) from Mozilla Corporation (taxable subsidiary), relying solely on external knowledge graphs.",
     "source_skill": "trust-corroboration-graph",
+    "fingerprint": "trust:entity-disambiguation-governance",
     "suggested_action": {
-      "summary": "Add machine-readable identity links and a distinctive category marker to Linkit's Organization schema.",
-      "priority": "high",
-      "how_to_fix": "Add sameAs links to the official founder/company profiles, use an alternateName such as 'Linkit by Hardik Gupta' where accurate, and include a clear industry/category and location marker. Use the same wording in the About and Contact pages."
-    }
-  },
-  {
-    "title": "Core product and pricing claims have little independent corroboration",
-    "category": "corroboration",
-    "severity": "high",
-    "evidence": "The site claims a link-in-bio platform with portfolio mode, AI visitor chatbot, analytics, storefront tools, and Free Forever pricing. In the live Bing search, independent results included founder LinkedIn posts and a Peerlist founder profile, but no independent result confirmed the full product feature set or the Free Forever pricing claim; the detailed claims remain supported primarily by linkitapp.in itself.",
-    "source_skill": "trust-corroboration-graph",
-    "suggested_action": {
-      "summary": "Build independent references for Linkit's identity, feature set, and pricing model.",
-      "priority": "high",
-      "how_to_fix": "Secure accurate third-party listings or coverage that name Linkit, its canonical domain, founder, category, and major features. Keep those profiles current and link them from the site's Organization sameAs property."
+      "summary": "Add sameAs disambiguation links and subsidiary structure to Organization schema on the root domain.",
+      "priority": "medium",
+      "how_to_fix": "Add Organization JSON-LD to https://www.mozilla.org/en-US/ including sameAs URIs for Wikidata (Q9661, Q169925) and Wikipedia, explicitly defining the parentOrganization / subOrganization relationship."
     }
   }
 ]

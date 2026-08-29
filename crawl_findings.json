@@ -1,26 +1,41 @@
 [
   {
-    "title": "Core page content is heavily dependent on client-side rendering",
-    "category": "render-gap",
-    "severity": "high",
-    "evidence": "The homepage, /pricing, and /discover each returned HTTP 200 but only 12 raw-text words. Browser inspection after JavaScript execution showed the homepage rendering its product description, feature sections, creator profile, and 24 links, confirming that core content is absent from the initial HTML.",
+    "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+    "category": "crawlability",
+    "severity": "medium",
+    "evidence": "Request to https://www.mozilla.org/sitemap.xml returned HTTP 404 and https://www.mozilla.org/robots.txt contains no 'Sitemap:' directive, increasing crawl discovery cost for search engines and AI web indexing agents.",
     "source_skill": "crawl-render-audit",
+    "fingerprint": "crawl:missing-sitemap",
     "suggested_action": {
-      "summary": "Server-render or statically emit the primary product and profile content in the initial HTML.",
-      "priority": "high",
-      "how_to_fix": "Render the page title, value proposition, feature descriptions, key profile content, and important links on the server or at build time, while retaining client-side hydration for interactivity. Recheck raw HTML word count and crawler extraction after deployment."
+      "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+      "priority": "medium",
+      "how_to_fix": "Generate a comprehensive sitemap.xml covering localized routes and add 'Sitemap: https://www.mozilla.org/sitemap.xml' to the root robots.txt file."
     }
   },
   {
-    "title": "Pricing page has no Product or Offer structured data",
+    "title": "Missing Schema.org Product and Offer structured data on commercial product page",
     "category": "structured-data",
     "severity": "high",
-    "evidence": "https://linkitapp.in/pricing contains two valid JSON-LD blocks, but browser inspection and the scan found only WebSite and Organization types. The rendered page exposes the transactional claim 'Rs 0 forever' and a Free Forever plan without Product, Offer, price, or priceCurrency markup.",
+    "evidence": "https://www.mozilla.org/en-US/products/vpn/ contains 0 JSON-LD blocks, omitting machine-readable Product and Offer metadata for subscription pricing tiers, feature lists, and regional availability.",
     "source_skill": "crawl-render-audit",
+    "fingerprint": "schema:product-offer-vpn",
     "suggested_action": {
-      "summary": "Add Product and Offer JSON-LD for the Free Forever plan.",
+      "summary": "Add Schema.org Product and Offer JSON-LD to commercial product pages.",
       "priority": "high",
-      "how_to_fix": "Add a Product entity for Linkit and an Offer with price 0, the correct priceCurrency, availability, and a stable pricing URL. Keep the same facts visible in HTML and ensure the JSON-LD is present before hydration."
+      "how_to_fix": "Add a JSON-LD script tag on /products/vpn/ specifying @type 'Product' with nested 'Offer' elements defining price, priceCurrency, billing duration, and availability."
+    }
+  },
+  {
+    "title": "Missing Organization JSON-LD markup on primary root homepage",
+    "category": "structured-data",
+    "severity": "medium",
+    "evidence": "https://www.mozilla.org/en-US/ contains 0 JSON-LD schema blocks, missing root Organization identity, official logo, and sameAs authoritative social and entity links directly on the primary domain landing page.",
+    "source_skill": "crawl-render-audit",
+    "fingerprint": "schema:root-organization",
+    "suggested_action": {
+      "summary": "Add Organization JSON-LD markup to the homepage.",
+      "priority": "medium",
+      "how_to_fix": "Add an Organization schema block on https://www.mozilla.org/en-US/ with name ('Mozilla'), url ('https://www.mozilla.org'), logo, and sameAs links to Wikipedia, Wikidata, GitHub, and official social channels."
     }
   }
 ]

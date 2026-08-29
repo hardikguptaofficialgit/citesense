@@ -1,20 +1,29 @@
 [
   {
-    "title": "Expose a compact product summary in initial HTML",
-    "rationale": "The site already has strong visible product messaging and an llms.txt file, but crawlers that do not execute JavaScript see almost none of that context.",
+    "title": "Adopt llms.txt and llms-full.txt machine-readable documentation manifests",
+    "rationale": "While not a defect, emerging AI indexing standards (llms.txt) provide concise markdown summaries and curated link maps specifically tailored for Large Language Model retrieval and RAG context windows, giving Mozilla a direct channel to control how AI engines summarize its product portfolio, open-source governance, and privacy manifestos.",
     "suggested_action": {
-      "summary": "Place a concise server-rendered summary of Linkit's audience, category, and flagship features in the page source.",
-      "priority": "high",
-      "how_to_fix": "Include a short semantic paragraph and a small list of core features in the initial HTML, then hydrate the richer interactive layout around it."
+      "summary": "Publish /llms.txt and /llms-full.txt summarizing Mozilla's mission, products, and documentation links.",
+      "priority": "medium",
+      "how_to_fix": "Deploy a concise /llms.txt at the root of mozilla.org linking to markdown-formatted summaries of Firefox, Mozilla VPN, Mozilla Monitor, MDN, and the Mozilla Manifesto."
     }
   },
   {
-    "title": "Add a first-party changelog and FAQ knowledge layer",
-    "rationale": "The site has Releases and support-oriented product claims in llms.txt; turning common questions into crawlable FAQ content would improve answerability for feature, pricing, and setup queries.",
+    "title": "Implement Schema.org FAQPage markup on product feature and support pages",
+    "rationale": "Mozilla's product pages provide clear answers to common user questions (e.g. server count, device limits, privacy guarantees, logging policies). Wrapping these existing Q&A sections in FAQPage JSON-LD allows AI assistants and search engines to directly extract authoritative answers for high-intent conversational queries.",
     "suggested_action": {
-      "summary": "Publish crawlable FAQs for pricing, setup, privacy, and feature boundaries, with FAQPage markup where eligible.",
+      "summary": "Embed FAQPage JSON-LD on high-intent product FAQ sections.",
       "priority": "medium",
-      "how_to_fix": "Link the FAQ and dated release entries from the homepage, keep answers in HTML, and add valid FAQPage or Article structured data only where the visible content qualifies."
+      "how_to_fix": "Add FAQPage schema with Question and Answer mainEntity pairs on https://www.mozilla.org/en-US/products/vpn/ and related product FAQ sections."
+    }
+  },
+  {
+    "title": "Introduce cross-product account status and session continuation cues on mozilla.org",
+    "rationale": "Mozilla operates an interconnected suite of privacy tools (Firefox, VPN, Monitor, Relay, MDN Plus) linked by Mozilla Accounts (FxA). Surfacing personalized sign-in state or contextual continuation prompts on mozilla.org helps returning users immediately access their active subscriptions and privacy dashboards, reducing conversion friction.",
+    "suggested_action": {
+      "summary": "Surface Mozilla Account sign-in indicators and direct dashboard shortcuts on the main domain.",
+      "priority": "low",
+      "how_to_fix": "Add a lightweight account avatar/status indicator in the global header linked to the Mozilla Accounts dashboard (accounts.firefox.com) when an active session is detected."
     }
   }
 ]

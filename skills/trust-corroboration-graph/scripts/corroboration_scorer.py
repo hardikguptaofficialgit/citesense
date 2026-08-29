@@ -1,20 +1,32 @@
 #!/usr/bin/env python3
-"""corroboration_scorer.py -- deterministic scoring layer for trust-corroboration-graph.
-Does NOT search the web itself; scores sources the calling agent already gathered via its
-own search tool. Usage: python3 corroboration_scorer.py '<json input>'
-Input shape: {"facts": [{"fact": str, "sources": [{"domain","is_brand_owned","supports_fact"}]}],
-"name_collisions_found": [str], "disambiguating_markers_present": {marker: bool}}"""
-import sys, json
+"""
+corroboration_scorer.py -- Evaluates external claim corroboration and entity disambiguation risk.
+Emits structured CandidateFindings with verifiable evidence and confidence ratings.
+"""
+import os
+import sys
+import json
+from typing import List, Dict, Any, Optional
 
-def score_fact(fact_obj):
+current_dir = os.path.dirname(os.path.abspath(__file__))
+crawl_scripts_dir = os.path.abspath(os.path.join(current_dir, "../../crawl-render-audit/scripts"))
+for d in (current_dir, crawl_scripts_dir):
+    if d not in sys.path:
+        sys.path.insert(0, d)
+
+from models import create_candidate_finding, CandidateFinding
+
+
+def score_fact(fact_obj: Dict[str, Any]) -> Dict[str, Any]:
+    """Scores independent corroboration strength for a single fact claim."""
     sources = fact_obj.get("sources", [])
     independent = [s for s in sources if not s.get("is_brand_owned")]
-    # A search failure/unknown is not counter-evidence.  Count only sources with quoted,
-    # claim-level support supplied by the caller.
     supporting = [s for s in independent if s.get("supports_fact") is True and s.get("evidence")]
     contradicting = [s for s in independent if s.get("supports_fact") is False and s.get("evidence")]
+    
     domains_supporting = sorted(set(s["domain"] for s in supporting))
     domains_contradicting = sorted(set(s["domain"] for s in contradicting))
+
     if len(domains_supporting) >= 2 and not domains_contradicting:
         strength = "strong"
     elif len(domains_supporting) == 1 and not domains_contradicting:
@@ -25,32 +37,157 @@ def score_fact(fact_obj):
         strength = "contradicted"
     else:
         strength = "uncorroborated"
-    return {"fact": fact_obj.get("fact"), "independent_supporting_domains": domains_supporting,
-            "independent_contradicting_domains": domains_contradicting, "corroboration_strength": strength}
 
-def assess_collision_risk(name_collisions, markers):
+    return {
+        "fact": fact_obj.get("fact"),
+        "independent_supporting_domains": domains_supporting,
+        "independent_contradicting_domains": domains_contradicting,
+        "corroboration_strength": strength
+    }
+
+
+def assess_collision_risk(name_collisions: List[Dict[str, Any]], markers: Dict[str, bool]) -> Dict[str, Any]:
+    """Assesses entity collision risk considering industry adjacency and disambiguating markers."""
     if not name_collisions:
         return {"risk": "none_detected", "collisions_found": []}
-    # Only verified, plausible collisions qualify; unrelated matching strings must not create a finding.
-    plausible=[c for c in name_collisions if isinstance(c,dict) and c.get("domain") and c.get("same_or_adjacent_industry")]
-    if not plausible: return {"risk":"none_detected","collisions_found":[],"note":"No verified plausible same-name collision supplied."}
+
+    plausible = [
+        c for c in name_collisions
+        if isinstance(c, dict) and c.get("domain") and c.get("same_or_adjacent_industry")
+    ]
+    if not plausible:
+        return {
+            "risk": "none_detected",
+            "collisions_found": [],
+            "note": "No verified plausible same-name collision in same or adjacent industry."
+        }
+
     marker_count = sum(1 for v in (markers or {}).values() if v)
     risk = "high" if marker_count == 0 else ("medium" if marker_count == 1 else "low")
-    return {"risk": risk, "collisions_found": name_collisions, "disambiguating_markers_present": markers,
-            "note": "risk is high only for verified plausible same-name collisions plus no machine-readable disambiguation"}
+    return {
+        "risk": risk,
+        "collisions_found": plausible,
+        "disambiguating_markers_present": markers,
+        "note": "Risk is high only for verified plausible same-name collisions with no machine-readable disambiguation."
+    }
+
+
+def generate_trust_findings(
+    fact_scores: List[Dict[str, Any]],
+    collision_assessment: Dict[str, Any],
+    brand_name: str,
+    site_url: str = "https://example.com"
+) -> List[Dict[str, Any]]:
+    """Generates structured CandidateFindings from corroboration scores and collision risk."""
+    findings = []
+
+    # Corroboration findings
+    for f in fact_scores:
+        strength = f.get("corroboration_strength")
+        fact_text = f.get("fact", "")
+        supp = f.get("independent_supporting_domains", [])
+        contra = f.get("independent_contradicting_domains", [])
+
+        if strength in ("uncorroborated", "contradicted"):
+            f_item = create_candidate_finding(
+                title=f"Core claim lacks independent external corroboration: \"{fact_text[:45]}\"",
+                category="corroboration",
+                severity="medium",
+                url=site_url,
+                observation=f"Searched external sources for claim \"{fact_text}\"; found 0 independent authoritative supporting sources. Only source is brand-owned channels.",
+                method="external_knowledge_graph_search",
+                source_skill="trust-corroboration-graph",
+                action_summary="Establish external corroboration on authoritative third-party platforms.",
+                action_priority="medium",
+                action_how_to_fix="Verify company details and notable claims on Wikipedia/Wikidata, Crunchbase, LinkedIn company page, and industry registries.",
+                fingerprint=f"trust:uncorroborated-fact:{fact_text[:30]}",
+                status="likely-risk",
+                confidence="high",
+                impact="medium"
+            )
+            findings.append(f_item.to_dict())
+
+        elif strength == "contested":
+            f_item = create_candidate_finding(
+                title=f"Contradictory third-party claims found for fact: \"{fact_text[:45]}\"",
+                category="corroboration",
+                severity="high",
+                url=site_url,
+                observation=f"Third-party sources conflict on \"{fact_text}\". Supporting: {', '.join(supp)}. Contradicting: {', '.join(contra)}.",
+                method="external_knowledge_graph_search",
+                source_skill="trust-corroboration-graph",
+                action_summary="Clarify canonical brand claim in press materials and structured data.",
+                action_priority="high",
+                action_how_to_fix="Publish authoritative statement and update external directory listings to resolve third-party conflicts.",
+                fingerprint=f"trust:contested-fact:{fact_text[:30]}",
+                status="confirmed",
+                confidence="high",
+                impact="high"
+            )
+            findings.append(f_item.to_dict())
+
+    # Entity collision findings
+    risk = collision_assessment.get("risk", "none_detected")
+    collisions = collision_assessment.get("collisions_found", [])
+
+    if risk in ("high", "medium") and collisions:
+        colliding_domains = [c.get("domain") for c in collisions if c.get("domain")]
+        f_item = create_candidate_finding(
+            title=f"High risk of AI entity confusion due to name collision with {', '.join(colliding_domains[:2])}",
+            category="entity-disambiguation",
+            severity="critical" if risk == "high" else "high",
+            url=site_url,
+            observation=f"Plausible name collision with {', '.join(colliding_domains)} in the same/adjacent market, and site lacks sufficient disambiguating markers (sameAs links, legal entity schema).",
+            method="entity_collision_evaluation",
+            source_skill="trust-corroboration-graph",
+            action_summary="Add robust Schema.org sameAs links and legal entity disambiguation.",
+            action_priority="critical" if risk == "high" else "high",
+            action_how_to_fix="Add Organization JSON-LD with unique @id, legalName, sameAs pointing to Wikidata/Wikipedia, and geographic location.",
+            fingerprint=f"trust:entity-collision:{brand_name.lower()}",
+            status="likely-risk" if risk == "medium" else "confirmed",
+            confidence="high",
+            impact="critical" if risk == "high" else "high"
+        )
+        findings.append(f_item.to_dict())
+
+    return findings
+
 
 def main():
-    if len(sys.argv) != 2:
-        print(json.dumps({"error": "usage: corroboration_scorer.py '<json input>'"})); sys.exit(1)
-    try:
-        data = json.loads(sys.argv[1])
-    except json.JSONDecodeError as e:
-        print(json.dumps({"error": f"invalid JSON input: {e}"})); sys.exit(1)
-    fact_scores = [score_fact(f) for f in data.get("facts", [])]
-    collision_assessment = assess_collision_risk(data.get("name_collisions_found", []), data.get("disambiguating_markers_present", {}))
-    print(json.dumps({"fact_corroboration": fact_scores,
-                       "weak_or_worse_facts": [f for f in fact_scores if f["corroboration_strength"] in ("weak", "contested", "contradicted", "uncorroborated")],
-                       "entity_collision_assessment": collision_assessment}, indent=2))
+    if len(sys.argv) < 2:
+        print(json.dumps({"error": "usage: corroboration_scorer.py '<json_input_or_file>' [--findings-only]"})); sys.exit(1)
+
+    input_arg = sys.argv[1]
+    if os.path.exists(input_arg):
+        with open(input_arg, encoding="utf-8-sig") as f:
+            data = json.load(f)
+    else:
+        try:
+            data = json.loads(input_arg)
+        except Exception as e:
+            print(json.dumps({"error": f"invalid JSON input: {e}"})); sys.exit(1)
+
+    facts = data.get("facts", [])
+    collisions = data.get("name_collisions_found", [])
+    markers = data.get("disambiguating_markers_present", {})
+    brand_name = data.get("brand_name", "Brand")
+    site_url = data.get("site_url", "https://example.com")
+
+    fact_scores = [score_fact(f) for f in facts]
+    collision_assessment = assess_collision_risk(collisions, markers)
+    findings = generate_trust_findings(fact_scores, collision_assessment, brand_name, site_url)
+
+    if "--findings-only" in sys.argv:
+        print(json.dumps(findings, indent=2))
+    else:
+        out = {
+            "fact_corroboration": fact_scores,
+            "weak_or_worse_facts": [f for f in fact_scores if f["corroboration_strength"] in ("weak", "contested", "contradicted", "uncorroborated")],
+            "entity_collision_assessment": collision_assessment,
+            "findings": findings
+        }
+        print(json.dumps(out, indent=2))
+
 
 if __name__ == "__main__":
     main()

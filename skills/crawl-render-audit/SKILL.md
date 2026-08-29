@@ -5,59 +5,46 @@ description: Audits a website's off-site discoverability pipeline -- whether AI 
 
 # Crawl & Render Audit (discoverability: steps A-C)
 
-Invoked by `audit-orchestrator` first, since its structured-data extraction feeds ground truth. Answers the first
-three questions from the appendix's discoverability model, in order:
-1. Is the crawler let in? (robots.txt for AI-specific user agents, not just `*`)
-2. Can it read what's on the page? (raw HTML vs. rendered DOM; structured data)
+Invoked by `audit-orchestrator` first, using the shared `SiteInventory`. Answers the first
+three questions from the discoverability pipeline:
+1. Is the crawler let in? (robots.txt for AI-specific user agents using longest-match precedence)
+2. Can it read what's on the page? (raw HTML vs. rendered DOM; structured data; JSON-LD schema)
 3. Can it pick out the specific fact? (facts locked inside images/canvas vs. plain text)
 
-A page can pass step 1 and still fail step 2 or 3 -- always run all checks.
-
 ## Inputs
-- `site_url`: the root domain to audit (e.g. `https://example.com`)
-- `sample_pages` (optional): representative page URLs to deep-scan beyond the homepage --
-  ideally one money page (product/pricing/service) and one content page (article/FAQ). If not
-  provided, discover 2-3 candidates from the homepage's internal links or the sitemap found in
-  step 1.
+- `inventory`: a loaded `SiteInventory` object or `site_url`.
 
 ## Procedure
-1. **Crawlability.** Run `scripts/crawlability_check.py <site_url>`.
-   - Evaluate each audited path with longest-match `Allow`/`Disallow` semantics. Report only an
-     important path actually denied; distinguish partial from site-wide denial. Evidence includes rule, agent, and path.
-   - Missing sitemap.xml -> **medium**.
-   - llms.txt found -> not a finding, note as an existing strength for the orchestrator.
-2. **Render & data scan.** For the homepage and each sample page, run
-   `scripts/render_and_data_scan.py <page_url>`.
-   - JS use is not a defect. Report a render gap only when an identified core fact/action is
-     absent from raw HTML and present only in rendered DOM; an unavailable renderer is inconclusive.
-   - No JSON-LD on a money page -> **high**. JSON-LD present but missing required fields ->
-     **medium**.
-   - Missing title/meta description -> **medium**. Missing canonical on a site with duplicate
-     or parameterized URLs -> **medium**. Missing viewport meta -> **low** here (also relevant
-     to `engagement-audit` -- don't duplicate the finding, just note it happened on both).
-   - `media_locked_fact_candidates` are heuristic leads only -- confirm each one against the
-     page's actual visible content before reporting it as a finding.
-3. **Extract ground truth** for the other skills as you go: brand name, category, JSON-LD
-   Organization/Product fields, and 3-5 core factual claims (founding year, HQ, flagship
-   offering). Pass this forward as `ground_truth` to `citation-simulator` and
-   `trust-corroboration-graph` via the orchestrator.
-4. Only report issues you actually confirmed -- false positives are explicitly penalized.
+1. **Crawlability Check:**
+   Run `python3 skills/crawl-render-audit/scripts/crawlability_check.py <inventory_json_or_url> --findings-only`.
+   - Evaluates AI crawler blocks (GPTBot, ClaudeBot, PerplexityBot, etc.) per path.
+   - Checks sitemap.xml and special discovery files (llms.txt, ai.txt).
+2. **Render & Data Scan:**
+   Run `python3 skills/crawl-render-audit/scripts/render_and_data_scan.py <inventory_json_or_url> --findings-only`.
+   - Checks Organization, Product, Offer, Article, FAQPage schema fields.
+   - Evaluates raw HTML vs rendered DOM text; JS usage alone is never a defect.
+   - Detects facts locked inside canvas or images without alt text.
+3. **Extract Ground Truth:**
+   Pulls brand name, category, Organization metadata, and core factual claims (founding year, contact) from root schema and text into `inventory.ground_truth`.
 
 ## Output
-JSON array of finding objects, e.g.:
+JSON array of structured `CandidateFinding` objects:
 ```json
 {
-  "title": "GPTBot explicitly disallowed while wildcard robots rule allows all",
+  "title": "AI crawlers explicitly blocked from root pages (GPTBot, ClaudeBot)",
   "category": "crawlability",
   "severity": "critical",
-  "evidence": "robots.txt at https://example.com/robots.txt: 'User-agent: GPTBot / Disallow: /', while 'User-agent: *' has no blocking Disallow.",
+  "status": "confirmed",
+  "confidence": "high",
+  "impact": "critical",
+  "evidence": "Observed at https://example.com/robots.txt via robots_txt_parser_longest_match [2026-08-29T17:45:00Z]: robots.txt disallows root '/' specifically for: GPTBot, ClaudeBot. (Confidence: high)",
   "source_skill": "crawl-render-audit",
+  "fingerprint": "robots:ai-agents-blocked-root",
   "suggested_action": {
-    "summary": "Remove or narrow the GPTBot-specific Disallow rule.",
+    "summary": "Allow AI search and retrieval crawlers to access public brand content.",
     "priority": "critical",
-    "how_to_fix": "Edit robots.txt: delete the GPTBot block, or replace 'Disallow: /' with only the specific paths that should stay private."
+    "how_to_fix": "In robots.txt, remove explicit Disallow rules for retrieval agents or replace them with granular directory restrictions."
   }
 }
 ```
-Return findings as a JSON array to the orchestrator. Do not compute the report's `summary`
-yourself -- that's `compose_report.py`'s job once all skills report in.
+Return candidate findings as a JSON array to the orchestrator.
