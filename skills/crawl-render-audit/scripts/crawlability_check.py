@@ -13,7 +13,10 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
     sys.path.insert(0, current_dir)
 
-from audit_common import AI_USER_AGENTS, parse_robots, robot_decision, safe_fetch, DEFAULT_TIMEOUT
+from audit_common import (
+    AI_USER_AGENTS, CITATION_CRITICAL_AGENTS, crawler_class,
+    parse_robots, robot_decision, safe_fetch, DEFAULT_TIMEOUT
+)
 from models import create_candidate_finding, CandidateFinding
 from site_inventory import SiteInventory, get_or_crawl_inventory
 
@@ -61,24 +64,69 @@ def evaluate_crawlability(inventory: SiteInventory) -> List[Dict[str, Any]]:
                 )
                 findings.append(f.to_dict())
             else:
-                # Selective AI bot block
-                f = create_candidate_finding(
-                    title=f"AI crawlers explicitly blocked from root pages ({', '.join(root_blocked_agents[:3])})",
-                    category="crawlability",
-                    severity="critical" if "GPTBot" in root_blocked_agents or "ClaudeBot" in root_blocked_agents else "high",
-                    url=robots_url,
-                    observation=f"robots.txt disallows root '/' specifically for: {', '.join(root_blocked_agents)}, while general crawler access is permitted.",
-                    method="robots_txt_parser_longest_match",
-                    source_skill="crawl-render-audit",
-                    action_summary="Allow AI search and retrieval crawlers to access public brand content.",
-                    action_priority="high",
-                    action_how_to_fix="In robots.txt, remove explicit Disallow rules for retrieval agents (e.g., GPTBot, ClaudeBot, PerplexityBot) or replace them with granular directory restrictions.",
-                    fingerprint="robots:ai-agents-blocked-root",
-                    status="confirmed",
-                    confidence="high",
-                    impact="high"
-                )
-                findings.append(f.to_dict())
+                # Selective AI bot block. Severity depends entirely on WHICH class is blocked:
+                # blocking training crawlers costs no citations and is a legitimate licensing
+                # stance; blocking search-index or user-triggered agents is what makes a brand
+                # uncitable. Flagging both alike was a false positive against deliberate policy.
+                blocked_citation = [a for a in root_blocked_agents if a in CITATION_CRITICAL_AGENTS]
+                blocked_training = [a for a in root_blocked_agents if crawler_class(a) == "training"]
+
+                if blocked_citation:
+                    f = create_candidate_finding(
+                        title=f"AI search and retrieval crawlers blocked from root ({', '.join(blocked_citation[:3])})",
+                        category="crawlability",
+                        severity="critical",
+                        url=robots_url,
+                        observation=(
+                            f"robots.txt disallows root '/' for retrieval agents: {', '.join(blocked_citation)}. "
+                            f"These build the indexes AI answers are assembled from, or fetch a page live when a "
+                            f"user asks about it, so the brand cannot be cited at all. "
+                            + (f"Training-only crawlers ({', '.join(blocked_training)}) are also blocked, which is a "
+                               f"separate and legitimate licensing choice." if blocked_training else "")
+                        ),
+                        method="robots_txt_parser_longest_match",
+                        source_skill="crawl-render-audit",
+                        action_summary="Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+                        action_priority="critical",
+                        action_how_to_fix=(
+                            "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) "
+                            "and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep "
+                            "GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content "
+                            "used for model training -- the two decisions are independent."
+                        ),
+                        fingerprint="robots:citation-agents-blocked-root",
+                        status="confirmed",
+                        confidence="high",
+                        impact="critical"
+                    )
+                    findings.append(f.to_dict())
+                elif blocked_training:
+                    # Coherent policy, not a defect. Recorded so the report shows we saw it.
+                    f = create_candidate_finding(
+                        title="Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+                        category="crawlability",
+                        severity="low",
+                        url=robots_url,
+                        observation=(
+                            f"robots.txt disallows root '/' for training crawlers ({', '.join(blocked_training)}) "
+                            f"while leaving search-index and user-triggered agents allowed. This is a coherent "
+                            f"licensing stance and does not prevent the brand being cited in AI answers."
+                        ),
+                        method="robots_txt_parser_longest_match",
+                        source_skill="crawl-render-audit",
+                        action_summary="No change needed; confirm this is intentional and state the policy explicitly.",
+                        action_priority="low",
+                        action_how_to_fix=(
+                            "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing "
+                            "terms to robots.txt so the distinction between training and retrieval is machine-readable "
+                            "rather than inferred from which agents you named."
+                        ),
+                        fingerprint="robots:training-only-blocked",
+                        status="proactive",
+                        confidence="high",
+                        impact="low"
+                    )
+                    findings.append(f.to_dict())
         elif partially_blocked:
             # Subpath blocked
             sample_blocks = []

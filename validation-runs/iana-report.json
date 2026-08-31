@@ -1,6 +1,6 @@
 {
   "site": "https://www.iana.org",
-  "audited_at": "2026-08-31T19:40:28Z",
+  "audited_at": "2026-08-31T19:54:53Z",
   "summary": {
     "total_findings": 8,
     "critical": 0,
@@ -18,7 +18,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://www.iana.org/ via jsonld_schema_extractor [2026-08-31T19:40:27Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.iana.org via onsite_answerability_probe [2026-08-31T19:40:28Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Internet Assigned Numbers Authority?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org/ via jsonld_schema_extractor [2026-08-31T19:54:52Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.iana.org via onsite_answerability_probe [2026-08-31T19:54:53Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Internet Assigned Numbers Authority?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "schema:root-organization-missing",
       "suggested_action": {
@@ -34,7 +34,7 @@
         "url": "https://www.iana.org/",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-31T19:40:27Z",
+        "timestamp": "2026-08-31T19:54:52Z",
         "confidence": "high"
       },
       "id": "F-001"
@@ -46,7 +46,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org/sitemap.xml via http_get_sitemap_check [2026-08-31T19:40:27Z]: Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "evidence": "Observed at https://www.iana.org/sitemap.xml via http_get_sitemap_check [2026-08-31T19:54:52Z]: Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "crawl:missing-xml-sitemap",
       "suggested_action": {
@@ -61,7 +61,7 @@
         "url": "https://www.iana.org/sitemap.xml",
         "observation": "Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-08-31T19:40:27Z",
+        "timestamp": "2026-08-31T19:54:52Z",
         "confidence": "high"
       },
       "id": "F-002"
@@ -73,7 +73,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org/ via html_meta_inspector [2026-08-31T19:40:27Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+      "evidence": "Observed at https://www.iana.org/ via html_meta_inspector [2026-08-31T19:54:52Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "meta:missing-description",
       "suggested_action": {
@@ -88,7 +88,7 @@
         "url": "https://www.iana.org/",
         "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
         "method": "html_meta_inspector",
-        "timestamp": "2026-08-31T19:40:27Z",
+        "timestamp": "2026-08-31T19:54:52Z",
         "confidence": "high"
       },
       "id": "F-003"
@@ -100,7 +100,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org via onsite_answerability_probe [2026-08-31T19:40:28Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Internet Assigned Numbers Authority offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org via onsite_answerability_probe [2026-08-31T19:54:53Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Internet Assigned Numbers Authority offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "citation-simulator",
       "fingerprint": "citation:unanswerable:offering",
       "suggested_action": {
@@ -115,7 +115,7 @@
         "url": "https://www.iana.org",
         "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Internet Assigned Numbers Authority offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-08-31T19:40:28Z",
+        "timestamp": "2026-08-31T19:54:53Z",
         "confidence": "medium"
       },
       "id": "F-004"
@@ -127,7 +127,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org via onsite_identity_anchor_inspection [2026-08-31T19:40:28Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Internet Assigned Numbers Authority\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
+      "evidence": "Observed at https://www.iana.org via onsite_identity_anchor_inspection [2026-08-31T19:54:53Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Internet Assigned Numbers Authority\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
       "source_skill": "trust-corroboration-graph",
       "fingerprint": "trust:no-independent-identity-anchor",
       "suggested_action": {
@@ -142,7 +142,7 @@
         "url": "https://www.iana.org",
         "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Internet Assigned Numbers Authority\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-08-31T19:40:28Z",
+        "timestamp": "2026-08-31T19:54:53Z",
         "confidence": "high"
       },
       "id": "F-005"
@@ -154,7 +154,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.iana.org/domains/root via breadcrumb_markup_inspector [2026-08-31T19:40:27Z]: Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org/domains/root via breadcrumb_markup_inspector [2026-08-31T19:54:52Z]: Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:missing-breadcrumbs",
       "suggested_action": {
@@ -169,7 +169,7 @@
         "url": "https://www.iana.org/domains/root",
         "observation": "Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-31T19:40:27Z",
+        "timestamp": "2026-08-31T19:54:52Z",
         "confidence": "medium"
       },
       "id": "F-006"
@@ -181,7 +181,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.iana.org via search_affordance_detection [2026-08-31T19:40:27Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org via search_affordance_detection [2026-08-31T19:54:52Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:no-site-search",
       "suggested_action": {
@@ -196,7 +196,7 @@
         "url": "https://www.iana.org",
         "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-08-31T19:40:27Z",
+        "timestamp": "2026-08-31T19:54:52Z",
         "confidence": "medium"
       },
       "id": "F-007"
@@ -208,7 +208,7 @@
       "status": "proactive",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.iana.org via returning_visitor_affordance_detection [2026-08-31T19:40:27Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org via returning_visitor_affordance_detection [2026-08-31T19:54:52Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:no-personalization-readiness",
       "suggested_action": {
@@ -223,7 +223,7 @@
         "url": "https://www.iana.org",
         "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
         "method": "returning_visitor_affordance_detection",
-        "timestamp": "2026-08-31T19:40:27Z",
+        "timestamp": "2026-08-31T19:54:52Z",
         "confidence": "medium"
       },
       "id": "F-008"
@@ -231,12 +231,57 @@
   ],
   "proactive_recommendations": [
     {
-      "title": "Publish an llms.txt file to guide AI assistants to authoritative documentation",
-      "rationale": "Emerging AI web standards like /llms.txt provide large language models with a curated, markdown-formatted directory of core brand documentation and APIs.",
+      "title": "Mark up existing question-and-answer content with FAQPage schema",
+      "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
       "suggested_action": {
-        "summary": "Create an llms.txt file in the root web directory.",
+        "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+        "priority": "high",
+        "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+      }
+    },
+    {
+      "title": "Build third-party presence so Internet Assigned Numbers Authority is resolvable away from its own domain",
+      "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+      "suggested_action": {
+        "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+        "priority": "high",
+        "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+      }
+    },
+    {
+      "title": "Restructure long pages so each section answers one question on its own",
+      "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+      "suggested_action": {
+        "summary": "Break long pages into self-contained sections that lead with the answer.",
+        "priority": "medium",
+        "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+      }
+    },
+    {
+      "title": "Add Article schema with author and dateModified to editorial pages",
+      "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+      "suggested_action": {
+        "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+        "priority": "medium",
+        "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+      }
+    },
+    {
+      "title": "Declare a WebSite entity with SearchAction",
+      "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+      "suggested_action": {
+        "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+        "priority": "medium",
+        "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+      }
+    },
+    {
+      "title": "Add BreadcrumbList schema to deep pages",
+      "rationale": "2 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+      "suggested_action": {
+        "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
         "priority": "low",
-        "how_to_fix": "Add an /llms.txt file containing markdown links to your primary product, documentation, pricing, and company overview pages."
+        "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
       }
     }
   ]

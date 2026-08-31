@@ -39,7 +39,7 @@ graph TD
 
 | Skill | Concern | What it adds |
 |---|---|---|
-| **crawl-render-audit** | Off-site discoverability, steps A-C | Is the crawler let in (per AI-agent robots.txt rules, not just `*`)? Can it read the page without executing JS? Is structured data present and valid? Are facts locked inside images/canvas? |
+| **crawl-render-audit** | Off-site discoverability, steps A-C | Is the crawler let in? Scored **by crawler class** -- blocking training crawlers (GPTBot, ClaudeBot) costs no citations and is a legitimate licensing stance; blocking search-index (OAI-SearchBot, Claude-SearchBot, PerplexityBot) or user-triggered (ChatGPT-User, Claude-User) agents is what makes a brand uncitable. Can it read the page without executing JS? Is structured data present and valid? Are facts locked inside images or canvas? |
 | **freshness-corroboration** | Temporal + internal consistency (Appendix D, half 1) | Claim-based freshness: detects actual stale/conflicting facts (e.g. conflicting founding years, expired promotions) instead of treating missing `dateModified` as a defect. |
 | **engagement-audit** | On-site engagement | Evaluates orientation, buttons/forms/CTAs, navigation, redirect-aware broken links, and mobile viewport. |
 | **citation-simulator** | Proof-of-failure | Generates realistic questions about the brand, then tests **answerability**: given only the pages a retrieval bot actually fetched, could an assistant quote an answer? Also classifies supplied live-search results (omission / misattribution / staleness / contradiction) when an agent provides them. |
@@ -64,8 +64,9 @@ graph TD
 6. **Fact-Extractability Detection:** Analyzes the **raw, non-JS-executed HTML** for crucial facts (identity, offering, pricing, contact) -- exactly what a non-rendering retrieval bot sees -- and flags pages whose facts are absent from it or locked inside `<canvas>`. No headless browser is used: the audit is deliberately static, which is the harsher and more realistic case for AI crawlers.
 7. **Advanced Engagement Detection:** Recognizes `<button>`, `<input type="submit">`, `<form>`, `role="button"`, and prominent CTA links.
 8. **Root-Cause Deduplication:** Consolidates findings sharing the same fingerprint across pages and skills, merging evidence and assigning highest severity.
-9. **Strict Guardrails:** Recommend-only, 100% read-only, and robots.txt is **enforced on our own fetches** (`SiteInventory.may_fetch()` gates both page crawling and link probing against the `*` group; declined URLs are recorded in `skipped_by_robots`). Strictly budgeted under 5 minutes -- a typical audit runs in 2-7 seconds.
-10. **Report Schema Compliance:** Fully conforms to `skills/audit-orchestrator/references/report-schema.json`.
+9. **Evidence-Based Proactive Recommendations:** Up to 6 beyond-defect suggestions derived from what the crawl observed and ordered strongest-evidence-first -- FAQPage markup for existing Q&A content, third-party entity anchoring, answer-first content structure, Article/WebSite/BreadcrumbList schema, explicit AI usage terms in robots.txt, an agent-facing NLWeb/MCP endpoint, and llms.txt reported with its real (weak) evidence base. Each fires only on an observed condition, so a well-optimised site correctly receives fewer. Basis: `skills/audit-orchestrator/references/ai-visibility-standards-2026.md`.
+10. **Strict Guardrails:** Recommend-only, 100% read-only, and robots.txt is **enforced on our own fetches** (`SiteInventory.may_fetch()` gates both page crawling and link probing against the `*` group; declined URLs are recorded in `skipped_by_robots`). Strictly budgeted under 5 minutes -- a typical audit runs in 2-7 seconds.
+11. **Report Schema Compliance:** Fully conforms to `skills/audit-orchestrator/references/report-schema.json`.
 
 ---
 
@@ -123,6 +124,16 @@ reintroduced -- see `Progress.md` for the original reproduction.
 `validation-runs/` holds reports regenerated from the current pipeline across six sites of
 different shapes, plus `RUNS.md` with runtimes and severity counts. All six validate against
 `report-schema.json`.
+
+## Evidence basis
+
+Detection severities and recommendation priorities trace to documented field research, not
+intuition. `skills/audit-orchestrator/references/ai-visibility-standards-2026.md` records what
+drives AI visibility as of September 2026 -- the three-way AI crawler taxonomy, why FAQPage is the
+highest-leverage schema, the ~11% citation-source overlap between platforms that makes off-site
+presence decisive, content-chunking effects on extractability, and an honest read on llms.txt
+(major crawlers almost never request it; Google states it has no effect) -- with sources and a
+table mapping each finding to its basis.
 
 ## Project status
 

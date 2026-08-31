@@ -7,13 +7,40 @@ import urllib.request
 import urllib.error
 from urllib.parse import urljoin, urlparse, urlunparse
 
-AI_USER_AGENTS = (
-    "GPTBot", "ChatGPT-User", "OAI-SearchBot",
-    "ClaudeBot", "Claude-Web", "anthropic-ai",
-    "PerplexityBot", "Perplexity-User",
-    "Google-Extended", "CCBot", "Amazonbot",
-    "Applebot-Extended", "Bytespider"
-)
+# AI crawlers split into three classes that have completely different consequences when blocked.
+# Treating them alike is a false positive: a publisher who blocks training crawlers but allows
+# search and user-triggered ones has made a deliberate, coherent licensing choice and is still
+# fully citable. Only the last two classes decide whether a brand can appear in an answer.
+#
+#   training       -- harvest content for future model training. Blocking costs no citations.
+#   search_index   -- build the retrieval indexes AI answers are assembled from. Blocking these
+#                     removes the brand from AI search results.
+#   user_triggered -- fetch a page live when a user asks about it. Blocking these breaks the
+#                     assistant's ability to read the page the user is literally asking about.
+AI_CRAWLER_CLASSES = {
+    "training": (
+        "GPTBot", "ClaudeBot", "Google-Extended", "CCBot",
+        "Applebot-Extended", "Meta-ExternalAgent", "Bytespider", "Amazonbot",
+    ),
+    "search_index": (
+        "OAI-SearchBot", "Claude-SearchBot", "PerplexityBot",
+    ),
+    "user_triggered": (
+        "ChatGPT-User", "Claude-User", "Perplexity-User",
+    ),
+}
+
+CITATION_CRITICAL_AGENTS = AI_CRAWLER_CLASSES["search_index"] + AI_CRAWLER_CLASSES["user_triggered"]
+
+AI_USER_AGENTS = tuple(a for group in AI_CRAWLER_CLASSES.values() for a in group)
+
+
+def crawler_class(agent: str) -> str:
+    """Which consequence class does this user agent belong to?"""
+    for name, agents in AI_CRAWLER_CLASSES.items():
+        if agent in agents:
+            return name
+    return "unknown"
 
 DEFAULT_TIMEOUT = 8
 USER_AGENT = "brand-ai-readiness-audit/2.1 (+read-only audit; Adobe Hackathon Round 3)"

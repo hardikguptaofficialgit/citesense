@@ -30,52 +30,12 @@ from engagement_scan import evaluate_engagement_audit
 from generate_queries import evaluate_answerability
 from corroboration_scorer import evaluate_identity_anchoring
 from compose_report import build_final_report
+from proactive_recommendations import generate_proactive_recommendations
 
 # NOTE: the agent-supplied halves of citation-simulator and trust-corroboration-graph
 # (evaluate_citation_simulation, score_fact, assess_collision_risk, generate_trust_findings)
 # are intentionally NOT imported here. They require real third-party search results; calling
 # them with invented inputs is the bug F8 removed. Reach them via the standalone skill CLIs.
-
-
-def generate_proactive_recommendations(inventory: SiteInventory) -> list:
-    """Generates beyond-defect optimization recommendations to improve AI readiness."""
-    proactive = []
-    
-    # 1. FAQPage structured data recommendation if question-like content exists
-    has_faq_schema = False
-    has_faq_content = False
-    for snap in inventory.pages.values():
-        for ent in snap.get("jsonld_parsed", []):
-            if ent.get("@type") == "FAQPage":
-                has_faq_schema = True
-        text = snap.get("visible_text", "")
-        if any(q in text.lower() for q in ("frequently asked", "faq", "how does", "what is", "how do i")):
-            has_faq_content = True
-
-    if has_faq_content and not has_faq_schema:
-        proactive.append({
-            "title": "Add Schema.org FAQPage markup to enrich AI assistant direct answers",
-            "rationale": "The site contains informative Q&A or FAQ text. Adding structured FAQPage JSON-LD allows search engines and generative AI agents to quote verbatim answers directly in response to user inquiries.",
-            "suggested_action": {
-                "summary": "Implement Schema.org FAQPage structured data on help and FAQ sections.",
-                "priority": "medium",
-                "how_to_fix": "Wrap top customer questions in a JSON-LD script declaring @type 'FAQPage' with 'mainEntity' Question and acceptedAnswer Answer objects."
-            }
-        })
-
-    # 2. llms.txt protocol recommendation if not present
-    if not inventory.special_files.get("llms_txt", {}).get("found"):
-        proactive.append({
-            "title": "Publish an llms.txt file to guide AI assistants to authoritative documentation",
-            "rationale": "Emerging AI web standards like /llms.txt provide large language models with a curated, markdown-formatted directory of core brand documentation and APIs.",
-            "suggested_action": {
-                "summary": "Create an llms.txt file in the root web directory.",
-                "priority": "low",
-                "how_to_fix": "Add an /llms.txt file containing markdown links to your primary product, documentation, pricing, and company overview pages."
-            }
-        })
-
-    return proactive
 
 
 def run_full_audit(

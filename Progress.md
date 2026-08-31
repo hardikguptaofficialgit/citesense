@@ -16,15 +16,16 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 
 | | |
 |---|---|
-| Tests | **79 passing**, stdlib only (21 original + 36 regression + 22 new-check) |
-| Fixes landed | **F1–F27** across five batches |
+| Tests | **93 passing**, stdlib only |
+| Fixes landed | **F1–F31** across six batches |
 | False positives removed | 4 high on python.org, 1 high on react.dev, 1 high on django, 10 duplicate lows |
 | Fabricated evidence strings | **0** (swept across all six validation reports) |
 | Skills contributing findings | **6 of 6** (was 4 of 6) |
 | Discoverability:engagement | ~2:1 (was ~5:1) |
 | robots.txt | **enforced**, verified against a local disallow server |
 | Schema compliance | all six validation reports validate with real `jsonschema` |
-| Slowest audit | 11.9s (stripe.com) against a 5-minute budget |
+| Slowest audit | 21.1s (stripe.com) against a 5-minute budget |
+| Proactive recs | 3–6 per site (was 0 on 2 of 6) |
 | Still open | nothing tracked — see Known limitations |
 
 ## Quick verification commands
@@ -347,6 +348,9 @@ Items 18, 19, 21 and 22 are closed — see batch 4 above.
   account affordances are English keyword sets. Where this could manufacture a finding on a
   non-English page, the check is keyed on URL structure instead (see F19). Broader language
   coverage is the obvious next improvement if there is time.
+- **Standards move fast.** The evidence basis is dated September 2026 and several entries in it
+  changed materially during that year. Re-verify `references/ai-visibility-standards-2026.md`
+  before the next submission rather than trusting it indefinitely.
 - **Sampled crawl.** 5 pages by default. Findings that depend on absence across the site are
   emitted as `likely-risk` with medium confidence, never as `confirmed`.
 - **Agent-supplied modes are not exercised by the deterministic pipeline.** `score_fact()`,
@@ -416,6 +420,73 @@ repository name, the manifest was aligned to the repo rather than the other way 
 descriptive phrase moved into the manifest `description` where it belongs. Zip root, manifest and
 docs now agree. Flip it the other way by renaming the repo and setting the manifest name back if
 the team prefers the descriptive identity.
+
+---
+
+### 2026-09-01 — Batch 6: re-grounded against September 2026 standards
+
+Researched current practice before changing anything; sources and the finding-to-evidence mapping
+are recorded in `skills/audit-orchestrator/references/ai-visibility-standards-2026.md`. Three of
+the four findings below changed **detection behaviour**, not just wording.
+
+**F28 — AI crawlers are now scored by consequence class, not treated alike.**
+`audit_common.py`, `crawlability_check.py`
+
+- *What the research changed:* AI user agents fall into three classes with completely different
+  consequences. **Training** crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot,
+  Applebot-Extended, Meta-ExternalAgent) harvest for model training — blocking them costs **no
+  citations**. **Search-index** crawlers (OAI-SearchBot, Claude-SearchBot, PerplexityBot) build the
+  retrieval indexes answers are assembled from. **User-triggered** fetchers (ChatGPT-User,
+  Claude-User, Perplexity-User) load a page when a user is literally asking about it.
+- *The false positive this removes:* a publisher blocking GPTBot while allowing OAI-SearchBot has
+  made a coherent licensing choice and remains fully citable. We were reporting that as
+  **critical**. Now: critical only when a citation-critical agent is blocked; `low` +
+  `proactive` when only training crawlers are, with the stance acknowledged as legitimate.
+- *Also corrected the agent list:* added `Claude-User`, `Claude-SearchBot` and `Meta-ExternalAgent`;
+  `Claude-Web` and `anthropic-ai` are legacy names.
+
+**F29 — Proactive recommendations rebuilt as an evidence-ranked engine.** *Closes the rubric gap.*
+New `skills/audit-orchestrator/scripts/proactive_recommendations.py`
+
+- *The gap:* only two recommendations existed, both conditional. react.dev and stripe.com received
+  **zero**, scoring nothing on a named rubric criterion.
+- *Now:* nine observation-gated recommendations, capped at 6 and ordered strongest-evidence-first.
+  FAQPage for existing Q&A content (`high` — highest-leverage schema type for citation, since its
+  Q&A shape matches how retrieval chunks and lifts answers); third-party entity anchoring (`high` —
+  only ~11% domain overlap between ChatGPT and Perplexity citations, so on-site work alone caps
+  reach); answer-first content restructuring; Article schema with author/dateModified; WebSite +
+  SearchAction; BreadcrumbList; explicit AI usage terms via Content Signals Policy or RSL; an
+  agent-facing NLWeb/MCP endpoint; and llms.txt.
+- *Result:* every validation site now receives 3–6. stripe.com correctly receives only 3, all
+  `low` — it already has the schema coverage and third-party presence the high-priority items ask
+  for. Fewer recommendations for a better site is the right behaviour, not a gap.
+
+**F30 — llms.txt recommendation corrected to match the evidence.**
+We were recommending it as a straightforward win. The 2026 data says otherwise: across a monitored
+window of 500M+ AI bot visits only **408** requests targeted `/llms.txt`, major crawlers skip it
+and read HTML directly, and **Google stated in June 2026 that it has no effect** on Search or AI
+Overviews. It is now `low` priority with that evidence stated in the rationale, and its absence is
+explicitly never a finding. Recommending it as established practice would have been the same class
+of error as the fabricated evidence in F8 — asserting more than we can support.
+
+**F31 — Entrypoint SKILL.md corrected.** *Closes the second item from the status review.*
+`skills/audit-orchestrator/SKILL.md` is the skill judges invoke, and it had gone stale while the
+three specialist SKILL.md files were fixed in F13. It described `citation-simulator` as running a
+"simulated search loop" and `trust-corroboration-graph` as evaluating "external corroboration and
+entity disambiguation risk" — both now agent-supplied modes. It claimed "2-4 proactive
+recommendations" when 2 were possible and 0 were often produced, and its robots.txt guardrail
+described advisory behaviour rather than the enforcement added in F6. All corrected, plus a
+References section pointing at the schema, the standards evidence, and the check-authoring rules.
+
+**New reference: `references/ai-visibility-standards-2026.md`.** The evidence basis for every
+severity and priority in the report — crawler taxonomy, structured-data leverage, off-site presence,
+content chunking, and what is emerging but not yet load-bearing (Content Signals Policy, RSL, NLWeb,
+UCP) — with sources and a table mapping each finding and recommendation back to its justification.
+The handout asks for field research distilled into the skill; this is where ours is written down.
+
+**Tests: 93 passing** (added `tests/test_proactive_and_crawler_class.py`, 14 tests). Validation set
+regenerated: 6/6 schema-valid, 0 fabricated evidence strings, **0 reports with zero proactive
+recommendations**.
 
 ---
 
