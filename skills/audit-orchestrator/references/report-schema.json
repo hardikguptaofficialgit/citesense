@@ -2,51 +2,167 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Brand AI-Readiness Audit Report",
   "type": "object",
-  "required": ["site", "audited_at", "summary", "findings"],
+  "required": [
+    "site",
+    "audited_at",
+    "summary",
+    "findings"
+  ],
   "properties": {
-    "site": { "type": "string" },
-    "audited_at": { "type": "string", "format": "date-time" },
+    "site": {
+      "type": "string"
+    },
+    "audited_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "summary": {
       "type": "object",
-      "required": ["total_findings", "critical", "high", "medium", "low"],
+      "required": [
+        "total_findings",
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ],
       "properties": {
-        "total_findings": { "type": "integer" },
-        "critical": { "type": "integer" },
-        "high": { "type": "integer" },
-        "medium": { "type": "integer" },
-        "low": { "type": "integer" },
-        "discoverability_findings": { "type": "integer" },
-        "engagement_findings": { "type": "integer" }
+        "total_findings": {
+          "type": "integer"
+        },
+        "critical": {
+          "type": "integer"
+        },
+        "high": {
+          "type": "integer"
+        },
+        "medium": {
+          "type": "integer"
+        },
+        "low": {
+          "type": "integer"
+        },
+        "discoverability_findings": {
+          "type": "integer"
+        },
+        "engagement_findings": {
+          "type": "integer"
+        }
       }
     },
     "findings": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "title", "severity", "evidence", "suggested_action"],
+        "required": [
+          "id",
+          "title",
+          "severity",
+          "evidence",
+          "suggested_action"
+        ],
         "properties": {
-          "id": { "type": "string", "pattern": "^F-[0-9]{3}$" },
-          "title": { "type": "string" },
+          "id": {
+            "type": "string",
+            "pattern": "^F-[0-9]{3}$"
+          },
+          "title": {
+            "type": "string"
+          },
           "category": {
             "type": "string",
             "enum": [
-              "crawlability", "render-gap", "structured-data", "fact-extractability",
-              "freshness", "internal-consistency", "corroboration", "entity-disambiguation",
-              "orientation", "navigation", "personalization-readiness",
-              "citation-omission", "citation-misattribution", "citation-staleness", "citation-contradiction"
+              "crawlability",
+              "render-gap",
+              "structured-data",
+              "fact-extractability",
+              "freshness",
+              "internal-consistency",
+              "corroboration",
+              "entity-disambiguation",
+              "orientation",
+              "navigation",
+              "personalization-readiness",
+              "citation-omission",
+              "citation-misattribution",
+              "citation-staleness",
+              "citation-contradiction"
             ]
           },
-          "severity": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
-          "evidence": { "type": "string" },
-          "source_skill": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "source_skill": {
+            "type": "string"
+          },
           "suggested_action": {
             "type": "object",
-            "required": ["summary", "priority"],
+            "required": [
+              "summary",
+              "priority",
+              "how_to_fix"
+            ],
             "properties": {
-              "summary": { "type": "string" },
-              "priority": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
-              "how_to_fix": { "type": "string" },
-              "beyond_defect": { "type": "boolean" }
+              "summary": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "critical",
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              },
+              "how_to_fix": {
+                "type": "string"
+              },
+              "beyond_defect": {
+                "type": "boolean"
+              }
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "confirmed",
+              "likely-risk",
+              "proactive"
+            ]
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "impact": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "fingerprint": {
+            "type": "string"
+          },
+          "source_skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           }
         }
@@ -57,17 +173,39 @@
       "description": "Optional additive field (schema is a floor, not a ceiling). Improvements suggested even where no defect was detected.",
       "items": {
         "type": "object",
-        "required": ["title", "rationale", "suggested_action"],
+        "required": [
+          "title",
+          "rationale",
+          "suggested_action"
+        ],
         "properties": {
-          "title": { "type": "string" },
-          "rationale": { "type": "string" },
+          "title": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "string"
+          },
           "suggested_action": {
             "type": "object",
-            "required": ["summary", "priority"],
+            "required": [
+              "summary",
+              "priority"
+            ],
             "properties": {
-              "summary": { "type": "string" },
-              "priority": { "type": "string", "enum": ["high", "medium", "low"] },
-              "how_to_fix": { "type": "string" }
+              "summary": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              },
+              "how_to_fix": {
+                "type": "string"
+              }
             }
           }
         }

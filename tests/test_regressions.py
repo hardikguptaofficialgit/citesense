@@ -234,3 +234,69 @@ class BrandNameRegressions(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ContractDriftTests(unittest.TestCase):
+    """
+    Guards against the two contracts silently diverging. models.py, compose_report.py and
+    report-schema.json each encode the category vocabulary; when they drift, the
+    discoverability/engagement split in the summary is silently wrong.
+    """
+
+    def _schema(self):
+        import json
+        return json.loads((ROOT / "skills/audit-orchestrator/references/report-schema.json").read_text(encoding="utf-8"))
+
+    def test_schema_enum_matches_models_categories(self):
+        from models import VALID_CATEGORIES
+        enum = set(self._schema()["properties"]["findings"]["items"]["properties"]["category"]["enum"])
+        self.assertEqual(enum, VALID_CATEGORIES)
+
+    def test_every_category_is_classified_as_discoverability_or_engagement(self):
+        from models import VALID_CATEGORIES, DISCOVERABILITY_CATEGORIES, ENGAGEMENT_CATEGORIES
+        unclassified = VALID_CATEGORIES - (DISCOVERABILITY_CATEGORIES | ENGAGEMENT_CATEGORIES)
+        self.assertEqual(unclassified, set(), "these categories would be dropped from the summary split")
+        self.assertEqual(DISCOVERABILITY_CATEGORIES & ENGAGEMENT_CATEGORIES, set())
+
+    def test_compose_report_uses_the_same_sets_as_models(self):
+        import models, compose_report
+        self.assertIs(compose_report.DISCOVERABILITY_CATEGORIES, models.DISCOVERABILITY_CATEGORIES)
+        self.assertIs(compose_report.ENGAGEMENT_CATEGORIES, models.ENGAGEMENT_CATEGORIES)
+
+    def test_schema_requires_what_the_validator_enforces(self):
+        # assign_ids_and_validate() rejects a finding without how_to_fix, so the schema must say so
+        required = self._schema()["properties"]["findings"]["items"]["properties"]["suggested_action"]["required"]
+        self.assertIn("how_to_fix", required)
+
+
+class InventoryDeduplicationTests(unittest.TestCase):
+    """A redirected page was stored under both its requested and final URL, so a 5-page crawl
+    reported 6 pages and every 'across N crawled pages' evidence string overcounted."""
+
+    def test_redirected_page_is_stored_once_under_its_final_url(self):
+        inv = SiteInventory("https://x.test")
+        snap = analyze_page_html(
+            "https://x.test/psf-landing/",
+            "<html><head><title>T</title></head><body><h1>H</h1></body></html>",
+            "https://x.test/psf/", 200, 0.1,
+        )
+        inv.store_page("https://x.test/psf-landing/", snap)
+        self.assertEqual(len(inv.pages), 1)
+        self.assertIn("https://x.test/psf/", inv.pages)
+        self.assertEqual(inv.url_aliases["https://x.test/psf-landing/"], "https://x.test/psf/")
+
+    def test_knows_url_recognises_both_sides_of_a_redirect(self):
+        inv = SiteInventory("https://x.test")
+        snap = analyze_page_html(
+            "https://x.test/a", "<html><head><title>T</title></head><body>b</body></html>",
+            "https://x.test/b", 200, 0.1,
+        )
+        inv.store_page("https://x.test/a", snap)
+        self.assertTrue(inv.knows_url("https://x.test/a"))
+        self.assertTrue(inv.knows_url("https://x.test/b"))
+        self.assertFalse(inv.knows_url("https://x.test/c"))
+
+    def test_aliases_survive_an_inventory_roundtrip(self):
+        inv = SiteInventory("https://x.test")
+        inv.url_aliases = {"https://x.test/a": "https://x.test/b"}
+        self.assertTrue(SiteInventory.from_dict(inv.to_dict()).knows_url("https://x.test/a"))

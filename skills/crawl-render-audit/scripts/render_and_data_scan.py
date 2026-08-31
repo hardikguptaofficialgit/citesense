@@ -287,10 +287,14 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
     # test is English-biased -- a German page saying "kostenlos" would look priceless to it.
     # Keying on an explicit pricing route is language-independent and only fires where a
     # visitor genuinely came to find a number.
-    path_tokens = {t for t in re.split(r"[^a-z0-9]+", urlparse(url).path.lower()) if t}
-    is_pricing_route = bool(path_tokens & {"pricing", "price", "prices", "plans", "plan",
-                                           "buy", "checkout", "cart", "subscribe", "order"})
-    if is_pricing_route and len(images) >= 3:
+    # Match whole path SEGMENTS, not words inside a slug: an article at
+    # "/newsroom/news/stripe-openai-instant-checkout" contains the token "checkout" but is not a
+    # pricing route. Also require the page classifier to agree, since it resolves editorial
+    # routes ahead of commercial ones.
+    segments = {s for s in urlparse(url).path.lower().split("/") if s}
+    is_pricing_route = bool(segments & {"pricing", "price", "prices", "plans", "plan",
+                                        "buy", "checkout", "cart", "subscribe", "order"})
+    if is_pricing_route and purpose == "product_pricing" and len(images) >= 3:
         has_price_text = bool(re.search(
             r"[$£€¥]\s?\d|\b\d+\s?(?:usd|eur|gbp)\b|\bper (?:month|user|seat|year)\b|\bfree\b",
             raw_text, re.I

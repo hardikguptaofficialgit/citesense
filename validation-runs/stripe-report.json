@@ -1,6 +1,6 @@
 {
   "site": "https://stripe.com",
-  "audited_at": "2026-08-31T16:43:40Z",
+  "audited_at": "2026-08-31T19:41:40Z",
   "summary": {
     "total_findings": 4,
     "critical": 0,
@@ -18,7 +18,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://stripe.com/in/pricing via jsonld_schema_extractor [2026-08-31T16:43:29Z]: Commercial/product page (https://stripe.com/in/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+      "evidence": "Observed at https://stripe.com/in/pricing via jsonld_schema_extractor [2026-08-31T19:41:37Z]: Commercial/product page (https://stripe.com/in/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "schema:product-offer-missing:/in/pricing",
       "suggested_action": {
@@ -33,7 +33,7 @@
         "url": "https://stripe.com/in/pricing",
         "observation": "Commercial/product page (https://stripe.com/in/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-31T16:43:29Z",
+        "timestamp": "2026-08-31T19:41:37Z",
         "confidence": "high"
       },
       "id": "F-001"
@@ -45,7 +45,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://stripe.com via onsite_answerability_probe [2026-08-31T16:43:40Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Stripe offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://stripe.com via onsite_answerability_probe [2026-08-31T19:41:40Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Stripe offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "citation-simulator",
       "fingerprint": "citation:unanswerable:offering",
       "suggested_action": {
@@ -60,7 +60,7 @@
         "url": "https://stripe.com",
         "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Stripe offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-08-31T16:43:40Z",
+        "timestamp": "2026-08-31T19:41:40Z",
         "confidence": "medium"
       },
       "id": "F-002"
@@ -72,7 +72,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "low",
-      "evidence": "Observed at https://stripe.com/in/pricing via heading_structure_inspection [2026-08-31T16:43:29Z]: Page defines 88 separate <h1> tags (; Payments; Revenue), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://stripe.com/in/guides/best-practices-for-launching-and-scaling-platform-payments via heading_structure_inspection [2026-08-31T16:43:29Z]: Page defines 22 separate <h1> tags (; Payments; Revenue), diluting semantic structure. (Confidence: high)",
+      "evidence": "Observed at https://stripe.com/in/pricing via heading_structure_inspection [2026-08-31T19:41:37Z]: Page defines 88 separate <h1> tags (; Payments; Revenue), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://stripe.com/in/guides/best-practices-for-launching-and-scaling-platform-payments via heading_structure_inspection [2026-08-31T19:41:37Z]: Page defines 22 separate <h1> tags (; Payments; Revenue), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://stripe.com/in/newsroom/news/stripe-openai-instant-checkout via heading_structure_inspection [2026-08-31T19:41:37Z]: Page defines 19 separate <h1> tags (; Payments; Revenue), diluting semantic structure. (Confidence: high)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:multiple-h1",
       "suggested_action": {
@@ -87,7 +87,7 @@
         "url": "https://stripe.com/in/pricing",
         "observation": "Page defines 88 separate <h1> tags (; Payments; Revenue), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-08-31T16:43:29Z",
+        "timestamp": "2026-08-31T19:41:37Z",
         "confidence": "high"
       },
       "id": "F-003"
@@ -99,7 +99,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://stripe.com/in/pricing via breadcrumb_markup_inspector [2026-08-31T16:43:29Z]: Page at deep route (/in/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://stripe.com/in/contact/sales via breadcrumb_markup_inspector [2026-08-31T16:43:29Z]: Page at deep route (/in/contact/sales) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://stripe.com/in/pricing via breadcrumb_markup_inspector [2026-08-31T19:41:37Z]: Page at deep route (/in/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://stripe.com/in/contact/sales via breadcrumb_markup_inspector [2026-08-31T19:41:37Z]: Page at deep route (/in/contact/sales) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:missing-breadcrumbs",
       "suggested_action": {
@@ -114,7 +114,7 @@
         "url": "https://stripe.com/in/pricing",
         "observation": "Page at deep route (/in/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-31T16:43:29Z",
+        "timestamp": "2026-08-31T19:41:37Z",
         "confidence": "medium"
       },
       "id": "F-004"

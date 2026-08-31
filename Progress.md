@@ -1,4 +1,4 @@
-# Progress Log — brand-ai-readiness-audit
+# Progress Log — CiteSense
 
 Working log for the Adobe University Hackathon 2026 Round 3 submission.
 **Audience: teammates and their AI coding agents.** Read this before touching the repo.
@@ -16,16 +16,16 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 
 | | |
 |---|---|
-| Tests | **70 passing**, stdlib only (21 original + 29 regression + 20 new-check) |
-| Fixes landed | **F1–F22** across four batches |
+| Tests | **79 passing**, stdlib only (21 original + 36 regression + 22 new-check) |
+| Fixes landed | **F1–F27** across five batches |
 | False positives removed | 4 high on python.org, 1 high on react.dev, 1 high on django, 10 duplicate lows |
 | Fabricated evidence strings | **0** (swept across all six validation reports) |
 | Skills contributing findings | **6 of 6** (was 4 of 6) |
 | Discoverability:engagement | ~2:1 (was ~5:1) |
 | robots.txt | **enforced**, verified against a local disallow server |
 | Schema compliance | all six validation reports validate with real `jsonschema` |
-| Slowest audit | 19.7s (stripe.com) against a 5-minute budget |
-| Still open | item 20 only (repo naming — your call) |
+| Slowest audit | 11.9s (stripe.com) against a 5-minute budget |
+| Still open | nothing tracked — see Known limitations |
 
 ## Quick verification commands
 
@@ -353,6 +353,71 @@ Items 18, 19, 21 and 22 are closed — see batch 4 above.
   `assess_collision_risk()` and `evaluate_citation_simulation()` need real third-party search
   results and are reachable only through the standalone skill CLIs. This is intentional: the
   alternative is inventing the inputs, which is the bug F8 removed.
+
+### 2026-09-01 — Batch 5: correctness cleanup and the last open item
+
+**F23 — A redirected page was stored twice, inflating every page count.**
+`site_inventory.py`, `engagement_scan.py`
+
+- *Root cause:* `crawl_site()` stored each snapshot under both the requested URL and the final
+  URL after redirects. On python.org, `/psf/` and `/psf-landing/` held the same snapshot, so a
+  5-page crawl reported `pages_crawled: 6`. Every aggregate check that says "across N crawled
+  pages" — the answerability probes, the site-level engagement checks — was quoting an inflated
+  number in its evidence, and evaluators processed the same page twice.
+- *Change:* snapshots are stored once, keyed by final URL, via new `store_page()`. Redirects are
+  recorded in `url_aliases`, and `knows_url()` recognises both sides so candidate selection and
+  the broken-link sampler still skip already-fetched pages. Aliases survive the inventory
+  round-trip.
+- *Verified:* python.org now reports 5 pages for 5 real pages, 1 alias, 0 duplicate snapshots.
+
+**F24 — Removed dead imports and a dead assignment from the orchestrator.**
+`run_audit.py`
+
+Six unused imports (`build_queries`, `evaluate_citation_simulation`, `score_fact`,
+`assess_collision_risk`, `generate_trust_findings`, `assign_ids_and_validate`) and the unused
+`queries = build_queries(gt)` line. Worse than untidy: importing the agent-supplied functions
+into the orchestrator implied it calls them, which is exactly the confusion F8 existed to end.
+Replaced with a comment saying where they live and why they are not invoked here.
+
+**F25 — Category sets have a single source of truth.**
+`compose_report.py`
+
+`DISCOVERABILITY_CATEGORIES` and `ENGAGEMENT_CATEGORIES` were defined independently in both
+`models.py` and `compose_report.py`. They happened to agree, but a drift would silently mis-split
+the summary counts with no test catching it. `compose_report` now imports them. Added
+`ContractDriftTests` asserting the schema enum equals `VALID_CATEGORIES`, that every category is
+classified into exactly one half, and that both modules share the same set objects.
+
+**F26 — `report-schema.json` now documents the contract the code actually enforces.**
+`assign_ids_and_validate()` rejects any finding whose `suggested_action` lacks `how_to_fix`, but
+the schema only required `summary` and `priority` — the published contract was weaker than
+reality. Schema now requires `how_to_fix`, and describes the `status`, `confidence`, `impact`,
+`fingerprint` and `source_skills` fields findings have always carried. All six validation
+reports still validate.
+
+**F27 — Fixed a false positive in my own batch-4 check.** *Caught on stripe.com.*
+The pricing-route guard from F19 matched word tokens anywhere in the path, so
+`stripe.com/in/newsroom/news/stripe-openai-instant-checkout` matched `checkout` inside its slug
+and was charged a **high** "pricing page states no price". It now matches whole path *segments*
+and additionally requires `page_purpose == "product_pricing"`, which already resolves editorial
+routes ahead of commercial ones. Stripe back to 1 high, legitimate. `/in/pricing` still matches,
+so localized pricing routes are unaffected.
+
+*Worth noting for the log:* this is the second false positive introduced by a check written to
+close an open item, and both were caught only by running against real sites rather than by the
+unit tests. Re-run the validation set after any detection change — `tests/` alone will not catch
+this class of bug.
+
+**Item 20 closed — marketplace identity unified as `citesense`.**
+The directory was `citesense`, the manifest said `brand-ai-readiness-audit`, and the README title
+followed the manifest. Since the zip's root directory is what a judge sees first and that is the
+repository name, the manifest was aligned to the repo rather than the other way round:
+`marketplace.json` name is now `citesense`, the README is titled **CiteSense**, and the
+descriptive phrase moved into the manifest `description` where it belongs. Zip root, manifest and
+docs now agree. Flip it the other way by renaming the repo and setting the manifest name back if
+the team prefers the descriptive identity.
+
+---
 
 ### Note on test sites and generalization
 

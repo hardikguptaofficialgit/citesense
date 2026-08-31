@@ -1,8 +1,12 @@
-# brand-ai-readiness-audit
+# CiteSense
 
 An Agent Skill Marketplace that audits a website for AI-discoverability and on-site-engagement
-problems and produces a structured report of findings and prioritized fixes. Built for Adobe
-University Hackathon 2026, Round 3.
+problems and produces a structured report of evidence-backed findings with prioritized fixes.
+Built for Adobe University Hackathon 2026, Round 3.
+
+Marketplace name `citesense`, entrypoint `audit-orchestrator`, six skills. The manifest name,
+this README and the repository directory all use the same identity, so the zip root, the manifest
+and the docs agree.
 
 ## Entrypoint
 `skills/audit-orchestrator` is the single entrypoint that orchestrates the audit.

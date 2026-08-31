@@ -389,6 +389,10 @@ class SiteInventory:
         # anything we declined to fetch. Populated in crawl_site().
         self._robots_groups = []
         self.skipped_by_robots = []
+        # requested_url -> final_url, for URLs that redirected. Snapshots are stored ONCE under
+        # their final URL; without this the same page was stored under both keys, so a 5-page
+        # crawl reported 6 pages and every "across N crawled pages" evidence string was wrong.
+        self.url_aliases: Dict[str, str] = {}
         self.pages: Dict[str, Dict[str, Any]] = {}
         self.ground_truth: Dict[str, Any] = {
             "brand_name": p.netloc.replace("www.", "").split(".")[0].capitalize(),
@@ -402,6 +406,17 @@ class SiteInventory:
             "pages_crawled": 0,
             "total_crawl_time_seconds": 0.0
         }
+
+    def store_page(self, requested_url: str, snap: Dict[str, Any]):
+        """Store a snapshot once, keyed by its final URL, recording any redirect alias."""
+        final = snap.get("final_url") or requested_url
+        self.pages[final] = snap
+        if final != requested_url:
+            self.url_aliases[requested_url] = final
+
+    def knows_url(self, url: str) -> bool:
+        """Have we already fetched this URL, either directly or via a redirect alias?"""
+        return url in self.pages or url in self.url_aliases
 
     def may_fetch(self, url: str) -> bool:
         """
@@ -495,9 +510,7 @@ class SiteInventory:
         # 4. Fetch seed/homepage first
         seed_status, seed_html, final_seed_url, _, seed_load_time, _ = safe_fetch(self.seed_url, timeout=timeout)
         seed_snapshot = analyze_page_html(self.seed_url, seed_html, final_seed_url, seed_status, seed_load_time)
-        self.pages[self.seed_url] = seed_snapshot
-        if final_seed_url != self.seed_url:
-            self.pages[final_seed_url] = seed_snapshot
+        self.store_page(self.seed_url, seed_snapshot)
 
         # 5. Discover representative URLs to complete the inventory up to max_pages
         candidate_urls: List[str] = []
@@ -506,12 +519,12 @@ class SiteInventory:
         internal_links = seed_snapshot.get("internal_links", [])
         for link_obj in internal_links:
             u = link_obj["href"]
-            if u not in self.pages:
+            if not self.knows_url(u):
                 candidate_urls.append(u)
 
         # From sitemap
         for sm_u in sitemap_urls_discovered:
-            if sm_u not in self.pages and sm_u not in candidate_urls:
+            if not self.knows_url(sm_u) and sm_u not in candidate_urls:
                 candidate_urls.append(sm_u)
 
         # Categorize candidates into money/pricing, docs/content, and contact/about
@@ -536,15 +549,13 @@ class SiteInventory:
 
         # Fetch candidate pages (robots.txt gated)
         for u in selected_urls[:max_pages - 1]:
-            if u in self.pages:
+            if self.knows_url(u):
                 continue
             if not self.may_fetch(u):
                 continue
             st, html, fin_u, _, lt, _ = safe_fetch(u, timeout=timeout)
             snap = analyze_page_html(u, html, fin_u, st, lt)
-            self.pages[u] = snap
-            if fin_u != u:
-                self.pages[fin_u] = snap
+            self.store_page(u, snap)
 
         # 6. Extract ground truth from Organization JSON-LD and root page
         self._extract_ground_truth(seed_snapshot)
@@ -625,7 +636,8 @@ class SiteInventory:
             "pages": self.pages,
             "ground_truth": self.ground_truth,
             "crawl_budget": self.crawl_budget,
-            "skipped_by_robots": self.skipped_by_robots
+            "skipped_by_robots": self.skipped_by_robots,
+            "url_aliases": self.url_aliases
         }
 
     def save_json(self, filepath: str):
@@ -643,6 +655,7 @@ class SiteInventory:
         inv.ground_truth = data.get("ground_truth", {})
         inv.crawl_budget = data.get("crawl_budget", {})
         inv.skipped_by_robots = data.get("skipped_by_robots", [])
+        inv.url_aliases = data.get("url_aliases", {})
         # Re-parse robots so a rehydrated inventory still gates its own follow-up fetches
         # (e.g. the engagement broken-link sampler running from a saved inventory).
         raw_robots = (data.get("robots_txt") or {}).get("raw", "")

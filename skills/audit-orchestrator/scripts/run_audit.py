@@ -27,9 +27,14 @@ from crawlability_check import evaluate_crawlability
 from render_and_data_scan import evaluate_render_and_data_scan
 from freshness_and_consistency_scan import evaluate_freshness_and_consistency
 from engagement_scan import evaluate_engagement_audit
-from generate_queries import build_queries, evaluate_answerability, evaluate_citation_simulation
-from corroboration_scorer import evaluate_identity_anchoring, score_fact, assess_collision_risk, generate_trust_findings
-from compose_report import build_final_report, assign_ids_and_validate
+from generate_queries import evaluate_answerability
+from corroboration_scorer import evaluate_identity_anchoring
+from compose_report import build_final_report
+
+# NOTE: the agent-supplied halves of citation-simulator and trust-corroboration-graph
+# (evaluate_citation_simulation, score_fact, assess_collision_risk, generate_trust_findings)
+# are intentionally NOT imported here. They require real third-party search results; calling
+# them with invented inputs is the bug F8 removed. Reach them via the standalone skill CLIs.
 
 
 def generate_proactive_recommendations(inventory: SiteInventory) -> list:
@@ -110,7 +115,6 @@ def run_full_audit(
     # this brand? No hardcoded results, and no claim to have run a live web search.
     gt = inventory.ground_truth
     site_domain = inventory.origin.replace("https://", "").replace("http://", "")
-    queries = build_queries(gt)
     citation_findings = evaluate_answerability(inventory.to_dict(), gt, site_domain)
     all_candidate_findings.extend(citation_findings)
 

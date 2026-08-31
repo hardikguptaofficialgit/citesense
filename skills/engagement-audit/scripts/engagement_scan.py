@@ -181,7 +181,7 @@ def check_broken_links_sample(inventory: SiteInventory) -> List[Dict[str, Any]]:
         for link in snap.get("internal_links", []):
             href = link.get("href")
             # robots.txt gates link probing too, not just page crawling
-            if href and href not in sampled_links and href not in inventory.pages and inventory.may_fetch(href):
+            if href and href not in sampled_links and not inventory.knows_url(href) and inventory.may_fetch(href):
                 sampled_links.append(href)
             if len(sampled_links) >= MAX_BROKEN_LINKS_TO_CHECK:
                 break

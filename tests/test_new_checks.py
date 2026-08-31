@@ -94,6 +94,19 @@ class MoneyPagePriceTests(unittest.TestCase):
         findings = evaluate_page_render_and_data(page("https://acme.test/plans", body))
         self.assertEqual(len([f for f in findings if "money-page-price-not-in-text" in f["fingerprint"]]), 1)
 
+    def test_commercial_word_inside_an_article_slug_is_not_a_pricing_route(self):
+        # Live FP: stripe.com/in/newsroom/news/stripe-openai-instant-checkout matched the token
+        # "checkout" inside its slug. Only whole path SEGMENTS count.
+        body = '<h1>Announcement</h1><img src="/a.png"><img src="/b.png"><img src="/c.png">'
+        url = "https://acme.test/in/newsroom/news/acme-partner-instant-checkout"
+        findings = evaluate_page_render_and_data(page(url, body))
+        self.assertEqual([f for f in findings if "money-page-price-not-in-text" in f["fingerprint"]], [])
+
+    def test_localized_pricing_segment_is_still_checked(self):
+        body = '<h1>Pricing</h1><img src="/a.png"><img src="/b.png"><img src="/c.png">'
+        findings = evaluate_page_render_and_data(page("https://acme.test/in/pricing", body))
+        self.assertEqual(len([f for f in findings if "money-page-price-not-in-text" in f["fingerprint"]]), 1)
+
     def test_non_commercial_page_is_never_price_checked(self):
         body = '<h1>Docs</h1><img src="/a.png"><img src="/b.png"><img src="/c.png">'
         findings = evaluate_page_render_and_data(page("https://acme.test/docs/intro", body))
