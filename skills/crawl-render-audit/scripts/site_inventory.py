@@ -278,7 +278,15 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
         alt_m = re.search(r'alt=["\'](.*?)["\']', img_attrs, re.I)
         src = canonicalize(final_url, src_m.group(1)) if src_m else ""
         alt = alt_m.group(1).strip() if alt_m else ""
-        images.append({"src": src, "alt": alt, "has_alt": bool(alt)})
+        # alt="" is the CORRECT way to mark a decorative image; a missing alt attribute is the
+        # actual defect. Conflating the two would flag every correctly-marked spacer icon.
+        images.append({
+            "src": src,
+            "alt": alt,
+            "has_alt": bool(alt),
+            "alt_attr_present": alt_m is not None,
+            "decorative": alt_m is not None and not alt,
+        })
 
     canvas_count = len(re.findall(r'(?is)<canvas\b', html))
     svg_count = len(re.findall(r'(?is)<svg\b', html))
@@ -548,6 +556,7 @@ class SiteInventory:
     def _extract_ground_truth(self, seed_snap: Dict[str, Any]):
         """Extract authoritative ground truth facts from root schema and page text."""
         org_name = None
+        name_source = "unknown"
         same_as = []
         founding_date = None
         key_facts = {}
@@ -558,6 +567,7 @@ class SiteInventory:
             if any(x in ("Organization", "LocalBusiness", "Corporation", "Brand") for x in types):
                 if ent.get("name"):
                     org_name = ent["name"]
+                    name_source = "organization_schema"
                 if ent.get("sameAs"):
                     sa = ent["sameAs"]
                     same_as.extend(sa if isinstance(sa, list) else [sa])
@@ -569,6 +579,8 @@ class SiteInventory:
         if not org_name:
             # og:site_name is the site's own declaration of its name.
             org_name = (seed_snap.get("og_site_name") or "").strip() or None
+            if org_name:
+                name_source = "og_site_name"
 
         if not org_name:
             # Last resort: a short <title>, then the domain label. The full <title> is usually a
@@ -577,12 +589,15 @@ class SiteInventory:
             title_text = (seed_snap.get("title") or "").split("|")[0].split("–")[0].strip()
             if title_text and len(title_text.split()) <= 4:
                 org_name = title_text
+                name_source = "short_title"
             else:
                 label = urlparse(self.seed_url).netloc.replace("www.", "").split(".")[0]
                 org_name = label.capitalize() if label else "the brand"
+                name_source = "domain_label"
 
         if org_name:
             self.ground_truth["brand_name"] = org_name
+        self.ground_truth["brand_name_source"] = name_source
         if same_as:
             self.ground_truth["same_as"] = same_as
         if founding_date:

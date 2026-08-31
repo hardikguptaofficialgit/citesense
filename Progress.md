@@ -16,15 +16,16 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 
 | | |
 |---|---|
-| Tests | **50 passing**, stdlib only (21 original + 29 new regression tests) |
-| Fixes landed | **F1–F17** across three batches |
+| Tests | **70 passing**, stdlib only (21 original + 29 regression + 20 new-check) |
+| Fixes landed | **F1–F22** across four batches |
 | False positives removed | 4 high on python.org, 1 high on react.dev, 1 high on django, 10 duplicate lows |
 | Fabricated evidence strings | **0** (swept across all six validation reports) |
 | Skills contributing findings | **6 of 6** (was 4 of 6) |
+| Discoverability:engagement | ~2:1 (was ~5:1) |
 | robots.txt | **enforced**, verified against a local disallow server |
 | Schema compliance | all six validation reports validate with real `jsonschema` |
-| Slowest audit | 16.3s (stripe.com) against a 5-minute budget |
-| Still open | items 18–22 below — none are submission-blocking |
+| Slowest audit | 19.7s (stripe.com) against a 5-minute budget |
+| Still open | item 20 only (repo naming — your call) |
 
 ## Quick verification commands
 
@@ -327,26 +328,31 @@ Suite is now **50 tests, all passing**, still stdlib-only.
 
 Ranked by rubric impact.
 
-### P2 — Worth doing before submission
-
-18. **Alt-text detection is still dead code.** `images` is extracted into every snapshot in
-    `site_inventory.py` but `render_and_data_scan.py` assigns it and never uses it. The README
-    claim has been corrected (F13) so nothing is now *false*, but "facts locked in images" is a
-    real Appendix-C failure mode and we collect the data for free. Worth implementing: flag
-    pages where a money page's only price-like or contact-like string sits in an `<img>` with no
-    `alt` and no text equivalent. Low effort, directly on-rubric.
-
-19. **Engagement coverage is thin relative to discoverability.** Reports currently run roughly
-    5:1 discoverability:engagement. `personalization-readiness` is a declared category in
-    `models.py` and the schema enum but nothing ever emits it, despite Appendix E being
-    explicitly about prior context and personalization. Candidate checks: does the site show any
-    returning-visitor affordance (saved state, recently viewed, logged-in surface), is there a
-    visible search box, does a deep page orient a visitor arriving cold from an AI citation.
+### Remaining
 
 20. **Repo identity is split.** Directory is `citesense`, manifest name is
     `brand-ai-readiness-audit`, README title matches the manifest. The handout says to zip the
     marketplace root, so the *directory name is what judges see first*. Left alone deliberately —
     renaming the repo is the team's call, not a silent change. Pick one and make it consistent.
+
+Items 18, 19, 21 and 22 are closed — see batch 4 above.
+
+### Known limitations (deliberate, documented rather than hidden)
+
+- **No JS rendering.** The audit reads raw HTML only. This is the harsher and more realistic case
+  for non-rendering retrieval bots, and it is now stated accurately in the README and SKILL.md
+  rather than claimed as rendered-DOM analysis. A site whose facts appear only after hydration
+  will be reported as a render gap, which is the correct call for AI discoverability.
+- **English-biased text heuristics.** Price detection, CTA phrases, contact affordances and
+  account affordances are English keyword sets. Where this could manufacture a finding on a
+  non-English page, the check is keyed on URL structure instead (see F19). Broader language
+  coverage is the obvious next improvement if there is time.
+- **Sampled crawl.** 5 pages by default. Findings that depend on absence across the site are
+  emitted as `likely-risk` with medium confidence, never as `confirmed`.
+- **Agent-supplied modes are not exercised by the deterministic pipeline.** `score_fact()`,
+  `assess_collision_risk()` and `evaluate_citation_simulation()` need real third-party search
+  results and are reachable only through the standalone skill CLIs. This is intentional: the
+  alternative is inventing the inputs, which is the bug F8 removed.
 
 ### Note on test sites and generalization
 

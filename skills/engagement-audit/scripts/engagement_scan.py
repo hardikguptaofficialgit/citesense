@@ -218,6 +218,140 @@ def check_broken_links_sample(inventory: SiteInventory) -> List[Dict[str, Any]]:
     return findings
 
 
+SEARCH_AFFORDANCE_RE = re.compile(
+    r'(?is)<input[^>]+type=["\']search["\']|role=["\']search["\']|'
+    r'<input[^>]+name=["\'](?:q|s|query|search|keyword)["\']|'
+    r'<form[^>]+(?:action|class|id)=["\'][^"\']*search'
+)
+ACCOUNT_AFFORDANCE_RE = re.compile(
+    r"\b(sign in|signin|log in|login|my account|your account|dashboard|"
+    r"sign out|log out|profile|saved items|wishlist|order history|"
+    r"recently viewed|continue where you left off|recommended for you)\b",
+    re.I
+)
+
+
+def evaluate_site_level_engagement(inventory: SiteInventory) -> List[Dict[str, Any]]:
+    """
+    Engagement checks that are only meaningful across the whole site rather than per page.
+
+    These target the specific arrival pattern this marketplace exists to diagnose: a visitor
+    who lands mid-site from an AI citation, with no homepage context and no prior navigation.
+    """
+    findings = []
+    pages = [
+        (u, s) for u, s in inventory.pages.items()
+        if not s.get("inconclusive") and s.get("status_code") == 200
+    ]
+    if not pages:
+        return findings
+
+    gt = inventory.ground_truth or {}
+    brand = (gt.get("brand_name") or "").strip()
+    brand_source = gt.get("brand_name_source", "unknown")
+    origin = inventory.origin
+
+    # 1. Cold-arrival orientation: does a deep page identify whose site it is?
+    # Only run when the brand name was resolved confidently -- a domain-label guess is not a
+    # solid enough basis to accuse a page of failing to name its own brand.
+    if brand and len(brand) >= 3 and brand_source in ("organization_schema", "og_site_name", "short_title"):
+        brand_tokens = [t for t in re.split(r"[^A-Za-z0-9]+", brand.lower()) if len(t) >= 3]
+        anonymous = []
+        for u, snap in pages:
+            if not snap.get("is_deep_page"):
+                continue
+            haystack = f"{snap.get('title','')} {snap.get('visible_text','')}".lower()
+            if brand_tokens and not any(tok in haystack for tok in brand_tokens):
+                anonymous.append(u)
+        if anonymous:
+            f = create_candidate_finding(
+                title="Deep pages never identify the brand, leaving cold arrivals unoriented",
+                category="orientation",
+                severity="medium",
+                url=anonymous[0],
+                observation=(
+                    f"{len(anonymous)} deep page(s) contain no mention of \"{brand}\" in the title or "
+                    f"body text (e.g. {', '.join(anonymous[:2])}). A visitor arriving here from an AI "
+                    f"citation, with no homepage context, cannot tell whose site they are on -- and "
+                    f"neither can an assistant attributing the quote."
+                ),
+                method="cold_arrival_brand_mention_check",
+                source_skill="engagement-audit",
+                action_summary="Name the brand in the header, title and footer of every page.",
+                action_priority="medium",
+                action_how_to_fix=(
+                    "Include the brand name in the <title> of every page and in a persistent header "
+                    "or footer, so a page that is the visitor's first contact still identifies its owner."
+                ),
+                fingerprint="engagement:deep-pages-anonymous",
+                status="confirmed",
+                confidence="high",
+                impact="medium"
+            )
+            findings.append(f.to_dict())
+
+    # 2. Site search: the primary self-serve recovery path for a mid-site arrival.
+    if not any(SEARCH_AFFORDANCE_RE.search(s.get("raw_html", "")) for _, s in pages):
+        f = create_candidate_finding(
+            title="No site search affordance found on any crawled page",
+            category="navigation",
+            severity="low",
+            url=origin,
+            observation=(
+                f"None of the {len(pages)} crawled pages expose a search input, a search form or "
+                f"role=\"search\". A visitor who arrives on the wrong page from an AI answer has no "
+                f"way to find the right one without returning to the assistant."
+            ),
+            method="search_affordance_detection",
+            source_skill="engagement-audit",
+            action_summary="Add a site search box to the persistent header.",
+            action_priority="low",
+            action_how_to_fix=(
+                "Add a search input in the global header and expose it with role=\"search\". Add "
+                "WebSite JSON-LD with a potentialAction SearchAction so assistants can surface "
+                "your search directly."
+            ),
+            fingerprint="engagement:no-site-search",
+            status="likely-risk",
+            confidence="medium",
+            impact="low"
+        )
+        findings.append(f.to_dict())
+
+    # 3. Personalization readiness (Appendix E): can the site use anything it knows about a
+    # returning visitor? Reported as a readiness gap, never as a confirmed defect -- a static
+    # crawl cannot observe personalization that only activates for a signed-in session.
+    if not any(ACCOUNT_AFFORDANCE_RE.search(s.get("visible_text", "")) for _, s in pages):
+        f = create_candidate_finding(
+            title="No returning-visitor or account affordance detected",
+            category="personalization-readiness",
+            severity="low",
+            url=origin,
+            observation=(
+                f"Across {len(pages)} crawled pages there is no sign-in, account, saved-items or "
+                f"recently-viewed affordance in the visible text. Every visitor is therefore treated "
+                f"as anonymous and first-time, so nothing the brand already knows about a returning "
+                f"visitor can shape what they are shown."
+            ),
+            method="returning_visitor_affordance_detection",
+            source_skill="engagement-audit",
+            action_summary="Give returning visitors a way to be recognised, and use it.",
+            action_priority="low",
+            action_how_to_fix=(
+                "Add an account or saved-state affordance appropriate to the site (sign-in, saved "
+                "items, recently viewed, or a lightweight preference stored locally), then use it to "
+                "surface relevant content on return rather than resetting every visitor to a cold start."
+            ),
+            fingerprint="engagement:no-personalization-readiness",
+            status="proactive",
+            confidence="medium",
+            impact="low"
+        )
+        findings.append(f.to_dict())
+
+    return findings
+
+
 def evaluate_engagement_audit(inventory: SiteInventory) -> List[Dict[str, Any]]:
     """Full engagement audit across all inventory pages."""
     all_findings = []
@@ -225,6 +359,9 @@ def evaluate_engagement_audit(inventory: SiteInventory) -> List[Dict[str, Any]]:
         is_root = (i == 0 or url == inventory.seed_url or url == inventory.origin or url == inventory.origin + "/")
         page_findings = evaluate_page_engagement(snap, is_root=is_root)
         all_findings.extend(page_findings)
+
+    # Site-level checks (cold-arrival orientation, search, personalization readiness)
+    all_findings.extend(evaluate_site_level_engagement(inventory))
 
     # Check sample broken links
     broken_findings = check_broken_links_sample(inventory)

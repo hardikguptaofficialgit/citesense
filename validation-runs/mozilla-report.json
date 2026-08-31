@@ -1,14 +1,14 @@
 {
   "site": "https://www.mozilla.org",
-  "audited_at": "2026-08-31T15:50:49Z",
+  "audited_at": "2026-08-31T16:43:15Z",
   "summary": {
-    "total_findings": 7,
+    "total_findings": 8,
     "critical": 0,
     "high": 2,
     "medium": 4,
-    "low": 1,
+    "low": 2,
     "discoverability_findings": 6,
-    "engagement_findings": 1
+    "engagement_findings": 2
   },
   "findings": [
     {
@@ -18,7 +18,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://www.mozilla.org/ via jsonld_schema_extractor [2026-08-31T15:50:49Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T15:50:49Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.mozilla.org/ via jsonld_schema_extractor [2026-08-31T16:43:15Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T16:43:15Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "schema:root-organization-missing",
       "suggested_action": {
@@ -34,7 +34,7 @@
         "url": "https://www.mozilla.org/",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-31T15:50:49Z",
+        "timestamp": "2026-08-31T16:43:15Z",
         "confidence": "high"
       },
       "id": "F-001"
@@ -46,9 +46,9 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://www.mozilla.org/en-US/products/ via jsonld_schema_extractor [2026-08-31T15:50:49Z]: Commercial/product page (https://www.mozilla.org/en-US/products/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+      "evidence": "Observed at https://www.mozilla.org/de/products/ via jsonld_schema_extractor [2026-08-31T16:43:15Z]: Commercial/product page (https://www.mozilla.org/de/products/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
       "source_skill": "crawl-render-audit",
-      "fingerprint": "schema:product-offer-missing:/en-US/products/",
+      "fingerprint": "schema:product-offer-missing:/de/products/",
       "suggested_action": {
         "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
         "priority": "high",
@@ -58,10 +58,10 @@
         "crawl-render-audit"
       ],
       "evidence_details": {
-        "url": "https://www.mozilla.org/en-US/products/",
-        "observation": "Commercial/product page (https://www.mozilla.org/en-US/products/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "url": "https://www.mozilla.org/de/products/",
+        "observation": "Commercial/product page (https://www.mozilla.org/de/products/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-31T15:50:49Z",
+        "timestamp": "2026-08-31T16:43:15Z",
         "confidence": "high"
       },
       "id": "F-002"
@@ -73,7 +73,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.mozilla.org/sitemap.xml via http_get_sitemap_check [2026-08-31T15:50:49Z]: Request to https://www.mozilla.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "evidence": "Observed at https://www.mozilla.org/sitemap.xml via http_get_sitemap_check [2026-08-31T16:43:15Z]: Request to https://www.mozilla.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "crawl:missing-xml-sitemap",
       "suggested_action": {
@@ -88,7 +88,7 @@
         "url": "https://www.mozilla.org/sitemap.xml",
         "observation": "Request to https://www.mozilla.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-08-31T15:50:49Z",
+        "timestamp": "2026-08-31T16:43:15Z",
         "confidence": "high"
       },
       "id": "F-003"
@@ -100,7 +100,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T15:50:49Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Mozilla offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T16:43:15Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Mozilla offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "citation-simulator",
       "fingerprint": "citation:unanswerable:offering",
       "suggested_action": {
@@ -115,7 +115,7 @@
         "url": "https://www.mozilla.org",
         "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Mozilla offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-08-31T15:50:49Z",
+        "timestamp": "2026-08-31T16:43:15Z",
         "confidence": "medium"
       },
       "id": "F-004"
@@ -127,7 +127,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T15:50:49Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Mozilla cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T16:43:15Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Mozilla cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "citation-simulator",
       "fingerprint": "citation:unanswerable:transactional",
       "suggested_action": {
@@ -142,7 +142,7 @@
         "url": "https://www.mozilla.org",
         "observation": "Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Mozilla cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-08-31T15:50:49Z",
+        "timestamp": "2026-08-31T16:43:15Z",
         "confidence": "medium"
       },
       "id": "F-005"
@@ -154,7 +154,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T15:50:49Z]: Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-08-31T16:43:15Z]: Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "citation-simulator",
       "fingerprint": "citation:unanswerable:contact",
       "suggested_action": {
@@ -169,7 +169,7 @@
         "url": "https://www.mozilla.org",
         "observation": "Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-08-31T15:50:49Z",
+        "timestamp": "2026-08-31T16:43:15Z",
         "confidence": "medium"
       },
       "id": "F-006"
@@ -181,7 +181,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/en-US/products/ via breadcrumb_markup_inspector [2026-08-31T15:50:49Z]: Page at deep route (/en-US/products/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.mozilla.org/en-US/about/ via breadcrumb_markup_inspector [2026-08-31T15:50:49Z]: Page at deep route (/en-US/about/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://www.mozilla.org/de/products/ via breadcrumb_markup_inspector [2026-08-31T16:43:15Z]: Page at deep route (/de/products/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.mozilla.org/de/about/ via breadcrumb_markup_inspector [2026-08-31T16:43:15Z]: Page at deep route (/de/about/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:missing-breadcrumbs",
       "suggested_action": {
@@ -193,25 +193,43 @@
         "engagement-audit"
       ],
       "evidence_details": {
-        "url": "https://www.mozilla.org/en-US/products/",
-        "observation": "Page at deep route (/en-US/products/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "url": "https://www.mozilla.org/de/products/",
+        "observation": "Page at deep route (/de/products/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-31T15:50:49Z",
+        "timestamp": "2026-08-31T16:43:15Z",
         "confidence": "medium"
       },
       "id": "F-007"
+    },
+    {
+      "title": "No site search affordance found on any crawled page",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://www.mozilla.org via search_affordance_detection [2026-08-31T16:43:15Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:no-site-search",
+      "suggested_action": {
+        "summary": "Add a site search box to the persistent header.",
+        "priority": "low",
+        "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.mozilla.org",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-08-31T16:43:15Z",
+        "confidence": "medium"
+      },
+      "id": "F-008"
     }
   ],
   "proactive_recommendations": [
-    {
-      "title": "Add Schema.org FAQPage markup to enrich AI assistant direct answers",
-      "rationale": "The site contains informative Q&A or FAQ text. Adding structured FAQPage JSON-LD allows search engines and generative AI agents to quote verbatim answers directly in response to user inquiries.",
-      "suggested_action": {
-        "summary": "Implement Schema.org FAQPage structured data on help and FAQ sections.",
-        "priority": "medium",
-        "how_to_fix": "Wrap top customer questions in a JSON-LD script declaring @type 'FAQPage' with 'mainEntity' Question and acceptedAnswer Answer objects."
-      }
-    },
     {
       "title": "Publish an llms.txt file to guide AI assistants to authoritative documentation",
       "rationale": "Emerging AI web standards like /llms.txt provide large language models with a curated, markdown-formatted directory of core brand documentation and APIs.",

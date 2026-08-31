@@ -246,6 +246,84 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
         )
         findings.append(f.to_dict())
 
+    # 4b. Facts locked inside images (Appendix C: a fact locked in something non-textual is
+    # invisible to a machine even though a human can read it off the screen).
+    # Only images with NO alt attribute count -- alt="" is the correct marking for decorative
+    # images and must never be treated as a defect.
+    unlabelled = [im for im in images if not im.get("alt_attr_present")]
+    if len(unlabelled) >= 5 and len(images) >= 5:
+        share = round(100 * len(unlabelled) / len(images))
+        f = create_candidate_finding(
+            title="Content images carry no text alternative, hiding any fact they display",
+            category="fact-extractability",
+            severity="medium" if purpose in ("homepage", "product_pricing") else "low",
+            url=url,
+            observation=(
+                f"{len(unlabelled)} of {len(images)} images ({share}%) have no alt attribute at all "
+                f"(images correctly marked decorative with alt=\"\" are excluded). Any figure, price, "
+                f"spec or claim rendered inside those images is unreadable to a retrieval bot."
+            ),
+            method="image_alt_coverage_inspection",
+            source_skill="crawl-render-audit",
+            action_summary="Add descriptive alt text to every image that carries information.",
+            action_priority="medium" if purpose in ("homepage", "product_pricing") else "low",
+            action_how_to_fix=(
+                "Give each informational image an alt attribute stating the fact it conveys "
+                "(\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative "
+                "images with alt=\"\" so they are correctly skipped rather than left unlabelled."
+            ),
+            fingerprint="extractability:images-without-alt",
+            status="confirmed",
+            confidence="high",
+            impact="medium" if purpose in ("homepage", "product_pricing") else "low"
+        )
+        findings.append(f.to_dict())
+
+    # 4c. A money page whose price is not in the text at all, but which is image-heavy: the
+    # single highest-value instance of a fact locked in a non-textual element.
+    #
+    # Deliberately narrower than `purpose == "product_pricing"`. A product *catalogue* page
+    # ("/products/", "/solutions/") legitimately carries no prices, and our "is a price stated"
+    # test is English-biased -- a German page saying "kostenlos" would look priceless to it.
+    # Keying on an explicit pricing route is language-independent and only fires where a
+    # visitor genuinely came to find a number.
+    path_tokens = {t for t in re.split(r"[^a-z0-9]+", urlparse(url).path.lower()) if t}
+    is_pricing_route = bool(path_tokens & {"pricing", "price", "prices", "plans", "plan",
+                                           "buy", "checkout", "cart", "subscribe", "order"})
+    if is_pricing_route and len(images) >= 3:
+        has_price_text = bool(re.search(
+            r"[$£€¥]\s?\d|\b\d+\s?(?:usd|eur|gbp)\b|\bper (?:month|user|seat|year)\b|\bfree\b",
+            raw_text, re.I
+        ))
+        has_offer_schema = any(t in ("Offer", "AggregateOffer", "PriceSpecification") for t in types_found)
+        if not has_price_text and not has_offer_schema:
+            f = create_candidate_finding(
+                title="Pricing page states no price in text or structured data",
+                category="fact-extractability",
+                severity="high",
+                url=url,
+                observation=(
+                    f"Page classified as a pricing/product page carries {len(images)} image(s) but no "
+                    f"price string in its visible text and no Offer/PriceSpecification schema. If the "
+                    f"figures are rendered inside those images, no assistant can quote them."
+                ),
+                method="money_page_price_extractability_check",
+                source_skill="crawl-render-audit",
+                action_summary="Publish prices as selectable text plus Offer structured data.",
+                action_priority="high",
+                action_how_to_fix=(
+                    "Render prices as HTML text rather than baking them into images, and add Offer "
+                    "JSON-LD with price, priceCurrency and availability. If pricing is genuinely "
+                    "quote-only, state that in text -- an assistant can cite \"pricing is quote-based\" "
+                    "but cannot cite an empty page."
+                ),
+                fingerprint=f"extractability:money-page-price-not-in-text:{urlparse(url).path}",
+                status="likely-risk",
+                confidence="medium",
+                impact="high"
+            )
+            findings.append(f.to_dict())
+
     # 5. Core HTML Metadata Check
     if not title:
         f = create_candidate_finding(

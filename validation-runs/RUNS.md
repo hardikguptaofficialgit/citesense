@@ -1,20 +1,21 @@
 # Validation runs
 
-Reports regenerated from the current pipeline. Each was produced with:
+Reports regenerated from the current pipeline:
 
 ```bash
 python skills/audit-orchestrator/scripts/run_audit.py <url> --output validation-runs/<name>-report.json
 ```
 
-Sites were chosen to span structural shapes, not to tune against: a docs site (react.dev),
-a large multi-locale org (mozilla.org), a language project (python.org), a framework site
-(djangoproject.com), a standards body (iana.org), and a commercial SaaS (stripe.com).
+Sites span structural shapes rather than being tuned against: a language project, a docs site,
+a large multi-locale org, a framework site, a standards body, and a commercial SaaS. The handout
+provides no example sites and states that studied sites are not used in grading -- these are our
+own field-research picks, and no detection logic references any of them.
 
-| Site | Runtime | Findings | Critical | High | Medium | Low |
-|---|---|---|---|---|---|---|
-| https://www.python.org | 1.7s | 5 | 0 | 1 | 3 | 1 |
-| https://react.dev | 4.3s | 5 | 0 | 1 | 3 | 1 |
-| https://www.mozilla.org | 2.0s | 7 | 0 | 2 | 4 | 1 |
-| https://www.djangoproject.com | 3.1s | 4 | 0 | 1 | 2 | 1 |
-| https://www.iana.org | 4.8s | 6 | 0 | 1 | 4 | 1 |
-| https://stripe.com | 16.3s | 4 | 0 | 1 | 1 | 2 |
+| Site | Runtime | Findings | Critical | High | Medium | Low | Disc. | Eng. |
+|---|---|---|---|---|---|---|---|---|
+| https://www.python.org | 2.5s | 5 | 0 | 1 | 3 | 1 | 4 | 1 |
+| https://react.dev | 4.9s | 6 | 0 | 1 | 3 | 2 | 4 | 2 |
+| https://www.mozilla.org | 2.6s | 8 | 0 | 2 | 4 | 2 | 6 | 2 |
+| https://www.djangoproject.com | 2.6s | 4 | 0 | 1 | 2 | 1 | 3 | 1 |
+| https://www.iana.org | 1.8s | 8 | 0 | 1 | 4 | 3 | 5 | 3 |
+| https://stripe.com | 19.7s | 4 | 0 | 1 | 1 | 2 | 2 | 2 |
