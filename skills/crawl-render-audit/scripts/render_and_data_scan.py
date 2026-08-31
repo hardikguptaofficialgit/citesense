@@ -105,6 +105,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
         findings.append(f.to_dict())
 
     # 2. Schema Validation (Organization, Product, Offer, etc.)
+    # Skipped on shell pages -- absent schema there is part of the render gap, not a separate defect.
     types_found = set()
     identities = []
     validation_issues = []
@@ -122,7 +123,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
                 identities.append(ent)
 
     # Missing Organization schema on Root/Homepage
-    if is_root or purpose == "homepage":
+    if (is_root or purpose == "homepage") and not page_snap.get("render_gap"):
         if not identities:
             f = create_candidate_finding(
                 title="Missing Schema.org Organization structured data on root landing page",
@@ -164,7 +165,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
                 findings.append(f.to_dict())
 
     # Missing Product/Offer on commercial product or pricing page
-    if purpose == "product_pricing":
+    if purpose == "product_pricing" and not page_snap.get("render_gap"):
         has_product_or_offer = any(t in ("Product", "Offer", "SoftwareApplication", "Service") for t in types_found)
         if not has_product_or_offer:
             f = create_candidate_finding(
@@ -206,14 +207,20 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
         findings.append(f.to_dict())
 
     # 3. Fact Extractability & Render Gap
-    # Note: JavaScript usage alone is NOT a defect. Only flag if raw HTML is an empty shell lacking core content.
-    if words < 30 and len(raw_html) > 1000:
+    # JavaScript usage alone is NOT a defect -- an empty raw shell is. The flag is set in
+    # analyze_page_html so every skill agrees on which pages are shells.
+    if page_snap.get("render_gap"):
         f = create_candidate_finding(
             title="Client-side rendering gap: raw HTML contains minimal text content",
             category="render-gap",
             severity="high",
             url=url,
-            observation=f"Raw HTML yields only {words} words of visible text. Search crawlers and AI bots that do not execute client JS cannot extract core brand facts.",
+            observation=(
+                f"Raw HTML yields only {words} words of visible text. Search crawlers and AI bots "
+                f"that do not execute client JS cannot extract any brand fact from this page. "
+                f"Other page-level checks were suppressed here: a missing heading, CTA, meta "
+                f"description or schema on an empty shell are all symptoms of this one root cause."
+            ),
             method="raw_vs_rendered_wordcount_inspection",
             source_skill="crawl-render-audit",
             action_summary="Implement server-side rendering (SSR) or static pre-rendering for core content.",
@@ -327,6 +334,11 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
                 impact="high"
             )
             findings.append(f.to_dict())
+
+    # On a shell page, stop here. Everything below is a symptom of the render gap already
+    # reported, and listing them separately turned one root cause into eleven findings.
+    if page_snap.get("render_gap"):
+        return findings
 
     # 5. Core HTML Metadata Check
     if not title:

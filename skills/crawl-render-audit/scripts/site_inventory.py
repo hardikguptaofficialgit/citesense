@@ -324,6 +324,16 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
     path_parts = [p for p in urlparse(final_url).path.strip("/").split("/") if p]
     is_deep = len(path_parts) >= 2
 
+    # A 200 response carrying almost no readable text has nothing for a non-rendering retrieval
+    # bot to extract. Everything else missing on such a page (h1, CTAs, links, meta, schema) is
+    # downstream of this, so evaluators suppress those and report the root cause instead of a
+    # cascade of symptoms.
+    #
+    # "Almost no text" alone is not enough: a short page that still carries a heading and its
+    # core facts in raw HTML is complete, just brief. A shell is a page with neither a heading
+    # nor content -- or one whose markup dwarfs its text, which is the client-rendered case.
+    render_gap = len(words) < 30 and (not h1_texts or len(html) > 1500)
+
     purpose = classify_page_purpose(final_url, title, primary_h1, raw_text)
 
     return {
@@ -371,6 +381,7 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
         },
         "page_purpose": purpose,
         "is_deep_page": is_deep,
+        "render_gap": render_gap,
         "render_diff": {"available": False, "note": "Static inspection performed"}
     }
 
@@ -418,6 +429,17 @@ class SiteInventory:
         """Have we already fetched this URL, either directly or via a redirect alias?"""
         return url in self.pages or url in self.url_aliases
 
+    @staticmethod
+    def _site_key(netloc: str) -> str:
+        """Normalize a host for same-site comparison. apex and www are the same site."""
+        netloc = (netloc or "").lower()
+        return netloc[4:] if netloc.startswith("www.") else netloc
+
+    def same_site(self, url: str) -> bool:
+        """Is this URL on the site being audited, treating apex and www as one?"""
+        p = urlparse(url)
+        return bool(p.netloc) and self._site_key(p.netloc) == self._site_key(urlparse(self.origin).netloc)
+
     def may_fetch(self, url: str) -> bool:
         """
         Is this auditor allowed to fetch `url` under the site's robots.txt?
@@ -428,10 +450,9 @@ class SiteInventory:
         """
         if not url:
             return False
-        p = urlparse(url)
-        if f"{p.scheme}://{p.netloc}" != self.origin:
+        if not self.same_site(url):
             return False
-        path = p.path or "/"
+        path = urlparse(url).path or "/"
         if path in ("/robots.txt", "/sitemap.xml", "/llms.txt", "/llms-full.txt", "/ai.txt"):
             return True
         if not self._robots_groups:
@@ -498,7 +519,7 @@ class SiteInventory:
             found_urls = []
             if sm_status == 200 and sm_body:
                 loc_matches = re.findall(r"<loc>(.*?)</loc>", sm_body, re.I)
-                found_urls = [u.strip() for u in loc_matches if urlparse(u.strip()).netloc == urlparse(self.origin).netloc]
+                found_urls = [u.strip() for u in loc_matches if self.same_site(u.strip())]
                 sitemap_urls_discovered.extend(found_urls)
             self.sitemaps.append({
                 "url": sm_url,
@@ -511,6 +532,15 @@ class SiteInventory:
         seed_status, seed_html, final_seed_url, _, seed_load_time, _ = safe_fetch(self.seed_url, timeout=timeout)
         seed_snapshot = analyze_page_html(self.seed_url, seed_html, final_seed_url, seed_status, seed_load_time)
         self.store_page(self.seed_url, seed_snapshot)
+
+        # Adopt the origin the seed actually resolved to. An apex host that redirects to www
+        # (very common) previously left origin on the apex while every page and link lived on
+        # www, so the same-site gate refused every internal link and the crawl stopped at one page.
+        if seed_status == 200 and final_seed_url:
+            fp = urlparse(final_seed_url)
+            resolved_origin = f"{fp.scheme}://{fp.netloc}"
+            if resolved_origin != self.origin:
+                self.origin = resolved_origin
 
         # 5. Discover representative URLs to complete the inventory up to max_pages
         candidate_urls: List[str] = []

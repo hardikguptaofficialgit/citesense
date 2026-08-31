@@ -33,6 +33,12 @@ def evaluate_page_engagement(page_snap: Dict[str, Any], is_root: bool = False) -
     if page_snap.get("inconclusive") or status_code != 200 or not page_snap.get("raw_html"):
         return []
 
+    # A shell page has no readable content at all; crawl-render-audit reports that as one
+    # render-gap finding. Adding "missing h1", "no CTA" and "few links" on top restates the same
+    # root cause three more times.
+    if page_snap.get("render_gap"):
+        return []
+
     title = page_snap.get("title", "")
     h1_texts = page_snap.get("h1_texts", [])
     headings = page_snap.get("headings", [])
@@ -89,11 +95,15 @@ def evaluate_page_engagement(page_snap: Dict[str, Any], is_root: bool = False) -
     # On commercial/product/pricing pages, having zero actionable next steps is a major defect
     if purpose in ("product_pricing", "homepage") and total_actions == 0:
         f = create_candidate_finding(
-            title="Commercial landing page lacks clear call-to-action buttons or interactive forms",
+            title=(
+                "Pricing page lacks clear call-to-action buttons or interactive forms"
+                if purpose == "product_pricing" else
+                "Homepage lacks clear call-to-action buttons or interactive forms"
+            ),
             category="navigation",
             severity="high",
             url=url,
-            observation=f"Page classified as '{purpose}' contains 0 CTA buttons, 0 interactive forms, and 0 action links, creating a dead end for converting traffic.",
+            observation=f"Page classified as '{purpose}' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
             method="interactive_element_analysis",
             source_skill="engagement-audit",
             action_summary="Add prominent primary call-to-action (CTA) buttons.",

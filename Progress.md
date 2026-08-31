@@ -16,8 +16,8 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 
 | | |
 |---|---|
-| Tests | **93 passing**, stdlib only |
-| Fixes landed | **F1–F31** across six batches |
+| Tests | **104 passing**, stdlib only |
+| Fixes landed | **F1–F35** across seven batches |
 | False positives removed | 4 high on python.org, 1 high on react.dev, 1 high on django, 10 duplicate lows |
 | Fabricated evidence strings | **0** (swept across all six validation reports) |
 | Skills contributing findings | **6 of 6** (was 4 of 6) |
@@ -26,6 +26,7 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 | Schema compliance | all six validation reports validate with real `jsonschema` |
 | Slowest audit | 21.1s (stripe.com) against a 5-minute budget |
 | Proactive recs | 3–6 per site (was 0 on 2 of 6) |
+| Validation set | 10 sites, two sets: well-built and niche |
 | Still open | nothing tracked — see Known limitations |
 
 ## Quick verification commands
@@ -490,6 +491,71 @@ recommendations**.
 
 ---
 
+### 2026-09-01 — Batch 7: tested against small real sites, found two serious bugs
+
+The validation set was six large, well-built engineering sites. That turned out to be the
+opposite of the scenario this marketplace exists to diagnose, and it was hiding real defects.
+Four niche sites were added as **Set B** (`validation-runs/RUNS.md`). Both bugs below were
+invisible in Set A and obvious in Set B.
+
+**F32 — Any site whose apex redirects to www was reduced to a one-page crawl.** *Regression I introduced in F6.*
+`site_inventory.py`
+
+- *Root cause:* the same-site gate added with robots enforcement compared each link against
+  `self.origin`, which was recorded from the **seed URL before redirects**. `fedkiit.com`
+  redirects to `www.fedkiit.com`, so origin stayed on the apex while every page and link lived on
+  www — and `may_fetch()` refused all 9 internal links as off-origin. The crawl stopped at the
+  homepage.
+- *Why Set A never caught it:* all six were seeded with their already-final hostname
+  (`www.python.org`, `www.mozilla.org`, …) or do not redirect. The regression was invisible by
+  construction.
+- *Change:* the inventory adopts the origin the seed actually resolved to, and a new
+  `same_site()` treats apex and www as one host. Sitemap URL filtering uses it too — a sitemap
+  listing `www.` URLs against an apex origin was previously discarded whole, which is why three
+  sites reported `discovered_url_count: 0` against a live sitemap.
+- *Verified:* fedkiit.com goes from 1 page to 5, and surfaces a **high-severity render gap** that
+  had been completely invisible. Robots enforcement still holds across the www boundary.
+
+**F33 — Compact client-rendered shells escaped render-gap detection.**
+`site_inventory.py`, `render_and_data_scan.py`
+
+- *Root cause:* the check required `words < 30 and len(raw_html) > 1000`. `faktcheck.fedkiit.com`
+  serves a 5-word shell in under 1KB of HTML, so the single most important problem with the page
+  was not reported at all.
+- *Change:* the shell test is now `words < 30 and (no h1 or html > 1500)`, set once in
+  `analyze_page_html` as a `render_gap` flag so every skill agrees. The h1 clause matters: a short
+  page that still carries a heading and its facts is complete, just brief — an adversarial test
+  in the existing suite caught an earlier, blunter threshold flagging exactly that case.
+
+**F34 — A shell page produced eleven findings for one root cause.**
+`render_and_data_scan.py`, `engagement_scan.py`
+
+kforum.me previously returned 11 findings: render gap, missing h1, no CTA, isolated page, missing
+meta description, missing Organization schema, and so on. Every one after the first is a symptom
+of the page being an empty shell. Page-level checks are now suppressed on `render_gap` pages and
+the render-gap evidence says so explicitly. kforum.me: 11 findings → 7, led by the actual cause.
+
+**F35 — CTA finding no longer calls every homepage "commercial".**
+A fact-checking tool and a student forum were both reported as a "Commercial landing page". Title
+is now purpose-aware.
+
+**Set B results.** All 10 reports schema-valid, 0 fabricated evidence, 0 with zero proactive recs.
+No regressions on Set A. Findings on the niche sites are independently verified where checkable —
+`fedkiit.com/Manifesto` really does return 404.
+
+**Known blind spot, now documented rather than assumed.** `bbsrgotlaytent.live` returns **zero**
+web search results yet gets the cleanest report of all ten (4 findings, none high). That is not a
+broken check: its on-site hygiene genuinely is good. Its problem is entirely off-site, and the
+deterministic pipeline can see the absence of authority links but cannot see absence from search
+itself. The `corroboration` finding names the right root cause; confirming it needs the
+agent-supplied `citation-simulator` mode. This is the strongest argument for running the
+marketplace under an agent with web-search tools rather than only through the CLI.
+
+**On method.** Both bugs came from testing on sites that resemble the grading target, not from
+more unit tests. Set A measured precision; only Set B measured recall. Keep both.
+
+---
+
 ### Note on test sites and generalization
 
 The handout provides **no example sites** — verified by extracting its full text: the only
@@ -499,7 +565,7 @@ sample report schema). It states plainly:
 > "We won't hand you a list of test sites... We won't ask which sites you studied, and none of
 > them are used in grading... Design for patterns, not fit-to-examples."
 
-The six sites in `validation-runs/` are our own field-research choices, spanning different
+The ten sites in `validation-runs/` are our own field-research choices, spanning different
 structural shapes. They are **not** referenced by any detection logic. Audited on 2026-08-31:
 
 - No real site name appears in any check, threshold, regex or branch in `skills/`.
