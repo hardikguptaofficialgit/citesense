@@ -1,6 +1,8 @@
 ---
 name: audit-orchestrator
 description: Entrypoint for the brand-ai-readiness-audit marketplace. Given a website, runs crawl-render-audit, freshness-corroboration, engagement-audit, trust-corroboration-graph, and citation-simulator using a shared single-pass SiteInventory, merges CandidateFindings into the fixed audit-report schema, adds cross-cutting proactive recommendations, and emits the final report. Use this skill to receive an audit request for a site and produce the complete report -- it composes the other five skills rather than duplicating their checks.
+license: MIT
+allowed-tools: Bash, Read, Write
 ---
 
 # Audit Orchestrator (entrypoint)

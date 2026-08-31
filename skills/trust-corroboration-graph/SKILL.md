@@ -1,11 +1,13 @@
 ---
 name: trust-corroboration-graph
 description: Checks whether independent third-party sources corroborate a brand's core claims, and whether the brand can be reliably disambiguated from other entities sharing its name. Uses claim scoring and entity collision risk assessment with Schema.org sameAs links.
+license: MIT
+allowed-tools: Bash, Read, WebSearch, WebFetch
 ---
 
 # Trust & Corroboration Graph (Appendix D, identity half)
 
-Invoked by `audit-orchestrator`. External-facing: analyzes external knowledge graph presence, third-party corroboration of core claims, and entity disambiguation risk.
+Invoked by `audit-orchestrator`. Two modes. **Observable** (`evaluate_identity_anchoring`, runs on every audit): does any machine-readable path exist from this site to an independent authority -- Organization `sameAs` URIs, or outbound links to Wikidata/Wikipedia/Crunchbase/LinkedIn/regulatory registries? **Agent-supplied** (`score_fact`, `assess_collision_risk`): scores real third-party corroboration and same-name collision risk from search results an agent provides. The observable mode never claims to have searched the web.
 
 ## Inputs
 - `brand_name`, `category`, `location` (from ground truth)

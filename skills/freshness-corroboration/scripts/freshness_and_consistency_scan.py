@@ -35,7 +35,7 @@ def evaluate_freshness_and_consistency(inventory: SiteInventory) -> List[Dict[st
     stale_claims_by_page = {}
 
     for url, snap in pages.items():
-        if snap.get("status_code") != 200:
+        if snap.get("inconclusive") or snap.get("status_code") != 200:
             continue
         dates_info = snap.get("dates_and_claims", {})
         
@@ -140,28 +140,44 @@ def evaluate_freshness_and_consistency(inventory: SiteInventory) -> List[Dict[st
                 )
                 findings.append(f.to_dict())
 
-    # 3. Severely outdated copyright notice (e.g. gap >= 3 years)
+    # 3. Severely outdated copyright notice -- one site-wide finding, not one per page.
+    # The footer is template-level, so N crawled pages previously yielded N identical findings.
+    stale_copyright_pages = []
     for url, snap in pages.items():
-        dates_info = snap.get("dates_and_claims", {})
-        newest_copy = dates_info.get("newest_copyright_year")
+        if snap.get("inconclusive") or snap.get("status_code") != 200:
+            continue
+        newest_copy = snap.get("dates_and_claims", {}).get("newest_copyright_year")
         if newest_copy and (CURRENT_YEAR - newest_copy >= 3):
-            f = create_candidate_finding(
-                title=f"Stale copyright notice ({newest_copy}) on active site",
-                category="freshness",
-                severity="low",
-                url=url,
-                observation=f"Footer copyright notice references {newest_copy} (gap of {CURRENT_YEAR - newest_copy} years), presenting a stale signal to search and AI crawlers.",
-                method="copyright_year_detector",
-                source_skill="freshness-corroboration",
-                action_summary="Update the site footer copyright year.",
-                action_priority="low",
-                action_how_to_fix=f"Update the copyright notice on {url} to the current year ({CURRENT_YEAR}) or use dynamic server-rendered date generation.",
-                fingerprint=f"freshness:stale-copyright:{url}",
-                status="confirmed",
-                confidence="high",
-                impact="low"
-            )
-            findings.append(f.to_dict())
+            stale_copyright_pages.append((url, newest_copy))
+
+    if stale_copyright_pages:
+        oldest_year = min(y for _, y in stale_copyright_pages)
+        page_list = ", ".join(u for u, _ in stale_copyright_pages[:3])
+        more = f" (+{len(stale_copyright_pages) - 3} more)" if len(stale_copyright_pages) > 3 else ""
+        f = create_candidate_finding(
+            title=f"Stale copyright notice ({oldest_year}) in site footer template",
+            category="freshness",
+            severity="low",
+            url=stale_copyright_pages[0][0],
+            observation=(
+                f"Footer copyright notice resolves to {oldest_year} "
+                f"(gap of {CURRENT_YEAR - oldest_year} years) on {len(stale_copyright_pages)} crawled page(s): "
+                f"{page_list}{more}. Year ranges such as '2005-{CURRENT_YEAR}' are read as current and not flagged."
+            ),
+            method="copyright_year_detector",
+            source_skill="freshness-corroboration",
+            action_summary="Update the site footer copyright year.",
+            action_priority="low",
+            action_how_to_fix=(
+                f"Update the footer copyright notice to {CURRENT_YEAR}, or render the year dynamically "
+                f"server-side so it never goes stale."
+            ),
+            fingerprint="freshness:stale-copyright",
+            status="confirmed",
+            confidence="high",
+            impact="low"
+        )
+        findings.append(f.to_dict())
 
     return findings
 

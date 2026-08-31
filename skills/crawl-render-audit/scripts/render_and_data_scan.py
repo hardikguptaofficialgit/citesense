@@ -68,8 +68,8 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
     raw_html = page_snap.get("raw_html", "")
     status_code = page_snap.get("status_code", 0)
 
-    if status_code != 200 or not raw_html:
-        # Inconclusive/fetch failure, do not emit defect findings without direct evidence
+    # Inconclusive/fetch failure: never emit defect findings without a readable page
+    if page_snap.get("inconclusive") or status_code != 200 or not raw_html:
         return []
 
     raw_text = page_snap.get("visible_text", "")
@@ -97,7 +97,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Fix JSON-LD syntax errors to ensure search and AI parsers can read metadata.",
             action_priority="medium",
             action_how_to_fix="Validate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.",
-            fingerprint=f"schema:syntax-error:{urlparse(url).path or 'root'}",
+            fingerprint="schema:syntax-error",
             status="confirmed",
             confidence="high",
             impact="medium"
@@ -198,7 +198,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Populate required Schema.org properties.",
             action_priority="medium",
             action_how_to_fix="Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
-            fingerprint=f"schema:missing-required-fields:{urlparse(url).path or 'root'}",
+            fingerprint="schema:missing-required-fields",
             status="confirmed",
             confidence="high",
             impact="medium"
@@ -239,7 +239,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Provide accessible HTML text or structured data fallbacks for canvas graphics.",
             action_priority="medium",
             action_how_to_fix="Accompany canvas charts/diagrams with summary data tables or structured JSON-LD entities.",
-            fingerprint=f"extractability:canvas-locked-content:{urlparse(url).path or 'root'}",
+            fingerprint="extractability:canvas-locked-content",
             status="likely-risk",
             confidence="medium",
             impact="medium"
@@ -259,7 +259,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Add a descriptive <title> tag.",
             action_priority="high",
             action_how_to_fix="Add a unique, informative <title> tag inside the <head> element.",
-            fingerprint=f"meta:missing-title:{urlparse(url).path or 'root'}",
+            fingerprint="meta:missing-title",
             status="confirmed",
             confidence="high",
             impact="high"
@@ -278,7 +278,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Add an informative meta description tag.",
             action_priority="medium",
             action_how_to_fix="Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
-            fingerprint=f"meta:missing-description:{urlparse(url).path or 'root'}",
+            fingerprint="meta:missing-description",
             status="confirmed",
             confidence="high",
             impact="medium"

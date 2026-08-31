@@ -1,6 +1,8 @@
 ---
 name: engagement-audit
 description: Audits on-site engagement -- whether a visitor who arrives understands what the page is for, can find a clear next step, doesn't hit broken links or dead ends, gets a usable mobile experience, and whether the site shows any capacity to use context about a returning or logged-in visitor. Uses button/form/CTA detection, page purpose classification, and redirect-aware link validation.
+license: MIT
+allowed-tools: Bash, Read
 ---
 
 # Engagement Audit (on-site half)

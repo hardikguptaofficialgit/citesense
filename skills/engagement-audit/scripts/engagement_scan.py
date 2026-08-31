@@ -30,7 +30,7 @@ def evaluate_page_engagement(page_snap: Dict[str, Any], is_root: bool = False) -
     url = page_snap.get("final_url") or page_snap.get("url", "")
     status_code = page_snap.get("status_code", 0)
 
-    if status_code != 200 or not page_snap.get("raw_html"):
+    if page_snap.get("inconclusive") or status_code != 200 or not page_snap.get("raw_html"):
         return []
 
     title = page_snap.get("title", "")
@@ -58,7 +58,7 @@ def evaluate_page_engagement(page_snap: Dict[str, Any], is_root: bool = False) -
             action_summary="Add a clear, descriptive <h1> heading.",
             action_priority="high",
             action_how_to_fix="Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
-            fingerprint=f"engagement:missing-h1:{urlparse(url).path or 'root'}",
+            fingerprint="engagement:missing-h1",
             status="confirmed",
             confidence="high",
             impact="high"
@@ -76,7 +76,7 @@ def evaluate_page_engagement(page_snap: Dict[str, Any], is_root: bool = False) -
             action_summary="Consolidate heading hierarchy to a single primary <h1>.",
             action_priority="low",
             action_how_to_fix="Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
-            fingerprint=f"engagement:multiple-h1:{urlparse(url).path or 'root'}",
+            fingerprint="engagement:multiple-h1",
             status="confirmed",
             confidence="high",
             impact="low"
@@ -119,7 +119,7 @@ def evaluate_page_engagement(page_snap: Dict[str, Any], is_root: bool = False) -
             action_summary="Incorporate related internal links and header/footer navigation.",
             action_priority="medium",
             action_how_to_fix="Add links to relevant documentation, related products, or category overview pages.",
-            fingerprint=f"engagement:few-internal-links:{urlparse(url).path or 'root'}",
+            fingerprint="engagement:few-internal-links",
             status="likely-risk",
             confidence="medium",
             impact="medium"
@@ -142,7 +142,7 @@ def evaluate_page_engagement(page_snap: Dict[str, Any], is_root: bool = False) -
             action_summary="Add breadcrumb navigation trail with BreadcrumbList schema.",
             action_priority="low",
             action_how_to_fix="Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
-            fingerprint=f"engagement:missing-breadcrumbs:{urlparse(url).path}",
+            fingerprint="engagement:missing-breadcrumbs",
             status="likely-risk",
             confidence="medium",
             impact="low"
@@ -180,7 +180,8 @@ def check_broken_links_sample(inventory: SiteInventory) -> List[Dict[str, Any]]:
     for snap in inventory.pages.values():
         for link in snap.get("internal_links", []):
             href = link.get("href")
-            if href and href not in sampled_links and href not in inventory.pages:
+            # robots.txt gates link probing too, not just page crawling
+            if href and href not in sampled_links and href not in inventory.pages and inventory.may_fetch(href):
                 sampled_links.append(href)
             if len(sampled_links) >= MAX_BROKEN_LINKS_TO_CHECK:
                 break

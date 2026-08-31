@@ -1,258 +1,43 @@
 {
   "site": "https://www.python.org",
-  "audited_at": "2026-08-29T17:52:20Z",
+  "audited_at": "2026-08-31T15:50:43Z",
   "summary": {
-    "total_findings": 17,
+    "total_findings": 5,
     "critical": 0,
-    "high": 9,
-    "medium": 5,
-    "low": 3,
-    "discoverability_findings": 7,
-    "engagement_findings": 10
+    "high": 1,
+    "medium": 3,
+    "low": 1,
+    "discoverability_findings": 4,
+    "engagement_findings": 1
   },
   "findings": [
     {
-      "title": "Missing HTML document <title> tag",
+      "title": "Missing Schema.org Organization structured data on root landing page",
       "category": "structured-data",
       "severity": "high",
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://www.python.org/about/help/ via html_meta_inspector [2026-08-29T17:52:18Z]: Page HTML contains no <title> tag. (Confidence: high)",
+      "evidence": "Observed at https://www.python.org/ via jsonld_schema_extractor [2026-08-31T15:50:42Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.python.org via onsite_answerability_probe [2026-08-31T15:50:43Z]: Across 6 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Python.org?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "crawl-render-audit",
-      "fingerprint": "meta:missing-title:/about/help/",
+      "fingerprint": "schema:root-organization-missing",
       "suggested_action": {
-        "summary": "Add a descriptive <title> tag.",
+        "summary": "Add Organization JSON-LD markup to the homepage.",
         "priority": "high",
-        "how_to_fix": "Add a unique, informative <title> tag inside the <head> element."
+        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles."
       },
       "source_skills": [
+        "citation-simulator",
         "crawl-render-audit"
       ],
       "evidence_details": {
-        "url": "https://www.python.org/about/help/",
-        "observation": "Page HTML contains no <title> tag.",
-        "method": "html_meta_inspector",
-        "timestamp": "2026-08-29T17:52:18Z",
+        "url": "https://www.python.org/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-08-31T15:50:42Z",
         "confidence": "high"
       },
       "id": "F-001"
-    },
-    {
-      "title": "Missing HTML document <title> tag",
-      "category": "structured-data",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/about/ via html_meta_inspector [2026-08-29T17:52:18Z]: Page HTML contains no <title> tag. (Confidence: high)",
-      "source_skill": "crawl-render-audit",
-      "fingerprint": "meta:missing-title:/about/",
-      "suggested_action": {
-        "summary": "Add a descriptive <title> tag.",
-        "priority": "high",
-        "how_to_fix": "Add a unique, informative <title> tag inside the <head> element."
-      },
-      "source_skills": [
-        "crawl-render-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/about/",
-        "observation": "Page HTML contains no <title> tag.",
-        "method": "html_meta_inspector",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-002"
-    },
-    {
-      "title": "Missing HTML document <title> tag",
-      "category": "structured-data",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/psf-landing/ via html_meta_inspector [2026-08-29T17:52:18Z]: Page HTML contains no <title> tag. (Confidence: high)",
-      "source_skill": "crawl-render-audit",
-      "fingerprint": "meta:missing-title:/psf-landing/",
-      "suggested_action": {
-        "summary": "Add a descriptive <title> tag.",
-        "priority": "high",
-        "how_to_fix": "Add a unique, informative <title> tag inside the <head> element."
-      },
-      "source_skills": [
-        "crawl-render-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/psf-landing/",
-        "observation": "Page HTML contains no <title> tag.",
-        "method": "html_meta_inspector",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-003"
-    },
-    {
-      "title": "Missing HTML document <title> tag",
-      "category": "structured-data",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/jobs/ via html_meta_inspector [2026-08-29T17:52:18Z]: Page HTML contains no <title> tag. (Confidence: high)",
-      "source_skill": "crawl-render-audit",
-      "fingerprint": "meta:missing-title:/jobs/",
-      "suggested_action": {
-        "summary": "Add a descriptive <title> tag.",
-        "priority": "high",
-        "how_to_fix": "Add a unique, informative <title> tag inside the <head> element."
-      },
-      "source_skills": [
-        "crawl-render-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/jobs/",
-        "observation": "Page HTML contains no <title> tag.",
-        "method": "html_meta_inspector",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-004"
-    },
-    {
-      "title": "Missing primary H1 heading on landing page",
-      "category": "orientation",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/about/help/ via heading_structure_inspection [2026-08-29T17:52:18Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-h1:/about/help/",
-      "suggested_action": {
-        "summary": "Add a clear, descriptive <h1> heading.",
-        "priority": "high",
-        "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose."
-      },
-      "source_skills": [
-        "engagement-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/about/help/",
-        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
-        "method": "heading_structure_inspection",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-005"
-    },
-    {
-      "title": "Missing viewport meta tag hampers mobile user engagement",
-      "category": "orientation",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/about/help/ via mobile_viewport_inspector [2026-08-29T17:52:18Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/about/ via mobile_viewport_inspector [2026-08-29T17:52:18Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/psf-landing/ via mobile_viewport_inspector [2026-08-29T17:52:18Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/jobs/ via mobile_viewport_inspector [2026-08-29T17:52:18Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-viewport-meta",
-      "suggested_action": {
-        "summary": "Add responsive viewport meta tag to HTML head.",
-        "priority": "high",
-        "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>."
-      },
-      "source_skills": [
-        "engagement-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/about/help/",
-        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
-        "method": "mobile_viewport_inspector",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-006"
-    },
-    {
-      "title": "Missing primary H1 heading on landing page",
-      "category": "orientation",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/about/ via heading_structure_inspection [2026-08-29T17:52:18Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-h1:/about/",
-      "suggested_action": {
-        "summary": "Add a clear, descriptive <h1> heading.",
-        "priority": "high",
-        "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose."
-      },
-      "source_skills": [
-        "engagement-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/about/",
-        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
-        "method": "heading_structure_inspection",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-007"
-    },
-    {
-      "title": "Missing primary H1 heading on landing page",
-      "category": "orientation",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/psf-landing/ via heading_structure_inspection [2026-08-29T17:52:18Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-h1:/psf-landing/",
-      "suggested_action": {
-        "summary": "Add a clear, descriptive <h1> heading.",
-        "priority": "high",
-        "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose."
-      },
-      "source_skills": [
-        "engagement-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/psf-landing/",
-        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
-        "method": "heading_structure_inspection",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-008"
-    },
-    {
-      "title": "Missing primary H1 heading on landing page",
-      "category": "orientation",
-      "severity": "high",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "high",
-      "evidence": "Observed at https://www.python.org/jobs/ via heading_structure_inspection [2026-08-29T17:52:18Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-h1:/jobs/",
-      "suggested_action": {
-        "summary": "Add a clear, descriptive <h1> heading.",
-        "priority": "high",
-        "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose."
-      },
-      "source_skills": [
-        "engagement-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/jobs/",
-        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
-        "method": "heading_structure_inspection",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-009"
     },
     {
       "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
@@ -261,7 +46,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.python.org/sitemap.xml via http_get_sitemap_check [2026-08-29T17:52:18Z]: Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "evidence": "Observed at https://www.python.org/sitemap.xml via http_get_sitemap_check [2026-08-31T15:50:42Z]: Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "crawl:missing-xml-sitemap",
       "suggested_action": {
@@ -276,145 +61,64 @@
         "url": "https://www.python.org/sitemap.xml",
         "observation": "Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-08-29T17:52:18Z",
+        "timestamp": "2026-08-31T15:50:42Z",
         "confidence": "high"
       },
-      "id": "F-010"
+      "id": "F-002"
     },
     {
-      "title": "Missing Schema.org Organization structured data on root landing page",
-      "category": "structured-data",
-      "severity": "medium",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "medium",
-      "evidence": "Observed at https://www.python.org/ via jsonld_schema_extractor [2026-08-29T17:52:18Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
-      "source_skill": "crawl-render-audit",
-      "fingerprint": "schema:root-organization-missing",
-      "suggested_action": {
-        "summary": "Add Organization JSON-LD markup to the homepage.",
-        "priority": "medium",
-        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles."
-      },
-      "source_skills": [
-        "crawl-render-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/",
-        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
-        "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-011"
-    },
-    {
-      "title": "Isolated page with insufficient internal navigation links",
-      "category": "navigation",
+      "title": "No extractable answer on-site for \"What does Python.org offer?\"",
+      "category": "citation-omission",
       "severity": "medium",
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.python.org/about/help/ via internal_link_density_check [2026-08-29T17:52:18Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:few-internal-links:/about/help/",
+      "evidence": "Observed at https://www.python.org via onsite_answerability_probe [2026-08-31T15:50:43Z]: Across 6 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Python.org offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:offering",
       "suggested_action": {
-        "summary": "Incorporate related internal links and header/footer navigation.",
+        "summary": "Mark up the product or service catalogue.",
         "priority": "medium",
-        "how_to_fix": "Add links to relevant documentation, related products, or category overview pages."
+        "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels."
       },
       "source_skills": [
-        "engagement-audit"
+        "citation-simulator"
       ],
       "evidence_details": {
-        "url": "https://www.python.org/about/help/",
-        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
-        "method": "internal_link_density_check",
-        "timestamp": "2026-08-29T17:52:18Z",
+        "url": "https://www.python.org",
+        "observation": "Across 6 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Python.org offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-08-31T15:50:43Z",
         "confidence": "medium"
       },
-      "id": "F-012"
+      "id": "F-003"
     },
     {
-      "title": "Isolated page with insufficient internal navigation links",
-      "category": "navigation",
+      "title": "No extractable answer on-site for \"How do I contact Python.org?\"",
+      "category": "citation-omission",
       "severity": "medium",
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.python.org/psf-landing/ via internal_link_density_check [2026-08-29T17:52:18Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:few-internal-links:/psf-landing/",
+      "evidence": "Observed at https://www.python.org via onsite_answerability_probe [2026-08-31T15:50:43Z]: Across 6 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Python.org?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:contact",
       "suggested_action": {
-        "summary": "Incorporate related internal links and header/footer navigation.",
+        "summary": "Expose a contact route as machine-readable text.",
         "priority": "medium",
-        "how_to_fix": "Add links to relevant documentation, related products, or category overview pages."
+        "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity."
       },
       "source_skills": [
-        "engagement-audit"
+        "citation-simulator"
       ],
       "evidence_details": {
-        "url": "https://www.python.org/psf-landing/",
-        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
-        "method": "internal_link_density_check",
-        "timestamp": "2026-08-29T17:52:18Z",
+        "url": "https://www.python.org",
+        "observation": "Across 6 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Python.org?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-08-31T15:50:43Z",
         "confidence": "medium"
       },
-      "id": "F-013"
-    },
-    {
-      "title": "Isolated page with insufficient internal navigation links",
-      "category": "navigation",
-      "severity": "medium",
-      "status": "likely-risk",
-      "confidence": "medium",
-      "impact": "medium",
-      "evidence": "Observed at https://www.python.org/jobs/ via internal_link_density_check [2026-08-29T17:52:18Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:few-internal-links:/jobs/",
-      "suggested_action": {
-        "summary": "Incorporate related internal links and header/footer navigation.",
-        "priority": "medium",
-        "how_to_fix": "Add links to relevant documentation, related products, or category overview pages."
-      },
-      "source_skills": [
-        "engagement-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/jobs/",
-        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
-        "method": "internal_link_density_check",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "medium"
-      },
-      "id": "F-014"
-    },
-    {
-      "title": "Stale copyright notice (2001) on active site",
-      "category": "freshness",
-      "severity": "low",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "low",
-      "evidence": "Observed at https://www.python.org/ via copyright_year_detector [2026-08-29T17:52:18Z]: Footer copyright notice references 2001 (gap of 25 years), presenting a stale signal to search and AI crawlers. (Confidence: high)",
-      "source_skill": "freshness-corroboration",
-      "fingerprint": "freshness:stale-copyright:https://www.python.org/",
-      "suggested_action": {
-        "summary": "Update the site footer copyright year.",
-        "priority": "low",
-        "how_to_fix": "Update the copyright notice on https://www.python.org/ to the current year (2026) or use dynamic server-rendered date generation."
-      },
-      "source_skills": [
-        "freshness-corroboration"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/",
-        "observation": "Footer copyright notice references 2001 (gap of 25 years), presenting a stale signal to search and AI crawlers.",
-        "method": "copyright_year_detector",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "high"
-      },
-      "id": "F-015"
+      "id": "F-004"
     },
     {
       "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
@@ -423,9 +127,9 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "low",
-      "evidence": "Observed at https://www.python.org/ via heading_structure_inspection [2026-08-29T17:52:18Z]: Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure. (Confidence: high)",
+      "evidence": "Observed at https://www.python.org/ via heading_structure_inspection [2026-08-31T15:50:42Z]: Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/about/help/ via heading_structure_inspection [2026-08-31T15:50:42Z]: Page defines 10 separate <h1> tags (Help; New to programming and to Python?; New to Python?), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/psf-landing/ via heading_structure_inspection [2026-08-31T15:50:42Z]: Page defines 5 separate <h1> tags (The Python Software Foundation is the ch; We support the Python Community through.; Grants), diluting semantic structure. (Confidence: high)",
       "source_skill": "engagement-audit",
-      "fingerprint": "engagement:multiple-h1:/",
+      "fingerprint": "engagement:multiple-h1",
       "suggested_action": {
         "summary": "Consolidate heading hierarchy to a single primary <h1>.",
         "priority": "low",
@@ -438,37 +142,10 @@
         "url": "https://www.python.org/",
         "observation": "Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-08-29T17:52:18Z",
+        "timestamp": "2026-08-31T15:50:42Z",
         "confidence": "high"
       },
-      "id": "F-016"
-    },
-    {
-      "title": "Deep hierarchical page lacks breadcrumb navigation trail",
-      "category": "navigation",
-      "severity": "low",
-      "status": "likely-risk",
-      "confidence": "medium",
-      "impact": "low",
-      "evidence": "Observed at https://www.python.org/about/help/ via breadcrumb_markup_inspector [2026-08-29T17:52:18Z]: Page at deep route (/about/help/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
-      "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-breadcrumbs:/about/help/",
-      "suggested_action": {
-        "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
-        "priority": "low",
-        "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation."
-      },
-      "source_skills": [
-        "engagement-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.python.org/about/help/",
-        "observation": "Page at deep route (/about/help/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
-        "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-29T17:52:18Z",
-        "confidence": "medium"
-      },
-      "id": "F-017"
+      "id": "F-005"
     }
   ],
   "proactive_recommendations": [
