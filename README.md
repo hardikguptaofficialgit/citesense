@@ -61,6 +61,10 @@ graph TD
 8. **Root-Cause Deduplication:** Consolidates findings sharing the same fingerprint across pages and skills, merging evidence and assigning highest severity.
 9. **Strict Guardrails:** Recommend-only, 100% read-only, respects robots.txt, strictly budgeted under 5 minutes (typical audit runs in 5-20 seconds).
 10. **Report Schema Compliance:** Fully conforms to `skills/audit-orchestrator/references/report-schema.json`.
+11. **HTML Report Dashboard:** Renders `report.json` into a single self-contained HTML file (inline CSS/JS, zero external requests, no build step) with a severity summary, a discoverability-vs-engagement split, collapsible evidence, and a visually distinct proactive-recommendations section.
+12. **Auto-Generated Fix Snippets:** Structured-data findings carry a ready-to-paste JSON-LD block pre-populated from observed ground truth. Unknown values are explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is **suppressed** rather than shipped as a fix.
+13. **Report Comparison:** Diffs two reports by stable `fingerprint` into `resolved` / `new` / `unchanged` buckets with a weighted `score_delta`, so "did the fix work?" is answerable.
+14. **AI-Citability Score:** A deterministic, monotonic 0-100 score in `summary.citability_score`, with its formula and rationale documented in `references/citability-score.md` rather than hidden in code.
 
 ---
 
@@ -89,6 +93,72 @@ python skills/engagement-audit/scripts/engagement_scan.py https://example.com
 
 # 5. Report Merge & Validation
 python skills/audit-orchestrator/scripts/compose_report.py validate --input report.json
+
+# 6. HTML Report Dashboard
+#    Renders report.json into ONE self-contained HTML file (inline CSS/JS, no external
+#    requests, no build step). Omit --output to write to stdout.
+python skills/audit-orchestrator/scripts/render_dashboard.py report.json --output dashboard.html
+
+# 7. Report Comparison / Diff (before vs. after a fix, or two points in time)
+#    Matches findings by fingerprint (falling back to normalized title + category) and
+#    buckets them into resolved / new / unchanged, with a weighted score_delta.
+python skills/audit-orchestrator/scripts/compare_reports.py before.json after.json --output diff.json
+
+# 8. AI-Citability Score (recompute + show the arithmetic for any existing report)
+python skills/audit-orchestrator/scripts/scored.py report.json --explain
+
+# 9. Fix-Snippet Inspector
+#    Shows, per structured-data finding, whether a JSON-LD snippet could be generated and
+#    WHY NOT when it could not. Needs --inventory: report.json alone carries no ground
+#    truth, and this tool will not fabricate one.
+python skills/audit-orchestrator/scripts/fix_snippets.py report.json \
+    --inventory inventory.json --output annotated-report.json
+```
+
+All four report-consuming CLIs fail readably rather than with a traceback — a missing file,
+malformed JSON, or a non-object JSON document produces a one-line `error:` on stderr and
+exit code 1 — and `--output` creates its parent directory if it does not exist.
+
+### What shows up inside the report
+Two additive fields are produced automatically during composition. Both are **optional** in
+`references/report-schema.json` — existing consumers are unaffected.
+
+**`summary.citability_score`** — a 0-100 AI-Citability Score written on every composed
+report (`run_audit.py` and `compose_report.py merge`). Starts at 100 and subtracts a
+per-finding severity penalty (critical 25 / high 12 / medium 5 / low 2), with a small,
+data-gated corroboration credit. The exact formula, worked example, and rationale live in
+[`skills/audit-orchestrator/references/citability-score.md`](skills/audit-orchestrator/references/citability-score.md).
+
+```json
+"summary": { "total_findings": 7, "critical": 0, "high": 1, "citability_score": 64 }
+```
+
+**`suggested_action.fix_snippet`** — a ready-to-paste JSON-LD block on structured-data
+findings, pre-populated from data the crawl actually observed (brand name, `sameAs`,
+founding year, page H1, real URL path). It appears only when the audit holds enough real
+data to fill the entity's identifying fields; genuinely unknown values are emitted as
+explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is
+suppressed rather than presented as a fix.
+
+```json
+"suggested_action": {
+  "summary": "Add Organization JSON-LD markup to the homepage.",
+  "priority": "medium",
+  "how_to_fix": "Add a JSON-LD script declaring @type 'Organization'...",
+  "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@type\": \"Organization\",\n  \"name\": \"Mozilla\",\n  \"foundingDate\": \"1998\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\"\n}\n</script>"
+}
+```
+
+Snippets need the crawl's ground truth. `run_audit.py` supplies it automatically; when
+merging findings by hand, pass a saved inventory (or a bare `ground_truth` JSON):
+
+```bash
+python skills/audit-orchestrator/scripts/run_audit.py https://example.com \
+    --save-inventory inventory.json --output report.json
+
+python skills/audit-orchestrator/scripts/compose_report.py merge \
+    --site https://example.com --input crawl_findings.json engagement_findings.json \
+    --inventory inventory.json --output report.json
 ```
 
 ---

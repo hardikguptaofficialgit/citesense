@@ -145,7 +145,9 @@ def run_full_audit(
     report = build_final_report(
         site_url=inventory.origin,
         findings=all_candidate_findings,
-        proactive_recommendations=proactive
+        proactive_recommendations=proactive,
+        ground_truth=inventory.ground_truth,
+        pages=inventory.pages
     )
 
     return report

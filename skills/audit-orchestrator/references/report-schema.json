@@ -16,7 +16,13 @@
         "medium": { "type": "integer" },
         "low": { "type": "integer" },
         "discoverability_findings": { "type": "integer" },
-        "engagement_findings": { "type": "integer" }
+        "engagement_findings": { "type": "integer" },
+        "citability_score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Optional additive field. 0-100 AI-Citability Score derived from the final findings list. Formula documented in references/citability-score.md."
+        }
       }
     },
     "findings": {
@@ -37,6 +43,11 @@
             ]
           },
           "severity": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+          "impact": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low"],
+            "description": "Optional additive field. Carried through from the CandidateFinding contract and used as the secondary sort key after severity. Mirrors severity unless a specialist skill supplies a distinct value, so consumers may treat it as equal to severity when absent."
+          },
           "evidence": { "type": "string" },
           "source_skill": { "type": "string" },
           "suggested_action": {
@@ -46,7 +57,11 @@
               "summary": { "type": "string" },
               "priority": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
               "how_to_fix": { "type": "string" },
-              "beyond_defect": { "type": "boolean" }
+              "beyond_defect": { "type": "boolean" },
+              "fix_snippet": {
+                "type": "string",
+                "description": "Optional additive field. Ready-to-paste <script type=\"application/ld+json\"> block pre-populated from observed ground_truth. Present only for structured-data findings where the audit held enough real data to fill the entity's identifying fields."
+              }
             }
           }
         }

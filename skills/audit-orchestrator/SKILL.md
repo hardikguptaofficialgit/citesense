@@ -40,5 +40,16 @@ description: Entrypoint for the brand-ai-readiness-audit marketplace. Given a we
    ```
 7. Return `report.json` as the final audit report.
 
+## Post-report tooling (all stdlib, all optional)
+- **Fix snippets & score (automatic).** Composition attaches a ready-to-paste JSON-LD
+  `suggested_action.fix_snippet` to structured-data findings wherever observed ground truth
+  is rich enough to populate them, and writes a 0-100 `summary.citability_score`. Both are
+  additive optional schema fields. Formula and rationale: `references/citability-score.md`.
+- **Dashboard.** `python3 scripts/render_dashboard.py report.json --output dashboard.html`
+  renders a single self-contained HTML view (no external requests, no build step).
+- **Diff two runs.** `python3 scripts/compare_reports.py before.json after.json --output diff.json`
+  buckets findings into resolved / new / unchanged by `fingerprint` and reports a weighted
+  `score_delta`.
+
 ## Output
 The final report strictly matches `references/report-schema.json`: `site`, `audited_at`, `summary` (counts by severity plus discoverability/engagement split), `findings` (each with `id`, `title`, `severity`, `evidence`, `suggested_action`), and an additive `proactive_recommendations` array.
