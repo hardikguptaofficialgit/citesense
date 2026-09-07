@@ -300,3 +300,61 @@ class InventoryDeduplicationTests(unittest.TestCase):
         inv = SiteInventory("https://x.test")
         inv.url_aliases = {"https://x.test/a": "https://x.test/b"}
         self.assertTrue(SiteInventory.from_dict(inv.to_dict()).knows_url("https://x.test/a"))
+
+
+class ScoreHonestyRegressions(unittest.TestCase):
+    """
+    A score computed from an unreadable crawl is the F2 failure class at the scoring layer:
+    penalties subtract from 100 per finding, so a site that returned 404 produces almost no
+    findings and scores near-perfect. kforum.me scored 90/100 while serving HTTP 404.
+    """
+
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "skills/audit-orchestrator/scripts"))
+
+    def _report(self):
+        return {
+            "site": "https://x.test",
+            "summary": {"total_findings": 1, "critical": 0, "high": 0, "medium": 1, "low": 0},
+            "findings": [{
+                "id": "F-001", "title": "t", "severity": "medium", "category": "crawlability",
+                "evidence": "observed something concrete here",
+                "suggested_action": {"summary": "s", "priority": "medium", "how_to_fix": "h"},
+            }],
+        }
+
+    def test_score_is_withheld_when_no_page_could_be_read(self):
+        from scored import annotate_report
+        pages = {"https://x.test/": {"status_code": 404, "inconclusive": True}}
+        summary = annotate_report(self._report(), pages=pages)["summary"]
+        self.assertNotIn("citability_score", summary)
+        self.assertIn("citability_score_unavailable", summary)
+
+    def test_score_is_computed_when_at_least_one_page_was_read(self):
+        from scored import annotate_report
+        pages = {
+            "https://x.test/": {"status_code": 200, "inconclusive": False},
+            "https://x.test/a": {"status_code": 404, "inconclusive": True},
+        }
+        summary = annotate_report(self._report(), pages=pages)["summary"]
+        self.assertIsInstance(summary.get("citability_score"), int)
+        self.assertNotIn("citability_score_unavailable", summary)
+
+    def test_undecodable_page_also_withholds_the_score(self):
+        from scored import annotate_report
+        pages = {"https://x.test/": {"status_code": 200, "inconclusive": True}}
+        self.assertNotIn("citability_score", annotate_report(self._report(), pages=pages)["summary"])
+
+    def test_callers_that_pass_no_pages_still_get_a_score(self):
+        from scored import annotate_report
+        self.assertIsInstance(annotate_report(self._report())["summary"].get("citability_score"), int)
+
+    def test_end_to_end_404_site_yields_no_score(self):
+        from compose_report import build_final_report
+        report = build_final_report(
+            site_url="https://x.test",
+            findings=[],
+            pages={"https://x.test/": {"status_code": 404, "inconclusive": True}},
+        )
+        self.assertNotIn("citability_score", report["summary"])
+        self.assertIn("citability_score_unavailable", report["summary"])

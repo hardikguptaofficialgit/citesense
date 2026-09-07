@@ -91,11 +91,44 @@ def citability_score(report: Dict[str, Any]) -> int:
     return compute_citability_score(report)["score"]
 
 
-def annotate_report(report: Dict[str, Any]) -> Dict[str, Any]:
-    """Writes summary['citability_score'] in place and returns the report."""
+def crawl_was_readable(pages: Optional[Dict[str, Any]]) -> bool:
+    """
+    Did the crawl successfully read at least one page?
+
+    When `pages` is not supplied we assume yes, preserving the previous behaviour for callers
+    that do not pass inventory snapshots.
+    """
+    if not pages:
+        return True
+    return any(
+        (not snap.get("inconclusive")) and snap.get("status_code") == 200
+        for snap in pages.values()
+        if isinstance(snap, dict)
+    )
+
+
+def annotate_report(report: Dict[str, Any], pages: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """
+    Writes summary['citability_score'] in place and returns the report.
+
+    The score is deliberately WITHHELD when no page could be read. Penalties are subtracted
+    from 100 per finding, so a site that returned 404 or served undecodable bytes produces few
+    findings and would otherwise score near-perfect -- the same failure the `inconclusive` gate
+    exists to prevent, reappearing at the scoring layer. kforum.me scored 90/100 while returning
+    HTTP 404 for exactly this reason. Omitting the field is schema-legal: it is additive and
+    optional, and a stated "not computable" is more honest than a confident wrong number.
+    """
     summary = report.get("summary")
-    if isinstance(summary, dict):
+    if not isinstance(summary, dict):
+        return report
+    if crawl_was_readable(pages):
         summary["citability_score"] = citability_score(report)
+    else:
+        summary.pop("citability_score", None)
+        summary["citability_score_unavailable"] = (
+            "No page could be read (all crawled URLs were non-200 or undecodable), so findings "
+            "are not a measure of this site's citability."
+        )
     return report
 
 

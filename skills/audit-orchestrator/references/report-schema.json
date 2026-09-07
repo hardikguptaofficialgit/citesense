@@ -52,6 +52,10 @@
           "minimum": 0,
           "maximum": 100,
           "description": "Optional additive field. 0-100 AI-Citability Score derived from the final findings list. Formula documented in references/citability-score.md."
+        },
+        "citability_score_unavailable": {
+          "type": "string",
+          "description": "Optional additive field. Present INSTEAD of citability_score when no page could be read, so an unreadable crawl cannot be mistaken for a healthy site."
         }
       }
     },

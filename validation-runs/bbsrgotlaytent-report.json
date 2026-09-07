@@ -1,6 +1,6 @@
 {
   "site": "https://bbsrgotlaytent.live",
-  "audited_at": "2026-08-31T20:18:35Z",
+  "audited_at": "2026-09-07T18:29:25Z",
   "summary": {
     "total_findings": 4,
     "critical": 0,
@@ -8,7 +8,8 @@
     "medium": 1,
     "low": 3,
     "discoverability_findings": 2,
-    "engagement_findings": 2
+    "engagement_findings": 2,
+    "citability_score": 89
   },
   "findings": [
     {
@@ -18,7 +19,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://bbsrgotlaytent.live via onsite_identity_anchor_inspection [2026-08-31T20:18:35Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 1 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"BBSR Got Laytent\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
+      "evidence": "Observed at https://bbsrgotlaytent.live via onsite_identity_anchor_inspection [2026-09-07T18:29:25Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 1 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"BBSR Got Laytent\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
       "source_skill": "trust-corroboration-graph",
       "fingerprint": "trust:no-independent-identity-anchor",
       "suggested_action": {
@@ -33,7 +34,7 @@
         "url": "https://bbsrgotlaytent.live",
         "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 1 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"BBSR Got Laytent\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-08-31T20:18:35Z",
+        "timestamp": "2026-09-07T18:29:25Z",
         "confidence": "high"
       },
       "id": "F-001"
@@ -45,13 +46,14 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "low",
-      "evidence": "Observed at https://bbsrgotlaytent.live/ via jsonld_schema_extractor [2026-08-31T20:18:34Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+      "evidence": "Observed at https://bbsrgotlaytent.live/ via jsonld_schema_extractor [2026-09-07T18:29:24Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "schema:organization-missing-sameas",
       "suggested_action": {
         "summary": "Add sameAs URLs to Organization JSON-LD.",
         "priority": "low",
-        "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array."
+        "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+        "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"BBSR Got Laytent\",\n  \"url\": \"https://bbsrgotlaytent.live\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"An independent comedy roast and talent-show series in Bhubaneswar, Odisha. Discover upcoming stand-up comedy shows, audience tickets, and performer registrations near Patia.\",\n  \"email\": \"support@bbsrgotlaytent.live\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
       },
       "source_skills": [
         "crawl-render-audit"
@@ -60,7 +62,7 @@
         "url": "https://bbsrgotlaytent.live/",
         "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-31T20:18:34Z",
+        "timestamp": "2026-09-07T18:29:24Z",
         "confidence": "high"
       },
       "id": "F-002"
@@ -72,7 +74,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://bbsrgotlaytent.live/shows/6a8c8d39710c22f14842dce6 via breadcrumb_markup_inspector [2026-08-31T20:18:34Z]: Page at deep route (/shows/6a8c8d39710c22f14842dce6) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://bbsrgotlaytent.live/shows/6a8c8d39710c22f14842dce6 via breadcrumb_markup_inspector [2026-09-07T18:29:24Z]: Page at deep route (/shows/6a8c8d39710c22f14842dce6) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:missing-breadcrumbs",
       "suggested_action": {
@@ -87,7 +89,7 @@
         "url": "https://bbsrgotlaytent.live/shows/6a8c8d39710c22f14842dce6",
         "observation": "Page at deep route (/shows/6a8c8d39710c22f14842dce6) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-31T20:18:34Z",
+        "timestamp": "2026-09-07T18:29:24Z",
         "confidence": "medium"
       },
       "id": "F-003"
@@ -99,7 +101,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://bbsrgotlaytent.live via search_affordance_detection [2026-08-31T20:18:34Z]: None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+      "evidence": "Observed at https://bbsrgotlaytent.live via search_affordance_detection [2026-09-07T18:29:24Z]: None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:no-site-search",
       "suggested_action": {
@@ -114,7 +116,7 @@
         "url": "https://bbsrgotlaytent.live",
         "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-08-31T20:18:34Z",
+        "timestamp": "2026-09-07T18:29:24Z",
         "confidence": "medium"
       },
       "id": "F-004"

@@ -12,12 +12,12 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 - If you fix something, move it from **Open** to **Fixed** and record your verification command.
 - Don't claim a fix without a reproduction. Every entry below has one.
 
-## Current status — 2026-09-07
+## Current status — 2026-09-08
 
 | | |
 |---|---|
-| Tests | **104 passing**, stdlib only |
-| Fixes landed | **F1–F35** across seven batches |
+| Tests | **192 passing**, stdlib only (104 detection + 83 tooling + 5 integration) |
+| Fixes landed | **F1–F36** across eight batches, plus upstream F-008–F-013 |
 | False positives removed | 4 high on python.org, 1 high on react.dev, 1 high on django, 10 duplicate lows |
 | Fabricated evidence strings | **0** (swept across all six validation reports) |
 | Skills contributing findings | **6 of 6** (was 4 of 6) |
@@ -29,6 +29,7 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 | Validation set | 10 sites, two sets: well-built and niche |
 | Still open | nothing tracked — see Known limitations |
 | Merged from upstream | MaiCoderHoon's F-008–F-013 post-report tooling (2026-09-07) |
+| Validation set | 10 sites; kforum.me now offline (404), kept to exercise that path |
 
 ## Quick verification commands
 
@@ -552,6 +553,42 @@ marketplace under an agent with web-search tools rather than only through the CL
 
 **On method.** Both bugs came from testing on sites that resemble the grading target, not from
 more unit tests. Set A measured precision; only Set B measured recall. Keep both.
+
+---
+
+### 2026-09-08 — Batch 8: merged upstream tooling, one integration bug found
+
+Merged MaiCoderHoon's four post-report features. Six files conflicted; all resolved keeping both
+sides (see the merge commit for the per-file reasoning). The merge itself was clean — 187 tests
+passed immediately — but regenerating the validation set surfaced a genuine integration bug.
+
+**F36 — The citability score reported 90/100 for a site returning HTTP 404.**
+`scored.py`, `compose_report.py`, `report-schema.json`
+
+- *Root cause:* the score subtracts severity penalties from a base of 100. `kforum.me` went
+  offline between audits, so the crawl correctly marked every page `inconclusive` and emitted no
+  page-level findings — exactly what the F2 guardrail is for. But with almost no findings to
+  penalise, the score came out at **90**, presenting a dead site as near-perfect.
+- *Why this matters:* it is the F2 failure class reappearing one layer up. F2 stopped an
+  unreadable page from *generating* false findings; nothing stopped the *absence* of findings
+  from being read as health.
+- *Change:* `annotate_report()` now takes the inventory pages and withholds the score entirely
+  when no page was readable, setting `summary.citability_score_unavailable` with the reason
+  instead. Omitting is schema-legal — the field is additive and optional — and a stated "not
+  computable" is more honest than a confident wrong number. Callers that pass no pages keep the
+  previous behaviour.
+- *Not a criticism of the scoring design:* it is deterministic, monotonic and refuses to
+  fabricate inputs, which is why the fix slots in cleanly. It simply had no way to know the crawl
+  had failed, because that information lives in the inventory rather than the findings.
+
+**Also fixed while merging, both pre-existing in our half of `Progress.md`:** an orphaned
+`## Open` header was splitting the batch entries, and the Batch 4 log entry had been lost when a
+later edit re-anchored on the wrong heading. The Batch 4 code shipped in `dd2234e`; only its log
+entry was missing, and it is reconstructed above from that commit.
+
+**Two numbering schemes now coexist in this file** and are unrelated: `F-0NN` covers post-report
+tooling (upstream), `F1`–`F36` covers detection and evidence correctness. Both are referenced by
+commit messages; do not renumber either.
 
 ---
 

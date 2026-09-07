@@ -184,7 +184,7 @@ def build_final_report(
         report["proactive_recommendations"] = proactive_recommendations
 
     # Additive 0-100 AI-Citability Score (see references/citability-score.md).
-    annotate_report(report)
+    annotate_report(report, pages=pages)
 
     return report
 

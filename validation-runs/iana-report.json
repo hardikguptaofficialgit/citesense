@@ -1,6 +1,6 @@
 {
   "site": "https://www.iana.org",
-  "audited_at": "2026-08-31T20:18:07Z",
+  "audited_at": "2026-09-07T18:28:58Z",
   "summary": {
     "total_findings": 8,
     "critical": 0,
@@ -8,7 +8,8 @@
     "medium": 4,
     "low": 3,
     "discoverability_findings": 5,
-    "engagement_findings": 3
+    "engagement_findings": 3,
+    "citability_score": 62
   },
   "findings": [
     {
@@ -18,7 +19,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://www.iana.org/ via jsonld_schema_extractor [2026-08-31T20:18:05Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.iana.org via onsite_answerability_probe [2026-08-31T20:18:07Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Internet Assigned Numbers Authority?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org/ via jsonld_schema_extractor [2026-09-07T18:28:50Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.iana.org via onsite_answerability_probe [2026-09-07T18:28:58Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Internet Assigned Numbers Authority?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "schema:root-organization-missing",
       "suggested_action": {
@@ -34,7 +35,7 @@
         "url": "https://www.iana.org/",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-31T20:18:05Z",
+        "timestamp": "2026-09-07T18:28:50Z",
         "confidence": "high"
       },
       "id": "F-001"
@@ -46,7 +47,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org/sitemap.xml via http_get_sitemap_check [2026-08-31T20:18:05Z]: Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "evidence": "Observed at https://www.iana.org/sitemap.xml via http_get_sitemap_check [2026-09-07T18:28:50Z]: Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "crawl:missing-xml-sitemap",
       "suggested_action": {
@@ -61,7 +62,7 @@
         "url": "https://www.iana.org/sitemap.xml",
         "observation": "Request to https://www.iana.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-08-31T20:18:05Z",
+        "timestamp": "2026-09-07T18:28:50Z",
         "confidence": "high"
       },
       "id": "F-002"
@@ -73,13 +74,14 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org/ via html_meta_inspector [2026-08-31T20:18:05Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+      "evidence": "Observed at https://www.iana.org/ via html_meta_inspector [2026-09-07T18:28:50Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "meta:missing-description",
       "suggested_action": {
         "summary": "Add an informative meta description tag.",
         "priority": "medium",
-        "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings."
+        "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+        "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Internet Assigned Numbers Authority\",\n  \"url\": \"https://www.iana.org/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Internet Assigned Numbers Authority\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.iana.org/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
       },
       "source_skills": [
         "crawl-render-audit"
@@ -88,7 +90,7 @@
         "url": "https://www.iana.org/",
         "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
         "method": "html_meta_inspector",
-        "timestamp": "2026-08-31T20:18:05Z",
+        "timestamp": "2026-09-07T18:28:50Z",
         "confidence": "high"
       },
       "id": "F-003"
@@ -100,7 +102,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org via onsite_answerability_probe [2026-08-31T20:18:07Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Internet Assigned Numbers Authority offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org via onsite_answerability_probe [2026-09-07T18:28:58Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Internet Assigned Numbers Authority offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
       "source_skill": "citation-simulator",
       "fingerprint": "citation:unanswerable:offering",
       "suggested_action": {
@@ -115,7 +117,7 @@
         "url": "https://www.iana.org",
         "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Internet Assigned Numbers Authority offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-08-31T20:18:07Z",
+        "timestamp": "2026-09-07T18:28:58Z",
         "confidence": "medium"
       },
       "id": "F-004"
@@ -127,7 +129,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.iana.org via onsite_identity_anchor_inspection [2026-08-31T20:18:07Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Internet Assigned Numbers Authority\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
+      "evidence": "Observed at https://www.iana.org via onsite_identity_anchor_inspection [2026-09-07T18:28:58Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Internet Assigned Numbers Authority\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
       "source_skill": "trust-corroboration-graph",
       "fingerprint": "trust:no-independent-identity-anchor",
       "suggested_action": {
@@ -142,7 +144,7 @@
         "url": "https://www.iana.org",
         "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Internet Assigned Numbers Authority\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-08-31T20:18:07Z",
+        "timestamp": "2026-09-07T18:28:58Z",
         "confidence": "high"
       },
       "id": "F-005"
@@ -154,7 +156,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.iana.org/domains/root via breadcrumb_markup_inspector [2026-08-31T20:18:05Z]: Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org/domains/root via breadcrumb_markup_inspector [2026-09-07T18:28:50Z]: Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:missing-breadcrumbs",
       "suggested_action": {
@@ -169,7 +171,7 @@
         "url": "https://www.iana.org/domains/root",
         "observation": "Page at deep route (/domains/root) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-31T20:18:05Z",
+        "timestamp": "2026-09-07T18:28:50Z",
         "confidence": "medium"
       },
       "id": "F-006"
@@ -181,7 +183,7 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.iana.org via search_affordance_detection [2026-08-31T20:18:05Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org via search_affordance_detection [2026-09-07T18:28:50Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:no-site-search",
       "suggested_action": {
@@ -196,7 +198,7 @@
         "url": "https://www.iana.org",
         "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-08-31T20:18:05Z",
+        "timestamp": "2026-09-07T18:28:50Z",
         "confidence": "medium"
       },
       "id": "F-007"
@@ -208,7 +210,7 @@
       "status": "proactive",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.iana.org via returning_visitor_affordance_detection [2026-08-31T20:18:05Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+      "evidence": "Observed at https://www.iana.org via returning_visitor_affordance_detection [2026-09-07T18:28:50Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
       "source_skill": "engagement-audit",
       "fingerprint": "engagement:no-personalization-readiness",
       "suggested_action": {
@@ -223,7 +225,7 @@
         "url": "https://www.iana.org",
         "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
         "method": "returning_visitor_affordance_detection",
-        "timestamp": "2026-08-31T20:18:05Z",
+        "timestamp": "2026-09-07T18:28:50Z",
         "confidence": "medium"
       },
       "id": "F-008"
