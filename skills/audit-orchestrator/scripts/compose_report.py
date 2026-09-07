@@ -17,6 +17,9 @@ for d in (current_dir, crawl_scripts_dir):
     if d not in sys.path:
         sys.path.insert(0, d)
 
+from fix_snippets import attach_fix_snippets
+from scored import annotate_report
+
 # Single source of truth: these sets live in models.py. Redefining them here let the two
 # drift silently, which would mis-split the discoverability/engagement summary counts.
 from models import DISCOVERABILITY_CATEGORIES, ENGAGEMENT_CATEGORIES, VALID_SEVERITIES
@@ -146,13 +149,29 @@ def compute_summary(findings: List[Dict[str, Any]]) -> Dict[str, Any]:
 def build_final_report(
     site_url: str,
     findings: List[Dict[str, Any]],
-    proactive_recommendations: Optional[List[Dict[str, Any]]] = None
+    proactive_recommendations: Optional[List[Dict[str, Any]]] = None,
+    ground_truth: Optional[Dict[str, Any]] = None,
+    pages: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
-    """Assembles, deduplicates, prioritizes, and formats the final report object."""
+    """Assembles, deduplicates, prioritizes, and formats the final report object.
+
+    When `ground_truth` (and optionally the cached `pages` snapshots) are supplied, every
+    qualifying structured-data finding also receives a pre-populated JSON-LD
+    `suggested_action.fix_snippet`. Snippets are only attached where the observed data is
+    rich enough to fill the entity's identifying fields -- see fix_snippets.py.
+    """
     deduped = dedupe(findings)
     # Sort by severity (critical first) then impact
     deduped.sort(key=lambda f: (SEVERITY_RANK.get(f.get("severity"), 4), SEVERITY_RANK.get(f.get("impact", f.get("severity")), 4)))
     validated_findings = assign_ids_and_validate(deduped)
+
+    # Auto-generate ready-to-paste JSON-LD fixes from data the crawl actually observed.
+    attach_fix_snippets(
+        validated_findings,
+        ground_truth=ground_truth,
+        pages=pages,
+        site_url=site_url,
+    )
 
     report = {
         "site": site_url,
@@ -164,7 +183,28 @@ def build_final_report(
     if proactive_recommendations:
         report["proactive_recommendations"] = proactive_recommendations
 
+    # Additive 0-100 AI-Citability Score (see references/citability-score.md).
+    annotate_report(report)
+
     return report
+
+
+def load_context(path: Optional[str]) -> Dict[str, Any]:
+    """
+    Loads fix-snippet context from a saved SiteInventory JSON (as written by
+    run_audit.py --save-inventory) or from a bare ground_truth JSON object.
+    Returns {"ground_truth": {...}, "pages": {...}}.
+    """
+    if not path or not os.path.exists(path):
+        return {"ground_truth": None, "pages": None}
+    with open(path, encoding="utf-8-sig") as f:
+        data = json.load(f)
+    if not isinstance(data, dict):
+        raise ValueError("--inventory file must contain a JSON object")
+    if "ground_truth" in data or "pages" in data:
+        return {"ground_truth": data.get("ground_truth"), "pages": data.get("pages")}
+    # A bare ground_truth object (brand_name/key_facts/...) was passed directly.
+    return {"ground_truth": data, "pages": None}
 
 
 def merge_mode(args):
@@ -176,7 +216,14 @@ def merge_mode(args):
         if not isinstance(proactive, list):
             raise ValueError("--proactive file must contain a JSON array")
 
-    report = build_final_report(args.site, findings, proactive_recommendations=proactive)
+    context = load_context(getattr(args, "inventory", None))
+    report = build_final_report(
+        args.site,
+        findings,
+        proactive_recommendations=proactive,
+        ground_truth=context["ground_truth"],
+        pages=context["pages"],
+    )
     output_text = json.dumps(report, indent=2)
 
     if args.output:
@@ -228,6 +275,11 @@ def main():
     merge_p.add_argument("--site", required=True)
     merge_p.add_argument("--input", nargs="+", required=True)
     merge_p.add_argument("--proactive")
+    merge_p.add_argument(
+        "--inventory",
+        help="Optional saved SiteInventory JSON (or bare ground_truth JSON) used to "
+             "pre-populate suggested_action.fix_snippet for structured-data findings",
+    )
     merge_p.add_argument("--output")
 
     validate_p = sub.add_parser("validate")
