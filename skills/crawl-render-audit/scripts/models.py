@@ -30,6 +30,56 @@ VALID_STATUSES = {"confirmed", "likely-risk", "proactive"}
 VALID_CONFIDENCES = {"high", "medium", "low"}
 VALID_IMPACTS = {"critical", "high", "medium", "low"}
 
+# Effort ladder, cheapest first. Deliberately coarse -- three rungs are enough to separate
+# "edit a file" from "change how the site is built" from "change how the world describes you",
+# and a finer scale would claim precision a static audit does not have.
+#   trivial  -- a contained edit to one file or template (a robots.txt line, a JSON-LD block,
+#               a meta tag, a date); no design or engineering decision involved.
+#   moderate -- page copy, templates or information architecture change across several pages;
+#               needs a content or design decision but no infrastructure work.
+#   involved -- rendering architecture or off-site presence has to change (server-side
+#               rendering, third-party profiles, how external sources and assistants cite you);
+#               multiple owners and lead time outside the site team's control.
+EFFORT_LEVELS = ("trivial", "moderate", "involved")
+VALID_EFFORTS = set(EFFORT_LEVELS)
+
+# Single source of truth for the effort a finding carries when its skill declares none.
+# Keyed by category because the category already names the kind of fix, so no specialist
+# call site has to change. Every VALID_CATEGORIES entry must appear here (pinned by test).
+CATEGORY_DEFAULT_EFFORT = {
+    # One file or one template: robots.txt directives, JSON-LD / meta markup, date stamps.
+    "crawlability": "trivial",
+    "structured-data": "trivial",
+    "freshness": "trivial",
+    # Page copy and site structure: surface facts in text, reconcile claims across pages,
+    # add orientation / navigation / returning-visitor affordances.
+    "fact-extractability": "moderate",
+    "internal-consistency": "moderate",
+    "orientation": "moderate",
+    "navigation": "moderate",
+    "personalization-readiness": "moderate",
+    # Architecture or off-site work: a client-rendered shell needs server rendering or
+    # prerendering; corroboration, disambiguation and citation outcomes depend on third
+    # parties and assistants re-crawling, which the site owner cannot ship in one change.
+    "render-gap": "involved",
+    "corroboration": "involved",
+    "entity-disambiguation": "involved",
+    "citation-omission": "involved",
+    "citation-misattribution": "involved",
+    "citation-staleness": "involved",
+    "citation-contradiction": "involved",
+}
+
+
+def resolve_effort(category: Optional[str], declared: Optional[str] = None) -> Optional[str]:
+    """
+    Returns the declared effort when it is a valid rung, otherwise the category default.
+    Returns None when neither is known -- an unrecognised category gets no guessed effort.
+    """
+    if declared in VALID_EFFORTS:
+        return declared
+    return CATEGORY_DEFAULT_EFFORT.get(category)
+
 
 @dataclass
 class EvidenceVerification:
@@ -83,6 +133,7 @@ class CandidateFinding:
     evidence_details: Optional[Dict[str, Any]] = None
     id: Optional[str] = None
     source_skills: Optional[List[str]] = None
+    effort: Optional[str] = None  # trivial, moderate, involved; None -> category default
 
     def __post_init__(self):
         if self.category not in VALID_CATEGORIES:
@@ -95,6 +146,7 @@ class CandidateFinding:
             self.confidence = "high"
         if self.impact not in VALID_IMPACTS:
             self.impact = self.severity
+        self.effort = resolve_effort(self.category, self.effort)
         if not self.fingerprint:
             norm_title = re.sub(r"[^a-z0-9]+", "-", self.title.lower()).strip("-")
             self.fingerprint = f"{self.category}:{norm_title}"
@@ -109,6 +161,7 @@ class CandidateFinding:
             "status": self.status,
             "confidence": self.confidence,
             "impact": self.impact,
+            "effort": self.effort,
             "evidence": self.evidence,
             "source_skill": self.source_skill,
             "fingerprint": self.fingerprint,
@@ -138,7 +191,8 @@ def create_candidate_finding(
     status: str = "confirmed",
     confidence: str = "high",
     impact: Optional[str] = None,
-    beyond_defect: bool = False
+    beyond_defect: bool = False,
+    effort: Optional[str] = None
 ) -> CandidateFinding:
     ev_ver = EvidenceVerification(
         url=url,
@@ -166,5 +220,6 @@ def create_candidate_finding(
         status=status,
         confidence=confidence,
         impact=impact or severity,
-        evidence_details=ev_ver.to_dict()
+        evidence_details=ev_ver.to_dict(),
+        effort=effort
     )

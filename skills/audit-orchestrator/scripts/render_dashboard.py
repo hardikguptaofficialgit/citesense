@@ -4,7 +4,8 @@ render_dashboard.py -- Renders a report.json into a single self-contained HTML d
 
 No frameworks, no build step, no external requests: CSS and JS are inlined, so the output
 opens straight off the filesystem. Everything rendered comes from the report -- absent
-optional sections (proactive_recommendations, citability_score, fix_snippet) are skipped
+optional sections (priority_fix_order, proactive_recommendations, citability_score,
+fix_snippet) are skipped
 rather than filled in.
 
 Usage:
@@ -106,6 +107,18 @@ pre.snippet{background:#0b0d13;border:1px solid var(--line);border-radius:8px;pa
   border-radius:10px;padding:16px 18px;margin-bottom:12px}
 .proactive h3{margin:0 0 8px;font-size:15px;font-weight:600;color:#8fdcb4}
 .proactive .lbl{color:#6f9c88}
+.priority{background:var(--panel);border:1px solid var(--accent);border-radius:10px;
+  padding:6px 18px;margin:0;list-style:none}
+.priority li{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.priority li:first-child{border-top:0}
+.priority .rank{font-size:20px;font-weight:700;color:var(--accent);width:26px;flex-shrink:0;
+  font-variant-numeric:tabular-nums}
+.priority .pt{font-weight:600;margin-bottom:6px}
+.priority .pt .fid{color:var(--muted);font-weight:400;margin-right:7px}
+.priority .meta{margin-bottom:6px}
+.tag.critical{color:var(--critical)} .tag.high{color:var(--high)}
+.tag.medium{color:var(--medium)} .tag.low{color:var(--low)}
+.why{font-size:13px;color:var(--muted)}
 .note{color:var(--muted);font-size:13px;font-style:italic}
 footer{margin-top:44px;border-top:1px solid var(--line);padding-top:14px;
   color:var(--muted);font-size:12px}
@@ -281,6 +294,40 @@ def _findings_section(findings: List[Dict[str, Any]]) -> str:
     return '<div class="filters">' + "".join(buttons) + "</div>" + "".join(groups)
 
 
+def _priority_section(entries: List[Dict[str, Any]]) -> str:
+    items = []
+    for rank, entry in enumerate((x for x in entries if isinstance(x, dict)), start=1):
+        heading = (
+            '<span class="fid">{i}</span>'.format(i=e(entry["id"])) if entry.get("id") else ""
+        ) + e(entry.get("title", "(untitled finding)"))
+        tags = []
+        for label, key in (("severity", "severity"), ("impact", "impact"), ("effort", "effort")):
+            value = entry.get(key)
+            tags.append(
+                '<span class="tag {c}">{l}: {v}</span>'.format(
+                    c=e(value) if value in SEVERITY_LABEL else "",
+                    l=e(label),
+                    v=e(value if value else "unclassified"),
+                )
+            )
+        why = (
+            '<div class="why">{r}</div>'.format(r=e(entry["rationale"]))
+            if entry.get("rationale") else ""
+        )
+        items.append(
+            '<li><div class="rank">{n}</div><div><div class="pt">{h}</div>'
+            '<div class="meta">{t}</div>{w}</div></li>'.format(
+                n=rank, h=heading, t="".join(tags), w=why
+            )
+        )
+    return (
+        "<h2>Priority fixes: do these first</h2>"
+        '<p class="note">Ranked by impact, then effort (cheapest first), then severity. '
+        "Full details for each are in the findings below.</p>"
+        '<ol class="priority">' + "".join(items) + "</ol>"
+    )
+
+
 def _proactive_section(recommendations: List[Dict[str, Any]]) -> str:
     cards = []
     for rec in recommendations:
@@ -339,6 +386,14 @@ def render_dashboard(report: Dict[str, Any]) -> str:
         _score_block(report),
         "</div>",
         "</header>",
+    ]
+
+    priority = report.get("priority_fix_order")
+    # Optional per the schema -- skip the whole section when it is absent or empty.
+    if isinstance(priority, list) and priority:
+        body.append(_priority_section(priority))
+
+    body += [
         "<h2>Discoverability vs. engagement</h2>",
         _split_chart(summary),
         "<h2>Findings</h2>",

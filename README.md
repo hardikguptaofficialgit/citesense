@@ -98,6 +98,7 @@ graph TD
 13. **Auto-Generated Fix Snippets:** Structured-data findings carry a ready-to-paste JSON-LD block pre-populated from observed ground truth. Unknown values are explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is **suppressed** rather than shipped as a fix.
 14. **Report Comparison:** Diffs two reports by stable `fingerprint` into `resolved` / `new` / `unchanged` buckets with a weighted `score_delta`, so "did the fix work?" is answerable.
 15. **AI-Citability Score:** A deterministic, monotonic 0-100 score in `summary.citability_score`, with its formula and rationale documented in `references/citability-score.md` rather than hidden in code.
+16. **Priority Fix Order:** A top-level `priority_fix_order` lists up to five findings ranked by impact, then effort (`trivial` / `moderate` / `involved`), then severity. The dashboard leads with this list as "do these first". Effort is declared per finding or derived from its category via a single documented map in `models.py`.
 
 ---
 
@@ -153,6 +154,10 @@ python skills/audit-orchestrator/scripts/scored.py report.json --explain
 #    truth, and this tool will not fabricate one.
 python skills/audit-orchestrator/scripts/fix_snippets.py report.json \
     --inventory inventory.json --output annotated-report.json
+
+# 10. Priority Fix Order (recompute the impact-vs-effort top 5 for any existing report,
+#     including ones composed before priority_fix_order existed)
+python skills/audit-orchestrator/scripts/priority_order.py report.json
 ```
 
 All four report-consuming CLIs fail readably rather than with a traceback — a missing file,
@@ -160,7 +165,7 @@ malformed JSON, or a non-object JSON document produces a one-line `error:` on st
 exit code 1 — and `--output` creates its parent directory if it does not exist.
 
 ### What shows up inside the report
-Two additive fields are produced automatically during composition. Both are **optional** in
+Three additive fields are produced automatically during composition. All are **optional** in
 `references/report-schema.json` — existing consumers are unaffected.
 
 **`summary.citability_score`** — a 0-100 AI-Citability Score written on every composed
@@ -199,6 +204,22 @@ python skills/audit-orchestrator/scripts/run_audit.py https://example.com \
 python skills/audit-orchestrator/scripts/compose_report.py merge \
     --site https://example.com --input crawl_findings.json engagement_findings.json \
     --inventory inventory.json --output report.json
+```
+
+**`priority_fix_order`** is a top-level list of up to five findings, best first. Each finding
+also carries an optional `effort`: `trivial` (one file or template), `moderate` (copy or
+structure across pages) or `involved` (rendering architecture or off-site work). A skill may
+declare it. Otherwise it comes from the finding's category via `CATEGORY_DEFAULT_EFFORT` in
+`skills/crawl-render-audit/scripts/models.py`. The ranking sorts by impact, then effort
+(cheapest first), then severity, then id. Impact always dominates, and effort only reorders
+fixes of equal impact. The key is omitted when the report has no findings. The ordering is
+documented in `skills/audit-orchestrator/scripts/priority_order.py`.
+
+```json
+"priority_fix_order": [
+  { "id": "F-002", "title": "Missing Organization schema", "severity": "high", "impact": "high",
+    "effort": "trivial", "rationale": "High impact, trivial fix — best return for effort." }
+]
 ```
 
 ---

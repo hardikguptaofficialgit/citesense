@@ -19,6 +19,7 @@ for d in (current_dir, crawl_scripts_dir):
 
 from fix_snippets import attach_fix_snippets
 from scored import annotate_report
+from priority_order import rank_priority_fixes
 
 # Single source of truth: these sets live in models.py. Redefining them here let the two
 # drift silently, which would mis-split the discoverability/engagement summary counts.
@@ -179,6 +180,11 @@ def build_final_report(
         "summary": compute_summary(validated_findings),
         "findings": validated_findings,
     }
+
+    # Additive top-5 impact-vs-effort ranking (see priority_order.py). Omitted when there is
+    # nothing to rank, rather than emitted as an empty list.
+    if validated_findings:
+        report["priority_fix_order"] = rank_priority_fixes(validated_findings)
 
     if proactive_recommendations:
         report["proactive_recommendations"] = proactive_recommendations

@@ -12,12 +12,12 @@ Working log for the Adobe University Hackathon 2026 Round 3 submission.
 - If you fix something, move it from **Open** to **Fixed** and record your verification command.
 - Don't claim a fix without a reproduction. Every entry below has one.
 
-## Current status — 2026-09-08
+## Current status — 2026-09-13
 
 | | |
 |---|---|
-| Tests | **192 passing**, stdlib only (104 detection + 83 tooling + 5 integration) |
-| Fixes landed | **F1–F36** across eight batches, plus upstream F-008–F-013 |
+| Tests | **218 passing**, stdlib only (104 detection + 109 tooling + 5 integration) |
+| Fixes landed | **F1–F36** across eight batches, plus upstream F-008–F-017 |
 | False positives removed | 4 high on python.org, 1 high on react.dev, 1 high on django, 10 duplicate lows |
 | Fabricated evidence strings | **0** (swept across all six validation reports) |
 | Skills contributing findings | **6 of 6** (was 4 of 6) |
@@ -941,6 +941,128 @@ valid and the emitted output is byte-identical.
 (104 tests, OK) — including `run_audit.py`'s own schema validation, which composes and
 validates a report against this file. Re-ran the live python.org audit end to end after the
 edit and confirmed the report still validates and the findings are unchanged.
+
+---
+
+## F-014 — Effort model on findings (explicit-but-defaulted)
+
+**Root cause.** The report ranked findings by severity, then impact, and nothing else. It could
+say what was worst but not what to do first: a high-impact fix that is one JSON-LD block and a
+high-impact fix that needs server-side rendering sat side by side with no signal about cost.
+Adding a cost signal by editing every `create_candidate_finding` call site across five skills
+would have meant touching detection code for a reporting feature.
+
+**Change.** `skills/crawl-render-audit/scripts/models.py`:
+
+- New fixed ladder `EFFORT_LEVELS = ("trivial", "moderate", "involved")`, cheapest first, with
+  each rung defined in a comment: **trivial** = a contained edit to one file or template;
+  **moderate** = page copy, templates or information architecture across several pages;
+  **involved** = rendering architecture or off-site presence has to change. Three rungs on
+  purpose: a static audit cannot justify finer precision.
+- `CATEGORY_DEFAULT_EFFORT` is the **single source of truth** for the default, keyed by
+  category because the category already names the kind of fix:
+
+  | Effort | Categories | Why |
+  |---|---|---|
+  | trivial | `crawlability`, `structured-data`, `freshness` | robots.txt line, JSON-LD / meta markup, a date stamp |
+  | moderate | `fact-extractability`, `internal-consistency`, `orientation`, `navigation`, `personalization-readiness` | copy and structure change across pages; needs a content/design decision, no infrastructure |
+  | involved | `render-gap`, `corroboration`, `entity-disambiguation`, `citation-*` (4) | SSR/prerendering, or third parties and assistants have to change what they say |
+
+- `resolve_effort(category, declared)` returns a valid declared rung, otherwise the category
+  default, otherwise `None`. An unknown category gets no guessed effort.
+- `CandidateFinding` gained an optional `effort` field, resolved in `__post_init__` (an invalid
+  declared value falls back to the category default, mirroring how an invalid `impact` falls
+  back to `severity`). `to_dict()` now emits `effort`.
+- `create_candidate_finding(..., effort=None)`. **No call site was edited.** Every existing
+  finding picks up its category default automatically.
+
+Schema: `findings.items.properties.effort` added as an **optional** string enum. `required`
+unchanged.
+
+**How verified.** `tests/test_priority_order.py` `EffortModelTests` (6 tests): every
+`VALID_CATEGORIES` entry has a default (so a new category cannot be added silently without
+one); the default is derived when nothing is declared; an explicit effort overrides it and
+reaches `to_dict()`; an invalid declared value falls back; an unknown category resolves to
+`None` rather than a guess.
+
+---
+
+## F-015 — Priority fix ranking module
+
+**Root cause.** See F-014. With effort available, the report still needed a deterministic way to
+combine it with impact. It had to be recomputable by hand, like the citability score.
+
+**Change.** New `skills/audit-orchestrator/scripts/priority_order.py`.
+`rank_priority_fixes(findings, limit=5)` is a pure function (the input list is not modified)
+returning up to five entries `{id, title, severity, impact, effort, rationale}`. Sort key,
+ascending:
+
+```
+1. impact    critical < high < medium < low < unknown   (impact falls back to severity)
+2. effort    trivial < moderate < involved < unknown    (declared, else category default)
+3. severity  critical < high < medium < low < unknown
+4. id        lexicographic
+5. title     lexicographic -- only reachable when ids are missing or duplicated
+```
+
+Impact dominates: a high-impact *involved* fix still outranks a medium-impact *trivial* one.
+Effort only reorders fixes within an impact tier, so the cheap wins float to the top of each
+tier. Every component is explicit, so the order never depends on input or dict ordering.
+
+`rationale` is generated only from impact and effort, e.g. *"High impact, trivial fix — best
+return for effort."*, *"Critical impact, involved fix — the stakes justify the larger effort."*,
+or *"… effort not classified — ranked by impact alone."* when effort is `None`.
+
+CLI: `python priority_order.py report.json` recomputes the order for any existing report,
+including reports composed before this feature existed.
+
+**How verified.** `RankingTests` (10 tests): high/trivial ranks above high/involved, which ranks
+above medium/trivial; severity breaks impact+effort ties; an explicit effort on a dict beats the
+category default; a missing impact falls back to severity; the exact entry shape and rationale
+text; at most 5, all when fewer, empty for `[]` and `None`. Shuffling a 20-finding input with
+mixed impacts, severities, efforts and an unknown category 25 times always yields the same
+output. A separate test confirms the input list is not modified.
+
+---
+
+## F-016 — `priority_fix_order` wired into the composed report
+
+**Change.** `compose_report.build_final_report` attaches
+`report["priority_fix_order"] = rank_priority_fixes(validated_findings)` as a **top-level** key
+after IDs are assigned and fix snippets attached. It is attached the same way as
+`proactive_recommendations`: present only when there is at least one finding, omitted rather
+than emitted as `[]` otherwise. Entries reference the final `F-NNN` ids, so each one resolves to
+a finding in the same report.
+
+Schema: `priority_fix_order` added as an **optional** top-level array (`maxItems: 5`, items
+require the six entry fields, `effort` is `string | null`). The top-level `required` list is
+unchanged. The schema still has no `additionalProperties: false`.
+
+**How verified.** `ReportWiringTests` (7 tests): the key is attached with the correct order and
+resolvable ids, and is not placed inside `summary`; it is omitted for empty findings; the schema
+lists both new fields as optional. A composed report carrying `effort` on every finding and a
+`priority_fix_order` validates against `report-schema.json`, and so does one without them. The
+test file includes a small stdlib validator for the draft-07 keywords the schema uses, since
+`jsonschema` is not a dependency, plus a negative test so the validator is known to reject
+things. The CLI is also exercised as a subprocess. All 10 existing `validation-runs/` reports
+were re-checked read-only with the same validator: 0 invalid.
+
+---
+
+## F-017 — Dashboard "Priority fixes: do these first" section
+
+**Change.** `render_dashboard.py` renders `priority_fix_order` directly under the header, above
+the discoverability split and the full findings list, as a numbered panel. Each row shows its
+rank, finding id and title, severity/impact/effort tags (severity-coloured), and the rationale
+line. Absent or empty ⇒ the section is skipped, matching the `citability_score` and
+`proactive_recommendations` handling. The renderer does not recompute a missing order. Every
+string goes through the existing `e()` escaper.
+
+**How verified.** `DashboardPriorityTests` (3 tests): the section is present and positioned
+before `<h2>Findings</h2>` with effort tags and rationale; it is skipped when the key is missing
+or empty; an `<img onerror>` title and a `<script>` rationale come out escaped. The rendered
+output was also parsed with `test_render_dashboard`'s `WellFormednessChecker`: the tag stack
+closes clean.
 
 ---
 
