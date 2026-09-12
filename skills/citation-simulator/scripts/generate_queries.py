@@ -7,6 +7,7 @@ Emits structured CandidateFindings.
 import os
 import sys
 import json
+import re
 from urllib.parse import urlparse
 from typing import List, Dict, Any, Optional
 
@@ -49,6 +50,130 @@ def build_queries(facts: Dict[str, Any]) -> List[Dict[str, str]]:
         queries.append({"category": "credibility", "query": f"What independent evidence supports {name}'s credibility?"})
 
     return queries
+
+
+PRICE_HINT_RE = re.compile(r"(?:[$£€¥]\s?\d|\b\d+\s?(?:usd|eur|gbp)\b|\bper (?:month|user|seat|year)\b|\bfree tier\b|\bpricing\b)", re.I)
+CONTACT_HINT_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}|\bcontact us\b|\bget in touch\b", re.I)
+
+
+def evaluate_answerability(inventory: Dict[str, Any], ground_truth: Dict[str, Any], site_domain: str) -> List[Dict[str, Any]]:
+    """
+    Deterministic precondition for citation, runnable on every site with no web access.
+
+    Appendix B: a page only makes it into an assistant's answer if the assistant can reach it,
+    read it, and quote a clear fact from it. This checks the last step against the pages we
+    actually crawled -- if the fact needed to answer a natural question about the brand is not
+    extractable from any crawled page, the brand cannot be cited for that question regardless
+    of how the ranking works.
+
+    Findings are `likely-risk` / medium confidence because we sample a handful of pages rather
+    than the whole site: absence from the sample is a strong signal, not a proof of absence.
+    """
+    findings = []
+    pages = [
+        p for p in (inventory.get("pages") or {}).values()
+        if not p.get("inconclusive") and p.get("status_code") == 200
+    ]
+    if not pages:
+        return findings
+
+    corpus = " ".join(p.get("visible_text", "") for p in pages)
+    schema_types = set()
+    for p in pages:
+        for ent in p.get("jsonld_parsed", []):
+            t = ent.get("@type", "")
+            for x in (t if isinstance(t, list) else [t]):
+                if x:
+                    schema_types.add(x)
+
+    brand = ground_truth.get("brand_name", site_domain)
+    pages_desc = f"{len(pages)} crawled page(s)"
+
+    # Only ask a commercial question of a site that presents a commercial surface. Probing
+    # "how much does X cost?" on a non-commercial site (a docs site, a public agency, an
+    # open-source project) is a manufactured defect, not a finding.
+    is_commercial = any(
+        p.get("page_purpose") == "product_pricing" for p in pages
+    ) or bool({"Product", "Offer", "Service", "SoftwareApplication"} & schema_types)
+
+    probes = [
+        {
+            "key": "identity",
+            "fingerprint": "schema:root-organization-missing",
+            "query": f"What is {brand}?",
+            "answerable": bool({"Organization", "LocalBusiness", "Corporation", "Brand"} & schema_types),
+            "severity": "high",
+            "missing": "no Organization/LocalBusiness schema states who the brand is in machine-readable form",
+            "fix_summary": "Publish a machine-readable identity statement on the homepage.",
+            "fix": (
+                "Add Organization JSON-LD (name, url, logo, description, sameAs) to the homepage, and a "
+                "one-sentence plain-text description of what the brand does in the first screen of copy."
+            ),
+        },
+        {
+            "key": "offering",
+            "query": f"What does {brand} offer?",
+            "answerable": bool({"Product", "Service", "SoftwareApplication", "Offer", "ItemList"} & schema_types),
+            "severity": "medium",
+            "missing": "no Product/Service/Offer schema describes the offering",
+            "fix_summary": "Mark up the product or service catalogue.",
+            "fix": (
+                "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can "
+                "quote the offering rather than paraphrasing navigation labels."
+            ),
+        },
+        {
+            "key": "transactional",
+            "query": f"How much does {brand} cost?",
+            "answerable": (not is_commercial) or bool(PRICE_HINT_RE.search(corpus)) or "Offer" in schema_types,
+            "severity": "medium",
+            "missing": "no price, currency or pricing language is extractable from the crawled text",
+            "fix_summary": "Make pricing extractable as text, not just as an image or a gated flow.",
+            "fix": (
+                "State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. "
+                "If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite "
+                "\"pricing is quote-based\" but cannot cite silence."
+            ),
+        },
+        {
+            "key": "contact",
+            "query": f"How do I contact {brand}?",
+            "answerable": bool(CONTACT_HINT_RE.search(corpus)) or "ContactPoint" in schema_types,
+            "severity": "medium",
+            "missing": "no email, phone number or contact affordance is extractable from the crawled text",
+            "fix_summary": "Expose a contact route as machine-readable text.",
+            "fix": (
+                "Publish an email address or phone number as selectable text (not an image), and add "
+                "ContactPoint JSON-LD to the Organization entity."
+            ),
+        },
+    ]
+
+    for probe in probes:
+        if probe["answerable"]:
+            continue
+        findings.append(create_candidate_finding(
+            title=f"No extractable answer on-site for \"{probe['query']}\"",
+            category="citation-omission",
+            severity=probe["severity"],
+            url=f"https://{site_domain}",
+            observation=(
+                f"Across {pages_desc}, {probe['missing']}. An assistant that fetched these pages could "
+                f"not quote an answer to \"{probe['query']}\" from this site, so it must fall back to "
+                f"third-party sources or omit the brand."
+            ),
+            method="onsite_answerability_probe",
+            source_skill="citation-simulator",
+            action_summary=probe["fix_summary"],
+            action_priority=probe["severity"],
+            action_how_to_fix=probe["fix"],
+            fingerprint=probe.get("fingerprint") or f"citation:unanswerable:{probe['key']}",
+            status="likely-risk",
+            confidence="medium",
+            impact=probe["severity"]
+        ).to_dict())
+
+    return findings
 
 
 def evaluate_citation_simulation(

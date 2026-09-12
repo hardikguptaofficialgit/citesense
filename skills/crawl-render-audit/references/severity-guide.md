@@ -4,13 +4,16 @@
 |---|---|---|
 | AI-assistant user agent explicitly disallowed while `*` is open | critical | Site believes it's discoverable but has silently opted out the bot that matters |
 | Entire site disallowed for `*` with no AI-agent exceptions | critical (verify it isn't an intentional staging/private site first) | Nothing on the site is reachable |
-| Core page content js_dependency_ratio > 0.35 | high | Content visible to a human is invisible to a non-executing reader |
+| Raw HTML yields < 30 words while the document is > 1KB (empty client-rendered shell) | high | Content visible to a human is invisible to a non-executing reader. JS use alone is NOT a defect -- only an empty raw shell is |
 | No JSON-LD on a money page (product/service/pricing) | high | The most reliable machine-extractable fact source is absent |
 | JSON-LD present but missing schema-required fields | medium | Entity partially resolvable but incomplete |
 | Missing title or meta description | medium | Common source of the literal text an assistant quotes as a snippet |
 | Missing canonical on a site with duplicate/parameterized URLs | medium | Risk of facts being attributed to the wrong URL |
 | No sitemap.xml | medium | Raises discovery cost/latency, not a hard block |
-| Missing viewport meta tag | low (discoverability) / feed to engagement-audit too | Mobile-render and mobile-bot rendering both affected |
+| Missing viewport meta tag | high (owned by engagement-audit, not this skill) | Mobile-render and mobile-bot rendering both affected |
+| Money page with no price in text and no Offer schema | high | The single most citable commercial fact is unquotable |
+| >= 5 images with no alt attribute at all (alt="" excluded) | medium on money/home pages, low elsewhere | Facts rendered inside images are invisible; alt="" is correct marking and never a defect |
+| Copyright footer whose newest year is >= 3 years old | low | Ranges like "2005-2026" resolve to 2026 and are NOT stale |
 | llms.txt/ai.txt present | not a finding -- note as existing strength | Emerging convention, absence alone isn't a defect |
 
 ## Known AI-assistant crawler user agents (verify current list periodically)

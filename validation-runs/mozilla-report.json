@@ -1,16 +1,46 @@
 {
   "site": "https://www.mozilla.org",
-  "audited_at": "2026-08-29T17:52:06Z",
+  "audited_at": "2026-09-07T18:28:30Z",
   "summary": {
-    "total_findings": 11,
+    "total_findings": 8,
     "critical": 0,
-    "high": 1,
-    "medium": 3,
-    "low": 7,
-    "discoverability_findings": 9,
-    "engagement_findings": 2
+    "high": 2,
+    "medium": 4,
+    "low": 2,
+    "discoverability_findings": 6,
+    "engagement_findings": 2,
+    "citability_score": 52
   },
   "findings": [
+    {
+      "title": "Missing Schema.org Organization structured data on root landing page",
+      "category": "structured-data",
+      "severity": "high",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "high",
+      "evidence": "Observed at https://www.mozilla.org/ via jsonld_schema_extractor [2026-09-07T18:28:22Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.mozilla.org via onsite_answerability_probe [2026-09-07T18:28:30Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "schema:root-organization-missing",
+      "suggested_action": {
+        "summary": "Add Organization JSON-LD markup to the homepage.",
+        "priority": "high",
+        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+        "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Mozilla\",\n  \"url\": \"https://www.mozilla.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Mozilla is the not-for-profit behind the lightning fast Firefox browser. We put people over profit to give everyone more power online.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+      },
+      "source_skills": [
+        "citation-simulator",
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.mozilla.org/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-07T18:28:22Z",
+        "confidence": "high"
+      },
+      "id": "F-001"
+    },
     {
       "title": "Missing Schema.org Product and Offer structured data on commercial page",
       "category": "structured-data",
@@ -18,13 +48,14 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://www.mozilla.org/en-US/products/ via jsonld_schema_extractor [2026-08-29T17:52:01Z]: Commercial/product page (https://www.mozilla.org/en-US/products/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+      "evidence": "Observed at https://www.mozilla.org/en-US/products/ via jsonld_schema_extractor [2026-09-07T18:28:22Z]: Commercial/product page (https://www.mozilla.org/en-US/products/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "schema:product-offer-missing:/en-US/products/",
       "suggested_action": {
         "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
         "priority": "high",
-        "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability."
+        "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+        "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Products\",\n  \"url\": \"https://www.mozilla.org/en-US/products/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Mozilla\"\n  },\n  \"description\": \"Mozilla\u2019s family of products are all designed to keep you safer and smarter online\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.mozilla.org/en-US/products/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
       },
       "source_skills": [
         "crawl-render-audit"
@@ -33,10 +64,10 @@
         "url": "https://www.mozilla.org/en-US/products/",
         "observation": "Commercial/product page (https://www.mozilla.org/en-US/products/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-29T17:52:01Z",
+        "timestamp": "2026-09-07T18:28:22Z",
         "confidence": "high"
       },
-      "id": "F-001"
+      "id": "F-002"
     },
     {
       "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
@@ -45,7 +76,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://www.mozilla.org/sitemap.xml via http_get_sitemap_check [2026-08-29T17:52:01Z]: Request to https://www.mozilla.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "evidence": "Observed at https://www.mozilla.org/sitemap.xml via http_get_sitemap_check [2026-09-07T18:28:22Z]: Request to https://www.mozilla.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "crawl:missing-xml-sitemap",
       "suggested_action": {
@@ -60,199 +91,91 @@
         "url": "https://www.mozilla.org/sitemap.xml",
         "observation": "Request to https://www.mozilla.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-08-29T17:52:01Z",
-        "confidence": "high"
-      },
-      "id": "F-002"
-    },
-    {
-      "title": "Missing Schema.org Organization structured data on root landing page",
-      "category": "structured-data",
-      "severity": "medium",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "medium",
-      "evidence": "Observed at https://www.mozilla.org/ via jsonld_schema_extractor [2026-08-29T17:52:01Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
-      "source_skill": "crawl-render-audit",
-      "fingerprint": "schema:root-organization-missing",
-      "suggested_action": {
-        "summary": "Add Organization JSON-LD markup to the homepage.",
-        "priority": "medium",
-        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles."
-      },
-      "source_skills": [
-        "crawl-render-audit"
-      ],
-      "evidence_details": {
-        "url": "https://www.mozilla.org/",
-        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
-        "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-29T17:52:01Z",
+        "timestamp": "2026-09-07T18:28:22Z",
         "confidence": "high"
       },
       "id": "F-003"
     },
     {
-      "title": "Core claim lacks independent external corroboration: \"Founded in 1998\"",
-      "category": "corroboration",
+      "title": "No extractable answer on-site for \"What does Mozilla offer?\"",
+      "category": "citation-omission",
       "severity": "medium",
       "status": "likely-risk",
-      "confidence": "high",
+      "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://www.mozilla.org via external_knowledge_graph_search [2026-08-29T17:52:06Z]: Searched external sources for claim \"Founded in 1998\"; found 0 independent authoritative supporting sources. Only source is brand-owned channels. (Confidence: high)",
-      "source_skill": "trust-corroboration-graph",
-      "fingerprint": "trust:uncorroborated-fact:Founded in 1998",
+      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-09-07T18:28:30Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Mozilla offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:offering",
       "suggested_action": {
-        "summary": "Establish external corroboration on authoritative third-party platforms.",
+        "summary": "Mark up the product or service catalogue.",
         "priority": "medium",
-        "how_to_fix": "Verify company details and notable claims on Wikipedia/Wikidata, Crunchbase, LinkedIn company page, and industry registries."
+        "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels."
       },
       "source_skills": [
-        "trust-corroboration-graph"
+        "citation-simulator"
       ],
       "evidence_details": {
         "url": "https://www.mozilla.org",
-        "observation": "Searched external sources for claim \"Founded in 1998\"; found 0 independent authoritative supporting sources. Only source is brand-owned channels.",
-        "method": "external_knowledge_graph_search",
-        "timestamp": "2026-08-29T17:52:06Z",
-        "confidence": "high"
+        "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Mozilla offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:28:30Z",
+        "confidence": "medium"
       },
       "id": "F-004"
     },
     {
-      "title": "Stale copyright notice (1998) on active site",
-      "category": "freshness",
-      "severity": "low",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/ via copyright_year_detector [2026-08-29T17:52:01Z]: Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers. (Confidence: high)",
-      "source_skill": "freshness-corroboration",
-      "fingerprint": "freshness:stale-copyright:https://www.mozilla.org/",
+      "title": "No extractable answer on-site for \"How much does Mozilla cost?\"",
+      "category": "citation-omission",
+      "severity": "medium",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "medium",
+      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-09-07T18:28:30Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Mozilla cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:transactional",
       "suggested_action": {
-        "summary": "Update the site footer copyright year.",
-        "priority": "low",
-        "how_to_fix": "Update the copyright notice on https://www.mozilla.org/ to the current year (2026) or use dynamic server-rendered date generation."
+        "summary": "Make pricing extractable as text, not just as an image or a gated flow.",
+        "priority": "medium",
+        "how_to_fix": "State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite \"pricing is quote-based\" but cannot cite silence."
       },
       "source_skills": [
-        "freshness-corroboration"
+        "citation-simulator"
       ],
       "evidence_details": {
-        "url": "https://www.mozilla.org/",
-        "observation": "Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers.",
-        "method": "copyright_year_detector",
-        "timestamp": "2026-08-29T17:52:01Z",
-        "confidence": "high"
+        "url": "https://www.mozilla.org",
+        "observation": "Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Mozilla cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:28:30Z",
+        "confidence": "medium"
       },
       "id": "F-005"
     },
     {
-      "title": "Stale copyright notice (1998) on active site",
-      "category": "freshness",
-      "severity": "low",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/en-US/products/ via copyright_year_detector [2026-08-29T17:52:01Z]: Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers. (Confidence: high)",
-      "source_skill": "freshness-corroboration",
-      "fingerprint": "freshness:stale-copyright:https://www.mozilla.org/en-US/products/",
+      "title": "No extractable answer on-site for \"How do I contact Mozilla?\"",
+      "category": "citation-omission",
+      "severity": "medium",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "medium",
+      "evidence": "Observed at https://www.mozilla.org via onsite_answerability_probe [2026-09-07T18:28:30Z]: Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:contact",
       "suggested_action": {
-        "summary": "Update the site footer copyright year.",
-        "priority": "low",
-        "how_to_fix": "Update the copyright notice on https://www.mozilla.org/en-US/products/ to the current year (2026) or use dynamic server-rendered date generation."
+        "summary": "Expose a contact route as machine-readable text.",
+        "priority": "medium",
+        "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity."
       },
       "source_skills": [
-        "freshness-corroboration"
+        "citation-simulator"
       ],
       "evidence_details": {
-        "url": "https://www.mozilla.org/en-US/products/",
-        "observation": "Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers.",
-        "method": "copyright_year_detector",
-        "timestamp": "2026-08-29T17:52:01Z",
-        "confidence": "high"
+        "url": "https://www.mozilla.org",
+        "observation": "Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Mozilla?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:28:30Z",
+        "confidence": "medium"
       },
       "id": "F-006"
-    },
-    {
-      "title": "Stale copyright notice (1998) on active site",
-      "category": "freshness",
-      "severity": "low",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/en-US/about/ via copyright_year_detector [2026-08-29T17:52:01Z]: Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers. (Confidence: high)",
-      "source_skill": "freshness-corroboration",
-      "fingerprint": "freshness:stale-copyright:https://www.mozilla.org/en-US/about/",
-      "suggested_action": {
-        "summary": "Update the site footer copyright year.",
-        "priority": "low",
-        "how_to_fix": "Update the copyright notice on https://www.mozilla.org/en-US/about/ to the current year (2026) or use dynamic server-rendered date generation."
-      },
-      "source_skills": [
-        "freshness-corroboration"
-      ],
-      "evidence_details": {
-        "url": "https://www.mozilla.org/en-US/about/",
-        "observation": "Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers.",
-        "method": "copyright_year_detector",
-        "timestamp": "2026-08-29T17:52:01Z",
-        "confidence": "high"
-      },
-      "id": "F-007"
-    },
-    {
-      "title": "Stale copyright notice (1998) on active site",
-      "category": "freshness",
-      "severity": "low",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/en-US/privacy/websites/cookie-settings/ via copyright_year_detector [2026-08-29T17:52:01Z]: Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers. (Confidence: high)",
-      "source_skill": "freshness-corroboration",
-      "fingerprint": "freshness:stale-copyright:https://www.mozilla.org/en-US/privacy/websites/cookie-settings/",
-      "suggested_action": {
-        "summary": "Update the site footer copyright year.",
-        "priority": "low",
-        "how_to_fix": "Update the copyright notice on https://www.mozilla.org/en-US/privacy/websites/cookie-settings/ to the current year (2026) or use dynamic server-rendered date generation."
-      },
-      "source_skills": [
-        "freshness-corroboration"
-      ],
-      "evidence_details": {
-        "url": "https://www.mozilla.org/en-US/privacy/websites/cookie-settings/",
-        "observation": "Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers.",
-        "method": "copyright_year_detector",
-        "timestamp": "2026-08-29T17:52:01Z",
-        "confidence": "high"
-      },
-      "id": "F-008"
-    },
-    {
-      "title": "Stale copyright notice (1998) on active site",
-      "category": "freshness",
-      "severity": "low",
-      "status": "confirmed",
-      "confidence": "high",
-      "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/en-US/ via copyright_year_detector [2026-08-29T17:52:01Z]: Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers. (Confidence: high)",
-      "source_skill": "freshness-corroboration",
-      "fingerprint": "freshness:stale-copyright:https://www.mozilla.org/en-US/",
-      "suggested_action": {
-        "summary": "Update the site footer copyright year.",
-        "priority": "low",
-        "how_to_fix": "Update the copyright notice on https://www.mozilla.org/en-US/ to the current year (2026) or use dynamic server-rendered date generation."
-      },
-      "source_skills": [
-        "freshness-corroboration"
-      ],
-      "evidence_details": {
-        "url": "https://www.mozilla.org/en-US/",
-        "observation": "Footer copyright notice references 1998 (gap of 28 years), presenting a stale signal to search and AI crawlers.",
-        "method": "copyright_year_detector",
-        "timestamp": "2026-08-29T17:52:01Z",
-        "confidence": "high"
-      },
-      "id": "F-009"
     },
     {
       "title": "Deep hierarchical page lacks breadcrumb navigation trail",
@@ -261,9 +184,9 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/en-US/products/ via breadcrumb_markup_inspector [2026-08-29T17:52:01Z]: Page at deep route (/en-US/products/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://www.mozilla.org/en-US/products/ via breadcrumb_markup_inspector [2026-09-07T18:28:22Z]: Page at deep route (/en-US/products/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.mozilla.org/en-US/about/ via breadcrumb_markup_inspector [2026-09-07T18:28:22Z]: Page at deep route (/en-US/about/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
       "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-breadcrumbs:/en-US/products/",
+      "fingerprint": "engagement:missing-breadcrumbs",
       "suggested_action": {
         "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
         "priority": "low",
@@ -276,56 +199,92 @@
         "url": "https://www.mozilla.org/en-US/products/",
         "observation": "Page at deep route (/en-US/products/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-29T17:52:01Z",
+        "timestamp": "2026-09-07T18:28:22Z",
         "confidence": "medium"
       },
-      "id": "F-010"
+      "id": "F-007"
     },
     {
-      "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+      "title": "No site search affordance found on any crawled page",
       "category": "navigation",
       "severity": "low",
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://www.mozilla.org/en-US/about/ via breadcrumb_markup_inspector [2026-08-29T17:52:01Z]: Page at deep route (/en-US/about/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://www.mozilla.org via search_affordance_detection [2026-09-07T18:28:22Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
       "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-breadcrumbs:/en-US/about/",
+      "fingerprint": "engagement:no-site-search",
       "suggested_action": {
-        "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+        "summary": "Add a site search box to the persistent header.",
         "priority": "low",
-        "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation."
+        "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly."
       },
       "source_skills": [
         "engagement-audit"
       ],
       "evidence_details": {
-        "url": "https://www.mozilla.org/en-US/about/",
-        "observation": "Page at deep route (/en-US/about/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
-        "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-29T17:52:01Z",
+        "url": "https://www.mozilla.org",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-07T18:28:22Z",
         "confidence": "medium"
       },
-      "id": "F-011"
+      "id": "F-008"
     }
   ],
   "proactive_recommendations": [
     {
-      "title": "Add Schema.org FAQPage markup to enrich AI assistant direct answers",
-      "rationale": "The site contains informative Q&A or FAQ text. Adding structured FAQPage JSON-LD allows search engines and generative AI agents to quote verbatim answers directly in response to user inquiries.",
+      "title": "Mark up existing question-and-answer content with FAQPage schema",
+      "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
       "suggested_action": {
-        "summary": "Implement Schema.org FAQPage structured data on help and FAQ sections.",
-        "priority": "medium",
-        "how_to_fix": "Wrap top customer questions in a JSON-LD script declaring @type 'FAQPage' with 'mainEntity' Question and acceptedAnswer Answer objects."
+        "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+        "priority": "high",
+        "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
       }
     },
     {
-      "title": "Publish an llms.txt file to guide AI assistants to authoritative documentation",
-      "rationale": "Emerging AI web standards like /llms.txt provide large language models with a curated, markdown-formatted directory of core brand documentation and APIs.",
+      "title": "Add Article schema with author and dateModified to editorial pages",
+      "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
       "suggested_action": {
-        "summary": "Create an llms.txt file in the root web directory.",
+        "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+        "priority": "medium",
+        "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+      }
+    },
+    {
+      "title": "Declare a WebSite entity with SearchAction",
+      "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+      "suggested_action": {
+        "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+        "priority": "medium",
+        "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+      }
+    },
+    {
+      "title": "Add BreadcrumbList schema to deep pages",
+      "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+      "suggested_action": {
+        "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
         "priority": "low",
-        "how_to_fix": "Add an /llms.txt file containing markdown links to your primary product, documentation, pricing, and company overview pages."
+        "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+      }
+    },
+    {
+      "title": "State AI usage terms explicitly in robots.txt",
+      "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+      "suggested_action": {
+        "summary": "Add machine-readable content-usage signals to robots.txt.",
+        "priority": "low",
+        "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+      }
+    },
+    {
+      "title": "Consider publishing llms.txt, with realistic expectations",
+      "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+      "suggested_action": {
+        "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+        "priority": "low",
+        "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
       }
     }
   ]

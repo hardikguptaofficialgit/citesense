@@ -1,6 +1,8 @@
 ---
 name: freshness-corroboration
 description: Checks whether a site's facts are current and internally self-consistent using a claim-based model -- stale time-sensitive claims, expired promotions/webinars, and contradictions between what different pages on the SAME site say (e.g. founding year or phone number disagreeing between the footer and the About page). Use when diagnosing whether outdated or self-contradictory content is undermining a brand's trustworthiness to AI assistants. Does not treat missing dateModified as a defect.
+license: MIT
+allowed-tools: Bash, Read
 ---
 
 # Freshness & Internal Consistency Audit (Appendix D, temporal half)

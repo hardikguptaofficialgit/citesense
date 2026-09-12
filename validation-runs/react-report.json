@@ -1,39 +1,42 @@
 {
   "site": "https://react.dev",
-  "audited_at": "2026-08-29T17:51:51Z",
+  "audited_at": "2026-09-07T18:28:10Z",
   "summary": {
-    "total_findings": 5,
+    "total_findings": 6,
     "critical": 0,
     "high": 1,
     "medium": 3,
-    "low": 1,
+    "low": 2,
     "discoverability_findings": 4,
-    "engagement_findings": 1
+    "engagement_findings": 2,
+    "citability_score": 69
   },
   "findings": [
     {
-      "title": "Inconsistent founding year claimed across site pages (2017, 2019)",
-      "category": "internal-consistency",
+      "title": "Missing Schema.org Organization structured data on root landing page",
+      "category": "structured-data",
       "severity": "high",
       "status": "confirmed",
       "confidence": "high",
       "impact": "high",
-      "evidence": "Observed at https://react.dev/blog via cross_page_fact_comparison [2026-08-29T17:51:48Z]: Different pages state contradictory founding years: https://react.dev/blog: 2019; https://react.dev/community/team: 2017. (Confidence: high)",
-      "source_skill": "freshness-corroboration",
-      "fingerprint": "consistency:founding-year-mismatch",
+      "evidence": "Observed at https://react.dev/ via jsonld_schema_extractor [2026-09-07T18:28:09Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://react.dev via onsite_answerability_probe [2026-09-07T18:28:10Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is React?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "schema:root-organization-missing",
       "suggested_action": {
-        "summary": "Unify the company founding year across all web pages and structured data.",
+        "summary": "Add Organization JSON-LD markup to the homepage.",
         "priority": "high",
-        "how_to_fix": "Identify the authoritative founding date and update all occurrences on the homepage, About page, footer, and Organization JSON-LD."
+        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+        "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"React\",\n  \"url\": \"https://react.dev\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"React is the library for web and native user interfaces. Build user interfaces out of individual pieces called components written in JavaScript. React is designed to let you seamlessly combine components written by independent people, teams, and organizations.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
       },
       "source_skills": [
-        "freshness-corroboration"
+        "citation-simulator",
+        "crawl-render-audit"
       ],
       "evidence_details": {
-        "url": "https://react.dev/blog",
-        "observation": "Different pages state contradictory founding years: https://react.dev/blog: 2019; https://react.dev/community/team: 2017.",
-        "method": "cross_page_fact_comparison",
-        "timestamp": "2026-08-29T17:51:48Z",
+        "url": "https://react.dev/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-07T18:28:09Z",
         "confidence": "high"
       },
       "id": "F-001"
@@ -45,7 +48,7 @@
       "status": "confirmed",
       "confidence": "high",
       "impact": "medium",
-      "evidence": "Observed at https://react.dev/sitemap.xml via http_get_sitemap_check [2026-08-29T17:51:48Z]: Request to https://react.dev/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "evidence": "Observed at https://react.dev/sitemap.xml via http_get_sitemap_check [2026-09-07T18:28:09Z]: Request to https://react.dev/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
       "source_skill": "crawl-render-audit",
       "fingerprint": "crawl:missing-xml-sitemap",
       "suggested_action": {
@@ -60,62 +63,62 @@
         "url": "https://react.dev/sitemap.xml",
         "observation": "Request to https://react.dev/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-08-29T17:51:48Z",
+        "timestamp": "2026-09-07T18:28:09Z",
         "confidence": "high"
       },
       "id": "F-002"
     },
     {
-      "title": "Missing Schema.org Organization structured data on root landing page",
-      "category": "structured-data",
+      "title": "No extractable answer on-site for \"What does React offer?\"",
+      "category": "citation-omission",
       "severity": "medium",
-      "status": "confirmed",
-      "confidence": "high",
+      "status": "likely-risk",
+      "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://react.dev/ via jsonld_schema_extractor [2026-08-29T17:51:48Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
-      "source_skill": "crawl-render-audit",
-      "fingerprint": "schema:root-organization-missing",
+      "evidence": "Observed at https://react.dev via onsite_answerability_probe [2026-09-07T18:28:10Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does React offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:offering",
       "suggested_action": {
-        "summary": "Add Organization JSON-LD markup to the homepage.",
+        "summary": "Mark up the product or service catalogue.",
         "priority": "medium",
-        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles."
+        "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels."
       },
       "source_skills": [
-        "crawl-render-audit"
+        "citation-simulator"
       ],
       "evidence_details": {
-        "url": "https://react.dev/",
-        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
-        "method": "jsonld_schema_extractor",
-        "timestamp": "2026-08-29T17:51:48Z",
-        "confidence": "high"
+        "url": "https://react.dev",
+        "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does React offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:28:10Z",
+        "confidence": "medium"
       },
       "id": "F-003"
     },
     {
-      "title": "Core claim lacks independent external corroboration: \"Founded in 2019\"",
-      "category": "corroboration",
+      "title": "No extractable answer on-site for \"How do I contact React?\"",
+      "category": "citation-omission",
       "severity": "medium",
       "status": "likely-risk",
-      "confidence": "high",
+      "confidence": "medium",
       "impact": "medium",
-      "evidence": "Observed at https://react.dev via external_knowledge_graph_search [2026-08-29T17:51:51Z]: Searched external sources for claim \"Founded in 2019\"; found 0 independent authoritative supporting sources. Only source is brand-owned channels. (Confidence: high)",
-      "source_skill": "trust-corroboration-graph",
-      "fingerprint": "trust:uncorroborated-fact:Founded in 2019",
+      "evidence": "Observed at https://react.dev via onsite_answerability_probe [2026-09-07T18:28:10Z]: Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact React?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:contact",
       "suggested_action": {
-        "summary": "Establish external corroboration on authoritative third-party platforms.",
+        "summary": "Expose a contact route as machine-readable text.",
         "priority": "medium",
-        "how_to_fix": "Verify company details and notable claims on Wikipedia/Wikidata, Crunchbase, LinkedIn company page, and industry registries."
+        "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity."
       },
       "source_skills": [
-        "trust-corroboration-graph"
+        "citation-simulator"
       ],
       "evidence_details": {
         "url": "https://react.dev",
-        "observation": "Searched external sources for claim \"Founded in 2019\"; found 0 independent authoritative supporting sources. Only source is brand-owned channels.",
-        "method": "external_knowledge_graph_search",
-        "timestamp": "2026-08-29T17:51:51Z",
-        "confidence": "high"
+        "observation": "Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact React?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:28:10Z",
+        "confidence": "medium"
       },
       "id": "F-004"
     },
@@ -126,9 +129,9 @@
       "status": "likely-risk",
       "confidence": "medium",
       "impact": "low",
-      "evidence": "Observed at https://react.dev/community/team via breadcrumb_markup_inspector [2026-08-29T17:51:48Z]: Page at deep route (/community/team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "evidence": "Observed at https://react.dev/community/team via breadcrumb_markup_inspector [2026-09-07T18:28:09Z]: Page at deep route (/community/team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
       "source_skill": "engagement-audit",
-      "fingerprint": "engagement:missing-breadcrumbs:/community/team",
+      "fingerprint": "engagement:missing-breadcrumbs",
       "suggested_action": {
         "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
         "priority": "low",
@@ -141,10 +144,84 @@
         "url": "https://react.dev/community/team",
         "observation": "Page at deep route (/community/team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-08-29T17:51:48Z",
+        "timestamp": "2026-09-07T18:28:09Z",
         "confidence": "medium"
       },
       "id": "F-005"
+    },
+    {
+      "title": "No site search affordance found on any crawled page",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://react.dev via search_affordance_detection [2026-09-07T18:28:09Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:no-site-search",
+      "suggested_action": {
+        "summary": "Add a site search box to the persistent header.",
+        "priority": "low",
+        "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://react.dev",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-07T18:28:09Z",
+        "confidence": "medium"
+      },
+      "id": "F-006"
+    }
+  ],
+  "proactive_recommendations": [
+    {
+      "title": "Mark up existing question-and-answer content with FAQPage schema",
+      "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+      "suggested_action": {
+        "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+        "priority": "high",
+        "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+      }
+    },
+    {
+      "title": "Add Article schema with author and dateModified to editorial pages",
+      "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+      "suggested_action": {
+        "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+        "priority": "medium",
+        "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+      }
+    },
+    {
+      "title": "Declare a WebSite entity with SearchAction",
+      "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+      "suggested_action": {
+        "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+        "priority": "medium",
+        "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+      }
+    },
+    {
+      "title": "Add BreadcrumbList schema to deep pages",
+      "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+      "suggested_action": {
+        "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+        "priority": "low",
+        "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+      }
+    },
+    {
+      "title": "State AI usage terms explicitly in robots.txt",
+      "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+      "suggested_action": {
+        "summary": "Add machine-readable content-usage signals to robots.txt.",
+        "priority": "low",
+        "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+      }
     }
   ]
 }

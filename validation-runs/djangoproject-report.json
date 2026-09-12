@@ -1,0 +1,182 @@
+{
+  "site": "https://www.djangoproject.com",
+  "audited_at": "2026-09-07T18:28:37Z",
+  "summary": {
+    "total_findings": 4,
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 1,
+    "discoverability_findings": 3,
+    "engagement_findings": 1,
+    "citability_score": 76
+  },
+  "findings": [
+    {
+      "title": "Missing Schema.org Organization structured data on root landing page",
+      "category": "structured-data",
+      "severity": "high",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "high",
+      "evidence": "Observed at https://www.djangoproject.com/ via jsonld_schema_extractor [2026-09-07T18:28:34Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://www.djangoproject.com via onsite_answerability_probe [2026-09-07T18:28:37Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Django Project?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "schema:root-organization-missing",
+      "suggested_action": {
+        "summary": "Add Organization JSON-LD markup to the homepage.",
+        "priority": "high",
+        "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles."
+      },
+      "source_skills": [
+        "citation-simulator",
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.djangoproject.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-07T18:28:34Z",
+        "confidence": "high"
+      },
+      "id": "F-001"
+    },
+    {
+      "title": "Missing meta description on key landing page",
+      "category": "structured-data",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://www.djangoproject.com/ via html_meta_inspector [2026-09-07T18:28:34Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "meta:missing-description",
+      "suggested_action": {
+        "summary": "Add an informative meta description tag.",
+        "priority": "medium",
+        "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+        "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Meet Django\",\n  \"url\": \"https://www.djangoproject.com/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Django Project\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.djangoproject.com/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.djangoproject.com/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-07T18:28:34Z",
+        "confidence": "high"
+      },
+      "id": "F-002"
+    },
+    {
+      "title": "No extractable answer on-site for \"What does Django Project offer?\"",
+      "category": "citation-omission",
+      "severity": "medium",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "medium",
+      "evidence": "Observed at https://www.djangoproject.com via onsite_answerability_probe [2026-09-07T18:28:37Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Django Project offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:offering",
+      "suggested_action": {
+        "summary": "Mark up the product or service catalogue.",
+        "priority": "medium",
+        "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels."
+      },
+      "source_skills": [
+        "citation-simulator"
+      ],
+      "evidence_details": {
+        "url": "https://www.djangoproject.com",
+        "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Django Project offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:28:37Z",
+        "confidence": "medium"
+      },
+      "id": "F-003"
+    },
+    {
+      "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://www.djangoproject.com/weblog/2025/apr/26/new-features-github-repo-and-project/ via breadcrumb_markup_inspector [2026-09-07T18:28:34Z]: Page at deep route (/weblog/2025/apr/26/new-features-github-repo-and-project/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.djangoproject.com/contact/foundation/ via breadcrumb_markup_inspector [2026-09-07T18:28:34Z]: Page at deep route (/contact/foundation/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.djangoproject.com/start/overview/ via breadcrumb_markup_inspector [2026-09-07T18:28:34Z]: Page at deep route (/start/overview/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:missing-breadcrumbs",
+      "suggested_action": {
+        "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+        "priority": "low",
+        "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://www.djangoproject.com/weblog/2025/apr/26/new-features-github-repo-and-project/",
+        "observation": "Page at deep route (/weblog/2025/apr/26/new-features-github-repo-and-project/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-07T18:28:34Z",
+        "confidence": "medium"
+      },
+      "id": "F-004"
+    }
+  ],
+  "proactive_recommendations": [
+    {
+      "title": "Mark up existing question-and-answer content with FAQPage schema",
+      "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+      "suggested_action": {
+        "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+        "priority": "high",
+        "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+      }
+    },
+    {
+      "title": "Add Article schema with author and dateModified to editorial pages",
+      "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+      "suggested_action": {
+        "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+        "priority": "medium",
+        "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+      }
+    },
+    {
+      "title": "Declare a WebSite entity with SearchAction",
+      "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+      "suggested_action": {
+        "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+        "priority": "medium",
+        "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+      }
+    },
+    {
+      "title": "Add BreadcrumbList schema to deep pages",
+      "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+      "suggested_action": {
+        "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+        "priority": "low",
+        "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+      }
+    },
+    {
+      "title": "State AI usage terms explicitly in robots.txt",
+      "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+      "suggested_action": {
+        "summary": "Add machine-readable content-usage signals to robots.txt.",
+        "priority": "low",
+        "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+      }
+    },
+    {
+      "title": "Consider publishing llms.txt, with realistic expectations",
+      "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+      "suggested_action": {
+        "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+        "priority": "low",
+        "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+      }
+    }
+  ]
+}

@@ -1,12 +1,16 @@
 ---
 name: citation-simulator
-description: Simulates how a real AI assistant would answer common questions about the brand by actually performing the search-fetch-extract loop described in Appendix B, then classifies each result as correctly answered, omitted, misattributed to the wrong entity, stale, or contradicted across sources. Produces direct evidence that a discoverability problem causes a real answer failure.
+description: Tests whether an AI assistant could answer common questions about the brand at all. Runs deterministically and offline by checking answerability against the pages a retrieval bot actually fetched (identity, offering, pricing, contact), and additionally classifies live search results as omitted, misattributed, stale or contradicted when an agent supplies them. Produces direct evidence that a discoverability problem causes a real answer failure.
+license: MIT
+allowed-tools: Bash, Read, WebSearch, WebFetch
 ---
 
 # Citation Simulator (proof-of-failure, not just structural inference)
 
 ## Why this skill exists
-The other discoverability skills infer failure from structural signals (missing schema, a blocked crawler, JS-gated content). This skill closes the loop: it tests the search-fetch-extract cycle for realistic questions about the brand, and directly observes whether the simulated answer comes out right.
+The other discoverability skills infer failure from structural signals (missing schema, a blocked crawler, JS-gated content). This skill closes the loop at the source: it generates realistic questions about the brand, then checks whether the pages a retrieval bot actually fetched contain an extractable answer. If the fact is not there, the brand cannot be cited for that question no matter how ranking behaves.
+
+**Two modes.** The deterministic mode (`evaluate_answerability`) needs no network beyond the shared crawl and runs on every audit. The classification mode (`evaluate_citation_simulation`) scores *real* search results and requires an agent with web-search tools to supply them -- it never fabricates results.
 
 Run **after** `crawl-render-audit` and `freshness-corroboration` have produced ground-truth extraction.
 

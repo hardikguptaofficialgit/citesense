@@ -1,6 +1,8 @@
 ---
 name: crawl-render-audit
 description: Audits a website's off-site discoverability pipeline -- whether AI crawlers are let in, whether the page's content is readable without executing JavaScript, whether structured data (JSON-LD/schema.org) is present and valid, and whether key facts are locked inside non-textual elements (images/canvas). Use when diagnosing why a brand's pages don't get crawled, read, or cited correctly by AI assistants.
+license: MIT
+allowed-tools: Bash, Read
 ---
 
 # Crawl & Render Audit (discoverability: steps A-C)
@@ -8,7 +10,7 @@ description: Audits a website's off-site discoverability pipeline -- whether AI 
 Invoked by `audit-orchestrator` first, using the shared `SiteInventory`. Answers the first
 three questions from the discoverability pipeline:
 1. Is the crawler let in? (robots.txt for AI-specific user agents using longest-match precedence)
-2. Can it read what's on the page? (raw HTML vs. rendered DOM; structured data; JSON-LD schema)
+2. Can it read what's on the page? (raw non-JS HTML; structured data; JSON-LD schema)
 3. Can it pick out the specific fact? (facts locked inside images/canvas vs. plain text)
 
 ## Inputs
@@ -22,7 +24,7 @@ three questions from the discoverability pipeline:
 2. **Render & Data Scan:**
    Run `python3 skills/crawl-render-audit/scripts/render_and_data_scan.py <inventory_json_or_url> --findings-only`.
    - Checks Organization, Product, Offer, Article, FAQPage schema fields.
-   - Evaluates raw HTML vs rendered DOM text; JS usage alone is never a defect.
+   - Evaluates the raw, non-JS-executed HTML -- what a non-rendering retrieval bot sees. JS usage alone is never a defect; only an empty raw shell is.
    - Detects facts locked inside canvas or images without alt text.
 3. **Extract Ground Truth:**
    Pulls brand name, category, Organization metadata, and core factual claims (founding year, contact) from root schema and text into `inventory.ground_truth`.
