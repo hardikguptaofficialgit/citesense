@@ -30,7 +30,8 @@ def evaluate_identity_anchoring(
     site_url: str,
     same_as_urls: List[str],
     external_link_domains: List[str],
-    has_org_schema: bool
+    has_org_schema: bool,
+    readable_pages: Optional[int] = None,
 ) -> List[Dict[str, Any]]:
     """
     Observable, on-site half of Appendix D: is there any machine-readable path from this
@@ -41,6 +42,11 @@ def evaluate_identity_anchoring(
     which require an agent to supply real third-party search results.
     """
     findings = []
+    if readable_pages == 0:
+        # Missing anchors cannot be observed when no page was readable. The orchestrator
+        # records this in its access summary; emitting a trust defect here would be fabricated
+        # evidence, just like treating an unreadable page as missing schema.
+        return findings
 
     anchor_domains = sorted({
         d for d in external_link_domains

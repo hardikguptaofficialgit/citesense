@@ -107,7 +107,8 @@ def run_full_audit(
         site_url=inventory.origin,
         same_as_urls=same_as_urls,
         external_link_domains=external_domains,
-        has_org_schema=has_org_schema
+        has_org_schema=has_org_schema,
+        readable_pages=inventory.access_summary()["readable_pages"],
     )
     all_candidate_findings.extend(trust_findings)
 
@@ -120,7 +121,8 @@ def run_full_audit(
         findings=all_candidate_findings,
         proactive_recommendations=proactive,
         ground_truth=inventory.ground_truth,
-        pages=inventory.pages
+        pages=inventory.pages,
+        access_summary=inventory.access_summary()
     )
 
     return report

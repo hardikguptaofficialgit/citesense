@@ -15,7 +15,10 @@ for sub in ("crawl-render-audit", "engagement-audit", "freshness-corroboration",
             "citation-simulator", "trust-corroboration-graph", "audit-orchestrator"):
     sys.path.insert(0, str(ROOT / "skills" / sub / "scripts"))
 
-from audit_common import decompress_body, decode_body, content_is_unreadable, header_get
+from audit_common import (
+    decompress_body, decode_body, content_is_unreadable, header_get, classify_access,
+    ACCESS_READABLE, ACCESS_ANTI_BOT, ACCESS_HTTP_BLOCKED, ACCESS_NETWORK_ERROR,
+)
 from site_inventory import (
     SiteInventory, analyze_page_html, classify_page_purpose, FOUNDING_RE, COPYRIGHT_RE
 )
@@ -60,6 +63,26 @@ class InconclusivePageRegressions(unittest.TestCase):
         html = "<html><head><title>Fine</title></head><body><h1>Fine</h1></body></html>"
         snap = analyze_page_html("https://x.test/", html, "https://x.test/", 200, 0.1)
         self.assertFalse(snap["inconclusive"])
+
+    def test_access_classifies_readable_html(self):
+        self.assertEqual(
+            classify_access(200, "<html><body>Readable page</body></html>"),
+            ACCESS_READABLE,
+        )
+
+    def test_access_classifies_http_blocked_responses(self):
+        self.assertEqual(classify_access(403, "Access denied"), ACCESS_HTTP_BLOCKED)
+        self.assertEqual(classify_access(429, "Too many requests"), ACCESS_HTTP_BLOCKED)
+
+    def test_access_classifies_antibot_challenges_even_with_http_200(self):
+        body = "<html><title>Checking your browser</title>Enable JavaScript and cookies</html>"
+        self.assertEqual(classify_access(200, body), ACCESS_ANTI_BOT)
+        snap = analyze_page_html("https://x.test/", body, "https://x.test/", 200, 0.1)
+        self.assertTrue(snap["inconclusive"])
+        self.assertEqual(snap["access_status"], ACCESS_ANTI_BOT)
+
+    def test_network_failure_is_access_limited(self):
+        self.assertEqual(classify_access(None, "timed out"), ACCESS_NETWORK_ERROR)
 
 
 class FreshnessRegressions(unittest.TestCase):
@@ -166,6 +189,12 @@ class EvidenceHonestyRegressions(unittest.TestCase):
 
     def test_identity_anchoring_stays_silent_when_an_authority_link_exists(self):
         out = evaluate_identity_anchoring("X", "https://x.test", [], ["github.com"], True)
+        self.assertEqual(out, [])
+
+    def test_identity_anchoring_is_silent_when_no_page_was_read(self):
+        out = evaluate_identity_anchoring(
+            "X", "https://x.test", [], [], False, readable_pages=0
+        )
         self.assertEqual(out, [])
 
     def test_identity_anchoring_fires_with_observation_based_evidence_only(self):

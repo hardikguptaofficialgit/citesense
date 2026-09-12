@@ -59,6 +59,17 @@
         }
       }
     },
+    "access_summary": {
+      "type": "object",
+      "description": "Optional additive field describing whether enough readable pages were available to interpret evidence-dependent checks.",
+      "required": ["pages_sampled", "readable_pages", "status_counts", "limited"],
+      "properties": {
+        "pages_sampled": { "type": "integer", "minimum": 0 },
+        "readable_pages": { "type": "integer", "minimum": 0 },
+        "status_counts": { "type": "object" },
+        "limited": { "type": "boolean" }
+      }
+    },
     "findings": {
       "type": "array",
       "items": {

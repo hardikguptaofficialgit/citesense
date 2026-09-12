@@ -88,10 +88,11 @@ graph TD
 8. **Root-Cause Deduplication:** Consolidates findings sharing the same fingerprint across pages and skills, merging evidence and assigning highest severity.
 9. **Evidence-Based Proactive Recommendations:** Up to 6 beyond-defect suggestions derived from what the crawl observed and ordered strongest-evidence-first -- FAQPage markup for existing Q&A content, third-party entity anchoring, answer-first content structure, Article/WebSite/BreadcrumbList schema, explicit AI usage terms in robots.txt, an agent-facing NLWeb/MCP endpoint, and llms.txt reported with its real (weak) evidence base. Each fires only on an observed condition, so a well-optimised site correctly receives fewer. Basis: `skills/audit-orchestrator/references/ai-visibility-standards-2026.md`.
 10. **Strict Guardrails:** Recommend-only, 100% read-only, and robots.txt is **enforced on our own fetches** (`SiteInventory.may_fetch()` gates both page crawling and link probing against the `*` group; declined URLs are recorded in `skipped_by_robots`). Strictly budgeted under 5 minutes -- a typical audit runs in 2-20 seconds.
-11. **Report Schema Compliance:** Fully conforms to `skills/audit-orchestrator/references/report-schema.json`.
-12. **Auto-Generated Fix Snippets:** Structured-data findings carry a ready-to-paste JSON-LD block pre-populated from observed ground truth. Unknown values are explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is **suppressed** rather than shipped as a fix.
-13. **Report Comparison:** Diffs two reports by stable `fingerprint` into `resolved` / `new` / `unchanged` buckets with a weighted `score_delta`, so "did the fix work?" is answerable.
-14. **AI-Citability Score:** A deterministic, monotonic 0-100 score in `summary.citability_score`, with its formula and rationale documented in `references/citability-score.md` rather than hidden in code.
+11. **Access Classification:** Distinguishes readable pages, robots-disallowed paths, HTTP blocks, anti-bot challenges, network failures, empty responses, and undecodable content. Evidence-dependent findings and scores are withheld when no page was readable; protections are never bypassed.
+12. **Report Schema Compliance:** Fully conforms to `skills/audit-orchestrator/references/report-schema.json`.
+13. **Auto-Generated Fix Snippets:** Structured-data findings carry a ready-to-paste JSON-LD block pre-populated from observed ground truth. Unknown values are explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is **suppressed** rather than shipped as a fix.
+14. **Report Comparison:** Diffs two reports by stable `fingerprint` into `resolved` / `new` / `unchanged` buckets with a weighted `score_delta`, so "did the fix work?" is answerable.
+15. **AI-Citability Score:** A deterministic, monotonic 0-100 score in `summary.citability_score`, with its formula and rationale documented in `references/citability-score.md` rather than hidden in code.
 
 ---
 

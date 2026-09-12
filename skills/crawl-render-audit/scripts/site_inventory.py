@@ -18,7 +18,8 @@ if current_dir not in sys.path:
 from audit_common import (
     AI_USER_AGENTS, DEFAULT_TIMEOUT, USER_AGENT,
     normalize_url, canonicalize, parse_robots, robot_decision,
-    visible_text, safe_fetch, content_is_unreadable
+    visible_text, safe_fetch, classify_access,
+    ACCESS_READABLE, ACCESS_ROBOTS_DISALLOWED
 )
 
 # Only explicit founding verbs count as an entity founding claim. A bare "since <year>"
@@ -122,7 +123,14 @@ def classify_page_purpose(url: str, title: str, h1_text: str, body_text: str) ->
     return "general"
 
 
-def analyze_page_html(url: str, html: str, final_url: str, status_code: int, load_time: float) -> Dict[str, Any]:
+def analyze_page_html(
+    url: str,
+    html: str,
+    final_url: str,
+    status_code: int,
+    load_time: float,
+    access_status: Optional[str] = None,
+) -> Dict[str, Any]:
     """
     Extract structured analysis from a fetched page's HTML.
 
@@ -130,17 +138,26 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
     so no skill can mistake "we failed to decode this" for "this tag is missing". Every
     evaluator checks `inconclusive` before emitting a finding.
     """
-    unreadable = bool(html) and content_is_unreadable(html)
-    if status_code != 200 or not html or unreadable:
-        if status_code != 200:
-            reason = f"HTTP {status_code}"
-        elif not html:
+    access_status = access_status or classify_access(status_code, html)
+    if access_status != ACCESS_READABLE:
+        if access_status == ACCESS_ROBOTS_DISALLOWED:
+            reason = "fetch skipped because robots.txt disallowed this path"
+        elif status_code is None:
+            reason = f"network access failed: {html or 'unknown network error'}"
+        elif access_status == "empty-response":
             reason = "empty response body"
-        else:
+        elif access_status == "undecodable":
             reason = "response body could not be decoded to readable text"
+        elif access_status == "anti-bot-challenge":
+            reason = f"HTTP {status_code} or response body indicates an anti-bot challenge"
+        elif status_code != 200:
+            reason = f"HTTP {status_code}"
+        else:
+            reason = "page access was inconclusive"
         return {
             "inconclusive": True,
             "inconclusive_reason": reason,
+            "access_status": access_status,
             "url": url,
             "final_url": final_url,
             "status_code": status_code,
@@ -338,6 +355,7 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
 
     return {
         "inconclusive": False,
+        "access_status": ACCESS_READABLE,
         "url": url,
         "final_url": final_url,
         "status_code": status_code,
@@ -528,9 +546,24 @@ class SiteInventory:
                 "discovered_url_count": len(found_urls)
             })
 
-        # 4. Fetch seed/homepage first
-        seed_status, seed_html, final_seed_url, _, seed_load_time, _ = safe_fetch(self.seed_url, timeout=timeout)
-        seed_snapshot = analyze_page_html(self.seed_url, seed_html, final_seed_url, seed_status, seed_load_time)
+        # 4. Fetch seed/homepage first, subject to the same robots gate as every other page.
+        if self.may_fetch(self.seed_url):
+            seed_status, seed_html, final_seed_url, _, seed_load_time, _ = safe_fetch(
+                self.seed_url, timeout=timeout
+            )
+            seed_snapshot = analyze_page_html(
+                self.seed_url, seed_html, final_seed_url, seed_status, seed_load_time
+            )
+        else:
+            seed_status, final_seed_url, seed_load_time = 0, self.seed_url, 0.0
+            seed_snapshot = analyze_page_html(
+                self.seed_url,
+                "",
+                self.seed_url,
+                seed_status,
+                seed_load_time,
+                access_status=ACCESS_ROBOTS_DISALLOWED,
+            )
         self.store_page(self.seed_url, seed_snapshot)
 
         # Adopt the origin the seed actually resolved to. An apex host that redirects to www
@@ -591,8 +624,31 @@ class SiteInventory:
         self._extract_ground_truth(seed_snapshot)
 
         self.crawl_budget["pages_crawled"] = len(self.pages)
+        access_counts: Dict[str, int] = {}
+        for snap in self.pages.values():
+            status = snap.get("access_status", "unknown")
+            access_counts[status] = access_counts.get(status, 0) + 1
+        self.crawl_budget["readable_pages"] = access_counts.get(ACCESS_READABLE, 0)
+        self.crawl_budget["access_status_counts"] = access_counts
         self.crawl_budget["total_crawl_time_seconds"] = round(time.time() - start_time, 2)
         return self
+
+    def access_summary(self) -> Dict[str, Any]:
+        """Return the access facts needed to interpret evidence-dependent findings."""
+        counts = dict(self.crawl_budget.get("access_status_counts", {}))
+        readable = self.crawl_budget.get("readable_pages")
+        if readable is None:
+            readable = sum(
+                1 for page in self.pages.values()
+                if page.get("access_status") == ACCESS_READABLE
+                or (not page.get("inconclusive") and page.get("status_code") == 200)
+            )
+        return {
+            "pages_sampled": len(self.pages),
+            "readable_pages": readable,
+            "status_counts": counts,
+            "limited": readable == 0,
+        }
 
     def _extract_ground_truth(self, seed_snap: Dict[str, Any]):
         """Extract authoritative ground truth facts from root schema and page text."""

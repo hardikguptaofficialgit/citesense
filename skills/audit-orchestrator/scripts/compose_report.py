@@ -152,6 +152,7 @@ def build_final_report(
     proactive_recommendations: Optional[List[Dict[str, Any]]] = None,
     ground_truth: Optional[Dict[str, Any]] = None,
     pages: Optional[Dict[str, Any]] = None,
+    access_summary: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """Assembles, deduplicates, prioritizes, and formats the final report object.
 
@@ -179,6 +180,9 @@ def build_final_report(
         "summary": compute_summary(validated_findings),
         "findings": validated_findings,
     }
+
+    if access_summary is not None:
+        report["access_summary"] = access_summary
 
     if proactive_recommendations:
         report["proactive_recommendations"] = proactive_recommendations

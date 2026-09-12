@@ -5,6 +5,7 @@ import zlib
 import time
 import urllib.request
 import urllib.error
+from typing import Optional
 from urllib.parse import urljoin, urlparse, urlunparse
 
 # AI crawlers split into three classes that have completely different consequences when blocked.
@@ -48,6 +49,22 @@ USER_AGENT = "brand-ai-readiness-audit/2.1 (+read-only audit; Adobe Hackathon Ro
 # Encodings we can decompress with the standard library. Brotli ('br') is deliberately
 # not advertised in Accept-Encoding because CPython has no stdlib brotli decoder.
 SUPPORTED_ENCODINGS = "gzip, deflate"
+
+ACCESS_READABLE = "readable"
+ACCESS_ROBOTS_DISALLOWED = "robots-disallowed"
+ACCESS_ANTI_BOT = "anti-bot-challenge"
+ACCESS_HTTP_BLOCKED = "http-blocked"
+ACCESS_HTTP_ERROR = "http-error"
+ACCESS_NETWORK_ERROR = "network-error"
+ACCESS_EMPTY = "empty-response"
+ACCESS_UNREADABLE = "undecodable"
+
+ANTI_BOT_MARKER_RE = re.compile(
+    r"(?is)(?:captcha|recaptcha|verify\s+you(?:r)?self|verify\s+you\s+are\s+human|"
+    r"checking\s+your\s+browser|attention\s+required|access\s+denied|bot\s+detection|"
+    r"unusual\s+traffic|enable\s+javascript\s+and\s+cookies|ddos\s+protection|"
+    r"perimeterx|akamai\s+bot)"
+)
 
 
 def normalize_url(url: str) -> str:
@@ -152,6 +169,31 @@ def content_is_unreadable(text: str) -> bool:
     # Undecodable binary often survives decoding as control characters
     control = sum(1 for c in sample if ord(c) < 9 or (13 < ord(c) < 32))
     return (control / len(sample)) > 0.05
+
+
+def classify_access(status_code: Optional[int], body: str = "") -> str:
+    """Classify whether a response is readable without bypassing access controls."""
+    if status_code is None:
+        return ACCESS_NETWORK_ERROR
+    sample = (body or "")[:12000]
+    if status_code in (401, 403, 429, 503):
+        if re.search(
+            r"(?is)(?:captcha|recaptcha|verify\s+you(?:r)?self|verify\s+you\s+are\s+human|"
+            r"checking\s+your\s+browser|unusual\s+traffic|enable\s+javascript\s+and\s+cookies|"
+            r"ddos\s+protection|perimeterx|akamai\s+bot)",
+            sample,
+        ):
+            return ACCESS_ANTI_BOT
+        return ACCESS_HTTP_BLOCKED
+    if ANTI_BOT_MARKER_RE.search(sample):
+        return ACCESS_ANTI_BOT
+    if status_code != 200:
+        return ACCESS_HTTP_ERROR
+    if not body:
+        return ACCESS_EMPTY
+    if content_is_unreadable(body):
+        return ACCESS_UNREADABLE
+    return ACCESS_READABLE
 
 
 def parse_robots(text: str):

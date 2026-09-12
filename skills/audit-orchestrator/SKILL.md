@@ -11,6 +11,10 @@ allowed-tools: Bash, Read, Write
 - **Recommend-only.** Never modify the live site. Everything is read-only.
 - **robots.txt is enforced, not just parsed.** Every fetch goes through `SiteInventory.may_fetch()`, which resolves the path against the `*` group and refuses disallowed URLs; declined URLs are recorded in `skipped_by_robots`. This gates page crawling and the broken-link sampler alike.
 - **No destructive, authenticated-area, or rate-abusing actions.**
+- **Do not bypass access controls.** HTTP blocks, CAPTCHA/WAF challenges, network failures,
+  empty responses, and undecodable bodies are recorded as access-limited/inconclusive. Never
+  solve challenges, use authenticated sessions, rotate identities, or treat missing content as
+  a confirmed site defect.
 - **Runtime budget.** Target under 5 minutes total; a typical site completes in 2-20 seconds. Bounded page crawling (5 pages by default), broken-link sampling capped at 8 links.
 - **Never assert an observation that was not made.** Checks requiring live third-party search are exposed through the specialist skills' standalone CLIs for agent-driven runs; the deterministic pipeline does not simulate them. See `references/adding-checks.md`.
 - **Shared SiteInventory.** Pages are crawled once and cached in `SiteInventory`, eliminating redundant HTTP requests across skills.
