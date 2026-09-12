@@ -25,7 +25,7 @@ VALID_REPORT = {
     "findings": [],
 }
 
-CLIS = ("render_dashboard.py", "compare_reports.py", "scored.py", "fix_snippets.py")
+CLIS = ("compare_reports.py", "scored.py", "fix_snippets.py")
 
 
 def run(script, *args):
@@ -110,15 +110,6 @@ class CliErrorHandlingTests(unittest.TestCase):
                     proc = run(script, *args)
                     self._assert_clean_failure(proc)
                     self.assertIn("not valid JSON", proc.stderr)
-
-    def test_output_into_missing_directory_is_created(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            report_path = Path(tmp) / "report.json"
-            report_path.write_text(json.dumps(VALID_REPORT), encoding="utf-8")
-            target = Path(tmp) / "does" / "not" / "exist" / "dashboard.html"
-            proc = run("render_dashboard.py", str(report_path), "--output", str(target))
-            self.assertEqual(proc.returncode, 0, proc.stderr)
-            self.assertTrue(target.exists())
 
     def test_compare_output_into_missing_directory_is_created(self):
         with tempfile.TemporaryDirectory() as tmp:

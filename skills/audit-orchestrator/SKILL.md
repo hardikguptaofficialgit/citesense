@@ -48,8 +48,6 @@ allowed-tools: Bash, Read, Write
   `suggested_action.fix_snippet` to structured-data findings wherever observed ground truth
   is rich enough to populate them, and writes a 0-100 `summary.citability_score`. Both are
   additive optional schema fields. Formula and rationale: `references/citability-score.md`.
-- **Dashboard.** `python3 scripts/render_dashboard.py report.json --output dashboard.html`
-  renders a single self-contained HTML view (no external requests, no build step).
 - **Diff two runs.** `python3 scripts/compare_reports.py before.json after.json --output diff.json`
   buckets findings into resolved / new / unchanged by `fingerprint` and reports a weighted
   `score_delta`.

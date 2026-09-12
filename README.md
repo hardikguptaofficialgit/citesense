@@ -8,22 +8,17 @@ Marketplace name `citesense`, entrypoint `audit-orchestrator`, six skills. The m
 this README and the repository directory all use the same identity, so the zip root, the manifest
 and the docs agree.
 
-## Quickstart (30 seconds to a rendered report)
+## Quickstart (30 seconds to a structured report)
 
 No dependencies to install — the entire marketplace runs on the Python standard library.
 
 ```bash
-# 1. Audit any site (writes report.json)
+# Audit any site (writes report.json)
 python skills/audit-orchestrator/scripts/run_audit.py https://www.python.org --output report.json
-
-# 2. Turn the report into a shareable HTML dashboard
-python skills/audit-orchestrator/scripts/render_dashboard.py report.json --output dashboard.html
-
-# 3. Open dashboard.html in a browser — findings by severity, evidence, and prioritized fixes.
 ```
 
-That's the whole loop: point it at a URL, get a structured report, view it as a dashboard. A
-typical audit finishes in 5-20 seconds, well under the 5-minute budget.
+That's the whole loop: point it at a URL and get a structured report. A typical audit finishes
+in 5-20 seconds, well under the 5-minute budget.
 
 Prefer to see output without running anything? Pre-generated reports for ten real sites live in
 [`validation-runs/`](validation-runs/), with severity counts and runtimes in
@@ -94,10 +89,9 @@ graph TD
 9. **Evidence-Based Proactive Recommendations:** Up to 6 beyond-defect suggestions derived from what the crawl observed and ordered strongest-evidence-first -- FAQPage markup for existing Q&A content, third-party entity anchoring, answer-first content structure, Article/WebSite/BreadcrumbList schema, explicit AI usage terms in robots.txt, an agent-facing NLWeb/MCP endpoint, and llms.txt reported with its real (weak) evidence base. Each fires only on an observed condition, so a well-optimised site correctly receives fewer. Basis: `skills/audit-orchestrator/references/ai-visibility-standards-2026.md`.
 10. **Strict Guardrails:** Recommend-only, 100% read-only, and robots.txt is **enforced on our own fetches** (`SiteInventory.may_fetch()` gates both page crawling and link probing against the `*` group; declined URLs are recorded in `skipped_by_robots`). Strictly budgeted under 5 minutes -- a typical audit runs in 2-20 seconds.
 11. **Report Schema Compliance:** Fully conforms to `skills/audit-orchestrator/references/report-schema.json`.
-12. **HTML Report Dashboard:** Renders `report.json` into a single self-contained HTML file (inline CSS/JS, zero external requests, no build step) with a severity summary, a discoverability-vs-engagement split, collapsible evidence, and a visually distinct proactive-recommendations section.
-13. **Auto-Generated Fix Snippets:** Structured-data findings carry a ready-to-paste JSON-LD block pre-populated from observed ground truth. Unknown values are explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is **suppressed** rather than shipped as a fix.
-14. **Report Comparison:** Diffs two reports by stable `fingerprint` into `resolved` / `new` / `unchanged` buckets with a weighted `score_delta`, so "did the fix work?" is answerable.
-15. **AI-Citability Score:** A deterministic, monotonic 0-100 score in `summary.citability_score`, with its formula and rationale documented in `references/citability-score.md` rather than hidden in code.
+12. **Auto-Generated Fix Snippets:** Structured-data findings carry a ready-to-paste JSON-LD block pre-populated from observed ground truth. Unknown values are explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is **suppressed** rather than shipped as a fix.
+13. **Report Comparison:** Diffs two reports by stable `fingerprint` into `resolved` / `new` / `unchanged` buckets with a weighted `score_delta`, so "did the fix work?" is answerable.
+14. **AI-Citability Score:** A deterministic, monotonic 0-100 score in `summary.citability_score`, with its formula and rationale documented in `references/citability-score.md` rather than hidden in code.
 
 ---
 
@@ -134,11 +128,6 @@ python skills/trust-corroboration-graph/scripts/corroboration_scorer.py '{"brand
 # 7. Report Merge & Validation
 python skills/audit-orchestrator/scripts/compose_report.py validate --input report.json
 
-# 6. HTML Report Dashboard
-#    Renders report.json into ONE self-contained HTML file (inline CSS/JS, no external
-#    requests, no build step). Omit --output to write to stdout.
-python skills/audit-orchestrator/scripts/render_dashboard.py report.json --output dashboard.html
-
 # 7. Report Comparison / Diff (before vs. after a fix, or two points in time)
 #    Matches findings by fingerprint (falling back to normalized title + category) and
 #    buckets them into resolved / new / unchanged, with a weighted score_delta.
@@ -155,7 +144,7 @@ python skills/audit-orchestrator/scripts/fix_snippets.py report.json \
     --inventory inventory.json --output annotated-report.json
 ```
 
-All four report-consuming CLIs fail readably rather than with a traceback — a missing file,
+All three report-consuming CLIs fail readably rather than with a traceback — a missing file,
 malformed JSON, or a non-object JSON document produces a one-line `error:` on stderr and
 exit code 1 — and `--output` creates its parent directory if it does not exist.
 
