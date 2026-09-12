@@ -8,6 +8,33 @@ Marketplace name `citesense`, entrypoint `audit-orchestrator`, six skills. The m
 this README and the repository directory all use the same identity, so the zip root, the manifest
 and the docs agree.
 
+## Quickstart (30 seconds to a rendered report)
+
+No dependencies to install — the entire marketplace runs on the Python standard library.
+
+```bash
+# 1. Audit any site (writes report.json)
+python skills/audit-orchestrator/scripts/run_audit.py https://www.python.org --output report.json
+
+# 2. Turn the report into a shareable HTML dashboard
+python skills/audit-orchestrator/scripts/render_dashboard.py report.json --output dashboard.html
+
+# 3. Open dashboard.html in a browser — findings by severity, evidence, and prioritized fixes.
+```
+
+That's the whole loop: point it at a URL, get a structured report, view it as a dashboard. A
+typical audit finishes in 5-20 seconds, well under the 5-minute budget.
+
+Prefer to see output without running anything? Pre-generated reports for ten real sites live in
+[`validation-runs/`](validation-runs/), with severity counts and runtimes in
+[`validation-runs/RUNS.md`](validation-runs/RUNS.md).
+
+## Documentation
+
+- [Case study: the site that passes its checks and is still invisible](docs/CASE-STUDY.md)
+
+---
+
 ## Entrypoint
 `skills/audit-orchestrator` is the single entrypoint that orchestrates the audit.
 See `marketplace.json` for the full marketplace manifest.
