@@ -20,13 +20,9 @@ for d in (current_dir, crawl_scripts_dir):
 from fix_snippets import attach_fix_snippets
 from scored import annotate_report
 
-DISCOVERABILITY_CATEGORIES = {
-    "crawlability", "render-gap", "structured-data", "fact-extractability",
-    "freshness", "internal-consistency", "corroboration", "entity-disambiguation",
-    "citation-omission", "citation-misattribution", "citation-staleness", "citation-contradiction",
-}
-ENGAGEMENT_CATEGORIES = {"orientation", "navigation", "personalization-readiness"}
-VALID_SEVERITIES = {"critical", "high", "medium", "low"}
+# Single source of truth: these sets live in models.py. Redefining them here let the two
+# drift silently, which would mis-split the discoverability/engagement summary counts.
+from models import DISCOVERABILITY_CATEGORIES, ENGAGEMENT_CATEGORIES, VALID_SEVERITIES
 REQUIRED_FINDING_FIELDS = {"id", "title", "severity", "evidence", "suggested_action"}
 
 SEVERITY_RANK = {"critical": 0, "high": 1, "medium": 2, "low": 3}
@@ -188,7 +184,7 @@ def build_final_report(
         report["proactive_recommendations"] = proactive_recommendations
 
     # Additive 0-100 AI-Citability Score (see references/citability-score.md).
-    annotate_report(report)
+    annotate_report(report, pages=pages)
 
     return report
 

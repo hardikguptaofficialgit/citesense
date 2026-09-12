@@ -9,6 +9,7 @@ import os
 import json
 import argparse
 import time
+from urllib.parse import urlparse
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 crawl_scripts_dir = os.path.abspath(os.path.join(current_dir, "../../crawl-render-audit/scripts"))
@@ -26,50 +27,15 @@ from crawlability_check import evaluate_crawlability
 from render_and_data_scan import evaluate_render_and_data_scan
 from freshness_and_consistency_scan import evaluate_freshness_and_consistency
 from engagement_scan import evaluate_engagement_audit
-from generate_queries import build_queries, evaluate_citation_simulation
-from corroboration_scorer import score_fact, assess_collision_risk, generate_trust_findings
-from compose_report import build_final_report, assign_ids_and_validate
+from generate_queries import evaluate_answerability
+from corroboration_scorer import evaluate_identity_anchoring
+from compose_report import build_final_report
+from proactive_recommendations import generate_proactive_recommendations
 
-
-def generate_proactive_recommendations(inventory: SiteInventory) -> list:
-    """Generates beyond-defect optimization recommendations to improve AI readiness."""
-    proactive = []
-    
-    # 1. FAQPage structured data recommendation if question-like content exists
-    has_faq_schema = False
-    has_faq_content = False
-    for snap in inventory.pages.values():
-        for ent in snap.get("jsonld_parsed", []):
-            if ent.get("@type") == "FAQPage":
-                has_faq_schema = True
-        text = snap.get("visible_text", "")
-        if any(q in text.lower() for q in ("frequently asked", "faq", "how does", "what is", "how do i")):
-            has_faq_content = True
-
-    if has_faq_content and not has_faq_schema:
-        proactive.append({
-            "title": "Add Schema.org FAQPage markup to enrich AI assistant direct answers",
-            "rationale": "The site contains informative Q&A or FAQ text. Adding structured FAQPage JSON-LD allows search engines and generative AI agents to quote verbatim answers directly in response to user inquiries.",
-            "suggested_action": {
-                "summary": "Implement Schema.org FAQPage structured data on help and FAQ sections.",
-                "priority": "medium",
-                "how_to_fix": "Wrap top customer questions in a JSON-LD script declaring @type 'FAQPage' with 'mainEntity' Question and acceptedAnswer Answer objects."
-            }
-        })
-
-    # 2. llms.txt protocol recommendation if not present
-    if not inventory.special_files.get("llms_txt", {}).get("found"):
-        proactive.append({
-            "title": "Publish an llms.txt file to guide AI assistants to authoritative documentation",
-            "rationale": "Emerging AI web standards like /llms.txt provide large language models with a curated, markdown-formatted directory of core brand documentation and APIs.",
-            "suggested_action": {
-                "summary": "Create an llms.txt file in the root web directory.",
-                "priority": "low",
-                "how_to_fix": "Add an /llms.txt file containing markdown links to your primary product, documentation, pricing, and company overview pages."
-            }
-        })
-
-    return proactive
+# NOTE: the agent-supplied halves of citation-simulator and trust-corroboration-graph
+# (evaluate_citation_simulation, score_fact, assess_collision_risk, generate_trust_findings)
+# are intentionally NOT imported here. They require real third-party search results; calling
+# them with invented inputs is the bug F8 removed. Reach them via the standalone skill CLIs.
 
 
 def run_full_audit(
@@ -103,38 +69,45 @@ def run_full_audit(
     engagement_findings = evaluate_engagement_audit(inventory)
     all_candidate_findings.extend(engagement_findings)
 
-    # Step 5: citation-simulator (Generate queries & score simulated checks)
+    # Step 5: citation-simulator
+    # Runs on every site. Tests the last step of the Appendix-B loop deterministically: given the
+    # pages we actually fetched, could an assistant quote an answer to a natural question about
+    # this brand? No hardcoded results, and no claim to have run a live web search.
     gt = inventory.ground_truth
-    queries = build_queries(gt)
-    # Perform citation evaluation checks based on ground truth availability
-    # (If offline, evaluate baseline discoverability of ground truth)
-    citation_findings = []
-    # If robots blocks root, citation simulation observes that AI queries will be omitted
-    robots_blocked = any(f.get("category") == "crawlability" and f.get("severity") in ("critical", "high") for f in crawl_findings)
-    if robots_blocked:
-        citation_sim_results = [{
-            "query": f"What is {gt.get('brand_name')}?",
-            "classification": "omission",
-            "category": "identity",
-            "surfaced_urls": [],
-            "evidence": f"Brand domain is blocked by robots.txt, causing AI search engines to omit official {gt.get('brand_name')} pages from answer synthesis."
-        }]
-        citation_findings = evaluate_citation_simulation(citation_sim_results, gt, inventory.origin.replace("https://", "").replace("http://", ""))
-        all_candidate_findings.extend(citation_findings)
+    site_domain = inventory.origin.replace("https://", "").replace("http://", "")
+    citation_findings = evaluate_answerability(inventory.to_dict(), gt, site_domain)
+    all_candidate_findings.extend(citation_findings)
 
     # Step 6: trust-corroboration-graph
-    # Verify core claims extracted in ground truth
-    facts_to_score = []
-    if gt.get("key_facts", {}).get("founding_year"):
-        facts_to_score.append({
-            "fact": f"Founded in {gt['key_facts']['founding_year']}",
-            "sources": [{"domain": inventory.origin, "is_brand_owned": True, "supports_fact": True, "evidence": "Site mention"}]
-        })
-    trust_findings = generate_trust_findings(
-        fact_scores=[score_fact(f) for f in facts_to_score],
-        collision_assessment=assess_collision_risk([], {}),
+    # Observable half only: does any machine-readable path exist from this site to an independent
+    # authority? The score_fact()/assess_collision_risk() path needs real third-party search
+    # results and is exposed via the skill's standalone CLI for agent-driven runs -- it is
+    # deliberately NOT invoked here, because inventing sources would fabricate the evidence.
+    same_as_urls = list(gt.get("same_as", []) or [])
+    external_domains = []
+    has_org_schema = False
+    for snap in inventory.pages.values():
+        if snap.get("inconclusive") or snap.get("status_code") != 200:
+            continue
+        for link in snap.get("external_links", []):
+            netloc = urlparse(link.get("href", "")).netloc.lower()
+            if netloc:
+                external_domains.append(netloc[4:] if netloc.startswith("www.") else netloc)
+        for ent in snap.get("jsonld_parsed", []):
+            t = ent.get("@type", "")
+            types = t if isinstance(t, list) else [t]
+            if any(x in ("Organization", "LocalBusiness", "Corporation", "Brand") for x in types):
+                has_org_schema = True
+                sa = ent.get("sameAs")
+                if sa:
+                    same_as_urls.extend(sa if isinstance(sa, list) else [sa])
+
+    trust_findings = evaluate_identity_anchoring(
         brand_name=gt.get("brand_name", "Brand"),
-        site_url=inventory.origin
+        site_url=inventory.origin,
+        same_as_urls=same_as_urls,
+        external_link_domains=external_domains,
+        has_org_schema=has_org_schema
     )
     all_candidate_findings.extend(trust_findings)
 

@@ -68,8 +68,8 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
     raw_html = page_snap.get("raw_html", "")
     status_code = page_snap.get("status_code", 0)
 
-    if status_code != 200 or not raw_html:
-        # Inconclusive/fetch failure, do not emit defect findings without direct evidence
+    # Inconclusive/fetch failure: never emit defect findings without a readable page
+    if page_snap.get("inconclusive") or status_code != 200 or not raw_html:
         return []
 
     raw_text = page_snap.get("visible_text", "")
@@ -97,7 +97,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Fix JSON-LD syntax errors to ensure search and AI parsers can read metadata.",
             action_priority="medium",
             action_how_to_fix="Validate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.",
-            fingerprint=f"schema:syntax-error:{urlparse(url).path or 'root'}",
+            fingerprint="schema:syntax-error",
             status="confirmed",
             confidence="high",
             impact="medium"
@@ -105,6 +105,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
         findings.append(f.to_dict())
 
     # 2. Schema Validation (Organization, Product, Offer, etc.)
+    # Skipped on shell pages -- absent schema there is part of the render gap, not a separate defect.
     types_found = set()
     identities = []
     validation_issues = []
@@ -122,7 +123,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
                 identities.append(ent)
 
     # Missing Organization schema on Root/Homepage
-    if is_root or purpose == "homepage":
+    if (is_root or purpose == "homepage") and not page_snap.get("render_gap"):
         if not identities:
             f = create_candidate_finding(
                 title="Missing Schema.org Organization structured data on root landing page",
@@ -164,7 +165,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
                 findings.append(f.to_dict())
 
     # Missing Product/Offer on commercial product or pricing page
-    if purpose == "product_pricing":
+    if purpose == "product_pricing" and not page_snap.get("render_gap"):
         has_product_or_offer = any(t in ("Product", "Offer", "SoftwareApplication", "Service") for t in types_found)
         if not has_product_or_offer:
             f = create_candidate_finding(
@@ -198,7 +199,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Populate required Schema.org properties.",
             action_priority="medium",
             action_how_to_fix="Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
-            fingerprint=f"schema:missing-required-fields:{urlparse(url).path or 'root'}",
+            fingerprint="schema:missing-required-fields",
             status="confirmed",
             confidence="high",
             impact="medium"
@@ -206,14 +207,20 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
         findings.append(f.to_dict())
 
     # 3. Fact Extractability & Render Gap
-    # Note: JavaScript usage alone is NOT a defect. Only flag if raw HTML is an empty shell lacking core content.
-    if words < 30 and len(raw_html) > 1000:
+    # JavaScript usage alone is NOT a defect -- an empty raw shell is. The flag is set in
+    # analyze_page_html so every skill agrees on which pages are shells.
+    if page_snap.get("render_gap"):
         f = create_candidate_finding(
             title="Client-side rendering gap: raw HTML contains minimal text content",
             category="render-gap",
             severity="high",
             url=url,
-            observation=f"Raw HTML yields only {words} words of visible text. Search crawlers and AI bots that do not execute client JS cannot extract core brand facts.",
+            observation=(
+                f"Raw HTML yields only {words} words of visible text. Search crawlers and AI bots "
+                f"that do not execute client JS cannot extract any brand fact from this page. "
+                f"Other page-level checks were suppressed here: a missing heading, CTA, meta "
+                f"description or schema on an empty shell are all symptoms of this one root cause."
+            ),
             method="raw_vs_rendered_wordcount_inspection",
             source_skill="crawl-render-audit",
             action_summary="Implement server-side rendering (SSR) or static pre-rendering for core content.",
@@ -239,12 +246,99 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Provide accessible HTML text or structured data fallbacks for canvas graphics.",
             action_priority="medium",
             action_how_to_fix="Accompany canvas charts/diagrams with summary data tables or structured JSON-LD entities.",
-            fingerprint=f"extractability:canvas-locked-content:{urlparse(url).path or 'root'}",
+            fingerprint="extractability:canvas-locked-content",
             status="likely-risk",
             confidence="medium",
             impact="medium"
         )
         findings.append(f.to_dict())
+
+    # 4b. Facts locked inside images (Appendix C: a fact locked in something non-textual is
+    # invisible to a machine even though a human can read it off the screen).
+    # Only images with NO alt attribute count -- alt="" is the correct marking for decorative
+    # images and must never be treated as a defect.
+    unlabelled = [im for im in images if not im.get("alt_attr_present")]
+    if len(unlabelled) >= 5 and len(images) >= 5:
+        share = round(100 * len(unlabelled) / len(images))
+        f = create_candidate_finding(
+            title="Content images carry no text alternative, hiding any fact they display",
+            category="fact-extractability",
+            severity="medium" if purpose in ("homepage", "product_pricing") else "low",
+            url=url,
+            observation=(
+                f"{len(unlabelled)} of {len(images)} images ({share}%) have no alt attribute at all "
+                f"(images correctly marked decorative with alt=\"\" are excluded). Any figure, price, "
+                f"spec or claim rendered inside those images is unreadable to a retrieval bot."
+            ),
+            method="image_alt_coverage_inspection",
+            source_skill="crawl-render-audit",
+            action_summary="Add descriptive alt text to every image that carries information.",
+            action_priority="medium" if purpose in ("homepage", "product_pricing") else "low",
+            action_how_to_fix=(
+                "Give each informational image an alt attribute stating the fact it conveys "
+                "(\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative "
+                "images with alt=\"\" so they are correctly skipped rather than left unlabelled."
+            ),
+            fingerprint="extractability:images-without-alt",
+            status="confirmed",
+            confidence="high",
+            impact="medium" if purpose in ("homepage", "product_pricing") else "low"
+        )
+        findings.append(f.to_dict())
+
+    # 4c. A money page whose price is not in the text at all, but which is image-heavy: the
+    # single highest-value instance of a fact locked in a non-textual element.
+    #
+    # Deliberately narrower than `purpose == "product_pricing"`. A product *catalogue* page
+    # ("/products/", "/solutions/") legitimately carries no prices, and our "is a price stated"
+    # test is English-biased -- a German page saying "kostenlos" would look priceless to it.
+    # Keying on an explicit pricing route is language-independent and only fires where a
+    # visitor genuinely came to find a number.
+    # Match whole path SEGMENTS, not words inside a slug: an article at
+    # "/newsroom/news/stripe-openai-instant-checkout" contains the token "checkout" but is not a
+    # pricing route. Also require the page classifier to agree, since it resolves editorial
+    # routes ahead of commercial ones.
+    segments = {s for s in urlparse(url).path.lower().split("/") if s}
+    is_pricing_route = bool(segments & {"pricing", "price", "prices", "plans", "plan",
+                                        "buy", "checkout", "cart", "subscribe", "order"})
+    if is_pricing_route and purpose == "product_pricing" and len(images) >= 3:
+        has_price_text = bool(re.search(
+            r"[$£€¥]\s?\d|\b\d+\s?(?:usd|eur|gbp)\b|\bper (?:month|user|seat|year)\b|\bfree\b",
+            raw_text, re.I
+        ))
+        has_offer_schema = any(t in ("Offer", "AggregateOffer", "PriceSpecification") for t in types_found)
+        if not has_price_text and not has_offer_schema:
+            f = create_candidate_finding(
+                title="Pricing page states no price in text or structured data",
+                category="fact-extractability",
+                severity="high",
+                url=url,
+                observation=(
+                    f"Page classified as a pricing/product page carries {len(images)} image(s) but no "
+                    f"price string in its visible text and no Offer/PriceSpecification schema. If the "
+                    f"figures are rendered inside those images, no assistant can quote them."
+                ),
+                method="money_page_price_extractability_check",
+                source_skill="crawl-render-audit",
+                action_summary="Publish prices as selectable text plus Offer structured data.",
+                action_priority="high",
+                action_how_to_fix=(
+                    "Render prices as HTML text rather than baking them into images, and add Offer "
+                    "JSON-LD with price, priceCurrency and availability. If pricing is genuinely "
+                    "quote-only, state that in text -- an assistant can cite \"pricing is quote-based\" "
+                    "but cannot cite an empty page."
+                ),
+                fingerprint=f"extractability:money-page-price-not-in-text:{urlparse(url).path}",
+                status="likely-risk",
+                confidence="medium",
+                impact="high"
+            )
+            findings.append(f.to_dict())
+
+    # On a shell page, stop here. Everything below is a symptom of the render gap already
+    # reported, and listing them separately turned one root cause into eleven findings.
+    if page_snap.get("render_gap"):
+        return findings
 
     # 5. Core HTML Metadata Check
     if not title:
@@ -259,7 +353,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Add a descriptive <title> tag.",
             action_priority="high",
             action_how_to_fix="Add a unique, informative <title> tag inside the <head> element.",
-            fingerprint=f"meta:missing-title:{urlparse(url).path or 'root'}",
+            fingerprint="meta:missing-title",
             status="confirmed",
             confidence="high",
             impact="high"
@@ -278,7 +372,7 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
             action_summary="Add an informative meta description tag.",
             action_priority="medium",
             action_how_to_fix="Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
-            fingerprint=f"meta:missing-description:{urlparse(url).path or 'root'}",
+            fingerprint="meta:missing-description",
             status="confirmed",
             confidence="high",
             impact="medium"

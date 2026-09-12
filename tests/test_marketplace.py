@@ -33,7 +33,15 @@ class MarketplaceTests(unittest.TestCase):
  def test_skill_frontmatter_and_manifest(self):
   m=json.loads((ROOT/'marketplace.json').read_text()); self.assertEqual(sum(x.get('entrypoint',False) for x in m['skills']),1)
   for s in m['skills']:
-   p=ROOT/s['path']/'SKILL.md'; self.assertTrue(p.exists()); head=p.read_text().split('---',2)[1]; self.assertEqual(set(x.split(':',1)[0] for x in head.splitlines() if ':' in x),{'name','description'})
+   p=ROOT/s['path']/'SKILL.md'; self.assertTrue(p.exists()); head=p.read_text(encoding='utf-8').split('---',2)[1]
+  keys=set(x.split(':',1)[0] for x in head.splitlines() if x and not x.startswith((' ','\t')) and ':' in x)
+  # name+description are required by the agentskills.io spec; license and allowed-tools are
+  # optional there but explicitly requested by the Round 3 handout. Assert required-as-subset,
+  # not an exact set, so declaring the optional fields is not a test failure.
+  self.assertTrue({'name','description'}<=keys, f"{s['id']} frontmatter missing required keys: {keys}")
+  self.assertTrue(keys<={'name','description','license','allowed-tools'}, f"{s['id']} has unrecognised frontmatter keys: {keys}")
+  name_line=[x for x in head.splitlines() if x.startswith('name:')][0].split(':',1)[1].strip()
+  self.assertEqual(name_line,s['id'],"SKILL.md name must match the marketplace skill id and folder name")
  def test_report_validation_rejects_weak_action(self):
   r={'site':'x','audited_at':'2026-01-01T00:00:00Z','summary':{'total_findings':1,'critical':0,'high':0,'medium':0,'low':1},'findings':[{'id':'F-001','title':'x','severity':'low','evidence':'concrete observed evidence','suggested_action':{'summary':'x','priority':'low'}}]}
   with tempfile.NamedTemporaryFile(mode='w',suffix='.json',delete=False) as f:json.dump(r,f);n=f.name

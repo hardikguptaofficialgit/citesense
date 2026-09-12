@@ -17,6 +17,80 @@ for d in (current_dir, crawl_scripts_dir):
 from models import create_candidate_finding, CandidateFinding
 
 
+AUTHORITY_DOMAINS = (
+    "wikipedia.org", "wikidata.org", "crunchbase.com", "linkedin.com",
+    "github.com", "bloomberg.com", "reuters.com", "sec.gov",
+    "opencorporates.com", "g2.com", "trustpilot.com", "glassdoor.com",
+    "bbb.org", "companieshouse.gov.uk", "producthunt.com",
+)
+
+
+def evaluate_identity_anchoring(
+    brand_name: str,
+    site_url: str,
+    same_as_urls: List[str],
+    external_link_domains: List[str],
+    has_org_schema: bool
+) -> List[Dict[str, Any]]:
+    """
+    Observable, on-site half of Appendix D: is there any machine-readable path from this
+    brand to an independent authority that could corroborate or disambiguate it?
+
+    This reports only what was directly observed in the crawl. It never claims to have
+    searched the web -- that path is `score_fact()` / `assess_collision_risk()` below,
+    which require an agent to supply real third-party search results.
+    """
+    findings = []
+
+    anchor_domains = sorted({
+        d for d in external_link_domains
+        if any(d == a or d.endswith("." + a) for a in AUTHORITY_DOMAINS)
+    })
+    same_as_anchors = sorted({
+        u for u in same_as_urls
+        if any(a in u.lower() for a in AUTHORITY_DOMAINS)
+    })
+
+    if same_as_anchors or anchor_domains:
+        return findings
+
+    schema_state = (
+        "Organization schema is present but declares 0 sameAs URIs"
+        if has_org_schema else
+        "no Organization schema is present, so no sameAs URIs can be declared"
+    )
+    findings.append(create_candidate_finding(
+        title=f"Brand identity is not anchored to any independent authority source",
+        category="corroboration",
+        severity="medium",
+        url=site_url,
+        observation=(
+            f"Across the crawled pages, {schema_state}, and 0 of {len(set(external_link_domains))} "
+            f"distinct outbound link domains point to an independent authority "
+            f"(Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). "
+            f"An assistant resolving \"{brand_name}\" therefore has no machine-readable route from "
+            f"this site to a corroborating third party, and no way to tell it apart from other "
+            f"entities sharing the name."
+        ),
+        method="onsite_identity_anchor_inspection",
+        source_skill="trust-corroboration-graph",
+        action_summary="Publish machine-readable identity anchors linking the brand to independent authorities.",
+        action_priority="medium",
+        action_how_to_fix=(
+            "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to "
+            "the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. "
+            "Create those external profiles first if they do not exist -- sameAs pointing at nothing "
+            "does not corroborate anything."
+        ),
+        fingerprint="trust:no-independent-identity-anchor",
+        status="confirmed",
+        confidence="high",
+        impact="medium"
+    ).to_dict())
+
+    return findings
+
+
 def score_fact(fact_obj: Dict[str, Any]) -> Dict[str, Any]:
     """Scores independent corroboration strength for a single fact claim."""
     sources = fact_obj.get("sources", [])

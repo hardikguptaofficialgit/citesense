@@ -18,13 +18,22 @@ if current_dir not in sys.path:
 from audit_common import (
     AI_USER_AGENTS, DEFAULT_TIMEOUT, USER_AGENT,
     normalize_url, canonicalize, parse_robots, robot_decision,
-    visible_text, safe_fetch
+    visible_text, safe_fetch, content_is_unreadable
 )
 
-FOUNDING_RE = re.compile(r"\b(?:founded|established|since|est\.?)\s+(?:in\s+)?((?:19|20)\d{2})\b", re.I)
+# Only explicit founding verbs count as an entity founding claim. A bare "since <year>"
+# appears constantly in ordinary prose ("supported since 2019", "deprecated since 2017")
+# and previously produced high-severity "contradictory founding year" false positives.
+FOUNDING_RE = re.compile(r"\b(?:founded|established|incorporated)(?:\s+in)?\s+((?:19|20)\d{2})\b", re.I)
 PHONE_RE = re.compile(r"\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}")
 EMAIL_RE = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b")
-COPYRIGHT_RE = re.compile(r"(?:\xa9|&copy;|\(c\)|copyright)\s*((?:19|20)\d{2})", re.I)
+# Captures the whole year expression so ranges survive: "(c) 2005-2026" must be read as
+# current, not as a stale 2005 notice. Callers take the newest year in the span.
+COPYRIGHT_RE = re.compile(
+    r"(?:\xa9|&copy;|\(c\)|copyright)\s*((?:19|20)\d{2}(?:\s*(?:[-–—]|to|&ndash;)\s*(?:19|20)\d{2})?)",
+    re.I
+)
+YEAR_RE = re.compile(r"(?:19|20)\d{2}")
 DATED_CLAIM_RE = re.compile(r"\b(?:price|pricing|from|available|availability|in stock|currently|now serving|current(?:ly)?|as of|event|webinar|conference|discount|sale|promo|roadmap)\b[^.!?]{0,100}?\b((?:19|20)\d{2})\b", re.I)
 CURRENT_YEAR = time.gmtime().tm_year
 
@@ -63,27 +72,75 @@ def parse_jsonld(html: str) -> tuple[List[Dict[str, Any]], List[Dict[str, Any]]]
     return parsed, errors
 
 
+COMMERCIAL_TOKENS = {
+    "pricing", "price", "prices", "plans", "plan", "buy", "checkout", "cart",
+    "store", "shop", "product", "products", "solutions", "subscribe", "order"
+}
+EDITORIAL_TOKENS = {
+    "docs", "doc", "documentation", "guide", "guides", "faq", "faqs", "help",
+    "article", "articles", "blog", "weblog", "news", "learn", "tutorial",
+    "tutorials", "whitepaper", "changelog", "release", "releases", "post", "posts"
+}
+SUPPORT_TOKENS = {
+    "contact", "support", "about", "team", "company", "privacy", "terms", "legal", "careers"
+}
+DATE_SEGMENT_RE = re.compile(r"/(?:19|20)\d{2}(?:/\d{1,2})?(?:/|$)")
+
+
+def tokenize(text: str) -> set:
+    """Split text into lowercase word tokens for whole-word keyword matching."""
+    return {t for t in re.split(r"[^a-z0-9]+", (text or "").lower()) if t}
+
+
 def classify_page_purpose(url: str, title: str, h1_text: str, body_text: str) -> str:
-    """Classify the primary purpose of a page for context-aware auditing."""
+    """
+    Classify the primary purpose of a page for context-aware auditing.
+
+    Matches whole tokens, never substrings: '/restore' is not a store, '/workshop' is not a
+    shop, and '/buyers-guide' is not a checkout. Editorial routes are resolved before
+    commercial ones so a blog post at '/weblog/2025/apr/new-features-.../' is not treated
+    as a money page and charged a high-severity 'missing Product/Offer schema' finding.
+    """
     parsed = urlparse(url)
     path = parsed.path.lower().rstrip("/")
-    combined = f"{path} {title.lower()} {h1_text.lower()}"
 
     if not path or path in ("", "/", "/home", "/index.html", "/index.php"):
         return "homepage"
-    if any(k in combined for k in ("pricing", "plans", "product", "features", "solutions", "tier", "buy", "store", "shop")):
-        return "product_pricing"
-    if any(k in combined for k in ("docs", "documentation", "guide", "faq", "help", "article", "blog", "learn", "tutorials", "whitepaper")):
+
+    path_tokens = tokenize(path)
+    combined_tokens = path_tokens | tokenize(title) | tokenize(h1_text)
+
+    # Editorial first: dated permalinks and doc/blog routes are never money pages.
+    if DATE_SEGMENT_RE.search(parsed.path) or (path_tokens & EDITORIAL_TOKENS):
         return "article_docs"
-    if any(k in combined for k in ("contact", "support", "about", "team", "company", "privacy", "terms")):
+    if combined_tokens & COMMERCIAL_TOKENS:
+        return "product_pricing"
+    if combined_tokens & EDITORIAL_TOKENS:
+        return "article_docs"
+    if combined_tokens & SUPPORT_TOKENS:
         return "contact_support"
     return "general"
 
 
 def analyze_page_html(url: str, html: str, final_url: str, status_code: int, load_time: float) -> Dict[str, Any]:
-    """Extract structured analysis from a fetched page's HTML."""
-    if status_code != 200 or not html:
+    """
+    Extract structured analysis from a fetched page's HTML.
+
+    A page we could not actually read is marked `inconclusive` and yields an empty snapshot,
+    so no skill can mistake "we failed to decode this" for "this tag is missing". Every
+    evaluator checks `inconclusive` before emitting a finding.
+    """
+    unreadable = bool(html) and content_is_unreadable(html)
+    if status_code != 200 or not html or unreadable:
+        if status_code != 200:
+            reason = f"HTTP {status_code}"
+        elif not html:
+            reason = "empty response body"
+        else:
+            reason = "response body could not be decoded to readable text"
         return {
+            "inconclusive": True,
+            "inconclusive_reason": reason,
             "url": url,
             "final_url": final_url,
             "status_code": status_code,
@@ -120,6 +177,11 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
 
     viewport_m = re.search(r'<meta[^>]+name=["\']viewport["\']', html, re.I)
     viewport_present = bool(viewport_m)
+
+    site_name_m = re.search(
+        r'(?is)<meta[^>]+property=["\']og:site_name["\'][^>]+content=["\'](.*?)["\']', html
+    )
+    og_site_name = site_name_m.group(1).strip() if site_name_m else ""
 
     canon_m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](.*?)["\']', html, re.I)
     canonical = canonicalize(final_url, canon_m.group(1).strip()) if canon_m else None
@@ -216,13 +278,25 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
         alt_m = re.search(r'alt=["\'](.*?)["\']', img_attrs, re.I)
         src = canonicalize(final_url, src_m.group(1)) if src_m else ""
         alt = alt_m.group(1).strip() if alt_m else ""
-        images.append({"src": src, "alt": alt, "has_alt": bool(alt)})
+        # alt="" is the CORRECT way to mark a decorative image; a missing alt attribute is the
+        # actual defect. Conflating the two would flag every correctly-marked spacer icon.
+        images.append({
+            "src": src,
+            "alt": alt,
+            "has_alt": bool(alt),
+            "alt_attr_present": alt_m is not None,
+            "decorative": alt_m is not None and not alt,
+        })
 
     canvas_count = len(re.findall(r'(?is)<canvas\b', html))
     svg_count = len(re.findall(r'(?is)<svg\b', html))
 
-    # Dates, claims, consistency data
-    copyright_matches = [int(y) for y in COPYRIGHT_RE.findall(raw_text)]
+    # Dates, claims, consistency data.
+    # Copyright spans may be ranges ("(c) 2005-2026"); the newest year in the span is the
+    # freshness signal. Reading only the first year flagged every ranged footer as stale.
+    copyright_matches = []
+    for span in COPYRIGHT_RE.findall(raw_text):
+        copyright_matches.extend(int(y) for y in YEAR_RE.findall(span))
     newest_copyright = max(copyright_matches) if copyright_matches else None
     founding_matches = sorted(set(FOUNDING_RE.findall(raw_text)))
     phone_matches = sorted(set(PHONE_RE.findall(raw_text)))
@@ -250,9 +324,20 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
     path_parts = [p for p in urlparse(final_url).path.strip("/").split("/") if p]
     is_deep = len(path_parts) >= 2
 
+    # A 200 response carrying almost no readable text has nothing for a non-rendering retrieval
+    # bot to extract. Everything else missing on such a page (h1, CTAs, links, meta, schema) is
+    # downstream of this, so evaluators suppress those and report the root cause instead of a
+    # cascade of symptoms.
+    #
+    # "Almost no text" alone is not enough: a short page that still carries a heading and its
+    # core facts in raw HTML is complete, just brief. A shell is a page with neither a heading
+    # nor content -- or one whose markup dwarfs its text, which is the client-rendered case.
+    render_gap = len(words) < 30 and (not h1_texts or len(html) > 1500)
+
     purpose = classify_page_purpose(final_url, title, primary_h1, raw_text)
 
     return {
+        "inconclusive": False,
         "url": url,
         "final_url": final_url,
         "status_code": status_code,
@@ -262,6 +347,7 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
         "word_count": len(words),
         "title": title,
         "meta_description": meta_description,
+        "og_site_name": og_site_name,
         "viewport_meta_present": viewport_present,
         "canonical_url": canonical,
         "headings": headings,
@@ -295,6 +381,7 @@ def analyze_page_html(url: str, html: str, final_url: str, status_code: int, loa
         },
         "page_purpose": purpose,
         "is_deep_page": is_deep,
+        "render_gap": render_gap,
         "render_diff": {"available": False, "note": "Static inspection performed"}
     }
 
@@ -309,6 +396,14 @@ class SiteInventory:
         self.robots_txt = {}
         self.sitemaps = []
         self.special_files = {}
+        # Parsed robots groups used to gate our OWN fetches, plus an audit trail of
+        # anything we declined to fetch. Populated in crawl_site().
+        self._robots_groups = []
+        self.skipped_by_robots = []
+        # requested_url -> final_url, for URLs that redirected. Snapshots are stored ONCE under
+        # their final URL; without this the same page was stored under both keys, so a 5-page
+        # crawl reported 6 pages and every "across N crawled pages" evidence string was wrong.
+        self.url_aliases: Dict[str, str] = {}
         self.pages: Dict[str, Dict[str, Any]] = {}
         self.ground_truth: Dict[str, Any] = {
             "brand_name": p.netloc.replace("www.", "").split(".")[0].capitalize(),
@@ -322,6 +417,51 @@ class SiteInventory:
             "pages_crawled": 0,
             "total_crawl_time_seconds": 0.0
         }
+
+    def store_page(self, requested_url: str, snap: Dict[str, Any]):
+        """Store a snapshot once, keyed by its final URL, recording any redirect alias."""
+        final = snap.get("final_url") or requested_url
+        self.pages[final] = snap
+        if final != requested_url:
+            self.url_aliases[requested_url] = final
+
+    def knows_url(self, url: str) -> bool:
+        """Have we already fetched this URL, either directly or via a redirect alias?"""
+        return url in self.pages or url in self.url_aliases
+
+    @staticmethod
+    def _site_key(netloc: str) -> str:
+        """Normalize a host for same-site comparison. apex and www are the same site."""
+        netloc = (netloc or "").lower()
+        return netloc[4:] if netloc.startswith("www.") else netloc
+
+    def same_site(self, url: str) -> bool:
+        """Is this URL on the site being audited, treating apex and www as one?"""
+        p = urlparse(url)
+        return bool(p.netloc) and self._site_key(p.netloc) == self._site_key(urlparse(self.origin).netloc)
+
+    def may_fetch(self, url: str) -> bool:
+        """
+        Is this auditor allowed to fetch `url` under the site's robots.txt?
+
+        The handout makes respecting robots.txt an explicit guardrail. We are not a named
+        agent, so we resolve against the '*' group. Same-origin only; off-origin URLs are
+        never crawled. robots.txt itself and the discovery files are always permitted.
+        """
+        if not url:
+            return False
+        if not self.same_site(url):
+            return False
+        path = urlparse(url).path or "/"
+        if path in ("/robots.txt", "/sitemap.xml", "/llms.txt", "/llms-full.txt", "/ai.txt"):
+            return True
+        if not self._robots_groups:
+            return True
+        decision = robot_decision(self._robots_groups, "brand-ai-readiness-audit", path)
+        if not decision["allowed"]:
+            self.skipped_by_robots.append({"url": url, "matched_rule": decision["matched_rule"]})
+            return False
+        return True
 
     def crawl_site(self, max_pages: int = 5, timeout: int = DEFAULT_TIMEOUT, additional_paths: Optional[List[str]] = None) -> "SiteInventory":
         """Executes a bounded, single-pass crawl of the site."""
@@ -339,6 +479,7 @@ class SiteInventory:
 
         if r_status == 200:
             groups = parse_robots(r_body)
+            self._robots_groups = groups
             decisions = {a: {p: robot_decision(groups, a, p) for p in test_paths} for a in AI_USER_AGENTS}
             blocked = {a: [p for p, d in ds.items() if not d["allowed"]] for a, ds in decisions.items()}
             blocked = {a: x for a, x in blocked.items() if x}
@@ -378,7 +519,7 @@ class SiteInventory:
             found_urls = []
             if sm_status == 200 and sm_body:
                 loc_matches = re.findall(r"<loc>(.*?)</loc>", sm_body, re.I)
-                found_urls = [u.strip() for u in loc_matches if urlparse(u.strip()).netloc == urlparse(self.origin).netloc]
+                found_urls = [u.strip() for u in loc_matches if self.same_site(u.strip())]
                 sitemap_urls_discovered.extend(found_urls)
             self.sitemaps.append({
                 "url": sm_url,
@@ -390,9 +531,16 @@ class SiteInventory:
         # 4. Fetch seed/homepage first
         seed_status, seed_html, final_seed_url, _, seed_load_time, _ = safe_fetch(self.seed_url, timeout=timeout)
         seed_snapshot = analyze_page_html(self.seed_url, seed_html, final_seed_url, seed_status, seed_load_time)
-        self.pages[self.seed_url] = seed_snapshot
-        if final_seed_url != self.seed_url:
-            self.pages[final_seed_url] = seed_snapshot
+        self.store_page(self.seed_url, seed_snapshot)
+
+        # Adopt the origin the seed actually resolved to. An apex host that redirects to www
+        # (very common) previously left origin on the apex while every page and link lived on
+        # www, so the same-site gate refused every internal link and the crawl stopped at one page.
+        if seed_status == 200 and final_seed_url:
+            fp = urlparse(final_seed_url)
+            resolved_origin = f"{fp.scheme}://{fp.netloc}"
+            if resolved_origin != self.origin:
+                self.origin = resolved_origin
 
         # 5. Discover representative URLs to complete the inventory up to max_pages
         candidate_urls: List[str] = []
@@ -401,12 +549,12 @@ class SiteInventory:
         internal_links = seed_snapshot.get("internal_links", [])
         for link_obj in internal_links:
             u = link_obj["href"]
-            if u not in self.pages:
+            if not self.knows_url(u):
                 candidate_urls.append(u)
 
         # From sitemap
         for sm_u in sitemap_urls_discovered:
-            if sm_u not in self.pages and sm_u not in candidate_urls:
+            if not self.knows_url(sm_u) and sm_u not in candidate_urls:
                 candidate_urls.append(sm_u)
 
         # Categorize candidates into money/pricing, docs/content, and contact/about
@@ -429,15 +577,15 @@ class SiteInventory:
             if u not in selected_urls:
                 selected_urls.append(u)
 
-        # Fetch candidate pages
+        # Fetch candidate pages (robots.txt gated)
         for u in selected_urls[:max_pages - 1]:
-            if u in self.pages:
+            if self.knows_url(u):
+                continue
+            if not self.may_fetch(u):
                 continue
             st, html, fin_u, _, lt, _ = safe_fetch(u, timeout=timeout)
             snap = analyze_page_html(u, html, fin_u, st, lt)
-            self.pages[u] = snap
-            if fin_u != u:
-                self.pages[fin_u] = snap
+            self.store_page(u, snap)
 
         # 6. Extract ground truth from Organization JSON-LD and root page
         self._extract_ground_truth(seed_snapshot)
@@ -449,6 +597,7 @@ class SiteInventory:
     def _extract_ground_truth(self, seed_snap: Dict[str, Any]):
         """Extract authoritative ground truth facts from root schema and page text."""
         org_name = None
+        name_source = "unknown"
         same_as = []
         founding_date = None
         key_facts = {}
@@ -459,6 +608,7 @@ class SiteInventory:
             if any(x in ("Organization", "LocalBusiness", "Corporation", "Brand") for x in types):
                 if ent.get("name"):
                     org_name = ent["name"]
+                    name_source = "organization_schema"
                 if ent.get("sameAs"):
                     sa = ent["sameAs"]
                     same_as.extend(sa if isinstance(sa, list) else [sa])
@@ -468,13 +618,27 @@ class SiteInventory:
                     key_facts["description"] = ent["description"]
 
         if not org_name:
-            # Fallback to title
-            t = seed_snap.get("title", "")
-            if t:
-                org_name = t.split("|")[0].split("-")[0].strip()
+            # og:site_name is the site's own declaration of its name.
+            org_name = (seed_snap.get("og_site_name") or "").strip() or None
+            if org_name:
+                name_source = "og_site_name"
+
+        if not org_name:
+            # Last resort: a short <title>, then the domain label. The full <title> is usually a
+            # tagline ("Welcome to Python.org", "Internet for people, not profit") and previously
+            # leaked into generated queries and finding titles as if it were the brand name.
+            title_text = (seed_snap.get("title") or "").split("|")[0].split("–")[0].strip()
+            if title_text and len(title_text.split()) <= 4:
+                org_name = title_text
+                name_source = "short_title"
+            else:
+                label = urlparse(self.seed_url).netloc.replace("www.", "").split(".")[0]
+                org_name = label.capitalize() if label else "the brand"
+                name_source = "domain_label"
 
         if org_name:
             self.ground_truth["brand_name"] = org_name
+        self.ground_truth["brand_name_source"] = name_source
         if same_as:
             self.ground_truth["same_as"] = same_as
         if founding_date:
@@ -501,7 +665,9 @@ class SiteInventory:
             "special_files": self.special_files,
             "pages": self.pages,
             "ground_truth": self.ground_truth,
-            "crawl_budget": self.crawl_budget
+            "crawl_budget": self.crawl_budget,
+            "skipped_by_robots": self.skipped_by_robots,
+            "url_aliases": self.url_aliases
         }
 
     def save_json(self, filepath: str):
@@ -518,6 +684,12 @@ class SiteInventory:
         inv.pages = data.get("pages", {})
         inv.ground_truth = data.get("ground_truth", {})
         inv.crawl_budget = data.get("crawl_budget", {})
+        inv.skipped_by_robots = data.get("skipped_by_robots", [])
+        inv.url_aliases = data.get("url_aliases", {})
+        # Re-parse robots so a rehydrated inventory still gates its own follow-up fetches
+        # (e.g. the engagement broken-link sampler running from a saved inventory).
+        raw_robots = (data.get("robots_txt") or {}).get("raw", "")
+        inv._robots_groups = parse_robots(raw_robots) if raw_robots else []
         return inv
 
     @classmethod

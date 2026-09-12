@@ -1,0 +1,70 @@
+{
+  "site": "https://kforum.me",
+  "audited_at": "2026-09-07T18:31:34Z",
+  "summary": {
+    "total_findings": 2,
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 0,
+    "discoverability_findings": 2,
+    "engagement_findings": 0,
+    "citability_score_unavailable": "No page could be read (all crawled URLs were non-200 or undecodable), so findings are not a measure of this site's citability."
+  },
+  "findings": [
+    {
+      "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+      "category": "crawlability",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://kforum.me/sitemap.xml via http_get_sitemap_check [2026-09-07T18:31:34Z]: Request to https://kforum.me/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "crawl:missing-xml-sitemap",
+      "suggested_action": {
+        "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+        "priority": "medium",
+        "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt."
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://kforum.me/sitemap.xml",
+        "observation": "Request to https://kforum.me/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-07T18:31:34Z",
+        "confidence": "high"
+      },
+      "id": "F-001"
+    },
+    {
+      "title": "Brand identity is not anchored to any independent authority source",
+      "category": "corroboration",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://kforum.me via onsite_identity_anchor_inspection [2026-09-07T18:31:34Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Kforum\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
+      "source_skill": "trust-corroboration-graph",
+      "fingerprint": "trust:no-independent-identity-anchor",
+      "suggested_action": {
+        "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+        "priority": "medium",
+        "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything."
+      },
+      "source_skills": [
+        "trust-corroboration-graph"
+      ],
+      "evidence_details": {
+        "url": "https://kforum.me",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"Kforum\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-07T18:31:34Z",
+        "confidence": "high"
+      },
+      "id": "F-002"
+    }
+  ]
+}

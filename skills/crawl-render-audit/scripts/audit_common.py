@@ -1,20 +1,53 @@
 """Small, dependency-free primitives shared by read-only audit scripts."""
 import re
+import gzip
+import zlib
 import time
 import urllib.request
 import urllib.error
 from urllib.parse import urljoin, urlparse, urlunparse
 
-AI_USER_AGENTS = (
-    "GPTBot", "ChatGPT-User", "OAI-SearchBot",
-    "ClaudeBot", "Claude-Web", "anthropic-ai",
-    "PerplexityBot", "Perplexity-User",
-    "Google-Extended", "CCBot", "Amazonbot",
-    "Applebot-Extended", "Bytespider"
-)
+# AI crawlers split into three classes that have completely different consequences when blocked.
+# Treating them alike is a false positive: a publisher who blocks training crawlers but allows
+# search and user-triggered ones has made a deliberate, coherent licensing choice and is still
+# fully citable. Only the last two classes decide whether a brand can appear in an answer.
+#
+#   training       -- harvest content for future model training. Blocking costs no citations.
+#   search_index   -- build the retrieval indexes AI answers are assembled from. Blocking these
+#                     removes the brand from AI search results.
+#   user_triggered -- fetch a page live when a user asks about it. Blocking these breaks the
+#                     assistant's ability to read the page the user is literally asking about.
+AI_CRAWLER_CLASSES = {
+    "training": (
+        "GPTBot", "ClaudeBot", "Google-Extended", "CCBot",
+        "Applebot-Extended", "Meta-ExternalAgent", "Bytespider", "Amazonbot",
+    ),
+    "search_index": (
+        "OAI-SearchBot", "Claude-SearchBot", "PerplexityBot",
+    ),
+    "user_triggered": (
+        "ChatGPT-User", "Claude-User", "Perplexity-User",
+    ),
+}
+
+CITATION_CRITICAL_AGENTS = AI_CRAWLER_CLASSES["search_index"] + AI_CRAWLER_CLASSES["user_triggered"]
+
+AI_USER_AGENTS = tuple(a for group in AI_CRAWLER_CLASSES.values() for a in group)
+
+
+def crawler_class(agent: str) -> str:
+    """Which consequence class does this user agent belong to?"""
+    for name, agents in AI_CRAWLER_CLASSES.items():
+        if agent in agents:
+            return name
+    return "unknown"
 
 DEFAULT_TIMEOUT = 8
-USER_AGENT = "brand-ai-readiness-audit/2.0 (+read-only audit; Adobe Hackathon Round 3)"
+USER_AGENT = "brand-ai-readiness-audit/2.1 (+read-only audit; Adobe Hackathon Round 3)"
+
+# Encodings we can decompress with the standard library. Brotli ('br') is deliberately
+# not advertised in Accept-Encoding because CPython has no stdlib brotli decoder.
+SUPPORTED_ENCODINGS = "gzip, deflate"
 
 
 def normalize_url(url: str) -> str:
@@ -31,12 +64,104 @@ def canonicalize(base: str, href: str) -> str:
     return normalize_url(urljoin(base, href))
 
 
+def header_get(headers, name: str, default=None):
+    """Case-insensitive header lookup. Servers vary on capitalization."""
+    if not headers:
+        return default
+    target = name.lower()
+    for k, v in headers.items():
+        if k.lower() == target:
+            return v
+    return default
+
+
+def decompress_body(raw: bytes, content_encoding: str) -> bytes:
+    """
+    Decompress a response body.
+
+    Content-Encoding is honoured when present, but we also sniff magic bytes: some CDNs
+    (python.org's varnish/Fastly layer among them) return gzip-encoded bodies even when the
+    request did not advertise gzip support. Without this, the body decodes to replacement
+    characters and every text-derived check reports a false negative.
+    """
+    if not raw:
+        return raw
+
+    enc = (content_encoding or "").lower().strip()
+    is_gzip_magic = raw[:2] == b"\x1f\x8b"
+
+    try:
+        if enc == "gzip" or is_gzip_magic:
+            return gzip.decompress(raw)
+        if enc == "deflate":
+            try:
+                return zlib.decompress(raw)
+            except zlib.error:
+                # Raw deflate stream without a zlib header
+                return zlib.decompress(raw, -zlib.MAX_WBITS)
+    except Exception:
+        # Corrupt or mislabelled stream: hand back the original bytes and let the
+        # readability gate downstream mark the page inconclusive.
+        return raw
+
+    return raw
+
+
+def decode_body(raw: bytes, content_type: str) -> str:
+    """Decode bytes to text using the declared charset, then the HTML meta charset, then UTF-8."""
+    if not raw:
+        return ""
+
+    charset = None
+    if content_type:
+        m = re.search(r"charset=([\w\-]+)", content_type, re.I)
+        if m:
+            charset = m.group(1)
+
+    if not charset:
+        m = re.search(rb'<meta[^>]+charset=["\']?([\w\-]+)', raw[:4096], re.I)
+        if m:
+            charset = m.group(1).decode("ascii", errors="ignore")
+
+    for candidate in (charset, "utf-8", "latin-1"):
+        if not candidate:
+            continue
+        try:
+            return raw.decode(candidate)
+        except (UnicodeDecodeError, LookupError):
+            continue
+
+    return raw.decode("utf-8", errors="replace")
+
+
+def content_is_unreadable(text: str) -> bool:
+    """
+    True when a body decoded to mojibake rather than usable markup.
+
+    Guards the whole finding pipeline: a page we could not actually read must produce
+    no findings, because "we could not parse it" is not evidence that a tag is missing.
+    """
+    if not text:
+        return False
+    sample = text[:4000]
+    if not sample:
+        return False
+    replacement_ratio = sample.count("�") / len(sample)
+    if replacement_ratio > 0.05:
+        return True
+    # Undecodable binary often survives decoding as control characters
+    control = sum(1 for c in sample if ord(c) < 9 or (13 < ord(c) < 32))
+    return (control / len(sample)) > 0.05
+
+
 def parse_robots(text: str):
     """Return robots groups preserving standard consecutive User-agent semantics."""
     groups, agents, rules = [], [], []
+
     def flush():
         if agents:
             groups.append((tuple(a.lower() for a in agents), tuple(rules)))
+
     for raw in text.splitlines():
         line = raw.split("#", 1)[0].strip()
         if not line or ":" not in line:
@@ -88,14 +213,10 @@ def visible_text(html: str) -> str:
     return re.sub(r"\s+", " ", html).strip()
 
 
-class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
-    """Custom redirect handler to track redirect chains manually if needed."""
-    pass
-
-
 def safe_fetch(url: str, method: str = "GET", timeout: int = DEFAULT_TIMEOUT, max_redirects: int = 5):
     """
     Safely fetches a URL, following redirects and recording the status chain.
+    Decompresses gzip/deflate bodies and decodes using the declared charset.
     Returns: (status_code, body, final_url, redirect_chain, elapsed_seconds, headers)
     """
     req_url = normalize_url(url)
@@ -103,25 +224,38 @@ def safe_fetch(url: str, method: str = "GET", timeout: int = DEFAULT_TIMEOUT, ma
     current_url = req_url
     start_time = time.time()
 
+    def read_payload(resp):
+        headers_dict = dict(resp.headers.items()) if hasattr(resp, "headers") else {}
+        if method != "GET":
+            return "", headers_dict
+        raw = resp.read()
+        raw = decompress_body(raw, header_get(headers_dict, "Content-Encoding", ""))
+        text = decode_body(raw, header_get(headers_dict, "Content-Type", ""))
+        return text, headers_dict
+
     for _ in range(max_redirects + 1):
         redirect_chain.append(current_url)
         try:
             req = urllib.request.Request(
                 current_url,
                 method=method,
-                headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
+                headers={
+                    "User-Agent": USER_AGENT,
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    "Accept-Encoding": SUPPORTED_ENCODINGS,
+                }
             )
-            # Create an opener that doesn't automatically follow redirects silently so we know the status
+
+            # Opener that does not silently follow redirects, so the status stays visible
             class RedirectTracker(urllib.request.HTTPRedirectHandler):
                 def redirect_request(self, req, fp, code, msg, headers, newurl):
-                    return None  # Stop automatic redirect, we handle manually
+                    return None
 
             opener = urllib.request.build_opener(RedirectTracker)
             try:
                 with opener.open(req, timeout=timeout) as response:
+                    body, headers_dict = read_payload(response)
                     elapsed = time.time() - start_time
-                    body = response.read().decode("utf-8", errors="replace") if method == "GET" else ""
-                    headers_dict = dict(response.headers.items()) if hasattr(response, "headers") else {}
                     return response.status, body, current_url, redirect_chain, elapsed, headers_dict
             except urllib.error.HTTPError as e:
                 if e.code in (301, 302, 303, 307, 308):
@@ -129,13 +263,11 @@ def safe_fetch(url: str, method: str = "GET", timeout: int = DEFAULT_TIMEOUT, ma
                     if loc:
                         current_url = canonicalize(current_url, loc)
                         continue
-                    else:
-                        elapsed = time.time() - start_time
-                        return e.code, "", current_url, redirect_chain, elapsed, dict(e.headers.items())
-                else:
                     elapsed = time.time() - start_time
-                    body = e.read().decode("utf-8", errors="replace") if method == "GET" else ""
-                    return e.code, body, current_url, redirect_chain, elapsed, dict(e.headers.items())
+                    return e.code, "", current_url, redirect_chain, elapsed, dict(e.headers.items())
+                body, headers_dict = read_payload(e)
+                elapsed = time.time() - start_time
+                return e.code, body, current_url, redirect_chain, elapsed, headers_dict
 
         except urllib.error.URLError as e:
             elapsed = time.time() - start_time

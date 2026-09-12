@@ -1,0 +1,172 @@
+{
+  "site": "https://bbsrgotlaytent.live",
+  "audited_at": "2026-09-07T18:29:25Z",
+  "summary": {
+    "total_findings": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 3,
+    "discoverability_findings": 2,
+    "engagement_findings": 2,
+    "citability_score": 89
+  },
+  "findings": [
+    {
+      "title": "Brand identity is not anchored to any independent authority source",
+      "category": "corroboration",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://bbsrgotlaytent.live via onsite_identity_anchor_inspection [2026-09-07T18:29:25Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 1 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"BBSR Got Laytent\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
+      "source_skill": "trust-corroboration-graph",
+      "fingerprint": "trust:no-independent-identity-anchor",
+      "suggested_action": {
+        "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+        "priority": "medium",
+        "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything."
+      },
+      "source_skills": [
+        "trust-corroboration-graph"
+      ],
+      "evidence_details": {
+        "url": "https://bbsrgotlaytent.live",
+        "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 1 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"BBSR Got Laytent\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-07T18:29:25Z",
+        "confidence": "high"
+      },
+      "id": "F-001"
+    },
+    {
+      "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+      "category": "structured-data",
+      "severity": "low",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "low",
+      "evidence": "Observed at https://bbsrgotlaytent.live/ via jsonld_schema_extractor [2026-09-07T18:29:24Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "schema:organization-missing-sameas",
+      "suggested_action": {
+        "summary": "Add sameAs URLs to Organization JSON-LD.",
+        "priority": "low",
+        "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+        "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"BBSR Got Laytent\",\n  \"url\": \"https://bbsrgotlaytent.live\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"An independent comedy roast and talent-show series in Bhubaneswar, Odisha. Discover upcoming stand-up comedy shows, audience tickets, and performer registrations near Patia.\",\n  \"email\": \"support@bbsrgotlaytent.live\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://bbsrgotlaytent.live/",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-07T18:29:24Z",
+        "confidence": "high"
+      },
+      "id": "F-002"
+    },
+    {
+      "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://bbsrgotlaytent.live/shows/6a8c8d39710c22f14842dce6 via breadcrumb_markup_inspector [2026-09-07T18:29:24Z]: Page at deep route (/shows/6a8c8d39710c22f14842dce6) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:missing-breadcrumbs",
+      "suggested_action": {
+        "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+        "priority": "low",
+        "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://bbsrgotlaytent.live/shows/6a8c8d39710c22f14842dce6",
+        "observation": "Page at deep route (/shows/6a8c8d39710c22f14842dce6) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-07T18:29:24Z",
+        "confidence": "medium"
+      },
+      "id": "F-003"
+    },
+    {
+      "title": "No site search affordance found on any crawled page",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://bbsrgotlaytent.live via search_affordance_detection [2026-09-07T18:29:24Z]: None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:no-site-search",
+      "suggested_action": {
+        "summary": "Add a site search box to the persistent header.",
+        "priority": "low",
+        "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://bbsrgotlaytent.live",
+        "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-07T18:29:24Z",
+        "confidence": "medium"
+      },
+      "id": "F-004"
+    }
+  ],
+  "proactive_recommendations": [
+    {
+      "title": "Build third-party presence so BBSR Got Laytent is resolvable away from its own domain",
+      "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+      "suggested_action": {
+        "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+        "priority": "high",
+        "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+      }
+    },
+    {
+      "title": "Add BreadcrumbList schema to deep pages",
+      "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+      "suggested_action": {
+        "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+        "priority": "low",
+        "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+      }
+    },
+    {
+      "title": "State AI usage terms explicitly in robots.txt",
+      "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+      "suggested_action": {
+        "summary": "Add machine-readable content-usage signals to robots.txt.",
+        "priority": "low",
+        "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+      }
+    },
+    {
+      "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+      "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+      "suggested_action": {
+        "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+        "priority": "low",
+        "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+      }
+    },
+    {
+      "title": "Consider publishing llms.txt, with realistic expectations",
+      "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+      "suggested_action": {
+        "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+        "priority": "low",
+        "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+      }
+    }
+  ]
+}

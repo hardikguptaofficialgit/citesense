@@ -1,0 +1,234 @@
+{
+  "site": "https://faktcheck.fedkiit.com",
+  "audited_at": "2026-09-07T18:29:37Z",
+  "summary": {
+    "total_findings": 7,
+    "critical": 0,
+    "high": 2,
+    "medium": 3,
+    "low": 2,
+    "discoverability_findings": 5,
+    "engagement_findings": 2,
+    "citability_score": 57
+  },
+  "findings": [
+    {
+      "title": "Client-side rendering gap: raw HTML contains minimal text content",
+      "category": "render-gap",
+      "severity": "high",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "high",
+      "evidence": "Observed at https://faktcheck.fedkiit.com/ via raw_vs_rendered_wordcount_inspection [2026-09-07T18:29:37Z]: Raw HTML yields only 5 words of visible text. Search crawlers and AI bots that do not execute client JS cannot extract any brand fact from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: high)",
+      "source_skill": "crawl-render-audit",
+      "fingerprint": "render:empty-raw-html-gap:/",
+      "suggested_action": {
+        "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+        "priority": "high",
+        "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution."
+      },
+      "source_skills": [
+        "crawl-render-audit"
+      ],
+      "evidence_details": {
+        "url": "https://faktcheck.fedkiit.com/",
+        "observation": "Raw HTML yields only 5 words of visible text. Search crawlers and AI bots that do not execute client JS cannot extract any brand fact from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "raw_vs_rendered_wordcount_inspection",
+        "timestamp": "2026-09-07T18:29:37Z",
+        "confidence": "high"
+      },
+      "id": "F-001"
+    },
+    {
+      "title": "No extractable answer on-site for \"What is FAKT CHECK?\"",
+      "category": "citation-omission",
+      "severity": "high",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "high",
+      "evidence": "Observed at https://faktcheck.fedkiit.com via onsite_answerability_probe [2026-09-07T18:29:37Z]: Across 1 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is FAKT CHECK?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "schema:root-organization-missing",
+      "suggested_action": {
+        "summary": "Publish a machine-readable identity statement on the homepage.",
+        "priority": "high",
+        "how_to_fix": "Add Organization JSON-LD (name, url, logo, description, sameAs) to the homepage, and a one-sentence plain-text description of what the brand does in the first screen of copy."
+      },
+      "source_skills": [
+        "citation-simulator"
+      ],
+      "evidence_details": {
+        "url": "https://faktcheck.fedkiit.com",
+        "observation": "Across 1 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is FAKT CHECK?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:29:37Z",
+        "confidence": "medium"
+      },
+      "id": "F-002"
+    },
+    {
+      "title": "No extractable answer on-site for \"What does FAKT CHECK offer?\"",
+      "category": "citation-omission",
+      "severity": "medium",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "medium",
+      "evidence": "Observed at https://faktcheck.fedkiit.com via onsite_answerability_probe [2026-09-07T18:29:37Z]: Across 1 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does FAKT CHECK offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:offering",
+      "suggested_action": {
+        "summary": "Mark up the product or service catalogue.",
+        "priority": "medium",
+        "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels."
+      },
+      "source_skills": [
+        "citation-simulator"
+      ],
+      "evidence_details": {
+        "url": "https://faktcheck.fedkiit.com",
+        "observation": "Across 1 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does FAKT CHECK offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:29:37Z",
+        "confidence": "medium"
+      },
+      "id": "F-003"
+    },
+    {
+      "title": "No extractable answer on-site for \"How do I contact FAKT CHECK?\"",
+      "category": "citation-omission",
+      "severity": "medium",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "medium",
+      "evidence": "Observed at https://faktcheck.fedkiit.com via onsite_answerability_probe [2026-09-07T18:29:37Z]: Across 1 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact FAKT CHECK?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+      "source_skill": "citation-simulator",
+      "fingerprint": "citation:unanswerable:contact",
+      "suggested_action": {
+        "summary": "Expose a contact route as machine-readable text.",
+        "priority": "medium",
+        "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity."
+      },
+      "source_skills": [
+        "citation-simulator"
+      ],
+      "evidence_details": {
+        "url": "https://faktcheck.fedkiit.com",
+        "observation": "Across 1 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact FAKT CHECK?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-07T18:29:37Z",
+        "confidence": "medium"
+      },
+      "id": "F-004"
+    },
+    {
+      "title": "Brand identity is not anchored to any independent authority source",
+      "category": "corroboration",
+      "severity": "medium",
+      "status": "confirmed",
+      "confidence": "high",
+      "impact": "medium",
+      "evidence": "Observed at https://faktcheck.fedkiit.com via onsite_identity_anchor_inspection [2026-09-07T18:29:37Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"FAKT CHECK\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name. (Confidence: high)",
+      "source_skill": "trust-corroboration-graph",
+      "fingerprint": "trust:no-independent-identity-anchor",
+      "suggested_action": {
+        "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+        "priority": "medium",
+        "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything."
+      },
+      "source_skills": [
+        "trust-corroboration-graph"
+      ],
+      "evidence_details": {
+        "url": "https://faktcheck.fedkiit.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). An assistant resolving \"FAKT CHECK\" therefore has no machine-readable route from this site to a corroborating third party, and no way to tell it apart from other entities sharing the name.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-07T18:29:37Z",
+        "confidence": "high"
+      },
+      "id": "F-005"
+    },
+    {
+      "title": "No site search affordance found on any crawled page",
+      "category": "navigation",
+      "severity": "low",
+      "status": "likely-risk",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://faktcheck.fedkiit.com via search_affordance_detection [2026-09-07T18:29:37Z]: None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:no-site-search",
+      "suggested_action": {
+        "summary": "Add a site search box to the persistent header.",
+        "priority": "low",
+        "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://faktcheck.fedkiit.com",
+        "observation": "None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-07T18:29:37Z",
+        "confidence": "medium"
+      },
+      "id": "F-006"
+    },
+    {
+      "title": "No returning-visitor or account affordance detected",
+      "category": "personalization-readiness",
+      "severity": "low",
+      "status": "proactive",
+      "confidence": "medium",
+      "impact": "low",
+      "evidence": "Observed at https://faktcheck.fedkiit.com via returning_visitor_affordance_detection [2026-09-07T18:29:37Z]: Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+      "source_skill": "engagement-audit",
+      "fingerprint": "engagement:no-personalization-readiness",
+      "suggested_action": {
+        "summary": "Give returning visitors a way to be recognised, and use it.",
+        "priority": "low",
+        "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start."
+      },
+      "source_skills": [
+        "engagement-audit"
+      ],
+      "evidence_details": {
+        "url": "https://faktcheck.fedkiit.com",
+        "observation": "Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-07T18:29:37Z",
+        "confidence": "medium"
+      },
+      "id": "F-007"
+    }
+  ],
+  "proactive_recommendations": [
+    {
+      "title": "Build third-party presence so FAKT CHECK is resolvable away from its own domain",
+      "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+      "suggested_action": {
+        "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+        "priority": "high",
+        "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+      }
+    },
+    {
+      "title": "Declare a WebSite entity with SearchAction",
+      "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+      "suggested_action": {
+        "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+        "priority": "medium",
+        "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+      }
+    },
+    {
+      "title": "State AI usage terms explicitly in robots.txt",
+      "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+      "suggested_action": {
+        "summary": "Add machine-readable content-usage signals to robots.txt.",
+        "priority": "low",
+        "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+      }
+    }
+  ]
+}
