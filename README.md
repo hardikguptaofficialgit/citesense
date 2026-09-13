@@ -1,21 +1,10 @@
-# CiteSense
+![CiteSense — Evidence-backed AI readiness audits](banner.png)
 
-<p align="center">
-  <img src="banner.png" width="560" alt="CiteSense — Evidence-backed AI readiness audits">
-</p>
+**Tech stack:** Python 3.10+ · Python standard library · JSON Schema · setuptools · CLI · Read-only HTTP crawling
 
-<p align="center">
-  <strong>Tech stack:</strong> Python 3.10+ · Python standard library · JSON Schema ·
-  setuptools · CLI · Read-only HTTP crawling
-</p>
+**An evidence-driven Agent Skill Marketplace for AI discoverability and on-site engagement.**
 
-<p align="center">
-  <strong>An evidence-driven Agent Skill Marketplace for AI discoverability and on-site engagement.</strong>
-</p>
-
-<p align="center">
-  Crawl a website once · run focused audit skills · produce a validated JSON report
-</p>
+Crawl a website once · run focused audit skills · produce a validated JSON report
 
 CiteSense audits arbitrary websites for the conditions that determine whether AI systems
 can find, understand, trust, and cite a brand—and whether visitors can successfully engage
@@ -29,7 +18,11 @@ and the docs agree.
 > Python package is a convenient way to run the same engine. Installing the package does not
 > automatically register the marketplace skills with an AI platform.
 
+
+
 ## Quick start
+
+
 
 ### Run from PyPI
 
@@ -40,6 +33,8 @@ python -m pip install --upgrade citesense
 ```bash
 citesense audit https://example.com --output report.json
 ```
+
+
 
 ### Run the marketplace entrypoint
 
@@ -62,6 +57,8 @@ from citesense import run_full_audit
 report = run_full_audit("https://example.com")
 print(report["summary"])
 ```
+
+
 
 ## What the audit returns
 
@@ -90,8 +87,8 @@ citesense audit https://example.com \
 If no external evidence is supplied, off-site discovery is reported as `not-assessed`.
 
 Pre-generated reports for real sites are available in
-[`validation-runs/`](validation-runs/), with runtimes and severity counts in
-[`validation-runs/RUNS.md`](validation-runs/RUNS.md).
+`[validation-runs/](validation-runs/)`, with runtimes and severity counts in
+`[validation-runs/RUNS.md](validation-runs/RUNS.md)`.
 
 ## Documentation
 
@@ -99,7 +96,10 @@ Pre-generated reports for real sites are available in
 
 ---
 
+
+
 ## Entrypoint
+
 `skills/audit-orchestrator` is the single entrypoint that orchestrates the audit.
 See `marketplace.json` for the full marketplace manifest.
 
@@ -124,9 +124,9 @@ Agent receives report.json
 The PyPI package and the marketplace are complementary:
 
 - **Marketplace:** gives an AI agent the manifest, skill instructions, composition rules,
-  and specialist skill structure expected by the Adobe submission.
+and specialist skill structure expected by the Adobe submission.
 - **PyPI package:** gives developers a portable `citesense` command and Python API for
-  running the same audit engine.
+running the same audit engine.
 
 Installing the PyPI package alone does not automatically register CiteSense with Claude,
 Cursor, Antigravity, or another agent platform. The agent can still use it when instructed
@@ -200,6 +200,8 @@ If the actual audited URL is not https://www.adobe.com/in, STOP and report the m
 instead of analyzing the report.
 ```
 
+
+
 ## Project structure
 
 ```text
@@ -209,6 +211,8 @@ marketplace.json            # Marketplace manifest (one entrypoint)
 tests/                      # Unit, regression, package, and marketplace tests
 pyproject.toml              # Install/build metadata
 ```
+
+
 
 ## Architecture & Skills
 
@@ -235,16 +239,22 @@ graph TD
     Validator --> FinalReport[report.json]
 ```
 
-| Skill | Concern | What it adds |
-|---|---|---|
-| **crawl-render-audit** | Off-site discoverability, steps A-C | Is the crawler let in? Scored **by crawler class** -- blocking training crawlers (GPTBot, ClaudeBot) costs no citations and is a legitimate licensing stance; blocking search-index (OAI-SearchBot, Claude-SearchBot, PerplexityBot) or user-triggered (ChatGPT-User, Claude-User) agents is what makes a brand uncitable. Can it read the page without executing JS? Is structured data present and valid? Are facts locked inside images or canvas? |
-| **freshness-corroboration** | Temporal + internal consistency (Appendix D, half 1) | Claim-based freshness: detects actual stale/conflicting facts (e.g. conflicting founding years, expired promotions) instead of treating missing `dateModified` as a defect. |
-| **engagement-audit** | On-site engagement | Evaluates orientation, buttons/forms/CTAs, navigation, redirect-aware broken links, and mobile viewport. |
-| **citation-simulator** | Proof-of-failure | Generates realistic questions about the brand, then tests **answerability**: given only the pages a retrieval bot actually fetched, could an assistant quote an answer? Also classifies supplied live-search results (omission / misattribution / staleness / contradiction) when an agent provides them. |
-| **trust-corroboration-graph** | External identity (Appendix D, half 2) | Observable on-site: does any machine-readable path exist from the brand to an independent authority (`sameAs` URIs, outbound links to Wikidata/Wikipedia/Crunchbase/LinkedIn/registries)? Agent-supplied: scores real third-party corroboration and same-name collision risk. |
-| **audit-orchestrator** (entrypoint) | Composition & Orchestration | Crawls pages once via `SiteInventory`, executes specialist skills to collect `CandidateFindings`, merges and deduplicates by root cause, prioritizes by severity and impact, adds proactive recommendations, and validates the report. |
+
+
+
+| Skill                               | Concern                                              | What it adds                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ----------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **crawl-render-audit**              | Off-site discoverability, steps A-C                  | Is the crawler let in? Scored **by crawler class** -- blocking training crawlers (GPTBot, ClaudeBot) costs no citations and is a legitimate licensing stance; blocking search-index (OAI-SearchBot, Claude-SearchBot, PerplexityBot) or user-triggered (ChatGPT-User, Claude-User) agents is what makes a brand uncitable. Can it read the page without executing JS? Is structured data present and valid? Are facts locked inside images or canvas? |
+| **freshness-corroboration**         | Temporal + internal consistency (Appendix D, half 1) | Claim-based freshness: detects actual stale/conflicting facts (e.g. conflicting founding years, expired promotions) instead of treating missing `dateModified` as a defect.                                                                                                                                                                                                                                                                           |
+| **engagement-audit**                | On-site engagement                                   | Evaluates orientation, buttons/forms/CTAs, navigation, redirect-aware broken links, and mobile viewport.                                                                                                                                                                                                                                                                                                                                              |
+| **citation-simulator**              | Proof-of-failure                                     | Generates realistic questions about the brand, then tests **answerability**: given only the pages a retrieval bot actually fetched, could an assistant quote an answer? Also classifies supplied live-search results (omission / misattribution / staleness / contradiction) when an agent provides them.                                                                                                                                             |
+| **trust-corroboration-graph**       | External identity (Appendix D, half 2)               | Observable on-site: does any machine-readable path exist from the brand to an independent authority (`sameAs` URIs, outbound links to Wikidata/Wikipedia/Crunchbase/LinkedIn/registries)? Agent-supplied: scores real third-party corroboration and same-name collision risk.                                                                                                                                                                         |
+| **audit-orchestrator** (entrypoint) | Composition & Orchestration                          | Crawls pages once via `SiteInventory`, executes specialist skills to collect `CandidateFindings`, merges and deduplicates by root cause, prioritizes by severity and impact, adds proactive recommendations, and validates the report.                                                                                                                                                                                                                |
+
 
 ---
+
+
 
 ## Key Features & Improvements
 
@@ -253,12 +263,12 @@ graph TD
 3. **Evidence-Verification Layer:** Every finding includes URL, observation, method, timestamp, and confidence rating (`Observed at <url> via <method> [<timestamp>]: <observation> (Confidence: <confidence>)`).
 4. **Finding Metadata:** Includes `status` (`confirmed` / `likely-risk` / `proactive`), `confidence` (`high` / `medium` / `low`), and `impact` (`critical` / `high` / `medium` / `low`).
 5. **False-Positive Elimination:**
-   - Follows HTTP redirects up to 5 hops; links redirecting to 200 are recognized as working.
-   - 4xx/5xx responses are distinguished from transient network timeouts.
-   - Missing `dateModified` or `datePublished` on static pages is **not** penalized.
-   - Breadcrumbs are only evaluated on deep paths (`depth >= 2`), not on root/shallow pages.
-   - JavaScript usage alone is **not** a defect if raw HTML contains the core facts.
-   - Entity collisions are only flagged if plausible in the same/adjacent industry without `sameAs` disambiguation.
+  - Follows HTTP redirects up to 5 hops; links redirecting to 200 are recognized as working.
+  - 4xx/5xx responses are distinguished from transient network timeouts.
+  - Missing `dateModified` or `datePublished` on static pages is **not** penalized.
+  - Breadcrumbs are only evaluated on deep paths (`depth >= 2`), not on root/shallow pages.
+  - JavaScript usage alone is **not** a defect if raw HTML contains the core facts.
+  - Entity collisions are only flagged if plausible in the same/adjacent industry without `sameAs` disambiguation.
 6. **Fact-Extractability Detection:** Analyzes the **raw, non-JS-executed HTML** for crucial facts (identity, offering, pricing, contact) -- exactly what a non-rendering retrieval bot sees -- and flags pages whose facts are absent from it or locked inside `<canvas>`. No headless browser is used: the audit is deliberately static, which is the harsher and more realistic case for AI crawlers.
 7. **Advanced Engagement Detection:** Recognizes `<button>`, `<input type="submit">`, `<form>`, `role="button"`, and prominent CTA links.
 8. **Root-Cause Deduplication:** Consolidates findings sharing the same fingerprint across pages and skills, merging evidence and assigning highest severity.
@@ -272,7 +282,11 @@ graph TD
 
 ---
 
+
+
 ## Running the Audit
+
+
 
 ### 1. Agent-friendly package CLI
 
@@ -310,13 +324,19 @@ It returns exit code `0` when all sites finish, `1` for partial/complete audit f
 and `2` for invalid command input.
 
 ### 2. End-to-End Marketplace Orchestrator CLI
+
 To run a complete audit against any website:
+
 ```bash
 python skills/audit-orchestrator/scripts/run_audit.py https://example.com --output report.json
 ```
 
+
+
 ### 3. Standalone Skill CLI
+
 Each specialist script can also be executed independently:
+
 ```bash
 # 1. Crawlability & Robots Audit
 python skills/crawl-render-audit/scripts/crawlability_check.py https://example.com
@@ -361,20 +381,21 @@ malformed JSON, or a non-object JSON document produces a one-line `error:` on st
 exit code 1 — and `--output` creates its parent directory if it does not exist.
 
 ### What shows up inside the report
+
 Two additive fields are produced automatically during composition. Both are **optional** in
 `references/report-schema.json` — existing consumers are unaffected.
 
-**`summary.citability_score`** — a 0-100 AI-Citability Score written on every composed
+`summary.citability_score` — a 0-100 AI-Citability Score written on every composed
 report (`run_audit.py` and `compose_report.py merge`). Starts at 100 and subtracts a
 per-finding severity penalty (critical 25 / high 12 / medium 5 / low 2), with a small,
 data-gated corroboration credit. The exact formula, worked example, and rationale live in
-[`skills/audit-orchestrator/references/citability-score.md`](skills/audit-orchestrator/references/citability-score.md).
+`[skills/audit-orchestrator/references/citability-score.md](skills/audit-orchestrator/references/citability-score.md)`.
 
 ```json
 "summary": { "total_findings": 7, "critical": 0, "high": 1, "citability_score": 64 }
 ```
 
-**`suggested_action.fix_snippet`** — a ready-to-paste JSON-LD block on structured-data
+`suggested_action.fix_snippet` — a ready-to-paste JSON-LD block on structured-data
 findings, pre-populated from data the crawl actually observed (brand name, `sameAs`,
 founding year, page H1, real URL path). It appears only when the audit holds enough real
 data to fill the entity's identifying fields; genuinely unknown values are emitted as
@@ -410,12 +431,16 @@ python skills/audit-orchestrator/scripts/compose_report.py merge \
 
 ---
 
+
+
 ## Running Tests
 
 Run the complete unit, adversarial and regression suite:
+
 ```bash
 python -m unittest discover -s tests -v
 ```
+
 All tests run with the Python standard library and zero external dependencies.
 
 `tests/test_regressions.py` locks in every false positive and guardrail bug that has been fixed
@@ -424,9 +449,11 @@ enforcement, evidence honesty, brand-name extraction). If one fails, a regressio
 reintroduced -- see `Progress.md` for the original reproduction.
 
 Run the deterministic broad-category benchmark separately:
+
 ```bash
 PYTHONPATH=src python benchmark_adversarial.py --output benchmark-results.json
 ```
+
 It uses a disposable local HTTP server to cover 18 website categories, strong/average/poor
 tiers, access failures, resource types, page-purpose classification, scoring, and evidence
 integrity without external search or browser automation.
