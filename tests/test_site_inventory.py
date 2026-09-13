@@ -9,7 +9,13 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 sys.path.insert(0, str(ROOT / "skills/crawl-render-audit/scripts"))
 
-from site_inventory import SiteInventory, analyze_page_html, parse_jsonld, classify_page_purpose
+from site_inventory import (
+    SiteInventory,
+    analyze_page_html,
+    classify_page_purpose,
+    classify_resource_type,
+    parse_jsonld,
+)
 
 
 class SiteInventoryTests(unittest.TestCase):
@@ -47,9 +53,38 @@ class SiteInventoryTests(unittest.TestCase):
 
     def test_page_purpose_classification(self):
         self.assertEqual(classify_page_purpose("https://example.com/", "Acme Home", "Welcome to Acme", "text"), "homepage")
+        self.assertEqual(classify_page_purpose("https://example.com/in/", "Acme India", "Welcome", "text"), "homepage")
         self.assertEqual(classify_page_purpose("https://example.com/pricing", "Pricing Plans", "Choose a Plan", "text"), "product_pricing")
+        self.assertEqual(classify_page_purpose("https://example.com/products/widget", "Widget", "Widget", ""), "product_landing")
         self.assertEqual(classify_page_purpose("https://example.com/docs/intro", "Documentation", "Getting Started", "text"), "article_docs")
         self.assertEqual(classify_page_purpose("https://example.com/contact-us", "Contact Support", "Get in touch", "text"), "contact_support")
+
+    def test_non_html_resources_are_not_page_documents(self):
+        self.assertEqual(classify_resource_type("https://example.com/assets/all-products.svg"), "svg")
+        self.assertEqual(classify_resource_type("https://example.com/app", "text/css"), "css")
+        snapshot = analyze_page_html(
+            "https://example.com/assets/all-products.svg",
+            "<svg><title>Products</title></svg>",
+            "https://example.com/assets/all-products.svg",
+            200,
+            0.1,
+            content_type="image/svg+xml",
+            resource_type="svg",
+        )
+        self.assertFalse(snapshot["is_page"])
+        self.assertEqual(snapshot["resource_type"], "svg")
+
+    def test_authentication_shell_is_inconclusive(self):
+        snapshot = analyze_page_html(
+            "https://example.com/login",
+            "<html><body><form><input name='email'><input type='password'>"
+            "<button>Sign in</button></form></body></html>",
+            "https://example.com/login",
+            200,
+            0.1,
+        )
+        self.assertTrue(snapshot["inconclusive"])
+        self.assertEqual(snapshot["access_status"], "authentication-required")
 
     def test_interactive_and_media_element_extraction(self):
         html = """

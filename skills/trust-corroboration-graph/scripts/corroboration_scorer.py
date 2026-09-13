@@ -84,9 +84,8 @@ def evaluate_identity_anchoring(
             f"Across the crawled pages, {schema_state}, and 0 of {len(set(external_link_domains))} "
             f"distinct outbound link domains point to an independent authority "
             f"(Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). "
-            f"An assistant resolving \"{brand_name}\" therefore has no machine-readable route from "
-            f"this site to a corroborating third party, and no way to tell it apart from other "
-            f"entities sharing the name."
+            f"No explicit independent-authority link was observed in the sampled pages; external "
+            f"corroboration was not searched."
         ),
         method="onsite_identity_anchor_inspection",
         source_skill="trust-corroboration-graph",
@@ -99,8 +98,8 @@ def evaluate_identity_anchoring(
             "does not corroborate anything."
         ),
         fingerprint="trust:no-independent-identity-anchor",
-        status="confirmed",
-        confidence="high",
+        status="likely-risk",
+        confidence="medium",
         impact="medium"
     ).to_dict())
 

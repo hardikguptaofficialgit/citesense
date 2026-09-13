@@ -132,6 +132,25 @@ class CitabilityScoreTests(unittest.TestCase):
         )
         self.assertEqual(compute_citability_score(r)["corroboration_credit"], 2)
 
+    def test_duplicate_root_causes_are_penalized_once(self):
+        findings = [
+            finding("high", fingerprint="same-root"),
+            finding("high", fingerprint="same-root"),
+        ]
+        breakdown = compute_citability_score(report(findings))
+        self.assertEqual(breakdown["penalty"], 12)
+        self.assertEqual(breakdown["counted_findings"], 1)
+        self.assertEqual(breakdown["excluded_duplicate_fingerprints"], ["same-root"])
+
+    def test_likely_risk_is_discounted_and_unassessed_is_excluded(self):
+        findings = [
+            finding("high", status="likely-risk", fingerprint="risk"),
+            finding("critical", status="not-assessed", fingerprint="unavailable"),
+        ]
+        breakdown = compute_citability_score(report(findings))
+        self.assertEqual(breakdown["penalty"], 6)
+        self.assertEqual(breakdown["penalty_by_severity"]["critical"], 0)
+
     def test_unknown_severity_contributes_nothing(self):
         r = report([finding("medium")])
         r["findings"].append(dict(finding("medium"), severity="informational"))
@@ -157,6 +176,12 @@ class CitabilityScoreTests(unittest.TestCase):
         r = report([finding("low")])
         annotate_report(r)
         self.assertEqual(r["summary"]["citability_score"], 98)
+
+    def test_empty_explicit_page_inventory_withholds_score(self):
+        r = report([])
+        annotate_report(r, pages={})
+        self.assertNotIn("citability_score", r["summary"])
+        self.assertIn("citability_score_unavailable", r["summary"])
 
     def test_build_final_report_attaches_the_score(self):
         candidate = {

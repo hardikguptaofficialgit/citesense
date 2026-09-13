@@ -155,7 +155,7 @@ class PagePurposeRegressions(unittest.TestCase):
 
     def test_genuine_pricing_page_still_classifies_as_commercial(self):
         self.assertEqual(classify_page_purpose("https://x.test/pricing", "Pricing", "Plans", ""), "product_pricing")
-        self.assertEqual(classify_page_purpose("https://x.test/shop", "Shop", "", ""), "product_pricing")
+        self.assertEqual(classify_page_purpose("https://x.test/shop", "Shop", "", ""), "product_landing")
 
 
 class RobotsEnforcementRegressions(unittest.TestCase):

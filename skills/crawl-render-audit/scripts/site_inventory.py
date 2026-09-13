@@ -19,7 +19,7 @@ from audit_common import (
     AI_USER_AGENTS, DEFAULT_TIMEOUT, USER_AGENT,
     normalize_url, canonicalize, parse_robots, robot_decision,
     visible_text, safe_fetch, classify_access,
-    ACCESS_READABLE, ACCESS_ROBOTS_DISALLOWED
+    ACCESS_READABLE, ACCESS_ROBOTS_DISALLOWED, ACCESS_AUTH_REQUIRED
 )
 
 # Only explicit founding verbs count as an entity founding claim. A bare "since <year>"
@@ -74,9 +74,10 @@ def parse_jsonld(html: str) -> tuple[List[Dict[str, Any]], List[Dict[str, Any]]]
 
 
 COMMERCIAL_TOKENS = {
-    "pricing", "price", "prices", "plans", "plan", "buy", "checkout", "cart",
-    "store", "shop", "product", "products", "solutions", "subscribe", "order"
+    "buy", "checkout", "cart", "store", "shop", "product", "products", "solutions",
+    "subscribe", "order", "platform", "service", "services"
 }
+PRICING_TOKENS = {"pricing", "price", "prices", "plans", "plan", "cost", "billing", "subscription"}
 EDITORIAL_TOKENS = {
     "docs", "doc", "documentation", "guide", "guides", "faq", "faqs", "help",
     "article", "articles", "blog", "weblog", "news", "learn", "tutorial",
@@ -86,11 +87,68 @@ SUPPORT_TOKENS = {
     "contact", "support", "about", "team", "company", "privacy", "terms", "legal", "careers"
 }
 DATE_SEGMENT_RE = re.compile(r"/(?:19|20)\d{2}(?:/\d{1,2})?(?:/|$)")
+RESOURCE_EXTENSIONS = {
+    ".svg": "svg",
+    ".png": "image",
+    ".jpg": "image",
+    ".jpeg": "image",
+    ".gif": "image",
+    ".webp": "image",
+    ".avif": "image",
+    ".css": "css",
+    ".js": "javascript",
+    ".mjs": "javascript",
+    ".pdf": "pdf",
+    ".woff": "font",
+    ".woff2": "font",
+    ".ttf": "font",
+    ".otf": "font",
+    ".eot": "font",
+}
+CONTENT_TYPES = {
+    "image/svg+xml": "svg",
+    "text/css": "css",
+    "application/javascript": "javascript",
+    "text/javascript": "javascript",
+    "application/pdf": "pdf",
+    "font/woff": "font",
+    "font/woff2": "font",
+    "application/font-woff": "font",
+    "application/vnd.ms-fontobject": "font",
+    "font/ttf": "font",
+    "font/otf": "font",
+}
 
 
 def tokenize(text: str) -> set:
     """Split text into lowercase word tokens for whole-word keyword matching."""
     return {t for t in re.split(r"[^a-z0-9]+", (text or "").lower()) if t}
+
+
+def classify_resource_type(url: str, content_type: str = "", body: str = "") -> str:
+    """Classify a response before applying document-only audit checks."""
+    path = urlparse(url).path.lower()
+    for extension, resource_type in RESOURCE_EXTENSIONS.items():
+        if path.endswith(extension):
+            return resource_type
+
+    media_type = (content_type or "").split(";", 1)[0].strip().lower()
+    if media_type in {"text/html", "application/xhtml+xml"}:
+        path_tokens = set(part for part in path.split("/") if part)
+        if path_tokens.intersection({"fragment", "fragments", "partial", "partials", "component", "components"}):
+            return "html_fragment"
+        return "html_document"
+    if media_type in CONTENT_TYPES:
+        return CONTENT_TYPES[media_type]
+    if media_type.startswith("image/"):
+        return "image"
+    if media_type.startswith("font/"):
+        return "font"
+    if media_type.startswith("text/") and re.search(r"(?is)<!doctype\s+html|<html\b|<head\b|<body\b", body[:4000]):
+        return "html_document"
+    if re.search(r"(?is)^\s*(?:<!doctype\s+html|<html\b)", body[:4000]):
+        return "html_document"
+    return "unknown"
 
 
 def classify_page_purpose(url: str, title: str, h1_text: str, body_text: str) -> str:
@@ -105,17 +163,36 @@ def classify_page_purpose(url: str, title: str, h1_text: str, body_text: str) ->
     parsed = urlparse(url)
     path = parsed.path.lower().rstrip("/")
 
-    if not path or path in ("", "/", "/home", "/index.html", "/index.php"):
+    path_parts = [part for part in path.split("/") if part]
+    if (
+        not path
+        or path in ("", "/", "/home", "/index.html", "/index.php")
+        or (len(path_parts) == 1 and re.fullmatch(r"[a-z]{2}", path_parts[0]))
+    ):
         return "homepage"
 
     path_tokens = tokenize(path)
     combined_tokens = path_tokens | tokenize(title) | tokenize(h1_text)
 
+    if path_tokens.intersection({"fragment", "fragments", "partial", "partials", "component", "components"}):
+        return "html_fragment"
+
     # Editorial first: dated permalinks and doc/blog routes are never money pages.
     if DATE_SEGMENT_RE.search(parsed.path) or (path_tokens & EDITORIAL_TOKENS):
         return "article_docs"
-    if combined_tokens & COMMERCIAL_TOKENS:
+    path_pricing = bool(path_tokens & PRICING_TOKENS)
+    heading_pricing = bool((tokenize(title) | tokenize(h1_text)) & PRICING_TOKENS)
+    body_pricing = bool(tokenize(body_text) & PRICING_TOKENS)
+    price_evidence = bool(re.search(
+        r"(?:[$€£₹]\s*\d|\d[\d,.]*\s*(?:USD|EUR|GBP|INR)|\b(?:per month|per year|monthly|annually)\b)",
+        body_text or "",
+        re.I,
+    ))
+    pricing_signals = sum((path_pricing, heading_pricing, body_pricing or price_evidence))
+    if pricing_signals >= 2 or path_pricing and (heading_pricing or body_pricing or price_evidence):
         return "product_pricing"
+    if combined_tokens & COMMERCIAL_TOKENS:
+        return "product_landing"
     if combined_tokens & EDITORIAL_TOKENS:
         return "article_docs"
     if combined_tokens & SUPPORT_TOKENS:
@@ -130,6 +207,8 @@ def analyze_page_html(
     status_code: int,
     load_time: float,
     access_status: Optional[str] = None,
+    content_type: str = "",
+    resource_type: str = "html_document",
 ) -> Dict[str, Any]:
     """
     Extract structured analysis from a fetched page's HTML.
@@ -138,6 +217,19 @@ def analyze_page_html(
     so no skill can mistake "we failed to decode this" for "this tag is missing". Every
     evaluator checks `inconclusive` before emitting a finding.
     """
+    if resource_type != "html_document":
+        return {
+            "is_page": False,
+            "resource_type": resource_type,
+            "url": url,
+            "final_url": final_url,
+            "status_code": status_code,
+            "content_type": content_type,
+            "load_time_seconds": round(load_time, 2) if load_time else None,
+            "access_status": classify_access(status_code, html),
+            "observation": "Non-HTML response excluded from normal webpage audit checks.",
+        }
+
     access_status = access_status or classify_access(status_code, html)
     if access_status != ACCESS_READABLE:
         if access_status == ACCESS_ROBOTS_DISALLOWED:
@@ -150,11 +242,15 @@ def analyze_page_html(
             reason = "response body could not be decoded to readable text"
         elif access_status == "anti-bot-challenge":
             reason = f"HTTP {status_code} or response body indicates an anti-bot challenge"
+        elif access_status == ACCESS_AUTH_REQUIRED:
+            reason = "response is an authentication form; protected content was not assessed"
         elif status_code != 200:
             reason = f"HTTP {status_code}"
         else:
             reason = "page access was inconclusive"
         return {
+            "is_page": True,
+            "resource_type": "html_document",
             "inconclusive": True,
             "inconclusive_reason": reason,
             "access_status": access_status,
@@ -369,6 +465,8 @@ def analyze_page_html(
     purpose = classify_page_purpose(final_url, title, primary_h1, raw_text)
 
     return {
+        "is_page": True,
+        "resource_type": "html_document",
         "inconclusive": False,
         "access_status": ACCESS_READABLE,
         "url": url,
@@ -444,6 +542,7 @@ class SiteInventory:
         # crawl reported 6 pages and every "across N crawled pages" evidence string was wrong.
         self.url_aliases: Dict[str, str] = {}
         self.pages: Dict[str, Dict[str, Any]] = {}
+        self.resources: Dict[str, Dict[str, Any]] = {}
         self.ground_truth: Dict[str, Any] = {
             "brand_name": p.netloc.replace("www.", "").split(".")[0].capitalize(),
             "category": "",
@@ -465,9 +564,29 @@ class SiteInventory:
         if final != requested_url:
             self.url_aliases[requested_url] = final
 
+    def store_resource(self, requested_url: str, resource: Dict[str, Any]):
+        """Record a non-page response without exposing it to page-level auditors."""
+        final = resource.get("final_url") or requested_url
+        self.resources[final] = resource
+        if final != requested_url:
+            self.url_aliases[requested_url] = final
+
+    def note_resource_candidate(self, url: str, source: str):
+        resource_type = classify_resource_type(url)
+        self.resources.setdefault(url, {
+            "is_page": False,
+            "resource_type": resource_type,
+            "url": url,
+            "final_url": url,
+            "status_code": None,
+            "content_type": "",
+            "access_status": "not-fetched",
+            "observation": f"Discovered as a non-HTML {resource_type} resource via {source}; excluded from page checks.",
+        })
+
     def knows_url(self, url: str) -> bool:
         """Have we already fetched this URL, either directly or via a redirect alias?"""
-        return url in self.pages or url in self.url_aliases
+        return url in self.pages or url in self.resources or url in self.url_aliases
 
     @staticmethod
     def _site_key(netloc: str) -> str:
@@ -570,11 +689,20 @@ class SiteInventory:
 
         # 4. Fetch seed/homepage first, subject to the same robots gate as every other page.
         if self.may_fetch(self.seed_url):
-            seed_status, seed_html, final_seed_url, _, seed_load_time, _ = safe_fetch(
+            seed_status, seed_html, final_seed_url, _, seed_load_time, seed_headers = safe_fetch(
                 self.seed_url, timeout=timeout
             )
+            seed_resource_type = classify_resource_type(
+                final_seed_url, seed_headers.get("Content-Type", ""), seed_html
+            )
             seed_snapshot = analyze_page_html(
-                self.seed_url, seed_html, final_seed_url, seed_status, seed_load_time
+                self.seed_url,
+                seed_html,
+                final_seed_url,
+                seed_status,
+                seed_load_time,
+                content_type=seed_headers.get("Content-Type", ""),
+                resource_type=seed_resource_type,
             )
         else:
             seed_status, final_seed_url, seed_load_time = 0, self.seed_url, 0.0
@@ -586,7 +714,10 @@ class SiteInventory:
                 seed_load_time,
                 access_status=ACCESS_ROBOTS_DISALLOWED,
             )
-        self.store_page(self.seed_url, seed_snapshot)
+        if seed_snapshot.get("is_page", True):
+            self.store_page(self.seed_url, seed_snapshot)
+        else:
+            self.store_resource(self.seed_url, seed_snapshot)
 
         # Adopt the origin the seed actually resolved to. An apex host that redirects to www
         # (very common) previously left origin on the apex while every page and link lived on
@@ -603,14 +734,21 @@ class SiteInventory:
         candidates: Dict[str, Dict[str, Any]] = {}
         for index, link_obj in enumerate(seed_snapshot.get("internal_links", [])):
             u = link_obj["href"]
+            if classify_resource_type(u) != "unknown":
+                self.note_resource_candidate(u, "homepage-link")
+                continue
             if not self.knows_url(u):
                 candidates.setdefault(u, {"source": "homepage-link", "link_text": link_obj.get("text", ""), "index": index})
         for index, sm_u in enumerate(sitemap_urls_discovered):
+            if classify_resource_type(sm_u) != "unknown":
+                self.note_resource_candidate(sm_u, "sitemap")
+                continue
             if not self.knows_url(sm_u):
                 candidates.setdefault(sm_u, {"source": "sitemap", "link_text": "", "index": index})
 
         purpose_tokens = {
-            "product_pricing": {"pricing", "price", "prices", "plans", "plan", "product", "products", "features", "solutions", "buy", "shop", "store", "cart", "checkout"},
+            "product_pricing": {"pricing", "price", "prices", "plans", "plan", "cost", "billing", "checkout", "cart"},
+            "product_landing": {"product", "products", "features", "solutions", "buy", "shop", "store", "platform", "service", "services"},
             "article_docs": {"docs", "documentation", "faq", "blog", "guide", "article", "help", "learn", "resources", "news", "research", "api"},
             "contact_support": {"about", "contact", "company", "team", "support", "locations", "location", "campus", "admissions"},
             "audience": {"customers", "industries", "solutions", "use", "cases", "students", "faculty", "patients", "developers"},
@@ -677,14 +815,27 @@ class SiteInventory:
                 continue
             if not self.may_fetch(u):
                 continue
-            st, html, fin_u, _, lt, _ = safe_fetch(u, timeout=timeout)
-            snap = analyze_page_html(u, html, fin_u, st, lt)
-            self.store_page(u, snap)
+            st, html, fin_u, _, lt, headers = safe_fetch(u, timeout=timeout)
+            resource_type = classify_resource_type(fin_u, headers.get("Content-Type", ""), html)
+            snap = analyze_page_html(
+                u,
+                html,
+                fin_u,
+                st,
+                lt,
+                content_type=headers.get("Content-Type", ""),
+                resource_type=resource_type,
+            )
+            if snap.get("is_page", True):
+                self.store_page(u, snap)
+            else:
+                self.store_resource(u, snap)
 
         # 6. Extract ground truth from Organization JSON-LD and root page
         self._extract_ground_truth(seed_snapshot)
 
         self.crawl_budget["pages_crawled"] = len(self.pages)
+        self.crawl_budget["resources_observed"] = len(self.resources)
         access_counts: Dict[str, int] = {}
         for snap in self.pages.values():
             status = snap.get("access_status", "unknown")
@@ -706,6 +857,7 @@ class SiteInventory:
             )
         return {
             "pages_sampled": len(self.pages),
+            "resources_observed": len(self.resources),
             "readable_pages": readable,
             "status_counts": counts,
             "limited": readable == 0,
@@ -843,6 +995,7 @@ class SiteInventory:
             "sitemaps": self.sitemaps,
             "special_files": self.special_files,
             "pages": self.pages,
+            "resources": self.resources,
             "ground_truth": self.ground_truth,
             "crawl_budget": self.crawl_budget,
             "skipped_by_robots": self.skipped_by_robots,
@@ -861,6 +1014,7 @@ class SiteInventory:
         inv.sitemaps = data.get("sitemaps", [])
         inv.special_files = data.get("special_files", {})
         inv.pages = data.get("pages", {})
+        inv.resources = data.get("resources", {})
         inv.ground_truth = data.get("ground_truth", {})
         inv.crawl_budget = data.get("crawl_budget", {})
         inv.skipped_by_robots = data.get("skipped_by_robots", [])

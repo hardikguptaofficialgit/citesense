@@ -94,11 +94,11 @@ def evaluate_answerability(inventory: Dict[str, Any], ground_truth: Dict[str, An
     def matching_pages(key: str) -> List[Dict[str, Any]]:
         terms = {
             "identity": ("homepage", "general", "contact_support"),
-            "offering": ("product_pricing", "general", "article_docs"),
-            "audience": ("general", "product_pricing", "article_docs"),
+            "offering": ("product_pricing", "product_landing", "general", "article_docs"),
+            "audience": ("general", "product_pricing", "product_landing", "article_docs"),
             "transactional": ("product_pricing",),
-            "differentiation": ("homepage", "product_pricing", "article_docs", "general"),
-            "contact": ("contact_support", "homepage", "general", "product_pricing", "article_docs"),
+            "differentiation": ("homepage", "product_pricing", "product_landing", "article_docs", "general"),
+            "contact": ("contact_support", "homepage", "general", "product_pricing", "product_landing", "article_docs"),
         }[key]
         return [p for p in pages if p.get("page_purpose") in terms]
 

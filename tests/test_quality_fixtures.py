@@ -21,7 +21,7 @@ class PersonaFixtureTests(unittest.TestCase):
     def test_persona_routes_cover_saas_ecommerce_local_university_docs_and_news(self):
         cases = [
             ("https://site.test/pricing", "SaaS plans", "Plans", "product_pricing"),
-            ("https://site.test/products/widget", "Widget", "Widget", "product_pricing"),
+            ("https://site.test/products/widget", "Widget", "Widget", "product_landing"),
             ("https://site.test/about", "Local business", "Our business", "contact_support"),
             ("https://site.test/admissions", "University admissions", "Admissions", "general"),
             ("https://site.test/docs/api", "API documentation", "API", "article_docs"),

@@ -423,6 +423,14 @@ All tests run with the Python standard library and zero external dependencies.
 enforcement, evidence honesty, brand-name extraction). If one fails, a regression was
 reintroduced -- see `Progress.md` for the original reproduction.
 
+Run the deterministic broad-category benchmark separately:
+```bash
+PYTHONPATH=src python benchmark_adversarial.py --output benchmark-results.json
+```
+It uses a disposable local HTTP server to cover 18 website categories, strong/average/poor
+tiers, access failures, resource types, page-purpose classification, scoring, and evidence
+integrity without external search or browser automation.
+
 ## Validation runs
 
 `validation-runs/` holds reports regenerated from the current pipeline across six sites of

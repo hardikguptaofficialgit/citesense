@@ -14,7 +14,8 @@ be able to hold next to a `report.json` and recompute the number by hand.
 ## The formula
 
 ```
-penalty  = Σ over findings   SEVERITY_PENALTY[finding.severity]
+penalty  = Σ over unique root causes
+           SEVERITY_PENALTY[finding.severity] × STATUS_FACTOR[finding.status]
 credit   = min(2 × (# facts recorded as corroboration_strength "strong"), 6)
 
 score    = clamp(0, 100, 100 − penalty + credit)
@@ -29,6 +30,12 @@ score    = clamp(0, 100, 100 − penalty + credit)
 
 A finding whose `severity` is not one of those four contributes **0** rather than a guessed
 weight — an unrecognized severity is missing data, not a free pass or an assumed penalty.
+
+Findings sharing a `fingerprint` are one root cause and are penalized once. Status factors
+are `confirmed=1.0`, `likely-risk=0.5`, and `inconclusive`, `not-assessed`, or `proactive`
+`=0.0`. Findings without a status retain the legacy full-weight behavior for compatibility.
+The report includes `summary.citability_score_breakdown` with the root-cause and status
+arithmetic.
 
 ### Worked example
 
@@ -48,7 +55,8 @@ python skills/audit-orchestrator/scripts/scored.py report.json --explain
 ```
 
 which prints the full arithmetic (`base`, `penalty`, `penalty_by_severity`,
-`corroboration_credit`, `counted_findings`), not just the number.
+`penalty_by_root_cause`, `status_factors`, `corroboration_credit`, `counted_findings`),
+not just the number.
 
 ---
 
@@ -111,8 +119,10 @@ Both are pinned by `tests/test_citability_score.py`:
 1. **Deterministic.** The score is a pure function of the findings list and the recorded
    corroboration signals. The same report always yields the same number — no clock, no
    randomness, no network.
-2. **Monotonic.** Every severity carries a strictly positive penalty and credit is
-   independent of the findings count, so **adding a finding can never raise the score**.
+2. **Monotonic.** Every counted severity carries a non-negative penalty and credit is
+   independent of the findings count, so **adding a confirmed or likely-risk finding can
+   never raise the score**. Duplicate root causes and unavailable/proactive checks do not
+   create penalties.
    At the floor it stays at 0 rather than going negative, which preserves monotonicity
    (non-increasing) at the bottom of the range.
 

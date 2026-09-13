@@ -58,6 +58,7 @@ ACCESS_HTTP_ERROR = "http-error"
 ACCESS_NETWORK_ERROR = "network-error"
 ACCESS_EMPTY = "empty-response"
 ACCESS_UNREADABLE = "undecodable"
+ACCESS_AUTH_REQUIRED = "authentication-required"
 
 ANTI_BOT_MARKER_RE = re.compile(
     r"(?is)(?:captcha|recaptcha|verify\s+you(?:r)?self|verify\s+you\s+are\s+human|"
@@ -187,6 +188,12 @@ def classify_access(status_code: Optional[int], body: str = "") -> str:
         return ACCESS_HTTP_BLOCKED
     if ANTI_BOT_MARKER_RE.search(sample):
         return ACCESS_ANTI_BOT
+    if status_code == 200 and re.search(
+        r"(?is)<form\b[^>]*>.*?(?:type=[\"']password|name=[\"']password|"
+        r"\b(?:sign|log)[\s-]?in\b).*?</form>",
+        sample,
+    ):
+        return ACCESS_AUTH_REQUIRED
     if status_code != 200:
         return ACCESS_HTTP_ERROR
     if not body:

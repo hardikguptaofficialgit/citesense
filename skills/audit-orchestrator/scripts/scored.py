@@ -23,6 +23,13 @@ SEVERITY_PENALTY = {"critical": 25, "high": 12, "medium": 5, "low": 2}
 # scored as independently "strong". Absent that signal the credit is 0 -- never assumed.
 STRONG_CORROBORATION_CREDIT = 2
 MAX_CORROBORATION_CREDIT = 6
+STATUS_FACTOR = {
+    "confirmed": 1.0,
+    "likely-risk": 0.5,
+    "inconclusive": 0.0,
+    "not-assessed": 0.0,
+    "proactive": 0.0,
+}
 
 SCORE_FLOOR = 0
 SCORE_CEILING = 100
@@ -57,17 +64,30 @@ def compute_citability_score(report: Dict[str, Any]) -> Dict[str, Any]:
          "corroboration_credit": int, "counted_findings": int}
     """
     penalty_by_severity = {sev: 0 for sev in SEVERITY_PENALTY}
+    penalty_by_root_cause: Dict[str, int] = {}
+    excluded_duplicates = []
     counted = 0
     penalty = 0
+    seen_fingerprints = set()
 
-    for f in report.get("findings", []) or []:
+    for index, f in enumerate(report.get("findings", []) or []):
+        fingerprint = f.get("fingerprint")
+        if fingerprint and fingerprint in seen_fingerprints:
+            excluded_duplicates.append(fingerprint)
+            continue
+        if fingerprint:
+            seen_fingerprints.add(fingerprint)
         severity = f.get("severity")
         weight = SEVERITY_PENALTY.get(severity)
         if weight is None:
             # Unknown severity contributes nothing rather than a guessed weight.
             continue
-        penalty_by_severity[severity] += weight
-        penalty += weight
+        factor = STATUS_FACTOR.get(f.get("status"), 1.0)
+        adjusted_weight = int(round(weight * factor))
+        root_cause = fingerprint or f"finding:{index}"
+        penalty_by_root_cause[root_cause] = adjusted_weight
+        penalty_by_severity[severity] += adjusted_weight
+        penalty += adjusted_weight
         counted += 1
 
     strong = sum(1 for s in _corroboration_signals(report) if s == "strong")
@@ -81,6 +101,9 @@ def compute_citability_score(report: Dict[str, Any]) -> Dict[str, Any]:
         "base": SCORE_CEILING,
         "penalty": penalty,
         "penalty_by_severity": penalty_by_severity,
+        "penalty_by_root_cause": penalty_by_root_cause,
+        "status_factors": STATUS_FACTOR,
+        "excluded_duplicate_fingerprints": sorted(set(excluded_duplicates)),
         "corroboration_credit": credit,
         "counted_findings": counted,
     }
@@ -95,11 +118,13 @@ def crawl_was_readable(pages: Optional[Dict[str, Any]]) -> bool:
     """
     Did the crawl successfully read at least one page?
 
-    When `pages` is not supplied we assume yes, preserving the previous behaviour for callers
-    that do not pass inventory snapshots.
+    When `pages` is not supplied we assume yes for standalone report callers. An explicitly
+    empty page mapping means the crawl observed no HTML page and must not receive a score.
     """
-    if not pages:
+    if pages is None or not isinstance(pages, dict):
         return True
+    if not pages:
+        return False
     return any(
         (not snap.get("inconclusive")) and snap.get("status_code") == 200
         for snap in pages.values()
@@ -122,7 +147,9 @@ def annotate_report(report: Dict[str, Any], pages: Optional[Dict[str, Any]] = No
     if not isinstance(summary, dict):
         return report
     if crawl_was_readable(pages):
-        summary["citability_score"] = citability_score(report)
+        breakdown = compute_citability_score(report)
+        summary["citability_score"] = breakdown["score"]
+        summary["citability_score_breakdown"] = breakdown
     else:
         summary.pop("citability_score", None)
         summary["citability_score_unavailable"] = (
