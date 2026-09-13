@@ -132,6 +132,74 @@ Installing the PyPI package alone does not automatically register CiteSense with
 Cursor, Antigravity, or another agent platform. The agent can still use it when instructed
 to run the `citesense` command.
 
+## Direct agent test prompt
+
+Copy the following prompt directly into an AI coding agent to run a controlled CiteSense
+1.1.0 audit of Adobe's website:
+
+```text
+Use CiteSense 1.1.0 to audit ONLY this website:
+
+https://www.adobe.com/in
+
+Do NOT substitute another website or URL.
+
+First verify:
+
+python -m pip install --upgrade --no-cache-dir citesense
+python -c "import importlib.metadata; print(importlib.metadata.version('citesense'))"
+
+The installed version must be 1.1.0 or newer.
+
+Then run EXACTLY:
+
+citesense audit https://www.adobe.com/in --output adobe-report.json
+
+IMPORTANT:
+
+- Do not audit IRCTC, example.com, Linkit, WebMakeDevs, or any other website.
+- Do not replace the target URL if the audit encounters an access or network error.
+- If Adobe cannot be accessed, report that CiteSense could not access the target and show
+  the generated report/status.
+- Do not invent or modify findings.
+- Do not create findings for another website.
+
+After the command finishes, read adobe-report.json.
+
+Report:
+
+1. Audited URL
+2. Whether the site was accessible
+3. Citability score, if assessed
+4. Total findings
+5. Critical / High / Medium / Low counts
+6. Every finding with:
+   - ID
+   - title
+   - severity
+   - status
+   - confidence
+   - evidence
+   - suggested action
+7. Assessment statuses
+8. AI discoverability issues
+9. Citation-answerability issues
+10. Trust/corroboration issues
+11. Engagement issues
+12. Proactive recommendations
+13. Top 5 recommended fixes
+
+Base everything strictly on adobe-report.json.
+
+At the very beginning of the final response, print:
+
+AUDITED URL: <actual URL>
+REPORT FILE: adobe-report.json
+
+If the actual audited URL is not https://www.adobe.com/in, STOP and report the mismatch
+instead of analyzing the report.
+```
+
 ## Project structure
 
 ```text
