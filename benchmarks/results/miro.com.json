@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:35:42.504459+00:00",
-  "finished_at": "2026-09-13T15:36:01.623363+00:00",
-  "elapsed_seconds": 19.119,
+  "started_at": "2026-09-13T17:50:33.647965+00:00",
+  "finished_at": "2026-09-13T17:50:48.711550+00:00",
+  "elapsed_seconds": 15.064,
   "error": null,
   "report": {
     "site": "https://miro.com",
-    "audited_at": "2026-09-13T15:36:01Z",
+    "audited_at": "2026-09-13T17:50:48Z",
     "summary": {
       "total_findings": 5,
       "critical": 0,
@@ -66,7 +66,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://miro.com/pricing/ via jsonld_schema_extractor [2026-09-13T15:35:52Z]: Commercial/product page (https://miro.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "evidence": "Observed at https://miro.com/pricing/ via jsonld_schema_extractor [2026-09-13T17:50:42Z]: Commercial/product page (https://miro.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:product-offer-missing:/pricing/",
         "suggested_action": {
@@ -83,7 +83,7 @@
           "url": "https://miro.com/pricing/",
           "observation": "Commercial/product page (https://miro.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:35:52Z",
+          "timestamp": "2026-09-13T17:50:42Z",
           "confidence": "high",
           "evidence_id": "E-247693bc9011"
         },
@@ -91,7 +91,43 @@
           "E-247693bc9011"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://miro.com/pricing/ via jsonld_schema_extractor [2026-09-13T17:50:42Z]: Commercial/product page (https://miro.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-247693bc9011.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Product and Offer structured data on commercial page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Product and Offer structured data on commercial page",
+          "evidence_refs": [
+            "E-247693bc9011"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+            "priority": "high",
+            "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Where teams and AI work as one\",\n  \"url\": \"https://miro.com/pricing/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"AI Innovation Workspace\"\n  },\n  \"description\": \"Multiple pricing options: Free, Starter (choose team size), Company (enterprise). Choose the one that works for you.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://miro.com/pricing/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Missing primary H1 heading on landing page",
@@ -100,7 +136,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://miro.com/blog/ via heading_structure_inspection [2026-09-13T15:35:52Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "evidence": "Observed at https://miro.com/blog/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-h1",
         "suggested_action": {
@@ -116,7 +152,7 @@
           "url": "https://miro.com/blog/",
           "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
           "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:35:52Z",
+          "timestamp": "2026-09-13T17:50:42Z",
           "confidence": "high",
           "evidence_id": "E-1a683a881a8c"
         },
@@ -124,7 +160,42 @@
           "E-1a683a881a8c"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://miro.com/blog/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-1a683a881a8c.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing primary H1 heading on landing page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing primary H1 heading on landing page",
+          "evidence_refs": [
+            "E-1a683a881a8c"
+          ],
+          "root_cause": "Use the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a clear, descriptive <h1> heading.",
+            "priority": "high",
+            "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing Schema.org Organization structured data on root landing page",
@@ -133,7 +204,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://miro.com/ via jsonld_schema_extractor [2026-09-13T15:35:52Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "evidence": "Observed at https://miro.com/ via jsonld_schema_extractor [2026-09-13T17:50:42Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -150,7 +221,7 @@
           "url": "https://miro.com/",
           "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:35:52Z",
+          "timestamp": "2026-09-13T17:50:42Z",
           "confidence": "high",
           "evidence_id": "E-adc1f692ab32"
         },
@@ -158,7 +229,43 @@
           "E-adc1f692ab32"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://miro.com/ via jsonld_schema_extractor [2026-09-13T17:50:42Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-adc1f692ab32.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-adc1f692ab32"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"AI Innovation Workspace\",\n  \"url\": \"https://miro.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Speed up product development from ideation to launch. Align teams, break tool silos and ship what customers need in one AI-powered visual platform.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Content images carry no text alternative, hiding any fact they display",
@@ -167,7 +274,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://miro.com/ via image_alt_coverage_inspection [2026-09-13T15:35:52Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/industries/financial-services/ via image_alt_coverage_inspection [2026-09-13T15:35:52Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/about/ via image_alt_coverage_inspection [2026-09-13T15:35:52Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "evidence": "Observed at https://miro.com/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/industries/financial-services/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/about/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "extractability:images-without-alt",
         "suggested_action": {
@@ -183,7 +290,7 @@
           "url": "https://miro.com/",
           "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
           "method": "image_alt_coverage_inspection",
-          "timestamp": "2026-09-13T15:35:52Z",
+          "timestamp": "2026-09-13T17:50:42Z",
           "confidence": "high",
           "evidence_id": "E-42806971a027"
         },
@@ -193,7 +300,44 @@
           "E-4c473ed765ce"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://miro.com/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/industries/financial-services/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/about/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-048ff7e59b9e, E-42806971a027, E-4c473ed765ce.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Content images carry no text alternative, hiding any fact they display",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "content and frontend engineer",
+          "problem": "Content images carry no text alternative, hiding any fact they display",
+          "evidence_refs": [
+            "E-048ff7e59b9e",
+            "E-42806971a027",
+            "E-4c473ed765ce"
+          ],
+          "root_cause": "Use the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add descriptive alt text to every image that carries information.",
+            "priority": "medium",
+            "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+            "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
@@ -202,7 +346,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://miro.com/ via heading_structure_inspection [2026-09-13T15:35:52Z]: Page defines 13 separate <h1> tags (Human collaboration at the speed of AI; Research; Roadmaps), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/industries/financial-services/ via heading_structure_inspection [2026-09-13T15:35:52Z]: Page defines 6 separate <h1> tags (Redefine next-gen financial services; Redefine next-gen financial services; Redefine next-gen financial services), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/pricing/ via heading_structure_inspection [2026-09-13T15:35:52Z]: Page defines 3 separate <h1> tags (Where teams and AI work as one; Trusted by the world's most innovative c; Security and compliance), diluting semantic structure. (Confidence: high)",
+        "evidence": "Observed at https://miro.com/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 13 separate <h1> tags (Human collaboration at the speed of AI; Research; Roadmaps), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/industries/financial-services/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 6 separate <h1> tags (Redefine next-gen financial services; Redefine next-gen financial services; Redefine next-gen financial services), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/pricing/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 3 separate <h1> tags (Where teams and AI work as one; Trusted by the world's most innovative c; Security and compliance), diluting semantic structure. (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:multiple-h1",
         "suggested_action": {
@@ -218,7 +362,7 @@
           "url": "https://miro.com/",
           "observation": "Page defines 13 separate <h1> tags (Human collaboration at the speed of AI; Research; Roadmaps), diluting semantic structure.",
           "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:35:52Z",
+          "timestamp": "2026-09-13T17:50:42Z",
           "confidence": "high",
           "evidence_id": "E-4e611e3d0be2"
         },
@@ -228,7 +372,44 @@
           "E-f775d29a0922"
         ],
         "id": "F-005",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://miro.com/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 13 separate <h1> tags (Human collaboration at the speed of AI; Research; Roadmaps), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/industries/financial-services/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 6 separate <h1> tags (Redefine next-gen financial services; Redefine next-gen financial services; Redefine next-gen financial services), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/pricing/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 3 separate <h1> tags (Where teams and AI work as one; Trusted by the world's most innovative c; Security and compliance), diluting semantic structure. (Confidence: high)\nEvidence references: E-4e611e3d0be2, E-be6972919042, E-f775d29a0922.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "UX and content designer",
+          "problem": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "evidence_refs": [
+            "E-4e611e3d0be2",
+            "E-be6972919042",
+            "E-f775d29a0922"
+          ],
+          "root_cause": "Use the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+            "priority": "low",
+            "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -291,7 +472,7 @@
         "url": "https://miro.com/",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-adc1f692ab32"
       },
@@ -299,7 +480,7 @@
         "url": "https://miro.com/",
         "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
         "method": "image_alt_coverage_inspection",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-42806971a027"
       },
@@ -307,7 +488,7 @@
         "url": "https://miro.com/industries/financial-services/",
         "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
         "method": "image_alt_coverage_inspection",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-048ff7e59b9e"
       },
@@ -315,7 +496,7 @@
         "url": "https://miro.com/pricing/",
         "observation": "Commercial/product page (https://miro.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-247693bc9011"
       },
@@ -323,7 +504,7 @@
         "url": "https://miro.com/about/",
         "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
         "method": "image_alt_coverage_inspection",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-4c473ed765ce"
       },
@@ -331,7 +512,7 @@
         "url": "https://miro.com/",
         "observation": "Page defines 13 separate <h1> tags (Human collaboration at the speed of AI; Research; Roadmaps), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-4e611e3d0be2"
       },
@@ -339,7 +520,7 @@
         "url": "https://miro.com/industries/financial-services/",
         "observation": "Page defines 6 separate <h1> tags (Redefine next-gen financial services; Redefine next-gen financial services; Redefine next-gen financial services), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-f775d29a0922"
       },
@@ -347,7 +528,7 @@
         "url": "https://miro.com/pricing/",
         "observation": "Page defines 3 separate <h1> tags (Where teams and AI work as one; Trusted by the world's most innovative c; Security and compliance), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-be6972919042"
       },
@@ -355,7 +536,7 @@
         "url": "https://miro.com/blog/",
         "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:35:52Z",
+        "timestamp": "2026-09-13T17:50:42Z",
         "confidence": "high",
         "evidence_id": "E-1a683a881a8c"
       }
@@ -453,6 +634,87 @@
           "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://miro.com/pricing/ via jsonld_schema_extractor [2026-09-13T17:50:42Z]: Commercial/product page (https://miro.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-247693bc9011.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-247693bc9011"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://miro.com/blog/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-1a683a881a8c.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-1a683a881a8c"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://miro.com/ via jsonld_schema_extractor [2026-09-13T17:50:42Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-adc1f692ab32.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-adc1f692ab32"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://miro.com/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/industries/financial-services/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://miro.com/about/ via image_alt_coverage_inspection [2026-09-13T17:50:42Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-048ff7e59b9e, E-42806971a027, E-4c473ed765ce.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-048ff7e59b9e",
+          "E-42806971a027",
+          "E-4c473ed765ce"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://miro.com/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 13 separate <h1> tags (Human collaboration at the speed of AI; Research; Roadmaps), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/industries/financial-services/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 6 separate <h1> tags (Redefine next-gen financial services; Redefine next-gen financial services; Redefine next-gen financial services), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://miro.com/pricing/ via heading_structure_inspection [2026-09-13T17:50:42Z]: Page defines 3 separate <h1> tags (Where teams and AI work as one; Trusted by the world's most innovative c; Security and compliance), diluting semantic structure. (Confidence: high)\nEvidence references: E-4e611e3d0be2, E-be6972919042, E-f775d29a0922.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-4e611e3d0be2",
+          "E-be6972919042",
+          "E-f775d29a0922"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -465,8 +727,10 @@
       "product_landing",
       "product_pricing"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

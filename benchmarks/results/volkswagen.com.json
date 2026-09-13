@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:34:27.100284+00:00",
-  "finished_at": "2026-09-13T15:35:39.928331+00:00",
-  "elapsed_seconds": 72.828,
+  "started_at": "2026-09-13T17:49:20.248805+00:00",
+  "finished_at": "2026-09-13T17:50:28.608176+00:00",
+  "elapsed_seconds": 68.359,
   "error": null,
   "report": {
     "site": "https://www.volkswagen.co.in",
-    "audited_at": "2026-09-13T15:35:39Z",
+    "audited_at": "2026-09-13T17:50:28Z",
     "summary": {
       "total_findings": 6,
       "critical": 0,
@@ -67,7 +67,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via jsonld_schema_extractor [2026-09-13T15:35:33Z]: Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "evidence": "Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via jsonld_schema_extractor [2026-09-13T17:50:22Z]: Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:product-offer-missing:/app/site/servicecostcalculator/",
         "suggested_action": {
@@ -84,7 +84,7 @@
           "url": "https://www.volkswagen.co.in/app/site/servicecostcalculator/",
           "observation": "Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:35:33Z",
+          "timestamp": "2026-09-13T17:50:22Z",
           "confidence": "high",
           "evidence_id": "E-34955e5d3968"
         },
@@ -92,7 +92,43 @@
           "E-34955e5d3968"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via jsonld_schema_extractor [2026-09-13T17:50:22Z]: Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-34955e5d3968.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Product and Offer structured data on commercial page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Product and Offer structured data on commercial page",
+          "evidence_refs": [
+            "E-34955e5d3968"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+            "priority": "high",
+            "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"The Service Cost Calculator is currently undergoing maintenance and will be available shortly. We regret the inconvenience caused...\",\n  \"url\": \"https://www.volkswagen.co.in/app/site/servicecostcalculator/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Welcome to Volkswagen India\"\n  },\n  \"description\": \"Volkswagen Service Cost Calculator - Get an estimate of your service needs before booking. Click here to generate the estimate for your car hassle-free.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.volkswagen.co.in/app/site/servicecostcalculator/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Incomplete Schema.org entity fields in JSON-LD markup",
@@ -101,7 +137,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.volkswagen.co.in/en.html via schema_field_validator [2026-09-13T15:35:33Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html via schema_field_validator [2026-09-13T15:35:33Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html via schema_field_validator [2026-09-13T15:35:33Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
+        "evidence": "Observed at https://www.volkswagen.co.in/en.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:missing-required-fields",
         "suggested_action": {
@@ -117,7 +153,7 @@
           "url": "https://www.volkswagen.co.in/en.html",
           "observation": "Schema entities are missing required properties: Organization missing name.",
           "method": "schema_field_validator",
-          "timestamp": "2026-09-13T15:35:33Z",
+          "timestamp": "2026-09-13T17:50:22Z",
           "confidence": "high",
           "evidence_id": "E-c7b59dc2be87"
         },
@@ -127,7 +163,44 @@
           "E-ca1aa13ee6d2"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/en.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-789214a24d2f, E-c7b59dc2be87, E-ca1aa13ee6d2.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "evidence_refs": [
+            "E-789214a24d2f",
+            "E-c7b59dc2be87",
+            "E-ca1aa13ee6d2"
+          ],
+          "root_cause": "Use the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Populate required Schema.org properties.",
+            "priority": "medium",
+            "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
@@ -136,7 +209,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://www.volkswagen.co.in/en.html via jsonld_schema_extractor [2026-09-13T15:35:33Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "evidence": "Observed at https://www.volkswagen.co.in/en.html via jsonld_schema_extractor [2026-09-13T17:50:22Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:organization-missing-sameas",
         "suggested_action": {
@@ -153,7 +226,7 @@
           "url": "https://www.volkswagen.co.in/en.html",
           "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:35:33Z",
+          "timestamp": "2026-09-13T17:50:22Z",
           "confidence": "high",
           "evidence_id": "E-6c7cd9772603"
         },
@@ -161,7 +234,43 @@
           "E-6c7cd9772603"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/en.html via jsonld_schema_extractor [2026-09-13T17:50:22Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-6c7cd9772603.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "evidence_refs": [
+            "E-6c7cd9772603"
+          ],
+          "root_cause": "Use the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add sameAs URLs to Organization JSON-LD.",
+            "priority": "low",
+            "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Welcome to Volkswagen India\",\n  \"url\": \"https://www.volkswagen.co.in\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Explore our German-engineered cars: globally renowned Tiguan R-Line, the iconic Golf GTI, Tayron and 5-star GNCAP rated Virtus &amp; Taigun. Check out offers, service packages, accessories &amp; more.\",\n  \"telephone\": \"800 102 0909\",\n  \"email\": \"customer.care@volkswagen.co.in\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
@@ -170,7 +279,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://www.volkswagen.co.in/en.html via heading_structure_inspection [2026-09-13T15:35:33Z]: Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via heading_structure_inspection [2026-09-13T15:35:33Z]: Page defines 5 separate <h1> tags (The Service Cost Calculator is currently; Cost of care, calculated.; Service estimation for your Volkswagen), diluting semantic structure. (Confidence: high)",
+        "evidence": "Observed at https://www.volkswagen.co.in/en.html via heading_structure_inspection [2026-09-13T17:50:22Z]: Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via heading_structure_inspection [2026-09-13T17:50:22Z]: Page defines 5 separate <h1> tags (The Service Cost Calculator is currently; Cost of care, calculated.; Service estimation for your Volkswagen), diluting semantic structure. (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:multiple-h1",
         "suggested_action": {
@@ -186,7 +295,7 @@
           "url": "https://www.volkswagen.co.in/en.html",
           "observation": "Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure.",
           "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:35:33Z",
+          "timestamp": "2026-09-13T17:50:22Z",
           "confidence": "high",
           "evidence_id": "E-5fef422a95fc"
         },
@@ -195,7 +304,43 @@
           "E-5fef422a95fc"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/en.html via heading_structure_inspection [2026-09-13T17:50:22Z]: Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via heading_structure_inspection [2026-09-13T17:50:22Z]: Page defines 5 separate <h1> tags (The Service Cost Calculator is currently; Cost of care, calculated.; Service estimation for your Volkswagen), diluting semantic structure. (Confidence: high)\nEvidence references: E-3456c1b45827, E-5fef422a95fc.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "UX and content designer",
+          "problem": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "evidence_refs": [
+            "E-3456c1b45827",
+            "E-5fef422a95fc"
+          ],
+          "root_cause": "Use the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+            "priority": "low",
+            "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No site search affordance found on any crawled page",
@@ -204,7 +349,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.volkswagen.co.in via search_affordance_detection [2026-09-13T15:35:33Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "evidence": "Observed at https://www.volkswagen.co.in via search_affordance_detection [2026-09-13T17:50:22Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-site-search",
         "suggested_action": {
@@ -220,7 +365,7 @@
           "url": "https://www.volkswagen.co.in",
           "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
           "method": "search_affordance_detection",
-          "timestamp": "2026-09-13T15:35:33Z",
+          "timestamp": "2026-09-13T17:50:22Z",
           "confidence": "medium",
           "evidence_id": "E-abd8d5b7f877"
         },
@@ -228,7 +373,43 @@
           "E-abd8d5b7f877"
         ],
         "id": "F-005",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in via search_affordance_detection [2026-09-13T17:50:22Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-abd8d5b7f877.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "No site search affordance found on any crawled page",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "No site search affordance found on any crawled page",
+          "evidence_refs": [
+            "E-abd8d5b7f877"
+          ],
+          "root_cause": "Use the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a site search box to the persistent header.",
+            "priority": "low",
+            "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No returning-visitor or account affordance detected",
@@ -237,7 +418,7 @@
         "status": "proactive",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.volkswagen.co.in via returning_visitor_affordance_detection [2026-09-13T15:35:33Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "evidence": "Observed at https://www.volkswagen.co.in via returning_visitor_affordance_detection [2026-09-13T17:50:22Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-personalization-readiness",
         "suggested_action": {
@@ -253,7 +434,7 @@
           "url": "https://www.volkswagen.co.in",
           "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
           "method": "returning_visitor_affordance_detection",
-          "timestamp": "2026-09-13T15:35:33Z",
+          "timestamp": "2026-09-13T17:50:22Z",
           "confidence": "medium",
           "evidence_id": "E-bc62b86d12f7"
         },
@@ -261,7 +442,43 @@
           "E-bc62b86d12f7"
         ],
         "id": "F-006",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in via returning_visitor_affordance_detection [2026-09-13T17:50:22Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-bc62b86d12f7.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No returning-visitor or account affordance detected",
+          "status": "proactive",
+          "priority": "low",
+          "role": "UX and product engineer",
+          "problem": "No returning-visitor or account affordance detected",
+          "evidence_refs": [
+            "E-bc62b86d12f7"
+          ],
+          "root_cause": "Use the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Give returning visitors a way to be recognised, and use it.",
+            "priority": "low",
+            "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+            "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -322,7 +539,7 @@
         "url": "https://www.volkswagen.co.in/en.html",
         "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "high",
         "evidence_id": "E-6c7cd9772603"
       },
@@ -330,7 +547,7 @@
         "url": "https://www.volkswagen.co.in/en.html",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "high",
         "evidence_id": "E-c7b59dc2be87"
       },
@@ -338,7 +555,7 @@
         "url": "https://www.volkswagen.co.in/app/site/servicecostcalculator/",
         "observation": "Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "high",
         "evidence_id": "E-34955e5d3968"
       },
@@ -346,7 +563,7 @@
         "url": "https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "high",
         "evidence_id": "E-789214a24d2f"
       },
@@ -354,7 +571,7 @@
         "url": "https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "high",
         "evidence_id": "E-ca1aa13ee6d2"
       },
@@ -362,7 +579,7 @@
         "url": "https://www.volkswagen.co.in/en.html",
         "observation": "Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "high",
         "evidence_id": "E-5fef422a95fc"
       },
@@ -370,7 +587,7 @@
         "url": "https://www.volkswagen.co.in/app/site/servicecostcalculator/",
         "observation": "Page defines 5 separate <h1> tags (The Service Cost Calculator is currently; Cost of care, calculated.; Service estimation for your Volkswagen), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "high",
         "evidence_id": "E-3456c1b45827"
       },
@@ -378,7 +595,7 @@
         "url": "https://www.volkswagen.co.in",
         "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "medium",
         "evidence_id": "E-abd8d5b7f877"
       },
@@ -386,7 +603,7 @@
         "url": "https://www.volkswagen.co.in",
         "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
         "method": "returning_visitor_affordance_detection",
-        "timestamp": "2026-09-13T15:35:33Z",
+        "timestamp": "2026-09-13T17:50:22Z",
         "confidence": "medium",
         "evidence_id": "E-bc62b86d12f7"
       }
@@ -457,6 +674,101 @@
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via jsonld_schema_extractor [2026-09-13T17:50:22Z]: Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-34955e5d3968.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-34955e5d3968"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/en.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html via schema_field_validator [2026-09-13T17:50:22Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-789214a24d2f, E-c7b59dc2be87, E-ca1aa13ee6d2.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-789214a24d2f",
+          "E-c7b59dc2be87",
+          "E-ca1aa13ee6d2"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/en.html via jsonld_schema_extractor [2026-09-13T17:50:22Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-6c7cd9772603.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-6c7cd9772603"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in/en.html via heading_structure_inspection [2026-09-13T17:50:22Z]: Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via heading_structure_inspection [2026-09-13T17:50:22Z]: Page defines 5 separate <h1> tags (The Service Cost Calculator is currently; Cost of care, calculated.; Service estimation for your Volkswagen), diluting semantic structure. (Confidence: high)\nEvidence references: E-3456c1b45827, E-5fef422a95fc.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-3456c1b45827",
+          "E-5fef422a95fc"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in via search_affordance_detection [2026-09-13T17:50:22Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-abd8d5b7f877.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-abd8d5b7f877"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.volkswagen.co.in via returning_visitor_affordance_detection [2026-09-13T17:50:22Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-bc62b86d12f7.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-bc62b86d12f7"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -469,8 +781,10 @@
       "product_landing",
       "product_pricing"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

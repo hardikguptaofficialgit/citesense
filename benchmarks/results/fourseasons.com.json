@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:32:23.607455+00:00",
-  "finished_at": "2026-09-13T15:32:38.780708+00:00",
-  "elapsed_seconds": 15.173,
+  "started_at": "2026-09-13T17:47:07.820899+00:00",
+  "finished_at": "2026-09-13T17:47:24.245344+00:00",
+  "elapsed_seconds": 16.424,
   "error": null,
   "report": {
     "site": "https://www.fourseasons.com:443",
-    "audited_at": "2026-09-13T15:32:38Z",
+    "audited_at": "2026-09-13T17:47:24Z",
     "summary": {
       "total_findings": 5,
       "critical": 0,
@@ -66,7 +66,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.fourseasons.com:443/ via schema_field_validator [2026-09-13T15:32:34Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/about_four_seasons/ via schema_field_validator [2026-09-13T15:32:34Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/ar/ via schema_field_validator [2026-09-13T15:32:34Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/contact-us/ via schema_field_validator [2026-09-13T15:32:34Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/borabora/ via schema_field_validator [2026-09-13T15:32:34Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
+        "evidence": "Observed at https://www.fourseasons.com:443/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/about_four_seasons/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/ar/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/contact-us/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/borabora/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:missing-required-fields",
         "suggested_action": {
@@ -82,7 +82,7 @@
           "url": "https://www.fourseasons.com:443/",
           "observation": "Schema entities are missing required properties: Organization missing name.",
           "method": "schema_field_validator",
-          "timestamp": "2026-09-13T15:32:34Z",
+          "timestamp": "2026-09-13T17:47:20Z",
           "confidence": "high",
           "evidence_id": "E-17de70495c40"
         },
@@ -94,7 +94,46 @@
           "E-23d9d3b07949"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/about_four_seasons/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/ar/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/contact-us/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/borabora/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-0617f674196f, E-14110eb1ade7, E-168338f3b0fa, E-17de70495c40, E-23d9d3b07949.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "evidence_refs": [
+            "E-0617f674196f",
+            "E-14110eb1ade7",
+            "E-168338f3b0fa",
+            "E-17de70495c40",
+            "E-23d9d3b07949"
+          ],
+          "root_cause": "Use the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Populate required Schema.org properties.",
+            "priority": "medium",
+            "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Brand identity is not anchored to any independent authority source",
@@ -103,7 +142,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://www.fourseasons.com:443 via onsite_identity_anchor_inspection [2026-09-13T15:32:38Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 10 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "evidence": "Observed at https://www.fourseasons.com:443 via onsite_identity_anchor_inspection [2026-09-13T17:47:24Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 10 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
         "source_skill": "trust-corroboration-graph",
         "fingerprint": "trust:no-independent-identity-anchor",
         "suggested_action": {
@@ -119,7 +158,7 @@
           "url": "https://www.fourseasons.com:443",
           "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 10 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
           "method": "onsite_identity_anchor_inspection",
-          "timestamp": "2026-09-13T15:32:38Z",
+          "timestamp": "2026-09-13T17:47:24Z",
           "confidence": "medium",
           "evidence_id": "E-f07f70c8c3f1"
         },
@@ -127,7 +166,43 @@
           "E-f07f70c8c3f1"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443 via onsite_identity_anchor_inspection [2026-09-13T17:47:24Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 10 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-f07f70c8c3f1.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-f07f70c8c3f1"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
@@ -136,7 +211,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://www.fourseasons.com:443/borabora/ via heading_structure_inspection [2026-09-13T15:32:34Z]: Page defines 4 separate <h1> tags (Bora Bora; Bora Bora; Bora Bora), diluting semantic structure. (Confidence: high)",
+        "evidence": "Observed at https://www.fourseasons.com:443/borabora/ via heading_structure_inspection [2026-09-13T17:47:20Z]: Page defines 4 separate <h1> tags (Bora Bora; Bora Bora; Bora Bora), diluting semantic structure. (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:multiple-h1",
         "suggested_action": {
@@ -152,7 +227,7 @@
           "url": "https://www.fourseasons.com:443/borabora/",
           "observation": "Page defines 4 separate <h1> tags (Bora Bora; Bora Bora; Bora Bora), diluting semantic structure.",
           "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:32:34Z",
+          "timestamp": "2026-09-13T17:47:20Z",
           "confidence": "high",
           "evidence_id": "E-d8da6ce1f1bb"
         },
@@ -160,7 +235,42 @@
           "E-d8da6ce1f1bb"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443/borabora/ via heading_structure_inspection [2026-09-13T17:47:20Z]: Page defines 4 separate <h1> tags (Bora Bora; Bora Bora; Bora Bora), diluting semantic structure. (Confidence: high)\nEvidence references: E-d8da6ce1f1bb.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "UX and content designer",
+          "problem": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "evidence_refs": [
+            "E-d8da6ce1f1bb"
+          ],
+          "root_cause": "Use the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+            "priority": "low",
+            "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No site search affordance found on any crawled page",
@@ -169,7 +279,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.fourseasons.com:443 via search_affordance_detection [2026-09-13T15:32:34Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "evidence": "Observed at https://www.fourseasons.com:443 via search_affordance_detection [2026-09-13T17:47:20Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-site-search",
         "suggested_action": {
@@ -185,7 +295,7 @@
           "url": "https://www.fourseasons.com:443",
           "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
           "method": "search_affordance_detection",
-          "timestamp": "2026-09-13T15:32:34Z",
+          "timestamp": "2026-09-13T17:47:20Z",
           "confidence": "medium",
           "evidence_id": "E-6d129a45aa45"
         },
@@ -193,7 +303,43 @@
           "E-6d129a45aa45"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443 via search_affordance_detection [2026-09-13T17:47:20Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-6d129a45aa45.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "No site search affordance found on any crawled page",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "No site search affordance found on any crawled page",
+          "evidence_refs": [
+            "E-6d129a45aa45"
+          ],
+          "root_cause": "Use the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a site search box to the persistent header.",
+            "priority": "low",
+            "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No returning-visitor or account affordance detected",
@@ -202,7 +348,7 @@
         "status": "proactive",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.fourseasons.com:443 via returning_visitor_affordance_detection [2026-09-13T15:32:34Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "evidence": "Observed at https://www.fourseasons.com:443 via returning_visitor_affordance_detection [2026-09-13T17:47:20Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-personalization-readiness",
         "suggested_action": {
@@ -218,7 +364,7 @@
           "url": "https://www.fourseasons.com:443",
           "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
           "method": "returning_visitor_affordance_detection",
-          "timestamp": "2026-09-13T15:32:34Z",
+          "timestamp": "2026-09-13T17:47:20Z",
           "confidence": "medium",
           "evidence_id": "E-4681439ee783"
         },
@@ -226,7 +372,43 @@
           "E-4681439ee783"
         ],
         "id": "F-005",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443 via returning_visitor_affordance_detection [2026-09-13T17:47:20Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-4681439ee783.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "No returning-visitor or account affordance detected",
+          "status": "proactive",
+          "priority": "low",
+          "role": "UX and product engineer",
+          "problem": "No returning-visitor or account affordance detected",
+          "evidence_refs": [
+            "E-4681439ee783"
+          ],
+          "root_cause": "Use the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Give returning visitors a way to be recognised, and use it.",
+            "priority": "low",
+            "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+            "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -287,7 +469,7 @@
         "url": "https://www.fourseasons.com:443/",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "high",
         "evidence_id": "E-17de70495c40"
       },
@@ -295,7 +477,7 @@
         "url": "https://www.fourseasons.com:443/about_four_seasons/",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "high",
         "evidence_id": "E-0617f674196f"
       },
@@ -303,7 +485,7 @@
         "url": "https://www.fourseasons.com:443/ar/",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "high",
         "evidence_id": "E-168338f3b0fa"
       },
@@ -311,7 +493,7 @@
         "url": "https://www.fourseasons.com:443/contact-us/",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "high",
         "evidence_id": "E-23d9d3b07949"
       },
@@ -319,7 +501,7 @@
         "url": "https://www.fourseasons.com:443/borabora/",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "high",
         "evidence_id": "E-14110eb1ade7"
       },
@@ -327,7 +509,7 @@
         "url": "https://www.fourseasons.com:443/borabora/",
         "observation": "Page defines 4 separate <h1> tags (Bora Bora; Bora Bora; Bora Bora), diluting semantic structure.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "high",
         "evidence_id": "E-d8da6ce1f1bb"
       },
@@ -335,7 +517,7 @@
         "url": "https://www.fourseasons.com:443",
         "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "medium",
         "evidence_id": "E-6d129a45aa45"
       },
@@ -343,7 +525,7 @@
         "url": "https://www.fourseasons.com:443",
         "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
         "method": "returning_visitor_affordance_detection",
-        "timestamp": "2026-09-13T15:32:34Z",
+        "timestamp": "2026-09-13T17:47:20Z",
         "confidence": "medium",
         "evidence_id": "E-4681439ee783"
       },
@@ -351,7 +533,7 @@
         "url": "https://www.fourseasons.com:443",
         "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 10 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-09-13T15:32:38Z",
+        "timestamp": "2026-09-13T17:47:24Z",
         "confidence": "medium",
         "evidence_id": "E-f07f70c8c3f1"
       }
@@ -431,6 +613,87 @@
           "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/about_four_seasons/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/ar/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/contact-us/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fourseasons.com:443/borabora/ via schema_field_validator [2026-09-13T17:47:20Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-0617f674196f, E-14110eb1ade7, E-168338f3b0fa, E-17de70495c40, E-23d9d3b07949.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-0617f674196f",
+          "E-14110eb1ade7",
+          "E-168338f3b0fa",
+          "E-17de70495c40",
+          "E-23d9d3b07949"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443 via onsite_identity_anchor_inspection [2026-09-13T17:47:24Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 10 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-f07f70c8c3f1.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-f07f70c8c3f1"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443/borabora/ via heading_structure_inspection [2026-09-13T17:47:20Z]: Page defines 4 separate <h1> tags (Bora Bora; Bora Bora; Bora Bora), diluting semantic structure. (Confidence: high)\nEvidence references: E-d8da6ce1f1bb.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-d8da6ce1f1bb"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443 via search_affordance_detection [2026-09-13T17:47:20Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-6d129a45aa45.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-6d129a45aa45"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.fourseasons.com:443 via returning_visitor_affordance_detection [2026-09-13T17:47:20Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-4681439ee783.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-4681439ee783"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -441,10 +704,12 @@
       "general",
       "homepage"
     ],
-    "resource_types": [
-      "pdf"
-    ],
+    "resource_type_counts": {
+      "pdf": 1
+    },
     "resources_seen": 1,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

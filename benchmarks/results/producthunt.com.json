@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:38:29.195066+00:00",
-  "finished_at": "2026-09-13T15:38:46.960540+00:00",
-  "elapsed_seconds": 17.766,
+  "started_at": "2026-09-13T17:53:15.238102+00:00",
+  "finished_at": "2026-09-13T17:53:34.108069+00:00",
+  "elapsed_seconds": 18.87,
   "error": null,
   "report": {
     "site": "https://www.producthunt.com",
-    "audited_at": "2026-09-13T15:38:46Z",
+    "audited_at": "2026-09-13T17:53:34Z",
     "summary": {
       "total_findings": 1,
       "critical": 0,
@@ -62,7 +62,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "high",
-        "evidence": "Observed at https://www.producthunt.com/stories/4-tips-to-help-you-build-an-effective-remote-team via onsite_answerability_probe [2026-09-13T15:38:46Z]: Across 3 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "evidence": "Observed at https://www.producthunt.com/stories/4-tips-to-help-you-build-an-effective-remote-team via onsite_answerability_probe [2026-09-13T17:53:34Z]: Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
         "source_skill": "citation-simulator",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -76,26 +76,62 @@
         ],
         "evidence_details": {
           "url": "https://www.producthunt.com/stories/4-tips-to-help-you-build-an-effective-remote-team",
-          "observation": "Across 3 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "observation": "Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand.",
           "method": "onsite_answerability_probe",
-          "timestamp": "2026-09-13T15:38:46Z",
+          "timestamp": "2026-09-13T17:53:34Z",
           "confidence": "medium",
-          "evidence_id": "E-836921707beb"
+          "evidence_id": "E-a3b5e21ed159"
         },
         "evidence_refs": [
-          "E-836921707beb"
+          "E-a3b5e21ed159"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What is Producthunt?\".\n\nEVIDENCE\nObserved at https://www.producthunt.com/stories/4-tips-to-help-you-build-an-effective-remote-team via onsite_answerability_probe [2026-09-13T17:53:34Z]: Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-a3b5e21ed159.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What is Producthunt?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD (name, url, logo, description, sameAs) to the homepage, and a one-sentence plain-text description of what the brand does in the first screen of copy.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "No extractable answer on-site for \"What is Producthunt?\"",
+          "status": "likely-risk",
+          "priority": "high",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What is Producthunt?\"",
+          "evidence_refs": [
+            "E-a3b5e21ed159"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What is Producthunt?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD (name, url, logo, description, sameAs) to the homepage, and a one-sentence plain-text description of what the brand does in the first screen of copy.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish a machine-readable identity statement on the homepage.",
+            "priority": "high",
+            "how_to_fix": "Add Organization JSON-LD (name, url, logo, description, sameAs) to the homepage, and a one-sentence plain-text description of what the brand does in the first screen of copy.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
       "pages_sampled": 5,
       "resources_observed": 0,
-      "readable_pages": 3,
+      "readable_pages": 4,
       "status_counts": {
-        "anti-bot-challenge": 2,
-        "readable": 3
+        "anti-bot-challenge": 1,
+        "readable": 4
       },
       "limited": false,
       "page_selection": [
@@ -148,11 +184,11 @@
     "evidence_ledger": [
       {
         "url": "https://www.producthunt.com/stories/4-tips-to-help-you-build-an-effective-remote-team",
-        "observation": "Across 3 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "observation": "Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-09-13T15:38:46Z",
+        "timestamp": "2026-09-13T17:53:34Z",
         "confidence": "medium",
-        "evidence_id": "E-836921707beb"
+        "evidence_id": "E-a3b5e21ed159"
       }
     ],
     "assessments": [
@@ -160,7 +196,7 @@
         "check": "page_access",
         "status": "confirmed",
         "result": "assessed",
-        "reason": "3 of 5 sampled page(s) were readable."
+        "reason": "4 of 5 sampled page(s) were readable."
       },
       {
         "check": "robots_enforcement",
@@ -239,18 +275,38 @@
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "likely-risk finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What is Producthunt?\".\n\nEVIDENCE\nObserved at https://www.producthunt.com/stories/4-tips-to-help-you-build-an-effective-remote-team via onsite_answerability_probe [2026-09-13T17:53:34Z]: Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Producthunt?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-a3b5e21ed159.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What is Producthunt?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD (name, url, logo, description, sameAs) to the homepage, and a one-sentence plain-text description of what the brand does in the first screen of copy.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-a3b5e21ed159"
+        ]
+      }
     ]
   },
   "inventory_summary": {
     "pages_sampled": 5,
-    "readable_pages": 3,
+    "readable_pages": 4,
     "page_purposes": [
       "article_docs",
       "product_landing",
       "unknown"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "anti-bot-challenge": 1,
+      "readable": 4
+    }
   }
 }

@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:38:08.630312+00:00",
-  "finished_at": "2026-09-13T15:38:10.550918+00:00",
-  "elapsed_seconds": 1.921,
+  "started_at": "2026-09-13T17:52:58.994168+00:00",
+  "finished_at": "2026-09-13T17:53:01.703577+00:00",
+  "elapsed_seconds": 2.709,
   "error": null,
   "report": {
     "site": "https://reddit.com",
-    "audited_at": "2026-09-13T15:38:10Z",
+    "audited_at": "2026-09-13T17:53:01Z",
     "summary": {
       "total_findings": 1,
       "critical": 1,
@@ -38,7 +38,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "critical",
-        "evidence": "Observed at https://reddit.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:38:10Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)",
+        "evidence": "Observed at https://reddit.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:53:01Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "robots:disallow-all-root",
         "suggested_action": {
@@ -54,7 +54,7 @@
           "url": "https://reddit.com/robots.txt",
           "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot).",
           "method": "robots_txt_parser_longest_match",
-          "timestamp": "2026-09-13T15:38:10Z",
+          "timestamp": "2026-09-13T17:53:01Z",
           "confidence": "high",
           "evidence_id": "E-81f40dc52b11"
         },
@@ -62,7 +62,42 @@
           "E-81f40dc52b11"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nRoot site is disallowed for all crawlers including AI retrieval agents.\n\nEVIDENCE\nObserved at https://reddit.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:53:01Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)\nEvidence references: E-81f40dc52b11.\n\nROOT CAUSE\nUse the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Root site is disallowed for all crawlers including AI retrieval agents",
+          "status": "confirmed",
+          "priority": "critical",
+          "role": "technical SEO and platform engineer",
+          "problem": "Root site is disallowed for all crawlers including AI retrieval agents",
+          "evidence_refs": [
+            "E-81f40dc52b11"
+          ],
+          "root_cause": "Use the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Update robots.txt to allow crawling of public landing and product pages.",
+            "priority": "critical",
+            "how_to_fix": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -80,7 +115,7 @@
         "url": "https://reddit.com/robots.txt",
         "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot).",
         "method": "robots_txt_parser_longest_match",
-        "timestamp": "2026-09-13T15:38:10Z",
+        "timestamp": "2026-09-13T17:53:01Z",
         "confidence": "high",
         "evidence_id": "E-81f40dc52b11"
       }
@@ -122,6 +157,23 @@
         "result": "not-assessed",
         "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "critical",
+        "reason": "confirmed finding with existing critical priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nRoot site is disallowed for all crawlers including AI retrieval agents.\n\nEVIDENCE\nObserved at https://reddit.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:53:01Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)\nEvidence references: E-81f40dc52b11.\n\nROOT CAUSE\nUse the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-81f40dc52b11"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -130,8 +182,10 @@
     "page_purposes": [
       "unknown"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "robots-disallowed": 1
+    }
   }
 }

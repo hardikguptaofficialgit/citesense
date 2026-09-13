@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:39:01.662832+00:00",
-  "finished_at": "2026-09-13T15:39:37.716014+00:00",
-  "elapsed_seconds": 36.053,
+  "started_at": "2026-09-13T17:53:48.777074+00:00",
+  "finished_at": "2026-09-13T17:54:28.940744+00:00",
+  "elapsed_seconds": 40.164,
   "error": null,
   "report": {
     "site": "https://poshmark.com",
-    "audited_at": "2026-09-13T15:39:37Z",
+    "audited_at": "2026-09-13T17:54:28Z",
     "summary": {
       "total_findings": 7,
       "critical": 0,
@@ -68,7 +68,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://poshmark.com/about via html_meta_inspector [2026-09-13T15:39:13Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/faq via html_meta_inspector [2026-09-13T15:39:13Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/contact via html_meta_inspector [2026-09-13T15:39:13Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/accessibility via html_meta_inspector [2026-09-13T15:39:13Z]: Page HTML contains no <title> tag. (Confidence: high)",
+        "evidence": "Observed at https://poshmark.com/about via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/faq via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/contact via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/accessibility via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "meta:missing-title",
         "suggested_action": {
@@ -84,7 +84,7 @@
           "url": "https://poshmark.com/about",
           "observation": "Page HTML contains no <title> tag.",
           "method": "html_meta_inspector",
-          "timestamp": "2026-09-13T15:39:13Z",
+          "timestamp": "2026-09-13T17:54:04Z",
           "confidence": "high",
           "evidence_id": "E-dd52a3bce5fe"
         },
@@ -95,7 +95,45 @@
           "E-e600dd62bc4a"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing HTML document <title> tag.\n\nEVIDENCE\nObserved at https://poshmark.com/about via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/faq via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/contact via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/accessibility via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nEvidence references: E-22a773471b9e, E-8ff6192268c1, E-dd52a3bce5fe, E-e600dd62bc4a.\n\nROOT CAUSE\nUse the observed condition described by “Missing HTML document <title> tag” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a unique, informative <title> tag inside the <head> element.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing HTML document <title> tag",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing HTML document <title> tag",
+          "evidence_refs": [
+            "E-22a773471b9e",
+            "E-8ff6192268c1",
+            "E-dd52a3bce5fe",
+            "E-e600dd62bc4a"
+          ],
+          "root_cause": "Use the observed condition described by “Missing HTML document <title> tag” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a unique, informative <title> tag inside the <head> element.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a descriptive <title> tag.",
+            "priority": "high",
+            "how_to_fix": "Add a unique, informative <title> tag inside the <head> element.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing primary H1 heading on landing page",
@@ -104,7 +142,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://poshmark.com/about via heading_structure_inspection [2026-09-13T15:39:13Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://poshmark.com/faq via heading_structure_inspection [2026-09-13T15:39:13Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "evidence": "Observed at https://poshmark.com/about via heading_structure_inspection [2026-09-13T17:54:04Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://poshmark.com/faq via heading_structure_inspection [2026-09-13T17:54:04Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-h1",
         "suggested_action": {
@@ -120,7 +158,7 @@
           "url": "https://poshmark.com/about",
           "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
           "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:39:13Z",
+          "timestamp": "2026-09-13T17:54:04Z",
           "confidence": "high",
           "evidence_id": "E-d23581971746"
         },
@@ -129,7 +167,43 @@
           "E-d23581971746"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://poshmark.com/about via heading_structure_inspection [2026-09-13T17:54:04Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://poshmark.com/faq via heading_structure_inspection [2026-09-13T17:54:04Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-8276e17a3f31, E-d23581971746.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing primary H1 heading on landing page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing primary H1 heading on landing page",
+          "evidence_refs": [
+            "E-8276e17a3f31",
+            "E-d23581971746"
+          ],
+          "root_cause": "Use the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a clear, descriptive <h1> heading.",
+            "priority": "high",
+            "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
@@ -138,7 +212,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://poshmark.com/sitemap.xml via http_get_sitemap_check [2026-09-13T15:39:13Z]: Request to https://poshmark.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "evidence": "Observed at https://poshmark.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:54:04Z]: Request to https://poshmark.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "crawl:missing-xml-sitemap",
         "suggested_action": {
@@ -154,7 +228,7 @@
           "url": "https://poshmark.com/sitemap.xml",
           "observation": "Request to https://poshmark.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
           "method": "http_get_sitemap_check",
-          "timestamp": "2026-09-13T15:39:13Z",
+          "timestamp": "2026-09-13T17:54:04Z",
           "confidence": "high",
           "evidence_id": "E-7e955aee0532"
         },
@@ -162,7 +236,42 @@
           "E-7e955aee0532"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://poshmark.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:54:04Z]: Request to https://poshmark.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-7e955aee0532.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "technical SEO and platform engineer",
+          "problem": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "evidence_refs": [
+            "E-7e955aee0532"
+          ],
+          "root_cause": "Use the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+            "priority": "medium",
+            "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing Schema.org Organization structured data on root landing page",
@@ -171,7 +280,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://poshmark.com/ via jsonld_schema_extractor [2026-09-13T15:39:13Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "evidence": "Observed at https://poshmark.com/ via jsonld_schema_extractor [2026-09-13T17:54:04Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -188,7 +297,7 @@
           "url": "https://poshmark.com/",
           "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:39:13Z",
+          "timestamp": "2026-09-13T17:54:04Z",
           "confidence": "high",
           "evidence_id": "E-b8c9b01c327e"
         },
@@ -196,7 +305,43 @@
           "E-b8c9b01c327e"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://poshmark.com/ via jsonld_schema_extractor [2026-09-13T17:54:04Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-b8c9b01c327e.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-b8c9b01c327e"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Poshmark\",\n  \"url\": \"https://poshmark.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Buy, sell, and discover fashion, home decor, beauty, and more\",\n  \"email\": \"accessibility@poshmark.com\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Brand identity is not anchored to any independent authority source",
@@ -205,7 +350,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://poshmark.com via onsite_identity_anchor_inspection [2026-09-13T15:39:37Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "evidence": "Observed at https://poshmark.com via onsite_identity_anchor_inspection [2026-09-13T17:54:28Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
         "source_skill": "trust-corroboration-graph",
         "fingerprint": "trust:no-independent-identity-anchor",
         "suggested_action": {
@@ -221,7 +366,7 @@
           "url": "https://poshmark.com",
           "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
           "method": "onsite_identity_anchor_inspection",
-          "timestamp": "2026-09-13T15:39:37Z",
+          "timestamp": "2026-09-13T17:54:28Z",
           "confidence": "medium",
           "evidence_id": "E-dfb20edf269a"
         },
@@ -229,7 +374,43 @@
           "E-dfb20edf269a"
         ],
         "id": "F-005",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://poshmark.com via onsite_identity_anchor_inspection [2026-09-13T17:54:28Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-dfb20edf269a.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-dfb20edf269a"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No extractable answer on-site for \"Who is Poshmark for?\"",
@@ -238,7 +419,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://poshmark.com/faq via onsite_answerability_probe [2026-09-13T15:39:37Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Poshmark for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "evidence": "Observed at https://poshmark.com/faq via onsite_answerability_probe [2026-09-13T17:54:28Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Poshmark for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
         "source_skill": "citation-simulator",
         "fingerprint": "citation:unanswerable:audience",
         "suggested_action": {
@@ -254,7 +435,7 @@
           "url": "https://poshmark.com/faq",
           "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Poshmark for?\" from this site, so it must fall back to third-party sources or omit the brand.",
           "method": "onsite_answerability_probe",
-          "timestamp": "2026-09-13T15:39:37Z",
+          "timestamp": "2026-09-13T17:54:28Z",
           "confidence": "medium",
           "evidence_id": "E-0ed1d17e499b"
         },
@@ -262,7 +443,43 @@
           "E-0ed1d17e499b"
         ],
         "id": "F-006",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"Who is Poshmark for?\".\n\nEVIDENCE\nObserved at https://poshmark.com/faq via onsite_answerability_probe [2026-09-13T17:54:28Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Poshmark for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-0ed1d17e499b.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"Who is Poshmark for?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No extractable answer on-site for \"Who is Poshmark for?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"Who is Poshmark for?\"",
+          "evidence_refs": [
+            "E-0ed1d17e499b"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"Who is Poshmark for?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "State the intended audience in plain language.",
+            "priority": "low",
+            "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No extractable answer on-site for \"What makes Poshmark different?\"",
@@ -271,7 +488,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://poshmark.com/ via onsite_answerability_probe [2026-09-13T15:39:37Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Poshmark different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "evidence": "Observed at https://poshmark.com/ via onsite_answerability_probe [2026-09-13T17:54:28Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Poshmark different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
         "source_skill": "citation-simulator",
         "fingerprint": "citation:unanswerable:differentiation",
         "suggested_action": {
@@ -287,7 +504,7 @@
           "url": "https://poshmark.com/",
           "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Poshmark different?\" from this site, so it must fall back to third-party sources or omit the brand.",
           "method": "onsite_answerability_probe",
-          "timestamp": "2026-09-13T15:39:37Z",
+          "timestamp": "2026-09-13T17:54:28Z",
           "confidence": "medium",
           "evidence_id": "E-5dbe8cbfa672"
         },
@@ -295,7 +512,43 @@
           "E-5dbe8cbfa672"
         ],
         "id": "F-007",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Poshmark different?\".\n\nEVIDENCE\nObserved at https://poshmark.com/ via onsite_answerability_probe [2026-09-13T17:54:28Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Poshmark different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-5dbe8cbfa672.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Poshmark different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-007.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-007.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-007",
+          "title": "No extractable answer on-site for \"What makes Poshmark different?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What makes Poshmark different?\"",
+          "evidence_refs": [
+            "E-5dbe8cbfa672"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What makes Poshmark different?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Make the brand's differentiator explicit and quotable.",
+            "priority": "low",
+            "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -357,7 +610,7 @@
         "url": "https://poshmark.com/sitemap.xml",
         "observation": "Request to https://poshmark.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-7e955aee0532"
       },
@@ -365,7 +618,7 @@
         "url": "https://poshmark.com/",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-b8c9b01c327e"
       },
@@ -373,7 +626,7 @@
         "url": "https://poshmark.com/about",
         "observation": "Page HTML contains no <title> tag.",
         "method": "html_meta_inspector",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-dd52a3bce5fe"
       },
@@ -381,7 +634,7 @@
         "url": "https://poshmark.com/faq",
         "observation": "Page HTML contains no <title> tag.",
         "method": "html_meta_inspector",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-22a773471b9e"
       },
@@ -389,7 +642,7 @@
         "url": "https://poshmark.com/contact",
         "observation": "Page HTML contains no <title> tag.",
         "method": "html_meta_inspector",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-e600dd62bc4a"
       },
@@ -397,7 +650,7 @@
         "url": "https://poshmark.com/accessibility",
         "observation": "Page HTML contains no <title> tag.",
         "method": "html_meta_inspector",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-8ff6192268c1"
       },
@@ -405,7 +658,7 @@
         "url": "https://poshmark.com/about",
         "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-d23581971746"
       },
@@ -413,7 +666,7 @@
         "url": "https://poshmark.com/faq",
         "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:39:13Z",
+        "timestamp": "2026-09-13T17:54:04Z",
         "confidence": "high",
         "evidence_id": "E-8276e17a3f31"
       },
@@ -421,7 +674,7 @@
         "url": "https://poshmark.com/faq",
         "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Poshmark for?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-09-13T15:39:37Z",
+        "timestamp": "2026-09-13T17:54:28Z",
         "confidence": "medium",
         "evidence_id": "E-0ed1d17e499b"
       },
@@ -429,7 +682,7 @@
         "url": "https://poshmark.com/",
         "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Poshmark different?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-09-13T15:39:37Z",
+        "timestamp": "2026-09-13T17:54:28Z",
         "confidence": "medium",
         "evidence_id": "E-5dbe8cbfa672"
       },
@@ -437,7 +690,7 @@
         "url": "https://poshmark.com",
         "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-09-13T15:39:37Z",
+        "timestamp": "2026-09-13T17:54:28Z",
         "confidence": "medium",
         "evidence_id": "E-dfb20edf269a"
       }
@@ -535,6 +788,117 @@
           "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing HTML document <title> tag.\n\nEVIDENCE\nObserved at https://poshmark.com/about via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/faq via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/contact via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://poshmark.com/accessibility via html_meta_inspector [2026-09-13T17:54:04Z]: Page HTML contains no <title> tag. (Confidence: high)\nEvidence references: E-22a773471b9e, E-8ff6192268c1, E-dd52a3bce5fe, E-e600dd62bc4a.\n\nROOT CAUSE\nUse the observed condition described by “Missing HTML document <title> tag” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a unique, informative <title> tag inside the <head> element.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-22a773471b9e",
+          "E-8ff6192268c1",
+          "E-dd52a3bce5fe",
+          "E-e600dd62bc4a"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://poshmark.com/about via heading_structure_inspection [2026-09-13T17:54:04Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://poshmark.com/faq via heading_structure_inspection [2026-09-13T17:54:04Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-8276e17a3f31, E-d23581971746.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-8276e17a3f31",
+          "E-d23581971746"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://poshmark.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:54:04Z]: Request to https://poshmark.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-7e955aee0532.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-7e955aee0532"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://poshmark.com/ via jsonld_schema_extractor [2026-09-13T17:54:04Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-b8c9b01c327e.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-b8c9b01c327e"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://poshmark.com via onsite_identity_anchor_inspection [2026-09-13T17:54:28Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-dfb20edf269a.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-dfb20edf269a"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"Who is Poshmark for?\".\n\nEVIDENCE\nObserved at https://poshmark.com/faq via onsite_answerability_probe [2026-09-13T17:54:28Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Poshmark for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-0ed1d17e499b.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"Who is Poshmark for?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-0ed1d17e499b"
+        ]
+      },
+      {
+        "finding_id": "F-007",
+        "execution_order": 7,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Poshmark different?\".\n\nEVIDENCE\nObserved at https://poshmark.com/ via onsite_answerability_probe [2026-09-13T17:54:28Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Poshmark different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-5dbe8cbfa672.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Poshmark different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-007.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-007.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-5dbe8cbfa672"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -546,8 +910,10 @@
       "general",
       "homepage"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

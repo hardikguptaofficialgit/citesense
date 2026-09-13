@@ -13,35 +13,34 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:40:16.085180+00:00",
-  "finished_at": "2026-09-13T15:40:41.852186+00:00",
-  "elapsed_seconds": 25.767,
+  "started_at": "2026-09-13T17:55:19.914664+00:00",
+  "finished_at": "2026-09-13T17:55:53.999565+00:00",
+  "elapsed_seconds": 34.085,
   "error": null,
   "report": {
     "site": "https://www.realtor.ca",
-    "audited_at": "2026-09-13T15:40:41Z",
+    "audited_at": "2026-09-13T17:55:53Z",
     "summary": {
-      "total_findings": 4,
+      "total_findings": 3,
       "critical": 0,
       "high": 0,
-      "medium": 2,
+      "medium": 1,
       "low": 2,
       "discoverability_findings": 3,
-      "engagement_findings": 1,
-      "citability_score": 88,
+      "engagement_findings": 0,
+      "citability_score": 93,
       "citability_score_breakdown": {
-        "score": 88,
+        "score": 93,
         "base": 100,
-        "penalty": 12,
+        "penalty": 7,
         "penalty_by_severity": {
           "critical": 0,
           "high": 0,
-          "medium": 10,
+          "medium": 5,
           "low": 2
         },
         "penalty_by_root_cause": {
           "schema:missing-required-fields": 5,
-          "engagement:broken-internal-links": 5,
           "robots:training-only-blocked": 0,
           "schema:organization-missing-sameas": 2
         },
@@ -54,7 +53,7 @@
         },
         "excluded_duplicate_fingerprints": [],
         "corroboration_credit": 0,
-        "counted_findings": 4
+        "counted_findings": 3
       }
     },
     "findings": [
@@ -65,7 +64,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.realtor.ca/ via schema_field_validator [2026-09-13T15:40:36Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.realtor.ca/en via schema_field_validator [2026-09-13T15:40:36Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
+        "evidence": "Observed at https://www.realtor.ca/ via schema_field_validator [2026-09-13T17:55:40Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:missing-required-fields",
         "suggested_action": {
@@ -81,49 +80,50 @@
           "url": "https://www.realtor.ca/",
           "observation": "Schema entities are missing required properties: Organization missing name.",
           "method": "schema_field_validator",
-          "timestamp": "2026-09-13T15:40:36Z",
+          "timestamp": "2026-09-13T17:55:40Z",
           "confidence": "high",
           "evidence_id": "E-3679c8d79af1"
         },
         "evidence_refs": [
-          "E-3679c8d79af1",
-          "E-9599d9eec35d"
+          "E-3679c8d79af1"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
-      },
-      {
-        "title": "Broken internal navigation links detected (4 link(s))",
-        "category": "navigation",
-        "severity": "medium",
-        "status": "confirmed",
-        "confidence": "high",
-        "impact": "medium",
-        "evidence": "Observed at https://www.realtor.ca/terms-of-use via http_redirect_aware_link_checker [2026-09-13T15:40:41Z]: Sampled internal links returned broken HTTP errors: https://www.realtor.ca/terms-of-use (HTTP 403); https://www.realtor.ca/my-account/account-information (HTTP 403); https://www.realtor.ca/my-settings/search-criteria (HTTP 403). (Confidence: high)",
-        "source_skill": "engagement-audit",
-        "fingerprint": "engagement:broken-internal-links",
-        "suggested_action": {
-          "summary": "Fix or redirect broken internal destination URLs.",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.realtor.ca/ via schema_field_validator [2026-09-13T17:55:40Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-3679c8d79af1.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "status": "confirmed",
           "priority": "medium",
-          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
-          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
-        },
-        "source_skills": [
-          "engagement-audit"
-        ],
-        "evidence_details": {
-          "url": "https://www.realtor.ca/terms-of-use",
-          "observation": "Sampled internal links returned broken HTTP errors: https://www.realtor.ca/terms-of-use (HTTP 403); https://www.realtor.ca/my-account/account-information (HTTP 403); https://www.realtor.ca/my-settings/search-criteria (HTTP 403).",
-          "method": "http_redirect_aware_link_checker",
-          "timestamp": "2026-09-13T15:40:41Z",
-          "confidence": "high",
-          "evidence_id": "E-47ffec053cdc"
-        },
-        "evidence_refs": [
-          "E-47ffec053cdc"
-        ],
-        "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "evidence_refs": [
+            "E-3679c8d79af1"
+          ],
+          "root_cause": "Use the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Populate required Schema.org properties.",
+            "priority": "medium",
+            "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
@@ -132,7 +132,7 @@
         "status": "proactive",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://realtor.ca/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:40:36Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "evidence": "Observed at https://realtor.ca/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:55:40Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "robots:training-only-blocked",
         "suggested_action": {
@@ -148,15 +148,51 @@
           "url": "https://realtor.ca/robots.txt",
           "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
           "method": "robots_txt_parser_longest_match",
-          "timestamp": "2026-09-13T15:40:36Z",
+          "timestamp": "2026-09-13T17:55:40Z",
           "confidence": "high",
           "evidence_id": "E-a3291af8b1de"
         },
         "evidence_refs": [
           "E-a3291af8b1de"
         ],
-        "id": "F-003",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "id": "F-002",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nTraining-only AI crawlers are blocked; search and retrieval agents remain allowed.\n\nEVIDENCE\nObserved at https://realtor.ca/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:55:40Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)\nEvidence references: E-a3291af8b1de.\n\nROOT CAUSE\nUse the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIf deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+          "status": "proactive",
+          "priority": "low",
+          "role": "technical SEO and platform engineer",
+          "problem": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+          "evidence_refs": [
+            "E-a3291af8b1de"
+          ],
+          "root_cause": "Use the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+            "priority": "low",
+            "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
@@ -165,7 +201,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://www.realtor.ca/ via jsonld_schema_extractor [2026-09-13T15:40:36Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.realtor.ca/en via jsonld_schema_extractor [2026-09-13T15:40:36Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "evidence": "Observed at https://www.realtor.ca/ via jsonld_schema_extractor [2026-09-13T17:55:40Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:organization-missing-sameas",
         "suggested_action": {
@@ -182,24 +218,60 @@
           "url": "https://www.realtor.ca/",
           "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:40:36Z",
+          "timestamp": "2026-09-13T17:55:40Z",
           "confidence": "high",
           "evidence_id": "E-d8e01f30485c"
         },
         "evidence_refs": [
-          "E-c97f04bab2b4",
           "E-d8e01f30485c"
         ],
-        "id": "F-004",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.realtor.ca/ via jsonld_schema_extractor [2026-09-13T17:55:40Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-d8e01f30485c.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "evidence_refs": [
+            "E-d8e01f30485c"
+          ],
+          "root_cause": "Use the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add sameAs URLs to Organization JSON-LD.",
+            "priority": "low",
+            "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Realtor\",\n  \"url\": \"https://www.realtor.ca\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Find your next residential or commercial property with Canada&#39;s largest real estate website - REALTOR.ca. Our complete database of real estate listings will make finding your next place easy!\",\n  \"email\": \"support@realtor.ca\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
       }
     ],
     "access_summary": {
       "pages_sampled": 5,
       "resources_observed": 0,
-      "readable_pages": 5,
+      "readable_pages": 4,
       "status_counts": {
-        "readable": 5
+        "readable": 4,
+        "anti-bot-challenge": 1
       },
       "limited": false,
       "page_selection": [
@@ -253,7 +325,7 @@
         "url": "https://realtor.ca/robots.txt",
         "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
         "method": "robots_txt_parser_longest_match",
-        "timestamp": "2026-09-13T15:40:36Z",
+        "timestamp": "2026-09-13T17:55:40Z",
         "confidence": "high",
         "evidence_id": "E-a3291af8b1de"
       },
@@ -261,7 +333,7 @@
         "url": "https://www.realtor.ca/",
         "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:40:36Z",
+        "timestamp": "2026-09-13T17:55:40Z",
         "confidence": "high",
         "evidence_id": "E-d8e01f30485c"
       },
@@ -269,33 +341,9 @@
         "url": "https://www.realtor.ca/",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:40:36Z",
+        "timestamp": "2026-09-13T17:55:40Z",
         "confidence": "high",
         "evidence_id": "E-3679c8d79af1"
-      },
-      {
-        "url": "https://www.realtor.ca/en",
-        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
-        "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:40:36Z",
-        "confidence": "high",
-        "evidence_id": "E-c97f04bab2b4"
-      },
-      {
-        "url": "https://www.realtor.ca/en",
-        "observation": "Schema entities are missing required properties: Organization missing name.",
-        "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:40:36Z",
-        "confidence": "high",
-        "evidence_id": "E-9599d9eec35d"
-      },
-      {
-        "url": "https://www.realtor.ca/terms-of-use",
-        "observation": "Sampled internal links returned broken HTTP errors: https://www.realtor.ca/terms-of-use (HTTP 403); https://www.realtor.ca/my-account/account-information (HTTP 403); https://www.realtor.ca/my-settings/search-criteria (HTTP 403).",
-        "method": "http_redirect_aware_link_checker",
-        "timestamp": "2026-09-13T15:40:41Z",
-        "confidence": "high",
-        "evidence_id": "E-47ffec053cdc"
       }
     ],
     "assessments": [
@@ -303,7 +351,7 @@
         "check": "page_access",
         "status": "confirmed",
         "result": "assessed",
-        "reason": "5 of 5 sampled page(s) were readable."
+        "reason": "4 of 5 sampled page(s) were readable."
       },
       {
         "check": "robots_enforcement",
@@ -391,19 +439,70 @@
           "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.realtor.ca/ via schema_field_validator [2026-09-13T17:55:40Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-3679c8d79af1.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-3679c8d79af1"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nTraining-only AI crawlers are blocked; search and retrieval agents remain allowed.\n\nEVIDENCE\nObserved at https://realtor.ca/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:55:40Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)\nEvidence references: E-a3291af8b1de.\n\nROOT CAUSE\nUse the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIf deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-a3291af8b1de"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.realtor.ca/ via jsonld_schema_extractor [2026-09-13T17:55:40Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-d8e01f30485c.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-d8e01f30485c"
+        ]
+      }
     ]
   },
   "inventory_summary": {
     "pages_sampled": 5,
-    "readable_pages": 5,
+    "readable_pages": 4,
     "page_purposes": [
       "article_docs",
       "general",
       "homepage",
-      "product_landing"
+      "product_landing",
+      "unknown"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 4,
+      "anti-bot-challenge": 1
+    }
   }
 }

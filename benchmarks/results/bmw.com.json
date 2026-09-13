@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:34:12.128055+00:00",
-  "finished_at": "2026-09-13T15:34:40.889124+00:00",
-  "elapsed_seconds": 28.761,
+  "started_at": "2026-09-13T17:48:57.195868+00:00",
+  "finished_at": "2026-09-13T17:49:30.617855+00:00",
+  "elapsed_seconds": 33.422,
   "error": null,
   "report": {
     "site": "https://www.bmw.in",
-    "audited_at": "2026-09-13T15:34:40Z",
+    "audited_at": "2026-09-13T17:49:30Z",
     "summary": {
       "total_findings": 6,
       "critical": 0,
@@ -67,7 +67,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via jsonld_schema_extractor [2026-09-13T15:34:33Z]: Commercial/product page (https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "evidence": "Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via jsonld_schema_extractor [2026-09-13T17:49:21Z]: Commercial/product page (https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:product-offer-missing:/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html",
         "suggested_action": {
@@ -84,7 +84,7 @@
           "url": "https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html",
           "observation": "Commercial/product page (https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) contains no Product or Offer structured data to convey machine-readable pricing and features.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:34:33Z",
+          "timestamp": "2026-09-13T17:49:21Z",
           "confidence": "high",
           "evidence_id": "E-eb161b92ea18"
         },
@@ -92,7 +92,43 @@
           "E-eb161b92ea18"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via jsonld_schema_extractor [2026-09-13T17:49:21Z]: Commercial/product page (https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-eb161b92ea18.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Product and Offer structured data on commercial page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Product and Offer structured data on commercial page",
+          "evidence_refs": [
+            "E-eb161b92ea18"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+            "priority": "high",
+            "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"BMW 360˚ FINANCE PLAN.\",\n  \"url\": \"https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"BMW\"\n  },\n  \"description\": \"BMW, your Service Partner: attractive offers for maintenance &amp; repair. All you need to know about roadside assistance or Service Inclusive packages. Find out more now.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Conflicting primary contact phone numbers published across site",
@@ -101,7 +137,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://www.bmw.in/en/more-bmw/customer-support.html via cross_page_contact_comparison [2026-09-13T15:34:33Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8001022269: found on 2 page(s); Number 8001032211: found on 1 page(s). (Confidence: medium)",
+        "evidence": "Observed at https://www.bmw.in/en/more-bmw/customer-support.html via cross_page_contact_comparison [2026-09-13T17:49:21Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8001022269: found on 2 page(s); Number 8001032211: found on 1 page(s). (Confidence: medium)",
         "source_skill": "freshness-corroboration",
         "fingerprint": "consistency:phone-number-mismatch",
         "suggested_action": {
@@ -117,7 +153,7 @@
           "url": "https://www.bmw.in/en/more-bmw/customer-support.html",
           "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8001022269: found on 2 page(s); Number 8001032211: found on 1 page(s).",
           "method": "cross_page_contact_comparison",
-          "timestamp": "2026-09-13T15:34:33Z",
+          "timestamp": "2026-09-13T17:49:21Z",
           "confidence": "medium",
           "evidence_id": "E-47dccf95c6b7"
         },
@@ -125,7 +161,43 @@
           "E-47dccf95c6b7"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/more-bmw/customer-support.html via cross_page_contact_comparison [2026-09-13T17:49:21Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8001022269: found on 2 page(s); Number 8001032211: found on 1 page(s). (Confidence: medium)\nEvidence references: E-47dccf95c6b7.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Conflicting primary contact phone numbers published across site",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content governance owner",
+          "problem": "Conflicting primary contact phone numbers published across site",
+          "evidence_refs": [
+            "E-47dccf95c6b7"
+          ],
+          "root_cause": "Use the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Standardize customer service and contact phone numbers.",
+            "priority": "medium",
+            "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+            "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No extractable answer on-site for \"How much does BMW cost?\"",
@@ -134,7 +206,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via onsite_answerability_probe [2026-09-13T15:34:40Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does BMW cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "evidence": "Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via onsite_answerability_probe [2026-09-13T17:49:30Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does BMW cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
         "source_skill": "citation-simulator",
         "fingerprint": "citation:unanswerable:transactional",
         "suggested_action": {
@@ -150,7 +222,7 @@
           "url": "https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html",
           "observation": "Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does BMW cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
           "method": "onsite_answerability_probe",
-          "timestamp": "2026-09-13T15:34:40Z",
+          "timestamp": "2026-09-13T17:49:30Z",
           "confidence": "medium",
           "evidence_id": "E-431db33e0517"
         },
@@ -158,7 +230,43 @@
           "E-431db33e0517"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"How much does BMW cost?\".\n\nEVIDENCE\nObserved at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via onsite_answerability_probe [2026-09-13T17:49:30Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does BMW cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-431db33e0517.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"How much does BMW cost?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite \"pricing is quote-based\" but cannot cite silence.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "No extractable answer on-site for \"How much does BMW cost?\"",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"How much does BMW cost?\"",
+          "evidence_refs": [
+            "E-431db33e0517"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"How much does BMW cost?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite \"pricing is quote-based\" but cannot cite silence.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Make pricing extractable as text, not just as an image or a gated flow.",
+            "priority": "medium",
+            "how_to_fix": "State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite \"pricing is quote-based\" but cannot cite silence.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Content images carry no text alternative, hiding any fact they display",
@@ -167,7 +275,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://www.bmw.in/en/more-bmw/customer-support.html via image_alt_coverage_inspection [2026-09-13T15:34:33Z]: 7 of 18 images (39%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "evidence": "Observed at https://www.bmw.in/en/more-bmw/customer-support.html via image_alt_coverage_inspection [2026-09-13T17:49:21Z]: 7 of 18 images (39%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "extractability:images-without-alt",
         "suggested_action": {
@@ -183,7 +291,7 @@
           "url": "https://www.bmw.in/en/more-bmw/customer-support.html",
           "observation": "7 of 18 images (39%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
           "method": "image_alt_coverage_inspection",
-          "timestamp": "2026-09-13T15:34:33Z",
+          "timestamp": "2026-09-13T17:49:21Z",
           "confidence": "high",
           "evidence_id": "E-45711c0f90b1"
         },
@@ -191,7 +299,42 @@
           "E-45711c0f90b1"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/more-bmw/customer-support.html via image_alt_coverage_inspection [2026-09-13T17:49:21Z]: 7 of 18 images (39%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-45711c0f90b1.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Content images carry no text alternative, hiding any fact they display",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "content and frontend engineer",
+          "problem": "Content images carry no text alternative, hiding any fact they display",
+          "evidence_refs": [
+            "E-45711c0f90b1"
+          ],
+          "root_cause": "Use the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add descriptive alt text to every image that carries information.",
+            "priority": "low",
+            "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+            "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Deep hierarchical page lacks breadcrumb navigation trail",
@@ -200,7 +343,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.bmw.in/en/index.html via breadcrumb_markup_inspector [2026-09-13T15:34:33Z]: Page at deep route (/en/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/bmw-company-car/sustainability.html via breadcrumb_markup_inspector [2026-09-13T15:34:33Z]: Page at deep route (/en/more-bmw/bmw-company-car/sustainability.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/customer-support.html via breadcrumb_markup_inspector [2026-09-13T15:34:33Z]: Page at deep route (/en/more-bmw/customer-support.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via breadcrumb_markup_inspector [2026-09-13T15:34:33Z]: Page at deep route (/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "evidence": "Observed at https://www.bmw.in/en/index.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/bmw-company-car/sustainability.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/more-bmw/bmw-company-car/sustainability.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/customer-support.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/more-bmw/customer-support.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-breadcrumbs",
         "suggested_action": {
@@ -216,7 +359,7 @@
           "url": "https://www.bmw.in/en/index.html",
           "observation": "Page at deep route (/en/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
           "method": "breadcrumb_markup_inspector",
-          "timestamp": "2026-09-13T15:34:33Z",
+          "timestamp": "2026-09-13T17:49:21Z",
           "confidence": "medium",
           "evidence_id": "E-37cf2254c204"
         },
@@ -227,7 +370,46 @@
           "E-9c6b8e2cabfc"
         ],
         "id": "F-005",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/index.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/bmw-company-car/sustainability.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/more-bmw/bmw-company-car/sustainability.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/customer-support.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/more-bmw/customer-support.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-37cf2254c204, E-6013c8a19029, E-882d01b59db0, E-9c6b8e2cabfc.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "evidence_refs": [
+            "E-37cf2254c204",
+            "E-6013c8a19029",
+            "E-882d01b59db0",
+            "E-9c6b8e2cabfc"
+          ],
+          "root_cause": "Use the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+            "priority": "low",
+            "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No site search affordance found on any crawled page",
@@ -236,7 +418,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.bmw.in via search_affordance_detection [2026-09-13T15:34:33Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "evidence": "Observed at https://www.bmw.in via search_affordance_detection [2026-09-13T17:49:21Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-site-search",
         "suggested_action": {
@@ -252,7 +434,7 @@
           "url": "https://www.bmw.in",
           "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
           "method": "search_affordance_detection",
-          "timestamp": "2026-09-13T15:34:33Z",
+          "timestamp": "2026-09-13T17:49:21Z",
           "confidence": "medium",
           "evidence_id": "E-f11e512b941d"
         },
@@ -260,7 +442,43 @@
           "E-f11e512b941d"
         ],
         "id": "F-006",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.bmw.in via search_affordance_detection [2026-09-13T17:49:21Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-f11e512b941d.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No site search affordance found on any crawled page",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "No site search affordance found on any crawled page",
+          "evidence_refs": [
+            "E-f11e512b941d"
+          ],
+          "root_cause": "Use the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a site search box to the persistent header.",
+            "priority": "low",
+            "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -323,7 +541,7 @@
         "url": "https://www.bmw.in/en/more-bmw/customer-support.html",
         "observation": "7 of 18 images (39%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
         "method": "image_alt_coverage_inspection",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "high",
         "evidence_id": "E-45711c0f90b1"
       },
@@ -331,7 +549,7 @@
         "url": "https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html",
         "observation": "Commercial/product page (https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) contains no Product or Offer structured data to convey machine-readable pricing and features.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "high",
         "evidence_id": "E-eb161b92ea18"
       },
@@ -339,7 +557,7 @@
         "url": "https://www.bmw.in/en/more-bmw/customer-support.html",
         "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8001022269: found on 2 page(s); Number 8001032211: found on 1 page(s).",
         "method": "cross_page_contact_comparison",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "medium",
         "evidence_id": "E-47dccf95c6b7"
       },
@@ -347,7 +565,7 @@
         "url": "https://www.bmw.in/en/index.html",
         "observation": "Page at deep route (/en/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "medium",
         "evidence_id": "E-37cf2254c204"
       },
@@ -355,7 +573,7 @@
         "url": "https://www.bmw.in/en/more-bmw/bmw-company-car/sustainability.html",
         "observation": "Page at deep route (/en/more-bmw/bmw-company-car/sustainability.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "medium",
         "evidence_id": "E-6013c8a19029"
       },
@@ -363,7 +581,7 @@
         "url": "https://www.bmw.in/en/more-bmw/customer-support.html",
         "observation": "Page at deep route (/en/more-bmw/customer-support.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "medium",
         "evidence_id": "E-9c6b8e2cabfc"
       },
@@ -371,7 +589,7 @@
         "url": "https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html",
         "observation": "Page at deep route (/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "medium",
         "evidence_id": "E-882d01b59db0"
       },
@@ -379,7 +597,7 @@
         "url": "https://www.bmw.in",
         "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-09-13T15:34:33Z",
+        "timestamp": "2026-09-13T17:49:21Z",
         "confidence": "medium",
         "evidence_id": "E-f11e512b941d"
       },
@@ -387,7 +605,7 @@
         "url": "https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html",
         "observation": "Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does BMW cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-09-13T15:34:40Z",
+        "timestamp": "2026-09-13T17:49:30Z",
         "confidence": "medium",
         "evidence_id": "E-431db33e0517"
       }
@@ -485,6 +703,101 @@
           "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via jsonld_schema_extractor [2026-09-13T17:49:21Z]: Commercial/product page (https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-eb161b92ea18.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-eb161b92ea18"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/more-bmw/customer-support.html via cross_page_contact_comparison [2026-09-13T17:49:21Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8001022269: found on 2 page(s); Number 8001032211: found on 1 page(s). (Confidence: medium)\nEvidence references: E-47dccf95c6b7.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-47dccf95c6b7"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"How much does BMW cost?\".\n\nEVIDENCE\nObserved at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via onsite_answerability_probe [2026-09-13T17:49:30Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does BMW cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-431db33e0517.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"How much does BMW cost?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite \"pricing is quote-based\" but cannot cite silence.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-431db33e0517"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/more-bmw/customer-support.html via image_alt_coverage_inspection [2026-09-13T17:49:21Z]: 7 of 18 images (39%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-45711c0f90b1.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-45711c0f90b1"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.bmw.in/en/index.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/bmw-company-car/sustainability.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/more-bmw/bmw-company-car/sustainability.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/more-bmw/customer-support.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/more-bmw/customer-support.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.bmw.in/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html via breadcrumb_markup_inspector [2026-09-13T17:49:21Z]: Page at deep route (/en/topics/offers-and-services/financial-services-2020/bmw-financial-service.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-37cf2254c204, E-6013c8a19029, E-882d01b59db0, E-9c6b8e2cabfc.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-37cf2254c204",
+          "E-6013c8a19029",
+          "E-882d01b59db0",
+          "E-9c6b8e2cabfc"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.bmw.in via search_affordance_detection [2026-09-13T17:49:21Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-f11e512b941d.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-f11e512b941d"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -497,10 +810,12 @@
       "product_landing",
       "product_pricing"
     ],
-    "resource_types": [
-      "javascript"
-    ],
+    "resource_type_counts": {
+      "javascript": 1
+    },
     "resources_seen": 1,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

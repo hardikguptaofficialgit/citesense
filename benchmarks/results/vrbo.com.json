@@ -13,36 +13,37 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:33:04.983638+00:00",
-  "finished_at": "2026-09-13T15:33:24.289017+00:00",
-  "elapsed_seconds": 19.305,
+  "started_at": "2026-09-13T17:47:46.676653+00:00",
+  "finished_at": "2026-09-13T17:48:06.903689+00:00",
+  "elapsed_seconds": 20.227,
   "error": null,
   "report": {
     "site": "https://www.vrbo.com",
-    "audited_at": "2026-09-13T15:33:24Z",
+    "audited_at": "2026-09-13T17:48:06Z",
     "summary": {
-      "total_findings": 5,
+      "total_findings": 6,
       "critical": 0,
       "high": 1,
-      "medium": 3,
+      "medium": 4,
       "low": 1,
       "discoverability_findings": 5,
-      "engagement_findings": 0,
-      "citability_score": 81,
+      "engagement_findings": 1,
+      "citability_score": 76,
       "citability_score_breakdown": {
-        "score": 81,
+        "score": 76,
         "base": 100,
-        "penalty": 19,
+        "penalty": 24,
         "penalty_by_severity": {
           "critical": 0,
           "high": 6,
-          "medium": 12,
+          "medium": 17,
           "low": 1
         },
         "penalty_by_root_cause": {
           "render:empty-raw-html-gap:/welcome-one-key": 6,
           "crawl:missing-xml-sitemap": 5,
           "schema:root-organization-missing": 5,
+          "engagement:broken-internal-links": 5,
           "trust:no-independent-identity-anchor": 2,
           "citation:unanswerable:differentiation": 1
         },
@@ -55,7 +56,7 @@
         },
         "excluded_duplicate_fingerprints": [],
         "corroboration_credit": 0,
-        "counted_findings": 5
+        "counted_findings": 6
       }
     },
     "findings": [
@@ -66,7 +67,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "high",
-        "evidence": "Observed at https://www.vrbo.com/welcome-one-key via static_initial_html_shell_inspection [2026-09-13T15:33:15Z]: Raw HTML yields only 12 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "evidence": "Observed at https://www.vrbo.com/welcome-one-key via static_initial_html_shell_inspection [2026-09-13T17:48:00Z]: Raw HTML yields only 12 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "render:empty-raw-html-gap:/welcome-one-key",
         "suggested_action": {
@@ -82,7 +83,7 @@
           "url": "https://www.vrbo.com/welcome-one-key",
           "observation": "Raw HTML yields only 12 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
           "method": "static_initial_html_shell_inspection",
-          "timestamp": "2026-09-13T15:33:15Z",
+          "timestamp": "2026-09-13T17:48:00Z",
           "confidence": "medium",
           "evidence_id": "E-92e2cf4f06f6"
         },
@@ -90,7 +91,43 @@
           "E-92e2cf4f06f6"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a frontend and technical SEO engineer.\n\nPROBLEM\nClient-side rendering gap: raw HTML contains minimal text content.\n\nEVIDENCE\nObserved at https://www.vrbo.com/welcome-one-key via static_initial_html_shell_inspection [2026-09-13T17:48:00Z]: Raw HTML yields only 12 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)\nEvidence references: E-92e2cf4f06f6.\n\nROOT CAUSE\nUse the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Client-side rendering gap: raw HTML contains minimal text content",
+          "status": "likely-risk",
+          "priority": "high",
+          "role": "frontend and technical SEO engineer",
+          "problem": "Client-side rendering gap: raw HTML contains minimal text content",
+          "evidence_refs": [
+            "E-92e2cf4f06f6"
+          ],
+          "root_cause": "Use the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+            "priority": "high",
+            "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+            "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
@@ -99,7 +136,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.vrbo.com/sitemap.xml via http_get_sitemap_check [2026-09-13T15:33:15Z]: Request to https://www.vrbo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "evidence": "Observed at https://www.vrbo.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:48:00Z]: Request to https://www.vrbo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "crawl:missing-xml-sitemap",
         "suggested_action": {
@@ -115,7 +152,7 @@
           "url": "https://www.vrbo.com/sitemap.xml",
           "observation": "Request to https://www.vrbo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
           "method": "http_get_sitemap_check",
-          "timestamp": "2026-09-13T15:33:15Z",
+          "timestamp": "2026-09-13T17:48:00Z",
           "confidence": "high",
           "evidence_id": "E-5f711a32cf3a"
         },
@@ -123,7 +160,42 @@
           "E-5f711a32cf3a"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://www.vrbo.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:48:00Z]: Request to https://www.vrbo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-5f711a32cf3a.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "technical SEO and platform engineer",
+          "problem": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "evidence_refs": [
+            "E-5f711a32cf3a"
+          ],
+          "root_cause": "Use the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+            "priority": "medium",
+            "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing Schema.org Organization structured data on root landing page",
@@ -132,7 +204,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.vrbo.com/ via jsonld_schema_extractor [2026-09-13T15:33:15Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "evidence": "Observed at https://www.vrbo.com/ via jsonld_schema_extractor [2026-09-13T17:48:00Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -149,7 +221,7 @@
           "url": "https://www.vrbo.com/",
           "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:33:15Z",
+          "timestamp": "2026-09-13T17:48:00Z",
           "confidence": "high",
           "evidence_id": "E-e68d28bd6765"
         },
@@ -157,7 +229,111 @@
           "E-e68d28bd6765"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.vrbo.com/ via jsonld_schema_extractor [2026-09-13T17:48:00Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-e68d28bd6765.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-e68d28bd6765"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"vrbo\",\n  \"url\": \"https://www.vrbo.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Book amazing rentals on Vrbo - the most popular vacation rental site in the US. ✓+2 million rentals worldwide ✓19+ million reviews ✓Secure online payment ✓24/7 Customer Service\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Broken internal navigation links detected (8 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.vrbo.com/deals/summer via http_redirect_aware_link_checker [2026-09-13T17:48:06Z]: Sampled internal links returned broken HTTP errors: https://www.vrbo.com/deals/summer (HTTP 429); https://www.vrbo.com/deals/snowbird-getaways (HTTP 429); https://www.vrbo.com/tlp/college-football?preferlocale=true&amp;siteid=9001001 (HTTP 429). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.vrbo.com/deals/summer",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.vrbo.com/deals/summer (HTTP 429); https://www.vrbo.com/deals/snowbird-getaways (HTTP 429); https://www.vrbo.com/tlp/college-football?preferlocale=true&amp;siteid=9001001 (HTTP 429).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T17:48:06Z",
+          "confidence": "high",
+          "evidence_id": "E-d27838f5182b"
+        },
+        "evidence_refs": [
+          "E-d27838f5182b"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (8 link(s)).\n\nEVIDENCE\nObserved at https://www.vrbo.com/deals/summer via http_redirect_aware_link_checker [2026-09-13T17:48:06Z]: Sampled internal links returned broken HTTP errors: https://www.vrbo.com/deals/summer (HTTP 429); https://www.vrbo.com/deals/snowbird-getaways (HTTP 429); https://www.vrbo.com/tlp/college-football?preferlocale=true&amp;siteid=9001001 (HTTP 429). (Confidence: high)\nEvidence references: E-d27838f5182b.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (8 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Broken internal navigation links detected (8 link(s))",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Broken internal navigation links detected (8 link(s))",
+          "evidence_refs": [
+            "E-d27838f5182b"
+          ],
+          "root_cause": "Use the observed condition described by “Broken internal navigation links detected (8 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix or redirect broken internal destination URLs.",
+            "priority": "medium",
+            "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Brand identity is not anchored to any independent authority source",
@@ -166,7 +342,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://www.vrbo.com via onsite_identity_anchor_inspection [2026-09-13T15:33:24Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 11 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "evidence": "Observed at https://www.vrbo.com via onsite_identity_anchor_inspection [2026-09-13T17:48:06Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 11 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
         "source_skill": "trust-corroboration-graph",
         "fingerprint": "trust:no-independent-identity-anchor",
         "suggested_action": {
@@ -182,15 +358,51 @@
           "url": "https://www.vrbo.com",
           "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 11 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
           "method": "onsite_identity_anchor_inspection",
-          "timestamp": "2026-09-13T15:33:24Z",
+          "timestamp": "2026-09-13T17:48:06Z",
           "confidence": "medium",
           "evidence_id": "E-5e40f92de504"
         },
         "evidence_refs": [
           "E-5e40f92de504"
         ],
-        "id": "F-004",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.vrbo.com via onsite_identity_anchor_inspection [2026-09-13T17:48:06Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 11 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-5e40f92de504.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-5e40f92de504"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No extractable answer on-site for \"What makes vrbo different?\"",
@@ -199,7 +411,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.vrbo.com/ via onsite_answerability_probe [2026-09-13T15:33:24Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "evidence": "Observed at https://www.vrbo.com/ via onsite_answerability_probe [2026-09-13T17:48:06Z]: Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
         "source_skill": "citation-simulator",
         "fingerprint": "citation:unanswerable:differentiation",
         "suggested_action": {
@@ -213,25 +425,62 @@
         ],
         "evidence_details": {
           "url": "https://www.vrbo.com/",
-          "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "observation": "Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand.",
           "method": "onsite_answerability_probe",
-          "timestamp": "2026-09-13T15:33:24Z",
+          "timestamp": "2026-09-13T17:48:06Z",
           "confidence": "medium",
-          "evidence_id": "E-7b4e3701ba40"
+          "evidence_id": "E-07c94606bace"
         },
         "evidence_refs": [
-          "E-7b4e3701ba40"
+          "E-07c94606bace"
         ],
-        "id": "F-005",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes vrbo different?\".\n\nEVIDENCE\nObserved at https://www.vrbo.com/ via onsite_answerability_probe [2026-09-13T17:48:06Z]: Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-07c94606bace.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes vrbo different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No extractable answer on-site for \"What makes vrbo different?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What makes vrbo different?\"",
+          "evidence_refs": [
+            "E-07c94606bace"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What makes vrbo different?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Make the brand's differentiator explicit and quotable.",
+            "priority": "low",
+            "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
       "pages_sampled": 5,
       "resources_observed": 0,
-      "readable_pages": 5,
+      "readable_pages": 4,
       "status_counts": {
-        "readable": 5
+        "readable": 4,
+        "anti-bot-challenge": 1
       },
       "limited": false,
       "page_selection": [
@@ -285,7 +534,7 @@
         "url": "https://www.vrbo.com/sitemap.xml",
         "observation": "Request to https://www.vrbo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
         "method": "http_get_sitemap_check",
-        "timestamp": "2026-09-13T15:33:15Z",
+        "timestamp": "2026-09-13T17:48:00Z",
         "confidence": "high",
         "evidence_id": "E-5f711a32cf3a"
       },
@@ -293,7 +542,7 @@
         "url": "https://www.vrbo.com/",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:33:15Z",
+        "timestamp": "2026-09-13T17:48:00Z",
         "confidence": "high",
         "evidence_id": "E-e68d28bd6765"
       },
@@ -301,23 +550,31 @@
         "url": "https://www.vrbo.com/welcome-one-key",
         "observation": "Raw HTML yields only 12 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
         "method": "static_initial_html_shell_inspection",
-        "timestamp": "2026-09-13T15:33:15Z",
+        "timestamp": "2026-09-13T17:48:00Z",
         "confidence": "medium",
         "evidence_id": "E-92e2cf4f06f6"
       },
       {
+        "url": "https://www.vrbo.com/deals/summer",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.vrbo.com/deals/summer (HTTP 429); https://www.vrbo.com/deals/snowbird-getaways (HTTP 429); https://www.vrbo.com/tlp/college-football?preferlocale=true&amp;siteid=9001001 (HTTP 429).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T17:48:06Z",
+        "confidence": "high",
+        "evidence_id": "E-d27838f5182b"
+      },
+      {
         "url": "https://www.vrbo.com/",
-        "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "observation": "Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand.",
         "method": "onsite_answerability_probe",
-        "timestamp": "2026-09-13T15:33:24Z",
+        "timestamp": "2026-09-13T17:48:06Z",
         "confidence": "medium",
-        "evidence_id": "E-7b4e3701ba40"
+        "evidence_id": "E-07c94606bace"
       },
       {
         "url": "https://www.vrbo.com",
         "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 11 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-09-13T15:33:24Z",
+        "timestamp": "2026-09-13T17:48:06Z",
         "confidence": "medium",
         "evidence_id": "E-5e40f92de504"
       }
@@ -327,7 +584,7 @@
         "check": "page_access",
         "status": "confirmed",
         "result": "assessed",
-        "reason": "5 of 5 sampled page(s) were readable."
+        "reason": "4 of 5 sampled page(s) were readable."
       },
       {
         "check": "robots_enforcement",
@@ -406,18 +663,114 @@
           "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "likely-risk finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a frontend and technical SEO engineer.\n\nPROBLEM\nClient-side rendering gap: raw HTML contains minimal text content.\n\nEVIDENCE\nObserved at https://www.vrbo.com/welcome-one-key via static_initial_html_shell_inspection [2026-09-13T17:48:00Z]: Raw HTML yields only 12 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)\nEvidence references: E-92e2cf4f06f6.\n\nROOT CAUSE\nUse the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-92e2cf4f06f6"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://www.vrbo.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:48:00Z]: Request to https://www.vrbo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-5f711a32cf3a.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-5f711a32cf3a"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.vrbo.com/ via jsonld_schema_extractor [2026-09-13T17:48:00Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-e68d28bd6765.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-e68d28bd6765"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (8 link(s)).\n\nEVIDENCE\nObserved at https://www.vrbo.com/deals/summer via http_redirect_aware_link_checker [2026-09-13T17:48:06Z]: Sampled internal links returned broken HTTP errors: https://www.vrbo.com/deals/summer (HTTP 429); https://www.vrbo.com/deals/snowbird-getaways (HTTP 429); https://www.vrbo.com/tlp/college-football?preferlocale=true&amp;siteid=9001001 (HTTP 429). (Confidence: high)\nEvidence references: E-d27838f5182b.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (8 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-d27838f5182b"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.vrbo.com via onsite_identity_anchor_inspection [2026-09-13T17:48:06Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 11 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-5e40f92de504.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-5e40f92de504"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes vrbo different?\".\n\nEVIDENCE\nObserved at https://www.vrbo.com/ via onsite_answerability_probe [2026-09-13T17:48:06Z]: Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes vrbo different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-07c94606bace.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes vrbo different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-07c94606bace"
+        ]
+      }
     ]
   },
   "inventory_summary": {
     "pages_sampled": 5,
-    "readable_pages": 5,
+    "readable_pages": 4,
     "page_purposes": [
       "article_docs",
       "general",
-      "homepage"
+      "homepage",
+      "unknown"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 4,
+      "anti-bot-challenge": 1
+    }
   }
 }

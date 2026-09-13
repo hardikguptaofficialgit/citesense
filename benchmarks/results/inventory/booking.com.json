@@ -941,8 +941,8 @@
       "url": "https://booking.com/",
       "final_url": "https://www.booking.com/",
       "status_code": 202,
-      "load_time_seconds": 1.36,
-      "raw_html": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <title></title>\r\n    <style>\r\n        body {\r\n            font-family: \"Arial\";\r\n        }\r\n    </style>\r\n    <script type=\"text/javascript\" nonce=\"ORHAbZXStHqtzjD\">\r\n        function reportChallengeError(log, challengeError) {\r\n    return;\r\n}\r\n\r\n        \r\n    </script>\r\n    <script type=\"text/javascript\" nonce=\"ORHAbZXStHqtzjD\">\r\n        window.awsWafCookieDomainList = ['booking.com'];\r\n    </script>\r\n    <script type=\"text/javascript\" src=\"https://www.booking.com/__challenge_h78IRKX3kpQxScCExxShBNwRUlb/d8c14d4960ca/a18a4859af9c/challenge.js\" nonce=\"ORHAbZXStHqtzjD\"></script>\r\n    <script type=\"text/javascript\" nonce=\"ORHAbZXStHqtzjD\">\r\n        const maxLocationLength = 2047 - \"&chal_t=1760623098515&force_referer=\".length;\r\n        function searchStringWithNewParam(search, key, value) {\r\n            value = encodeURIComponent(value);\r\n            if (!search.startsWith('?')) {\r\n                return search + `?${key}=${value}`;\r\n            } else if (search.endsWith('&')) {\r\n                return search + `${key}=${value}`;\r\n            } else {\r\n                return search + `&${key}=${value}`;\r\n            }\r\n        }\r\n\r\n        function getNewUrlWithAddedParameter(location, parameters) {\r\n            let newSearch = location.search;\r\n\r\n            for (let parameterName of Object.keys(parameters)) {\r\n                if (!newSearch.includes(`${parameterName}=`)) {\r\n                    newSearch = searchStringWithNewParam(newSearch, parameterName, parameters[parameterName]);\r\n                }\r\n            }\r\n\r\n            let newHref = `${location.pathname}${newSearch}${location.hash}`;\r\n            if (newHref.length < maxLocationLength) {\r\n                return newHref;\r\n            }\r\n            return null;\r\n        }\r\n    </script>\r\n</head>\r\n<body>\r\n    <div id=\"challenge-container\"></div>\r\n    <script type=\"text/javascript\" nonce=\"ORHAbZXStHqtzjD\">\r\n        let newHref;\r\n        try {\r\n            setTimeout(() => {\r\n                try {\r\n                    reportChallengeError(\"Reloaded without updating url\", new Error(\"\"));\r\n                } catch (e) {}\r\n                document.location.reload();\r\n            }, 20000);\r\n            let referrer = document.referrer;\r\n            let availableLength = maxLocationLength - document.location.href.length;\r\n\r\n            if (encodeURIComponent(referrer).length > availableLength) {\r\n                let parsedReferrer = new URL(referrer);\r\n                referrer = parsedReferrer.origin;\r\n                if (encodeURIComponent(referrer + parsedReferrer.pathname).length < availableLength) {\r\n                    referrer = referrer + parsedReferrer.pathname;\r\n                }\r\n            }\r\n            let parameters = {\r\n                chal_t: 1789313563390,\r\n                force_referer: referrer,\r\n            };\r\n            newHref = getNewUrlWithAddedParameter(document.location, parameters);\r\n        } catch (e) {\r\n            reportChallengeError(\"Failed while getting new href\", e);\r\n        }\r\n\r\n        newHref = newHref || document.location.href;\r\n        AwsWafIntegration.saveReferrer();\r\n        AwsWafIntegration.checkForceRefresh().then((forceRefresh) => {\r\n            if (forceRefresh) {\r\n                AwsWafIntegration.forceRefreshToken().then(() => {\r\n                    window.location.href = newHref;\r\n                });\r\n            } else {\r\n                AwsWafIntegration.getToken().then(() => {\r\n                    window.location.href = newHref;\r\n                });\r\n            }\r\n        });\r\n    </script>\r\n    <noscript>\r\n        <h1>JavaScript is disabled</h1>\r\n        In order to continue, we need to verify that you're not a robot.\r\n        This requires JavaScript. Enable JavaScript and then reload the page.\r\n    </noscript>\r\n</body>\r\n</html>\r\n",
+      "load_time_seconds": 1.66,
+      "raw_html": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <title></title>\r\n    <style>\r\n        body {\r\n            font-family: \"Arial\";\r\n        }\r\n    </style>\r\n    <script type=\"text/javascript\" nonce=\"4lvXXOMX5XXdkVS\">\r\n        function reportChallengeError(log, challengeError) {\r\n    return;\r\n}\r\n\r\n        \r\n    </script>\r\n    <script type=\"text/javascript\" nonce=\"4lvXXOMX5XXdkVS\">\r\n        window.awsWafCookieDomainList = ['booking.com'];\r\n    </script>\r\n    <script type=\"text/javascript\" src=\"https://www.booking.com/__challenge_h78IRKX3kpQxScCExxShBNwRUlb/d8c14d4960ca/a18a4859af9c/challenge.js\" nonce=\"4lvXXOMX5XXdkVS\"></script>\r\n    <script type=\"text/javascript\" nonce=\"4lvXXOMX5XXdkVS\">\r\n        const maxLocationLength = 2047 - \"&chal_t=1760623098515&force_referer=\".length;\r\n        function searchStringWithNewParam(search, key, value) {\r\n            value = encodeURIComponent(value);\r\n            if (!search.startsWith('?')) {\r\n                return search + `?${key}=${value}`;\r\n            } else if (search.endsWith('&')) {\r\n                return search + `${key}=${value}`;\r\n            } else {\r\n                return search + `&${key}=${value}`;\r\n            }\r\n        }\r\n\r\n        function getNewUrlWithAddedParameter(location, parameters) {\r\n            let newSearch = location.search;\r\n\r\n            for (let parameterName of Object.keys(parameters)) {\r\n                if (!newSearch.includes(`${parameterName}=`)) {\r\n                    newSearch = searchStringWithNewParam(newSearch, parameterName, parameters[parameterName]);\r\n                }\r\n            }\r\n\r\n            let newHref = `${location.pathname}${newSearch}${location.hash}`;\r\n            if (newHref.length < maxLocationLength) {\r\n                return newHref;\r\n            }\r\n            return null;\r\n        }\r\n    </script>\r\n</head>\r\n<body>\r\n    <div id=\"challenge-container\"></div>\r\n    <script type=\"text/javascript\" nonce=\"4lvXXOMX5XXdkVS\">\r\n        let newHref;\r\n        try {\r\n            setTimeout(() => {\r\n                try {\r\n                    reportChallengeError(\"Reloaded without updating url\", new Error(\"\"));\r\n                } catch (e) {}\r\n                document.location.reload();\r\n            }, 20000);\r\n            let referrer = document.referrer;\r\n            let availableLength = maxLocationLength - document.location.href.length;\r\n\r\n            if (encodeURIComponent(referrer).length > availableLength) {\r\n                let parsedReferrer = new URL(referrer);\r\n                referrer = parsedReferrer.origin;\r\n                if (encodeURIComponent(referrer + parsedReferrer.pathname).length < availableLength) {\r\n                    referrer = referrer + parsedReferrer.pathname;\r\n                }\r\n            }\r\n            let parameters = {\r\n                chal_t: 1789321643977,\r\n                force_referer: referrer,\r\n            };\r\n            newHref = getNewUrlWithAddedParameter(document.location, parameters);\r\n        } catch (e) {\r\n            reportChallengeError(\"Failed while getting new href\", e);\r\n        }\r\n\r\n        newHref = newHref || document.location.href;\r\n        AwsWafIntegration.saveReferrer();\r\n        AwsWafIntegration.checkForceRefresh().then((forceRefresh) => {\r\n            if (forceRefresh) {\r\n                AwsWafIntegration.forceRefreshToken().then(() => {\r\n                    window.location.href = newHref;\r\n                });\r\n            } else {\r\n                AwsWafIntegration.getToken().then(() => {\r\n                    window.location.href = newHref;\r\n                });\r\n            }\r\n        });\r\n    </script>\r\n    <noscript>\r\n        <h1>JavaScript is disabled</h1>\r\n        In order to continue, we need to verify that you're not a robot.\r\n        This requires JavaScript. Enable JavaScript and then reload the page.\r\n    </noscript>\r\n</body>\r\n</html>\r\n",
       "visible_text": "",
       "word_count": 0,
       "title": "",
@@ -978,7 +978,7 @@
       "final_url": "https://www.booking.com/sitembk-airport-ar.0000.xml.gz",
       "status_code": 200,
       "content_type": "binary/octet-stream",
-      "load_time_seconds": 0.68,
+      "load_time_seconds": 0.86,
       "access_status": "readable",
       "observation": "Non-HTML response excluded from normal webpage audit checks."
     },
@@ -989,7 +989,7 @@
       "final_url": "https://www.booking.com/sitembk-airport-bg.0000.xml.gz",
       "status_code": 200,
       "content_type": "binary/octet-stream",
-      "load_time_seconds": 0.56,
+      "load_time_seconds": 0.41,
       "access_status": "readable",
       "observation": "Non-HTML response excluded from normal webpage audit checks."
     },
@@ -1000,7 +1000,7 @@
       "final_url": "https://www.booking.com/sitembk-airport-ca.0000.xml.gz",
       "status_code": 200,
       "content_type": "binary/octet-stream",
-      "load_time_seconds": 0.95,
+      "load_time_seconds": 0.36,
       "access_status": "readable",
       "observation": "Non-HTML response excluded from normal webpage audit checks."
     },
@@ -1011,7 +1011,7 @@
       "final_url": "https://www.booking.com/sitembk-airport-cs.0000.xml.gz",
       "status_code": 200,
       "content_type": "binary/octet-stream",
-      "load_time_seconds": 0.87,
+      "load_time_seconds": 0.36,
       "access_status": "readable",
       "observation": "Non-HTML response excluded from normal webpage audit checks."
     }
@@ -1027,7 +1027,7 @@
     "max_pages": 5,
     "http_timeout_seconds": 8,
     "pages_crawled": 1,
-    "total_crawl_time_seconds": 11.62,
+    "total_crawl_time_seconds": 10.51,
     "page_selection": [
       {
         "url": "https://www.booking.com/sitembk-airport-ar.0000.xml.gz",

@@ -1,0 +1,86 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 2708eab..0de027d 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -69,11 +69,14 @@[m [mEvery report contains:[m
+ - an evidence ledger with stable IDs and finding references;[m
+ - assessment statuses such as `confirmed`, `likely-risk`, `inconclusive`, and `not-assessed`;[m
+ - proactive recommendations when the crawl provides a concrete basis;[m
+[32m+[m[32m- optional evidence-derived `fix_prompt` objects and a prioritized `fix_plan`; these are[m
+[32m+[m[32m  recommendation-only briefs and are omitted when evidence is inconclusive;[m
+ - access, robots, page-selection, and limitation details.[m
+ [m
+[31m-The audit is read-only, enforces `robots.txt`, uses a bounded crawl, and never bypasses[m
+[31m-CAPTCHA, WAF, login, or anti-bot protections. A typical run completes in seconds and stays[m
+[31m-within the five-minute evaluation budget.[m
+[32m+[m[32mThe audit is read-only, enforces `robots.txt`, uses a bounded crawl, rejects unsafe network[m
+[32m+[m[32mtargets and redirects, caps response bodies at 5 MiB, and never bypasses CAPTCHA, WAF, login,[m
+[32m+[m[32mor anti-bot protections. A typical run completes in seconds and stays within the five-minute[m
+[32m+[m[32mevaluation budget.[m
+ [m
+ Optional external discovery evidence may be supplied by an agent, but CiteSense never performs[m
+ or fabricates search-engine or live AI results internally:[m
+[36m@@ -86,14 +89,6 @@[m [mcitesense audit https://example.com \[m
+ [m
+ If no external evidence is supplied, off-site discovery is reported as `not-assessed`.[m
+ [m
+[31m-Pre-generated reports for real sites are available in[m
+[31m-`[validation-runs/](validation-runs/)`, with runtimes and severity counts in[m
+[31m-`[validation-runs/RUNS.md](validation-runs/RUNS.md)`.[m
+[31m-[m
+[31m-## Documentation[m
+[31m-[m
+[31m-- [Case study: the site that passes its checks and is still invisible](docs/CASE-STUDY.md)[m
+[31m-[m
+ ---[m
+ [m
+ [m
+[36m@@ -135,10 +130,10 @@[m [mto run the `citesense` command.[m
+ ## Direct agent test prompt[m
+ [m
+ Copy the following prompt directly into an AI coding agent to run a controlled CiteSense[m
+[31m-1.1.0 audit of Adobe's website:[m
+[32m+[m[32m1.1.3 audit of Adobe's website:[m
+ [m
+ ```text[m
+[31m-Use CiteSense 1.1.0 to audit ONLY this website:[m
+[32m+[m[32mUse CiteSense 1.1.3 to audit ONLY this website:[m
+ [m
+ https://www.adobe.com/in[m
+ [m
+[36m@@ -149,7 +144,7 @@[m [mFirst verify:[m
+ python -m pip install --upgrade --no-cache-dir citesense[m
+ python -c "import importlib.metadata; print(importlib.metadata.version('citesense'))"[m
+ [m
+[31m-The installed version must be 1.1.0 or newer.[m
+[32m+[m[32mThe installed version must be 1.1.3 or newer.[m
+ [m
+ Then run EXACTLY:[m
+ [m
+[36m@@ -157,6 +152,7 @@[m [mcitesense audit https://www.adobe.com/in --output adobe-report.json[m
+ [m
+ IMPORTANT:[m
+ [m
+[32m+[m[32m- Do not audit IRCTC, example.com, Linkit, WebMakeDevs, or any other website.[m
+ - Do not replace the target URL if the audit encounters an access or network error.[m
+ - If Adobe cannot be accessed, report that CiteSense could not access the target and show[m
+   the generated report/status.[m
+[36m@@ -246,7 +242,7 @@[m [mgraph TD[m
+ | **crawl-render-audit**              | Off-site discoverability, steps A-C                  | Is the crawler let in? Scored **by crawler class** -- blocking training crawlers (GPTBot, ClaudeBot) costs no citations and is a legitimate licensing stance; blocking search-index (OAI-SearchBot, Claude-SearchBot, PerplexityBot) or user-triggered (ChatGPT-User, Claude-User) agents is what makes a brand uncitable. Can it read the page without executing JS? Is structured data present and valid? Are facts locked inside images or canvas? |[m
+ | **freshness-corroboration**         | Temporal + internal consistency (Appendix D, half 1) | Claim-based freshness: detects actual stale/conflicting facts (e.g. conflicting founding years, expired promotions) instead of treating missing `dateModified` as a defect.                                                                                                                                                                                                                                                                           |[m
+ | **engagement-audit**                | On-site engagement                                   | Evaluates orientation, buttons/forms/CTAs, navigation, redirect-aware broken links, and mobile viewport.                                                                                                                                                                                                                                                                                                                                              |[m
+[31m-| **citation-simulator**              | Proof-of-failure                                     | Generates realistic questions about the brand, then tests **answerability**: given only the pages a retrieval bot actually fetched, could an assistant quote an answer? Also classifies supplied live-search results (omission / misattribution / staleness / contradiction) when an agent provides them.                                                                                                                                             |[m
+[32m+[m[32m| **citation-simulator**              | Answerability evidence                                | Generates realistic questions about the brand, then tests **answerability**: given only the pages a retrieval bot actually fetched, could an assistant quote an answer? Also classifies supplied live-search results (omission / misattribution / staleness / contradiction) when an agent provides them.                                                                                                                                             |[m
+ | **trust-corroboration-graph**       | External identity (Appendix D, half 2)               | Observable on-site: does any machine-readable path exist from the brand to an independent authority (`sameAs` URIs, outbound links to Wikidata/Wikipedia/Crunchbase/LinkedIn/registries)? Agent-supplied: scores real third-party corroboration and same-name collision risk.                                                                                                                                                                         |[m
+ | **audit-orchestrator** (entrypoint) | Composition & Orchestration                          | Crawls pages once via `SiteInventory`, executes specialist skills to collect `CandidateFindings`, merges and deduplicates by root cause, prioritizes by severity and impact, adds proactive recommendations, and validates the report.                                                                                                                                                                                                                |[m
+ [m
+[36m@@ -262,7 +258,8 @@[m [mgraph TD[m
+ 3. **Evidence-Verification Layer:** Every finding includes URL, observation, method, timestamp, and confidence rating (`Observed at <url> via <method> [<timestamp>]: <observation> (Confidence: <confidence>)`).[m
+ 4. **Finding Metadata:** Includes `status` (`confirmed` / `likely-risk` / `proactive`), `confidence` (`high` / `medium` / `low`), and `impact` (`critical` / `high` / `medium` / `low`).[m
+ 5. **False-Positive Elimination:**[m
+[31m-  - Follows HTTP redirects up to 5 hops; links redirecting to 200 are recognized as working.[m
+[32m+[m[32m  - Follows HTTP redirects up to 5 hops only after validating each target; links redirecting to 200 are recognized as working.[m
+[32m+[m[32m  - Rejects URL credentials, unsafe ports, private/loopback/link-local/metadata targets, and response bodies over 5 MiB.[m
+   - 4xx/5xx responses are distinguished from transient network timeouts.[m
+   - Missing `dateModified` or `datePublished` on static pages is **not** penalized.[m
+   - Breadcrumbs are only evaluated

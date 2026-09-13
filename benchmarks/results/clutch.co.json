@@ -13,34 +13,35 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:38:44.303820+00:00",
-  "finished_at": "2026-09-13T15:39:01.588903+00:00",
-  "elapsed_seconds": 17.285,
+  "started_at": "2026-09-13T17:53:34.172444+00:00",
+  "finished_at": "2026-09-13T17:53:50.964163+00:00",
+  "elapsed_seconds": 16.792,
   "error": null,
   "report": {
     "site": "https://clutch.co",
-    "audited_at": "2026-09-13T15:39:01Z",
+    "audited_at": "2026-09-13T17:53:50Z",
     "summary": {
-      "total_findings": 1,
+      "total_findings": 2,
       "critical": 0,
       "high": 0,
-      "medium": 1,
+      "medium": 2,
       "low": 0,
       "discoverability_findings": 1,
-      "engagement_findings": 0,
-      "citability_score": 95,
+      "engagement_findings": 1,
+      "citability_score": 90,
       "citability_score_breakdown": {
-        "score": 95,
+        "score": 90,
         "base": 100,
-        "penalty": 5,
+        "penalty": 10,
         "penalty_by_severity": {
           "critical": 0,
           "high": 0,
-          "medium": 5,
+          "medium": 10,
           "low": 0
         },
         "penalty_by_root_cause": {
-          "schema:root-organization-missing": 5
+          "schema:root-organization-missing": 5,
+          "engagement:broken-internal-links": 5
         },
         "status_factors": {
           "confirmed": 1.0,
@@ -51,7 +52,7 @@
         },
         "excluded_duplicate_fingerprints": [],
         "corroboration_credit": 0,
-        "counted_findings": 1
+        "counted_findings": 2
       }
     },
     "findings": [
@@ -62,7 +63,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://clutch.co/hr via jsonld_schema_extractor [2026-09-13T15:38:53Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "evidence": "Observed at https://clutch.co/hr via jsonld_schema_extractor [2026-09-13T17:53:41Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -79,7 +80,7 @@
           "url": "https://clutch.co/hr",
           "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:38:53Z",
+          "timestamp": "2026-09-13T17:53:41Z",
           "confidence": "high",
           "evidence_id": "E-1707e3de554e"
         },
@@ -87,7 +88,111 @@
           "E-1707e3de554e"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://clutch.co/hr via jsonld_schema_extractor [2026-09-13T17:53:41Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-1707e3de554e.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-1707e3de554e"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Clutch\",\n  \"url\": \"https://clutch.co\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Clutch is the leading global B2B marketplace for finding agencies in development, design, marketing and IT services. Over 1 million businesses visit Clutch each month to read real client feedback and hire a verified agency.\",\n  \"sameAs\": [\n    \"https://www.linkedin.com/company/clutch-co\",\n    \"https://www.facebook.com/clutch.co\",\n    \"https://twitter.com/clutch_co\",\n    \"https://www.instagram.com/clutch.co/\",\n    \"https://www.youtube.com/channel/UCgoVOpDjxQ3ST_N_xIIRaBw\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://clutch.co/get-listed via http_redirect_aware_link_checker [2026-09-13T17:53:50Z]: Sampled internal links returned broken HTTP errors: https://clutch.co/get-listed (HTTP 403). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://clutch.co/get-listed",
+          "observation": "Sampled internal links returned broken HTTP errors: https://clutch.co/get-listed (HTTP 403).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T17:53:50Z",
+          "confidence": "high",
+          "evidence_id": "E-d1e8662ba376"
+        },
+        "evidence_refs": [
+          "E-d1e8662ba376"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://clutch.co/get-listed via http_redirect_aware_link_checker [2026-09-13T17:53:50Z]: Sampled internal links returned broken HTTP errors: https://clutch.co/get-listed (HTTP 403). (Confidence: high)\nEvidence references: E-d1e8662ba376.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Broken internal navigation links detected (1 link(s))",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Broken internal navigation links detected (1 link(s))",
+          "evidence_refs": [
+            "E-d1e8662ba376"
+          ],
+          "root_cause": "Use the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix or redirect broken internal destination URLs.",
+            "priority": "medium",
+            "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -152,9 +257,17 @@
         "url": "https://clutch.co/hr",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:38:53Z",
+        "timestamp": "2026-09-13T17:53:41Z",
         "confidence": "high",
         "evidence_id": "E-1707e3de554e"
+      },
+      {
+        "url": "https://clutch.co/get-listed",
+        "observation": "Sampled internal links returned broken HTTP errors: https://clutch.co/get-listed (HTTP 403).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T17:53:50Z",
+        "confidence": "high",
+        "evidence_id": "E-d1e8662ba376"
       }
     ],
     "assessments": [
@@ -223,6 +336,38 @@
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://clutch.co/hr via jsonld_schema_extractor [2026-09-13T17:53:41Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-1707e3de554e.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-1707e3de554e"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://clutch.co/get-listed via http_redirect_aware_link_checker [2026-09-13T17:53:50Z]: Sampled internal links returned broken HTTP errors: https://clutch.co/get-listed (HTTP 403). (Confidence: high)\nEvidence references: E-d1e8662ba376.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-d1e8662ba376"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -230,12 +375,15 @@
     "readable_pages": 4,
     "page_purposes": [
       "contact_support",
-      "general",
       "homepage",
+      "product_landing",
       "unknown"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 4,
+      "anti-bot-challenge": 1
+    }
   }
 }

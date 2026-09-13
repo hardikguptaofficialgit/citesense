@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:32:55.200110+00:00",
-  "finished_at": "2026-09-13T15:33:38.594338+00:00",
-  "elapsed_seconds": 43.394,
+  "started_at": "2026-09-13T17:47:35.783232+00:00",
+  "finished_at": "2026-09-13T17:48:18.080558+00:00",
+  "elapsed_seconds": 42.297,
   "error": null,
   "report": {
     "site": "https://www.lonelyplanet.com",
-    "audited_at": "2026-09-13T15:33:38Z",
+    "audited_at": "2026-09-13T17:48:18Z",
     "summary": {
       "total_findings": 6,
       "critical": 0,
@@ -67,7 +67,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.lonelyplanet.com/about via schema_field_validator [2026-09-13T15:33:19Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-travel-insurance via schema_field_validator [2026-09-13T15:33:19Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-trip-planning via schema_field_validator [2026-09-13T15:33:19Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via schema_field_validator [2026-09-13T15:33:19Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)",
+        "evidence": "Observed at https://www.lonelyplanet.com/about via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-travel-insurance via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-trip-planning via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:missing-required-fields",
         "suggested_action": {
@@ -83,7 +83,7 @@
           "url": "https://www.lonelyplanet.com/about",
           "observation": "Schema entities are missing required properties: Organization missing name, url.",
           "method": "schema_field_validator",
-          "timestamp": "2026-09-13T15:33:19Z",
+          "timestamp": "2026-09-13T17:47:59Z",
           "confidence": "high",
           "evidence_id": "E-68a452fc7425"
         },
@@ -94,7 +94,45 @@
           "E-d3bb6e524f0f"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com/about via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-travel-insurance via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-trip-planning via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nEvidence references: E-68a452fc7425, E-6b14ce3d6abe, E-a8b86483c396, E-d3bb6e524f0f.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "evidence_refs": [
+            "E-68a452fc7425",
+            "E-6b14ce3d6abe",
+            "E-a8b86483c396",
+            "E-d3bb6e524f0f"
+          ],
+          "root_cause": "Use the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Populate required Schema.org properties.",
+            "priority": "medium",
+            "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Brand identity is not anchored to any independent authority source",
@@ -103,7 +141,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://www.lonelyplanet.com via onsite_identity_anchor_inspection [2026-09-13T15:33:38Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 27 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "evidence": "Observed at https://www.lonelyplanet.com via onsite_identity_anchor_inspection [2026-09-13T17:48:18Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 27 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
         "source_skill": "trust-corroboration-graph",
         "fingerprint": "trust:no-independent-identity-anchor",
         "suggested_action": {
@@ -119,7 +157,7 @@
           "url": "https://www.lonelyplanet.com",
           "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 27 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
           "method": "onsite_identity_anchor_inspection",
-          "timestamp": "2026-09-13T15:33:38Z",
+          "timestamp": "2026-09-13T17:48:18Z",
           "confidence": "medium",
           "evidence_id": "E-66444beb76b9"
         },
@@ -127,7 +165,43 @@
           "E-66444beb76b9"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com via onsite_identity_anchor_inspection [2026-09-13T17:48:18Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 27 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-66444beb76b9.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-66444beb76b9"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
@@ -136,7 +210,7 @@
         "status": "proactive",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://lonelyplanet.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:33:19Z]: robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "evidence": "Observed at https://lonelyplanet.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:47:59Z]: robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "robots:training-only-blocked",
         "suggested_action": {
@@ -152,7 +226,7 @@
           "url": "https://lonelyplanet.com/robots.txt",
           "observation": "robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
           "method": "robots_txt_parser_longest_match",
-          "timestamp": "2026-09-13T15:33:19Z",
+          "timestamp": "2026-09-13T17:47:59Z",
           "confidence": "high",
           "evidence_id": "E-be6a92422f2a"
         },
@@ -160,7 +234,43 @@
           "E-be6a92422f2a"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nTraining-only AI crawlers are blocked; search and retrieval agents remain allowed.\n\nEVIDENCE\nObserved at https://lonelyplanet.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:47:59Z]: robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)\nEvidence references: E-be6a92422f2a.\n\nROOT CAUSE\nUse the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIf deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+          "status": "proactive",
+          "priority": "low",
+          "role": "technical SEO and platform engineer",
+          "problem": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+          "evidence_refs": [
+            "E-be6a92422f2a"
+          ],
+          "root_cause": "Use the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+            "priority": "low",
+            "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Deep hierarchical page lacks breadcrumb navigation trail",
@@ -169,7 +279,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via breadcrumb_markup_inspector [2026-09-13T15:33:19Z]: Page at deep route (/campaigns/ultimate-guide-to-summer) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "evidence": "Observed at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via breadcrumb_markup_inspector [2026-09-13T17:47:59Z]: Page at deep route (/campaigns/ultimate-guide-to-summer) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-breadcrumbs",
         "suggested_action": {
@@ -185,7 +295,7 @@
           "url": "https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer",
           "observation": "Page at deep route (/campaigns/ultimate-guide-to-summer) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
           "method": "breadcrumb_markup_inspector",
-          "timestamp": "2026-09-13T15:33:19Z",
+          "timestamp": "2026-09-13T17:47:59Z",
           "confidence": "medium",
           "evidence_id": "E-db6a8e32129d"
         },
@@ -193,7 +303,43 @@
           "E-db6a8e32129d"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via breadcrumb_markup_inspector [2026-09-13T17:47:59Z]: Page at deep route (/campaigns/ultimate-guide-to-summer) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-db6a8e32129d.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "evidence_refs": [
+            "E-db6a8e32129d"
+          ],
+          "root_cause": "Use the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+            "priority": "low",
+            "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No site search affordance found on any crawled page",
@@ -202,7 +348,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.lonelyplanet.com via search_affordance_detection [2026-09-13T15:33:19Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "evidence": "Observed at https://www.lonelyplanet.com via search_affordance_detection [2026-09-13T17:47:59Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-site-search",
         "suggested_action": {
@@ -218,7 +364,7 @@
           "url": "https://www.lonelyplanet.com",
           "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
           "method": "search_affordance_detection",
-          "timestamp": "2026-09-13T15:33:19Z",
+          "timestamp": "2026-09-13T17:47:59Z",
           "confidence": "medium",
           "evidence_id": "E-9031e575fe4f"
         },
@@ -226,7 +372,43 @@
           "E-9031e575fe4f"
         ],
         "id": "F-005",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com via search_affordance_detection [2026-09-13T17:47:59Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-9031e575fe4f.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "No site search affordance found on any crawled page",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "No site search affordance found on any crawled page",
+          "evidence_refs": [
+            "E-9031e575fe4f"
+          ],
+          "root_cause": "Use the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a site search box to the persistent header.",
+            "priority": "low",
+            "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No returning-visitor or account affordance detected",
@@ -235,7 +417,7 @@
         "status": "proactive",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.lonelyplanet.com via returning_visitor_affordance_detection [2026-09-13T15:33:19Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "evidence": "Observed at https://www.lonelyplanet.com via returning_visitor_affordance_detection [2026-09-13T17:47:59Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-personalization-readiness",
         "suggested_action": {
@@ -251,7 +433,7 @@
           "url": "https://www.lonelyplanet.com",
           "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
           "method": "returning_visitor_affordance_detection",
-          "timestamp": "2026-09-13T15:33:19Z",
+          "timestamp": "2026-09-13T17:47:59Z",
           "confidence": "medium",
           "evidence_id": "E-2817e145ee70"
         },
@@ -259,7 +441,43 @@
           "E-2817e145ee70"
         ],
         "id": "F-006",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com via returning_visitor_affordance_detection [2026-09-13T17:47:59Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-2817e145ee70.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No returning-visitor or account affordance detected",
+          "status": "proactive",
+          "priority": "low",
+          "role": "UX and product engineer",
+          "problem": "No returning-visitor or account affordance detected",
+          "evidence_refs": [
+            "E-2817e145ee70"
+          ],
+          "root_cause": "Use the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Give returning visitors a way to be recognised, and use it.",
+            "priority": "low",
+            "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+            "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -319,7 +537,7 @@
         "url": "https://lonelyplanet.com/robots.txt",
         "observation": "robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
         "method": "robots_txt_parser_longest_match",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "high",
         "evidence_id": "E-be6a92422f2a"
       },
@@ -327,7 +545,7 @@
         "url": "https://www.lonelyplanet.com/about",
         "observation": "Schema entities are missing required properties: Organization missing name, url.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "high",
         "evidence_id": "E-68a452fc7425"
       },
@@ -335,7 +553,7 @@
         "url": "https://www.lonelyplanet.com/articles/guide-to-travel-insurance",
         "observation": "Schema entities are missing required properties: Organization missing name, url.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "high",
         "evidence_id": "E-a8b86483c396"
       },
@@ -343,7 +561,7 @@
         "url": "https://www.lonelyplanet.com/articles/guide-to-trip-planning",
         "observation": "Schema entities are missing required properties: Organization missing name, url.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "high",
         "evidence_id": "E-d3bb6e524f0f"
       },
@@ -351,7 +569,7 @@
         "url": "https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer",
         "observation": "Schema entities are missing required properties: Organization missing name, url.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "high",
         "evidence_id": "E-6b14ce3d6abe"
       },
@@ -359,7 +577,7 @@
         "url": "https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer",
         "observation": "Page at deep route (/campaigns/ultimate-guide-to-summer) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "medium",
         "evidence_id": "E-db6a8e32129d"
       },
@@ -367,7 +585,7 @@
         "url": "https://www.lonelyplanet.com",
         "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "medium",
         "evidence_id": "E-9031e575fe4f"
       },
@@ -375,7 +593,7 @@
         "url": "https://www.lonelyplanet.com",
         "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
         "method": "returning_visitor_affordance_detection",
-        "timestamp": "2026-09-13T15:33:19Z",
+        "timestamp": "2026-09-13T17:47:59Z",
         "confidence": "medium",
         "evidence_id": "E-2817e145ee70"
       },
@@ -383,7 +601,7 @@
         "url": "https://www.lonelyplanet.com",
         "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 27 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-09-13T15:33:38Z",
+        "timestamp": "2026-09-13T17:48:18Z",
         "confidence": "medium",
         "evidence_id": "E-66444beb76b9"
       }
@@ -481,6 +699,101 @@
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com/about via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-travel-insurance via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/articles/guide-to-trip-planning via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via schema_field_validator [2026-09-13T17:47:59Z]: Schema entities are missing required properties: Organization missing name, url. (Confidence: high)\nEvidence references: E-68a452fc7425, E-6b14ce3d6abe, E-a8b86483c396, E-d3bb6e524f0f.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-68a452fc7425",
+          "E-6b14ce3d6abe",
+          "E-a8b86483c396",
+          "E-d3bb6e524f0f"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com via onsite_identity_anchor_inspection [2026-09-13T17:48:18Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 27 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-66444beb76b9.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-66444beb76b9"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nTraining-only AI crawlers are blocked; search and retrieval agents remain allowed.\n\nEVIDENCE\nObserved at https://lonelyplanet.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:47:59Z]: robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)\nEvidence references: E-be6a92422f2a.\n\nROOT CAUSE\nUse the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIf deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-be6a92422f2a"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com/campaigns/ultimate-guide-to-summer via breadcrumb_markup_inspector [2026-09-13T17:47:59Z]: Page at deep route (/campaigns/ultimate-guide-to-summer) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-db6a8e32129d.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-db6a8e32129d"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com via search_affordance_detection [2026-09-13T17:47:59Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-9031e575fe4f.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-9031e575fe4f"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.lonelyplanet.com via returning_visitor_affordance_detection [2026-09-13T17:47:59Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-2817e145ee70.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-2817e145ee70"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -490,8 +803,10 @@
       "article_docs",
       "homepage"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

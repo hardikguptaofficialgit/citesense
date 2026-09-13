@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:38:38.314792+00:00",
-  "finished_at": "2026-09-13T15:39:02.726485+00:00",
-  "elapsed_seconds": 24.412,
+  "started_at": "2026-09-13T17:53:24.652491+00:00",
+  "finished_at": "2026-09-13T17:53:45.328402+00:00",
+  "elapsed_seconds": 20.676,
   "error": null,
   "report": {
     "site": "https://whitepages.com",
-    "audited_at": "2026-09-13T15:39:02Z",
+    "audited_at": "2026-09-13T17:53:45Z",
     "summary": {
       "total_findings": 3,
       "critical": 1,
@@ -64,7 +64,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "critical",
-        "evidence": "Observed at https://whitepages.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:38:56Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)",
+        "evidence": "Observed at https://whitepages.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:53:37Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "robots:disallow-all-root",
         "suggested_action": {
@@ -80,7 +80,7 @@
           "url": "https://whitepages.com/robots.txt",
           "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot).",
           "method": "robots_txt_parser_longest_match",
-          "timestamp": "2026-09-13T15:38:56Z",
+          "timestamp": "2026-09-13T17:53:37Z",
           "confidence": "high",
           "evidence_id": "E-96ca7f87362f"
         },
@@ -88,7 +88,42 @@
           "E-96ca7f87362f"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nRoot site is disallowed for all crawlers including AI retrieval agents.\n\nEVIDENCE\nObserved at https://whitepages.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:53:37Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)\nEvidence references: E-96ca7f87362f.\n\nROOT CAUSE\nUse the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Root site is disallowed for all crawlers including AI retrieval agents",
+          "status": "confirmed",
+          "priority": "critical",
+          "role": "technical SEO and platform engineer",
+          "problem": "Root site is disallowed for all crawlers including AI retrieval agents",
+          "evidence_refs": [
+            "E-96ca7f87362f"
+          ],
+          "root_cause": "Use the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Update robots.txt to allow crawling of public landing and product pages.",
+            "priority": "critical",
+            "how_to_fix": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Broken internal navigation links detected (1 link(s))",
@@ -97,7 +132,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team via http_redirect_aware_link_checker [2026-09-13T15:39:02Z]: Sampled internal links returned broken HTTP errors: https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team (HTTP 403). (Confidence: high)",
+        "evidence": "Observed at https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team via http_redirect_aware_link_checker [2026-09-13T17:53:45Z]: Sampled internal links returned broken HTTP errors: https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team (HTTP 403). (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:broken-internal-links",
         "suggested_action": {
@@ -113,7 +148,7 @@
           "url": "https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team",
           "observation": "Sampled internal links returned broken HTTP errors: https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team (HTTP 403).",
           "method": "http_redirect_aware_link_checker",
-          "timestamp": "2026-09-13T15:39:02Z",
+          "timestamp": "2026-09-13T17:53:45Z",
           "confidence": "high",
           "evidence_id": "E-ad0dff59808d"
         },
@@ -121,7 +156,42 @@
           "E-ad0dff59808d"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team via http_redirect_aware_link_checker [2026-09-13T17:53:45Z]: Sampled internal links returned broken HTTP errors: https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team (HTTP 403). (Confidence: high)\nEvidence references: E-ad0dff59808d.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Broken internal navigation links detected (1 link(s))",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Broken internal navigation links detected (1 link(s))",
+          "evidence_refs": [
+            "E-ad0dff59808d"
+          ],
+          "root_cause": "Use the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix or redirect broken internal destination URLs.",
+            "priority": "medium",
+            "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Deep hierarchical page lacks breadcrumb navigation trail",
@@ -130,7 +200,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.whitepages.com/blog/author/whitepages-editorial-team via breadcrumb_markup_inspector [2026-09-13T15:38:56Z]: Page at deep route (/blog/author/whitepages-editorial-team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "evidence": "Observed at https://www.whitepages.com/blog/author/whitepages-editorial-team via breadcrumb_markup_inspector [2026-09-13T17:53:37Z]: Page at deep route (/blog/author/whitepages-editorial-team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-breadcrumbs",
         "suggested_action": {
@@ -146,7 +216,7 @@
           "url": "https://www.whitepages.com/blog/author/whitepages-editorial-team",
           "observation": "Page at deep route (/blog/author/whitepages-editorial-team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
           "method": "breadcrumb_markup_inspector",
-          "timestamp": "2026-09-13T15:38:56Z",
+          "timestamp": "2026-09-13T17:53:37Z",
           "confidence": "medium",
           "evidence_id": "E-867a439ca6bb"
         },
@@ -154,7 +224,43 @@
           "E-867a439ca6bb"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.whitepages.com/blog/author/whitepages-editorial-team via breadcrumb_markup_inspector [2026-09-13T17:53:37Z]: Page at deep route (/blog/author/whitepages-editorial-team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-867a439ca6bb.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "evidence_refs": [
+            "E-867a439ca6bb"
+          ],
+          "root_cause": "Use the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+            "priority": "low",
+            "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -215,7 +321,7 @@
         "url": "https://whitepages.com/robots.txt",
         "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot).",
         "method": "robots_txt_parser_longest_match",
-        "timestamp": "2026-09-13T15:38:56Z",
+        "timestamp": "2026-09-13T17:53:37Z",
         "confidence": "high",
         "evidence_id": "E-96ca7f87362f"
       },
@@ -223,7 +329,7 @@
         "url": "https://www.whitepages.com/blog/author/whitepages-editorial-team",
         "observation": "Page at deep route (/blog/author/whitepages-editorial-team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-09-13T15:38:56Z",
+        "timestamp": "2026-09-13T17:53:37Z",
         "confidence": "medium",
         "evidence_id": "E-867a439ca6bb"
       },
@@ -231,7 +337,7 @@
         "url": "https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team",
         "observation": "Sampled internal links returned broken HTTP errors: https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team (HTTP 403).",
         "method": "http_redirect_aware_link_checker",
-        "timestamp": "2026-09-13T15:39:02Z",
+        "timestamp": "2026-09-13T17:53:45Z",
         "confidence": "high",
         "evidence_id": "E-ad0dff59808d"
       }
@@ -311,6 +417,53 @@
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "critical",
+        "reason": "confirmed finding with existing critical priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nRoot site is disallowed for all crawlers including AI retrieval agents.\n\nEVIDENCE\nObserved at https://whitepages.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:53:37Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)\nEvidence references: E-96ca7f87362f.\n\nROOT CAUSE\nUse the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-96ca7f87362f"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team via http_redirect_aware_link_checker [2026-09-13T17:53:45Z]: Sampled internal links returned broken HTTP errors: https://www.whitepages.com/auth/login?redirect=https%3A%2F%2Fwww.whitepages.com%2Fblog%2Fauthor%2Fwhitepages-editorial-team (HTTP 403). (Confidence: high)\nEvidence references: E-ad0dff59808d.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-ad0dff59808d"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.whitepages.com/blog/author/whitepages-editorial-team via breadcrumb_markup_inspector [2026-09-13T17:53:37Z]: Page at deep route (/blog/author/whitepages-editorial-team) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-867a439ca6bb.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-867a439ca6bb"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -321,8 +474,11 @@
       "product_landing",
       "unknown"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "robots-disallowed": 1,
+      "readable": 3
+    }
   }
 }

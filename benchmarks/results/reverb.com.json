@@ -13,39 +13,41 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:39:02.746015+00:00",
-  "finished_at": "2026-09-13T15:39:34.787785+00:00",
-  "elapsed_seconds": 32.042,
+  "started_at": "2026-09-13T17:53:51.027498+00:00",
+  "finished_at": "2026-09-13T17:54:14.485029+00:00",
+  "elapsed_seconds": 23.458,
   "error": null,
   "report": {
     "site": "https://reverb.com",
-    "audited_at": "2026-09-13T15:39:34Z",
+    "audited_at": "2026-09-13T17:54:14Z",
     "summary": {
-      "total_findings": 6,
+      "total_findings": 8,
       "critical": 0,
-      "high": 1,
-      "medium": 4,
+      "high": 2,
+      "medium": 5,
       "low": 1,
-      "discoverability_findings": 3,
+      "discoverability_findings": 5,
       "engagement_findings": 3,
-      "citability_score": 69,
+      "citability_score": 53,
       "citability_score_breakdown": {
-        "score": 69,
+        "score": 53,
         "base": 100,
-        "penalty": 31,
+        "penalty": 47,
         "penalty_by_severity": {
           "critical": 0,
-          "high": 12,
-          "medium": 17,
-          "low": 2
+          "high": 24,
+          "medium": 22,
+          "low": 1
         },
         "penalty_by_root_cause": {
+          "schema:product-offer-missing:/promo/price-drops": 12,
           "engagement:missing-h1": 12,
           "schema:missing-required-fields": 5,
-          "freshness:stale-claim:1981:https://reverb.com/brands": 5,
+          "freshness:stale-claim:2022:https://reverb.com/promo/price-drops": 5,
+          "freshness:stale-claim:2016:https://reverb.com/promo/price-drops": 5,
           "engagement:broken-internal-links": 5,
           "trust:no-independent-identity-anchor": 2,
-          "engagement:multiple-h1": 2
+          "engagement:missing-breadcrumbs": 1
         },
         "status_factors": {
           "confirmed": 1.0,
@@ -56,10 +58,80 @@
         },
         "excluded_duplicate_fingerprints": [],
         "corroboration_credit": 0,
-        "counted_findings": 6
+        "counted_findings": 8
       }
     },
     "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://reverb.com/promo/price-drops via jsonld_schema_extractor [2026-09-13T17:54:06Z]: Commercial/product page (https://reverb.com/promo/price-drops) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/promo/price-drops",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Price Drops\",\n  \"url\": \"https://reverb.com/promo/price-drops\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"reverb.com\"\n  },\n  \"description\": \"When sellers drop prices on gear, their listings end up here. Reverb Price Drops are some of the best deals on used, vintage and new music gear around.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://reverb.com/promo/price-drops\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com/promo/price-drops",
+          "observation": "Commercial/product page (https://reverb.com/promo/price-drops) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:54:06Z",
+          "confidence": "high",
+          "evidence_id": "E-659708097022"
+        },
+        "evidence_refs": [
+          "E-659708097022"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://reverb.com/promo/price-drops via jsonld_schema_extractor [2026-09-13T17:54:06Z]: Commercial/product page (https://reverb.com/promo/price-drops) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-659708097022.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Product and Offer structured data on commercial page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Product and Offer structured data on commercial page",
+          "evidence_refs": [
+            "E-659708097022"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+            "priority": "high",
+            "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Price Drops\",\n  \"url\": \"https://reverb.com/promo/price-drops\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"reverb.com\"\n  },\n  \"description\": \"When sellers drop prices on gear, their listings end up here. Reverb Price Drops are some of the best deals on used, vintage and new music gear around.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://reverb.com/promo/price-drops\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+          }
+        }
+      },
       {
         "title": "Missing primary H1 heading on landing page",
         "category": "orientation",
@@ -67,7 +139,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://reverb.com/ via heading_structure_inspection [2026-09-13T15:39:25Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "evidence": "Observed at https://reverb.com/ via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://reverb.com/cart via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://reverb.com/page/about via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-h1",
         "suggested_action": {
@@ -83,15 +155,54 @@
           "url": "https://reverb.com/",
           "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
           "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:39:25Z",
+          "timestamp": "2026-09-13T17:54:06Z",
           "confidence": "high",
           "evidence_id": "E-f451c5e1a206"
         },
         "evidence_refs": [
+          "E-2ed846105121",
+          "E-e0ed55e367a2",
           "E-f451c5e1a206"
         ],
-        "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://reverb.com/ via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://reverb.com/cart via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://reverb.com/page/about via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-2ed846105121, E-e0ed55e367a2, E-f451c5e1a206.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing primary H1 heading on landing page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing primary H1 heading on landing page",
+          "evidence_refs": [
+            "E-2ed846105121",
+            "E-e0ed55e367a2",
+            "E-f451c5e1a206"
+          ],
+          "root_cause": "Use the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a clear, descriptive <h1> heading.",
+            "priority": "high",
+            "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Incomplete Schema.org entity fields in JSON-LD markup",
@@ -100,7 +211,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://reverb.com/ via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/price-guide via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/news via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/brands via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
+        "evidence": "Observed at https://reverb.com/ via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/price-guide via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/cart via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/promo/price-drops via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/page/about via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:missing-required-fields",
         "suggested_action": {
@@ -116,60 +227,203 @@
           "url": "https://reverb.com/",
           "observation": "Schema entities are missing required properties: Organization missing name.",
           "method": "schema_field_validator",
-          "timestamp": "2026-09-13T15:39:25Z",
+          "timestamp": "2026-09-13T17:54:06Z",
           "confidence": "high",
           "evidence_id": "E-dfb8f2576d8e"
         },
         "evidence_refs": [
-          "E-4ed2eba8d85e",
+          "E-17cc3e7ed280",
           "E-53bbe40ee759",
-          "E-db703ed151c2",
+          "E-94d743689aef",
+          "E-da46b3af1697",
           "E-dfb8f2576d8e"
         ],
-        "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://reverb.com/ via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/price-guide via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/cart via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/promo/price-drops via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/page/about via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-17cc3e7ed280, E-53bbe40ee759, E-94d743689aef, E-da46b3af1697, E-dfb8f2576d8e.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Incomplete Schema.org entity fields in JSON-LD markup",
+          "evidence_refs": [
+            "E-17cc3e7ed280",
+            "E-53bbe40ee759",
+            "E-94d743689aef",
+            "E-da46b3af1697",
+            "E-dfb8f2576d8e"
+          ],
+          "root_cause": "Use the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Populate required Schema.org properties.",
+            "priority": "medium",
+            "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
-        "title": "Outdated time-sensitive claim or promotion found on active page (1981)",
+        "title": "Outdated time-sensitive claim or promotion found on active page (2022)",
         "category": "freshness",
         "severity": "medium",
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://reverb.com/brands via dated_claim_temporal_analysis [2026-09-13T15:39:25Z]: Page contains active time-sensitive statement referencing 1981 (45 years old): \"Price Guide Seller Hub Shops Artist Shops Reverb Gives Help Center Top Brands on Reverb # 1010 Music 1981\". (Confidence: high)",
+        "evidence": "Observed at https://reverb.com/promo/price-drops via dated_claim_temporal_analysis [2026-09-13T17:54:06Z]: Page contains active time-sensitive statement referencing 2022 (4 years old): \"Price Drops Shop all Price Drop Strandberg Guitars Boden Original NX 7 2022\". (Confidence: high)",
         "source_skill": "freshness-corroboration",
-        "fingerprint": "freshness:stale-claim:1981:https://reverb.com/brands",
+        "fingerprint": "freshness:stale-claim:2022:https://reverb.com/promo/price-drops",
         "suggested_action": {
           "summary": "Update or archive expired time-sensitive offers and claims.",
           "priority": "medium",
-          "how_to_fix": "Review the text referencing 1981 on https://reverb.com/brands and update with current pricing/event information or remove expired promotions.",
+          "how_to_fix": "Review the text referencing 2022 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.",
           "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
         },
         "source_skills": [
           "freshness-corroboration"
         ],
         "evidence_details": {
-          "url": "https://reverb.com/brands",
-          "observation": "Page contains active time-sensitive statement referencing 1981 (45 years old): \"Price Guide Seller Hub Shops Artist Shops Reverb Gives Help Center Top Brands on Reverb # 1010 Music 1981\".",
+          "url": "https://reverb.com/promo/price-drops",
+          "observation": "Page contains active time-sensitive statement referencing 2022 (4 years old): \"Price Drops Shop all Price Drop Strandberg Guitars Boden Original NX 7 2022\".",
           "method": "dated_claim_temporal_analysis",
-          "timestamp": "2026-09-13T15:39:25Z",
+          "timestamp": "2026-09-13T17:54:06Z",
           "confidence": "high",
-          "evidence_id": "E-a0b5f1d76d69"
+          "evidence_id": "E-331596510c3f"
         },
         "evidence_refs": [
-          "E-a0b5f1d76d69"
+          "E-331596510c3f"
         ],
-        "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content operations owner.\n\nPROBLEM\nOutdated time-sensitive claim or promotion found on active page (2022).\n\nEVIDENCE\nObserved at https://reverb.com/promo/price-drops via dated_claim_temporal_analysis [2026-09-13T17:54:06Z]: Page contains active time-sensitive statement referencing 2022 (4 years old): \"Price Drops Shop all Price Drop Strandberg Guitars Boden Original NX 7 2022\". (Confidence: high)\nEvidence references: E-331596510c3f.\n\nROOT CAUSE\nUse the observed condition described by “Outdated time-sensitive claim or promotion found on active page (2022)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nReview the text referencing 2022 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Outdated time-sensitive claim or promotion found on active page (2022)",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "content operations owner",
+          "problem": "Outdated time-sensitive claim or promotion found on active page (2022)",
+          "evidence_refs": [
+            "E-331596510c3f"
+          ],
+          "root_cause": "Use the observed condition described by “Outdated time-sensitive claim or promotion found on active page (2022)” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Review the text referencing 2022 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Update or archive expired time-sensitive offers and claims.",
+            "priority": "medium",
+            "how_to_fix": "Review the text referencing 2022 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.",
+            "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
-        "title": "Broken internal navigation links detected (2 link(s))",
+        "title": "Outdated time-sensitive claim or promotion found on active page (2016)",
+        "category": "freshness",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://reverb.com/promo/price-drops via dated_claim_temporal_analysis [2026-09-13T17:54:06Z]: Page contains active time-sensitive statement referencing 2016 (10 years old): \"Price Drop Jaen Jamaica 2016\". (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-claim:2016:https://reverb.com/promo/price-drops",
+        "suggested_action": {
+          "summary": "Update or archive expired time-sensitive offers and claims.",
+          "priority": "medium",
+          "how_to_fix": "Review the text referencing 2016 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com/promo/price-drops",
+          "observation": "Page contains active time-sensitive statement referencing 2016 (10 years old): \"Price Drop Jaen Jamaica 2016\".",
+          "method": "dated_claim_temporal_analysis",
+          "timestamp": "2026-09-13T17:54:06Z",
+          "confidence": "high",
+          "evidence_id": "E-be404878fca2"
+        },
+        "evidence_refs": [
+          "E-be404878fca2"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content operations owner.\n\nPROBLEM\nOutdated time-sensitive claim or promotion found on active page (2016).\n\nEVIDENCE\nObserved at https://reverb.com/promo/price-drops via dated_claim_temporal_analysis [2026-09-13T17:54:06Z]: Page contains active time-sensitive statement referencing 2016 (10 years old): \"Price Drop Jaen Jamaica 2016\". (Confidence: high)\nEvidence references: E-be404878fca2.\n\nROOT CAUSE\nUse the observed condition described by “Outdated time-sensitive claim or promotion found on active page (2016)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nReview the text referencing 2016 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Outdated time-sensitive claim or promotion found on active page (2016)",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "content operations owner",
+          "problem": "Outdated time-sensitive claim or promotion found on active page (2016)",
+          "evidence_refs": [
+            "E-be404878fca2"
+          ],
+          "root_cause": "Use the observed condition described by “Outdated time-sensitive claim or promotion found on active page (2016)” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Review the text referencing 2016 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Update or archive expired time-sensitive offers and claims.",
+            "priority": "medium",
+            "how_to_fix": "Review the text referencing 2016 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.",
+            "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
         "category": "navigation",
         "severity": "medium",
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://reverb.com/promo/top-sellers-recent-releases via http_redirect_aware_link_checker [2026-09-13T15:39:34Z]: Sampled internal links returned broken HTTP errors: https://reverb.com/promo/top-sellers-recent-releases (HTTP 403); https://reverb.com/cart (HTTP 403). (Confidence: high)",
+        "evidence": "Observed at https://reverb.com/promo/deals-and-steals via http_redirect_aware_link_checker [2026-09-13T17:54:14Z]: Sampled internal links returned broken HTTP errors: https://reverb.com/promo/deals-and-steals (HTTP 403). (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:broken-internal-links",
         "suggested_action": {
@@ -182,18 +436,53 @@
           "engagement-audit"
         ],
         "evidence_details": {
-          "url": "https://reverb.com/promo/top-sellers-recent-releases",
-          "observation": "Sampled internal links returned broken HTTP errors: https://reverb.com/promo/top-sellers-recent-releases (HTTP 403); https://reverb.com/cart (HTTP 403).",
+          "url": "https://reverb.com/promo/deals-and-steals",
+          "observation": "Sampled internal links returned broken HTTP errors: https://reverb.com/promo/deals-and-steals (HTTP 403).",
           "method": "http_redirect_aware_link_checker",
-          "timestamp": "2026-09-13T15:39:34Z",
+          "timestamp": "2026-09-13T17:54:14Z",
           "confidence": "high",
-          "evidence_id": "E-425bb6c62015"
+          "evidence_id": "E-36894b76a539"
         },
         "evidence_refs": [
-          "E-425bb6c62015"
+          "E-36894b76a539"
         ],
-        "id": "F-004",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://reverb.com/promo/deals-and-steals via http_redirect_aware_link_checker [2026-09-13T17:54:14Z]: Sampled internal links returned broken HTTP errors: https://reverb.com/promo/deals-and-steals (HTTP 403). (Confidence: high)\nEvidence references: E-36894b76a539.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "Broken internal navigation links detected (1 link(s))",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Broken internal navigation links detected (1 link(s))",
+          "evidence_refs": [
+            "E-36894b76a539"
+          ],
+          "root_cause": "Use the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix or redirect broken internal destination URLs.",
+            "priority": "medium",
+            "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Brand identity is not anchored to any independent authority source",
@@ -202,7 +491,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://reverb.com via onsite_identity_anchor_inspection [2026-09-13T15:39:34Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "evidence": "Observed at https://reverb.com via onsite_identity_anchor_inspection [2026-09-13T17:54:14Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
         "source_skill": "trust-corroboration-graph",
         "fingerprint": "trust:no-independent-identity-anchor",
         "suggested_action": {
@@ -218,100 +507,173 @@
           "url": "https://reverb.com",
           "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
           "method": "onsite_identity_anchor_inspection",
-          "timestamp": "2026-09-13T15:39:34Z",
+          "timestamp": "2026-09-13T17:54:14Z",
           "confidence": "medium",
           "evidence_id": "E-5d1d59d8e27a"
         },
         "evidence_refs": [
           "E-5d1d59d8e27a"
         ],
-        "id": "F-005",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "id": "F-007",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://reverb.com via onsite_identity_anchor_inspection [2026-09-13T17:54:14Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-5d1d59d8e27a.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-007.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-007.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-007",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-5d1d59d8e27a"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
-        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
-        "category": "orientation",
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
         "severity": "low",
-        "status": "confirmed",
-        "confidence": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://reverb.com/news via heading_structure_inspection [2026-09-13T15:39:25Z]: Page defines 4 separate <h1> tags (Standout Finds on Reverb This Week; New Bestsellers on Reverb This Month; Top Collector-Grade Instruments Recently), diluting semantic structure. (Confidence: high)",
+        "evidence": "Observed at https://reverb.com/page/about via breadcrumb_markup_inspector [2026-09-13T17:54:06Z]: Page at deep route (/page/about) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
         "source_skill": "engagement-audit",
-        "fingerprint": "engagement:multiple-h1",
+        "fingerprint": "engagement:missing-breadcrumbs",
         "suggested_action": {
-          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
           "priority": "low",
-          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
-          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
         },
         "source_skills": [
           "engagement-audit"
         ],
         "evidence_details": {
-          "url": "https://reverb.com/news",
-          "observation": "Page defines 4 separate <h1> tags (Standout Finds on Reverb This Week; New Bestsellers on Reverb This Month; Top Collector-Grade Instruments Recently), diluting semantic structure.",
-          "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:39:25Z",
-          "confidence": "high",
-          "evidence_id": "E-3ad52a2ec7ae"
+          "url": "https://reverb.com/page/about",
+          "observation": "Page at deep route (/page/about) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T17:54:06Z",
+          "confidence": "medium",
+          "evidence_id": "E-a9846f4e406c"
         },
         "evidence_refs": [
-          "E-3ad52a2ec7ae"
+          "E-a9846f4e406c"
         ],
-        "id": "F-006",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://reverb.com/page/about via breadcrumb_markup_inspector [2026-09-13T17:54:06Z]: Page at deep route (/page/about) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-a9846f4e406c.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-008.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-008.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-008",
+          "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "evidence_refs": [
+            "E-a9846f4e406c"
+          ],
+          "root_cause": "Use the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+            "priority": "low",
+            "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
-      "pages_sampled": 4,
+      "pages_sampled": 5,
       "resources_observed": 0,
-      "readable_pages": 4,
+      "readable_pages": 5,
       "status_counts": {
-        "readable": 4
+        "readable": 5
       },
       "limited": false,
       "page_selection": [
         {
           "url": "https://reverb.com/price-guide",
-          "score": 26,
+          "score": 28,
           "signals": [
             "product_pricing:price",
             "article_docs:guide",
-            "listed-in-sitemap",
+            "linked-from-homepage",
             "shallow-route"
           ],
           "purpose_hint": "article_docs",
-          "source": "sitemap"
+          "source": "homepage-link"
         },
         {
-          "url": "https://reverb.com",
-          "score": 2,
+          "url": "https://reverb.com/cart",
+          "score": 18,
           "signals": [
-            "listed-in-sitemap"
+            "product_pricing:cart",
+            "linked-from-homepage",
+            "shallow-route"
           ],
-          "purpose_hint": "homepage",
-          "source": "sitemap"
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
         },
         {
-          "url": "https://reverb.com/news",
+          "url": "https://reverb.com/promo/price-drops",
+          "score": 16,
+          "signals": [
+            "product_pricing:price",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://reverb.com/page/about",
           "score": 14,
           "signals": [
-            "article_docs:news",
-            "listed-in-sitemap",
-            "shallow-route"
+            "contact_support:about",
+            "linked-from-homepage"
           ],
-          "purpose_hint": "article_docs",
-          "source": "sitemap"
-        },
-        {
-          "url": "https://reverb.com/brands",
-          "score": 4,
-          "signals": [
-            "listed-in-sitemap",
-            "shallow-route"
-          ],
-          "purpose_hint": "general",
-          "source": "sitemap"
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
         }
       ]
     },
@@ -320,7 +682,7 @@
         "url": "https://reverb.com/",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:39:25Z",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
         "evidence_id": "E-dfb8f2576d8e"
       },
@@ -328,63 +690,103 @@
         "url": "https://reverb.com/price-guide",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:39:25Z",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
         "evidence_id": "E-53bbe40ee759"
       },
       {
-        "url": "https://reverb.com/news",
+        "url": "https://reverb.com/cart",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:39:25Z",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
-        "evidence_id": "E-4ed2eba8d85e"
+        "evidence_id": "E-da46b3af1697"
       },
       {
-        "url": "https://reverb.com/brands",
+        "url": "https://reverb.com/promo/price-drops",
+        "observation": "Commercial/product page (https://reverb.com/promo/price-drops) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:54:06Z",
+        "confidence": "high",
+        "evidence_id": "E-659708097022"
+      },
+      {
+        "url": "https://reverb.com/promo/price-drops",
         "observation": "Schema entities are missing required properties: Organization missing name.",
         "method": "schema_field_validator",
-        "timestamp": "2026-09-13T15:39:25Z",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
-        "evidence_id": "E-db703ed151c2"
+        "evidence_id": "E-94d743689aef"
       },
       {
-        "url": "https://reverb.com/brands",
-        "observation": "Page contains active time-sensitive statement referencing 1981 (45 years old): \"Price Guide Seller Hub Shops Artist Shops Reverb Gives Help Center Top Brands on Reverb # 1010 Music 1981\".",
+        "url": "https://reverb.com/page/about",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T17:54:06Z",
+        "confidence": "high",
+        "evidence_id": "E-17cc3e7ed280"
+      },
+      {
+        "url": "https://reverb.com/promo/price-drops",
+        "observation": "Page contains active time-sensitive statement referencing 2022 (4 years old): \"Price Drops Shop all Price Drop Strandberg Guitars Boden Original NX 7 2022\".",
         "method": "dated_claim_temporal_analysis",
-        "timestamp": "2026-09-13T15:39:25Z",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
-        "evidence_id": "E-a0b5f1d76d69"
+        "evidence_id": "E-331596510c3f"
+      },
+      {
+        "url": "https://reverb.com/promo/price-drops",
+        "observation": "Page contains active time-sensitive statement referencing 2016 (10 years old): \"Price Drop Jaen Jamaica 2016\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T17:54:06Z",
+        "confidence": "high",
+        "evidence_id": "E-be404878fca2"
       },
       {
         "url": "https://reverb.com/",
         "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:39:25Z",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
         "evidence_id": "E-f451c5e1a206"
       },
       {
-        "url": "https://reverb.com/news",
-        "observation": "Page defines 4 separate <h1> tags (Standout Finds on Reverb This Week; New Bestsellers on Reverb This Month; Top Collector-Grade Instruments Recently), diluting semantic structure.",
+        "url": "https://reverb.com/cart",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:39:25Z",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
-        "evidence_id": "E-3ad52a2ec7ae"
+        "evidence_id": "E-e0ed55e367a2"
       },
       {
-        "url": "https://reverb.com/promo/top-sellers-recent-releases",
-        "observation": "Sampled internal links returned broken HTTP errors: https://reverb.com/promo/top-sellers-recent-releases (HTTP 403); https://reverb.com/cart (HTTP 403).",
-        "method": "http_redirect_aware_link_checker",
-        "timestamp": "2026-09-13T15:39:34Z",
+        "url": "https://reverb.com/page/about",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:54:06Z",
         "confidence": "high",
-        "evidence_id": "E-425bb6c62015"
+        "evidence_id": "E-2ed846105121"
+      },
+      {
+        "url": "https://reverb.com/page/about",
+        "observation": "Page at deep route (/page/about) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T17:54:06Z",
+        "confidence": "medium",
+        "evidence_id": "E-a9846f4e406c"
+      },
+      {
+        "url": "https://reverb.com/promo/deals-and-steals",
+        "observation": "Sampled internal links returned broken HTTP errors: https://reverb.com/promo/deals-and-steals (HTTP 403).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T17:54:14Z",
+        "confidence": "high",
+        "evidence_id": "E-36894b76a539"
       },
       {
         "url": "https://reverb.com",
         "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
         "method": "onsite_identity_anchor_inspection",
-        "timestamp": "2026-09-13T15:39:34Z",
+        "timestamp": "2026-09-13T17:54:14Z",
         "confidence": "medium",
         "evidence_id": "E-5d1d59d8e27a"
       }
@@ -394,7 +796,7 @@
         "check": "page_access",
         "status": "confirmed",
         "result": "assessed",
-        "reason": "4 of 4 sampled page(s) were readable."
+        "reason": "5 of 5 sampled page(s) were readable."
       },
       {
         "check": "robots_enforcement",
@@ -438,7 +840,7 @@
         }
       },
       {
-        "title": "Build third-party presence so Reverb is resolvable away from its own domain",
+        "title": "Build third-party presence so reverb.com is resolvable away from its own domain",
         "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
         "suggested_action": {
           "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
@@ -448,11 +850,20 @@
       },
       {
         "title": "Add Article schema with author and dateModified to editorial pages",
-        "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
         "suggested_action": {
           "summary": "Mark editorial and documentation pages with Article JSON-LD.",
           "priority": "medium",
           "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "2 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
         }
       },
       {
@@ -472,28 +883,151 @@
           "priority": "low",
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://reverb.com/promo/price-drops via jsonld_schema_extractor [2026-09-13T17:54:06Z]: Commercial/product page (https://reverb.com/promo/price-drops) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-659708097022.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-659708097022"
+        ]
       },
       {
-        "title": "Consider publishing llms.txt, with realistic expectations",
-        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
-        "suggested_action": {
-          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
-          "priority": "low",
-          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
-        }
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://reverb.com/ via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://reverb.com/cart via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://reverb.com/page/about via heading_structure_inspection [2026-09-13T17:54:06Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-2ed846105121, E-e0ed55e367a2, E-f451c5e1a206.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-2ed846105121",
+          "E-e0ed55e367a2",
+          "E-f451c5e1a206"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nIncomplete Schema.org entity fields in JSON-LD markup.\n\nEVIDENCE\nObserved at https://reverb.com/ via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/price-guide via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/cart via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/promo/price-drops via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/page/about via schema_field_validator [2026-09-13T17:54:06Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nEvidence references: E-17cc3e7ed280, E-53bbe40ee759, E-94d743689aef, E-da46b3af1697, E-dfb8f2576d8e.\n\nROOT CAUSE\nUse the observed condition described by “Incomplete Schema.org entity fields in JSON-LD markup” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-17cc3e7ed280",
+          "E-53bbe40ee759",
+          "E-94d743689aef",
+          "E-da46b3af1697",
+          "E-dfb8f2576d8e"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content operations owner.\n\nPROBLEM\nOutdated time-sensitive claim or promotion found on active page (2022).\n\nEVIDENCE\nObserved at https://reverb.com/promo/price-drops via dated_claim_temporal_analysis [2026-09-13T17:54:06Z]: Page contains active time-sensitive statement referencing 2022 (4 years old): \"Price Drops Shop all Price Drop Strandberg Guitars Boden Original NX 7 2022\". (Confidence: high)\nEvidence references: E-331596510c3f.\n\nROOT CAUSE\nUse the observed condition described by “Outdated time-sensitive claim or promotion found on active page (2022)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nReview the text referencing 2022 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-331596510c3f"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content operations owner.\n\nPROBLEM\nOutdated time-sensitive claim or promotion found on active page (2016).\n\nEVIDENCE\nObserved at https://reverb.com/promo/price-drops via dated_claim_temporal_analysis [2026-09-13T17:54:06Z]: Page contains active time-sensitive statement referencing 2016 (10 years old): \"Price Drop Jaen Jamaica 2016\". (Confidence: high)\nEvidence references: E-be404878fca2.\n\nROOT CAUSE\nUse the observed condition described by “Outdated time-sensitive claim or promotion found on active page (2016)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nReview the text referencing 2016 on https://reverb.com/promo/price-drops and update with current pricing/event information or remove expired promotions.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-be404878fca2"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://reverb.com/promo/deals-and-steals via http_redirect_aware_link_checker [2026-09-13T17:54:14Z]: Sampled internal links returned broken HTTP errors: https://reverb.com/promo/deals-and-steals (HTTP 403). (Confidence: high)\nEvidence references: E-36894b76a539.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-36894b76a539"
+        ]
+      },
+      {
+        "finding_id": "F-007",
+        "execution_order": 7,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://reverb.com via onsite_identity_anchor_inspection [2026-09-13T17:54:14Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-5d1d59d8e27a.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-007.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-007.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-5d1d59d8e27a"
+        ]
+      },
+      {
+        "finding_id": "F-008",
+        "execution_order": 8,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://reverb.com/page/about via breadcrumb_markup_inspector [2026-09-13T17:54:06Z]: Page at deep route (/page/about) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-a9846f4e406c.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-008.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-008.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-a9846f4e406c"
+        ]
       }
     ]
   },
   "inventory_summary": {
-    "pages_sampled": 4,
-    "readable_pages": 4,
+    "pages_sampled": 5,
+    "readable_pages": 5,
     "page_purposes": [
       "article_docs",
-      "general",
-      "homepage"
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "product_pricing"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }
