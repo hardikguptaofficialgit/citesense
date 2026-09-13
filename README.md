@@ -1,53 +1,91 @@
 # CiteSense
 
-An Agent Skill Marketplace that audits a website for AI-discoverability and on-site-engagement
-problems and produces a structured report of evidence-backed findings with prioritized fixes.
-Built for Adobe University Hackathon 2026, Round 3.
+<p align="center">
+  <img src="banner.png" alt="CiteSense — Evidence-backed AI readiness audits">
+</p>
+
+<p align="center">
+  <strong>An evidence-driven Agent Skill Marketplace for AI discoverability and on-site engagement.</strong>
+</p>
+
+<p align="center">
+  Crawl a website once · run focused audit skills · produce a validated JSON report
+</p>
+
+CiteSense audits arbitrary websites for the conditions that determine whether AI systems
+can find, understand, trust, and cite a brand—and whether visitors can successfully engage
+after arriving. It was built for the Adobe University Hackathon 2026 Round 3.
 
 Marketplace name `citesense`, entrypoint `audit-orchestrator`, six skills. The manifest name,
 this README and the repository directory all use the same identity, so the zip root, the manifest
 and the docs agree.
 
-## Installable package
+> **Two interfaces:** this repository is the Adobe Agent Skill Marketplace; the published
+> Python package is a convenient way to run the same engine. Installing the package does not
+> automatically register the marketplace skills with an AI platform.
 
-Install CiteSense from the repository root in a clean Python environment:
+## Quick start
+
+### Run from PyPI
 
 ```bash
-python -m pip install .
+python -m pip install --upgrade citesense
 ```
-
-Run the same single-entrypoint audit through the installed console command:
 
 ```bash
 citesense https://example.com --output report.json
 ```
+
+### Run the marketplace entrypoint
+
+```bash
+python skills/audit-orchestrator/scripts/run_audit.py \
+  https://example.com \
+  --output report.json
+```
+
+The marketplace command is the canonical Adobe submission flow: an agent reads
+`marketplace.json`, selects `audit-orchestrator`, and invokes its single entrypoint.
+
+### Use the Python API
 
 The package exposes the existing orchestrator without duplicating its engine:
 
 ```python
 from citesense import run_full_audit
 
-report = run_full_audit("https://example.com", max_pages=5, timeout=8)
+report = run_full_audit("https://example.com")
 print(report["summary"])
 ```
 
-The package remains read-only, enforces `robots.txt`, uses bounded crawling, and never
-bypasses CAPTCHA, WAF, login, or anti-bot protections.
+## What the audit returns
 
-## Quickstart (30 seconds to a structured report)
+Every report contains:
 
-No dependencies to install — the entire marketplace runs on the Python standard library.
+- severity counts and a deterministic citability score;
+- findings with status, confidence, impact, rationale, and prioritized fixes;
+- an evidence ledger with stable IDs and finding references;
+- assessment statuses such as `confirmed`, `likely-risk`, `inconclusive`, and `not-assessed`;
+- proactive recommendations when the crawl provides a concrete basis;
+- access, robots, page-selection, and limitation details.
+
+The audit is read-only, enforces `robots.txt`, uses a bounded crawl, and never bypasses
+CAPTCHA, WAF, login, or anti-bot protections. A typical run completes in seconds and stays
+within the five-minute evaluation budget.
+
+Optional external discovery evidence may be supplied by an agent, but CiteSense never performs
+or fabricates search-engine or live AI results internally:
 
 ```bash
-# Audit any site (writes report.json)
-python skills/audit-orchestrator/scripts/run_audit.py https://www.python.org --output report.json
+citesense https://example.com \
+  --external-evidence external-evidence.json \
+  --output report.json
 ```
 
-That's the whole loop: point it at a URL and get a structured report. A typical audit finishes
-in 5-20 seconds, well under the 5-minute budget.
+If no external evidence is supplied, off-site discovery is reported as `not-assessed`.
 
-Prefer to see output without running anything? Pre-generated reports for ten real sites live in
-[`validation-runs/`](validation-runs/), with severity counts and runtimes in
+Pre-generated reports for real sites are available in
+[`validation-runs/`](validation-runs/), with runtimes and severity counts in
 [`validation-runs/RUNS.md`](validation-runs/RUNS.md).
 
 ## Documentation
@@ -59,6 +97,35 @@ Prefer to see output without running anything? Pre-generated reports for ten rea
 ## Entrypoint
 `skills/audit-orchestrator` is the single entrypoint that orchestrates the audit.
 See `marketplace.json` for the full marketplace manifest.
+
+## How an AI agent uses the marketplace
+
+The intended agent flow is:
+
+```text
+User asks for a website audit
+        ↓
+Agent reads marketplace.json
+        ↓
+Agent reads audit-orchestrator/SKILL.md
+        ↓
+Agent invokes the single orchestrator entrypoint
+        ↓
+Orchestrator runs the specialist skills
+        ↓
+Agent receives report.json
+```
+
+The PyPI package and the marketplace are complementary:
+
+- **Marketplace:** gives an AI agent the manifest, skill instructions, composition rules,
+  and specialist skill structure expected by the Adobe submission.
+- **PyPI package:** gives developers a portable `citesense` command and Python API for
+  running the same audit engine.
+
+Installing the PyPI package alone does not automatically register CiteSense with Claude,
+Cursor, Antigravity, or another agent platform. The agent can still use it when instructed
+to run the `citesense` command.
 
 ## Project structure
 
