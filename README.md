@@ -38,7 +38,7 @@ python -m pip install --upgrade citesense
 ```
 
 ```bash
-citesense https://example.com --output report.json
+citesense audit https://example.com --output report.json
 ```
 
 ### Run the marketplace entrypoint
@@ -82,7 +82,7 @@ Optional external discovery evidence may be supplied by an agent, but CiteSense 
 or fabricates search-engine or live AI results internally:
 
 ```bash
-citesense https://example.com \
+citesense audit https://example.com \
   --external-evidence external-evidence.json \
   --output report.json
 ```
@@ -206,13 +206,48 @@ graph TD
 
 ## Running the Audit
 
-### 1. End-to-End Orchestrator CLI
+### 1. Agent-friendly package CLI
+
+Install the published package, then let an AI coding agent discover the commands through
+the built-in help:
+
+```bash
+python -m pip install --upgrade citesense
+citesense --help
+citesense audit --help
+citesense batch --help
+```
+
+Audit one website:
+
+```bash
+citesense audit https://example.com --output report.json
+```
+
+Audit multiple websites from a file. Blank lines and exact duplicate URLs are ignored;
+each successful site receives its own report under `reports/`:
+
+```text
+# websites.txt
+https://example.com
+https://www.python.org
+```
+
+```bash
+citesense batch websites.txt --output-dir reports
+```
+
+Batch mode prints a machine-readable summary and continues when an individual URL fails.
+It returns exit code `0` when all sites finish, `1` for partial/complete audit failures,
+and `2` for invalid command input.
+
+### 2. End-to-End Marketplace Orchestrator CLI
 To run a complete audit against any website:
 ```bash
 python skills/audit-orchestrator/scripts/run_audit.py https://example.com --output report.json
 ```
 
-### 2. Standalone Skill CLI
+### 3. Standalone Skill CLI
 Each specialist script can also be executed independently:
 ```bash
 # 1. Crawlability & Robots Audit
