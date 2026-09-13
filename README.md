@@ -1,7 +1,12 @@
 # CiteSense
 
 <p align="center">
-  <img src="banner.png" alt="CiteSense — Evidence-backed AI readiness audits">
+  <img src="banner.png" width="560" alt="CiteSense — Evidence-backed AI readiness audits">
+</p>
+
+<p align="center">
+  <strong>Tech stack:</strong> Python 3.10+ · Python standard library · JSON Schema ·
+  setuptools · CLI · Read-only HTTP crawling
 </p>
 
 <p align="center">
