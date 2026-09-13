@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any
 import json
 import re
+import hashlib
 
 VALID_CATEGORIES = {
     "crawlability", "render-gap", "structured-data", "fact-extractability",
@@ -26,7 +27,7 @@ ENGAGEMENT_CATEGORIES = {
 }
 
 VALID_SEVERITIES = {"critical", "high", "medium", "low"}
-VALID_STATUSES = {"confirmed", "likely-risk", "proactive"}
+VALID_STATUSES = {"confirmed", "likely-risk", "inconclusive", "not-assessed", "proactive"}
 VALID_CONFIDENCES = {"high", "medium", "low"}
 VALID_IMPACTS = {"critical", "high", "medium", "low"}
 
@@ -39,6 +40,12 @@ class EvidenceVerification:
     timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     confidence: str = "high"  # high, medium, low
 
+    @property
+    def evidence_id(self) -> str:
+        """Return a stable reference for this observation across report composition."""
+        stable = "|".join((self.url, self.method, self.observation, self.confidence))
+        return "E-" + hashlib.sha256(stable.encode("utf-8")).hexdigest()[:12]
+
     def format_text(self) -> str:
         """Formats evidence into a verifiable, human and machine-readable text block."""
         return (
@@ -47,7 +54,9 @@ class EvidenceVerification:
         )
 
     def to_dict(self) -> Dict[str, Any]:
-        return asdict(self)
+        data = asdict(self)
+        data["evidence_id"] = self.evidence_id
+        return data
 
 
 @dataclass
@@ -56,6 +65,7 @@ class SuggestedAction:
     priority: str  # critical, high, medium, low
     how_to_fix: str
     beyond_defect: bool = False
+    expected_benefit: str = ""
 
     def to_dict(self) -> Dict[str, Any]:
         d = {
@@ -65,6 +75,8 @@ class SuggestedAction:
         }
         if self.beyond_defect:
             d["beyond_defect"] = True
+        if self.expected_benefit:
+            d["expected_benefit"] = self.expected_benefit
         return d
 
 
@@ -120,6 +132,9 @@ class CandidateFinding:
             out["source_skills"] = self.source_skills
         if self.evidence_details:
             out["evidence_details"] = self.evidence_details
+            evidence_id = self.evidence_details.get("evidence_id")
+            if evidence_id:
+                out["evidence_refs"] = [evidence_id]
         return out
 
 
@@ -138,7 +153,8 @@ def create_candidate_finding(
     status: str = "confirmed",
     confidence: str = "high",
     impact: Optional[str] = None,
-    beyond_defect: bool = False
+    beyond_defect: bool = False,
+    expected_benefit: Optional[str] = None
 ) -> CandidateFinding:
     ev_ver = EvidenceVerification(
         url=url,
@@ -152,7 +168,11 @@ def create_candidate_finding(
         summary=action_summary,
         priority=action_priority,
         how_to_fix=action_how_to_fix,
-        beyond_defect=beyond_defect
+        beyond_defect=beyond_defect,
+        expected_benefit=expected_benefit or (
+            f"Improves {category.replace('-', ' ')} by making the observed information "
+            "clearer and more extractable for the intended audience."
+        )
     ).to_dict()
 
     return CandidateFinding(

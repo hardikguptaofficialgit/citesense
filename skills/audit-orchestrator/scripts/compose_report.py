@@ -22,8 +22,17 @@ from scored import annotate_report
 
 # Single source of truth: these sets live in models.py. Redefining them here let the two
 # drift silently, which would mis-split the discoverability/engagement summary counts.
-from models import DISCOVERABILITY_CATEGORIES, ENGAGEMENT_CATEGORIES, VALID_SEVERITIES
-REQUIRED_FINDING_FIELDS = {"id", "title", "severity", "evidence", "suggested_action"}
+from models import (
+    DISCOVERABILITY_CATEGORIES,
+    ENGAGEMENT_CATEGORIES,
+    VALID_CONFIDENCES,
+    VALID_IMPACTS,
+    VALID_SEVERITIES,
+    VALID_STATUSES,
+)
+REQUIRED_FINDING_FIELDS = {
+    "id", "title", "severity", "evidence", "severity_rationale", "suggested_action"
+}
 
 SEVERITY_RANK = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 
@@ -69,6 +78,11 @@ def dedupe(findings: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             if extra_evidence and extra_evidence not in existing.get("evidence", ""):
                 existing["evidence"] = existing.get("evidence", "") + f"\nAdditional evidence ({skill or 'another check'}): {extra_evidence}"
 
+            refs = set(existing.get("evidence_refs", []))
+            refs.update(f.get("evidence_refs", []))
+            if refs:
+                existing["evidence_refs"] = sorted(refs)
+
             # Merge source skills
             sources = set(existing.get("source_skills", [existing.get("source_skill", "")]))
             if skill:
@@ -102,11 +116,31 @@ def assign_ids_and_validate(findings: List[Dict[str, Any]]) -> List[Dict[str, An
     for i, f in enumerate(findings, start=1):
         item = dict(f)
         item["id"] = f"F-{i:03d}"
+        # CandidateFindings produced by current skills carry these fields. Keep the composition
+        # helper backward-compatible with older standalone skill output while ensuring every
+        # final report has the complete assessment contract.
+        item.setdefault("status", "confirmed")
+        item.setdefault("confidence", "high")
+        item.setdefault("impact", item.get("severity", "medium"))
+        item.setdefault(
+            "severity_rationale",
+            f"Rated {item.get('severity', 'low')} because the observed evidence indicates "
+            f"{item.get('impact', item.get('severity', 'low'))} impact; unavailable evidence is not "
+            "treated as a defect.",
+        )
         missing = REQUIRED_FINDING_FIELDS - set(item.keys())
         if missing:
             raise ValueError(f"finding '{item.get('title')}' missing required fields: {missing}")
         if item["severity"] not in VALID_SEVERITIES:
             raise ValueError(f"finding '{item['id']}' has invalid severity '{item['severity']}'")
+        if item.get("category") not in DISCOVERABILITY_CATEGORIES | ENGAGEMENT_CATEGORIES:
+            raise ValueError(f"finding '{item['id']}' has invalid or missing category")
+        if item.get("status") not in VALID_STATUSES:
+            raise ValueError(f"finding '{item['id']}' has invalid or missing status")
+        if item.get("confidence") not in VALID_CONFIDENCES:
+            raise ValueError(f"finding '{item['id']}' has invalid or missing confidence")
+        if item.get("impact") not in VALID_IMPACTS:
+            raise ValueError(f"finding '{item['id']}' has invalid or missing impact")
         
         sa = item.get("suggested_action", {})
         if not isinstance(sa, dict) or not sa.get("summary") or not sa.get("priority") or not sa.get("how_to_fix"):
@@ -153,6 +187,8 @@ def build_final_report(
     ground_truth: Optional[Dict[str, Any]] = None,
     pages: Optional[Dict[str, Any]] = None,
     access_summary: Optional[Dict[str, Any]] = None,
+    assessments: Optional[List[Dict[str, Any]]] = None,
+    external_evidence: Optional[List[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
     """Assembles, deduplicates, prioritizes, and formats the final report object.
 
@@ -161,6 +197,12 @@ def build_final_report(
     `suggested_action.fix_snippet`. Snippets are only attached where the observed data is
     rich enough to fill the entity's identifying fields -- see fix_snippets.py.
     """
+    evidence_ledger = []
+    for finding in findings:
+        details = finding.get("evidence_details")
+        if isinstance(details, dict) and details.get("evidence_id"):
+            evidence_ledger.append(dict(details))
+
     deduped = dedupe(findings)
     # Sort by severity (critical first) then impact
     deduped.sort(key=lambda f: (SEVERITY_RANK.get(f.get("severity"), 4), SEVERITY_RANK.get(f.get("impact", f.get("severity")), 4)))
@@ -183,6 +225,21 @@ def build_final_report(
 
     if access_summary is not None:
         report["access_summary"] = access_summary
+
+    if evidence_ledger:
+        report["evidence_ledger"] = evidence_ledger + list(external_evidence or [])
+    elif external_evidence:
+        report["evidence_ledger"] = list(external_evidence)
+
+    if assessments:
+        report["assessments"] = assessments
+
+    if external_evidence:
+        report["external_discovery"] = {
+            "source": "agent-supplied",
+            "network_lookup_performed": False,
+            "evidence_refs": [entry["evidence_id"] for entry in external_evidence],
+        }
 
     if proactive_recommendations:
         report["proactive_recommendations"] = proactive_recommendations
@@ -252,6 +309,14 @@ def validate_mode(args):
             errors.append(f"finding {f.get('id', '?')} missing fields: {missing}")
         if f.get("severity") not in VALID_SEVERITIES:
             errors.append(f"finding {f.get('id', '?')} has invalid severity: {f.get('severity')}")
+        if f.get("category") not in DISCOVERABILITY_CATEGORIES | ENGAGEMENT_CATEGORIES:
+            errors.append(f"finding {f.get('id', '?')} has invalid or missing category")
+        if f.get("status") not in VALID_STATUSES:
+            errors.append(f"finding {f.get('id', '?')} has invalid or missing status")
+        if f.get("confidence") not in VALID_CONFIDENCES:
+            errors.append(f"finding {f.get('id', '?')} has invalid or missing confidence")
+        if f.get("impact") not in VALID_IMPACTS:
+            errors.append(f"finding {f.get('id', '?')} has invalid or missing impact")
         action = f.get("suggested_action")
         if not isinstance(action, dict) or not all(action.get(x) for x in ("summary", "priority", "how_to_fix")):
             errors.append(f"finding {f.get('id', '?')} suggested_action requires summary, priority, how_to_fix")
@@ -263,6 +328,36 @@ def validate_mode(args):
                 errors.append(f"summary missing integer {sev} count")
         if summary.get("total_findings") != len(report.get("findings", [])):
             errors.append("summary total_findings does not match findings")
+
+    ledger = report.get("evidence_ledger", [])
+    if not isinstance(ledger, list):
+        errors.append("evidence_ledger must be an array")
+        ledger = []
+    ledger_ids = {entry.get("evidence_id") for entry in ledger if isinstance(entry, dict)}
+    for f in report.get("findings", []):
+        refs = f.get("evidence_refs", [])
+        if not isinstance(refs, list) or not set(refs) <= ledger_ids:
+            errors.append(f"finding {f.get('id', '?')} has unresolved evidence_refs")
+
+    assessments = report.get("assessments", [])
+    if not isinstance(assessments, list):
+        errors.append("assessments must be an array")
+    else:
+        for assessment in assessments:
+            if not isinstance(assessment, dict):
+                errors.append("assessment must be an object")
+                continue
+            if assessment.get("status") not in VALID_STATUSES:
+                errors.append(f"assessment has invalid status: {assessment.get('status')}")
+            if assessment.get("result") not in {"passed", "assessed", "limited", "not-assessed"}:
+                errors.append(f"assessment has invalid result: {assessment.get('result')}")
+
+    external = report.get("external_discovery")
+    if external is not None:
+        if external.get("source") != "agent-supplied" or external.get("network_lookup_performed") is not False:
+            errors.append("external_discovery must identify agent-supplied evidence and no internal lookup")
+        if not set(external.get("evidence_refs", [])) <= ledger_ids:
+            errors.append("external_discovery has unresolved evidence_refs")
 
     if errors:
         print(json.dumps({"valid": False, "errors": errors}, indent=2))

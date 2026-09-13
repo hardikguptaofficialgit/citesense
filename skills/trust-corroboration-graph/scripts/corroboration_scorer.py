@@ -6,6 +6,7 @@ Emits structured CandidateFindings with verifiable evidence and confidence ratin
 import os
 import sys
 import json
+from urllib.parse import urlparse
 from typing import List, Dict, Any, Optional
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -23,6 +24,15 @@ AUTHORITY_DOMAINS = (
     "opencorporates.com", "g2.com", "trustpilot.com", "glassdoor.com",
     "bbb.org", "companieshouse.gov.uk", "producthunt.com",
 )
+
+
+def _is_authority_url(value: str) -> bool:
+    """Match an explicitly linked authority hostname, not an arbitrary substring."""
+    try:
+        host = (urlparse(value).hostname or "").lower().rstrip(".")
+    except ValueError:
+        return False
+    return any(host == authority or host.endswith("." + authority) for authority in AUTHORITY_DOMAINS)
 
 
 def evaluate_identity_anchoring(
@@ -54,7 +64,7 @@ def evaluate_identity_anchoring(
     })
     same_as_anchors = sorted({
         u for u in same_as_urls
-        if any(a in u.lower() for a in AUTHORITY_DOMAINS)
+        if _is_authority_url(u)
     })
 
     if same_as_anchors or anchor_domains:

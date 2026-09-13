@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "citesense"
+version = "1.0.0"
+description = "Evidence-backed AI discoverability and on-site engagement audits."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "CiteSense"}]
+dependencies = []
+
+[project.scripts]
+citesense = "citesense.cli:main"
+
+[tool.setuptools]
+packages = [
+  "citesense",
+  "citesense._marketplace",
+  "citesense._marketplace.audit_orchestrator",
+  "citesense._marketplace.crawl_render_audit",
+  "citesense._marketplace.freshness_corroboration",
+  "citesense._marketplace.engagement_audit",
+  "citesense._marketplace.citation_simulator",
+  "citesense._marketplace.trust_corroboration_graph",
+]
+
+[tool.setuptools.package-dir]
+"" = "src"
+"citesense._marketplace.audit_orchestrator" = "skills/audit-orchestrator/scripts"
+"citesense._marketplace.crawl_render_audit" = "skills/crawl-render-audit/scripts"
+"citesense._marketplace.freshness_corroboration" = "skills/freshness-corroboration/scripts"
+"citesense._marketplace.engagement_audit" = "skills/engagement-audit/scripts"
+"citesense._marketplace.citation_simulator" = "skills/citation-simulator/scripts"
+"citesense._marketplace.trust_corroboration_graph" = "skills/trust-corroboration-graph/scripts"

@@ -77,8 +77,13 @@
         "required": [
           "id",
           "title",
+          "category",
           "severity",
+          "status",
+          "confidence",
+          "impact",
           "evidence",
+          "severity_rationale",
           "suggested_action"
         ],
         "properties": {
@@ -131,6 +136,37 @@
           "evidence": {
             "type": "string"
           },
+          "severity_rationale": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^E-[a-f0-9]{12}$"
+            }
+          },
+          "evidence_details": {
+            "type": "object",
+            "required": [
+              "evidence_id",
+              "url",
+              "observation",
+              "method",
+              "timestamp",
+              "confidence"
+            ],
+            "properties": {
+              "evidence_id": {"type": "string", "pattern": "^E-[a-f0-9]{12}$"},
+              "url": {"type": "string"},
+              "observation": {"type": "string"},
+              "method": {"type": "string"},
+              "timestamp": {"type": "string", "format": "date-time"},
+              "confidence": {"type": "string", "enum": ["high", "medium", "low"]}
+              ,"evidence_origin": {"type": "string", "enum": ["on-site", "external"]}
+              ,"external_evidence_ids": {"type": "array", "items": {"type": "string"}}
+            }
+          },
           "source_skill": {
             "type": "string"
           },
@@ -163,6 +199,9 @@
               "fix_snippet": {
                 "type": "string",
                 "description": "Optional additive field. Ready-to-paste <script type=\"application/ld+json\"> block pre-populated from observed ground_truth. Present only for structured-data findings where the audit held enough real data to fill the entity's identifying fields."
+              },
+              "expected_benefit": {
+                "type": "string"
               }
             }
           },
@@ -234,6 +273,48 @@
               }
             }
           }
+        }
+      }
+    },
+    "evidence_ledger": {
+      "type": "array",
+      "description": "Stable, structured observations referenced by finding evidence_refs.",
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "url", "observation", "method", "timestamp", "confidence"],
+        "properties": {
+          "evidence_id": {"type": "string", "pattern": "^E-[a-f0-9]{12}$"},
+          "url": {"type": "string"},
+          "observation": {"type": "string"},
+          "method": {"type": "string"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "confidence": {"type": "string", "enum": ["high", "medium", "low"]}
+          ,"evidence_origin": {"type": "string", "enum": ["on-site", "external"]}
+          ,"source_urls": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "external_discovery": {
+      "type": "object",
+      "required": ["source", "network_lookup_performed", "evidence_refs"],
+      "properties": {
+        "source": {"const": "agent-supplied"},
+        "network_lookup_performed": {"const": false},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "description": "Checks that passed or could not be assessed without turning missing evidence into findings.",
+      "items": {
+        "type": "object",
+        "required": ["check", "status", "result", "reason"],
+        "properties": {
+          "check": {"type": "string"},
+          "status": {"type": "string", "enum": ["confirmed", "likely-risk", "inconclusive", "not-assessed", "proactive"]},
+          "result": {"type": "string", "enum": ["passed", "assessed", "limited", "not-assessed"]},
+          "reason": {"type": "string"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
         }
       }
     }

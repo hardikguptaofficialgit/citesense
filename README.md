@@ -8,6 +8,32 @@ Marketplace name `citesense`, entrypoint `audit-orchestrator`, six skills. The m
 this README and the repository directory all use the same identity, so the zip root, the manifest
 and the docs agree.
 
+## Installable package
+
+Install CiteSense from the repository root in a clean Python environment:
+
+```bash
+python -m pip install .
+```
+
+Run the same single-entrypoint audit through the installed console command:
+
+```bash
+citesense https://example.com --output report.json
+```
+
+The package exposes the existing orchestrator without duplicating its engine:
+
+```python
+from citesense import run_full_audit
+
+report = run_full_audit("https://example.com", max_pages=5, timeout=8)
+print(report["summary"])
+```
+
+The package remains read-only, enforces `robots.txt`, uses bounded crawling, and never
+bypasses CAPTCHA, WAF, login, or anti-bot protections.
+
 ## Quickstart (30 seconds to a structured report)
 
 No dependencies to install — the entire marketplace runs on the Python standard library.
@@ -33,6 +59,16 @@ Prefer to see output without running anything? Pre-generated reports for ten rea
 ## Entrypoint
 `skills/audit-orchestrator` is the single entrypoint that orchestrates the audit.
 See `marketplace.json` for the full marketplace manifest.
+
+## Project structure
+
+```text
+src/citesense/              # Public Python API and console adapter
+skills/                     # Marketplace skills and the single audit entrypoint
+marketplace.json            # Marketplace manifest (one entrypoint)
+tests/                      # Unit, regression, package, and marketplace tests
+pyproject.toml              # Install/build metadata
+```
 
 ## Architecture & Skills
 
@@ -178,6 +214,12 @@ suppressed rather than presented as a fix.
   "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@type\": \"Organization\",\n  \"name\": \"Mozilla\",\n  \"foundingDate\": \"1998\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\"\n}\n</script>"
 }
 ```
+
+**Evidence and assessment metadata** — findings carry stable `evidence_refs` pointing to
+structured observations in the top-level `evidence_ledger`. Reports also include `assessments`
+for checks that passed or were `inconclusive`/`not-assessed` because access or evidence was
+unavailable. These statuses are deliberately separate from findings, so a blocked or
+anti-bot-protected page is not reported as if its content were missing.
 
 Snippets need the crawl's ground truth. `run_audit.py` supplies it automatically; when
 merging findings by hand, pass a saved inventory (or a bare `ground_truth` JSON):

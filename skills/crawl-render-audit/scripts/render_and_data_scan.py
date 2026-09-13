@@ -210,25 +210,28 @@ def evaluate_page_render_and_data(page_snap: Dict[str, Any], is_root: bool = Fal
     # JavaScript usage alone is NOT a defect -- an empty raw shell is. The flag is set in
     # analyze_page_html so every skill agrees on which pages are shells.
     if page_snap.get("render_gap"):
+        render_diff = page_snap.get("render_diff", {})
+        signals = ", ".join(render_diff.get("signals", [])) or "low initial text volume"
         f = create_candidate_finding(
             title="Client-side rendering gap: raw HTML contains minimal text content",
             category="render-gap",
             severity="high",
             url=url,
             observation=(
-                f"Raw HTML yields only {words} words of visible text. Search crawlers and AI bots "
-                f"that do not execute client JS cannot extract any brand fact from this page. "
+                f"Raw HTML yields only {words} words of visible text and shows static shell signals "
+                f"({signals}). Search crawlers and AI bots that do not execute client JS may not "
+                f"extract brand facts from this page. "
                 f"Other page-level checks were suppressed here: a missing heading, CTA, meta "
                 f"description or schema on an empty shell are all symptoms of this one root cause."
             ),
-            method="raw_vs_rendered_wordcount_inspection",
+            method="static_initial_html_shell_inspection",
             source_skill="crawl-render-audit",
             action_summary="Implement server-side rendering (SSR) or static pre-rendering for core content.",
             action_priority="high",
             action_how_to_fix="Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
             fingerprint=f"render:empty-raw-html-gap:{urlparse(url).path or 'root'}",
-            status="confirmed",
-            confidence="high",
+            status="likely-risk",
+            confidence="medium",
             impact="high"
         )
         findings.append(f.to_dict())

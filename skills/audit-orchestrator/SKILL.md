@@ -33,10 +33,11 @@ allowed-tools: Bash, Read, Write
    - `trust-corroboration-graph`: Checks whether any machine-readable path exists from the site to an independent authority (`sameAs` URIs, outbound links to Wikidata/Wikipedia/Crunchbase/LinkedIn/registries). (Its third-party corroboration scoring is agent-supplied; see that skill.)
 3. **Structured CandidateFindings Contract:**
    Every skill returns structured `CandidateFinding` objects with:
-   - `title`, `category`, `severity`, `status` (`confirmed`/`likely-risk`/`proactive`), `confidence`, `impact`.
+   - `title`, `category`, `severity`, `status` (`confirmed`/`likely-risk`/`inconclusive`/`not-assessed`/`proactive`), `confidence`, `impact`, and `severity_rationale`.
    - Verifiable `evidence` containing URL, observation, method, timestamp, and confidence.
+   - Stable `evidence_refs` pointing to the report-level `evidence_ledger`.
    - Stable `fingerprint` for root-cause deduplication.
-   - `suggested_action` (`summary`, `priority`, `how_to_fix`).
+   - `suggested_action` (`summary`, `priority`, `how_to_fix`, `expected_benefit`).
 4. **Proactive Recommendations:**
    `proactive_recommendations.py` derives up to 6 beyond-defect suggestions from what the crawl observed, ordered strongest-evidence-first: FAQPage markup for existing Q&A content, third-party entity anchoring, answer-first content structure, Article schema, WebSite/SearchAction, BreadcrumbList, explicit AI usage terms in robots.txt, an agent-facing NLWeb/MCP endpoint, and llms.txt reported with its real (weak) evidence base. Each fires only on an observed condition, so a well-optimised site correctly receives fewer. Evidence basis: `references/ai-visibility-standards-2026.md`.
 5. **Merge & Deduplicate:**
@@ -45,7 +46,14 @@ allowed-tools: Bash, Read, Write
    ```bash
    python3 skills/audit-orchestrator/scripts/compose_report.py validate --input report.json
    ```
-7. Return `report.json` as the final audit report.
+7. Return `report.json` as the final audit report. The report also includes `assessments`,
+   which distinguish passed checks from checks that were inconclusive or not assessed because
+   the required page evidence was unavailable.
+
+Optional external discovery evidence may be supplied by the calling agent with
+`--external-evidence external-evidence.json`. CiteSense only records and evaluates the supplied
+observations; it never searches externally, scrapes a search engine, or claims a live search when
+the file is absent. Such observations are labeled `external` in the evidence ledger.
 
 ## Post-report tooling (all stdlib, all optional)
 - **Fix snippets & score (automatic).** Composition attaches a ready-to-paste JSON-LD
@@ -62,4 +70,8 @@ allowed-tools: Bash, Read, Write
 - `references/adding-checks.md` -- house rules for adding detection logic without creating false positives.
 
 ## Output
-The final report strictly matches `references/report-schema.json`: `site`, `audited_at`, `summary` (counts by severity plus discoverability/engagement split), `findings` (each with `id`, `title`, `severity`, `evidence`, `suggested_action`), and an additive `proactive_recommendations` array.
+The final report strictly matches `references/report-schema.json`: `site`, `audited_at`,
+`summary` (counts by severity plus discoverability/engagement split), `findings` (each with
+`id`, `title`, `category`, `severity`, `status`, `confidence`, `impact`, `severity_rationale`,
+`evidence`, `evidence_refs`, and `suggested_action`), the `evidence_ledger`, `assessments`, and
+an additive `proactive_recommendations` array.

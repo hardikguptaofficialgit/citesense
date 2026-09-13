@@ -341,15 +341,30 @@ def analyze_page_html(
     path_parts = [p for p in urlparse(final_url).path.strip("/").split("/") if p]
     is_deep = len(path_parts) >= 2
 
-    # A 200 response carrying almost no readable text has nothing for a non-rendering retrieval
-    # bot to extract. Everything else missing on such a page (h1, CTAs, links, meta, schema) is
-    # downstream of this, so evaluators suppress those and report the root cause instead of a
-    # cascade of symptoms.
-    #
-    # "Almost no text" alone is not enough: a short page that still carries a heading and its
-    # core facts in raw HTML is complete, just brief. A shell is a page with neither a heading
-    # nor content -- or one whose markup dwarfs its text, which is the client-rendered case.
-    render_gap = len(words) < 30 and (not h1_texts or len(html) > 1500)
+    # Static shell signals are intentionally conservative. JavaScript usage by itself is not a
+    # defect; this only reports a likely gap when the initial response contains a mount marker,
+    # very little meaningful text, or a markup-to-text imbalance.
+    script_count = len(re.findall(r"(?is)<script\b", html))
+    mount_markers = []
+    for marker in (r'id=["\'](?:root|app|__next)["\']', r'data-reactroot\b', r'ng-app\b', r'v-app\b'):
+        if re.search(marker, html, re.I):
+            mount_markers.append(marker)
+    shell_signals = []
+    if mount_markers:
+        shell_signals.append("client-mount-marker")
+    if script_count >= 8:
+        shell_signals.append("many-inline-or-external-scripts")
+    if len(words) < 12:
+        shell_signals.append("very-low-readable-text")
+    if len(html) > 1500 and len(words) < 30:
+        shell_signals.append("markup-to-text-imbalance")
+    render_gap = (
+        len(words) < 12 and bool(mount_markers)
+    ) or (
+        len(words) < 30 and not h1_texts and bool(mount_markers or script_count >= 8)
+    ) or (
+        len(words) < 8 and len(html) > 5000 and script_count >= 3
+    )
 
     purpose = classify_page_purpose(final_url, title, primary_h1, raw_text)
 
@@ -400,7 +415,13 @@ def analyze_page_html(
         "page_purpose": purpose,
         "is_deep_page": is_deep,
         "render_gap": render_gap,
-        "render_diff": {"available": False, "note": "Static inspection performed"}
+        "render_diff": {
+            "available": False,
+            "note": "Static inspection performed; no browser rendering was used.",
+            "signals": shell_signals,
+            "script_count": script_count,
+            "mount_markers": mount_markers,
+        }
     }
 
 
@@ -433,7 +454,8 @@ class SiteInventory:
             "max_pages": 5,
             "http_timeout_seconds": DEFAULT_TIMEOUT,
             "pages_crawled": 0,
-            "total_crawl_time_seconds": 0.0
+            "total_crawl_time_seconds": 0.0,
+            "page_selection": []
         }
 
     def store_page(self, requested_url: str, snap: Dict[str, Any]):
@@ -575,40 +597,79 @@ class SiteInventory:
             if resolved_origin != self.origin:
                 self.origin = resolved_origin
 
-        # 5. Discover representative URLs to complete the inventory up to max_pages
-        candidate_urls: List[str] = []
-
-        # From homepage links
-        internal_links = seed_snapshot.get("internal_links", [])
-        for link_obj in internal_links:
+        # 5. Discover representative URLs to complete the inventory up to max_pages.
+        # Candidate scoring uses the information already available in the homepage navigation
+        # and sitemap; it never fetches extra pages just to choose a page.
+        candidates: Dict[str, Dict[str, Any]] = {}
+        for index, link_obj in enumerate(seed_snapshot.get("internal_links", [])):
             u = link_obj["href"]
             if not self.knows_url(u):
-                candidate_urls.append(u)
+                candidates.setdefault(u, {"source": "homepage-link", "link_text": link_obj.get("text", ""), "index": index})
+        for index, sm_u in enumerate(sitemap_urls_discovered):
+            if not self.knows_url(sm_u):
+                candidates.setdefault(sm_u, {"source": "sitemap", "link_text": "", "index": index})
 
-        # From sitemap
-        for sm_u in sitemap_urls_discovered:
-            if not self.knows_url(sm_u) and sm_u not in candidate_urls:
-                candidate_urls.append(sm_u)
+        purpose_tokens = {
+            "product_pricing": {"pricing", "price", "prices", "plans", "plan", "product", "products", "features", "solutions", "buy", "shop", "store", "cart", "checkout"},
+            "article_docs": {"docs", "documentation", "faq", "blog", "guide", "article", "help", "learn", "resources", "news", "research", "api"},
+            "contact_support": {"about", "contact", "company", "team", "support", "locations", "location", "campus", "admissions"},
+            "audience": {"customers", "industries", "solutions", "use", "cases", "students", "faculty", "patients", "developers"},
+        }
 
-        # Categorize candidates into money/pricing, docs/content, and contact/about
-        selected_urls = []
-        money_urls = [u for u in candidate_urls if any(k in u.lower() for k in ("pricing", "plan", "product", "features", "solutions", "buy"))]
-        docs_urls = [u for u in candidate_urls if any(k in u.lower() for k in ("docs", "faq", "blog", "guide", "article", "help"))]
-        about_urls = [u for u in candidate_urls if any(k in u.lower() for k in ("about", "contact", "company", "team"))]
+        scored_candidates = []
+        for url, metadata in candidates.items():
+            path_tokens = tokenize(url)
+            link_tokens = tokenize(metadata.get("link_text", ""))
+            tokens = path_tokens | link_tokens
+            score = 0
+            signals = []
+            for purpose, keywords in purpose_tokens.items():
+                overlap = tokens & keywords
+                if overlap:
+                    score += 12 if purpose == "product_pricing" else 10
+                    signals.append(f"{purpose}:{','.join(sorted(overlap))}")
+            if metadata["source"] == "homepage-link":
+                score += 4
+                signals.append("linked-from-homepage")
+            else:
+                score += 2
+                signals.append("listed-in-sitemap")
+            depth = len([part for part in urlparse(url).path.split("/") if part])
+            if depth == 1:
+                score += 2
+                signals.append("shallow-route")
+            if DATE_SEGMENT_RE.search(url):
+                score -= 3
+                signals.append("dated-editorial-route")
+            purpose = classify_page_purpose(url, metadata.get("link_text", ""), "", "")
+            scored_candidates.append({
+                "url": url,
+                "score": score,
+                "signals": signals,
+                "purpose_hint": purpose,
+                "source": metadata["source"],
+            })
 
-        if money_urls:
-            selected_urls.append(money_urls[0])
-        if docs_urls:
-            selected_urls.append(docs_urls[0])
-        if about_urls:
-            selected_urls.append(about_urls[0])
-
-        # Fill remaining budget with other candidate internal links
-        for u in candidate_urls:
-            if len(self.pages) + len(selected_urls) >= max_pages:
+        scored_candidates.sort(key=lambda item: (-item["score"], item["url"]))
+        selected = []
+        selected_purposes = set()
+        target_pages = max(0, max_pages - 1)
+        # Preserve breadth: choose the highest-scoring page for each distinct purpose first.
+        for candidate in scored_candidates:
+            purpose = candidate["purpose_hint"]
+            if len(selected) >= target_pages:
                 break
-            if u not in selected_urls:
-                selected_urls.append(u)
+            if purpose != "general" and purpose not in selected_purposes:
+                selected.append(candidate)
+                selected_purposes.add(purpose)
+        for candidate in scored_candidates:
+            if len(selected) >= target_pages:
+                break
+            if candidate["url"] not in {item["url"] for item in selected}:
+                selected.append(candidate)
+
+        self.crawl_budget["page_selection"] = selected
+        selected_urls = [item["url"] for item in selected]
 
         # Fetch candidate pages (robots.txt gated)
         for u in selected_urls[:max_pages - 1]:
@@ -648,7 +709,69 @@ class SiteInventory:
             "readable_pages": readable,
             "status_counts": counts,
             "limited": readable == 0,
+            "page_selection": self.crawl_budget.get("page_selection", []),
         }
+
+    def assessment_summary(self) -> List[Dict[str, Any]]:
+        """Describe what was assessed without converting unavailable evidence into defects."""
+        access = self.access_summary()
+        readable = access["readable_pages"]
+        has_robots = bool(self.robots_txt.get("found"))
+        access_status = "confirmed" if readable else "inconclusive"
+        access_result = "assessed" if readable else "limited"
+        reason = (
+            f"{readable} of {access['pages_sampled']} sampled page(s) were readable."
+            if readable else
+            "No sampled page was readable, so content-dependent checks were not assessed."
+        )
+        return [
+            {
+                "check": "page_access",
+                "status": access_status,
+                "result": access_result,
+                "reason": reason,
+            },
+            {
+                "check": "robots_enforcement",
+                "status": "confirmed" if has_robots else "not-assessed",
+                "result": "passed" if has_robots else "not-assessed",
+                "reason": (
+                    "robots.txt was fetched and its rules were applied to page and link fetches."
+                    if has_robots else
+                    "robots.txt was unavailable; no robots policy could be evaluated."
+                ),
+            },
+            {
+                "check": "static_render_gap",
+                "status": "confirmed" if readable else "inconclusive",
+                "result": "assessed" if readable else "limited",
+                "reason": (
+                    "Initial HTML was inspected for shell signals; no browser rendering was used."
+                    if readable else
+                    "Initial HTML was unavailable, so render-gap evidence could not be assessed."
+                ),
+            },
+            {
+                "check": "citation_answerability",
+                "status": "confirmed" if readable else "inconclusive",
+                "result": "assessed" if readable else "limited",
+                "reason": (
+                    "Answerability was checked against accessible on-site text and structured data only."
+                    if readable else
+                    "No accessible page evidence was available for on-site answerability."
+                ),
+            },
+            {
+                "check": "trust_corroboration",
+                "status": "confirmed" if readable else "inconclusive",
+                "result": "assessed" if readable else "limited",
+                "reason": (
+                    "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+                    if readable else
+                    "No readable page was available to inspect for explicit authority links."
+                ),
+            },
+        ]
 
     def _extract_ground_truth(self, seed_snap: Dict[str, Any]):
         """Extract authoritative ground truth facts from root schema and page text."""
