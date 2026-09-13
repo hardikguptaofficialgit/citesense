@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:40:33.700493+00:00",
-  "finished_at": "2026-09-13T15:40:56.107657+00:00",
-  "elapsed_seconds": 22.407,
+  "started_at": "2026-09-13T17:55:40.269416+00:00",
+  "finished_at": "2026-09-13T17:56:12.153798+00:00",
+  "elapsed_seconds": 31.884,
   "error": null,
   "report": {
     "site": "https://www.law.com",
-    "audited_at": "2026-09-13T15:40:56Z",
+    "audited_at": "2026-09-13T17:56:12Z",
     "summary": {
       "total_findings": 4,
       "critical": 1,
@@ -65,7 +65,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "critical",
-        "evidence": "Observed at https://law.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:40:46Z]: robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)",
+        "evidence": "Observed at https://law.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:55:55Z]: robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "robots:citation-agents-blocked-root",
         "suggested_action": {
@@ -81,7 +81,7 @@
           "url": "https://law.com/robots.txt",
           "observation": "robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
           "method": "robots_txt_parser_longest_match",
-          "timestamp": "2026-09-13T15:40:46Z",
+          "timestamp": "2026-09-13T17:55:55Z",
           "confidence": "high",
           "evidence_id": "E-b8b136261b67"
         },
@@ -89,7 +89,42 @@
           "E-b8b136261b67"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nAI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot).\n\nEVIDENCE\nObserved at https://law.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:55:55Z]: robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)\nEvidence references: E-b8b136261b67.\n\nROOT CAUSE\nUse the observed condition described by “AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIn robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)",
+          "status": "confirmed",
+          "priority": "critical",
+          "role": "technical SEO and platform engineer",
+          "problem": "AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)",
+          "evidence_refs": [
+            "E-b8b136261b67"
+          ],
+          "root_cause": "Use the observed condition described by “AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+            "priority": "critical",
+            "how_to_fix": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing primary H1 heading on landing page",
@@ -98,7 +133,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://www.law.com/scholarstore/ via heading_structure_inspection [2026-09-13T15:40:46Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "evidence": "Observed at https://www.law.com/scholarstore/ via heading_structure_inspection [2026-09-13T17:55:55Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-h1",
         "suggested_action": {
@@ -114,7 +149,7 @@
           "url": "https://www.law.com/scholarstore/",
           "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
           "method": "heading_structure_inspection",
-          "timestamp": "2026-09-13T15:40:46Z",
+          "timestamp": "2026-09-13T17:55:55Z",
           "confidence": "high",
           "evidence_id": "E-16798c3cc67f"
         },
@@ -122,7 +157,42 @@
           "E-16798c3cc67f"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.law.com/scholarstore/ via heading_structure_inspection [2026-09-13T17:55:55Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-16798c3cc67f.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing primary H1 heading on landing page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing primary H1 heading on landing page",
+          "evidence_refs": [
+            "E-16798c3cc67f"
+          ],
+          "root_cause": "Use the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a clear, descriptive <h1> heading.",
+            "priority": "high",
+            "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Missing Schema.org Organization structured data on root landing page",
@@ -131,7 +201,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.law.com/?slreturn=20260913114036 via jsonld_schema_extractor [2026-09-13T15:40:46Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.law.com/us/?slreturn=20260913114042 via jsonld_schema_extractor [2026-09-13T15:40:46Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "evidence": "Observed at https://www.law.com/?slreturn=20260913135543 via jsonld_schema_extractor [2026-09-13T17:55:55Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.law.com/us/?slreturn=20260913135551 via jsonld_schema_extractor [2026-09-13T17:55:55Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -145,19 +215,56 @@
           "crawl-render-audit"
         ],
         "evidence_details": {
-          "url": "https://www.law.com/?slreturn=20260913114036",
+          "url": "https://www.law.com/?slreturn=20260913135543",
           "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:40:46Z",
+          "timestamp": "2026-09-13T17:55:55Z",
           "confidence": "high",
-          "evidence_id": "E-1b77f16d5530"
+          "evidence_id": "E-2a7e19a25a26"
         },
         "evidence_refs": [
-          "E-1b77f16d5530",
-          "E-3ea6b17f684c"
+          "E-2a7e19a25a26",
+          "E-8d5df7a383a8"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.law.com/?slreturn=20260913135543 via jsonld_schema_extractor [2026-09-13T17:55:55Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.law.com/us/?slreturn=20260913135551 via jsonld_schema_extractor [2026-09-13T17:55:55Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-2a7e19a25a26, E-8d5df7a383a8.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-2a7e19a25a26",
+            "E-8d5df7a383a8"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Law.com\",\n  \"url\": \"https://www.law.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Law.com delivers news, insights and resources that allow legal professionals to anticipate opportunities, adapt to change, and prepare for future success.\",\n  \"telephone\": \"877-807-8076\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Conflicting primary contact phone numbers published across site",
@@ -166,7 +273,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://www.law.com/scholarstore/ via cross_page_contact_comparison [2026-09-13T15:40:46Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8000983860: found on 1 page(s); Number 8558084530: found on 1 page(s). (Confidence: medium)",
+        "evidence": "Observed at https://www.law.com/scholarstore/ via cross_page_contact_comparison [2026-09-13T17:55:55Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8558084530: found on 1 page(s); Number 8000983860: found on 1 page(s). (Confidence: medium)",
         "source_skill": "freshness-corroboration",
         "fingerprint": "consistency:phone-number-mismatch",
         "suggested_action": {
@@ -180,17 +287,53 @@
         ],
         "evidence_details": {
           "url": "https://www.law.com/scholarstore/",
-          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8000983860: found on 1 page(s); Number 8558084530: found on 1 page(s).",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8558084530: found on 1 page(s); Number 8000983860: found on 1 page(s).",
           "method": "cross_page_contact_comparison",
-          "timestamp": "2026-09-13T15:40:46Z",
+          "timestamp": "2026-09-13T17:55:55Z",
           "confidence": "medium",
-          "evidence_id": "E-50a2d512d4ee"
+          "evidence_id": "E-0765f89000ef"
         },
         "evidence_refs": [
-          "E-50a2d512d4ee"
+          "E-0765f89000ef"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.law.com/scholarstore/ via cross_page_contact_comparison [2026-09-13T17:55:55Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8558084530: found on 1 page(s); Number 8000983860: found on 1 page(s). (Confidence: medium)\nEvidence references: E-0765f89000ef.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Conflicting primary contact phone numbers published across site",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content governance owner",
+          "problem": "Conflicting primary contact phone numbers published across site",
+          "evidence_refs": [
+            "E-0765f89000ef"
+          ],
+          "root_cause": "Use the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Standardize customer service and contact phone numbers.",
+            "priority": "medium",
+            "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+            "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -252,39 +395,39 @@
         "url": "https://law.com/robots.txt",
         "observation": "robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
         "method": "robots_txt_parser_longest_match",
-        "timestamp": "2026-09-13T15:40:46Z",
+        "timestamp": "2026-09-13T17:55:55Z",
         "confidence": "high",
         "evidence_id": "E-b8b136261b67"
       },
       {
-        "url": "https://www.law.com/?slreturn=20260913114036",
+        "url": "https://www.law.com/?slreturn=20260913135543",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:40:46Z",
+        "timestamp": "2026-09-13T17:55:55Z",
         "confidence": "high",
-        "evidence_id": "E-1b77f16d5530"
+        "evidence_id": "E-2a7e19a25a26"
       },
       {
-        "url": "https://www.law.com/us/?slreturn=20260913114042",
+        "url": "https://www.law.com/us/?slreturn=20260913135551",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:40:46Z",
+        "timestamp": "2026-09-13T17:55:55Z",
         "confidence": "high",
-        "evidence_id": "E-3ea6b17f684c"
+        "evidence_id": "E-8d5df7a383a8"
       },
       {
         "url": "https://www.law.com/scholarstore/",
-        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8000983860: found on 1 page(s); Number 8558084530: found on 1 page(s).",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8558084530: found on 1 page(s); Number 8000983860: found on 1 page(s).",
         "method": "cross_page_contact_comparison",
-        "timestamp": "2026-09-13T15:40:46Z",
+        "timestamp": "2026-09-13T17:55:55Z",
         "confidence": "medium",
-        "evidence_id": "E-50a2d512d4ee"
+        "evidence_id": "E-0765f89000ef"
       },
       {
         "url": "https://www.law.com/scholarstore/",
         "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
         "method": "heading_structure_inspection",
-        "timestamp": "2026-09-13T15:40:46Z",
+        "timestamp": "2026-09-13T17:55:55Z",
         "confidence": "high",
         "evidence_id": "E-16798c3cc67f"
       }
@@ -382,6 +525,69 @@
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "critical",
+        "reason": "confirmed finding with existing critical priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nAI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot).\n\nEVIDENCE\nObserved at https://law.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:55:55Z]: robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)\nEvidence references: E-b8b136261b67.\n\nROOT CAUSE\nUse the observed condition described by “AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIn robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-b8b136261b67"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.law.com/scholarstore/ via heading_structure_inspection [2026-09-13T17:55:55Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-16798c3cc67f.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-16798c3cc67f"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.law.com/?slreturn=20260913135543 via jsonld_schema_extractor [2026-09-13T17:55:55Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.law.com/us/?slreturn=20260913135551 via jsonld_schema_extractor [2026-09-13T17:55:55Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-2a7e19a25a26, E-8d5df7a383a8.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-2a7e19a25a26",
+          "E-8d5df7a383a8"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.law.com/scholarstore/ via cross_page_contact_comparison [2026-09-13T17:55:55Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8778078076: found on 1 page(s); Number 8558084530: found on 1 page(s); Number 8000983860: found on 1 page(s). (Confidence: medium)\nEvidence references: E-0765f89000ef.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-0765f89000ef"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -392,8 +598,10 @@
       "contact_support",
       "homepage"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

@@ -13,13 +13,13 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:40:34.234803+00:00",
-  "finished_at": "2026-09-13T15:40:54.451258+00:00",
-  "elapsed_seconds": 20.216,
+  "started_at": "2026-09-13T17:55:45.047759+00:00",
+  "finished_at": "2026-09-13T17:56:12.165303+00:00",
+  "elapsed_seconds": 27.118,
   "error": null,
   "report": {
     "site": "https://www.legalzoom.com",
-    "audited_at": "2026-09-13T15:40:54Z",
+    "audited_at": "2026-09-13T17:56:12Z",
     "summary": {
       "total_findings": 6,
       "critical": 0,
@@ -67,7 +67,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "high",
-        "evidence": "Observed at https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract via jsonld_schema_extractor [2026-09-13T15:40:47Z]: Commercial/product page (https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "evidence": "Observed at https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract via jsonld_schema_extractor [2026-09-13T17:56:02Z]: Commercial/product page (https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:product-offer-missing:/legal/product-service-terms/legal-plan-contract",
         "suggested_action": {
@@ -84,7 +84,7 @@
           "url": "https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract",
           "observation": "Commercial/product page (https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract) contains no Product or Offer structured data to convey machine-readable pricing and features.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:40:47Z",
+          "timestamp": "2026-09-13T17:56:02Z",
           "confidence": "high",
           "evidence_id": "E-7f68133fd135"
         },
@@ -92,7 +92,43 @@
           "E-7f68133fd135"
         ],
         "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract via jsonld_schema_extractor [2026-09-13T17:56:02Z]: Commercial/product page (https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-7f68133fd135.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Product and Offer structured data on commercial page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Product and Offer structured data on commercial page",
+          "evidence_refs": [
+            "E-7f68133fd135"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+            "priority": "high",
+            "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Legal Plan Contract\",\n  \"url\": \"https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"LegalZoom\"\n  },\n  \"description\": \"For customers purchasing a legal plan, this document explains the details of your plan. Review the Subscription and Third-Party Terms of Service for details about additional benefits included in your package.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Missing Schema.org Organization structured data on root landing page",
@@ -101,7 +137,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.legalzoom.com/country/in via jsonld_schema_extractor [2026-09-13T15:40:47Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "evidence": "Observed at https://www.legalzoom.com/country/in via jsonld_schema_extractor [2026-09-13T17:56:02Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -118,7 +154,7 @@
           "url": "https://www.legalzoom.com/country/in",
           "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:40:47Z",
+          "timestamp": "2026-09-13T17:56:02Z",
           "confidence": "high",
           "evidence_id": "E-990b74626671"
         },
@@ -126,7 +162,43 @@
           "E-990b74626671"
         ],
         "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/country/in via jsonld_schema_extractor [2026-09-13T17:56:02Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-990b74626671.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-990b74626671"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"LegalZoom\",\n  \"url\": \"https://www.legalzoom.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Get expert legal services in India with LegalZoom. From business formation to legal documents, we make law simple and accessible. Start today!\",\n  \"telephone\": \"(855) 787-1922\",\n  \"email\": \"info@lzlegalservices.com\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
       },
       {
         "title": "Conflicting primary contact phone numbers published across site",
@@ -135,7 +207,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "medium",
-        "evidence": "Observed at https://www.legalzoom.com/country/in via cross_page_contact_comparison [2026-09-13T15:40:47Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8007730888: found on 1 page(s); Number 8776578787: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s). (Confidence: medium)",
+        "evidence": "Observed at https://www.legalzoom.com/country/in via cross_page_contact_comparison [2026-09-13T17:56:02Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8776578787: found on 1 page(s); Number 8007730888: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s). (Confidence: medium)",
         "source_skill": "freshness-corroboration",
         "fingerprint": "consistency:phone-number-mismatch",
         "suggested_action": {
@@ -149,17 +221,53 @@
         ],
         "evidence_details": {
           "url": "https://www.legalzoom.com/country/in",
-          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8007730888: found on 1 page(s); Number 8776578787: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s).",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8776578787: found on 1 page(s); Number 8007730888: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s).",
           "method": "cross_page_contact_comparison",
-          "timestamp": "2026-09-13T15:40:47Z",
+          "timestamp": "2026-09-13T17:56:02Z",
           "confidence": "medium",
-          "evidence_id": "E-6ff5ace9e823"
+          "evidence_id": "E-ce2e5d388eff"
         },
         "evidence_refs": [
-          "E-6ff5ace9e823"
+          "E-ce2e5d388eff"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/country/in via cross_page_contact_comparison [2026-09-13T17:56:02Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8776578787: found on 1 page(s); Number 8007730888: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s). (Confidence: medium)\nEvidence references: E-ce2e5d388eff.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Conflicting primary contact phone numbers published across site",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content governance owner",
+          "problem": "Conflicting primary contact phone numbers published across site",
+          "evidence_refs": [
+            "E-ce2e5d388eff"
+          ],
+          "root_cause": "Use the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Standardize customer service and contact phone numbers.",
+            "priority": "medium",
+            "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+            "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Content images carry no text alternative, hiding any fact they display",
@@ -168,7 +276,7 @@
         "status": "confirmed",
         "confidence": "high",
         "impact": "low",
-        "evidence": "Observed at https://www.legalzoom.com/about-us via image_alt_coverage_inspection [2026-09-13T15:40:47Z]: 10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "evidence": "Observed at https://www.legalzoom.com/about-us via image_alt_coverage_inspection [2026-09-13T17:56:02Z]: 10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "extractability:images-without-alt",
         "suggested_action": {
@@ -184,7 +292,7 @@
           "url": "https://www.legalzoom.com/about-us",
           "observation": "10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
           "method": "image_alt_coverage_inspection",
-          "timestamp": "2026-09-13T15:40:47Z",
+          "timestamp": "2026-09-13T17:56:02Z",
           "confidence": "high",
           "evidence_id": "E-6bc71450f07c"
         },
@@ -192,7 +300,42 @@
           "E-6bc71450f07c"
         ],
         "id": "F-004",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/about-us via image_alt_coverage_inspection [2026-09-13T17:56:02Z]: 10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-6bc71450f07c.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Content images carry no text alternative, hiding any fact they display",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "content and frontend engineer",
+          "problem": "Content images carry no text alternative, hiding any fact they display",
+          "evidence_refs": [
+            "E-6bc71450f07c"
+          ],
+          "root_cause": "Use the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add descriptive alt text to every image that carries information.",
+            "priority": "low",
+            "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+            "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "Deep hierarchical page lacks breadcrumb navigation trail",
@@ -201,7 +344,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.legalzoom.com/country/in via breadcrumb_markup_inspector [2026-09-13T15:40:47Z]: Page at deep route (/country/in) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "evidence": "Observed at https://www.legalzoom.com/country/in via breadcrumb_markup_inspector [2026-09-13T17:56:02Z]: Page at deep route (/country/in) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:missing-breadcrumbs",
         "suggested_action": {
@@ -217,7 +360,7 @@
           "url": "https://www.legalzoom.com/country/in",
           "observation": "Page at deep route (/country/in) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
           "method": "breadcrumb_markup_inspector",
-          "timestamp": "2026-09-13T15:40:47Z",
+          "timestamp": "2026-09-13T17:56:02Z",
           "confidence": "medium",
           "evidence_id": "E-d75822866897"
         },
@@ -225,7 +368,43 @@
           "E-d75822866897"
         ],
         "id": "F-005",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/country/in via breadcrumb_markup_inspector [2026-09-13T17:56:02Z]: Page at deep route (/country/in) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-d75822866897.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "evidence_refs": [
+            "E-d75822866897"
+          ],
+          "root_cause": "Use the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+            "priority": "low",
+            "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       },
       {
         "title": "No site search affordance found on any crawled page",
@@ -234,7 +413,7 @@
         "status": "likely-risk",
         "confidence": "medium",
         "impact": "low",
-        "evidence": "Observed at https://www.legalzoom.com via search_affordance_detection [2026-09-13T15:40:47Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "evidence": "Observed at https://www.legalzoom.com via search_affordance_detection [2026-09-13T17:56:03Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:no-site-search",
         "suggested_action": {
@@ -250,7 +429,7 @@
           "url": "https://www.legalzoom.com",
           "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
           "method": "search_affordance_detection",
-          "timestamp": "2026-09-13T15:40:47Z",
+          "timestamp": "2026-09-13T17:56:03Z",
           "confidence": "medium",
           "evidence_id": "E-81aa5e291be4"
         },
@@ -258,7 +437,43 @@
           "E-81aa5e291be4"
         ],
         "id": "F-006",
-        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.legalzoom.com via search_affordance_detection [2026-09-13T17:56:03Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-81aa5e291be4.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No site search affordance found on any crawled page",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "No site search affordance found on any crawled page",
+          "evidence_refs": [
+            "E-81aa5e291be4"
+          ],
+          "root_cause": "Use the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a site search box to the persistent header.",
+            "priority": "low",
+            "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
@@ -321,7 +536,7 @@
         "url": "https://www.legalzoom.com/country/in",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:40:47Z",
+        "timestamp": "2026-09-13T17:56:02Z",
         "confidence": "high",
         "evidence_id": "E-990b74626671"
       },
@@ -329,7 +544,7 @@
         "url": "https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract",
         "observation": "Commercial/product page (https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract) contains no Product or Offer structured data to convey machine-readable pricing and features.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:40:47Z",
+        "timestamp": "2026-09-13T17:56:02Z",
         "confidence": "high",
         "evidence_id": "E-7f68133fd135"
       },
@@ -337,23 +552,23 @@
         "url": "https://www.legalzoom.com/about-us",
         "observation": "10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
         "method": "image_alt_coverage_inspection",
-        "timestamp": "2026-09-13T15:40:47Z",
+        "timestamp": "2026-09-13T17:56:02Z",
         "confidence": "high",
         "evidence_id": "E-6bc71450f07c"
       },
       {
         "url": "https://www.legalzoom.com/country/in",
-        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8007730888: found on 1 page(s); Number 8776578787: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s).",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8776578787: found on 1 page(s); Number 8007730888: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s).",
         "method": "cross_page_contact_comparison",
-        "timestamp": "2026-09-13T15:40:47Z",
+        "timestamp": "2026-09-13T17:56:02Z",
         "confidence": "medium",
-        "evidence_id": "E-6ff5ace9e823"
+        "evidence_id": "E-ce2e5d388eff"
       },
       {
         "url": "https://www.legalzoom.com/country/in",
         "observation": "Page at deep route (/country/in) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
         "method": "breadcrumb_markup_inspector",
-        "timestamp": "2026-09-13T15:40:47Z",
+        "timestamp": "2026-09-13T17:56:02Z",
         "confidence": "medium",
         "evidence_id": "E-d75822866897"
       },
@@ -361,7 +576,7 @@
         "url": "https://www.legalzoom.com",
         "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
         "method": "search_affordance_detection",
-        "timestamp": "2026-09-13T15:40:47Z",
+        "timestamp": "2026-09-13T17:56:03Z",
         "confidence": "medium",
         "evidence_id": "E-81aa5e291be4"
       }
@@ -450,6 +665,98 @@
           "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract via jsonld_schema_extractor [2026-09-13T17:56:02Z]: Commercial/product page (https://www.legalzoom.com/legal/product-service-terms/legal-plan-contract) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-7f68133fd135.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-7f68133fd135"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/country/in via jsonld_schema_extractor [2026-09-13T17:56:02Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-990b74626671.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-990b74626671"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/country/in via cross_page_contact_comparison [2026-09-13T17:56:02Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8557871922: found on 4 page(s); Number 8776578787: found on 1 page(s); Number 8007730888: found on 1 page(s); Number 8556923700: found on 1 page(s); Number 8778188787: found on 1 page(s). (Confidence: medium)\nEvidence references: E-ce2e5d388eff.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-ce2e5d388eff"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/about-us via image_alt_coverage_inspection [2026-09-13T17:56:02Z]: 10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-6bc71450f07c.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-6bc71450f07c"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.legalzoom.com/country/in via breadcrumb_markup_inspector [2026-09-13T17:56:02Z]: Page at deep route (/country/in) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-d75822866897.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-d75822866897"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.legalzoom.com via search_affordance_detection [2026-09-13T17:56:03Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-81aa5e291be4.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-81aa5e291be4"
+        ]
+      }
     ]
   },
   "inventory_summary": {
@@ -460,8 +767,10 @@
       "contact_support",
       "product_pricing"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 5
+    }
   }
 }

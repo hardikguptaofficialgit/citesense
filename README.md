@@ -130,10 +130,10 @@ to run the `citesense` command.
 ## Direct agent test prompt
 
 Copy the following prompt directly into an AI coding agent to run a controlled CiteSense
-1.1.3 audit of Adobe's website:
+1.1.4 audit of Adobe's website:
 
 ```text
-Use CiteSense 1.1.3 to audit ONLY this website:
+Use CiteSense 1.1.4 to audit ONLY this website:
 
 https://www.adobe.com/in
 
@@ -144,7 +144,7 @@ First verify:
 python -m pip install --upgrade --no-cache-dir citesense
 python -c "import importlib.metadata; print(importlib.metadata.version('citesense'))"
 
-The installed version must be 1.1.3 or newer.
+The installed version must be 1.1.4 or newer.
 
 Then run EXACTLY:
 

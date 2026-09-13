@@ -13,35 +13,35 @@
     }
   },
   "status": "completed",
-  "started_at": "2026-09-13T15:40:38.961253+00:00",
-  "finished_at": "2026-09-13T15:41:19.720925+00:00",
-  "elapsed_seconds": 40.76,
+  "started_at": "2026-09-13T17:55:55.831645+00:00",
+  "finished_at": "2026-09-13T17:56:23.733229+00:00",
+  "elapsed_seconds": 27.902,
   "error": null,
   "report": {
     "site": "https://www.americanbar.org",
-    "audited_at": "2026-09-13T15:41:19Z",
+    "audited_at": "2026-09-13T17:56:23Z",
     "summary": {
       "total_findings": 3,
       "critical": 0,
-      "high": 1,
-      "medium": 2,
+      "high": 0,
+      "medium": 3,
       "low": 0,
       "discoverability_findings": 2,
       "engagement_findings": 1,
-      "citability_score": 78,
+      "citability_score": 88,
       "citability_score_breakdown": {
-        "score": 78,
+        "score": 88,
         "base": 100,
-        "penalty": 22,
+        "penalty": 12,
         "penalty_by_severity": {
           "critical": 0,
-          "high": 12,
-          "medium": 10,
+          "high": 0,
+          "medium": 12,
           "low": 0
         },
         "penalty_by_root_cause": {
-          "schema:product-offer-missing:/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/": 12,
           "schema:root-organization-missing": 5,
+          "consistency:phone-number-mismatch": 2,
           "engagement:broken-internal-links": 5
         },
         "status_factors": {
@@ -58,47 +58,13 @@
     },
     "findings": [
       {
-        "title": "Missing Schema.org Product and Offer structured data on commercial page",
-        "category": "structured-data",
-        "severity": "high",
-        "status": "confirmed",
-        "confidence": "high",
-        "impact": "high",
-        "evidence": "Observed at https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/ via jsonld_schema_extractor [2026-09-13T15:41:07Z]: Commercial/product page (https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
-        "source_skill": "crawl-render-audit",
-        "fingerprint": "schema:product-offer-missing:/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/",
-        "suggested_action": {
-          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
-          "priority": "high",
-          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
-          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
-          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Tasty Solutions for Timekeeping, Billing, and Accounting\",\n  \"url\": \"https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"American Bar Association\"\n  },\n  \"description\": \"Attorneys can maximize revenues and bill clients fairly by billing regularly and keeping accurate time records.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
-        },
-        "source_skills": [
-          "crawl-render-audit"
-        ],
-        "evidence_details": {
-          "url": "https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/",
-          "observation": "Commercial/product page (https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
-          "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:41:07Z",
-          "confidence": "high",
-          "evidence_id": "E-ec9d2e9253b2"
-        },
-        "evidence_refs": [
-          "E-ec9d2e9253b2"
-        ],
-        "id": "F-001",
-        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
-      },
-      {
         "title": "Missing Schema.org Organization structured data on root landing page",
         "category": "structured-data",
         "severity": "medium",
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.americanbar.org/ via jsonld_schema_extractor [2026-09-13T15:41:07Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "evidence": "Observed at https://www.americanbar.org/ via jsonld_schema_extractor [2026-09-13T17:56:13Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
         "source_skill": "crawl-render-audit",
         "fingerprint": "schema:root-organization-missing",
         "suggested_action": {
@@ -106,7 +72,7 @@
           "priority": "medium",
           "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
           "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
-          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"American Bar Association\",\n  \"url\": \"https://www.americanbar.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The ABA is the largest voluntary association of lawyers in the world. As the national voice of the legal profession, the ABA works to improve the administration of justice, promotes programs that assist lawyers and judges in their work, accredits law schools, provides continuing legal education, and works to build public understanding around the world of the importance of the rule of law.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"American Bar Association\",\n  \"url\": \"https://www.americanbar.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The ABA is the largest voluntary association of lawyers in the world. As the national voice of the legal profession, the ABA works to improve the administration of justice, promotes programs that assist lawyers and judges in their work, accredits law schools, provides continuing legal education, and works to build public understanding around the world of the importance of the rule of law.\",\n  \"telephone\": \"(312) 988-5214\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
         },
         "source_skills": [
           "crawl-render-audit"
@@ -115,24 +81,129 @@
           "url": "https://www.americanbar.org/",
           "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
           "method": "jsonld_schema_extractor",
-          "timestamp": "2026-09-13T15:41:07Z",
+          "timestamp": "2026-09-13T17:56:13Z",
           "confidence": "high",
           "evidence_id": "E-149cbafff881"
         },
         "evidence_refs": [
           "E-149cbafff881"
         ],
-        "id": "F-002",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.americanbar.org/ via jsonld_schema_extractor [2026-09-13T17:56:13Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-149cbafff881.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-149cbafff881"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"American Bar Association\",\n  \"url\": \"https://www.americanbar.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The ABA is the largest voluntary association of lawyers in the world. As the national voice of the legal profession, the ABA works to improve the administration of justice, promotes programs that assist lawyers and judges in their work, accredits law schools, provides continuing legal education, and works to build public understanding around the world of the importance of the rule of law.\",\n  \"telephone\": \"(312) 988-5214\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
       },
       {
-        "title": "Broken internal navigation links detected (2 link(s))",
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.americanbar.org/content/aba-cms-dotorg/en/about_the_aba/terms/ via cross_page_contact_comparison [2026-09-13T17:56:13Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 3129885217: found on 1 page(s); Number 3129885214: found on 1 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.americanbar.org/content/aba-cms-dotorg/en/about_the_aba/terms/",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 3129885217: found on 1 page(s); Number 3129885214: found on 1 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T17:56:13Z",
+          "confidence": "medium",
+          "evidence_id": "E-a9c87893bd03"
+        },
+        "evidence_refs": [
+          "E-a9c87893bd03"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.americanbar.org/content/aba-cms-dotorg/en/about_the_aba/terms/ via cross_page_contact_comparison [2026-09-13T17:56:13Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 3129885217: found on 1 page(s); Number 3129885214: found on 1 page(s). (Confidence: medium)\nEvidence references: E-a9c87893bd03.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Conflicting primary contact phone numbers published across site",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content governance owner",
+          "problem": "Conflicting primary contact phone numbers published across site",
+          "evidence_refs": [
+            "E-a9c87893bd03"
+          ],
+          "root_cause": "Use the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Standardize customer service and contact phone numbers.",
+            "priority": "medium",
+            "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+            "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
         "category": "navigation",
         "severity": "medium",
         "status": "confirmed",
         "confidence": "high",
         "impact": "medium",
-        "evidence": "Observed at https://www.americanbar.org/renew/?returnPath=/ via http_redirect_aware_link_checker [2026-09-13T15:41:19Z]: Sampled internal links returned broken HTTP errors: https://www.americanbar.org/renew/?returnPath=/ (HTTP 403); https://www.americanbar.org/membership/ (HTTP 403). (Confidence: high)",
+        "evidence": "Observed at https://www.americanbar.org/about_the_aba/ via http_redirect_aware_link_checker [2026-09-13T17:56:23Z]: Sampled internal links returned broken HTTP errors: https://www.americanbar.org/about_the_aba/ (HTTP 403). (Confidence: high)",
         "source_skill": "engagement-audit",
         "fingerprint": "engagement:broken-internal-links",
         "suggested_action": {
@@ -145,77 +216,108 @@
           "engagement-audit"
         ],
         "evidence_details": {
-          "url": "https://www.americanbar.org/renew/?returnPath=/",
-          "observation": "Sampled internal links returned broken HTTP errors: https://www.americanbar.org/renew/?returnPath=/ (HTTP 403); https://www.americanbar.org/membership/ (HTTP 403).",
+          "url": "https://www.americanbar.org/about_the_aba/",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.americanbar.org/about_the_aba/ (HTTP 403).",
           "method": "http_redirect_aware_link_checker",
-          "timestamp": "2026-09-13T15:41:19Z",
+          "timestamp": "2026-09-13T17:56:23Z",
           "confidence": "high",
-          "evidence_id": "E-3c7f433e009f"
+          "evidence_id": "E-a9841d8b4ecc"
         },
         "evidence_refs": [
-          "E-3c7f433e009f"
+          "E-a9841d8b4ecc"
         ],
         "id": "F-003",
-        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://www.americanbar.org/about_the_aba/ via http_redirect_aware_link_checker [2026-09-13T17:56:23Z]: Sampled internal links returned broken HTTP errors: https://www.americanbar.org/about_the_aba/ (HTTP 403). (Confidence: high)\nEvidence references: E-a9841d8b4ecc.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Broken internal navigation links detected (1 link(s))",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Broken internal navigation links detected (1 link(s))",
+          "evidence_refs": [
+            "E-a9841d8b4ecc"
+          ],
+          "root_cause": "Use the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix or redirect broken internal destination URLs.",
+            "priority": "medium",
+            "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
       }
     ],
     "access_summary": {
-      "pages_sampled": 5,
+      "pages_sampled": 4,
       "resources_observed": 0,
-      "readable_pages": 2,
+      "readable_pages": 4,
       "status_counts": {
-        "readable": 2,
-        "anti-bot-challenge": 3
+        "readable": 4
       },
       "limited": false,
       "page_selection": [
         {
-          "url": "https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/",
-          "score": 44,
+          "url": "https://www.americanbar.org/advocacy/",
+          "score": 26,
           "signals": [
-            "product_pricing:billing",
-            "product_landing:solutions",
-            "article_docs:resources",
-            "audience:solutions",
-            "listed-in-sitemap"
-          ],
-          "purpose_hint": "product_landing",
-          "source": "sitemap"
-        },
-        {
-          "url": "https://www.americanbar.org/groups/law_students/resources/student-lawyer/bar-admissions-and-exam/5-tips-to-help-you-plan-ahead-and-reduce-stress-when-applying-for-bar-admission/",
-          "score": 44,
-          "signals": [
-            "product_pricing:plan",
-            "article_docs:help,resources",
-            "contact_support:admissions",
-            "audience:students",
-            "listed-in-sitemap"
+            "article_docs:learn",
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
           ],
           "purpose_hint": "article_docs",
-          "source": "sitemap"
+          "source": "homepage-link"
         },
         {
-          "url": "https://www.americanbar.org/groups/business_law/resources/business-law-today/2026-july/mishandling-gender-identity-information-could-cost-your-life-sciences-company-millions/",
-          "score": 34,
+          "url": "https://www.americanbar.org/about_the_aba/aba_public_resources",
+          "score": 24,
           "signals": [
-            "product_pricing:cost",
             "article_docs:resources",
-            "contact_support:company",
-            "listed-in-sitemap"
+            "contact_support:about",
+            "linked-from-homepage"
           ],
           "purpose_hint": "contact_support",
-          "source": "sitemap"
+          "source": "homepage-link"
         },
         {
-          "url": "https://www.americanbar.org/groups/antitrust_law/resources/newsletters/do-vertical-partial-ownership-interest-acquisitions-create-a-pot/",
-          "score": 12,
+          "url": "https://www.americanbar.org/cart/",
+          "score": 18,
           "signals": [
-            "article_docs:resources",
-            "listed-in-sitemap"
+            "product_pricing:cart",
+            "linked-from-homepage",
+            "shallow-route"
           ],
-          "purpose_hint": "html_fragment",
-          "source": "sitemap"
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.americanbar.org/content/aba-cms-dotorg/en/about_the_aba/terms",
+          "score": 24,
+          "signals": [
+            "contact_support:about",
+            "audience:use",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
         }
       ]
     },
@@ -224,25 +326,25 @@
         "url": "https://www.americanbar.org/",
         "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
         "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:41:07Z",
+        "timestamp": "2026-09-13T17:56:13Z",
         "confidence": "high",
         "evidence_id": "E-149cbafff881"
       },
       {
-        "url": "https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/",
-        "observation": "Commercial/product page (https://www.americanbar.org/groups/gpsolo/resources/magazine/archive/tasty-solutions-timekeeping-billing-accounting/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
-        "method": "jsonld_schema_extractor",
-        "timestamp": "2026-09-13T15:41:07Z",
-        "confidence": "high",
-        "evidence_id": "E-ec9d2e9253b2"
+        "url": "https://www.americanbar.org/content/aba-cms-dotorg/en/about_the_aba/terms/",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 3129885217: found on 1 page(s); Number 3129885214: found on 1 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T17:56:13Z",
+        "confidence": "medium",
+        "evidence_id": "E-a9c87893bd03"
       },
       {
-        "url": "https://www.americanbar.org/renew/?returnPath=/",
-        "observation": "Sampled internal links returned broken HTTP errors: https://www.americanbar.org/renew/?returnPath=/ (HTTP 403); https://www.americanbar.org/membership/ (HTTP 403).",
+        "url": "https://www.americanbar.org/about_the_aba/",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.americanbar.org/about_the_aba/ (HTTP 403).",
         "method": "http_redirect_aware_link_checker",
-        "timestamp": "2026-09-13T15:41:19Z",
+        "timestamp": "2026-09-13T17:56:23Z",
         "confidence": "high",
-        "evidence_id": "E-3c7f433e009f"
+        "evidence_id": "E-a9841d8b4ecc"
       }
     ],
     "assessments": [
@@ -250,7 +352,7 @@
         "check": "page_access",
         "status": "confirmed",
         "result": "assessed",
-        "reason": "2 of 5 sampled page(s) were readable."
+        "reason": "4 of 4 sampled page(s) were readable."
       },
       {
         "check": "robots_enforcement",
@@ -304,7 +406,7 @@
       },
       {
         "title": "Add BreadcrumbList schema to deep pages",
-        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "rationale": "2 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
         "suggested_action": {
           "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
           "priority": "low",
@@ -329,18 +431,67 @@
           "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
         }
       }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.americanbar.org/ via jsonld_schema_extractor [2026-09-13T17:56:13Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-149cbafff881.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-149cbafff881"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.americanbar.org/content/aba-cms-dotorg/en/about_the_aba/terms/ via cross_page_contact_comparison [2026-09-13T17:56:13Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 3129885217: found on 1 page(s); Number 3129885214: found on 1 page(s). (Confidence: medium)\nEvidence references: E-a9c87893bd03.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-a9c87893bd03"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://www.americanbar.org/about_the_aba/ via http_redirect_aware_link_checker [2026-09-13T17:56:23Z]: Sampled internal links returned broken HTTP errors: https://www.americanbar.org/about_the_aba/ (HTTP 403). (Confidence: high)\nEvidence references: E-a9841d8b4ecc.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-a9841d8b4ecc"
+        ]
+      }
     ]
   },
   "inventory_summary": {
-    "pages_sampled": 5,
-    "readable_pages": 2,
+    "pages_sampled": 4,
+    "readable_pages": 4,
     "page_purposes": [
-      "homepage",
-      "product_pricing",
-      "unknown"
+      "contact_support",
+      "general",
+      "homepage"
     ],
-    "resource_types": [],
+    "resource_type_counts": {},
     "resources_seen": 0,
-    "access_summary": {}
+    "access_summary": {
+      "readable": 4
+    }
   }
 }
