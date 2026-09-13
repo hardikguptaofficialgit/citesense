@@ -1,0 +1,392 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "fda.gov",
+    "rank": 876,
+    "technical_type": "unknown",
+    "url": "https://fda.gov/",
+    "validation": {
+      "reason": "http-404",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:25:33.517496+00:00",
+  "finished_at": "2026-09-13T16:25:45.447629+00:00",
+  "elapsed_seconds": 11.93,
+  "error": null,
+  "report": {
+    "site": "https://www.fda.gov",
+    "audited_at": "2026-09-13T16:25:45Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 0,
+      "medium": 4,
+      "low": 0,
+      "discoverability_findings": 4,
+      "engagement_findings": 0,
+      "citability_score": 83,
+      "citability_score_breakdown": {
+        "score": 83,
+        "base": 100,
+        "penalty": 17,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 17,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "schema:root-organization-missing": 5,
+          "extractability:images-without-alt": 5,
+          "consistency:phone-number-mismatch": 2,
+          "freshness:stale-claim:2019:https://www.fda.gov/about-fda/about-website/language-assistance-services": 5
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fda.gov/ via jsonld_schema_extractor [2026-09-13T16:25:41Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"U.S. Food and Drug Administration\",\n  \"url\": \"https://www.fda.gov\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The FDA is responsible for protecting the public health by ensuring the safety, efficacy, and security of human and veterinary drugs, biological products, and medical devices; and by ensuring the safety of our nation&#039;s food supply, cosmetics, and products that products that emit radiation.\",\n  \"telephone\": \"888-463-6332\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fda.gov/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-17a321551138"
+        },
+        "evidence_refs": [
+          "E-17a321551138"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fda.gov/ via image_alt_coverage_inspection [2026-09-13T16:25:41Z]: 17 of 23 images (74%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "medium",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fda.gov/",
+          "observation": "17 of 23 images (74%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-50f96a053ed0"
+        },
+        "evidence_refs": [
+          "E-50f96a053ed0"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fda.gov/ via cross_page_contact_comparison [2026-09-13T16:25:41Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8884636332: found on 5 page(s); Number 8005377697: found on 1 page(s); Number 8003681019: found on 1 page(s); Number 8776966775: found on 1 page(s); Number 2026906343: found on 1 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.fda.gov/",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8884636332: found on 5 page(s); Number 8005377697: found on 1 page(s); Number 8003681019: found on 1 page(s); Number 8776966775: found on 1 page(s); Number 2026906343: found on 1 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "medium",
+          "evidence_id": "E-e607a6794099"
+        },
+        "evidence_refs": [
+          "E-e607a6794099"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Outdated time-sensitive claim or promotion found on active page (2019)",
+        "category": "freshness",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fda.gov/about-fda/about-website/language-assistance-services via dated_claim_temporal_analysis [2026-09-13T16:25:41Z]: Page contains active time-sensitive statement referencing 2019 (7 years old): \"current as of: 04/22/2019\". (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-claim:2019:https://www.fda.gov/about-fda/about-website/language-assistance-services",
+        "suggested_action": {
+          "summary": "Update or archive expired time-sensitive offers and claims.",
+          "priority": "medium",
+          "how_to_fix": "Review the text referencing 2019 on https://www.fda.gov/about-fda/about-website/language-assistance-services and update with current pricing/event information or remove expired promotions.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.fda.gov/about-fda/about-website/language-assistance-services",
+          "observation": "Page contains active time-sensitive statement referencing 2019 (7 years old): \"current as of: 04/22/2019\".",
+          "method": "dated_claim_temporal_analysis",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-8493d7229f22"
+        },
+        "evidence_refs": [
+          "E-8493d7229f22"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.fda.gov/about-fda/about-website/language-assistance-services",
+          "score": 24,
+          "signals": [
+            "product_landing:services",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fda.gov/about-fda/contact-fda/subscribe-podcasts-and-news-feeds",
+          "score": 24,
+          "signals": [
+            "article_docs:news",
+            "contact_support:about,contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fda.gov/about-fda",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-engineered-viral-immunotherapy-patients-treatment-resistant-advanced-melanoma",
+          "score": 24,
+          "signals": [
+            "article_docs:news",
+            "audience:patients",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.fda.gov/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-17a321551138"
+      },
+      {
+        "url": "https://www.fda.gov/",
+        "observation": "17 of 23 images (74%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-50f96a053ed0"
+      },
+      {
+        "url": "https://www.fda.gov/",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8884636332: found on 5 page(s); Number 8005377697: found on 1 page(s); Number 8003681019: found on 1 page(s); Number 8776966775: found on 1 page(s); Number 2026906343: found on 1 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "medium",
+        "evidence_id": "E-e607a6794099"
+      },
+      {
+        "url": "https://www.fda.gov/about-fda/about-website/language-assistance-services",
+        "observation": "Page contains active time-sensitive statement referencing 2019 (7 years old): \"current as of: 04/22/2019\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-8493d7229f22"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

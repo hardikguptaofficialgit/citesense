@@ -1,0 +1,238 @@
+{
+  "site": {
+    "category": "communities_forums",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "meetup.com",
+    "rank": 285,
+    "technical_type": "unknown",
+    "url": "https://meetup.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:38:21.838155+00:00",
+  "finished_at": "2026-09-13T15:38:38.287713+00:00",
+  "elapsed_seconds": 16.45,
+  "error": null,
+  "report": {
+    "site": "https://www.meetup.com",
+    "audited_at": "2026-09-13T15:38:38Z",
+    "summary": {
+      "total_findings": 1,
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1,
+      "discoverability_findings": 1,
+      "engagement_findings": 0,
+      "citability_score": 100,
+      "citability_score_breakdown": {
+        "score": 100,
+        "base": 100,
+        "penalty": 0,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "robots:training-only-blocked": 0
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 1
+      }
+    },
+    "findings": [
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://meetup.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:38:30Z]: robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://meetup.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:38:30Z",
+          "confidence": "high",
+          "evidence_id": "E-45fd8c9bb020"
+        },
+        "evidence_refs": [
+          "E-45fd8c9bb020"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.meetup.com/blog/do-you-have-the-right-number-of-friends/",
+          "score": 24,
+          "signals": [
+            "article_docs:blog,help,learn",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.meetup.com/about/",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.meetup.com/blog/",
+          "score": 16,
+          "signals": [
+            "article_docs:blog",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.meetup.com/find/?location=in--Bhubaneswar",
+          "score": 16,
+          "signals": [
+            "contact_support:location",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://meetup.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (GPTBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:38:30Z",
+        "confidence": "high",
+        "evidence_id": "E-45fd8c9bb020"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "general",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

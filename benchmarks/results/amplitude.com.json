@@ -1,0 +1,472 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "amplitude.com",
+    "rank": 547,
+    "technical_type": "unknown",
+    "url": "https://amplitude.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:53:55.859907+00:00",
+  "finished_at": "2026-09-13T15:54:21.596193+00:00",
+  "elapsed_seconds": 25.736,
+  "error": null,
+  "report": {
+    "site": "https://amplitude.com",
+    "audited_at": "2026-09-13T15:54:21Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 2,
+      "medium": 1,
+      "low": 3,
+      "discoverability_findings": 3,
+      "engagement_findings": 3,
+      "citability_score": 69,
+      "citability_score_breakdown": {
+        "score": 69,
+        "base": 100,
+        "penalty": 31,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 5,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/pricing": 12,
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "robots:training-only-blocked": 0,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://amplitude.com/pricing?siteLocation=nav via jsonld_schema_extractor [2026-09-13T15:54:09Z]: Commercial/product page (https://amplitude.com/pricing?siteLocation=nav) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/pricing",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Pricing\",\n  \"url\": \"https://amplitude.com/pricing?siteLocation=nav\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Amplitude\"\n  },\n  \"description\": \"Find the plan that&#x27;s right for you to start growing your business and building better products and experiences with Amplitude&#x27;s digital analytics platform.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://amplitude.com/pricing?siteLocation=nav\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://amplitude.com/pricing?siteLocation=nav",
+          "observation": "Commercial/product page (https://amplitude.com/pricing?siteLocation=nav) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:54:09Z",
+          "confidence": "high",
+          "evidence_id": "E-f71e41b8841a"
+        },
+        "evidence_refs": [
+          "E-f71e41b8841a"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://amplitude.com/3x?siteLocation=homepage_featured_resources via heading_structure_inspection [2026-09-13T15:54:09Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://amplitude.com/3x?siteLocation=homepage_featured_resources",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:54:09Z",
+          "confidence": "high",
+          "evidence_id": "E-8f1ca8a3db90"
+        },
+        "evidence_refs": [
+          "E-8f1ca8a3db90"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://amplitude.com/ via jsonld_schema_extractor [2026-09-13T15:54:09Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Amplitude\",\n  \"url\": \"https://amplitude.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"From analytics to feedback to code, Amplitude brings AI into every step of building self-improving products. Start free with 2M events per month.\",\n  \"email\": \"devex@amplitude.com\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://amplitude.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:54:09Z",
+          "confidence": "high",
+          "evidence_id": "E-b5cc758c708b"
+        },
+        "evidence_refs": [
+          "E-b5cc758c708b"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://amplitude.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:54:09Z]: robots.txt disallows root '/' for training crawlers (Bytespider) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://amplitude.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (Bytespider) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:54:09Z",
+          "confidence": "high",
+          "evidence_id": "E-6d357237bbb3"
+        },
+        "evidence_refs": [
+          "E-6d357237bbb3"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://amplitude.com/resources/forrester-wave-digital-analytics-solutions?siteLocation=homepage_featured_resources via breadcrumb_markup_inspector [2026-09-13T15:54:09Z]: Page at deep route (/resources/forrester-wave-digital-analytics-solutions) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://amplitude.com/resources/forrester-wave-digital-analytics-solutions?siteLocation=homepage_featured_resources",
+          "observation": "Page at deep route (/resources/forrester-wave-digital-analytics-solutions) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:54:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-e0e674383d5a"
+        },
+        "evidence_refs": [
+          "E-e0e674383d5a"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://amplitude.com via search_affordance_detection [2026-09-13T15:54:09Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://amplitude.com",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:54:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-4838ee01dc95"
+        },
+        "evidence_refs": [
+          "E-4838ee01dc95"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://amplitude.com/ai-feedback?siteLocation=homepage_platform_cards",
+          "score": 36,
+          "signals": [
+            "product_landing:platform",
+            "article_docs:learn",
+            "audience:customers",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://amplitude.com/resources/forrester-wave-digital-analytics-solutions?siteLocation=homepage_featured_resources",
+          "score": 34,
+          "signals": [
+            "product_landing:solutions",
+            "article_docs:resources",
+            "audience:solutions",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://amplitude.com/3x?siteLocation=homepage_featured_resources",
+          "score": 26,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:team",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://amplitude.com/pricing?siteLocation=nav",
+          "score": 18,
+          "signals": [
+            "product_pricing:pricing",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://amplitude.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (Bytespider) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:54:09Z",
+        "confidence": "high",
+        "evidence_id": "E-6d357237bbb3"
+      },
+      {
+        "url": "https://amplitude.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:54:09Z",
+        "confidence": "high",
+        "evidence_id": "E-b5cc758c708b"
+      },
+      {
+        "url": "https://amplitude.com/pricing?siteLocation=nav",
+        "observation": "Commercial/product page (https://amplitude.com/pricing?siteLocation=nav) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:54:09Z",
+        "confidence": "high",
+        "evidence_id": "E-f71e41b8841a"
+      },
+      {
+        "url": "https://amplitude.com/resources/forrester-wave-digital-analytics-solutions?siteLocation=homepage_featured_resources",
+        "observation": "Page at deep route (/resources/forrester-wave-digital-analytics-solutions) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:54:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-e0e674383d5a"
+      },
+      {
+        "url": "https://amplitude.com/3x?siteLocation=homepage_featured_resources",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:54:09Z",
+        "confidence": "high",
+        "evidence_id": "E-8f1ca8a3db90"
+      },
+      {
+        "url": "https://amplitude.com",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:54:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-4838ee01dc95"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Amplitude is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "general",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

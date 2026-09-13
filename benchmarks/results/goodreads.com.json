@@ -1,0 +1,543 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "goodreads.com",
+    "rank": 652,
+    "technical_type": "unknown",
+    "url": "https://goodreads.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:02:30.159545+00:00",
+  "finished_at": "2026-09-13T16:03:10.137930+00:00",
+  "elapsed_seconds": 39.978,
+  "error": null,
+  "report": {
+    "site": "https://www.goodreads.com",
+    "audited_at": "2026-09-13T16:03:10Z",
+    "summary": {
+      "total_findings": 7,
+      "critical": 0,
+      "high": 3,
+      "medium": 2,
+      "low": 2,
+      "discoverability_findings": 3,
+      "engagement_findings": 4,
+      "citability_score": 59,
+      "citability_score_breakdown": {
+        "score": 59,
+        "base": 100,
+        "penalty": 41,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 30,
+          "medium": 10,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "render:empty-raw-html-gap:/s/": 6,
+          "engagement:missing-h1": 12,
+          "engagement:missing-viewport-meta": 12,
+          "schema:root-organization-missing": 5,
+          "engagement:broken-internal-links": 5,
+          "robots:training-only-blocked": 0,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 7
+      }
+    },
+    "findings": [
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://help.goodreads.com/s/ via static_initial_html_shell_inspection [2026-09-13T16:02:51Z]: Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/s/",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://help.goodreads.com/s/",
+          "observation": "Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T16:02:51Z",
+          "confidence": "medium",
+          "evidence_id": "E-dab53c0818ab"
+        },
+        "evidence_refs": [
+          "E-dab53c0818ab"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.goodreads.com/ via heading_structure_inspection [2026-09-13T16:02:51Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.goodreads.com/news?content_type=author_blogs via heading_structure_inspection [2026-09-13T16:02:51Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.goodreads.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:02:51Z",
+          "confidence": "high",
+          "evidence_id": "E-90271e51bc83"
+        },
+        "evidence_refs": [
+          "E-90271e51bc83",
+          "E-eafe60c30fc9"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.goodreads.com/ via mobile_viewport_inspector [2026-09-13T16:02:51Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.goodreads.com/news?content_type=author_blogs via mobile_viewport_inspector [2026-09-13T16:02:51Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.goodreads.com/",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T16:02:51Z",
+          "confidence": "high",
+          "evidence_id": "E-ff9363221495"
+        },
+        "evidence_refs": [
+          "E-edf26a8713ea",
+          "E-ff9363221495"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.goodreads.com/ via jsonld_schema_extractor [2026-09-13T16:02:51Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Goodreads\",\n  \"url\": \"https://www.goodreads.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Find and read more books you’ll love, and keep track of the books you want to read. Be part of the world’s largest community of book lovers on Goodreads.\",\n  \"telephone\": \"(415) 373-1500\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.goodreads.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:02:51Z",
+          "confidence": "high",
+          "evidence_id": "E-a68c6198f0f8"
+        },
+        "evidence_refs": [
+          "E-a68c6198f0f8"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (3 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.goodreads.com/ap/signin?identityProvider=LoginWithAmazon&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_lwa&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DLoginWithAmazon&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D via http_redirect_aware_link_checker [2026-09-13T16:03:10Z]: Sampled internal links returned broken HTTP errors: https://www.goodreads.com/ap/signin?identityProvider=LoginWithAmazon&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_lwa&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DLoginWithAmazon&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400); https://www.goodreads.com/ap/signin?identityProvider=APPLE&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_apple&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DAPPLE&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400); https://www.goodreads.com/ap/register?language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_na&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fregister&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.goodreads.com/ap/signin?identityProvider=LoginWithAmazon&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_lwa&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DLoginWithAmazon&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.goodreads.com/ap/signin?identityProvider=LoginWithAmazon&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_lwa&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DLoginWithAmazon&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400); https://www.goodreads.com/ap/signin?identityProvider=APPLE&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_apple&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DAPPLE&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400); https://www.goodreads.com/ap/register?language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_na&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fregister&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T16:03:10Z",
+          "confidence": "high",
+          "evidence_id": "E-9d3ab59df026"
+        },
+        "evidence_refs": [
+          "E-9d3ab59df026"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://goodreads.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T16:02:51Z]: robots.txt disallows root '/' for training crawlers (GPTBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://goodreads.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T16:02:51Z",
+          "confidence": "high",
+          "evidence_id": "E-9128de9e705c"
+        },
+        "evidence_refs": [
+          "E-9128de9e705c"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.goodreads.com/about/terms via breadcrumb_markup_inspector [2026-09-13T16:02:51Z]: Page at deep route (/about/terms) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.goodreads.com/about/privacy via breadcrumb_markup_inspector [2026-09-13T16:02:51Z]: Page at deep route (/about/privacy) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.goodreads.com/about/terms",
+          "observation": "Page at deep route (/about/terms) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T16:02:51Z",
+          "confidence": "medium",
+          "evidence_id": "E-3de7afe590c7"
+        },
+        "evidence_refs": [
+          "E-20e719d7a141",
+          "E-3de7afe590c7"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.goodreads.com/about/terms",
+          "score": 24,
+          "signals": [
+            "product_landing:service",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.goodreads.com/help?action_type=help_web_footer",
+          "score": 16,
+          "signals": [
+            "article_docs:help",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.goodreads.com/about/privacy",
+          "score": 14,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.goodreads.com/news?content_type=author_blogs",
+          "score": 16,
+          "signals": [
+            "article_docs:blog,news",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://goodreads.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "high",
+        "evidence_id": "E-9128de9e705c"
+      },
+      {
+        "url": "https://www.goodreads.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "high",
+        "evidence_id": "E-a68c6198f0f8"
+      },
+      {
+        "url": "https://help.goodreads.com/s/",
+        "observation": "Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-dab53c0818ab"
+      },
+      {
+        "url": "https://www.goodreads.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "high",
+        "evidence_id": "E-90271e51bc83"
+      },
+      {
+        "url": "https://www.goodreads.com/",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "high",
+        "evidence_id": "E-ff9363221495"
+      },
+      {
+        "url": "https://www.goodreads.com/about/terms",
+        "observation": "Page at deep route (/about/terms) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-3de7afe590c7"
+      },
+      {
+        "url": "https://www.goodreads.com/about/privacy",
+        "observation": "Page at deep route (/about/privacy) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-20e719d7a141"
+      },
+      {
+        "url": "https://www.goodreads.com/news?content_type=author_blogs",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "high",
+        "evidence_id": "E-eafe60c30fc9"
+      },
+      {
+        "url": "https://www.goodreads.com/news?content_type=author_blogs",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T16:02:51Z",
+        "confidence": "high",
+        "evidence_id": "E-edf26a8713ea"
+      },
+      {
+        "url": "https://www.goodreads.com/ap/signin?identityProvider=LoginWithAmazon&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_lwa&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DLoginWithAmazon&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.goodreads.com/ap/signin?identityProvider=LoginWithAmazon&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_lwa&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DLoginWithAmazon&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400); https://www.goodreads.com/ap/signin?identityProvider=APPLE&amp;language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_apple&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fsign-in%3FIDP%3DAPPLE&amp;relyingParty=GOODREADS&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400); https://www.goodreads.com/ap/register?language=en_US&amp;openid.assoc_handle=amzn_goodreads_web_na&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;openid.return_to=https%3A%2F%2Fwww.goodreads.com%2Fap-handler%2Fregister&amp;siteState=eyJyZXR1cm5fdXJsIjoiaHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS8ifQ%3D%3D (HTTP 400).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T16:03:10Z",
+        "confidence": "high",
+        "evidence_id": "E-9d3ab59df026"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Goodreads is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "2 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

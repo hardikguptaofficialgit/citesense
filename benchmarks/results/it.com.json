@@ -1,0 +1,367 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "it.com",
+    "rank": 943,
+    "technical_type": "unknown",
+    "url": "https://it.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:32:02.612071+00:00",
+  "finished_at": "2026-09-13T16:32:17.476444+00:00",
+  "elapsed_seconds": 14.864,
+  "error": null,
+  "report": {
+    "site": "https://get.it.com",
+    "audited_at": "2026-09-13T16:32:17Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 3,
+      "engagement_findings": 1,
+      "citability_score": 84,
+      "citability_score_breakdown": {
+        "score": 84,
+        "base": 100,
+        "penalty": 16,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 15,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "schema:missing-required-fields": 5,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://get.it.com/sitemap.xml via http_get_sitemap_check [2026-09-13T16:32:11Z]: Request to https://get.it.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://get.it.com/sitemap.xml",
+          "observation": "Request to https://get.it.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T16:32:11Z",
+          "confidence": "high",
+          "evidence_id": "E-5f41be5e4ce6"
+        },
+        "evidence_refs": [
+          "E-5f41be5e4ce6"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://get.it.com/ via jsonld_schema_extractor [2026-09-13T16:32:11Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"IT.COM\",\n  \"url\": \"https://get.it.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Why choose IT.COM? Reasonable price just $49 for each regular domain. Free SSL and Cloudflare support. High recognition of IT.COM zone and solid SEO benefits.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://get.it.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:32:11Z",
+          "confidence": "high",
+          "evidence_id": "E-54f678558e9c"
+        },
+        "evidence_refs": [
+          "E-54f678558e9c"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://get.it.com/blog/ via schema_field_validator [2026-09-13T16:32:11Z]: Schema entities are missing required properties: Organization missing url. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://get.it.com/blog/",
+          "observation": "Schema entities are missing required properties: Organization missing url.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T16:32:11Z",
+          "confidence": "high",
+          "evidence_id": "E-60044c3e91c1"
+        },
+        "evidence_refs": [
+          "E-60044c3e91c1"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://get.it.com via search_affordance_detection [2026-09-13T16:32:11Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://get.it.com",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T16:32:11Z",
+          "confidence": "medium",
+          "evidence_id": "E-68f7655860f2"
+        },
+        "evidence_refs": [
+          "E-68f7655860f2"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 1,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://get.it.com/about",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://get.it.com/blog/",
+          "score": 16,
+          "signals": [
+            "article_docs:blog",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://get.it.com/terms-of-service",
+          "score": 16,
+          "signals": [
+            "product_landing:service",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://get.it.com/faq",
+          "score": 16,
+          "signals": [
+            "article_docs:faq",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://get.it.com/sitemap.xml",
+        "observation": "Request to https://get.it.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T16:32:11Z",
+        "confidence": "high",
+        "evidence_id": "E-5f41be5e4ce6"
+      },
+      {
+        "url": "https://get.it.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:32:11Z",
+        "confidence": "high",
+        "evidence_id": "E-54f678558e9c"
+      },
+      {
+        "url": "https://get.it.com/blog/",
+        "observation": "Schema entities are missing required properties: Organization missing url.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:32:11Z",
+        "confidence": "high",
+        "evidence_id": "E-60044c3e91c1"
+      },
+      {
+        "url": "https://get.it.com",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T16:32:11Z",
+        "confidence": "medium",
+        "evidence_id": "E-68f7655860f2"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "robots.txt was unavailable; no robots policy could be evaluated."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_types": [
+      "pdf"
+    ],
+    "resources_seen": 1,
+    "access_summary": {}
+  }
+}

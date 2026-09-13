@@ -1,0 +1,757 @@
+{
+  "site": {
+    "category": "ecommerce",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "walmart.com",
+    "rank": 14,
+    "technical_type": "unknown",
+    "url": "https://walmart.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:34:19.032047+00:00",
+  "finished_at": "2026-09-13T17:34:44.449723+00:00",
+  "elapsed_seconds": 25.418,
+  "error": null,
+  "report": {
+    "site": "https://www.walmart.com",
+    "audited_at": "2026-09-13T17:34:44Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 3,
+      "discoverability_findings": 6,
+      "engagement_findings": 0,
+      "citability_score": 90,
+      "citability_score_breakdown": {
+        "score": 90,
+        "base": 100,
+        "penalty": 10,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 6,
+          "low": 4
+        },
+        "penalty_by_root_cause": {
+          "citation:unanswerable:offering": 2,
+          "citation:unanswerable:contact": 2,
+          "trust:no-independent-identity-anchor": 2,
+          "schema:organization-missing-sameas": 2,
+          "citation:unanswerable:audience": 1,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "No extractable answer on-site for \"What does Walmart offer?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Walmart offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:offering",
+        "suggested_action": {
+          "summary": "Mark up the product or service catalogue.",
+          "priority": "medium",
+          "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b",
+          "observation": "Across 2 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Walmart offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:34:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-3111aa2d48aa"
+        },
+        "evidence_refs": [
+          "E-3111aa2d48aa"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What does Walmart offer?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Walmart offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-3111aa2d48aa.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What does Walmart offer?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "No extractable answer on-site for \"What does Walmart offer?\"",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What does Walmart offer?\"",
+          "evidence_refs": [
+            "E-3111aa2d48aa"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What does Walmart offer?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Mark up the product or service catalogue.",
+            "priority": "medium",
+            "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"How do I contact Walmart?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.walmart.com/ via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Walmart?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:contact",
+        "suggested_action": {
+          "summary": "Expose a contact route as machine-readable text.",
+          "priority": "medium",
+          "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.walmart.com/",
+          "observation": "Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Walmart?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:34:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-084cacf29c7a"
+        },
+        "evidence_refs": [
+          "E-084cacf29c7a"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"How do I contact Walmart?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/ via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Walmart?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-084cacf29c7a.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"How do I contact Walmart?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "No extractable answer on-site for \"How do I contact Walmart?\"",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"How do I contact Walmart?\"",
+          "evidence_refs": [
+            "E-084cacf29c7a"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"How do I contact Walmart?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Expose a contact route as machine-readable text.",
+            "priority": "medium",
+            "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.walmart.com via onsite_identity_anchor_inspection [2026-09-13T17:34:44Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.walmart.com",
+          "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T17:34:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-7fc030b74848"
+        },
+        "evidence_refs": [
+          "E-7fc030b74848"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.walmart.com via onsite_identity_anchor_inspection [2026-09-13T17:34:44Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-7fc030b74848.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-7fc030b74848"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+        "category": "structured-data",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.walmart.com/ via jsonld_schema_extractor [2026-09-13T17:34:34Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:organization-missing-sameas",
+        "suggested_action": {
+          "summary": "Add sameAs URLs to Organization JSON-LD.",
+          "priority": "low",
+          "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Walmart\",\n  \"url\": \"https://www.walmart.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Shop Walmart.com today for Every Day Low Prices. Join Walmart+ for unlimited free delivery from your store &amp; free shipping with no order minimum. Start your free 30-day trial now!\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.walmart.com/",
+          "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:34:34Z",
+          "confidence": "high",
+          "evidence_id": "E-7a2b43aa5e03"
+        },
+        "evidence_refs": [
+          "E-7a2b43aa5e03"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.walmart.com/ via jsonld_schema_extractor [2026-09-13T17:34:34Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-7a2b43aa5e03.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "evidence_refs": [
+            "E-7a2b43aa5e03"
+          ],
+          "root_cause": "Use the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add sameAs URLs to Organization JSON-LD.",
+            "priority": "low",
+            "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Walmart\",\n  \"url\": \"https://www.walmart.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Shop Walmart.com today for Every Day Low Prices. Join Walmart+ for unlimited free delivery from your store &amp; free shipping with no order minimum. Start your free 30-day trial now!\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"Who is Walmart for?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Walmart for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:audience",
+        "suggested_action": {
+          "summary": "State the intended audience in plain language.",
+          "priority": "low",
+          "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b",
+          "observation": "Across 2 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Walmart for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:34:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-2d6969df3788"
+        },
+        "evidence_refs": [
+          "E-2d6969df3788"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"Who is Walmart for?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Walmart for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-2d6969df3788.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"Who is Walmart for?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "No extractable answer on-site for \"Who is Walmart for?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"Who is Walmart for?\"",
+          "evidence_refs": [
+            "E-2d6969df3788"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"Who is Walmart for?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "State the intended audience in plain language.",
+            "priority": "low",
+            "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes Walmart different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.walmart.com/ via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Walmart different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.walmart.com/",
+          "observation": "Across 2 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Walmart different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:34:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-ca21383cdbb5"
+        },
+        "evidence_refs": [
+          "E-ca21383cdbb5"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Walmart different?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/ via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Walmart different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-ca21383cdbb5.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Walmart different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No extractable answer on-site for \"What makes Walmart different?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What makes Walmart different?\"",
+          "evidence_refs": [
+            "E-ca21383cdbb5"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What makes Walmart different?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Make the brand's differentiator explicit and quotable.",
+            "priority": "low",
+            "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 2,
+      "status_counts": {
+        "readable": 2,
+        "anti-bot-challenge": 3
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.walmart.com/help",
+          "score": 16,
+          "signals": [
+            "article_docs:help",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.walmart.com/brand/branddirectory",
+          "score": 14,
+          "signals": [
+            "product_landing:shop",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.walmart.com/privacyrequest",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.walmart.com/ip/SANOPY-10-x-30-FT-Pop-Canopy-Large-Commercial-Wedding-Canopy-Height-Adjustable-Waterproof-Beach-Canopy-Outdoor-Instant-Party-Tent-8-Removable-Sidewal/3229881529?athAsset=eyJhdGhjcGlkIjoiMzIyOTg4MTUyOSIsImF0aHN0aWQiOiJDUzAyMCIsImF0aGFuY2lkIjoiSXRlbUNhcm91c2VsIiwiYXRocmsiOjAuMH0=&amp;athena=true&amp;athbdg=L1700",
+          "score": 16,
+          "signals": [
+            "product_pricing:price",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.walmart.com/",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:34:34Z",
+        "confidence": "high",
+        "evidence_id": "E-7a2b43aa5e03"
+      },
+      {
+        "url": "https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b",
+        "observation": "Across 2 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Walmart offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:34:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-3111aa2d48aa"
+      },
+      {
+        "url": "https://www.walmart.com/",
+        "observation": "Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Walmart?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:34:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-084cacf29c7a"
+      },
+      {
+        "url": "https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b",
+        "observation": "Across 2 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Walmart for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:34:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-2d6969df3788"
+      },
+      {
+        "url": "https://www.walmart.com/",
+        "observation": "Across 2 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Walmart different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:34:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-ca21383cdbb5"
+      },
+      {
+        "url": "https://www.walmart.com",
+        "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T17:34:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-7fc030b74848"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "2 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Walmart is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What does Walmart offer?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Walmart offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-3111aa2d48aa.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What does Walmart offer?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-3111aa2d48aa"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"How do I contact Walmart?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/ via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Walmart?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-084cacf29c7a.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"How do I contact Walmart?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-084cacf29c7a"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.walmart.com via onsite_identity_anchor_inspection [2026-09-13T17:34:44Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-7fc030b74848.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-7fc030b74848"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.walmart.com/ via jsonld_schema_extractor [2026-09-13T17:34:34Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-7a2b43aa5e03.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-7a2b43aa5e03"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"Who is Walmart for?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/blocked?url=L2JyYW5kL2JyYW5kZGlyZWN0b3J5&uuid=5eadb86a-af99-11f1-b43b-0656d0469070&vid=&g=b via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Walmart for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-2d6969df3788.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"Who is Walmart for?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-2d6969df3788"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Walmart different?\".\n\nEVIDENCE\nObserved at https://www.walmart.com/ via onsite_answerability_probe [2026-09-13T17:34:44Z]: Across 2 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Walmart different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-ca21383cdbb5.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Walmart different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-ca21383cdbb5"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 2,
+    "page_purposes": [
+      "general",
+      "homepage",
+      "unknown"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 2,
+      "anti-bot-challenge": 3
+    }
+  }
+}

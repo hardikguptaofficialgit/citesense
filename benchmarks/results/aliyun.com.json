@@ -1,0 +1,787 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "aliyun.com",
+    "rank": 580,
+    "technical_type": "unknown",
+    "url": "https://aliyun.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:56:30.037961+00:00",
+  "finished_at": "2026-09-13T15:57:10.119782+00:00",
+  "elapsed_seconds": 40.082,
+  "error": null,
+  "report": {
+    "site": "https://www.alibabacloud.com",
+    "audited_at": "2026-09-13T15:57:10Z",
+    "summary": {
+      "total_findings": 12,
+      "critical": 0,
+      "high": 4,
+      "medium": 4,
+      "low": 4,
+      "discoverability_findings": 5,
+      "engagement_findings": 7,
+      "citability_score": 33,
+      "citability_score_breakdown": {
+        "score": 33,
+        "base": 100,
+        "penalty": 67,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 48,
+          "medium": 14,
+          "low": 5
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/en/pricing-calculator": 12,
+          "engagement:missing-h1": 12,
+          "engagement:missing-cta:/en/pricing-calculator": 12,
+          "engagement:missing-viewport-meta": 12,
+          "schema:root-organization-missing": 5,
+          "engagement:few-internal-links": 2,
+          "engagement:deep-pages-anonymous": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "freshness:stale-copyright": 2,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:no-site-search": 1,
+          "citation:unanswerable:audience": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 12
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1 via jsonld_schema_extractor [2026-09-13T15:56:58Z]: Commercial/product page (https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/en/pricing-calculator",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Alibaba Cloud Product Price Calculator\",\n  \"url\": \"https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"AlibabaCloud\"\n  },\n  \"description\": \"Alibaba Cloud product price calculator,product promotion:Elastic Computing,Database Services,Networking,Storage &amp; CDN,Analytics &amp; Big Data,Security,Domains &amp; Websites,Middleware,Cloud communication and so on.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+          "observation": "Commercial/product page (https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "high",
+          "evidence_id": "E-96a02cc89349"
+        },
+        "evidence_refs": [
+          "E-96a02cc89349"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA= via heading_structure_inspection [2026-09-13T15:56:58Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget via heading_structure_inspection [2026-09-13T15:56:58Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1 via heading_structure_inspection [2026-09-13T15:56:58Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.alibabacloud.com/en/about?_p_lc=1 via heading_structure_inspection [2026-09-13T15:56:58Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "high",
+          "evidence_id": "E-b3dd15fa6625"
+        },
+        "evidence_refs": [
+          "E-1b06d8983be1",
+          "E-af2803709f50",
+          "E-b3dd15fa6625",
+          "E-f42c9c974014"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Pricing page lacks clear call-to-action buttons or interactive forms",
+        "category": "navigation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1 via interactive_element_analysis [2026-09-13T15:56:58Z]: Page classified as 'product_pricing' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-cta:/en/pricing-calculator",
+        "suggested_action": {
+          "summary": "Add prominent primary call-to-action (CTA) buttons.",
+          "priority": "high",
+          "how_to_fix": "Add visually distinct CTA buttons (e.g. 'Get Started', 'View Pricing', 'Contact Sales') above and below the fold.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+          "observation": "Page classified as 'product_pricing' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+          "method": "interactive_element_analysis",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "high",
+          "evidence_id": "E-ba055195801d"
+        },
+        "evidence_refs": [
+          "E-ba055195801d"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1 via mobile_viewport_inspector [2026-09-13T15:56:58Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "high",
+          "evidence_id": "E-58c92f4eb047"
+        },
+        "evidence_refs": [
+          "E-58c92f4eb047"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA= via jsonld_schema_extractor [2026-09-13T15:56:58Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"AlibabaCloud\",\n  \"url\": \"https://www.alibabacloud.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Alibaba Cloud is one of the world\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "high",
+          "evidence_id": "E-15aef8c9360e"
+        },
+        "evidence_refs": [
+          "E-15aef8c9360e"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Isolated page with insufficient internal navigation links",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget via internal_link_density_check [2026-09-13T15:56:58Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1 via internal_link_density_check [2026-09-13T15:56:58Z]: Page contains only 1 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:few-internal-links",
+        "suggested_action": {
+          "summary": "Incorporate related internal links and header/footer navigation.",
+          "priority": "medium",
+          "how_to_fix": "Add links to relevant documentation, related products, or category overview pages.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+          "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+          "method": "internal_link_density_check",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "medium",
+          "evidence_id": "E-bfbbbf397ebf"
+        },
+        "evidence_refs": [
+          "E-0fd1cc2ed27b",
+          "E-bfbbbf397ebf"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep pages never identify the brand, leaving cold arrivals unoriented",
+        "category": "orientation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget via cold_arrival_brand_mention_check [2026-09-13T15:56:58Z]: 1 deep page(s) contain no mention of \"AlibabaCloud\" in the title or body text (e.g. https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:deep-pages-anonymous",
+        "suggested_action": {
+          "summary": "Name the brand in the header, title and footer of every page.",
+          "priority": "medium",
+          "how_to_fix": "Include the brand name in the <title> of every page and in a persistent header or footer, so a page that is the visitor's first contact still identifies its owner.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+          "observation": "1 deep page(s) contain no mention of \"AlibabaCloud\" in the title or body text (e.g. https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+          "method": "cold_arrival_brand_mention_check",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "high",
+          "evidence_id": "E-93b769a075ab"
+        },
+        "evidence_refs": [
+          "E-93b769a075ab"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.alibabacloud.com via onsite_identity_anchor_inspection [2026-09-13T15:57:10Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 32 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 32 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T15:57:10Z",
+          "confidence": "medium",
+          "evidence_id": "E-9c858a8729c4"
+        },
+        "evidence_refs": [
+          "E-9c858a8729c4"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Stale copyright notice (2009) in site footer template",
+        "category": "freshness",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA= via copyright_year_detector [2026-09-13T15:56:58Z]: Footer copyright notice resolves to 2009 (gap of 17 years) on 2 crawled page(s): https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=, https://www.alibabacloud.com/en/about?_p_lc=1. Year ranges such as '2005-2026' are read as current and not flagged. (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-copyright",
+        "suggested_action": {
+          "summary": "Update the site footer copyright year.",
+          "priority": "low",
+          "how_to_fix": "Update the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=",
+          "observation": "Footer copyright notice resolves to 2009 (gap of 17 years) on 2 crawled page(s): https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=, https://www.alibabacloud.com/en/about?_p_lc=1. Year ranges such as '2005-2026' are read as current and not flagged.",
+          "method": "copyright_year_detector",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "high",
+          "evidence_id": "E-d032a4151008"
+        },
+        "evidence_refs": [
+          "E-d032a4151008"
+        ],
+        "id": "F-009",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget via breadcrumb_markup_inspector [2026-09-13T15:56:58Z]: Page at deep route (/en/ai-assistant) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1 via breadcrumb_markup_inspector [2026-09-13T15:56:58Z]: Page at deep route (/en/pricing-calculator) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.alibabacloud.com/en/about?_p_lc=1 via breadcrumb_markup_inspector [2026-09-13T15:56:58Z]: Page at deep route (/en/about) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+          "observation": "Page at deep route (/en/ai-assistant) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "medium",
+          "evidence_id": "E-a80d658bb52f"
+        },
+        "evidence_refs": [
+          "E-11a001de75d9",
+          "E-a80d658bb52f",
+          "E-dbbff8f861cc"
+        ],
+        "id": "F-010",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.alibabacloud.com via search_affordance_detection [2026-09-13T15:56:58Z]: None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com",
+          "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:56:58Z",
+          "confidence": "medium",
+          "evidence_id": "E-2aae60c54002"
+        },
+        "evidence_refs": [
+          "E-2aae60c54002"
+        ],
+        "id": "F-011",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"Who is AlibabaCloud for?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget via onsite_answerability_probe [2026-09-13T15:57:10Z]: Across 4 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is AlibabaCloud for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:audience",
+        "suggested_action": {
+          "summary": "State the intended audience in plain language.",
+          "priority": "low",
+          "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+          "observation": "Across 4 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is AlibabaCloud for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:57:10Z",
+          "confidence": "medium",
+          "evidence_id": "E-a838683fa1a4"
+        },
+        "evidence_refs": [
+          "E-a838683fa1a4"
+        ],
+        "id": "F-012",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4,
+        "anti-bot-challenge": 1
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.alibabacloud.com/ai-assistant?displayMode=widget",
+          "score": 36,
+          "signals": [
+            "product_landing:solutions",
+            "article_docs:help",
+            "audience:solutions",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.alibabacloud.com/pricing-calculator",
+          "score": 18,
+          "signals": [
+            "product_pricing:pricing",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.alibabacloud.com/about",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.alibabacloud.com/help",
+          "score": 16,
+          "signals": [
+            "article_docs:docs,help",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-15aef8c9360e"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+        "observation": "Commercial/product page (https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-96a02cc89349"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=",
+        "observation": "Footer copyright notice resolves to 2009 (gap of 17 years) on 2 crawled page(s): https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=, https://www.alibabacloud.com/en/about?_p_lc=1. Year ranges such as '2005-2026' are read as current and not flagged.",
+        "method": "copyright_year_detector",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-d032a4151008"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en?_p_lc=1&f-8DC992C756BA=",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-b3dd15fa6625"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-f42c9c974014"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+        "method": "internal_link_density_check",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "medium",
+        "evidence_id": "E-bfbbbf397ebf"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+        "observation": "Page at deep route (/en/ai-assistant) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "medium",
+        "evidence_id": "E-a80d658bb52f"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-af2803709f50"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+        "observation": "Page classified as 'product_pricing' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+        "method": "interactive_element_analysis",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-ba055195801d"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+        "observation": "Page contains only 1 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+        "method": "internal_link_density_check",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "medium",
+        "evidence_id": "E-0fd1cc2ed27b"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+        "observation": "Page at deep route (/en/pricing-calculator) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "medium",
+        "evidence_id": "E-11a001de75d9"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-58c92f4eb047"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/about?_p_lc=1",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-1b06d8983be1"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/about?_p_lc=1",
+        "observation": "Page at deep route (/en/about) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "medium",
+        "evidence_id": "E-dbbff8f861cc"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+        "observation": "1 deep page(s) contain no mention of \"AlibabaCloud\" in the title or body text (e.g. https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+        "method": "cold_arrival_brand_mention_check",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "high",
+        "evidence_id": "E-93b769a075ab"
+      },
+      {
+        "url": "https://www.alibabacloud.com",
+        "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:56:58Z",
+        "confidence": "medium",
+        "evidence_id": "E-2aae60c54002"
+      },
+      {
+        "url": "https://www.alibabacloud.com/en/ai-assistant?_p_lc=1&displayMode=widget",
+        "observation": "Across 4 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is AlibabaCloud for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:57:10Z",
+        "confidence": "medium",
+        "evidence_id": "E-a838683fa1a4"
+      },
+      {
+        "url": "https://www.alibabacloud.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 32 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T15:57:10Z",
+        "confidence": "medium",
+        "evidence_id": "E-9c858a8729c4"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so AlibabaCloud is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 4,
+    "page_purposes": [
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "product_pricing",
+      "unknown"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

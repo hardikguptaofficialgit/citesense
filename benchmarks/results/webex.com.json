@@ -1,0 +1,479 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "webex.com",
+    "rank": 486,
+    "technical_type": "unknown",
+    "url": "https://webex.com/",
+    "validation": {
+      "reason": "http-403",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:49:21.074455+00:00",
+  "finished_at": "2026-09-13T15:49:44.156729+00:00",
+  "elapsed_seconds": 23.082,
+  "error": null,
+  "report": {
+    "site": "https://www.webex.com",
+    "audited_at": "2026-09-13T15:49:44Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 3,
+      "discoverability_findings": 2,
+      "engagement_findings": 3,
+      "citability_score": 79,
+      "citability_score_breakdown": {
+        "score": 79,
+        "base": 100,
+        "penalty": 21,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 5,
+          "low": 4
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "extractability:images-without-alt": 2,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.webex.com/us/en/adopt/index.html via heading_structure_inspection [2026-09-13T15:49:36Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.webex.com/us/en/adopt/index.html",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:49:36Z",
+          "confidence": "high",
+          "evidence_id": "E-8b45eb705923"
+        },
+        "evidence_refs": [
+          "E-8b45eb705923"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.webex.com/ via jsonld_schema_extractor [2026-09-13T15:49:36Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Webex\",\n  \"url\": \"https://www.webex.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Explore Cisco Webex AI-powered collaboration, customer experience, devices, and platform solutions trusted by leading global brands.\",\n  \"telephone\": \"888-469-3239\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.webex.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:49:36Z",
+          "confidence": "high",
+          "evidence_id": "E-2051973e73d2"
+        },
+        "evidence_refs": [
+          "E-2051973e73d2"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.webex.com/us/en/customers.html via image_alt_coverage_inspection [2026-09-13T15:49:36Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.webex.com/us/en/adopt/index.html via image_alt_coverage_inspection [2026-09-13T15:49:36Z]: 5 of 25 images (20%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.webex.com/us/en/products/customer-experience/ai-assistant-for-contact-center.html via image_alt_coverage_inspection [2026-09-13T15:49:36Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.webex.com/us/en/products/customer-experience/contact-center.html via image_alt_coverage_inspection [2026-09-13T15:49:36Z]: 10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.webex.com/us/en/customers.html",
+          "observation": "9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:49:36Z",
+          "confidence": "high",
+          "evidence_id": "E-73fc85f7e74e"
+        },
+        "evidence_refs": [
+          "E-067f36b45203",
+          "E-2dacb15c4317",
+          "E-72169c41ef61",
+          "E-73fc85f7e74e"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.webex.com/us/en/customers.html via breadcrumb_markup_inspector [2026-09-13T15:49:36Z]: Page at deep route (/us/en/customers.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.webex.com/us/en/adopt/index.html via breadcrumb_markup_inspector [2026-09-13T15:49:36Z]: Page at deep route (/us/en/adopt/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.webex.com/us/en/products/customer-experience/ai-assistant-for-contact-center.html via breadcrumb_markup_inspector [2026-09-13T15:49:36Z]: Page at deep route (/us/en/products/customer-experience/ai-assistant-for-contact-center.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.webex.com/us/en/products/customer-experience/contact-center.html via breadcrumb_markup_inspector [2026-09-13T15:49:36Z]: Page at deep route (/us/en/products/customer-experience/contact-center.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.webex.com/us/en/customers.html",
+          "observation": "Page at deep route (/us/en/customers.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:49:36Z",
+          "confidence": "medium",
+          "evidence_id": "E-ccf9a6f8df84"
+        },
+        "evidence_refs": [
+          "E-008b4c1e226b",
+          "E-2ef39c6c5ba2",
+          "E-86e95adfdf97",
+          "E-ccf9a6f8df84"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.webex.com via search_affordance_detection [2026-09-13T15:49:36Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.webex.com",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:49:36Z",
+          "confidence": "medium",
+          "evidence_id": "E-edb43ccc789f"
+        },
+        "evidence_refs": [
+          "E-edb43ccc789f"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.webex.com/customers.html",
+          "score": 26,
+          "signals": [
+            "article_docs:learn",
+            "audience:customers",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.webex.com/us/en/adopt/index.html",
+          "score": 24,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.webex.com/us/en/products/customer-experience/ai-assistant-for-contact-center.html",
+          "score": 24,
+          "signals": [
+            "product_landing:products",
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.webex.com/us/en/products/customer-experience/contact-center.html",
+          "score": 24,
+          "signals": [
+            "product_landing:products",
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.webex.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "high",
+        "evidence_id": "E-2051973e73d2"
+      },
+      {
+        "url": "https://www.webex.com/us/en/customers.html",
+        "observation": "9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "high",
+        "evidence_id": "E-73fc85f7e74e"
+      },
+      {
+        "url": "https://www.webex.com/us/en/adopt/index.html",
+        "observation": "5 of 25 images (20%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "high",
+        "evidence_id": "E-067f36b45203"
+      },
+      {
+        "url": "https://www.webex.com/us/en/products/customer-experience/ai-assistant-for-contact-center.html",
+        "observation": "9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "high",
+        "evidence_id": "E-2dacb15c4317"
+      },
+      {
+        "url": "https://www.webex.com/us/en/products/customer-experience/contact-center.html",
+        "observation": "10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "high",
+        "evidence_id": "E-72169c41ef61"
+      },
+      {
+        "url": "https://www.webex.com/us/en/customers.html",
+        "observation": "Page at deep route (/us/en/customers.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "medium",
+        "evidence_id": "E-ccf9a6f8df84"
+      },
+      {
+        "url": "https://www.webex.com/us/en/adopt/index.html",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "high",
+        "evidence_id": "E-8b45eb705923"
+      },
+      {
+        "url": "https://www.webex.com/us/en/adopt/index.html",
+        "observation": "Page at deep route (/us/en/adopt/index.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "medium",
+        "evidence_id": "E-008b4c1e226b"
+      },
+      {
+        "url": "https://www.webex.com/us/en/products/customer-experience/ai-assistant-for-contact-center.html",
+        "observation": "Page at deep route (/us/en/products/customer-experience/ai-assistant-for-contact-center.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "medium",
+        "evidence_id": "E-2ef39c6c5ba2"
+      },
+      {
+        "url": "https://www.webex.com/us/en/products/customer-experience/contact-center.html",
+        "observation": "Page at deep route (/us/en/products/customer-experience/contact-center.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "medium",
+        "evidence_id": "E-86e95adfdf97"
+      },
+      {
+        "url": "https://www.webex.com",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:49:36Z",
+        "confidence": "medium",
+        "evidence_id": "E-edb43ccc789f"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "general",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

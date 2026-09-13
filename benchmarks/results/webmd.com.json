@@ -1,0 +1,192 @@
+{
+  "site": {
+    "category": "healthcare",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "webmd.com",
+    "rank": 79,
+    "technical_type": "unknown",
+    "url": "https://webmd.com/",
+    "validation": {
+      "reason": "http-500",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:38:15.134833+00:00",
+  "finished_at": "2026-09-13T17:38:28.680617+00:00",
+  "elapsed_seconds": 13.546,
+  "error": null,
+  "report": {
+    "site": "https://www.webmd.com",
+    "audited_at": "2026-09-13T17:38:28Z",
+    "summary": {
+      "total_findings": 1,
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1,
+      "discoverability_findings": 1,
+      "engagement_findings": 0,
+      "citability_score_unavailable": "No page could be read (all crawled URLs were non-200 or undecodable), so findings are not a measure of this site's citability."
+    },
+    "findings": [
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://webmd.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:38:28Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://webmd.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T17:38:28Z",
+          "confidence": "high",
+          "evidence_id": "E-062ff4629452"
+        },
+        "evidence_refs": [
+          "E-062ff4629452"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nTraining-only AI crawlers are blocked; search and retrieval agents remain allowed.\n\nEVIDENCE\nObserved at https://webmd.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:38:28Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)\nEvidence references: E-062ff4629452.\n\nROOT CAUSE\nUse the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIf deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+          "status": "proactive",
+          "priority": "low",
+          "role": "technical SEO and platform engineer",
+          "problem": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+          "evidence_refs": [
+            "E-062ff4629452"
+          ],
+          "root_cause": "Use the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+            "priority": "low",
+            "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 1,
+      "resources_observed": 0,
+      "readable_pages": 0,
+      "status_counts": {
+        "anti-bot-challenge": 1
+      },
+      "limited": true,
+      "page_selection": []
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://webmd.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T17:38:28Z",
+        "confidence": "high",
+        "evidence_id": "E-062ff4629452"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No sampled page was readable, so content-dependent checks were not assessed."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "Initial HTML was unavailable, so render-gap evidence could not be assessed."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No accessible page evidence was available for on-site answerability."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No readable page was available to inspect for explicit authority links."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nTraining-only AI crawlers are blocked; search and retrieval agents remain allowed.\n\nEVIDENCE\nObserved at https://webmd.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:38:28Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)\nEvidence references: E-062ff4629452.\n\nROOT CAUSE\nUse the observed condition described by “Training-only AI crawlers are blocked; search and retrieval agents remain allowed” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIf deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-062ff4629452"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 1,
+    "readable_pages": 0,
+    "page_purposes": [
+      "unknown"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "anti-bot-challenge": 1
+    }
+  }
+}

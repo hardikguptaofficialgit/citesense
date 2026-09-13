@@ -1,0 +1,329 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "cornell.edu",
+    "rank": 740,
+    "technical_type": "unknown",
+    "url": "https://cornell.edu/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:12:01.390743+00:00",
+  "finished_at": "2026-09-13T16:12:33.252712+00:00",
+  "elapsed_seconds": 31.862,
+  "error": null,
+  "report": {
+    "site": "https://www.cornell.edu",
+    "audited_at": "2026-09-13T16:12:33Z",
+    "summary": {
+      "total_findings": 3,
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 1,
+      "discoverability_findings": 2,
+      "engagement_findings": 1,
+      "citability_score": 92,
+      "citability_score_breakdown": {
+        "score": 92,
+        "base": 100,
+        "penalty": 8,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 7,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "schema:root-organization-missing": 5,
+          "consistency:phone-number-mismatch": 2,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 3
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.cornell.edu/ via jsonld_schema_extractor [2026-09-13T16:12:22Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Cornell University\",\n  \"url\": \"https://www.cornell.edu\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Cornell University is a private research university that provides an exceptional education for undergraduates and graduate and professional students. Cornell\",\n  \"telephone\": \"(607) 254-4636\",\n  \"email\": \"arose@cornell.edu\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.cornell.edu/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:12:22Z",
+          "confidence": "high",
+          "evidence_id": "E-f7b88ae2d078"
+        },
+        "evidence_refs": [
+          "E-f7b88ae2d078"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.cornell.edu/visit/ via cross_page_contact_comparison [2026-09-13T16:12:22Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 6072544636: found on 2 page(s); Number 6072555241: found on 1 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.cornell.edu/visit/",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 6072544636: found on 2 page(s); Number 6072555241: found on 1 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T16:12:22Z",
+          "confidence": "medium",
+          "evidence_id": "E-a74be7df8351"
+        },
+        "evidence_refs": [
+          "E-a74be7df8351"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.cornell.edu/about/locations/nyc/travel-resources.cfm via breadcrumb_markup_inspector [2026-09-13T16:12:22Z]: Page at deep route (/about/locations/nyc/travel-resources.cfm) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.cornell.edu/about/locations/nyc/travel-resources.cfm",
+          "observation": "Page at deep route (/about/locations/nyc/travel-resources.cfm) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T16:12:22Z",
+          "confidence": "medium",
+          "evidence_id": "E-7f2229f03f41"
+        },
+        "evidence_refs": [
+          "E-7f2229f03f41"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 4,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.cornell.edu/about/locations/nyc/travel-resources.cfm",
+          "score": 24,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:about,locations",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "http://www.cornell.edu",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "homepage",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.cornell.edu/visit/",
+          "score": 18,
+          "signals": [
+            "product_pricing:plan",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.cornell.edu/about",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.cornell.edu/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:12:22Z",
+        "confidence": "high",
+        "evidence_id": "E-f7b88ae2d078"
+      },
+      {
+        "url": "https://www.cornell.edu/visit/",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 6072544636: found on 2 page(s); Number 6072555241: found on 1 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T16:12:22Z",
+        "confidence": "medium",
+        "evidence_id": "E-a74be7df8351"
+      },
+      {
+        "url": "https://www.cornell.edu/about/locations/nyc/travel-resources.cfm",
+        "observation": "Page at deep route (/about/locations/nyc/travel-resources.cfm) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:12:22Z",
+        "confidence": "medium",
+        "evidence_id": "E-7f2229f03f41"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 4 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 4,
+    "readable_pages": 4,
+    "page_purposes": [
+      "contact_support",
+      "general",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

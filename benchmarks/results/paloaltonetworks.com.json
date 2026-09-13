@@ -1,0 +1,398 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "paloaltonetworks.com",
+    "rank": 620,
+    "technical_type": "unknown",
+    "url": "https://paloaltonetworks.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:00:00.091410+00:00",
+  "finished_at": "2026-09-13T16:00:27.520662+00:00",
+  "elapsed_seconds": 27.429,
+  "error": null,
+  "report": {
+    "site": "https://www.paloaltonetworks.com",
+    "audited_at": "2026-09-13T16:00:27Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 1,
+      "medium": 3,
+      "low": 0,
+      "discoverability_findings": 4,
+      "engagement_findings": 0,
+      "citability_score": 76,
+      "citability_score_breakdown": {
+        "score": 76,
+        "base": 100,
+        "penalty": 24,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 12,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/resources/webcasts/key-considerations-building-ir-plan-for-financial-services": 12,
+          "schema:root-organization-missing": 5,
+          "freshness:stale-claim:2023:https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services": 5,
+          "citation:unanswerable:transactional": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services via jsonld_schema_extractor [2026-09-13T16:00:17Z]: Commercial/product page (https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Key Considerations: Building an Incident Response Plan for Financial Services\",\n  \"url\": \"https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Palo Alto Networks\"\n  },\n  \"description\": \"View an exclusive on-demand webinar to learn the most crucial elements of a successful incident response plan for financial service organizations.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+          "observation": "Commercial/product page (https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:00:17Z",
+          "confidence": "high",
+          "evidence_id": "E-31d92cb26c5a"
+        },
+        "evidence_refs": [
+          "E-31d92cb26c5a"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.paloaltonetworks.com/ via jsonld_schema_extractor [2026-09-13T16:00:17Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Palo Alto Networks\",\n  \"url\": \"https://www.paloaltonetworks.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Implement Zero Trust, Secure your Network, Cloud workloads, Hybrid Workforce, Leverage Threat Intelligence &amp; Security Consulting. Cybersecurity Services &amp; Education for CISO&rsquo;s, Head of Infrastructure, Network Security Engineers, Cloud Architects &amp; SOC Managers\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.paloaltonetworks.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:00:17Z",
+          "confidence": "high",
+          "evidence_id": "E-de8480a9c6b4"
+        },
+        "evidence_refs": [
+          "E-de8480a9c6b4"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Outdated time-sensitive claim or promotion found on active page (2023)",
+        "category": "freshness",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services via dated_claim_temporal_analysis [2026-09-13T16:00:17Z]: Page contains active time-sensitive statement referencing 2023 (3 years old): \"Webinar Key Considerations: Building an Incident Response Plan for Financial Services Aug 09, 2023\". (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-claim:2023:https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+        "suggested_action": {
+          "summary": "Update or archive expired time-sensitive offers and claims.",
+          "priority": "medium",
+          "how_to_fix": "Review the text referencing 2023 on https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services and update with current pricing/event information or remove expired promotions.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+          "observation": "Page contains active time-sensitive statement referencing 2023 (3 years old): \"Webinar Key Considerations: Building an Incident Response Plan for Financial Services Aug 09, 2023\".",
+          "method": "dated_claim_temporal_analysis",
+          "timestamp": "2026-09-13T16:00:17Z",
+          "confidence": "high",
+          "evidence_id": "E-471caff7d0a0"
+        },
+        "evidence_refs": [
+          "E-471caff7d0a0"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"How much does Palo Alto Networks cost?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services via onsite_answerability_probe [2026-09-13T16:00:27Z]: Across 4 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Palo Alto Networks cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:transactional",
+        "suggested_action": {
+          "summary": "Make pricing extractable as text, not just as an image or a gated flow.",
+          "priority": "medium",
+          "how_to_fix": "State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite \"pricing is quote-based\" but cannot cite silence.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+          "observation": "Across 4 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Palo Alto Networks cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:00:27Z",
+          "confidence": "medium",
+          "evidence_id": "E-56be99020cce"
+        },
+        "evidence_refs": [
+          "E-56be99020cce"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4,
+        "anti-bot-challenge": 1
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.paloaltonetworks.com/resources/guides/use-case-modernizing-financial-services-branch-and-campus-networks-for-digital-transformation",
+          "score": 42,
+          "signals": [
+            "product_landing:services",
+            "article_docs:resources",
+            "contact_support:campus",
+            "audience:use",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+          "score": 34,
+          "signals": [
+            "product_pricing:plan",
+            "product_landing:services",
+            "article_docs:resources",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.paloaltonetworks.com/about-us/executive-briefing-program",
+          "score": 26,
+          "signals": [
+            "product_pricing:plan",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.paloaltonetworks.com/services/support/support-policies/third-party-components-support",
+          "score": 22,
+          "signals": [
+            "product_landing:services",
+            "contact_support:support",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "html_fragment",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.paloaltonetworks.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:00:17Z",
+        "confidence": "high",
+        "evidence_id": "E-de8480a9c6b4"
+      },
+      {
+        "url": "https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+        "observation": "Commercial/product page (https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:00:17Z",
+        "confidence": "high",
+        "evidence_id": "E-31d92cb26c5a"
+      },
+      {
+        "url": "https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+        "observation": "Page contains active time-sensitive statement referencing 2023 (3 years old): \"Webinar Key Considerations: Building an Incident Response Plan for Financial Services Aug 09, 2023\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T16:00:17Z",
+        "confidence": "high",
+        "evidence_id": "E-471caff7d0a0"
+      },
+      {
+        "url": "https://www.paloaltonetworks.com/resources/webcasts/key-considerations-building-ir-plan-for-financial-services",
+        "observation": "Across 4 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Palo Alto Networks cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:00:27Z",
+        "confidence": "medium",
+        "evidence_id": "E-56be99020cce"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_pricing",
+      "unknown"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

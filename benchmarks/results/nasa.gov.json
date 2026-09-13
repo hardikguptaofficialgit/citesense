@@ -1,0 +1,421 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "nasa.gov",
+    "rank": 631,
+    "technical_type": "unknown",
+    "url": "https://nasa.gov/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:00:56.352980+00:00",
+  "finished_at": "2026-09-13T16:01:14.327681+00:00",
+  "elapsed_seconds": 17.975,
+  "error": null,
+  "report": {
+    "site": "https://www.nasa.gov",
+    "audited_at": "2026-09-13T16:01:14Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 2,
+      "discoverability_findings": 2,
+      "engagement_findings": 2,
+      "citability_score": 81,
+      "citability_score_breakdown": {
+        "score": 81,
+        "base": 100,
+        "penalty": 19,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 5,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "schema:missing-required-fields": 5,
+          "schema:organization-missing-sameas": 2,
+          "engagement:no-personalization-readiness": 0
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.nasa.gov/ via heading_structure_inspection [2026-09-13T16:01:11Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nasa.gov/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:01:11Z",
+          "confidence": "high",
+          "evidence_id": "E-e1d3fca4c2f4"
+        },
+        "evidence_refs": [
+          "E-e1d3fca4c2f4"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.nasa.gov/ via schema_field_validator [2026-09-13T16:01:11Z]: Schema entities are missing required properties: Organization missing url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.nasa.gov/maxpower/ via schema_field_validator [2026-09-13T16:01:11Z]: Schema entities are missing required properties: Organization missing url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.nasa.gov/about/ via schema_field_validator [2026-09-13T16:01:11Z]: Schema entities are missing required properties: Organization missing url. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.nasa.gov/es/ via schema_field_validator [2026-09-13T16:01:11Z]: Schema entities are missing required properties: Organization missing url. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nasa.gov/",
+          "observation": "Schema entities are missing required properties: Organization missing url.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T16:01:11Z",
+          "confidence": "high",
+          "evidence_id": "E-6052e0190cf2"
+        },
+        "evidence_refs": [
+          "E-1ab2fed517fc",
+          "E-41a27d5541c3",
+          "E-6052e0190cf2",
+          "E-814ece2d3c96"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+        "category": "structured-data",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.nasa.gov/ via jsonld_schema_extractor [2026-09-13T16:01:11Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.nasa.gov/es/ via jsonld_schema_extractor [2026-09-13T16:01:11Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:organization-missing-sameas",
+        "suggested_action": {
+          "summary": "Add sameAs URLs to Organization JSON-LD.",
+          "priority": "low",
+          "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"NASA\",\n  \"url\": \"https://www.nasa.gov\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"NASA.gov brings you the latest news, images and videos from America&#039;s space agency, pioneering the future in space exploration, scientific discovery and aeronautics research.\",\n  \"email\": \"maxpower@mail.nasa.gov\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nasa.gov/",
+          "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:01:11Z",
+          "confidence": "high",
+          "evidence_id": "E-706ad222c953"
+        },
+        "evidence_refs": [
+          "E-19905db2a9d9",
+          "E-706ad222c953"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.nasa.gov via returning_visitor_affordance_detection [2026-09-13T16:01:11Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nasa.gov",
+          "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T16:01:11Z",
+          "confidence": "medium",
+          "evidence_id": "E-e072eea3dd87"
+        },
+        "evidence_refs": [
+          "E-e072eea3dd87"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 1,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.nasa.gov/maxpower/",
+          "score": 26,
+          "signals": [
+            "article_docs:learn",
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.nasa.gov/aeronautics/air-traffic-solutions/",
+          "score": 24,
+          "signals": [
+            "product_landing:solutions",
+            "audience:solutions",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.nasa.gov/about/",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.nasa.gov/es/",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.nasa.gov/",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "high",
+        "evidence_id": "E-706ad222c953"
+      },
+      {
+        "url": "https://www.nasa.gov/",
+        "observation": "Schema entities are missing required properties: Organization missing url.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "high",
+        "evidence_id": "E-6052e0190cf2"
+      },
+      {
+        "url": "https://www.nasa.gov/maxpower/",
+        "observation": "Schema entities are missing required properties: Organization missing url.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "high",
+        "evidence_id": "E-814ece2d3c96"
+      },
+      {
+        "url": "https://www.nasa.gov/about/",
+        "observation": "Schema entities are missing required properties: Organization missing url.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "high",
+        "evidence_id": "E-1ab2fed517fc"
+      },
+      {
+        "url": "https://www.nasa.gov/es/",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "high",
+        "evidence_id": "E-19905db2a9d9"
+      },
+      {
+        "url": "https://www.nasa.gov/es/",
+        "observation": "Schema entities are missing required properties: Organization missing url.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "high",
+        "evidence_id": "E-41a27d5541c3"
+      },
+      {
+        "url": "https://www.nasa.gov/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "high",
+        "evidence_id": "E-e1d3fca4c2f4"
+      },
+      {
+        "url": "https://www.nasa.gov",
+        "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T16:01:11Z",
+        "confidence": "medium",
+        "evidence_id": "E-e072eea3dd87"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "contact_support",
+      "general",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_types": [
+      "image"
+    ],
+    "resources_seen": 1,
+    "access_summary": {}
+  }
+}

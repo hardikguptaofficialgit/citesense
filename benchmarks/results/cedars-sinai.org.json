@@ -1,0 +1,749 @@
+{
+  "site": {
+    "category": "hospitals",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "cedars-sinai.org",
+    "rank": 95,
+    "technical_type": "unknown",
+    "url": "https://cedars-sinai.org/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:39:39.487509+00:00",
+  "finished_at": "2026-09-13T17:39:54.774424+00:00",
+  "elapsed_seconds": 15.287,
+  "error": null,
+  "report": {
+    "site": "https://www.cedars-sinai.org",
+    "audited_at": "2026-09-13T17:39:54Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 1,
+      "medium": 2,
+      "low": 3,
+      "discoverability_findings": 4,
+      "engagement_findings": 2,
+      "citability_score": 88,
+      "citability_score_breakdown": {
+        "score": 88,
+        "base": 100,
+        "penalty": 12,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 6,
+          "medium": 4,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "render:empty-raw-html-gap:/home.html": 6,
+          "citation:unanswerable:contact": 2,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:no-site-search": 1,
+          "engagement:no-personalization-readiness": 0,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.cedars-sinai.org/home.html via static_initial_html_shell_inspection [2026-09-13T17:39:54Z]: Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/home.html",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.cedars-sinai.org/home.html",
+          "observation": "Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T17:39:54Z",
+          "confidence": "medium",
+          "evidence_id": "E-597b39570d23"
+        },
+        "evidence_refs": [
+          "E-597b39570d23"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a frontend and technical SEO engineer.\n\nPROBLEM\nClient-side rendering gap: raw HTML contains minimal text content.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org/home.html via static_initial_html_shell_inspection [2026-09-13T17:39:54Z]: Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)\nEvidence references: E-597b39570d23.\n\nROOT CAUSE\nUse the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Client-side rendering gap: raw HTML contains minimal text content",
+          "status": "likely-risk",
+          "priority": "high",
+          "role": "frontend and technical SEO engineer",
+          "problem": "Client-side rendering gap: raw HTML contains minimal text content",
+          "evidence_refs": [
+            "E-597b39570d23"
+          ],
+          "root_cause": "Use the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+            "priority": "high",
+            "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+            "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"How do I contact Cedars-Sinai?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.cedars-sinai.org/home.html via onsite_answerability_probe [2026-09-13T17:39:54Z]: Across 1 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Cedars-Sinai?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:contact",
+        "suggested_action": {
+          "summary": "Expose a contact route as machine-readable text.",
+          "priority": "medium",
+          "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.cedars-sinai.org/home.html",
+          "observation": "Across 1 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Cedars-Sinai?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:39:54Z",
+          "confidence": "medium",
+          "evidence_id": "E-d54e3e8e647d"
+        },
+        "evidence_refs": [
+          "E-d54e3e8e647d"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"How do I contact Cedars-Sinai?\".\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org/home.html via onsite_answerability_probe [2026-09-13T17:39:54Z]: Across 1 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Cedars-Sinai?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-d54e3e8e647d.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"How do I contact Cedars-Sinai?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "No extractable answer on-site for \"How do I contact Cedars-Sinai?\"",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"How do I contact Cedars-Sinai?\"",
+          "evidence_refs": [
+            "E-d54e3e8e647d"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"How do I contact Cedars-Sinai?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Expose a contact route as machine-readable text.",
+            "priority": "medium",
+            "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.cedars-sinai.org via onsite_identity_anchor_inspection [2026-09-13T17:39:54Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.cedars-sinai.org",
+          "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T17:39:54Z",
+          "confidence": "medium",
+          "evidence_id": "E-7695aca513df"
+        },
+        "evidence_refs": [
+          "E-7695aca513df"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org via onsite_identity_anchor_inspection [2026-09-13T17:39:54Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-7695aca513df.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-7695aca513df"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.cedars-sinai.org via search_affordance_detection [2026-09-13T17:39:54Z]: None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.cedars-sinai.org",
+          "observation": "None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T17:39:54Z",
+          "confidence": "medium",
+          "evidence_id": "E-379749522376"
+        },
+        "evidence_refs": [
+          "E-379749522376"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org via search_affordance_detection [2026-09-13T17:39:54Z]: None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-379749522376.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "No site search affordance found on any crawled page",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "No site search affordance found on any crawled page",
+          "evidence_refs": [
+            "E-379749522376"
+          ],
+          "root_cause": "Use the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a site search box to the persistent header.",
+            "priority": "low",
+            "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.cedars-sinai.org via returning_visitor_affordance_detection [2026-09-13T17:39:54Z]: Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.cedars-sinai.org",
+          "observation": "Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T17:39:54Z",
+          "confidence": "medium",
+          "evidence_id": "E-594ccdaeceec"
+        },
+        "evidence_refs": [
+          "E-594ccdaeceec"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org via returning_visitor_affordance_detection [2026-09-13T17:39:54Z]: Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-594ccdaeceec.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "No returning-visitor or account affordance detected",
+          "status": "proactive",
+          "priority": "low",
+          "role": "UX and product engineer",
+          "problem": "No returning-visitor or account affordance detected",
+          "evidence_refs": [
+            "E-594ccdaeceec"
+          ],
+          "root_cause": "Use the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Give returning visitors a way to be recognised, and use it.",
+            "priority": "low",
+            "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+            "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes Cedars-Sinai different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.cedars-sinai.org/home.html via onsite_answerability_probe [2026-09-13T17:39:54Z]: Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cedars-Sinai different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.cedars-sinai.org/home.html",
+          "observation": "Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cedars-Sinai different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:39:54Z",
+          "confidence": "medium",
+          "evidence_id": "E-8c365c59e7b8"
+        },
+        "evidence_refs": [
+          "E-8c365c59e7b8"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Cedars-Sinai different?\".\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org/home.html via onsite_answerability_probe [2026-09-13T17:39:54Z]: Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cedars-Sinai different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-8c365c59e7b8.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Cedars-Sinai different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No extractable answer on-site for \"What makes Cedars-Sinai different?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What makes Cedars-Sinai different?\"",
+          "evidence_refs": [
+            "E-8c365c59e7b8"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What makes Cedars-Sinai different?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Make the brand's differentiator explicit and quotable.",
+            "priority": "low",
+            "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 1,
+      "resources_observed": 4,
+      "readable_pages": 1,
+      "status_counts": {
+        "readable": 1
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.cedars-sinai.org/content/cedars-sinai-edu.sitemap.xml",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "general",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.cedars-sinai.org/content/cedars-sinai.provider-sitemap.xml",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "general",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.cedars-sinai.org/content/cedars-sinai.sitemap.xml",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "general",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.cedars-sinai.org/content/cedars-sinai/manual-sitemap.xml",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "general",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.cedars-sinai.org/home.html",
+        "observation": "Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T17:39:54Z",
+        "confidence": "medium",
+        "evidence_id": "E-597b39570d23"
+      },
+      {
+        "url": "https://www.cedars-sinai.org",
+        "observation": "None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T17:39:54Z",
+        "confidence": "medium",
+        "evidence_id": "E-379749522376"
+      },
+      {
+        "url": "https://www.cedars-sinai.org",
+        "observation": "Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T17:39:54Z",
+        "confidence": "medium",
+        "evidence_id": "E-594ccdaeceec"
+      },
+      {
+        "url": "https://www.cedars-sinai.org/home.html",
+        "observation": "Across 1 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Cedars-Sinai?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:39:54Z",
+        "confidence": "medium",
+        "evidence_id": "E-d54e3e8e647d"
+      },
+      {
+        "url": "https://www.cedars-sinai.org/home.html",
+        "observation": "Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cedars-Sinai different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:39:54Z",
+        "confidence": "medium",
+        "evidence_id": "E-8c365c59e7b8"
+      },
+      {
+        "url": "https://www.cedars-sinai.org",
+        "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T17:39:54Z",
+        "confidence": "medium",
+        "evidence_id": "E-7695aca513df"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "1 of 1 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Cedars-Sinai is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "likely-risk finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a frontend and technical SEO engineer.\n\nPROBLEM\nClient-side rendering gap: raw HTML contains minimal text content.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org/home.html via static_initial_html_shell_inspection [2026-09-13T17:39:54Z]: Raw HTML yields only 11 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)\nEvidence references: E-597b39570d23.\n\nROOT CAUSE\nUse the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-597b39570d23"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"How do I contact Cedars-Sinai?\".\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org/home.html via onsite_answerability_probe [2026-09-13T17:39:54Z]: Across 1 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Cedars-Sinai?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-d54e3e8e647d.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"How do I contact Cedars-Sinai?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-d54e3e8e647d"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org via onsite_identity_anchor_inspection [2026-09-13T17:39:54Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 0 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-7695aca513df.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-7695aca513df"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org via search_affordance_detection [2026-09-13T17:39:54Z]: None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-379749522376.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-379749522376"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org via returning_visitor_affordance_detection [2026-09-13T17:39:54Z]: Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-594ccdaeceec.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-594ccdaeceec"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Cedars-Sinai different?\".\n\nEVIDENCE\nObserved at https://www.cedars-sinai.org/home.html via onsite_answerability_probe [2026-09-13T17:39:54Z]: Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cedars-Sinai different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-8c365c59e7b8.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Cedars-Sinai different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-8c365c59e7b8"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 1,
+    "readable_pages": 1,
+    "page_purposes": [
+      "general"
+    ],
+    "resource_type_counts": {
+      "unknown": 4
+    },
+    "resources_seen": 4,
+    "access_summary": {
+      "readable": 1
+    }
+  }
+}

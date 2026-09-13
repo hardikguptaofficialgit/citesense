@@ -1,0 +1,364 @@
+{
+  "site": {
+    "category": "sports",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "pga.com",
+    "rank": 277,
+    "technical_type": "unknown",
+    "url": "https://pga.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:37:51.207581+00:00",
+  "finished_at": "2026-09-13T15:38:21.818575+00:00",
+  "elapsed_seconds": 30.611,
+  "error": null,
+  "report": {
+    "site": "https://www.pga.com",
+    "audited_at": "2026-09-13T15:38:21Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 4,
+      "discoverability_findings": 1,
+      "engagement_findings": 3,
+      "citability_score": 97,
+      "citability_score_breakdown": {
+        "score": 97,
+        "base": 100,
+        "penalty": 3,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 3
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:no-site-search": 1,
+          "engagement:no-personalization-readiness": 0,
+          "citation:unanswerable:audience": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.pga.com/pga-of-america/terms-of-service via breadcrumb_markup_inspector [2026-09-13T15:38:08Z]: Page at deep route (/pga-of-america/terms-of-service) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.pga.com/pga-of-america/terms-of-service",
+          "observation": "Page at deep route (/pga-of-america/terms-of-service) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:38:08Z",
+          "confidence": "medium",
+          "evidence_id": "E-4ee6b329ee9b"
+        },
+        "evidence_refs": [
+          "E-4ee6b329ee9b"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.pga.com via search_affordance_detection [2026-09-13T15:38:08Z]: None of the 3 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.pga.com",
+          "observation": "None of the 3 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:38:08Z",
+          "confidence": "medium",
+          "evidence_id": "E-bc3691508657"
+        },
+        "evidence_refs": [
+          "E-bc3691508657"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.pga.com via returning_visitor_affordance_detection [2026-09-13T15:38:08Z]: Across 3 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.pga.com",
+          "observation": "Across 3 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T15:38:08Z",
+          "confidence": "medium",
+          "evidence_id": "E-00aa6cf462e0"
+        },
+        "evidence_refs": [
+          "E-00aa6cf462e0"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"Who is PGA of America for?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.pga.com/pga-of-america/terms-of-service via onsite_answerability_probe [2026-09-13T15:38:21Z]: Across 3 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is PGA of America for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:audience",
+        "suggested_action": {
+          "summary": "State the intended audience in plain language.",
+          "priority": "low",
+          "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.pga.com/pga-of-america/terms-of-service",
+          "observation": "Across 3 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is PGA of America for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:38:21Z",
+          "confidence": "medium",
+          "evidence_id": "E-5c349ba5dc74"
+        },
+        "evidence_refs": [
+          "E-5c349ba5dc74"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 3,
+      "resources_observed": 2,
+      "readable_pages": 3,
+      "status_counts": {
+        "readable": 3
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.pga.com/contact",
+          "score": 16,
+          "signals": [
+            "contact_support:contact",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.pga.com/news-sitemap.xml",
+          "score": 14,
+          "signals": [
+            "article_docs:news",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.pga.com/pga-of-america/terms-of-service",
+          "score": 14,
+          "signals": [
+            "product_landing:service",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.pga.com/coaches-by-location-sitemap.xml",
+          "score": 14,
+          "signals": [
+            "contact_support:location",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.pga.com/pga-of-america/terms-of-service",
+        "observation": "Page at deep route (/pga-of-america/terms-of-service) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:38:08Z",
+        "confidence": "medium",
+        "evidence_id": "E-4ee6b329ee9b"
+      },
+      {
+        "url": "https://www.pga.com",
+        "observation": "None of the 3 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:38:08Z",
+        "confidence": "medium",
+        "evidence_id": "E-bc3691508657"
+      },
+      {
+        "url": "https://www.pga.com",
+        "observation": "Across 3 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T15:38:08Z",
+        "confidence": "medium",
+        "evidence_id": "E-00aa6cf462e0"
+      },
+      {
+        "url": "https://www.pga.com/pga-of-america/terms-of-service",
+        "observation": "Across 3 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is PGA of America for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:38:21Z",
+        "confidence": "medium",
+        "evidence_id": "E-5c349ba5dc74"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "3 of 3 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 3,
+    "readable_pages": 3,
+    "page_purposes": [
+      "contact_support",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_types": [
+      "unknown"
+    ],
+    "resources_seen": 2,
+    "access_summary": {}
+  }
+}

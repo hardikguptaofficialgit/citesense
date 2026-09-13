@@ -1,0 +1,485 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "telegram.me",
+    "rank": 551,
+    "technical_type": "unknown",
+    "url": "https://telegram.me/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:54:16.453904+00:00",
+  "finished_at": "2026-09-13T15:55:01.433193+00:00",
+  "elapsed_seconds": 44.979,
+  "error": null,
+  "report": {
+    "site": "https://telegram.org",
+    "audited_at": "2026-09-13T15:55:01Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 0,
+      "high": 1,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 3,
+      "engagement_findings": 2,
+      "citability_score": 72,
+      "citability_score_breakdown": {
+        "score": 72,
+        "base": 100,
+        "penalty": 28,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 15,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "extractability:images-without-alt": 5,
+          "meta:missing-description": 5,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://telegram.org/ via heading_structure_inspection [2026-09-13T15:54:41Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://telegram.org/blog via heading_structure_inspection [2026-09-13T15:54:41Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://telegram.org/?setln=ar via heading_structure_inspection [2026-09-13T15:54:41Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://telegram.org/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:54:41Z",
+          "confidence": "high",
+          "evidence_id": "E-d4891458c8bb"
+        },
+        "evidence_refs": [
+          "E-9250af9afb33",
+          "E-d4891458c8bb",
+          "E-fba4df86a28f"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://telegram.org/ via jsonld_schema_extractor [2026-09-13T15:54:41Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://telegram.org/?setln=ar via jsonld_schema_extractor [2026-09-13T15:54:41Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Telegram\",\n  \"url\": \"https://telegram.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"email\": \"abuse@telegram.org\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://telegram.org/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:54:41Z",
+          "confidence": "high",
+          "evidence_id": "E-24ca02aed76a"
+        },
+        "evidence_refs": [
+          "E-24ca02aed76a",
+          "E-2ad72e4f0aed"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://telegram.org/ via image_alt_coverage_inspection [2026-09-13T15:54:41Z]: 11 of 11 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://telegram.org/blog via image_alt_coverage_inspection [2026-09-13T15:54:41Z]: 20 of 20 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://telegram.org/?setln=ar via image_alt_coverage_inspection [2026-09-13T15:54:41Z]: 11 of 11 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "medium",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://telegram.org/",
+          "observation": "11 of 11 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:54:41Z",
+          "confidence": "high",
+          "evidence_id": "E-585f904fae1a"
+        },
+        "evidence_refs": [
+          "E-585f904fae1a",
+          "E-81c7471b9f63",
+          "E-a567b79d0b45"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://telegram.org/ via html_meta_inspector [2026-09-13T15:54:41Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://telegram.org/?setln=ar via html_meta_inspector [2026-09-13T15:54:41Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Telegram Messenger\",\n  \"url\": \"https://telegram.org/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Telegram\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://telegram.org/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://telegram.org/",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T15:54:41Z",
+          "confidence": "high",
+          "evidence_id": "E-6749805951ce"
+        },
+        "evidence_refs": [
+          "E-5d609ef98254",
+          "E-6749805951ce"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://telegram.org via search_affordance_detection [2026-09-13T15:54:41Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://telegram.org",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:54:41Z",
+          "confidence": "medium",
+          "evidence_id": "E-8368b7453910"
+        },
+        "evidence_refs": [
+          "E-8368b7453910"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://telegram.org/blog",
+          "score": 16,
+          "signals": [
+            "article_docs:blog,news",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://telegram.org/privacy",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://telegram.org/?setln=ar",
+          "score": 4,
+          "signals": [
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://telegram.org/faq",
+          "score": 16,
+          "signals": [
+            "article_docs:faq",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://telegram.org/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-24ca02aed76a"
+      },
+      {
+        "url": "https://telegram.org/",
+        "observation": "11 of 11 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-585f904fae1a"
+      },
+      {
+        "url": "https://telegram.org/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-6749805951ce"
+      },
+      {
+        "url": "https://telegram.org/blog",
+        "observation": "20 of 20 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-a567b79d0b45"
+      },
+      {
+        "url": "https://telegram.org/?setln=ar",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-2ad72e4f0aed"
+      },
+      {
+        "url": "https://telegram.org/?setln=ar",
+        "observation": "11 of 11 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-81c7471b9f63"
+      },
+      {
+        "url": "https://telegram.org/?setln=ar",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-5d609ef98254"
+      },
+      {
+        "url": "https://telegram.org/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-d4891458c8bb"
+      },
+      {
+        "url": "https://telegram.org/blog",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-9250af9afb33"
+      },
+      {
+        "url": "https://telegram.org/?setln=ar",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "high",
+        "evidence_id": "E-fba4df86a28f"
+      },
+      {
+        "url": "https://telegram.org",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:54:41Z",
+        "confidence": "medium",
+        "evidence_id": "E-8368b7453910"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Telegram is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "2 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

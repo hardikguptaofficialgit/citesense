@@ -6,8 +6,11 @@ positive, a fabricated evidence string, or a guardrail violation on a real websi
 these fails, a regression has been reintroduced -- check Progress.md for the original repro.
 """
 import gzip
+import io
 import sys
+import urllib.error
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
@@ -17,7 +20,9 @@ for sub in ("crawl-render-audit", "engagement-audit", "freshness-corroboration",
 
 from audit_common import (
     decompress_body, decode_body, content_is_unreadable, header_get, classify_access,
-    ACCESS_READABLE, ACCESS_ANTI_BOT, ACCESS_HTTP_BLOCKED, ACCESS_NETWORK_ERROR,
+    safe_fetch, _decompress_bounded, _fetch_target_error, _ResponseTooLarge, MAX_RESPONSE_BYTES,
+    RESPONSE_TOO_LARGE_MARKER, READ_TIMEOUT_MARKER, ACCESS_READABLE, ACCESS_ANTI_BOT, ACCESS_HTTP_BLOCKED,
+    ACCESS_NETWORK_ERROR, ACCESS_RESPONSE_TOO_LARGE,
 )
 from site_inventory import (
     SiteInventory, analyze_page_html, classify_page_purpose, FOUNDING_RE, COPYRIGHT_RE
@@ -49,6 +54,139 @@ class TransportRegressions(unittest.TestCase):
         garbage = gzip.compress(b"x" * 4000).decode("utf-8", errors="replace")
         self.assertTrue(content_is_unreadable(garbage))
         self.assertFalse(content_is_unreadable("<html><body>Perfectly ordinary text.</body></html>"))
+
+    def test_private_targets_are_rejected_before_network_open(self):
+        with patch("audit_common.urllib.request.build_opener") as build_opener:
+            status, body, *_ = safe_fetch("http://127.0.0.1/")
+        self.assertIsNone(status)
+        self.assertIn("fetch-rejected", body)
+        build_opener.assert_not_called()
+
+    def test_private_ipv4_and_ipv6_literals_are_rejected(self):
+        for url in (
+            "http://10.0.0.1/",
+            "http://192.168.1.1/",
+            "http://169.254.169.254/",
+            "http://[::1]/",
+            "http://[fe80::1]/",
+            "http://[::ffff:127.0.0.1]/",
+        ):
+            with self.subTest(url=url):
+                self.assertIsNotNone(_fetch_target_error(url))
+
+    def test_credentials_and_unsupported_schemes_are_rejected(self):
+        self.assertIsNotNone(_fetch_target_error("https://user:pass@example.com/"))
+        self.assertIsNotNone(_fetch_target_error("file:///etc/passwd"))
+
+    def test_resolved_private_hostname_is_rejected(self):
+        with patch(
+            "audit_common.socket.getaddrinfo",
+            return_value=[(2, 1, 6, "", ("10.0.0.4", 443))],
+        ):
+            self.assertIsNotNone(_fetch_target_error("https://internal.example/"))
+
+    def test_unsafe_port_is_rejected(self):
+        self.assertIsNotNone(_fetch_target_error("https://example.com:8080/"))
+
+    def test_redirect_to_private_target_is_rejected_before_second_open(self):
+        redirect = urllib.error.HTTPError(
+            "https://public.example/",
+            302,
+            "redirect",
+            {"Location": "http://127.0.0.1/"},
+            io.BytesIO(),
+        )
+
+        class FakeOpener:
+            def __init__(self):
+                self.calls = 0
+
+            def open(self, _request, timeout=None):
+                self.calls += 1
+                raise redirect
+
+        opener = FakeOpener()
+        def resolve(host, *_args, **_kwargs):
+            address = "127.0.0.1" if host == "127.0.0.1" else "93.184.216.34"
+            return [(2, 1, 6, "", (address, 443))]
+
+        with patch(
+            "audit_common.socket.getaddrinfo",
+            side_effect=resolve,
+        ), patch("audit_common.urllib.request.build_opener", return_value=opener):
+            status, body, *_ = safe_fetch("https://public.example/")
+        self.assertIsNone(status)
+        self.assertIn("fetch-rejected", body)
+        self.assertEqual(opener.calls, 1)
+
+    def test_decompressed_body_limit_blocks_expansion(self):
+        raw = gzip.compress(b"x" * (MAX_RESPONSE_BYTES + 1))
+        with self.assertRaises(_ResponseTooLarge):
+            _decompress_bounded(raw, "gzip", MAX_RESPONSE_BYTES)
+
+    def test_raw_response_limit_stops_reading(self):
+        class OversizedResponse:
+            status = 200
+            headers = {"Content-Type": "text/html"}
+
+            def read(self, _size=-1):
+                return b"x" * (MAX_RESPONSE_BYTES + 1)
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+        class FakeOpener:
+            def open(self, _request, timeout=None):
+                return OversizedResponse()
+
+        with patch(
+            "audit_common.socket.getaddrinfo",
+            return_value=[(2, 1, 6, "", ("93.184.216.34", 443))],
+        ), patch("audit_common.urllib.request.build_opener", return_value=FakeOpener()):
+            status, body, *_ = safe_fetch("https://public.example/")
+        self.assertIsNone(status)
+        self.assertEqual(body, RESPONSE_TOO_LARGE_MARKER)
+
+    def test_continuously_streaming_response_is_bounded_by_total_timeout(self):
+        class StreamingResponse:
+            status = 200
+            headers = {"Content-Type": "text/html"}
+
+            def read(self, _size=-1):
+                return b"x" * 1024
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+        class FakeOpener:
+            def open(self, _request, timeout=None):
+                return StreamingResponse()
+
+        with patch(
+            "audit_common.socket.getaddrinfo",
+            return_value=[(2, 1, 6, "", ("93.184.216.34", 443))],
+        ), patch("audit_common.urllib.request.build_opener", return_value=FakeOpener()), patch(
+            "audit_common.time.monotonic", side_effect=[0, 2]
+        ):
+            status, body, *_ = safe_fetch("https://public.example/", timeout=1)
+        self.assertIsNone(status)
+        self.assertEqual(body, READ_TIMEOUT_MARKER)
+
+    def test_dns_resolution_timeout_is_rejected(self):
+        with patch(
+            "audit_common._resolve_public_addresses",
+            return_value=(None, "hostname resolution timed out"),
+        ):
+            self.assertIn("timed out", _fetch_target_error("https://public.example/", timeout=1))
+
+    def test_response_too_large_is_inconclusive_access(self):
+        self.assertEqual(classify_access(None, RESPONSE_TOO_LARGE_MARKER), ACCESS_RESPONSE_TOO_LARGE)
 
 
 class InconclusivePageRegressions(unittest.TestCase):

@@ -1,0 +1,701 @@
+{
+  "site": {
+    "category": "open_source",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "python.org",
+    "rank": 44,
+    "technical_type": "unknown",
+    "url": "https://python.org/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:36:19.294253+00:00",
+  "finished_at": "2026-09-13T17:36:27.526702+00:00",
+  "elapsed_seconds": 8.232,
+  "error": null,
+  "report": {
+    "site": "https://www.python.org",
+    "audited_at": "2026-09-13T17:36:27Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 3,
+      "discoverability_findings": 3,
+      "engagement_findings": 2,
+      "citability_score": 87,
+      "citability_score_breakdown": {
+        "score": 87,
+        "base": 100,
+        "penalty": 13,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 10,
+          "low": 3
+        },
+        "penalty_by_root_cause": {
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "engagement:multiple-h1": 2,
+          "engagement:no-personalization-readiness": 0,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.python.org/sitemap.xml via http_get_sitemap_check [2026-09-13T17:36:24Z]: Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.python.org/sitemap.xml",
+          "observation": "Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T17:36:24Z",
+          "confidence": "high",
+          "evidence_id": "E-6155fca60ef6"
+        },
+        "evidence_refs": [
+          "E-6155fca60ef6"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://www.python.org/sitemap.xml via http_get_sitemap_check [2026-09-13T17:36:24Z]: Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-6155fca60ef6.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "technical SEO and platform engineer",
+          "problem": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "evidence_refs": [
+            "E-6155fca60ef6"
+          ],
+          "root_cause": "Use the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+            "priority": "medium",
+            "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.python.org/ via jsonld_schema_extractor [2026-09-13T17:36:24Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Python.org\",\n  \"url\": \"https://www.python.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The official home of the Python Programming Language\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.python.org/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:36:24Z",
+          "confidence": "high",
+          "evidence_id": "E-f069e9a48595"
+        },
+        "evidence_refs": [
+          "E-f069e9a48595"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.python.org/ via jsonld_schema_extractor [2026-09-13T17:36:24Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-f069e9a48595.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-f069e9a48595"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Python.org\",\n  \"url\": \"https://www.python.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The official home of the Python Programming Language\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.python.org/ via heading_structure_inspection [2026-09-13T17:36:24Z]: Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/about/help/ via heading_structure_inspection [2026-09-13T17:36:24Z]: Page defines 10 separate <h1> tags (Help; New to programming and to Python?; New to Python?), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.python.org/",
+          "observation": "Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T17:36:24Z",
+          "confidence": "high",
+          "evidence_id": "E-dca2329e0f5d"
+        },
+        "evidence_refs": [
+          "E-dca2329e0f5d",
+          "E-e8578d29c98f"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.python.org/ via heading_structure_inspection [2026-09-13T17:36:24Z]: Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/about/help/ via heading_structure_inspection [2026-09-13T17:36:24Z]: Page defines 10 separate <h1> tags (Help; New to programming and to Python?; New to Python?), diluting semantic structure. (Confidence: high)\nEvidence references: E-dca2329e0f5d, E-e8578d29c98f.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "UX and content designer",
+          "problem": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "evidence_refs": [
+            "E-dca2329e0f5d",
+            "E-e8578d29c98f"
+          ],
+          "root_cause": "Use the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+            "priority": "low",
+            "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.python.org via returning_visitor_affordance_detection [2026-09-13T17:36:24Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.python.org",
+          "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T17:36:24Z",
+          "confidence": "medium",
+          "evidence_id": "E-8b5a27ae031d"
+        },
+        "evidence_refs": [
+          "E-8b5a27ae031d"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.python.org via returning_visitor_affordance_detection [2026-09-13T17:36:24Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-8b5a27ae031d.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "No returning-visitor or account affordance detected",
+          "status": "proactive",
+          "priority": "low",
+          "role": "UX and product engineer",
+          "problem": "No returning-visitor or account affordance detected",
+          "evidence_refs": [
+            "E-8b5a27ae031d"
+          ],
+          "root_cause": "Use the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Give returning visitors a way to be recognised, and use it.",
+            "priority": "low",
+            "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+            "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes Python.org different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.python.org/ via onsite_answerability_probe [2026-09-13T17:36:27Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Python.org different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.python.org/",
+          "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Python.org different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:36:27Z",
+          "confidence": "medium",
+          "evidence_id": "E-2c5f5a48eaca"
+        },
+        "evidence_refs": [
+          "E-2c5f5a48eaca"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Python.org different?\".\n\nEVIDENCE\nObserved at https://www.python.org/ via onsite_answerability_probe [2026-09-13T17:36:27Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Python.org different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-2c5f5a48eaca.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Python.org different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "No extractable answer on-site for \"What makes Python.org different?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What makes Python.org different?\"",
+          "evidence_refs": [
+            "E-2c5f5a48eaca"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What makes Python.org different?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Make the brand's differentiator explicit and quotable.",
+            "priority": "low",
+            "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.python.org/about/help/",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.python.org/about/",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.python.org/blogs/",
+          "score": 16,
+          "signals": [
+            "article_docs:news",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.python.org/doc/",
+          "score": 16,
+          "signals": [
+            "article_docs:documentation",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.python.org/sitemap.xml",
+        "observation": "Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T17:36:24Z",
+        "confidence": "high",
+        "evidence_id": "E-6155fca60ef6"
+      },
+      {
+        "url": "https://www.python.org/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:36:24Z",
+        "confidence": "high",
+        "evidence_id": "E-f069e9a48595"
+      },
+      {
+        "url": "https://www.python.org/",
+        "observation": "Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:36:24Z",
+        "confidence": "high",
+        "evidence_id": "E-dca2329e0f5d"
+      },
+      {
+        "url": "https://www.python.org/about/help/",
+        "observation": "Page defines 10 separate <h1> tags (Help; New to programming and to Python?; New to Python?), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:36:24Z",
+        "confidence": "high",
+        "evidence_id": "E-e8578d29c98f"
+      },
+      {
+        "url": "https://www.python.org",
+        "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T17:36:24Z",
+        "confidence": "medium",
+        "evidence_id": "E-8b5a27ae031d"
+      },
+      {
+        "url": "https://www.python.org/",
+        "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Python.org different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:36:27Z",
+        "confidence": "medium",
+        "evidence_id": "E-2c5f5a48eaca"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "3 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://www.python.org/sitemap.xml via http_get_sitemap_check [2026-09-13T17:36:24Z]: Request to https://www.python.org/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-6155fca60ef6.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-6155fca60ef6"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.python.org/ via jsonld_schema_extractor [2026-09-13T17:36:24Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-f069e9a48595.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-f069e9a48595"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.python.org/ via heading_structure_inspection [2026-09-13T17:36:24Z]: Page defines 5 separate <h1> tags (Intuitive Interpretation; Compound Data Types; All the Flow You&rsquo;d Expect), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.python.org/about/help/ via heading_structure_inspection [2026-09-13T17:36:24Z]: Page defines 10 separate <h1> tags (Help; New to programming and to Python?; New to Python?), diluting semantic structure. (Confidence: high)\nEvidence references: E-dca2329e0f5d, E-e8578d29c98f.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-dca2329e0f5d",
+          "E-e8578d29c98f"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.python.org via returning_visitor_affordance_detection [2026-09-13T17:36:24Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-8b5a27ae031d.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-8b5a27ae031d"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What makes Python.org different?\".\n\nEVIDENCE\nObserved at https://www.python.org/ via onsite_answerability_probe [2026-09-13T17:36:27Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Python.org different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-2c5f5a48eaca.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What makes Python.org different?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-2c5f5a48eaca"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "general",
+      "homepage"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 5
+    }
+  }
+}

@@ -1,0 +1,1734 @@
+{
+  "seed_url": "https://salvationarmy.org/",
+  "origin": "https://www.salvationarmy.org:443",
+  "robots_txt": {
+    "found": true,
+    "url": "https://salvationarmy.org/robots.txt",
+    "status": 200,
+    "raw": "#\n# robots.txt\n#\n# This file is to prevent the crawling and indexing of certain parts\n# of your site by web crawlers and spiders run by sites like Yahoo!\n# and Google. By telling these \"robots\" where not to go on your site,\n# you save bandwidth and server resources.\n#\n# This file will be ignored unless it is at the root of your host:\n# Used:    http://example.com/robots.txt\n# Ignored: http://example.com/site/robots.txt\n#\n# For more information about the robots.txt standard, see:\n# http://www.robotstxt.org/robotstxt.html\n\nUser-agent: *\n# CSS, JS, Images\nAllow: /core/*.css$\nAllow: /core/*.css?\nAllow: /core/*.js$\nAllow: /core/*.js?\nAllow: /core/*.gif\nAllow: /core/*.jpg\nAllow: /core/*.jpeg\nAllow: /core/*.png\nAllow: /core/*.svg\nAllow: /profiles/*.css$\nAllow: /profiles/*.css?\nAllow: /profiles/*.js$\nAllow: /profiles/*.js?\nAllow: /profiles/*.gif\nAllow: /profiles/*.jpg\nAllow: /profiles/*.jpeg\nAllow: /profiles/*.png\nAllow: /profiles/*.svg\n# Directories\nDisallow: /core/\nDisallow: /profiles/\n# Files\nDisallow: /README.md\nDisallow: /composer/Metapackage/README.txt\nDisallow: /composer/Plugin/ProjectMessage/README.md\nDisallow: /composer/Plugin/Scaffold/README.md\nDisallow: /composer/Plugin/VendorHardening/README.txt\nDisallow: /composer/Template/README.txt\nDisallow: /modules/README.txt\nDisallow: /sites/README.txt\nDisallow: /themes/README.txt\nDisallow: /web.config\n# Paths (clean URLs)\nDisallow: /admin/\nDisallow: /comment/reply/\nDisallow: /filter/tips\nDisallow: /node/add/\nDisallow: /search/\nDisallow: /user/register\nDisallow: /user/password\nDisallow: /user/login\nDisallow: /user/logout\nDisallow: /media/oembed\nDisallow: /*/media/oembed\n# Paths (no clean URLs)\nDisallow: /index.php/admin/\nDisallow: /index.php/comment/reply/\nDisallow: /index.php/filter/tips\nDisallow: /index.php/node/add/\nDisallow: /index.php/search/\nDisallow: /index.php/user/password\nDisallow: /index.php/user/register\nDisallow: /index.php/user/login\nDisallow: /index.php/user/logout\nDisallow: /index.php/media/oembed\nDisallow: /index.php/*/media/oembed\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      }
+    },
+    "partially_blocked_agents": {},
+    "sitemaps_declared": []
+  },
+  "sitemaps": [
+    {
+      "url": "https://salvationarmy.org/sitemap.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 2393
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://salvationarmy.org/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://salvationarmy.org/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://salvationarmy.org/ai.txt"
+    }
+  },
+  "pages": {
+    "https://www.salvationarmy.org:443/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://salvationarmy.org/",
+      "final_url": "https://www.salvationarmy.org:443/",
+      "status_code": 200,
+      "load_time_seconds": 1.91,
+      "raw_html": "<!DOCTYPE html>\n<html lang=\"en-gb\" dir=\"ltr\" prefix=\"content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \">\n  <head>\n    <meta charset=\"utf-8\" />\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','GTM-559Q67Q');\n</script>\n<link rel=\"shortlink\" href=\"https://www.salvationarmy.org/\" />\n<link rel=\"canonical\" href=\"https://www.salvationarmy.org/\" />\n<meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\" />\n<meta name=\"MobileOptimized\" content=\"width\" />\n<meta name=\"HandheldFriendly\" content=\"true\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<link rel=\"icon\" href=\"/themes/custom/bbd_starter/favicon.ico\" type=\"image/vnd.microsoft.icon\" />\n\n    <title>Salvation Army International Headquarters | Salvation Army International Headquarters</title>\n    <link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_ZS_L4GyUU5NKksOJhQXtSI4kcmz1rEYSQVNeckrLdyU.css?delta=0&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkGtuxCAMhC9Ew5GQgdnEjcEIQ3e3py9tVe2PRrL8-DwaWY6UzjB0RfPx1QdOWl2MOdigPtD9LhpJ3ix1bsMuV-MpXHcXMRYNeDQ15HBjWaP5HRWdxCXt8LnPRrLROz1-QdVeSPgTDjMk1ZOxSmnCVBP8FQyROlyjTnundtif6Ytss7YZhe1AdqaJSUJBZgrr0NP8TeugO0wLtm9frajjSvgfbeNAgbOnDZT1OYP7YNzN_-StaJ6CLwnqiZU\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_1qTJgQm79fZXwSyEI-Epj-y3sKWJHEZC8MhscGssW8A.css?delta=2&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkGtuxCAMhC9Ew5GQgdnEjcEIQ3e3py9tVe2PRrL8-DwaWY6UzjB0RfPx1QdOWl2MOdigPtD9LhpJ3ix1bsMuV-MpXHcXMRYNeDQ15HBjWaP5HRWdxCXt8LnPRrLROz1-QdVeSPgTDjMk1ZOxSmnCVBP8FQyROlyjTnundtif6Ytss7YZhe1AdqaJSUJBZgrr0NP8TeugO0wLtm9frajjSvgfbeNAgbOnDZT1OYP7YNzN_-StaJ6CLwnqiZU\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_z6eQ0oa3eqPANyqNe4ehKObAg3IL3EXohvlPRb0eRsA.css?delta=3&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkGtuxCAMhC9Ew5GQgdnEjcEIQ3e3py9tVe2PRrL8-DwaWY6UzjB0RfPx1QdOWl2MOdigPtD9LhpJ3ix1bsMuV-MpXHcXMRYNeDQ15HBjWaP5HRWdxCXt8LnPRrLROz1-QdVeSPgTDjMk1ZOxSmnCVBP8FQyROlyjTnundtif6Ytss7YZhe1AdqaJSUJBZgrr0NP8TeugO0wLtm9frajjSvgfbeNAgbOnDZT1OYP7YNzN_-StaJ6CLwnqiZU\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"//fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&amp;display=swap\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_yQmCvVCJSw1fbaISk-abkvwlRyBS_G7mz2ioPr3eD5w.css?delta=5&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkGtuxCAMhC9Ew5GQgdnEjcEIQ3e3py9tVe2PRrL8-DwaWY6UzjB0RfPx1QdOWl2MOdigPtD9LhpJ3ix1bsMuV-MpXHcXMRYNeDQ15HBjWaP5HRWdxCXt8LnPRrLROz1-QdVeSPgTDjMk1ZOxSmnCVBP8FQyROlyjTnundtif6Ytss7YZhe1AdqaJSUJBZgrr0NP8TeugO0wLtm9frajjSvgfbeNAgbOnDZT1OYP7YNzN_-StaJ6CLwnqiZU\" />\n\n    \n  </head>\n  <body class=\"path-frontpage page-node-type-homepage\">\n        <a href=\"#main-content\" class=\"visually-hidden focusable skip-link\">\n      Skip to main content\n    </a>\n    <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-559Q67Q\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden;\"></iframe>\n</noscript>\n      <div class=\"dialog-off-canvas-main-canvas\" data-off-canvas-main-canvas>\n    <div class=\"layout-container\">\n  <div class=\"visual-header\" aria-hidden=\"true\">\n    <div class=\"inner-wrapper\">\n    </div>\n  </div>\n\n  <section class=\"page-top\">\n      <div class=\"region region-top\">\n    <nav role=\"navigation\" aria-labelledby=\"block-bbd-starter-promotedlinks-menu\" id=\"block-bbd-starter-promotedlinks\" class=\"block block-menu navigation menu--promoted-links\">\n            \n  <h2 class=\"visually-hidden\" id=\"block-bbd-starter-promotedlinks-menu\">Promoted links</h2>\n  \n\n        \n<div class='promoted-links-wrapper'>\n              <ul class=\"menu\">\n                    <li class=\"menu-item\">\n        <a href=\"/news\" data-drupal-link-system-path=\"node/28\">News</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"https://alltheworld.salvationarmy.org\">All the World magazine</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/words-of-life\" data-drupal-link-system-path=\"node/2379\">Words of Life devotional</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/prayer-focus\" data-drupal-link-system-path=\"node/2498\">Global Prayer Focus</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/resources/morning-devotions-podcast\" data-drupal-link-system-path=\"node/189\">Morning Devotions Podcast</a>\n              </li>\n        </ul>\n    <div class=\"promoted-links-toggle\">\n      <button type=\"button\" aria-expanded=\"false\">\n        <span class=\"promoted-links-menu-toggle__text visually-hidden\">\n          Expand promoted links\n        </span>\n        <span class=\"promoted-links-menu-toggle__text hidden\">\n          Collapse promoted links\n        </span>\n        <span id=\"promoted-links-menu-hamburger\">\n          <span class=\"hamburger-bar hamburger-bar-1\"></span>\n          <span class=\"hamburger-bar hamburger-bar-2\"></span>\n          <span class=\"hamburger-bar hamburger-bar-3\"></span>\n        </span>\n      </button>\n    </div>\n\n  </div>\n\n\n\n  </nav>\n\n  </div>\n\n  </section>\n\n  <header class=\"header\" role=\"banner\">\n      <div class=\"region region-header\">\n    <div id=\"block-bbd-starter-site-branding\" class=\"block block-system block-system-branding-block\">\n  \n    \n        <a href=\"/\" rel=\"home\" class=\"site-logo\">\n      <img src=\"/themes/custom/bbd_starter/logo.svg\" alt=\"Home\" fetchpriority=\"high\" />\n    </a>\n      </div>\n<div class=\"views-element-container block block-views block-views-blockdaily-psalm-block-1\" id=\"block-bbd-starter-views-block-daily-psalm-block-1\">\n  \n    \n      <div><div class=\"view view-daily-psalm view-id-daily_psalm view-display-id-block_1 js-view-dom-id-9196580a7f4093403ebfb7d1028d4021c6e9123fd3559ac8957df53ac030e414\">\n  \n    \n      \n      <div class=\"view-content\">\n          <div class=\"views-row\"><div class=\"views-field views-field-nothing\"><span class=\"field-content\"><div class=\"psalm-wrapper\">\n  <span class=\"psalm-quote\"><p>\u2018But the Lord is faithful, and he will strengthen you and protect you from the evil one.\u2019</p></span>\n  <span class=\"psalm-source\">2 Thessalonians 3:3 NIV</span>\n</div></span></div></div>\n\n    </div>\n  \n          </div>\n</div>\n\n  </div>\n<div id=\"block-bbd-starter-gtranslate\" class=\"block block-gtranslate block-gtranslate-block\">\n  \n    \n      \n<div class=\"gtranslate_wrapper\"></div><script>window.gtranslateSettings = {\"switcher_horizontal_position\":\"left\",\"switcher_vertical_position\":\"bottom\",\"horizontal_position\":\"inline\",\"vertical_position\":\"inline\",\"float_switcher_open_direction\":\"top\",\"switcher_open_direction\":\"bottom\",\"default_language\":\"en\",\"native_language_names\":1,\"detect_browser_language\":0,\"add_new_line\":1,\"select_language_label\":\"Select Language\",\"flag_size\":32,\"flag_style\":\"2d\",\"globe_size\":60,\"alt_flags\":[],\"wrapper_selector\":\".gtranslate_wrapper\",\"url_structure\":\"none\",\"custom_domains\":null,\"languages\":[\"en\",\"ar\",\"bg\",\"zh-CN\",\"zh-TW\",\"hr\",\"cs\",\"da\",\"nl\",\"fi\",\"fr\",\"de\",\"el\",\"hi\",\"it\",\"ja\",\"ko\",\"no\",\"pl\",\"pt\",\"ro\",\"ru\",\"es\",\"sv\",\"ca\",\"tl\",\"iw\",\"id\",\"lv\",\"lt\",\"sr\",\"sk\",\"sl\",\"uk\",\"vi\",\"sq\",\"et\",\"gl\",\"hu\",\"mt\",\"th\",\"tr\",\"fa\",\"af\",\"ms\",\"sw\",\"ga\",\"cy\",\"be\",\"is\",\"mk\",\"yi\",\"hy\",\"az\",\"eu\",\"ka\",\"ht\",\"ur\",\"bn\",\"bs\",\"ceb\",\"eo\",\"gu\",\"ha\",\"hmn\",\"ig\",\"jw\",\"kn\",\"km\",\"lo\",\"la\",\"mi\",\"mr\",\"mn\",\"ne\",\"pa\",\"so\",\"ta\",\"te\",\"yo\",\"zu\",\"my\",\"ny\",\"kk\",\"mg\",\"ml\",\"si\",\"st\",\"su\",\"tg\",\"uz\",\"am\",\"co\",\"haw\",\"ku\",\"ky\",\"lb\",\"ps\",\"sm\",\"gd\",\"sn\",\"sd\",\"fy\",\"xh\"],\"custom_css\":\"\"};</script><script>(function(){var js = document.createElement('script');js.setAttribute('src', 'https://cdn.gtranslate.net/widgets/latest/dropdown.js');js.setAttribute('data-gt-orig-url', '/');js.setAttribute('data-gt-orig-domain', 'www.salvationarmy.org');document.body.appendChild(js);})();</script>\n  </div>\n<div class=\"views-exposed-form bef-exposed-form block block-views block-views-exposed-filter-blocksite-search-header-search-block\" data-bef-auto-submit=\"\" data-bef-auto-submit-delay=\"500\" data-bef-auto-submit-minimum-length=\"3\" data-bef-auto-submit-full-form=\"\" data-drupal-selector=\"views-exposed-form-site-search-header-search-block\" id=\"block-bbd-starter-exposedformsite-searchheader-search-block\">\n  \n    \n      <div class=\"header-search-toggle\">\n      <button id=\"search-opener\" type=\"button\" aria-label=\"Open search\" aria-expanded=\"false\">\n        <span>Search</span>\n      </button>\n    </div>\n\n    <div class=\"header-search-wrapper\">\n      <div class=\"header-search-inner-wrapper\">\n        <h2>Search</h2>\n        <form action=\"/search\" method=\"get\" id=\"views-exposed-form-site-search-header-search-block\" accept-charset=\"UTF-8\">\n  <div class=\"form--inline clearfix\">\n  <div class=\"js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-search form-item-search form-no-label\">\n      <label for=\"edit-search\" class=\"visually-hidden\">Search</label>\n        <input placeholder=\"Search\" data-drupal-selector=\"edit-search\" type=\"text\" id=\"edit-search\" name=\"search\" value=\"\" size=\"30\" maxlength=\"128\" class=\"form-text\" />\n\n        </div>\n<div data-drupal-selector=\"edit-actions\" class=\"form-actions js-form-wrapper form-wrapper\" id=\"edit-actions\"><input data-bef-auto-submit-click=\"\" data-drupal-selector=\"edit-submit-site-search\" type=\"submit\" id=\"edit-submit-site-search\" value=\"Search\" class=\"button js-form-submit form-submit\" />\n</div>\n\n</div>\n\n</form>\n\n      </div>\n    </div>\n  </div>\n<div class=\"views-element-container block block-views block-views-blocksearch-terms-block-1\" id=\"block-bbd-starter-views-block-search-terms-block-1\">\n  \n      <h2>Suggested searches</h2>\n    \n      <div><div class=\"view view-search-terms view-id-search_terms view-display-id-block_1 js-view-dom-id-3db612ba2fcfc4f993d7f327ef89b25f4e1746b292362b821d9b5139e3bd99a0\">\n  \n    \n      \n      <div class=\"view-content\">\n          <div class=\"views-row\"><div class=\"views-field views-field-name\"><span class=\"field-content\"><a href=\"/search?search=Disaster%20response\">Disaster response</a></span></div></div>\n    <div class=\"views-row\"><div class=\"views-field views-field-name\"><span class=\"field-content\"><a href=\"/search?search=The%20General\">The General</a></span></div></div>\n    <div class=\"views-row\"><div class=\"views-field views-field-name\"><span class=\"field-content\"><a href=\"/search?search=Youth%20congress%202027\">Youth congress 2027</a></span></div></div>\n\n    </div>\n  \n          </div>\n</div>\n\n  </div>\n<nav role=\"navigation\" aria-labelledby=\"block-bbd-starter-main-menu-menu\" id=\"block-bbd-starter-main-menu\" class=\"block block-menu navigation menu--main\">\n            \n  <h2 class=\"visually-hidden\" id=\"block-bbd-starter-main-menu-menu\">Main navigation</h2>\n  \n\n        <div class=\"main-menu-toggle\">\n      <button type=\"button\" id=\"nav-opener\">\n        <span class=\"main-menu-toggle__text\">Menu</span>\n        <span id=\"main-menu-hamburger\">\n          <span class=\"hamburger-bar hamburger-bar-1\"></span>\n          <span class=\"hamburger-bar hamburger-bar-2\"></span>\n          <span class=\"hamburger-bar hamburger-bar-3\"></span>\n        </span>\n      </button>\n    </div>\n\n    <div class=\"menu-wrapper\">\n      <div class=\"menu-inner-wrapper\">\n        \n              <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-0\">\n        <a href=\"/\" data-drupal-link-system-path=\"&lt;front&gt;\" class=\"is-active\" aria-current=\"page\">Home</a>\n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/about\" data-drupal-link-system-path=\"node/2196\">About us</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/mission-vision-and-values\" data-drupal-link-system-path=\"node/52\">Mission, vision and values</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/global-presence\" data-drupal-link-system-path=\"node/53\">Global presence</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/leadership\" data-drupal-link-system-path=\"node/54\">Leadership</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-councils\" data-drupal-link-system-path=\"node/2192\">International councils</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/history\" data-drupal-link-system-path=\"node/80\">History</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/glossary-terms\" data-drupal-link-system-path=\"node/198\">Glossary of terms</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/reports\" data-drupal-link-system-path=\"node/2734\">Reports on our work</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/what-we-believe\" data-drupal-link-system-path=\"node/65\">Our faith</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/what-we-believe\" data-drupal-link-system-path=\"node/65\">What we believe</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/moral-and-social-issues\" data-drupal-link-system-path=\"node/72\">Moral and social issues</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/womens-ministries\" data-drupal-link-system-path=\"node/237\">Women&#039;s Ministries</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/spiritual-life\" data-drupal-link-system-path=\"node/56\">Spiritual life</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/children-and-young-people\" data-drupal-link-system-path=\"node/97\">Children and young people</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/ecumenism\" data-drupal-link-system-path=\"node/199\">Ecumenism</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/our-work\" data-drupal-link-system-path=\"node/5\">Our work</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/disaster-response\" data-drupal-link-system-path=\"node/51\">Disaster response</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/economic-empowerment\" data-drupal-link-system-path=\"node/203\">Economic empowerment</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/education-and-families\" data-drupal-link-system-path=\"node/186\">Education and families</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/health-and-well-being\" data-drupal-link-system-path=\"node/200\">Health and well-being</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/climate-change-resilience\" data-drupal-link-system-path=\"node/50\">Climate change resilience</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/refugees-and-asylum-seekers\" data-drupal-link-system-path=\"node/228\">Refugees and asylum seekers</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/modern-slavery-and-human-trafficking\" data-drupal-link-system-path=\"node/92\">Modern slavery and human trafficking</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-social-justice-commission\" data-drupal-link-system-path=\"node/73\">International Social Justice Commission</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/reports\" data-drupal-link-system-path=\"node/2734\">Reports on our work</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/get-involved\" data-drupal-link-system-path=\"node/2220\">Get involved</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/worship-with-us\" data-drupal-link-system-path=\"node/225\">Worship with us</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/work-us\" data-drupal-link-system-path=\"node/78\">Work with us</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/donate\" data-drupal-link-system-path=\"node/226\">Donate</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/gap-years-and-mission-programmes\" data-drupal-link-system-path=\"node/2303\">Gap years and mission programmes</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/news\" data-drupal-link-system-path=\"node/28\">News</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/news\" data-drupal-link-system-path=\"node/28\">Latest news</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/events\" data-drupal-link-system-path=\"node/2195\">Events</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/resource-hub\" data-drupal-link-system-path=\"node/2436\">Resources</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/resource-hub\" data-drupal-link-system-path=\"node/2436\">Resource hub</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/books\" data-drupal-link-system-path=\"node/221\">Books</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/resources/compass\" data-drupal-link-system-path=\"node/2275\">Compass</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/equip\" data-drupal-link-system-path=\"node/75\">Equip</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/prayer-focus\" data-drupal-link-system-path=\"node/2498\">Prayer Focus</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/worship-and-discipleship\" data-drupal-link-system-path=\"node/2236\">Worship and discipleship</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/contact-us\" data-drupal-link-system-path=\"node/252\">Contact us</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/contact-us\" data-drupal-link-system-path=\"node/252\">Help and general enquiries</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/media-enquiries\" data-drupal-link-system-path=\"node/2194\">Media enquiries</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/cafe-101\" data-drupal-link-system-path=\"node/77\">Caf\u00e9 101</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/gallery-101\" data-drupal-link-system-path=\"node/223\">Gallery 101</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-college-officers\" data-drupal-link-system-path=\"node/2200\">International College for Officers</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-headquarters\" data-drupal-link-system-path=\"node/2199\">International Headquarters</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n        </ul>\n      \n\n\n      </div>\n    </div>\n  </nav>\n\n  </div>\n\n  </header>\n  \n\n\n  \n  \n\n  \n\n  \n\n    <div class=\"region region-help\">\n    <div data-drupal-messages-fallback class=\"hidden\"></div>\n\n  </div>\n\n\n  <main class=\"main\" role=\"main\">\n    <a id=\"main-content\" tabindex=\"-1\"></a>\n    <div class=\"layout-content\">\n        <div class=\"region region-content\">\n    <div id=\"block-bbd-starter-content\" class=\"block block-system block-system-main-block\">\n  \n    \n      \n<article about=\"/node/1\" class=\"no-hero-media node node--type-homepage node--view-mode-full\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n    \n      <div class=\"slider-container\">\n      <div class=\"slider-text-wrapper\">\n        <div class=\"slider-pagination\">\n          <span class=\"slider-pagination--current\"></span>\n           of \n          <span class=\"slider-pagination--total\"></span>\n        </div>\n        <div class=\"slide-text\">\n          <span class=\"slide-measure\"></span>\n        </div>\n        <div class=\"slider-controls\">\n          <button type=\"button\" class=\"slider-control slider-control--prev\" aria-label=\"Previous slide\">\n            <img src=\"/themes/custom/bbd_starter/src/img/icons/arrow.svg\" alt=\"\" />\n          </button>\n          <button type=\"button\" class=\"slider-control slider-control--next\" aria-label=\"Next slide\">\n            <img src=\"/themes/custom/bbd_starter/src/img/icons/arrow.svg\" alt=\"\" />\n          </button>\n        </div>\n      </div>\n      <div class=\"slider-media-wrapper\">\n      </div>\n    </div>\n\n    <div class=\"field field--name-field-featured-content-carousel field--type-entity-reference field--label-hidden field__items\">\n              <div class=\"field__item\">\n<article about=\"/news/salvation-army-assesses-needs-nepal-communities-remain-isolated\" class=\"has-hero-media node node--type-news-article node--view-mode-featured-content-carousel\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n      \n            <div class=\"field field--name-title field--type-string field--label-hidden field__item\"><h2><a href=\"/news/salvation-army-assesses-needs-nepal-communities-remain-isolated\" hreflang=\"en-gb\">Salvation Army assesses needs as Nepal communities remain isolated </a></h2></div>\n      \n            <div class=\"field field--name-field-hero-image-video field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x550\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x550/public/2026-09/Photo%202%20%281%29.jpeg?h=62242d8e&amp;itok=5HnEtZa5\" width=\"850\" height=\"550\" alt=\"People unload supplies from a truck\" typeof=\"foaf:Image\" class=\"image-style-_00x550\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n  </div>\n\n</article>\n</div>\n              <div class=\"field__item\">\n<article about=\"/news/salvation-army-joins-global-celebration-creation-sunday\" class=\"has-hero-media node node--type-news-article node--view-mode-featured-content-carousel\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n      \n            <div class=\"field field--name-title field--type-string field--label-hidden field__item\"><h2><a href=\"/news/salvation-army-joins-global-celebration-creation-sunday\" hreflang=\"en-gb\">The Salvation Army joins global celebration of Creation Sunday</a></h2></div>\n      \n            <div class=\"field field--name-field-hero-image-video field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x550\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x550/public/2026-09/creation%20sunday%20landscape.jpg?h=d1cb525d&amp;itok=KAUSMbjc\" width=\"850\" height=\"550\" alt=\"\" typeof=\"foaf:Image\" class=\"image-style-_00x550\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n  </div>\n\n</article>\n</div>\n              <div class=\"field__item\">\n<article about=\"/news/salvation-army-leader-reaches-out-nepal-and-tibet-after-avalanche-disaster\" class=\"has-hero-media node node--type-news-article node--view-mode-featured-content-carousel\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n      \n            <div class=\"field field--name-title field--type-string field--label-hidden field__item\"><h2><a href=\"/news/salvation-army-leader-reaches-out-nepal-and-tibet-after-avalanche-disaster\" hreflang=\"en-gb\">Salvation Army leader reaches out to Nepal and Tibet after avalanche disaster</a></h2></div>\n      \n            <div class=\"field field--name-field-hero-image-video field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x550\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x550/public/2026-08/Flooding%20in%20Nepal%20Adobe%20Stock.jpg?h=7ea09bc9&amp;itok=ExjDsMqd\" width=\"850\" height=\"550\" alt=\"A river in flood\" typeof=\"foaf:Image\" class=\"image-style-_00x550\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n  </div>\n\n</article>\n</div>\n              <div class=\"field__item\">\n<article about=\"/news/salvation-army-clinic-records-two-deaths-ebola-outbreak-intensifies\" class=\"has-hero-media node node--type-news-article node--view-mode-featured-content-carousel\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n      \n            <div class=\"field field--name-title field--type-string field--label-hidden field__item\"><h2><a href=\"/news/salvation-army-clinic-records-two-deaths-ebola-outbreak-intensifies\" hreflang=\"en-gb\">Salvation Army clinic records two deaths as Ebola outbreak intensifies</a></h2></div>\n      \n            <div class=\"field field--name-field-hero-image-video field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x550\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x550/public/2026-08/fc0ce84a-b45a-4877-a08e-55e8f62603d3.JPG?h=b604c0a6&amp;itok=ov29xte0\" width=\"850\" height=\"550\" alt=\"Salvation Army team members look at a banner showing Ebola prevention measures\" typeof=\"foaf:Image\" class=\"image-style-_00x550\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n  </div>\n\n</article>\n</div>\n              <div class=\"field__item\">\n<article about=\"/news/historic-visit-strengthens-faith-and-mission-ecuador-and-peru\" class=\"has-hero-media node node--type-news-article node--view-mode-featured-content-carousel\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n      \n            <div class=\"field field--name-title field--type-string field--label-hidden field__item\"><h2><a href=\"/news/historic-visit-strengthens-faith-and-mission-ecuador-and-peru\" hreflang=\"en-gb\">Historic visit strengthens faith and mission in Ecuador and Peru</a></h2></div>\n      \n            <div class=\"field field--name-field-hero-image-video field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x550\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x550/public/2026-08/The%20General%20in%20South%20America%20West.jpg?h=c6980913&amp;itok=PR1ydoNx\" width=\"850\" height=\"550\" alt=\"The General greets a crowd of Salvationists\" typeof=\"foaf:Image\" class=\"image-style-_00x550\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n  </div>\n\n</article>\n</div>\n              <div class=\"field__item\">\n<article about=\"/news/salvation-army-responds-earthquake-emergencies-across-five-countries\" class=\"has-hero-media node node--type-news-article node--view-mode-featured-content-carousel\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n      \n            <div class=\"field field--name-title field--type-string field--label-hidden field__item\"><h2><a href=\"/news/salvation-army-responds-earthquake-emergencies-across-five-countries\" hreflang=\"en-gb\">Salvation Army responds to earthquake emergencies across five countries </a></h2></div>\n      \n            <div class=\"field field--name-field-hero-image-video field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x550\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x550/public/2026-08/Japan%20earthquake%202026.jpg?h=9055c93e&amp;itok=IUsWNtjo\" width=\"850\" height=\"550\" alt=\"Ruins of a house destroyed by earthquake in Japan\" typeof=\"foaf:Image\" class=\"image-style-_00x550\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n  </div>\n\n</article>\n</div>\n          </div>\n  \n      <div class=\"field field--name-field-content-sections field--type-entity-reference-revisions field--label-hidden field__items\">\n              <div class=\"paragraph-large-text paragraph-top-level field__item\">\n\n  <div class=\"bg-red text-extra_large title-position-top paragraph paragraph--type--large-text paragraph--view-mode--default\" id=\"large_text_136\">\n    <div class=\"inner-wrapper\">\n              \n<div  class=\"text-wrapper\">\n    \n            <div class=\"clearfix text-formatted field field--name-field-text field--type-text-long field--label-hidden field__item\"><div><p>We are a church embracing the world with the love of Jesus.<br>&nbsp;</p><p>Transforming communities in 134 countries.<br>&nbsp;</p><p>Sharing the life-giving Spirit of God across all generations.&nbsp;</p></div>\n</div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/mission-vision-and-values\">Our mission</a></div>\n      \n  </div>\n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-global-map paragraph-top-level field__item\">\n\n  <div class=\"paragraph paragraph--type--global-map paragraph--view-mode--default\" id=\"global_map_754\" data-paragraph-id=\"d1ee04d9-1df2-49bb-b4a0-199289882ef2\">\n    <div class=\"inner-wrapper\">\n              \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>A Global Movement</h2>\n</div>\n      \n            <div class=\"field field--name-field-summary-sml field--type-string-long field--label-hidden field__item\">From humble beginnings in Victorian London to a movement of faith and service operating in 134 countries, find some of our stories here. </div>\n      \n  </div>\n      \n      <div id=\"global-map-root\"></div>\n    </div>\n  </div>\n\n</div>\n              <div class=\"paragraph-find-your-local paragraph-top-level field__item\">\n\n  <div class=\"paragraph paragraph--type--find-your-local paragraph--view-mode--default\" id=\"find_your_local_1963\" data-paragraph-id=\"bdfef020-b63f-4ccb-baa5-3216a16b80c6\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>Find The Salvation Army in your country</h2>\n</div>\n      \n            <div class=\"field field--name-field-sub-title field--type-string field--label-hidden field__item\">Where in the world are you?</div>\n      <form class=\"bbd-paragraphs-find-local-form\" data-drupal-selector=\"bbd-paragraphs-find-local-form\" action=\"/\" method=\"post\" id=\"bbd-paragraphs-find-local-form\" accept-charset=\"UTF-8\">\n  <div class=\"js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-find-your-local form-item-find-your-local\">\n      <label for=\"edit-find-your-local\" class=\"js-form-required form-required\">Find your local...</label>\n        <input data-drupal-selector=\"edit-find-your-local\" type=\"text\" id=\"edit-find-your-local\" name=\"find_your_local\" value=\"\" size=\"60\" maxlength=\"128\" placeholder=\"What would you like to search for...\" class=\"form-text required\" required=\"required\" aria-required=\"true\" />\n\n        </div>\n<input data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" name=\"submit\" value=\"Search\" class=\"button js-form-submit form-submit\" />\n<input autocomplete=\"off\" data-drupal-selector=\"form-6ovuplo4el7ehv-y0pr5ufnjlwie3ezbelti4z4qlio\" type=\"hidden\" name=\"form_build_id\" value=\"form-6OvuPLO4el7ehv-y0Pr5uFNJLWIe3EZbeLti4z4qLIo\" />\n<input data-drupal-selector=\"edit-bbd-paragraphs-find-local-form\" type=\"hidden\" name=\"form_id\" value=\"bbd_paragraphs_find_local_form\" />\n\n</form>\n<button class=\"use-my-location\" type=\"button\">Use my location</button>\n\n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-big-card-block paragraph-top-level field__item\">\n\n  <div class=\"type-manual paragraph paragraph--type--big-card-block paragraph--view-mode--default\" id=\"big_card_block_6564\">\n    <div class=\"inner-wrapper\">\n              \n<div  class=\"big-card-block-text\">\n    \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>27 September</h2>\n</div>\n      \n            <div class=\"clearfix text-formatted field field--name-field-description field--type-text-long field--label-hidden field__item\"><h3>International Day of Prayer for Victims of Modern Slavery and Human Trafficking</h3><p>On Sunday 27 September, people all around the world will gather to pray for the victims and survivors of modern slavery and human trafficking.</p><p>This year\u2019s theme is \u2018Open Our Eyes\u2019, inspired by Proverbs 31:8 (NLT): \u2018Speak up for those who cannot speak for themselves; ensure justice for those being crushed.\u2019</p></div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/resources/open-our-eyes\">Pray with us</a></div>\n      \n  </div>\n            <div class=\"field field--name-field-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x800\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x800/public/2026-08/IDOP%202026.jpg?h=cd2a7045&amp;itok=DVQmnrvE\" width=\"800\" height=\"800\" alt=\"Close up of a woman&#039;s face. The image is in black and white except for her eyes\" typeof=\"foaf:Image\" class=\"image-style-_00x800\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-_-cards-block paragraph-top-level field__item\">\n\n  <div class=\"bg-blue style-large_cards paragraph paragraph--type--_-cards-block paragraph--view-mode--default\" id=\"4_cards_block_1999\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>Our work around the world</h2>\n</div>\n      \n      <div class=\"field field--name-field-cards field--type-entity-reference-revisions field--label-hidden field__items\">\n              <div class=\"field__item\">\n\n  <div class=\"type-automatic paragraph paragraph--type--_-card-block-card paragraph--view-mode--default\" id=\"4_card_block_card_1995\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-node field--type-entity-reference field--label-hidden field__item\">\n<article about=\"/health-and-well-being\" class=\"has-hero-media node node--type-landing-page node--view-mode-_-cards-block\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n    \n            <div class=\"field field--name-field-hero-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x800\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x800/public/2025-06/Gatehospitalet%20street%20hospital%20in%20Oslo.jpg?h=c74750f6&amp;itok=97YFr8rD\" width=\"800\" height=\"800\" alt=\"A man in medical uniform speaks to a patient in a hospital bed\" typeof=\"foaf:Image\" class=\"image-style-_00x800\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-extra-field-bbd-extra-fields-title field--type-extra-field field--label-hidden field__item\"><h3 class=\"title-field page-title\">Health and well-being</h3>\n</div>\n      \n            <div class=\"field field--name-extra-field-readmore-extrafield field--type-extra-field field--label-hidden field__item\"><div class=\"readmore-extrafield\"><a href=\"/health-and-well-being\" class=\"readmore-extrafield-link\">Read more</a></div>\n</div>\n      \n  </div>\n  </div>\n\n</article>\n</div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"field__item\">\n\n  <div class=\"type-automatic paragraph paragraph--type--_-card-block-card paragraph--view-mode--default\" id=\"4_card_block_card_1996\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-node field--type-entity-reference field--label-hidden field__item\">\n<article about=\"/education-and-families\" class=\"has-hero-media node node--type-landing-page node--view-mode-_-cards-block\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n    \n            <div class=\"field field--name-field-hero-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x800\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x800/public/2025-06/The%20Children%20Learning%20Centre%20Indonesia.jpg?h=67425968&amp;itok=SyhhHtOJ\" width=\"800\" height=\"800\" alt=\"Children play outside\" typeof=\"foaf:Image\" class=\"image-style-_00x800\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-extra-field-bbd-extra-fields-title field--type-extra-field field--label-hidden field__item\"><h3 class=\"title-field page-title\">Education and families</h3>\n</div>\n      \n            <div class=\"field field--name-extra-field-readmore-extrafield field--type-extra-field field--label-hidden field__item\"><div class=\"readmore-extrafield\"><a href=\"/education-and-families\" class=\"readmore-extrafield-link\">Read more</a></div>\n</div>\n      \n  </div>\n  </div>\n\n</article>\n</div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"field__item\">\n\n  <div class=\"type-automatic paragraph paragraph--type--_-card-block-card paragraph--view-mode--default\" id=\"4_card_block_card_1997\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-node field--type-entity-reference field--label-hidden field__item\">\n<article about=\"/disaster-response\" class=\"has-hero-media node node--type-landing-page node--view-mode-_-cards-block\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n    \n            <div class=\"field field--name-field-hero-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x800\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x800/public/2026-08/Venezuela%20earthquake%20response%20-%2010%20July%202026.jpg?h=08b866d1&amp;itok=srHP7aQx\" width=\"800\" height=\"800\" alt=\"Two Salvation Army team members walk towards a collapsed building\" typeof=\"foaf:Image\" class=\"image-style-_00x800\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-extra-field-bbd-extra-fields-title field--type-extra-field field--label-hidden field__item\"><h3 class=\"title-field page-title\">Disaster response</h3>\n</div>\n      \n            <div class=\"field field--name-extra-field-readmore-extrafield field--type-extra-field field--label-hidden field__item\"><div class=\"readmore-extrafield\"><a href=\"/disaster-response\" class=\"readmore-extrafield-link\">Read more</a></div>\n</div>\n      \n  </div>\n  </div>\n\n</article>\n</div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"field__item\">\n\n  <div class=\"type-automatic paragraph paragraph--type--_-card-block-card paragraph--view-mode--default\" id=\"4_card_block_card_1998\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-node field--type-entity-reference field--label-hidden field__item\">\n<article about=\"/womens-ministries\" class=\"has-hero-media node node--type-landing-page node--view-mode-_-cards-block\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n    \n            <div class=\"field field--name-field-hero-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x800\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x800/public/2026-07/Timbrel%20group%20in%20Jakarta.jpg?h=4997dc06&amp;itok=pLTNmYpD\" width=\"800\" height=\"800\" alt=\"A group of girls playing timbrels\" typeof=\"foaf:Image\" class=\"image-style-_00x800\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-extra-field-bbd-extra-fields-title field--type-extra-field field--label-hidden field__item\"><h3 class=\"title-field page-title\">Women's Ministries</h3>\n</div>\n      \n            <div class=\"field field--name-extra-field-readmore-extrafield field--type-extra-field field--label-hidden field__item\"><div class=\"readmore-extrafield\"><a href=\"/womens-ministries\" class=\"readmore-extrafield-link\">Read more</a></div>\n</div>\n      \n  </div>\n  </div>\n\n</article>\n</div>\n      \n          </div>\n  </div>\n</div>\n          </div>\n  \n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-big-card-block paragraph-top-level field__item\">\n\n  <div class=\"type-manual paragraph paragraph--type--big-card-block paragraph--view-mode--default\" id=\"big_card_block_137\">\n    <div class=\"inner-wrapper\">\n              \n<div  class=\"big-card-block-text\">\n    \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>Children and young people</h2>\n</div>\n      \n            <div class=\"clearfix text-formatted field field--name-field-description field--type-text-long field--label-hidden field__item\"><p>We imagine a world in which children and young people fully experience life, feeling loved and valued by their families and communities, and are empowered to make meaningful contributions.</p></div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/children-and-young-people\">Read more</a></div>\n      \n  </div>\n            <div class=\"field field--name-field-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x800\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x800/public/2025-05/Young%20people%20in%20the%20Philippines.jpg?h=790be497&amp;itok=TqoJC66y\" width=\"800\" height=\"800\" alt=\"A group of young people smile at the camera\" typeof=\"foaf:Image\" class=\"image-style-_00x800\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-browse-resources paragraph-top-level field__item\">\n\n  <div class=\"paragraph paragraph--type--browse-resources paragraph--view-mode--default\" id=\"browse_resources_1994\">\n    <div class=\"inner-wrapper\">\n              \n<div  class=\"browse-resources-bg\">\n    \n  </div>\n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>Resources</h2>\n</div>\n      \n            <div class=\"field field--name-field-summary-sml field--type-string-long field--label-hidden field__item\">  <p>Find books, podcasts, Bible studies, reports and training courses from the international Salvation Army.</p>\n\n\n</div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/resource-hub\">Resource Hub</a></div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-prayer-focus paragraph-top-level field__item\">\n\n  <div class=\"bg-blue paragraph paragraph--type--prayer-focus paragraph--view-mode--default\" id=\"prayer_focus_138\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h3>Prayer focus</h3>\n</div>\n      \n            <div class=\"field field--name-field-prayer-focus field--type-viewsreference field--label-hidden field__item\"><div class=\"bbd-ajax-field-loader\" id=\"bbd-ajax-field-loader-paragraph-138-field-prayer-focus\" data-field-name=\"field_prayer_focus\" data-entity-type=\"paragraph\" data-entity-id=\"138\" data-view-mode=\"ajax_loaded_fields\" data-load-on=\"page_load\"></div>\n</div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-daily-bible-reading paragraph-top-level field__item\">\n\n  <div class=\"bg-grey paragraph paragraph--type--daily-bible-reading paragraph--view-mode--default\" id=\"daily_bible_reading_5656\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-daily-bible-reading field--type-viewsreference field--label-hidden field__item\"><div class=\"bbd-ajax-field-loader\" id=\"bbd-ajax-field-loader-paragraph-5656-field-daily-bible-reading\" data-field-name=\"field_daily_bible_reading\" data-entity-type=\"paragraph\" data-entity-id=\"5656\" data-view-mode=\"ajax_loaded_fields\" data-load-on=\"page_load\"></div>\n</div>\n      \n          </div>\n  </div>\n</div>\n          </div>\n  \n  </div>\n\n</article>\n\n  </div>\n\n  </div>\n\n    </div>\n    \n    \n  </main>\n\n      <footer class=\"footer\" role=\"contentinfo\">\n        <div class=\"region region-footer\">\n    <div id=\"block-bbd-starter-footerlogo\" class=\"block block-bbd-blocks block-bbd-blocks-footer-logo\">\n  \n    \n      <div class=\"block block-\">\n  \n    \n  <a href=\"/\" rel=\"home\" class=\"site-logo\" aria-label=\"Site logo\">\n    <img src=\"/modules/custom/bbd_blocks/images/logo--white.svg\" alt=\"The Salvation Army International Headquarters\">\n  </a>\n</div>\n\n  </div>\n<div id=\"block-bbd-starter-socialmedialinks\" class=\"block-social-media-links block block-social-media-links-block\">\n  \n    \n      \n\n<ul class=\"social-media-links--platforms platforms inline horizontal\">\n      <li>\n      <a\n        class=\"social-media-link-icon--twitter\" href=\"https://x.com/SalvArmyIHQ\"\n        aria-label=\"Find us on X\"\n        \n      >\n        <span class='fab fa-x-twitter fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--facebook\" href=\"https://www.facebook.com/SalvationArmyIHQ\"\n        aria-label=\"Find us on Facebook\"\n        \n      >\n        <span class='fab fa-facebook fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--instagram\" href=\"https://www.instagram.com/salvationarmyihq\"\n        aria-label=\"Find us on Instagram\"\n        \n      >\n        <span class='fab fa-instagram fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--flickr\" href=\"https://www.flickr.com/photos/salvationarmyihq\"\n        aria-label=\"Find us on Flickr\"\n        \n      >\n        <span class='fab fa-flickr fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--youtube\" href=\"https://www.youtube.com/user/SAIHQ\"\n        aria-label=\"Find us on Youtube\"\n        \n      >\n        <span class='fab fa-youtube fa-2x'></span>\n      </a>\n\n          </li>\n  </ul>\n\n  </div>\n<div id=\"block-bbd-starter-copyright\" class=\"block block-bbd-blocks block-bbd-blocks-copyright\">\n  \n    \n      <p><span style=\"white-space:pre-wrap;\">Copyright \u00a9 2026 The General of The Salvation Army</span></p><p>The Salvation Army International Trust and The Salvation Army Retired Officers Allowance Scheme are charities registered in England and Wales with respective numbers 1000566 and 1153681. Their sole trustee is The Salvation Army International Trustee Company, a company limited by guarantee and registered in England and Wales (no. 02538134) at 101 Queen Victoria Street, London EC4V 4EH</p>\n  </div>\n<nav role=\"navigation\" aria-labelledby=\"block-bbd-starter-footer-menu\" id=\"block-bbd-starter-footer\" class=\"block block-menu navigation menu--footer\">\n            \n  <h2 class=\"visually-hidden\" id=\"block-bbd-starter-footer-menu\">Footer</h2>\n  \n\n        \n              <ul class=\"menu\">\n                    <li class=\"menu-item\">\n        <a href=\"/privacy-notice\" data-drupal-link-system-path=\"node/59\">Privacy notice</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/cookie-policy\" data-drupal-link-system-path=\"node/60\">Cookie policy</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/modern-slavery-act-2015-uk-compliance-statement\" data-drupal-link-system-path=\"node/57\">Modern slavery</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/terms-and-conditions\" data-drupal-link-system-path=\"node/58\">Terms of use</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/whistleblowing-statement\" data-drupal-link-system-path=\"node/61\">Whistleblowing</a>\n              </li>\n        </ul>\n  \n\n\n  </nav>\n\n  </div>\n\n    </footer>\n  \n  \n</div>\n  </div>\n\n    \n    <script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"pathPrefix\":\"\",\"currentPath\":\"node\\/1\",\"currentPathIsAdmin\":false,\"isFront\":true,\"currentLanguage\":\"en-gb\"},\"pluralDelimiter\":\"\\u0003\",\"suppressDeprecationErrors\":true,\"ajaxPageState\":{\"libraries\":\"eJx1UVtuAyEMvBBdjoQMTDbOGowwNElPX5qfqEoiWX7MjPyQI6UjDF3WfHzmgZNWFz-QF3Mx5kAXuoUTQ3IQpYzuX5CHzgb1sdhdNJJ8Werchr2lxl247v-oqhkuYqw84NbUkNcIWaV5mmsjm7Hw-CTZUdFJXNKO1asXEv6BwwxJ9WCsUJow1QT_DgyROlyjTnundjaf-2wk2xPZZm0zCtsZ2ZkmJgkFmSmsWw7zJ62DrjAt2P76akUd74Sv0DbOKHB2t4GyXmBw34yr-YffiuYp-AVGi7I9\",\"theme\":\"bbd_starter\",\"theme_token\":null},\"ajaxTrustedUrl\":{\"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM\":true,\"\\/search\":true},\"back_to_top\":{\"back_to_top_button_trigger\":100,\"back_to_top_speed\":500,\"back_to_top_prevent_on_mobile\":true,\"back_to_top_prevent_in_admin\":true,\"back_to_top_button_type\":\"image\",\"back_to_top_button_text\":\"Back to top\"},\"eu_cookie_compliance\":{\"cookie_policy_version\":\"1.0.0\",\"popup_enabled\":true,\"popup_agreed_enabled\":false,\"popup_hide_agreed\":false,\"popup_clicking_confirmation\":false,\"popup_scrolling_confirmation\":false,\"popup_html_info\":\"\\u003Cdiv aria-labelledby=\\u0022popup-text\\u0022  class=\\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--opt-in\\u0022\\u003E\\n  \\u003Cdiv class=\\u0022popup-content info eu-cookie-compliance-content\\u0022\\u003E\\n        \\u003Cdiv id=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-compliance-message\\u0022 role=\\u0022document\\u0022\\u003E\\n      \\u003Cp\\u003EWe may serve cookies to analyse traffic to this site. Information about your use of this site is shared with us for that purpose.\\u003C\\/p\\u003E\\n          \\u003C\\/div\\u003E\\n\\n    \\n    \\u003Cdiv id=\\u0022popup-buttons\\u0022 class=\\u0022eu-cookie-compliance-buttons\\u0022\\u003E\\n            \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022agree-button eu-cookie-compliance-secondary-button\\u0022\\u003EOK, got it\\u003C\\/button\\u003E\\n              \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022decline-button eu-cookie-compliance-default-button\\u0022\\u003ENo, thanks\\u003C\\/button\\u003E\\n          \\u003C\\/div\\u003E\\n  \\u003C\\/div\\u003E\\n\\u003C\\/div\\u003E\",\"use_mobile_message\":false,\"mobile_popup_html_info\":\"\\u003Cdiv aria-labelledby=\\u0022popup-text\\u0022  class=\\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--opt-in\\u0022\\u003E\\n  \\u003Cdiv class=\\u0022popup-content info eu-cookie-compliance-content\\u0022\\u003E\\n        \\u003Cdiv id=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-compliance-message\\u0022 role=\\u0022document\\u0022\\u003E\\n      \\n          \\u003C\\/div\\u003E\\n\\n    \\n    \\u003Cdiv id=\\u0022popup-buttons\\u0022 class=\\u0022eu-cookie-compliance-buttons\\u0022\\u003E\\n            \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022agree-button eu-cookie-compliance-secondary-button\\u0022\\u003EOK, got it\\u003C\\/button\\u003E\\n              \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022decline-button eu-cookie-compliance-default-button\\u0022\\u003ENo, thanks\\u003C\\/button\\u003E\\n          \\u003C\\/div\\u003E\\n  \\u003C\\/div\\u003E\\n\\u003C\\/div\\u003E\",\"mobile_breakpoint\":768,\"popup_html_agreed\":false,\"popup_use_bare_css\":true,\"popup_height\":\"auto\",\"popup_width\":\"100%\",\"popup_delay\":1000,\"popup_link\":\"\\/privacy-policy\",\"popup_link_new_window\":true,\"popup_position\":false,\"fixed_top_position\":true,\"popup_language\":\"en-gb\",\"store_consent\":false,\"better_support_for_screen_readers\":false,\"cookie_name\":\"\",\"reload_page\":true,\"domain\":\"\",\"domain_all_sites\":false,\"popup_eu_only\":false,\"popup_eu_only_js\":false,\"cookie_lifetime\":100,\"cookie_session\":0,\"set_cookie_session_zero_on_disagree\":0,\"disagree_do_not_show_popup\":false,\"method\":\"opt_in\",\"automatic_cookies_removal\":false,\"allowed_cookies\":\"\",\"withdraw_markup\":\"\\u003Cbutton type=\\u0022button\\u0022 class=\\u0022eu-cookie-withdraw-tab\\u0022\\u003EPrivacy settings\\u003C\\/button\\u003E\\n\\u003Cdiv aria-labelledby=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-withdraw-banner\\u0022\\u003E\\n  \\u003Cdiv class=\\u0022popup-content info eu-cookie-compliance-content\\u0022\\u003E\\n    \\u003Cdiv id=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-compliance-message\\u0022 role=\\u0022document\\u0022\\u003E\\n      \\u003Ch2\\u003EWe use cookies on this site to enhance your user experience\\u003C\\/h2\\u003E\\u003Cp\\u003EYou have given your consent for us to set cookies.\\u003C\\/p\\u003E\\n    \\u003C\\/div\\u003E\\n    \\u003Cdiv id=\\u0022popup-buttons\\u0022 class=\\u0022eu-cookie-compliance-buttons\\u0022\\u003E\\n      \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022eu-cookie-withdraw-button \\u0022\\u003EWithdraw consent\\u003C\\/button\\u003E\\n    \\u003C\\/div\\u003E\\n  \\u003C\\/div\\u003E\\n\\u003C\\/div\\u003E\",\"withdraw_enabled\":false,\"reload_options\":null,\"reload_routes_list\":\"\",\"withdraw_button_on_info_popup\":false,\"cookie_categories\":[],\"cookie_categories_details\":[],\"enable_save_preferences_button\":true,\"cookie_value_disagreed\":\"0\",\"cookie_value_agreed_show_thank_you\":\"1\",\"cookie_value_agreed\":\"2\",\"containing_element\":\"body\",\"settings_tab_enabled\":false,\"olivero_primary_button_classes\":\"\",\"olivero_secondary_button_classes\":\"\",\"close_button_action\":\"close_banner\",\"open_by_default\":true,\"modules_allow_popup\":true,\"hide_the_banner\":false,\"geoip_match\":true,\"unverified_scripts\":[]},\"field_group\":{\"html_element\":{\"mode\":\"default\",\"context\":\"view\",\"settings\":{\"classes\":\"text-wrapper\",\"show_empty_fields\":false,\"id\":\"\",\"label_as_html\":false,\"element\":\"div\",\"show_label\":false,\"label_element\":\"h3\",\"label_element_classes\":\"\",\"attributes\":\"\",\"effect\":\"none\",\"speed\":\"fast\"}}},\"bbd_custom\":{\"mapbox_access_token\":\"pk.eyJ1IjoiYmlnYmx1ZWRvb3IiLCJhIjoiY21hcHdjdTl4MDE4bTJrcTMyaTgxaGw0ZCJ9._nZRo2pQ-XDsQhdpxIz10w\"},\"better_exposed_filters\":{\"autosubmit_exclude_textfield\":true},\"user\":{\"uid\":0,\"permissionsHash\":\"413b1e1785566ac63e8fbc98f9f5913c40653c401ecdbb1c12c878e71e7e7f60\"}}</script>\n<script src=\"/sites/default/files/js/js_rywvADekAvsG2JzoGHL9MBL9yg8a6KxjlSkAUTd7dno.js?scope=footer&amp;delta=0&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJx1jVEKxDAIRC_UJUcSTdxia2uIBnr8Sn_2Y3dBGH3OKGHdISyrF_r0sPlC1AA3vOAtrA3UsPEoX-TxeeCI3K5qhPryOqRHnuBICnx1c24Z0xy94MwvPumQ-GdZ-eSBuvCEarYLpxxdBc_K5Re8AWn8T_4\"></script>\n<script src=\"/themes/custom/bbd_starter/dist//main-Dn4KJeoG.js?v=1.0.0\" type=\"module\"></script>\n<script src=\"/sites/default/files/js/js_kDOzYE3UatKelOu4tXZ_Sp9_GdIw1uoWmR0xiEDgmuM.js?scope=footer&amp;delta=2&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJx1jVEKxDAIRC_UJUcSTdxia2uIBnr8Sn_2Y3dBGH3OKGHdISyrF_r0sPlC1AA3vOAtrA3UsPEoX-TxeeCI3K5qhPryOqRHnuBICnx1c24Z0xy94MwvPumQ-GdZ-eSBuvCEarYLpxxdBc_K5Re8AWn8T_4\"></script>\n\n  </body>\n</html>\n",
+      "visible_text": "Salvation Army International Headquarters | Salvation Army International Headquarters Skip to main content Promoted links News All the World magazine Words of Life devotional Global Prayer Focus Morning Devotions Podcast Expand promoted links Collapse promoted links \u2018But the Lord is faithful, and he will strengthen you and protect you from the evil one.\u2019 2 Thessalonians 3:3 NIV Search Search Search Suggested searches Disaster response The General Youth congress 2027 Main navigation Menu Home About us Mission, vision and values Global presence Leadership International councils History Glossary of terms Reports on our work Our faith What we believe Moral and social issues Women&#039;s Ministries Spiritual life Children and young people Ecumenism Our work Disaster response Economic empowerment Education and families Health and well-being Climate change resilience Refugees and asylum seekers Modern slavery and human trafficking International Social Justice Commission Reports on our work Get involved Worship with us Work with us Donate Gap years and mission programmes News Latest news Events Resources Resource hub Books Compass Equip Prayer Focus Worship and discipleship Contact us Help and general enquiries Media enquiries Caf\u00e9 101 Gallery 101 International College for Officers International Headquarters of Salvation Army assesses needs as Nepal communities remain isolated The Salvation Army joins global celebration of Creation Sunday Salvation Army leader reaches out to Nepal and Tibet after avalanche disaster Salvation Army clinic records two deaths as Ebola outbreak intensifies Historic visit strengthens faith and mission in Ecuador and Peru Salvation Army responds to earthquake emergencies across five countries We are a church embracing the world with the love of Jesus. &nbsp; Transforming communities in 134 countries. &nbsp; Sharing the life-giving Spirit of God across all generations.&nbsp; Our mission A Global Movement From humble beginnings in Victorian London to a movement of faith and service operating in 134 countries, find some of our stories here. Find The Salvation Army in your country Where in the world are you? Find your local... Use my location 27 September International Day of Prayer for Victims of Modern Slavery and Human Trafficking On Sunday 27 September, people all around the world will gather to pray for the victims and survivors of modern slavery and human trafficking. This year\u2019s theme is \u2018Open Our Eyes\u2019, inspired by Proverbs 31:8 (NLT): \u2018Speak up for those who cannot speak for themselves; ensure justice for those being crushed.\u2019 Pray with us Our work around the world Health and well-being Read more Education and families Read more Disaster response Read more Women's Ministries Read more Children and young people We imagine a world in which children and young people fully experience life, feeling loved and valued by their families and communities, and are empowered to make meaningful contributions. Read more Resources Find books, podcasts, Bible studies, reports and training courses from the international Salvation Army. Resource Hub Prayer focus Copyright \u00a9 2026 The General of The Salvation Army The Salvation Army International Trust and The Salvation Army Retired Officers Allowance Scheme are charities registered in England and Wales with respective numbers 1000566 and 1153681. Their sole trustee is The Salvation Army International Trustee Company, a company limited by guarantee and registered in England and Wales (no. 02538134) at 101 Queen Victoria Street, London EC4V 4EH Footer Privacy notice Cookie policy Modern slavery Terms of use Whistleblowing",
+      "word_count": 546,
+      "title": "Salvation Army International Headquarters | Salvation Army International Headquarters",
+      "meta_description": "",
+      "og_site_name": "",
+      "viewport_meta_present": true,
+      "canonical_url": "https://www.salvationarmy.org/",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Promoted links"
+        },
+        {
+          "level": 2,
+          "text": "Search"
+        },
+        {
+          "level": 2,
+          "text": "Suggested searches"
+        },
+        {
+          "level": 2,
+          "text": "Main navigation"
+        },
+        {
+          "level": 2,
+          "text": "Salvation Army assesses needs as Nepal communities remain isolated"
+        },
+        {
+          "level": 2,
+          "text": "The Salvation Army joins global celebration of Creation Sunday"
+        },
+        {
+          "level": 2,
+          "text": "Salvation Army leader reaches out to Nepal and Tibet after avalanche disaster"
+        },
+        {
+          "level": 2,
+          "text": "Salvation Army clinic records two deaths as Ebola outbreak intensifies"
+        },
+        {
+          "level": 2,
+          "text": "Historic visit strengthens faith and mission in Ecuador and Peru"
+        },
+        {
+          "level": 2,
+          "text": "Salvation Army responds to earthquake emergencies across five countries"
+        },
+        {
+          "level": 2,
+          "text": "A Global Movement"
+        },
+        {
+          "level": 2,
+          "text": "Find The Salvation Army in your country"
+        },
+        {
+          "level": 2,
+          "text": "27 September"
+        },
+        {
+          "level": 3,
+          "text": "International Day of Prayer for Victims of Modern Slavery and Human Trafficking"
+        },
+        {
+          "level": 2,
+          "text": "Our work around the world"
+        },
+        {
+          "level": 3,
+          "text": "Health and well-being"
+        },
+        {
+          "level": 3,
+          "text": "Education and families"
+        },
+        {
+          "level": 3,
+          "text": "Disaster response"
+        },
+        {
+          "level": 3,
+          "text": "Women's Ministries"
+        },
+        {
+          "level": 2,
+          "text": "Children and young people"
+        },
+        {
+          "level": 2,
+          "text": "Resources"
+        },
+        {
+          "level": 3,
+          "text": "Prayer focus"
+        },
+        {
+          "level": 2,
+          "text": "Footer"
+        }
+      ],
+      "h1_texts": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [
+        {
+          "href": "https://www.salvationarmy.org:443/news",
+          "text": "News",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/words-of-life",
+          "text": "Words of Life devotional",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/prayer-focus",
+          "text": "Global Prayer Focus",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/resources/morning-devotions-podcast",
+          "text": "Morning Devotions Podcast",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/",
+          "text": "",
+          "rel": "home"
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/search?search=Disaster%20response",
+          "text": "Disaster response",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/search?search=The%20General",
+          "text": "The General",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/search?search=Youth%20congress%202027",
+          "text": "Youth congress 2027",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/about",
+          "text": "About us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/mission-vision-and-values",
+          "text": "Mission, vision and values",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/global-presence",
+          "text": "Global presence",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/leadership",
+          "text": "Leadership",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-councils",
+          "text": "International councils",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/history",
+          "text": "History",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/glossary-terms",
+          "text": "Glossary of terms",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/reports",
+          "text": "Reports on our work",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/what-we-believe",
+          "text": "Our faith",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/moral-and-social-issues",
+          "text": "Moral and social issues",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/womens-ministries",
+          "text": "Women&#039;s Ministries",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/spiritual-life",
+          "text": "Spiritual life",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/children-and-young-people",
+          "text": "Children and young people",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/ecumenism",
+          "text": "Ecumenism",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/our-work",
+          "text": "Our work",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/disaster-response",
+          "text": "Disaster response",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/economic-empowerment",
+          "text": "Economic empowerment",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/education-and-families",
+          "text": "Education and families",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/health-and-well-being",
+          "text": "Health and well-being",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/climate-change-resilience",
+          "text": "Climate change resilience",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/refugees-and-asylum-seekers",
+          "text": "Refugees and asylum seekers",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/modern-slavery-and-human-trafficking",
+          "text": "Modern slavery and human trafficking",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-social-justice-commission",
+          "text": "International Social Justice Commission",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/get-involved",
+          "text": "Get involved",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/worship-with-us",
+          "text": "Worship with us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/work-us",
+          "text": "Work with us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/donate",
+          "text": "Donate",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/gap-years-and-mission-programmes",
+          "text": "Gap years and mission programmes",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/events",
+          "text": "Events",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/resource-hub",
+          "text": "Resources",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/books",
+          "text": "Books",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/resources/compass",
+          "text": "Compass",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/equip",
+          "text": "Equip",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/worship-and-discipleship",
+          "text": "Worship and discipleship",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/contact-us",
+          "text": "Contact us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/media-enquiries",
+          "text": "Media enquiries",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/cafe-101",
+          "text": "Caf\u00e9 101",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/gallery-101",
+          "text": "Gallery 101",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-college-officers",
+          "text": "International College for Officers",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-headquarters",
+          "text": "International Headquarters",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/news/salvation-army-assesses-needs-nepal-communities-remain-isolated",
+          "text": "Salvation Army assesses needs as Nepal communities remain isolated",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/news/salvation-army-joins-global-celebration-creation-sunday",
+          "text": "The Salvation Army joins global celebration of Creation Sunday",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/news/salvation-army-leader-reaches-out-nepal-and-tibet-after-avalanche-disaster",
+          "text": "Salvation Army leader reaches out to Nepal and Tibet after avalanche disaster",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/news/salvation-army-clinic-records-two-deaths-ebola-outbreak-intensifies",
+          "text": "Salvation Army clinic records two deaths as Ebola outbreak intensifies",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/news/historic-visit-strengthens-faith-and-mission-ecuador-and-peru",
+          "text": "Historic visit strengthens faith and mission in Ecuador and Peru",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/news/salvation-army-responds-earthquake-emergencies-across-five-countries",
+          "text": "Salvation Army responds to earthquake emergencies across five countries",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/resources/open-our-eyes",
+          "text": "Pray with us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/privacy-notice",
+          "text": "Privacy notice",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/cookie-policy",
+          "text": "Cookie policy",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/modern-slavery-act-2015-uk-compliance-statement",
+          "text": "Modern slavery",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/terms-and-conditions",
+          "text": "Terms of use",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/whistleblowing-statement",
+          "text": "Whistleblowing",
+          "rel": ""
+        }
+      ],
+      "external_links": [
+        {
+          "href": "https://alltheworld.salvationarmy.org/",
+          "text": "All the World magazine",
+          "rel": ""
+        },
+        {
+          "href": "https://x.com/SalvArmyIHQ",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.facebook.com/SalvationArmyIHQ",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.instagram.com/salvationarmyihq",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.flickr.com/photos/salvationarmyihq",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.youtube.com/user/SAIHQ",
+          "text": "",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [
+          {
+            "text": "Expand promoted links Collapse promoted links",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Search",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Menu",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Use my location",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Search",
+            "type": "submit",
+            "tag": "input"
+          },
+          {
+            "text": "Search",
+            "type": "submit",
+            "tag": "input"
+          }
+        ],
+        "forms": [
+          {
+            "action": "/search",
+            "method": "get"
+          },
+          {
+            "action": "/",
+            "method": "post"
+          }
+        ],
+        "cta_links": [
+          {
+            "href": "https://www.salvationarmy.org:443/contact-us",
+            "text": "Contact us",
+            "rel": ""
+          }
+        ]
+      },
+      "media_elements": {
+        "images": [
+          {
+            "src": "https://www.salvationarmy.org:443/themes/custom/bbd_starter/logo.svg",
+            "alt": "Home",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/themes/custom/bbd_starter/src/img/icons/arrow.svg",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/themes/custom/bbd_starter/src/img/icons/arrow.svg",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x550/public/2026-09/Photo%202%20%281%29.jpeg?h=62242d8e&amp;itok=5HnEtZa5",
+            "alt": "People unload supplies from a truck",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x550/public/2026-09/creation%20sunday%20landscape.jpg?h=d1cb525d&amp;itok=KAUSMbjc",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x550/public/2026-08/Flooding%20in%20Nepal%20Adobe%20Stock.jpg?h=7ea09bc9&amp;itok=ExjDsMqd",
+            "alt": "A river in flood",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x550/public/2026-08/fc0ce84a-b45a-4877-a08e-55e8f62603d3.JPG?h=b604c0a6&amp;itok=ov29xte0",
+            "alt": "Salvation Army team members look at a banner showing Ebola prevention measures",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x550/public/2026-08/The%20General%20in%20South%20America%20West.jpg?h=c6980913&amp;itok=PR1ydoNx",
+            "alt": "The General greets a crowd of Salvationists",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x550/public/2026-08/Japan%20earthquake%202026.jpg?h=9055c93e&amp;itok=IUsWNtjo",
+            "alt": "Ruins of a house destroyed by earthquake in Japan",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x800/public/2026-08/IDOP%202026.jpg?h=cd2a7045&amp;itok=DVQmnrvE",
+            "alt": "Close up of a woman&#039;s face. The image is in black and white except for her eyes",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x800/public/2025-06/Gatehospitalet%20street%20hospital%20in%20Oslo.jpg?h=c74750f6&amp;itok=97YFr8rD",
+            "alt": "A man in medical uniform speaks to a patient in a hospital bed",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x800/public/2025-06/The%20Children%20Learning%20Centre%20Indonesia.jpg?h=67425968&amp;itok=SyhhHtOJ",
+            "alt": "Children play outside",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x800/public/2026-08/Venezuela%20earthquake%20response%20-%2010%20July%202026.jpg?h=08b866d1&amp;itok=srHP7aQx",
+            "alt": "Two Salvation Army team members walk towards a collapsed building",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x800/public/2026-07/Timbrel%20group%20in%20Jakarta.jpg?h=4997dc06&amp;itok=pLTNmYpD",
+            "alt": "A group of girls playing timbrels",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x800/public/2025-05/Young%20people%20in%20the%20Philippines.jpg?h=790be497&amp;itok=TqoJC66y",
+            "alt": "A group of young people smile at the camera",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/modules/custom/bbd_blocks/images/logo--white.svg",
+            "alt": "The Salvation Army International Headquarters",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          }
+        ],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {
+        "copyright_years": [
+          2026
+        ],
+        "newest_copyright_year": 2026,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "homepage",
+      "is_deep_page": false,
+      "render_gap": false,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [],
+        "script_count": 7,
+        "mount_markers": []
+      }
+    },
+    "https://www.salvationarmy.org:443/about": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://www.salvationarmy.org:443/about",
+      "final_url": "https://www.salvationarmy.org:443/about",
+      "status_code": 200,
+      "load_time_seconds": 1.11,
+      "raw_html": "<!DOCTYPE html>\n<html lang=\"en-gb\" dir=\"ltr\" prefix=\"content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \">\n  <head>\n    <meta charset=\"utf-8\" />\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','GTM-559Q67Q');\n</script>\n<link rel=\"canonical\" href=\"https://www.salvationarmy.org/about\" />\n<meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\" />\n<meta name=\"MobileOptimized\" content=\"width\" />\n<meta name=\"HandheldFriendly\" content=\"true\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<link rel=\"icon\" href=\"/themes/custom/bbd_starter/favicon.ico\" type=\"image/vnd.microsoft.icon\" />\n\n    <title>About us | Salvation Army International Headquarters</title>\n    <link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_tyTUVOS6SNDz5MW3Y460pora3F8z_hRdYad9BKG2WBE.css?delta=0&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkNFuBCEIRX_I6icZ1LszZFCMaLfbr6_tyz50EnKBww0hJMpXnLqjh_SuI2dtLqUSbdKYGOEQTSQflgf3abej-RJuh0uYm0Z8dTWU-GDZrYUDDYPEZR0ITUcl4W84rJhVL8ZOtQtTywh3MCYacJ0GHYP6aaGM1Un8m_jV-krCdqI408wksaIwxX3XZeGhbdITphX-d682tHln_I_8PFHh7GUTdT_K4D4ZTwt_6quWJfgBZdGDNw\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_1qTJgQm79fZXwSyEI-Epj-y3sKWJHEZC8MhscGssW8A.css?delta=2&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkNFuBCEIRX_I6icZ1LszZFCMaLfbr6_tyz50EnKBww0hJMpXnLqjh_SuI2dtLqUSbdKYGOEQTSQflgf3abej-RJuh0uYm0Z8dTWU-GDZrYUDDYPEZR0ITUcl4W84rJhVL8ZOtQtTywh3MCYacJ0GHYP6aaGM1Un8m_jV-krCdqI408wksaIwxX3XZeGhbdITphX-d682tHln_I_8PFHh7GUTdT_K4D4ZTwt_6quWJfgBZdGDNw\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_z6eQ0oa3eqPANyqNe4ehKObAg3IL3EXohvlPRb0eRsA.css?delta=3&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkNFuBCEIRX_I6icZ1LszZFCMaLfbr6_tyz50EnKBww0hJMpXnLqjh_SuI2dtLqUSbdKYGOEQTSQflgf3abej-RJuh0uYm0Z8dTWU-GDZrYUDDYPEZR0ITUcl4W84rJhVL8ZOtQtTywh3MCYacJ0GHYP6aaGM1Un8m_jV-krCdqI408wksaIwxX3XZeGhbdITphX-d682tHln_I_8PFHh7GUTdT_K4D4ZTwt_6quWJfgBZdGDNw\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"//fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&amp;display=swap\" />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_yQmCvVCJSw1fbaISk-abkvwlRyBS_G7mz2ioPr3eD5w.css?delta=5&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJxtkNFuBCEIRX_I6icZ1LszZFCMaLfbr6_tyz50EnKBww0hJMpXnLqjh_SuI2dtLqUSbdKYGOEQTSQflgf3abej-RJuh0uYm0Z8dTWU-GDZrYUDDYPEZR0ITUcl4W84rJhVL8ZOtQtTywh3MCYacJ0GHYP6aaGM1Un8m_jV-krCdqI408wksaIwxX3XZeGhbdITphX-d682tHln_I_8PFHh7GUTdT_K4D4ZTwt_6quWJfgBZdGDNw\" />\n\n    \n  </head>\n  <body class=\"path-node page-node-type-landing-page\">\n        <a href=\"#main-content\" class=\"visually-hidden focusable skip-link\">\n      Skip to main content\n    </a>\n    <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-559Q67Q\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden;\"></iframe>\n</noscript>\n      <div class=\"dialog-off-canvas-main-canvas\" data-off-canvas-main-canvas>\n    <div class=\"layout-container\">\n  <div class=\"visual-header\" aria-hidden=\"true\">\n    <div class=\"inner-wrapper\">\n    </div>\n  </div>\n\n  <section class=\"page-top\">\n      <div class=\"region region-top\">\n    <nav role=\"navigation\" aria-labelledby=\"block-bbd-starter-promotedlinks-menu\" id=\"block-bbd-starter-promotedlinks\" class=\"block block-menu navigation menu--promoted-links\">\n            \n  <h2 class=\"visually-hidden\" id=\"block-bbd-starter-promotedlinks-menu\">Promoted links</h2>\n  \n\n        \n<div class='promoted-links-wrapper'>\n              <ul class=\"menu\">\n                    <li class=\"menu-item\">\n        <a href=\"/news\" data-drupal-link-system-path=\"node/28\">News</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"https://alltheworld.salvationarmy.org\">All the World magazine</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/words-of-life\" data-drupal-link-system-path=\"node/2379\">Words of Life devotional</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/prayer-focus\" data-drupal-link-system-path=\"node/2498\">Global Prayer Focus</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/resources/morning-devotions-podcast\" data-drupal-link-system-path=\"node/189\">Morning Devotions Podcast</a>\n              </li>\n        </ul>\n    <div class=\"promoted-links-toggle\">\n      <button type=\"button\" aria-expanded=\"false\">\n        <span class=\"promoted-links-menu-toggle__text visually-hidden\">\n          Expand promoted links\n        </span>\n        <span class=\"promoted-links-menu-toggle__text hidden\">\n          Collapse promoted links\n        </span>\n        <span id=\"promoted-links-menu-hamburger\">\n          <span class=\"hamburger-bar hamburger-bar-1\"></span>\n          <span class=\"hamburger-bar hamburger-bar-2\"></span>\n          <span class=\"hamburger-bar hamburger-bar-3\"></span>\n        </span>\n      </button>\n    </div>\n\n  </div>\n\n\n\n  </nav>\n\n  </div>\n\n  </section>\n\n  <header class=\"header\" role=\"banner\">\n      <div class=\"region region-header\">\n    <div id=\"block-bbd-starter-site-branding\" class=\"block block-system block-system-branding-block\">\n  \n    \n        <a href=\"/\" rel=\"home\" class=\"site-logo\">\n      <img src=\"/themes/custom/bbd_starter/logo.svg\" alt=\"Home\" fetchpriority=\"high\" />\n    </a>\n      </div>\n<div class=\"views-element-container block block-views block-views-blockdaily-psalm-block-1\" id=\"block-bbd-starter-views-block-daily-psalm-block-1\">\n  \n    \n      <div><div class=\"view view-daily-psalm view-id-daily_psalm view-display-id-block_1 js-view-dom-id-a6af1716dc7524fd4da2f73036acc348fba2b554997d112bb6ca4e865bef8d56\">\n  \n    \n      \n      <div class=\"view-content\">\n          <div class=\"views-row\"><div class=\"views-field views-field-nothing\"><span class=\"field-content\"><div class=\"psalm-wrapper\">\n  <span class=\"psalm-quote\"><p>\u2018But the Lord is faithful, and he will strengthen you and protect you from the evil one.\u2019</p></span>\n  <span class=\"psalm-source\">2 Thessalonians 3:3 NIV</span>\n</div></span></div></div>\n\n    </div>\n  \n          </div>\n</div>\n\n  </div>\n<div id=\"block-bbd-starter-gtranslate\" class=\"block block-gtranslate block-gtranslate-block\">\n  \n    \n      \n<div class=\"gtranslate_wrapper\"></div><script>window.gtranslateSettings = {\"switcher_horizontal_position\":\"left\",\"switcher_vertical_position\":\"bottom\",\"horizontal_position\":\"inline\",\"vertical_position\":\"inline\",\"float_switcher_open_direction\":\"top\",\"switcher_open_direction\":\"bottom\",\"default_language\":\"en\",\"native_language_names\":1,\"detect_browser_language\":0,\"add_new_line\":1,\"select_language_label\":\"Select Language\",\"flag_size\":32,\"flag_style\":\"2d\",\"globe_size\":60,\"alt_flags\":[],\"wrapper_selector\":\".gtranslate_wrapper\",\"url_structure\":\"none\",\"custom_domains\":null,\"languages\":[\"en\",\"ar\",\"bg\",\"zh-CN\",\"zh-TW\",\"hr\",\"cs\",\"da\",\"nl\",\"fi\",\"fr\",\"de\",\"el\",\"hi\",\"it\",\"ja\",\"ko\",\"no\",\"pl\",\"pt\",\"ro\",\"ru\",\"es\",\"sv\",\"ca\",\"tl\",\"iw\",\"id\",\"lv\",\"lt\",\"sr\",\"sk\",\"sl\",\"uk\",\"vi\",\"sq\",\"et\",\"gl\",\"hu\",\"mt\",\"th\",\"tr\",\"fa\",\"af\",\"ms\",\"sw\",\"ga\",\"cy\",\"be\",\"is\",\"mk\",\"yi\",\"hy\",\"az\",\"eu\",\"ka\",\"ht\",\"ur\",\"bn\",\"bs\",\"ceb\",\"eo\",\"gu\",\"ha\",\"hmn\",\"ig\",\"jw\",\"kn\",\"km\",\"lo\",\"la\",\"mi\",\"mr\",\"mn\",\"ne\",\"pa\",\"so\",\"ta\",\"te\",\"yo\",\"zu\",\"my\",\"ny\",\"kk\",\"mg\",\"ml\",\"si\",\"st\",\"su\",\"tg\",\"uz\",\"am\",\"co\",\"haw\",\"ku\",\"ky\",\"lb\",\"ps\",\"sm\",\"gd\",\"sn\",\"sd\",\"fy\",\"xh\"],\"custom_css\":\"\"};</script><script>(function(){var js = document.createElement('script');js.setAttribute('src', 'https://cdn.gtranslate.net/widgets/latest/dropdown.js');js.setAttribute('data-gt-orig-url', '/about');js.setAttribute('data-gt-orig-domain', 'www.salvationarmy.org');document.body.appendChild(js);})();</script>\n  </div>\n<div class=\"views-exposed-form bef-exposed-form block block-views block-views-exposed-filter-blocksite-search-header-search-block\" data-bef-auto-submit=\"\" data-bef-auto-submit-delay=\"500\" data-bef-auto-submit-minimum-length=\"3\" data-bef-auto-submit-full-form=\"\" data-drupal-selector=\"views-exposed-form-site-search-header-search-block\" id=\"block-bbd-starter-exposedformsite-searchheader-search-block\">\n  \n    \n      <div class=\"header-search-toggle\">\n      <button id=\"search-opener\" type=\"button\" aria-label=\"Open search\" aria-expanded=\"false\">\n        <span>Search</span>\n      </button>\n    </div>\n\n    <div class=\"header-search-wrapper\">\n      <div class=\"header-search-inner-wrapper\">\n        <h2>Search</h2>\n        <form action=\"/search\" method=\"get\" id=\"views-exposed-form-site-search-header-search-block\" accept-charset=\"UTF-8\">\n  <div class=\"form--inline clearfix\">\n  <div class=\"js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-search form-item-search form-no-label\">\n      <label for=\"edit-search\" class=\"visually-hidden\">Search</label>\n        <input placeholder=\"Search\" data-drupal-selector=\"edit-search\" type=\"text\" id=\"edit-search\" name=\"search\" value=\"\" size=\"30\" maxlength=\"128\" class=\"form-text\" />\n\n        </div>\n<div data-drupal-selector=\"edit-actions\" class=\"form-actions js-form-wrapper form-wrapper\" id=\"edit-actions\"><input data-bef-auto-submit-click=\"\" data-drupal-selector=\"edit-submit-site-search\" type=\"submit\" id=\"edit-submit-site-search\" value=\"Search\" class=\"button js-form-submit form-submit\" />\n</div>\n\n</div>\n\n</form>\n\n      </div>\n    </div>\n  </div>\n<div class=\"views-element-container block block-views block-views-blocksearch-terms-block-1\" id=\"block-bbd-starter-views-block-search-terms-block-1\">\n  \n      <h2>Suggested searches</h2>\n    \n      <div><div class=\"view view-search-terms view-id-search_terms view-display-id-block_1 js-view-dom-id-3db612ba2fcfc4f993d7f327ef89b25f4e1746b292362b821d9b5139e3bd99a0\">\n  \n    \n      \n      <div class=\"view-content\">\n          <div class=\"views-row\"><div class=\"views-field views-field-name\"><span class=\"field-content\"><a href=\"/search?search=Disaster%20response\">Disaster response</a></span></div></div>\n    <div class=\"views-row\"><div class=\"views-field views-field-name\"><span class=\"field-content\"><a href=\"/search?search=The%20General\">The General</a></span></div></div>\n    <div class=\"views-row\"><div class=\"views-field views-field-name\"><span class=\"field-content\"><a href=\"/search?search=Youth%20congress%202027\">Youth congress 2027</a></span></div></div>\n\n    </div>\n  \n          </div>\n</div>\n\n  </div>\n<nav role=\"navigation\" aria-labelledby=\"block-bbd-starter-main-menu-menu\" id=\"block-bbd-starter-main-menu\" class=\"block block-menu navigation menu--main\">\n            \n  <h2 class=\"visually-hidden\" id=\"block-bbd-starter-main-menu-menu\">Main navigation</h2>\n  \n\n        <div class=\"main-menu-toggle\">\n      <button type=\"button\" id=\"nav-opener\">\n        <span class=\"main-menu-toggle__text\">Menu</span>\n        <span id=\"main-menu-hamburger\">\n          <span class=\"hamburger-bar hamburger-bar-1\"></span>\n          <span class=\"hamburger-bar hamburger-bar-2\"></span>\n          <span class=\"hamburger-bar hamburger-bar-3\"></span>\n        </span>\n      </button>\n    </div>\n\n    <div class=\"menu-wrapper\">\n      <div class=\"menu-inner-wrapper\">\n        \n              <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-0\">\n        <a href=\"/\" data-drupal-link-system-path=\"&lt;front&gt;\">Home</a>\n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item--active-trail menu-item-level-0\">\n        <a href=\"/about\" data-drupal-link-system-path=\"node/2196\" class=\"is-active\" aria-current=\"page\">About us</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/mission-vision-and-values\" data-drupal-link-system-path=\"node/52\">Mission, vision and values</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/global-presence\" data-drupal-link-system-path=\"node/53\">Global presence</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/leadership\" data-drupal-link-system-path=\"node/54\">Leadership</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-councils\" data-drupal-link-system-path=\"node/2192\">International councils</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/history\" data-drupal-link-system-path=\"node/80\">History</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/glossary-terms\" data-drupal-link-system-path=\"node/198\">Glossary of terms</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/reports\" data-drupal-link-system-path=\"node/2734\">Reports on our work</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/what-we-believe\" data-drupal-link-system-path=\"node/65\">Our faith</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/what-we-believe\" data-drupal-link-system-path=\"node/65\">What we believe</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/moral-and-social-issues\" data-drupal-link-system-path=\"node/72\">Moral and social issues</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/womens-ministries\" data-drupal-link-system-path=\"node/237\">Women&#039;s Ministries</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/spiritual-life\" data-drupal-link-system-path=\"node/56\">Spiritual life</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/children-and-young-people\" data-drupal-link-system-path=\"node/97\">Children and young people</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/ecumenism\" data-drupal-link-system-path=\"node/199\">Ecumenism</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/our-work\" data-drupal-link-system-path=\"node/5\">Our work</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/disaster-response\" data-drupal-link-system-path=\"node/51\">Disaster response</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/economic-empowerment\" data-drupal-link-system-path=\"node/203\">Economic empowerment</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/education-and-families\" data-drupal-link-system-path=\"node/186\">Education and families</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/health-and-well-being\" data-drupal-link-system-path=\"node/200\">Health and well-being</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/climate-change-resilience\" data-drupal-link-system-path=\"node/50\">Climate change resilience</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/refugees-and-asylum-seekers\" data-drupal-link-system-path=\"node/228\">Refugees and asylum seekers</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/modern-slavery-and-human-trafficking\" data-drupal-link-system-path=\"node/92\">Modern slavery and human trafficking</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-social-justice-commission\" data-drupal-link-system-path=\"node/73\">International Social Justice Commission</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/reports\" data-drupal-link-system-path=\"node/2734\">Reports on our work</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/get-involved\" data-drupal-link-system-path=\"node/2220\">Get involved</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/worship-with-us\" data-drupal-link-system-path=\"node/225\">Worship with us</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/work-us\" data-drupal-link-system-path=\"node/78\">Work with us</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/donate\" data-drupal-link-system-path=\"node/226\">Donate</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/gap-years-and-mission-programmes\" data-drupal-link-system-path=\"node/2303\">Gap years and mission programmes</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/news\" data-drupal-link-system-path=\"node/28\">News</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/news\" data-drupal-link-system-path=\"node/28\">Latest news</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/events\" data-drupal-link-system-path=\"node/2195\">Events</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/resource-hub\" data-drupal-link-system-path=\"node/2436\">Resources</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/resource-hub\" data-drupal-link-system-path=\"node/2436\">Resource hub</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/books\" data-drupal-link-system-path=\"node/221\">Books</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/resources/compass\" data-drupal-link-system-path=\"node/2275\">Compass</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/equip\" data-drupal-link-system-path=\"node/75\">Equip</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/prayer-focus\" data-drupal-link-system-path=\"node/2498\">Prayer Focus</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/worship-and-discipleship\" data-drupal-link-system-path=\"node/2236\">Worship and discipleship</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n                <li class=\"menu-item menu-item--expanded menu-item-level-0\">\n        <a href=\"/contact-us\" data-drupal-link-system-path=\"node/252\">Contact us</a>\n                                <div class=\"submenu-wrapper\">\n      <ul class=\"menu\">\n    \n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/contact-us\" data-drupal-link-system-path=\"node/252\">Help and general enquiries</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/media-enquiries\" data-drupal-link-system-path=\"node/2194\">Media enquiries</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/cafe-101\" data-drupal-link-system-path=\"node/77\">Caf\u00e9 101</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/gallery-101\" data-drupal-link-system-path=\"node/223\">Gallery 101</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-college-officers\" data-drupal-link-system-path=\"node/2200\">International College for Officers</a>\n              </li>\n                <li class=\"menu-item menu-item-level-1\">\n        <a href=\"/international-headquarters\" data-drupal-link-system-path=\"node/2199\">International Headquarters</a>\n              </li>\n        </ul>\n          </div>\n      \n              </li>\n        </ul>\n      \n\n\n      </div>\n    </div>\n  </nav>\n\n  </div>\n\n  </header>\n  \n\n\n  \n  \n\n  \n\n  \n\n    <div class=\"region region-help\">\n    <div data-drupal-messages-fallback class=\"hidden\"></div>\n\n  </div>\n\n\n  <main class=\"main\" role=\"main\">\n    <a id=\"main-content\" tabindex=\"-1\"></a>\n    <div class=\"layout-content\">\n        <div class=\"region region-content\">\n    <div id=\"block-bbd-starter-content\" class=\"block block-system block-system-main-block\">\n  \n    \n      \n<article about=\"/about\" class=\"no-hero-media node node--type-landing-page node--view-mode-full\">\n\n  \n    \n\n  \n  <div class=\"node__content\">\n    \n            <div class=\"field field--name-extra-field-bbd-extra-fields-title field--type-extra-field field--label-hidden field__item\"><h1 class=\"title-field page-title\">About us</h1>\n</div>\n      \n      <div class=\"field field--name-field-content-sections field--type-entity-reference-revisions field--label-hidden field__items\">\n              <div class=\"paragraph-large-text paragraph-top-level field__item\">\n\n  <div class=\"bg-blue text-large title-position-top paragraph paragraph--type--large-text paragraph--view-mode--default\" id=\"large_text_4537\">\n    <div class=\"inner-wrapper\">\n              \n<div  class=\"text-wrapper\">\n    \n            <div class=\"clearfix text-formatted field field--name-field-text field--type-text-long field--label-hidden field__item\"><div><p>The Salvation Army, an international movement, is an evangelical part of the universal Christian Church.<br>&nbsp;</p><p>Its message is based on the Bible.<br><br>Its ministry is motivated by the love of God.<br><br>Its mission is to preach the gospel of Jesus Christ and to meet human needs in his name without discrimination.</p></div>\n</div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/mission-vision-and-values\">Our mission</a></div>\n      \n  </div>\n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-find-your-local paragraph-top-level field__item\">\n\n  <div class=\"paragraph paragraph--type--find-your-local paragraph--view-mode--default\" id=\"find_your_local_4538\" data-paragraph-id=\"e9e3f957-23a7-48bf-8465-7ab268460db3\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>We are at work in over 130 countries worldwide</h2>\n</div>\n      \n            <div class=\"field field--name-field-sub-title field--type-string field--label-hidden field__item\">Find The Salvation Army near you:</div>\n      <form class=\"bbd-paragraphs-find-local-form\" data-drupal-selector=\"bbd-paragraphs-find-local-form\" action=\"/about\" method=\"post\" id=\"bbd-paragraphs-find-local-form\" accept-charset=\"UTF-8\">\n  <div class=\"js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-find-your-local form-item-find-your-local\">\n      <label for=\"edit-find-your-local\" class=\"js-form-required form-required\">Find your local...</label>\n        <input data-drupal-selector=\"edit-find-your-local\" type=\"text\" id=\"edit-find-your-local\" name=\"find_your_local\" value=\"\" size=\"60\" maxlength=\"128\" placeholder=\"What would you like to search for...\" class=\"form-text required\" required=\"required\" aria-required=\"true\" />\n\n        </div>\n<input data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" name=\"submit\" value=\"Search\" class=\"button js-form-submit form-submit\" />\n<input autocomplete=\"off\" data-drupal-selector=\"form-rnzvwoe9sk7atxl2l1vee-avlxhoru6dzd3-erlnfae\" type=\"hidden\" name=\"form_build_id\" value=\"form-rnzvWoE9sk7atXL2L1VEe-avlXHoRU6Dzd3-ErLnFaE\" />\n<input data-drupal-selector=\"edit-bbd-paragraphs-find-local-form\" type=\"hidden\" name=\"form_id\" value=\"bbd_paragraphs_find_local_form\" />\n\n</form>\n<button class=\"use-my-location\" type=\"button\">Use my location</button>\n\n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-big-card-block paragraph-top-level field__item\">\n\n  <div class=\"type-manual paragraph paragraph--type--big-card-block paragraph--view-mode--default\" id=\"big_card_block_4543\">\n    <div class=\"inner-wrapper\">\n              \n<div  class=\"big-card-block-text\">\n    \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>Our faith</h2>\n</div>\n      \n            <div class=\"clearfix text-formatted field field--name-field-description field--type-text-long field--label-hidden field__item\"><p>Our message is based on the Bible. Our ministry is motivated by the love of God. Our mission is to make known the good news about Jesus Christ and to invite others to become his followers too.</p><p>The confidence we have in a loving and caring God finds outward expression in our love for humanity and our practical response to human need.</p></div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/what-we-believe\">What we believe</a></div>\n      \n  </div>\n            <div class=\"field field--name-field-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_00x800\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/800x800/public/2025-05/53772475982_f64f314f1d_k.jpg?h=f4761ccc&amp;itok=8BZvXkK9\" width=\"800\" height=\"800\" alt=\"A group of Indonesian Salvationists bow their heads in prayer, gathered around a cross\" typeof=\"foaf:Image\" class=\"image-style-_00x800\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-_-big-2-small-promo paragraph-top-level field__item\">\n\n  <div class=\"bg-blue layout-50_50 paragraph paragraph--type--_-big-2-small-promo paragraph--view-mode--default\" id=\"1_big_2_small_promo_4542\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>Leadership and governance</h2>\n</div>\n      \n      <div class=\"field field--name-field-1-big-2-small-promo-card field--type-entity-reference-revisions field--label-hidden field__items\">\n              <div class=\"field__item\">\n\n  <div class=\"type-manual paragraph paragraph--type--_-big-2-small-promo-card paragraph--view-mode--default\" id=\"1_big_2_small_promo_card_4539\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-node field--type-entity-reference field--label-hidden field__item\">\n<article about=\"/general\" typeof=\"schema:WebPage\" class=\"no-hero-media node node--type-page node--view-mode-_-big-2-small-promo-card\">\n\n  \n      <span property=\"schema:name\" content=\"The General\" class=\"hidden\"></span>\n\n\n  \n  <div class=\"node__content\">\n    \n<div  class=\"text-wrapper\">\n      \n            <div property=\"schema:name\" class=\"field field--name-title field--type-string field--label-hidden field__item\"><h3>The General</h3></div>\n      \n            <div class=\"field field--name-extra-field-readmore-extrafield field--type-extra-field field--label-hidden field__item\"><div class=\"readmore-extrafield\"><a href=\"/general\" class=\"readmore-extrafield-link\">Find out more</a></div>\n</div>\n      \n  </div>\n  </div>\n\n</article>\n</div>\n      \n            <div class=\"field field--name-field-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_560x1440\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/2560x1440/public/2025-05/54054452656_cedc21a3e3_k.jpg?h=0128acc6&amp;itok=4kf9n_eq\" width=\"2560\" height=\"1440\" alt=\"General Lyndon Buckingham, in full Salvation Army uniform, gives an address\" typeof=\"foaf:Image\" class=\"image-style-_560x1440\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h3>The General</h3>\n</div>\n      \n            <div class=\"field field--name-field-summary-sml field--type-string-long field--label-hidden field__item\">  <p>General Lyndon Buckingham is the world leader of The Salvation Army.<br />\nHe is the 22nd General of The Salvation Army, responsible for its ministry in 134 countries worldwide.</p>\n\n\n</div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/general\">General Lyndon Buckingham</a></div>\n      \n  </div>\n          </div>\n  </div>\n</div>\n              <div class=\"field__item\">\n\n  <div class=\"type-manual paragraph paragraph--type--_-big-2-small-promo-card paragraph--view-mode--default\" id=\"1_big_2_small_promo_card_4540\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-node field--type-entity-reference field--label-hidden field__item\">\n<article about=\"/leadership\" typeof=\"schema:WebPage\" class=\"no-hero-media node node--type-page node--view-mode-_-big-2-small-promo-card\">\n\n  \n      <span property=\"schema:name\" content=\"Leadership\" class=\"hidden\"></span>\n\n\n  \n  <div class=\"node__content\">\n    \n<div  class=\"text-wrapper\">\n      \n            <div property=\"schema:name\" class=\"field field--name-title field--type-string field--label-hidden field__item\"><h3>Leadership</h3></div>\n      \n            <div class=\"field field--name-extra-field-readmore-extrafield field--type-extra-field field--label-hidden field__item\"><div class=\"readmore-extrafield\"><a href=\"/leadership\" class=\"readmore-extrafield-link\">Find out more</a></div>\n</div>\n      \n  </div>\n  </div>\n\n</article>\n</div>\n      \n            <div class=\"field field--name-field-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_560x1440\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/2560x1440/public/2025-07/52398184289_69574dd739_k.jpg?h=a1e1a043&amp;itok=rtfxqvjh\" width=\"2560\" height=\"1440\" alt=\"A group of Salvation Army leaders discuss around a table\" typeof=\"foaf:Image\" class=\"image-style-_560x1440\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h3>Leadership</h3>\n</div>\n      \n            <div class=\"field field--name-field-summary-sml field--type-string-long field--label-hidden field__item\">  <p>The General is supported in leadership by officers working directly with Salvationists and communities across the world.</p>\n\n\n</div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/leadership\">International leaders</a></div>\n      \n  </div>\n          </div>\n  </div>\n</div>\n              <div class=\"field__item\">\n\n  <div class=\"type-manual paragraph paragraph--type--_-big-2-small-promo-card paragraph--view-mode--default\" id=\"1_big_2_small_promo_card_4541\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-node field--type-entity-reference field--label-hidden field__item\">\n<article about=\"/international-councils\" typeof=\"schema:WebPage\" class=\"no-hero-media node node--type-page node--view-mode-_-big-2-small-promo-card\">\n\n  \n      <span property=\"schema:name\" content=\"International councils\" class=\"hidden\"></span>\n\n\n  \n  <div class=\"node__content\">\n    \n<div  class=\"text-wrapper\">\n      \n            <div property=\"schema:name\" class=\"field field--name-title field--type-string field--label-hidden field__item\"><h3>International councils</h3></div>\n      \n            <div class=\"field field--name-extra-field-readmore-extrafield field--type-extra-field field--label-hidden field__item\"><div class=\"readmore-extrafield\"><a href=\"/international-councils\" class=\"readmore-extrafield-link\">Find out more</a></div>\n</div>\n      \n  </div>\n  </div>\n\n</article>\n</div>\n      \n            <div class=\"field field--name-field-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_560x1440\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/2560x1440/public/2025-07/54453528688_2e16e27a61_k%20%281%29.jpg?h=bc93c728&amp;itok=V8n8clHv\" width=\"2560\" height=\"1440\" alt=\"Detail of meeting brochure\" typeof=\"foaf:Image\" class=\"image-style-_560x1440\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n<div  class=\"text-wrapper\">\n    \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h3>International councils</h3>\n</div>\n      \n            <div class=\"field field--name-field-summary-sml field--type-string-long field--label-hidden field__item\">  <p>Find out more about the work of the General&#039;s Council and Consultative Council, the International Theological Council, International Moral and Social Issues Council and International Officer Training and Leader Development Council.</p>\n\n\n</div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/international-councils\">International councils</a></div>\n      \n  </div>\n          </div>\n  </div>\n</div>\n          </div>\n  \n          </div>\n  </div>\n</div>\n              <div class=\"paragraph-full-width-promo paragraph-top-level field__item\">\n\n  <div class=\"type-manual paragraph paragraph--type--full-width-promo paragraph--view-mode--default\" id=\"full_width_promo_4544\">\n    <div class=\"inner-wrapper\">\n              \n            <div class=\"field field--name-field-title field--type-string field--label-hidden field__item\"><h2>Transforming lives since 1865</h2>\n</div>\n      \n            <div class=\"field field--name-field-image field--type-entity-reference field--label-hidden field__item\"><article class=\"media media--type-image media--view-mode-_000x1000\">\n  \n      \n            <div class=\"field field--name-field-media-image field--type-image field--label-hidden field__item\">  <img loading=\"lazy\" src=\"/sites/default/files/styles/2000x1000/public/2025-05/William%20Booth%20preaching%20in%20a%20tent.jpg?h=90a90684&amp;itok=B-pmNtYj\" width=\"2000\" height=\"1000\" alt=\"Illustration shows William Booth preaching to a large crowd of men and women\" typeof=\"foaf:Image\" class=\"image-style-_000x1000\" />\n\n\n</div>\n      \n  </article>\n</div>\n      \n            <div class=\"field field--name-field-introduction-text field--type-string-long field--label-hidden field__item\">How did The Salvation Army get its name? Why did its charity work begin? What does it do in emergency situations, and how is it working to improve the lives of people around the world?<br />\r\n<br />\r\nFrom humble beginnings in Victorian London to a movement found today in over 130 countries, this is our story so far.</div>\n      \n            <div class=\"field field--name-field-cta field--type-link field--label-hidden field__item\"><a href=\"/history\">Our story</a></div>\n      \n          </div>\n  </div>\n</div>\n          </div>\n  \n  </div>\n\n</article>\n\n  </div>\n\n  </div>\n\n    </div>\n    \n    \n  </main>\n\n      <footer class=\"footer\" role=\"contentinfo\">\n        <div class=\"region region-footer\">\n    <div id=\"block-bbd-starter-footerlogo\" class=\"block block-bbd-blocks block-bbd-blocks-footer-logo\">\n  \n    \n      <div class=\"block block-\">\n  \n    \n  <a href=\"/\" rel=\"home\" class=\"site-logo\" aria-label=\"Site logo\">\n    <img src=\"/modules/custom/bbd_blocks/images/logo--white.svg\" alt=\"The Salvation Army International Headquarters\">\n  </a>\n</div>\n\n  </div>\n<div id=\"block-bbd-starter-socialmedialinks\" class=\"block-social-media-links block block-social-media-links-block\">\n  \n    \n      \n\n<ul class=\"social-media-links--platforms platforms inline horizontal\">\n      <li>\n      <a\n        class=\"social-media-link-icon--twitter\" href=\"https://x.com/SalvArmyIHQ\"\n        aria-label=\"Find us on X\"\n        \n      >\n        <span class='fab fa-x-twitter fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--facebook\" href=\"https://www.facebook.com/SalvationArmyIHQ\"\n        aria-label=\"Find us on Facebook\"\n        \n      >\n        <span class='fab fa-facebook fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--instagram\" href=\"https://www.instagram.com/salvationarmyihq\"\n        aria-label=\"Find us on Instagram\"\n        \n      >\n        <span class='fab fa-instagram fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--flickr\" href=\"https://www.flickr.com/photos/salvationarmyihq\"\n        aria-label=\"Find us on Flickr\"\n        \n      >\n        <span class='fab fa-flickr fa-2x'></span>\n      </a>\n\n          </li>\n      <li>\n      <a\n        class=\"social-media-link-icon--youtube\" href=\"https://www.youtube.com/user/SAIHQ\"\n        aria-label=\"Find us on Youtube\"\n        \n      >\n        <span class='fab fa-youtube fa-2x'></span>\n      </a>\n\n          </li>\n  </ul>\n\n  </div>\n<div id=\"block-bbd-starter-copyright\" class=\"block block-bbd-blocks block-bbd-blocks-copyright\">\n  \n    \n      <p><span style=\"white-space:pre-wrap;\">Copyright \u00a9 2026 The General of The Salvation Army</span></p><p>The Salvation Army International Trust and The Salvation Army Retired Officers Allowance Scheme are charities registered in England and Wales with respective numbers 1000566 and 1153681. Their sole trustee is The Salvation Army International Trustee Company, a company limited by guarantee and registered in England and Wales (no. 02538134) at 101 Queen Victoria Street, London EC4V 4EH</p>\n  </div>\n<nav role=\"navigation\" aria-labelledby=\"block-bbd-starter-footer-menu\" id=\"block-bbd-starter-footer\" class=\"block block-menu navigation menu--footer\">\n            \n  <h2 class=\"visually-hidden\" id=\"block-bbd-starter-footer-menu\">Footer</h2>\n  \n\n        \n              <ul class=\"menu\">\n                    <li class=\"menu-item\">\n        <a href=\"/privacy-notice\" data-drupal-link-system-path=\"node/59\">Privacy notice</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/cookie-policy\" data-drupal-link-system-path=\"node/60\">Cookie policy</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/modern-slavery-act-2015-uk-compliance-statement\" data-drupal-link-system-path=\"node/57\">Modern slavery</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/terms-and-conditions\" data-drupal-link-system-path=\"node/58\">Terms of use</a>\n              </li>\n                <li class=\"menu-item\">\n        <a href=\"/whistleblowing-statement\" data-drupal-link-system-path=\"node/61\">Whistleblowing</a>\n              </li>\n        </ul>\n  \n\n\n  </nav>\n\n  </div>\n\n    </footer>\n  \n  \n</div>\n  </div>\n\n    \n    <script type=\"application/json\" data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"pathPrefix\":\"\",\"currentPath\":\"node\\/2196\",\"currentPathIsAdmin\":false,\"isFront\":false,\"currentLanguage\":\"en-gb\"},\"pluralDelimiter\":\"\\u0003\",\"suppressDeprecationErrors\":true,\"back_to_top\":{\"back_to_top_button_trigger\":100,\"back_to_top_speed\":500,\"back_to_top_prevent_on_mobile\":true,\"back_to_top_prevent_in_admin\":true,\"back_to_top_button_type\":\"image\",\"back_to_top_button_text\":\"Back to top\"},\"eu_cookie_compliance\":{\"cookie_policy_version\":\"1.0.0\",\"popup_enabled\":true,\"popup_agreed_enabled\":false,\"popup_hide_agreed\":false,\"popup_clicking_confirmation\":false,\"popup_scrolling_confirmation\":false,\"popup_html_info\":\"\\u003Cdiv aria-labelledby=\\u0022popup-text\\u0022  class=\\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--opt-in\\u0022\\u003E\\n  \\u003Cdiv class=\\u0022popup-content info eu-cookie-compliance-content\\u0022\\u003E\\n        \\u003Cdiv id=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-compliance-message\\u0022 role=\\u0022document\\u0022\\u003E\\n      \\u003Cp\\u003EWe may serve cookies to analyse traffic to this site. Information about your use of this site is shared with us for that purpose.\\u003C\\/p\\u003E\\n          \\u003C\\/div\\u003E\\n\\n    \\n    \\u003Cdiv id=\\u0022popup-buttons\\u0022 class=\\u0022eu-cookie-compliance-buttons\\u0022\\u003E\\n            \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022agree-button eu-cookie-compliance-secondary-button\\u0022\\u003EOK, got it\\u003C\\/button\\u003E\\n              \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022decline-button eu-cookie-compliance-default-button\\u0022\\u003ENo, thanks\\u003C\\/button\\u003E\\n          \\u003C\\/div\\u003E\\n  \\u003C\\/div\\u003E\\n\\u003C\\/div\\u003E\",\"use_mobile_message\":false,\"mobile_popup_html_info\":\"\\u003Cdiv aria-labelledby=\\u0022popup-text\\u0022  class=\\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--opt-in\\u0022\\u003E\\n  \\u003Cdiv class=\\u0022popup-content info eu-cookie-compliance-content\\u0022\\u003E\\n        \\u003Cdiv id=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-compliance-message\\u0022 role=\\u0022document\\u0022\\u003E\\n      \\n          \\u003C\\/div\\u003E\\n\\n    \\n    \\u003Cdiv id=\\u0022popup-buttons\\u0022 class=\\u0022eu-cookie-compliance-buttons\\u0022\\u003E\\n            \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022agree-button eu-cookie-compliance-secondary-button\\u0022\\u003EOK, got it\\u003C\\/button\\u003E\\n              \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022decline-button eu-cookie-compliance-default-button\\u0022\\u003ENo, thanks\\u003C\\/button\\u003E\\n          \\u003C\\/div\\u003E\\n  \\u003C\\/div\\u003E\\n\\u003C\\/div\\u003E\",\"mobile_breakpoint\":768,\"popup_html_agreed\":false,\"popup_use_bare_css\":true,\"popup_height\":\"auto\",\"popup_width\":\"100%\",\"popup_delay\":1000,\"popup_link\":\"\\/privacy-policy\",\"popup_link_new_window\":true,\"popup_position\":false,\"fixed_top_position\":true,\"popup_language\":\"en-gb\",\"store_consent\":false,\"better_support_for_screen_readers\":false,\"cookie_name\":\"\",\"reload_page\":true,\"domain\":\"\",\"domain_all_sites\":false,\"popup_eu_only\":false,\"popup_eu_only_js\":false,\"cookie_lifetime\":100,\"cookie_session\":0,\"set_cookie_session_zero_on_disagree\":0,\"disagree_do_not_show_popup\":false,\"method\":\"opt_in\",\"automatic_cookies_removal\":false,\"allowed_cookies\":\"\",\"withdraw_markup\":\"\\u003Cbutton type=\\u0022button\\u0022 class=\\u0022eu-cookie-withdraw-tab\\u0022\\u003EPrivacy settings\\u003C\\/button\\u003E\\n\\u003Cdiv aria-labelledby=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-withdraw-banner\\u0022\\u003E\\n  \\u003Cdiv class=\\u0022popup-content info eu-cookie-compliance-content\\u0022\\u003E\\n    \\u003Cdiv id=\\u0022popup-text\\u0022 class=\\u0022eu-cookie-compliance-message\\u0022 role=\\u0022document\\u0022\\u003E\\n      \\u003Ch2\\u003EWe use cookies on this site to enhance your user experience\\u003C\\/h2\\u003E\\u003Cp\\u003EYou have given your consent for us to set cookies.\\u003C\\/p\\u003E\\n    \\u003C\\/div\\u003E\\n    \\u003Cdiv id=\\u0022popup-buttons\\u0022 class=\\u0022eu-cookie-compliance-buttons\\u0022\\u003E\\n      \\u003Cbutton type=\\u0022button\\u0022 class=\\u0022eu-cookie-withdraw-button \\u0022\\u003EWithdraw consent\\u003C\\/button\\u003E\\n    \\u003C\\/div\\u003E\\n  \\u003C\\/div\\u003E\\n\\u003C\\/div\\u003E\",\"withdraw_enabled\":false,\"reload_options\":null,\"reload_routes_list\":\"\",\"withdraw_button_on_info_popup\":false,\"cookie_categories\":[],\"cookie_categories_details\":[],\"enable_save_preferences_button\":true,\"cookie_value_disagreed\":\"0\",\"cookie_value_agreed_show_thank_you\":\"1\",\"cookie_value_agreed\":\"2\",\"containing_element\":\"body\",\"settings_tab_enabled\":false,\"olivero_primary_button_classes\":\"\",\"olivero_secondary_button_classes\":\"\",\"close_button_action\":\"close_banner\",\"open_by_default\":true,\"modules_allow_popup\":true,\"hide_the_banner\":false,\"geoip_match\":true,\"unverified_scripts\":[]},\"field_group\":{\"html_element\":{\"mode\":\"default\",\"context\":\"view\",\"settings\":{\"classes\":\"text-wrapper\",\"show_empty_fields\":false,\"id\":\"\",\"label_as_html\":false,\"element\":\"div\",\"show_label\":false,\"label_element\":\"h3\",\"label_element_classes\":\"\",\"attributes\":\"\",\"effect\":\"none\",\"speed\":\"fast\"}}},\"ajaxTrustedUrl\":{\"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM\":true,\"\\/search\":true},\"bbd_custom\":{\"mapbox_access_token\":\"pk.eyJ1IjoiYmlnYmx1ZWRvb3IiLCJhIjoiY21hcHdjdTl4MDE4bTJrcTMyaTgxaGw0ZCJ9._nZRo2pQ-XDsQhdpxIz10w\"},\"better_exposed_filters\":{\"autosubmit_exclude_textfield\":true},\"user\":{\"uid\":0,\"permissionsHash\":\"413b1e1785566ac63e8fbc98f9f5913c40653c401ecdbb1c12c878e71e7e7f60\"}}</script>\n<script src=\"/sites/default/files/js/js_hVjNE_9lum8MjbOZtIGZvY5qZ9hR9Tdv-uz0swVCNOA.js?scope=footer&amp;delta=0&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJx1S1sKw0AIvFDKHkl0Mw02Ji6rCz1-_etPCwPzFu4npRdGk6-mV2wiO0XyTMx2mAvbI_rUkVUhKyW8hwd2eqqVjcar3rHk0vw3OXBjsm1Y1N1PRdE1TPnuaL_CD1GZQGI\"></script>\n<script src=\"/themes/custom/bbd_starter/dist//main-Dn4KJeoG.js?v=1.0.0\" type=\"module\"></script>\n<script src=\"/sites/default/files/js/js_4DMAF7MPMkbW9qQwH6fx0ze3Q6-rgsseqMoLX-MGD_Y.js?scope=footer&amp;delta=2&amp;language=en-gb&amp;theme=bbd_starter&amp;include=eJx1S1sKw0AIvFDKHkl0Mw02Ji6rCz1-_etPCwPzFu4npRdGk6-mV2wiO0XyTMx2mAvbI_rUkVUhKyW8hwd2eqqVjcar3rHk0vw3OXBjsm1Y1N1PRdE1TPnuaL_CD1GZQGI\"></script>\n\n  </body>\n</html>\n",
+      "visible_text": "About us | Salvation Army International Headquarters Skip to main content Promoted links News All the World magazine Words of Life devotional Global Prayer Focus Morning Devotions Podcast Expand promoted links Collapse promoted links \u2018But the Lord is faithful, and he will strengthen you and protect you from the evil one.\u2019 2 Thessalonians 3:3 NIV Search Search Search Suggested searches Disaster response The General Youth congress 2027 Main navigation Menu Home About us Mission, vision and values Global presence Leadership International councils History Glossary of terms Reports on our work Our faith What we believe Moral and social issues Women&#039;s Ministries Spiritual life Children and young people Ecumenism Our work Disaster response Economic empowerment Education and families Health and well-being Climate change resilience Refugees and asylum seekers Modern slavery and human trafficking International Social Justice Commission Reports on our work Get involved Worship with us Work with us Donate Gap years and mission programmes News Latest news Events Resources Resource hub Books Compass Equip Prayer Focus Worship and discipleship Contact us Help and general enquiries Media enquiries Caf\u00e9 101 Gallery 101 International College for Officers International Headquarters About us The Salvation Army, an international movement, is an evangelical part of the universal Christian Church. &nbsp; Its message is based on the Bible. Its ministry is motivated by the love of God. Its mission is to preach the gospel of Jesus Christ and to meet human needs in his name without discrimination. Our mission We are at work in over 130 countries worldwide Find The Salvation Army near you: Find your local... Use my location Our faith Our message is based on the Bible. Our ministry is motivated by the love of God. Our mission is to make known the good news about Jesus Christ and to invite others to become his followers too. The confidence we have in a loving and caring God finds outward expression in our love for humanity and our practical response to human need. What we believe Leadership and governance The General Find out more The General General Lyndon Buckingham is the world leader of The Salvation Army. He is the 22nd General of The Salvation Army, responsible for its ministry in 134 countries worldwide. General Lyndon Buckingham Leadership Find out more Leadership The General is supported in leadership by officers working directly with Salvationists and communities across the world. International leaders International councils Find out more International councils Find out more about the work of the General&#039;s Council and Consultative Council, the International Theological Council, International Moral and Social Issues Council and International Officer Training and Leader Development Council. International councils Transforming lives since 1865 How did The Salvation Army get its name? Why did its charity work begin? What does it do in emergency situations, and how is it working to improve the lives of people around the world? From humble beginnings in Victorian London to a movement found today in over 130 countries, this is our story so far. Our story Copyright \u00a9 2026 The General of The Salvation Army The Salvation Army International Trust and The Salvation Army Retired Officers Allowance Scheme are charities registered in England and Wales with respective numbers 1000566 and 1153681. Their sole trustee is The Salvation Army International Trustee Company, a company limited by guarantee and registered in England and Wales (no. 02538134) at 101 Queen Victoria Street, London EC4V 4EH Footer Privacy notice Cookie policy Modern slavery Terms of use Whistleblowing",
+      "word_count": 575,
+      "title": "About us | Salvation Army International Headquarters",
+      "meta_description": "",
+      "og_site_name": "",
+      "viewport_meta_present": true,
+      "canonical_url": "https://www.salvationarmy.org/about",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Promoted links"
+        },
+        {
+          "level": 2,
+          "text": "Search"
+        },
+        {
+          "level": 2,
+          "text": "Suggested searches"
+        },
+        {
+          "level": 2,
+          "text": "Main navigation"
+        },
+        {
+          "level": 1,
+          "text": "About us"
+        },
+        {
+          "level": 2,
+          "text": "We are at work in over 130 countries worldwide"
+        },
+        {
+          "level": 2,
+          "text": "Our faith"
+        },
+        {
+          "level": 2,
+          "text": "Leadership and governance"
+        },
+        {
+          "level": 3,
+          "text": "The General"
+        },
+        {
+          "level": 3,
+          "text": "The General"
+        },
+        {
+          "level": 3,
+          "text": "Leadership"
+        },
+        {
+          "level": 3,
+          "text": "Leadership"
+        },
+        {
+          "level": 3,
+          "text": "International councils"
+        },
+        {
+          "level": 3,
+          "text": "International councils"
+        },
+        {
+          "level": 2,
+          "text": "Transforming lives since 1865"
+        },
+        {
+          "level": 2,
+          "text": "Footer"
+        }
+      ],
+      "h1_texts": [
+        "About us"
+      ],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [
+        {
+          "href": "https://www.salvationarmy.org:443/news",
+          "text": "News",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/words-of-life",
+          "text": "Words of Life devotional",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/prayer-focus",
+          "text": "Global Prayer Focus",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/resources/morning-devotions-podcast",
+          "text": "Morning Devotions Podcast",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/",
+          "text": "",
+          "rel": "home"
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/search?search=Disaster%20response",
+          "text": "Disaster response",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/search?search=The%20General",
+          "text": "The General",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/search?search=Youth%20congress%202027",
+          "text": "Youth congress 2027",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/about",
+          "text": "About us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/mission-vision-and-values",
+          "text": "Mission, vision and values",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/global-presence",
+          "text": "Global presence",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/leadership",
+          "text": "Leadership",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-councils",
+          "text": "International councils",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/history",
+          "text": "History",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/glossary-terms",
+          "text": "Glossary of terms",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/reports",
+          "text": "Reports on our work",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/what-we-believe",
+          "text": "Our faith",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/moral-and-social-issues",
+          "text": "Moral and social issues",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/womens-ministries",
+          "text": "Women&#039;s Ministries",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/spiritual-life",
+          "text": "Spiritual life",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/children-and-young-people",
+          "text": "Children and young people",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/ecumenism",
+          "text": "Ecumenism",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/our-work",
+          "text": "Our work",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/disaster-response",
+          "text": "Disaster response",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/economic-empowerment",
+          "text": "Economic empowerment",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/education-and-families",
+          "text": "Education and families",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/health-and-well-being",
+          "text": "Health and well-being",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/climate-change-resilience",
+          "text": "Climate change resilience",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/refugees-and-asylum-seekers",
+          "text": "Refugees and asylum seekers",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/modern-slavery-and-human-trafficking",
+          "text": "Modern slavery and human trafficking",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-social-justice-commission",
+          "text": "International Social Justice Commission",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/get-involved",
+          "text": "Get involved",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/worship-with-us",
+          "text": "Worship with us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/work-us",
+          "text": "Work with us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/donate",
+          "text": "Donate",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/gap-years-and-mission-programmes",
+          "text": "Gap years and mission programmes",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/events",
+          "text": "Events",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/resource-hub",
+          "text": "Resources",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/books",
+          "text": "Books",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/resources/compass",
+          "text": "Compass",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/equip",
+          "text": "Equip",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/worship-and-discipleship",
+          "text": "Worship and discipleship",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/contact-us",
+          "text": "Contact us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/media-enquiries",
+          "text": "Media enquiries",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/cafe-101",
+          "text": "Caf\u00e9 101",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/gallery-101",
+          "text": "Gallery 101",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-college-officers",
+          "text": "International College for Officers",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/international-headquarters",
+          "text": "International Headquarters",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/general",
+          "text": "Find out more",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/privacy-notice",
+          "text": "Privacy notice",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/cookie-policy",
+          "text": "Cookie policy",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/modern-slavery-act-2015-uk-compliance-statement",
+          "text": "Modern slavery",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/terms-and-conditions",
+          "text": "Terms of use",
+          "rel": ""
+        },
+        {
+          "href": "https://www.salvationarmy.org:443/whistleblowing-statement",
+          "text": "Whistleblowing",
+          "rel": ""
+        }
+      ],
+      "external_links": [
+        {
+          "href": "https://alltheworld.salvationarmy.org/",
+          "text": "All the World magazine",
+          "rel": ""
+        },
+        {
+          "href": "https://x.com/SalvArmyIHQ",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.facebook.com/SalvationArmyIHQ",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.instagram.com/salvationarmyihq",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.flickr.com/photos/salvationarmyihq",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.youtube.com/user/SAIHQ",
+          "text": "",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [
+          {
+            "text": "Expand promoted links Collapse promoted links",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Search",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Menu",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Use my location",
+            "type": "button",
+            "tag": "button"
+          },
+          {
+            "text": "Search",
+            "type": "submit",
+            "tag": "input"
+          },
+          {
+            "text": "Search",
+            "type": "submit",
+            "tag": "input"
+          }
+        ],
+        "forms": [
+          {
+            "action": "/search",
+            "method": "get"
+          },
+          {
+            "action": "/about",
+            "method": "post"
+          }
+        ],
+        "cta_links": [
+          {
+            "href": "https://www.salvationarmy.org:443/contact-us",
+            "text": "Contact us",
+            "rel": ""
+          }
+        ]
+      },
+      "media_elements": {
+        "images": [
+          {
+            "src": "https://www.salvationarmy.org:443/themes/custom/bbd_starter/logo.svg",
+            "alt": "Home",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/800x800/public/2025-05/53772475982_f64f314f1d_k.jpg?h=f4761ccc&amp;itok=8BZvXkK9",
+            "alt": "A group of Indonesian Salvationists bow their heads in prayer, gathered around a cross",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/2560x1440/public/2025-05/54054452656_cedc21a3e3_k.jpg?h=0128acc6&amp;itok=4kf9n_eq",
+            "alt": "General Lyndon Buckingham, in full Salvation Army uniform, gives an address",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/2560x1440/public/2025-07/52398184289_69574dd739_k.jpg?h=a1e1a043&amp;itok=rtfxqvjh",
+            "alt": "A group of Salvation Army leaders discuss around a table",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/2560x1440/public/2025-07/54453528688_2e16e27a61_k%20%281%29.jpg?h=bc93c728&amp;itok=V8n8clHv",
+            "alt": "Detail of meeting brochure",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/sites/default/files/styles/2000x1000/public/2025-05/William%20Booth%20preaching%20in%20a%20tent.jpg?h=90a90684&amp;itok=B-pmNtYj",
+            "alt": "Illustration shows William Booth preaching to a large crowd of men and women",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          },
+          {
+            "src": "https://www.salvationarmy.org:443/modules/custom/bbd_blocks/images/logo--white.svg",
+            "alt": "The Salvation Army International Headquarters",
+            "has_alt": true,
+            "alt_attr_present": true,
+            "decorative": false
+          }
+        ],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {
+        "copyright_years": [
+          2026
+        ],
+        "newest_copyright_year": 2026,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "contact_support",
+      "is_deep_page": false,
+      "render_gap": false,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [],
+        "script_count": 7,
+        "mount_markers": []
+      }
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "Salvation Army International Headquarters",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "short_title"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 2,
+    "total_crawl_time_seconds": 13.41,
+    "page_selection": [
+      {
+        "url": "https://www.salvationarmy.org/news/exciting-plans-revealed-salvation-army-shop-boundless-2015",
+        "score": 34,
+        "signals": [
+          "product_pricing:plans",
+          "product_landing:shop",
+          "article_docs:news",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.salvationarmy.org/resources/160-years-emergency-services",
+        "score": 22,
+        "signals": [
+          "product_landing:services",
+          "article_docs:resources",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "product_landing",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.salvationarmy.org:443/about",
+        "score": 16,
+        "signals": [
+          "contact_support:about",
+          "linked-from-homepage",
+          "shallow-route"
+        ],
+        "purpose_hint": "contact_support",
+        "source": "homepage-link"
+      },
+      {
+        "url": "https://www.salvationarmy.org/",
+        "score": 2,
+        "signals": [
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "homepage",
+        "source": "sitemap"
+      }
+    ],
+    "resources_observed": 0,
+    "readable_pages": 2,
+    "access_status_counts": {
+      "readable": 2
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {
+    "https://salvationarmy.org/": "https://www.salvationarmy.org:443/"
+  }
+}

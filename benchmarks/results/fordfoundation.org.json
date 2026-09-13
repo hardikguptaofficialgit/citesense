@@ -1,0 +1,489 @@
+{
+  "site": {
+    "category": "foundations",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "fordfoundation.org",
+    "rank": 145,
+    "technical_type": "unknown",
+    "url": "https://fordfoundation.org/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:44:02.865143+00:00",
+  "finished_at": "2026-09-13T17:44:14.283312+00:00",
+  "elapsed_seconds": 11.418,
+  "error": null,
+  "report": {
+    "site": "https://www.fordfoundation.org",
+    "audited_at": "2026-09-13T17:44:14Z",
+    "summary": {
+      "total_findings": 3,
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 2,
+      "discoverability_findings": 2,
+      "engagement_findings": 1,
+      "citability_score": 96,
+      "citability_score_breakdown": {
+        "score": 96,
+        "base": 100,
+        "penalty": 4,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 2,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "consistency:phone-number-mismatch": 2,
+          "schema:organization-missing-sameas": 2,
+          "engagement:no-personalization-readiness": 0
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 3
+      }
+    },
+    "findings": [
+      {
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fordfoundation.org/contact/ via cross_page_contact_comparison [2026-09-13T17:44:12Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 2125735000: found on 1 page(s); Number 2123513677: found on 1 page(s); Number 7080698100: found on 1 page(s); Number 2125735128: found on 1 page(s); Number 7080698119: found on 1 page(s); Number 2123513643: found on 1 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.fordfoundation.org/contact/",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 2125735000: found on 1 page(s); Number 2123513677: found on 1 page(s); Number 7080698100: found on 1 page(s); Number 2125735128: found on 1 page(s); Number 7080698119: found on 1 page(s); Number 2123513643: found on 1 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T17:44:12Z",
+          "confidence": "medium",
+          "evidence_id": "E-50238298e08d"
+        },
+        "evidence_refs": [
+          "E-50238298e08d"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.fordfoundation.org/contact/ via cross_page_contact_comparison [2026-09-13T17:44:12Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 2125735000: found on 1 page(s); Number 2123513677: found on 1 page(s); Number 7080698100: found on 1 page(s); Number 2125735128: found on 1 page(s); Number 7080698119: found on 1 page(s); Number 2123513643: found on 1 page(s). (Confidence: medium)\nEvidence references: E-50238298e08d.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Conflicting primary contact phone numbers published across site",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content governance owner",
+          "problem": "Conflicting primary contact phone numbers published across site",
+          "evidence_refs": [
+            "E-50238298e08d"
+          ],
+          "root_cause": "Use the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Standardize customer service and contact phone numbers.",
+            "priority": "medium",
+            "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+            "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+        "category": "structured-data",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.fordfoundation.org/ via jsonld_schema_extractor [2026-09-13T17:44:12Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:organization-missing-sameas",
+        "suggested_action": {
+          "summary": "Add sameAs URLs to Organization JSON-LD.",
+          "priority": "low",
+          "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Ford Foundation\",\n  \"url\": \"https://www.fordfoundation.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The Ford Foundation envisions a fair and peaceful world with opportunity for all\",\n  \"telephone\": \"212-351-3643\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fordfoundation.org/",
+          "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:44:12Z",
+          "confidence": "high",
+          "evidence_id": "E-6683a1557410"
+        },
+        "evidence_refs": [
+          "E-6683a1557410"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.fordfoundation.org/ via jsonld_schema_extractor [2026-09-13T17:44:12Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-6683a1557410.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "evidence_refs": [
+            "E-6683a1557410"
+          ],
+          "root_cause": "Use the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add sameAs URLs to Organization JSON-LD.",
+            "priority": "low",
+            "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Ford Foundation\",\n  \"url\": \"https://www.fordfoundation.org\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The Ford Foundation envisions a fair and peaceful world with opportunity for all\",\n  \"telephone\": \"212-351-3643\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.fordfoundation.org via returning_visitor_affordance_detection [2026-09-13T17:44:12Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fordfoundation.org",
+          "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T17:44:12Z",
+          "confidence": "medium",
+          "evidence_id": "E-6b9205a2145c"
+        },
+        "evidence_refs": [
+          "E-6b9205a2145c"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.fordfoundation.org via returning_visitor_affordance_detection [2026-09-13T17:44:12Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-6b9205a2145c.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "No returning-visitor or account affordance detected",
+          "status": "proactive",
+          "priority": "low",
+          "role": "UX and product engineer",
+          "problem": "No returning-visitor or account affordance detected",
+          "evidence_refs": [
+            "E-6b9205a2145c"
+          ],
+          "root_cause": "Use the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "constraints": [
+            "This is a proactive recommendation, not a detected defect; adopt it only if appropriate.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Give returning visitors a way to be recognised, and use it.",
+            "priority": "low",
+            "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+            "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.fordfoundation.org/news-and-stories/big-ideas/people-powered-solutions-connecting-local-communities-and-global-challenges/",
+          "score": 34,
+          "signals": [
+            "product_landing:solutions",
+            "article_docs:news",
+            "audience:solutions",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fordfoundation.org/contact/",
+          "score": 16,
+          "signals": [
+            "contact_support:contact",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fordfoundation.org/news-and-stories/stories/the-cost-of-i-do-in-the-disability-community/",
+          "score": 26,
+          "signals": [
+            "product_pricing:cost",
+            "article_docs:news",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fordfoundation.org/news-and-stories/",
+          "score": 16,
+          "signals": [
+            "article_docs:news",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.fordfoundation.org/",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:44:12Z",
+        "confidence": "high",
+        "evidence_id": "E-6683a1557410"
+      },
+      {
+        "url": "https://www.fordfoundation.org/contact/",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 2125735000: found on 1 page(s); Number 2123513677: found on 1 page(s); Number 7080698100: found on 1 page(s); Number 2125735128: found on 1 page(s); Number 7080698119: found on 1 page(s); Number 2123513643: found on 1 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T17:44:12Z",
+        "confidence": "medium",
+        "evidence_id": "E-50238298e08d"
+      },
+      {
+        "url": "https://www.fordfoundation.org",
+        "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T17:44:12Z",
+        "confidence": "medium",
+        "evidence_id": "E-6b9205a2145c"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.fordfoundation.org/contact/ via cross_page_contact_comparison [2026-09-13T17:44:12Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 2125735000: found on 1 page(s); Number 2123513677: found on 1 page(s); Number 7080698100: found on 1 page(s); Number 2125735128: found on 1 page(s); Number 7080698119: found on 1 page(s); Number 2123513643: found on 1 page(s). (Confidence: medium)\nEvidence references: E-50238298e08d.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-50238298e08d"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.fordfoundation.org/ via jsonld_schema_extractor [2026-09-13T17:44:12Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-6683a1557410.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-6683a1557410"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "low",
+        "reason": "proactive finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and product engineer.\n\nPROBLEM\nNo returning-visitor or account affordance detected.\n\nEVIDENCE\nObserved at https://www.fordfoundation.org via returning_visitor_affordance_detection [2026-09-13T17:44:12Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)\nEvidence references: E-6b9205a2145c.\n\nROOT CAUSE\nUse the observed condition described by “No returning-visitor or account affordance detected” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.\n\nCONSTRAINTS\n- This is a proactive recommendation, not a detected defect; adopt it only if appropriate.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-6b9205a2145c"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 5
+    }
+  }
+}

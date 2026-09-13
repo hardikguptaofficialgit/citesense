@@ -1,0 +1,355 @@
+{
+  "site": {
+    "category": "portfolios",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "format.com",
+    "rank": 363,
+    "technical_type": "unknown",
+    "url": "https://format.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:43:09.041664+00:00",
+  "finished_at": "2026-09-13T15:43:24.898845+00:00",
+  "elapsed_seconds": 15.857,
+  "error": null,
+  "report": {
+    "site": "https://www.format.com",
+    "audited_at": "2026-09-13T15:43:24Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 2,
+      "discoverability_findings": 3,
+      "engagement_findings": 1,
+      "citability_score": 82,
+      "citability_score_breakdown": {
+        "score": 82,
+        "base": 100,
+        "penalty": 18,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 5,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/pricing-portfolio": 12,
+          "extractability:images-without-alt": 5,
+          "robots:training-only-blocked": 0,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.format.com/pricing-portfolio via jsonld_schema_extractor [2026-09-13T15:43:19Z]: Commercial/product page (https://www.format.com/pricing-portfolio) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/pricing-portfolio",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"A plan for everyone. Try Format free for two weeks and choose the website plan that's right for you.\",\n  \"url\": \"https://www.format.com/pricing-portfolio\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Format\"\n  },\n  \"description\": \"Find the perfect plan for every stage of your creative career with Format – each package includes eCommerce, blogging, and proofing features. Enjoy a 14-day free trial!\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.format.com/pricing-portfolio\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.format.com/pricing-portfolio",
+          "observation": "Commercial/product page (https://www.format.com/pricing-portfolio) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:43:19Z",
+          "confidence": "high",
+          "evidence_id": "E-edfe1890973e"
+        },
+        "evidence_refs": [
+          "E-edfe1890973e"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.format.com/pricing-portfolio via image_alt_coverage_inspection [2026-09-13T15:43:19Z]: 5 of 25 images (20%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.format.com/hire-a-format-expert-to-build-your-new-portfolio via image_alt_coverage_inspection [2026-09-13T15:43:19Z]: 11 of 25 images (44%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "medium",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.format.com/pricing-portfolio",
+          "observation": "5 of 25 images (20%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:43:19Z",
+          "confidence": "high",
+          "evidence_id": "E-09abb41a7654"
+        },
+        "evidence_refs": [
+          "E-09abb41a7654",
+          "E-30876ab346ec"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://format.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:43:19Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://format.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:43:19Z",
+          "confidence": "high",
+          "evidence_id": "E-46ec54be3ab9"
+        },
+        "evidence_refs": [
+          "E-46ec54be3ab9"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.format.com via search_affordance_detection [2026-09-13T15:43:19Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.format.com",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:43:19Z",
+          "confidence": "medium",
+          "evidence_id": "E-ad26b7e3af08"
+        },
+        "evidence_refs": [
+          "E-ad26b7e3af08"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.format.com/pricing-portfolio",
+          "score": 18,
+          "signals": [
+            "product_pricing:plans,pricing",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.format.com/about",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.format.com/hire-a-format-expert-to-build-your-new-portfolio",
+          "score": 16,
+          "signals": [
+            "product_landing:service",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.format.com/magazine/member-milestones-august-2026-2",
+          "score": 14,
+          "signals": [
+            "article_docs:article",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://format.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:43:19Z",
+        "confidence": "high",
+        "evidence_id": "E-46ec54be3ab9"
+      },
+      {
+        "url": "https://www.format.com/pricing-portfolio",
+        "observation": "Commercial/product page (https://www.format.com/pricing-portfolio) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:43:19Z",
+        "confidence": "high",
+        "evidence_id": "E-edfe1890973e"
+      },
+      {
+        "url": "https://www.format.com/pricing-portfolio",
+        "observation": "5 of 25 images (20%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:43:19Z",
+        "confidence": "high",
+        "evidence_id": "E-09abb41a7654"
+      },
+      {
+        "url": "https://www.format.com/hire-a-format-expert-to-build-your-new-portfolio",
+        "observation": "11 of 25 images (44%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:43:19Z",
+        "confidence": "high",
+        "evidence_id": "E-30876ab346ec"
+      },
+      {
+        "url": "https://www.format.com",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:43:19Z",
+        "confidence": "medium",
+        "evidence_id": "E-ad26b7e3af08"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "contact_support",
+      "general",
+      "homepage",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

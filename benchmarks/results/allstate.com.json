@@ -1,0 +1,798 @@
+{
+  "site": {
+    "category": "insurance",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "allstate.com",
+    "rank": 119,
+    "technical_type": "unknown",
+    "url": "https://allstate.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:42:02.135894+00:00",
+  "finished_at": "2026-09-13T17:42:47.593616+00:00",
+  "elapsed_seconds": 45.458,
+  "error": null,
+  "report": {
+    "site": "https://www.allstate.com",
+    "audited_at": "2026-09-13T17:42:47Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 1,
+      "medium": 3,
+      "low": 2,
+      "discoverability_findings": 4,
+      "engagement_findings": 2,
+      "citability_score": 77,
+      "citability_score_breakdown": {
+        "score": 77,
+        "base": 100,
+        "penalty": 23,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 9,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "consistency:phone-number-mismatch": 2,
+          "citation:unanswerable:offering": 2,
+          "engagement:no-site-search": 1,
+          "citation:unanswerable:audience": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.allstate.com/ via heading_structure_inspection [2026-09-13T17:42:38Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.allstate.com/es via heading_structure_inspection [2026-09-13T17:42:38Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.allstate.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T17:42:38Z",
+          "confidence": "high",
+          "evidence_id": "E-4c80673f5c91"
+        },
+        "evidence_refs": [
+          "E-4c80673f5c91",
+          "E-dcb7c3195a9f"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.allstate.com/ via heading_structure_inspection [2026-09-13T17:42:38Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.allstate.com/es via heading_structure_inspection [2026-09-13T17:42:38Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-4c80673f5c91, E-dcb7c3195a9f.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing primary H1 heading on landing page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing primary H1 heading on landing page",
+          "evidence_refs": [
+            "E-4c80673f5c91",
+            "E-dcb7c3195a9f"
+          ],
+          "root_cause": "Use the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a clear, descriptive <h1> heading.",
+            "priority": "high",
+            "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.allstate.com/ via jsonld_schema_extractor [2026-09-13T17:42:38Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.allstate.com/es via jsonld_schema_extractor [2026-09-13T17:42:38Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Allstate\",\n  \"url\": \"https://www.allstate.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Get an online insurance quote for quality coverage in the blink of an eye. Allstate offers insurance for your car, home, rental, motorcycle and more.\",\n  \"telephone\": \"866-561-7300\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.allstate.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:42:38Z",
+          "confidence": "high",
+          "evidence_id": "E-3c00cff5e7c9"
+        },
+        "evidence_refs": [
+          "E-3c00cff5e7c9",
+          "E-535c51e41c33"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.allstate.com/ via jsonld_schema_extractor [2026-09-13T17:42:38Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.allstate.com/es via jsonld_schema_extractor [2026-09-13T17:42:38Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-3c00cff5e7c9, E-535c51e41c33.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-3c00cff5e7c9",
+            "E-535c51e41c33"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Allstate\",\n  \"url\": \"https://www.allstate.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Get an online insurance quote for quality coverage in the blink of an eye. Allstate offers insurance for your car, home, rental, motorcycle and more.\",\n  \"telephone\": \"866-561-7300\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.allstate.com/ via cross_page_contact_comparison [2026-09-13T17:42:38Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8665617300: found on 2 page(s); Number 8009011732: found on 1 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.allstate.com/",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8665617300: found on 2 page(s); Number 8009011732: found on 1 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T17:42:38Z",
+          "confidence": "medium",
+          "evidence_id": "E-af65694c441e"
+        },
+        "evidence_refs": [
+          "E-af65694c441e"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.allstate.com/ via cross_page_contact_comparison [2026-09-13T17:42:38Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8665617300: found on 2 page(s); Number 8009011732: found on 1 page(s). (Confidence: medium)\nEvidence references: E-af65694c441e.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Conflicting primary contact phone numbers published across site",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content governance owner",
+          "problem": "Conflicting primary contact phone numbers published across site",
+          "evidence_refs": [
+            "E-af65694c441e"
+          ],
+          "root_cause": "Use the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Standardize customer service and contact phone numbers.",
+            "priority": "medium",
+            "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+            "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"What does Allstate offer?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.allstate.com/es/help-support/billing-payments via onsite_answerability_probe [2026-09-13T17:42:47Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Allstate offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:offering",
+        "suggested_action": {
+          "summary": "Mark up the product or service catalogue.",
+          "priority": "medium",
+          "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.allstate.com/es/help-support/billing-payments",
+          "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Allstate offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:42:47Z",
+          "confidence": "medium",
+          "evidence_id": "E-da25f904801f"
+        },
+        "evidence_refs": [
+          "E-da25f904801f"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What does Allstate offer?\".\n\nEVIDENCE\nObserved at https://www.allstate.com/es/help-support/billing-payments via onsite_answerability_probe [2026-09-13T17:42:47Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Allstate offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-da25f904801f.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What does Allstate offer?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "No extractable answer on-site for \"What does Allstate offer?\"",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"What does Allstate offer?\"",
+          "evidence_refs": [
+            "E-da25f904801f"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"What does Allstate offer?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Mark up the product or service catalogue.",
+            "priority": "medium",
+            "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.allstate.com via search_affordance_detection [2026-09-13T17:42:38Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.allstate.com",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T17:42:38Z",
+          "confidence": "medium",
+          "evidence_id": "E-d461ce201ab5"
+        },
+        "evidence_refs": [
+          "E-d461ce201ab5"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.allstate.com via search_affordance_detection [2026-09-13T17:42:38Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-d461ce201ab5.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "No site search affordance found on any crawled page",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "No site search affordance found on any crawled page",
+          "evidence_refs": [
+            "E-d461ce201ab5"
+          ],
+          "root_cause": "Use the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a site search box to the persistent header.",
+            "priority": "low",
+            "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "No extractable answer on-site for \"Who is Allstate for?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.allstate.com/es/help-support/billing-payments via onsite_answerability_probe [2026-09-13T17:42:47Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Allstate for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:audience",
+        "suggested_action": {
+          "summary": "State the intended audience in plain language.",
+          "priority": "low",
+          "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.allstate.com/es/help-support/billing-payments",
+          "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Allstate for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T17:42:47Z",
+          "confidence": "medium",
+          "evidence_id": "E-aff059f328a9"
+        },
+        "evidence_refs": [
+          "E-aff059f328a9"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"Who is Allstate for?\".\n\nEVIDENCE\nObserved at https://www.allstate.com/es/help-support/billing-payments via onsite_answerability_probe [2026-09-13T17:42:47Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Allstate for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-aff059f328a9.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"Who is Allstate for?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "No extractable answer on-site for \"Who is Allstate for?\"",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "content and technical SEO owner",
+          "problem": "No extractable answer on-site for \"Who is Allstate for?\"",
+          "evidence_refs": [
+            "E-aff059f328a9"
+          ],
+          "root_cause": "Use the observed condition described by “No extractable answer on-site for \"Who is Allstate for?\"” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "State the intended audience in plain language.",
+            "priority": "low",
+            "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+            "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.allstate.com/es/help-support/billing-payments",
+          "score": 34,
+          "signals": [
+            "product_pricing:billing",
+            "article_docs:help",
+            "contact_support:support",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.allstate.com/es/resources/powersports/golf-cart-insurance",
+          "score": 24,
+          "signals": [
+            "product_pricing:cart",
+            "article_docs:resources",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.allstate.com/es/resources/flood-insurance/facts-about-floods",
+          "score": 22,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:about",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.allstate.com/es",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.allstate.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:42:38Z",
+        "confidence": "high",
+        "evidence_id": "E-3c00cff5e7c9"
+      },
+      {
+        "url": "https://www.allstate.com/es",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:42:38Z",
+        "confidence": "high",
+        "evidence_id": "E-535c51e41c33"
+      },
+      {
+        "url": "https://www.allstate.com/",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8665617300: found on 2 page(s); Number 8009011732: found on 1 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T17:42:38Z",
+        "confidence": "medium",
+        "evidence_id": "E-af65694c441e"
+      },
+      {
+        "url": "https://www.allstate.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:42:38Z",
+        "confidence": "high",
+        "evidence_id": "E-4c80673f5c91"
+      },
+      {
+        "url": "https://www.allstate.com/es",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:42:38Z",
+        "confidence": "high",
+        "evidence_id": "E-dcb7c3195a9f"
+      },
+      {
+        "url": "https://www.allstate.com",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T17:42:38Z",
+        "confidence": "medium",
+        "evidence_id": "E-d461ce201ab5"
+      },
+      {
+        "url": "https://www.allstate.com/es/help-support/billing-payments",
+        "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Allstate offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:42:47Z",
+        "confidence": "medium",
+        "evidence_id": "E-da25f904801f"
+      },
+      {
+        "url": "https://www.allstate.com/es/help-support/billing-payments",
+        "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Allstate for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T17:42:47Z",
+        "confidence": "medium",
+        "evidence_id": "E-aff059f328a9"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "robots.txt was unavailable; no robots policy could be evaluated."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.allstate.com/ via heading_structure_inspection [2026-09-13T17:42:38Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.allstate.com/es via heading_structure_inspection [2026-09-13T17:42:38Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-4c80673f5c91, E-dcb7c3195a9f.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-4c80673f5c91",
+          "E-dcb7c3195a9f"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.allstate.com/ via jsonld_schema_extractor [2026-09-13T17:42:38Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.allstate.com/es via jsonld_schema_extractor [2026-09-13T17:42:38Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-3c00cff5e7c9, E-535c51e41c33.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-3c00cff5e7c9",
+          "E-535c51e41c33"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.allstate.com/ via cross_page_contact_comparison [2026-09-13T17:42:38Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8665617300: found on 2 page(s); Number 8009011732: found on 1 page(s). (Confidence: medium)\nEvidence references: E-af65694c441e.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-af65694c441e"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"What does Allstate offer?\".\n\nEVIDENCE\nObserved at https://www.allstate.com/es/help-support/billing-payments via onsite_answerability_probe [2026-09-13T17:42:47Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Allstate offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-da25f904801f.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"What does Allstate offer?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-da25f904801f"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nNo site search affordance found on any crawled page.\n\nEVIDENCE\nObserved at https://www.allstate.com via search_affordance_detection [2026-09-13T17:42:38Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)\nEvidence references: E-d461ce201ab5.\n\nROOT CAUSE\nUse the observed condition described by “No site search affordance found on any crawled page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-d461ce201ab5"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and technical SEO owner.\n\nPROBLEM\nNo extractable answer on-site for \"Who is Allstate for?\".\n\nEVIDENCE\nObserved at https://www.allstate.com/es/help-support/billing-payments via onsite_answerability_probe [2026-09-13T17:42:47Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Allstate for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)\nEvidence references: E-aff059f328a9.\n\nROOT CAUSE\nUse the observed condition described by “No extractable answer on-site for \"Who is Allstate for?\"” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-aff059f328a9"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 5
+    }
+  }
+}

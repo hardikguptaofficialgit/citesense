@@ -1,0 +1,293 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "livejournal.com",
+    "rank": 938,
+    "technical_type": "unknown",
+    "url": "https://livejournal.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:31:27.407319+00:00",
+  "finished_at": "2026-09-13T16:32:09.187629+00:00",
+  "elapsed_seconds": 41.78,
+  "error": null,
+  "report": {
+    "site": "https://www.livejournal.com",
+    "audited_at": "2026-09-13T16:32:09Z",
+    "summary": {
+      "total_findings": 2,
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 0,
+      "discoverability_findings": 2,
+      "engagement_findings": 0,
+      "citability_score": 93,
+      "citability_score_breakdown": {
+        "score": 93,
+        "base": 100,
+        "penalty": 7,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 7,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "schema:root-organization-missing": 5,
+          "trust:no-independent-identity-anchor": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 2
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.livejournal.com/ via jsonld_schema_extractor [2026-09-13T16:31:47Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Livejournal\",\n  \"url\": \"https://www.livejournal.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Your life is the best story! Just start your blog today!\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.livejournal.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:31:47Z",
+          "confidence": "high",
+          "evidence_id": "E-dd96585fed04"
+        },
+        "evidence_refs": [
+          "E-dd96585fed04"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.livejournal.com via onsite_identity_anchor_inspection [2026-09-13T16:32:09Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.livejournal.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:32:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-54a577f32cb4"
+        },
+        "evidence_refs": [
+          "E-54a577f32cb4"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 3,
+      "status_counts": {
+        "readable": 3,
+        "anti-bot-challenge": 2
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.livejournal.com/shop/?ila_campaign=ex_shop_pro&ila_location=site_menu&ila_context=shop",
+          "score": 26,
+          "signals": [
+            "product_landing:shop",
+            "contact_support:location",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.livejournal.com/support/",
+          "score": 26,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.livejournal.com/about/",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.livejournal.com/support/faq/1.html",
+          "score": 22,
+          "signals": [
+            "article_docs:faq",
+            "contact_support:support",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.livejournal.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:31:47Z",
+        "confidence": "high",
+        "evidence_id": "E-dd96585fed04"
+      },
+      {
+        "url": "https://www.livejournal.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:32:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-54a577f32cb4"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "3 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Livejournal is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 3,
+    "page_purposes": [
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "unknown"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

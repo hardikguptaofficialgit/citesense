@@ -1,0 +1,421 @@
+{
+  "site": {
+    "category": "developer_api",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "twilio.com",
+    "rank": 38,
+    "technical_type": "unknown",
+    "url": "https://twilio.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:35:51.347401+00:00",
+  "finished_at": "2026-09-13T17:36:30.779016+00:00",
+  "elapsed_seconds": 39.432,
+  "error": null,
+  "report": {
+    "site": "https://www.twilio.com",
+    "audited_at": "2026-09-13T17:36:30Z",
+    "summary": {
+      "total_findings": 2,
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 1,
+      "discoverability_findings": 1,
+      "engagement_findings": 1,
+      "citability_score": 87,
+      "citability_score_breakdown": {
+        "score": 87,
+        "base": 100,
+        "penalty": 13,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 0,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/en-us/products/email-api/pricing": 12,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 2
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.twilio.com/en-us/products/email-api/pricing via jsonld_schema_extractor [2026-09-13T17:36:17Z]: Commercial/product page (https://www.twilio.com/en-us/products/email-api/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/en-us/products/email-api/pricing",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Start sending with a free SendGrid Email API trial\",\n  \"url\": \"https://www.twilio.com/en-us/products/email-api/pricing\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Twilio\"\n  },\n  \"description\": \"Sign up to send transactional and marketing email. All of our plans are backed by our industry-leading deliverability, reliability, and support.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.twilio.com/en-us/products/email-api/pricing\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+          "observation": "Commercial/product page (https://www.twilio.com/en-us/products/email-api/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:36:17Z",
+          "confidence": "high",
+          "evidence_id": "E-a4d6706c47b9"
+        },
+        "evidence_refs": [
+          "E-a4d6706c47b9"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.twilio.com/en-us/products/email-api/pricing via jsonld_schema_extractor [2026-09-13T17:36:17Z]: Commercial/product page (https://www.twilio.com/en-us/products/email-api/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-a4d6706c47b9.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Product and Offer structured data on commercial page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Product and Offer structured data on commercial page",
+          "evidence_refs": [
+            "E-a4d6706c47b9"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+            "priority": "high",
+            "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Start sending with a free SendGrid Email API trial\",\n  \"url\": \"https://www.twilio.com/en-us/products/email-api/pricing\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Twilio\"\n  },\n  \"description\": \"Sign up to send transactional and marketing email. All of our plans are backed by our industry-leading deliverability, reliability, and support.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.twilio.com/en-us/products/email-api/pricing\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.twilio.com/en-us/products/email-api/pricing via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/products/email-api/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/en-us/support-plans via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/support-plans) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/docs/sendgrid/for-developers/sending-email/getting-started-smtp via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/docs/sendgrid/for-developers/sending-email/getting-started-smtp) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/en-us/flex/use-cases/contact-center via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/flex/use-cases/contact-center) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+          "observation": "Page at deep route (/en-us/products/email-api/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T17:36:17Z",
+          "confidence": "medium",
+          "evidence_id": "E-c01a3e397cd2"
+        },
+        "evidence_refs": [
+          "E-02053200398d",
+          "E-21fbebbff799",
+          "E-c01a3e397cd2",
+          "E-e243edbf43a4"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.twilio.com/en-us/products/email-api/pricing via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/products/email-api/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/en-us/support-plans via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/support-plans) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/docs/sendgrid/for-developers/sending-email/getting-started-smtp via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/docs/sendgrid/for-developers/sending-email/getting-started-smtp) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/en-us/flex/use-cases/contact-center via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/flex/use-cases/contact-center) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-02053200398d, E-21fbebbff799, E-c01a3e397cd2, E-e243edbf43a4.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "evidence_refs": [
+            "E-02053200398d",
+            "E-21fbebbff799",
+            "E-c01a3e397cd2",
+            "E-e243edbf43a4"
+          ],
+          "root_cause": "Use the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+            "priority": "low",
+            "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+          "score": 36,
+          "signals": [
+            "product_pricing:pricing",
+            "product_landing:products",
+            "article_docs:api",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.twilio.com/en-us/support-plans",
+          "score": 26,
+          "signals": [
+            "product_pricing:plans",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/getting-started-smtp",
+          "score": 24,
+          "signals": [
+            "article_docs:api,docs",
+            "audience:developers",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.twilio.com/en-us/flex/use-cases/contact-center",
+          "score": 24,
+          "signals": [
+            "contact_support:contact",
+            "audience:cases,use",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+        "observation": "Commercial/product page (https://www.twilio.com/en-us/products/email-api/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:36:17Z",
+        "confidence": "high",
+        "evidence_id": "E-a4d6706c47b9"
+      },
+      {
+        "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+        "observation": "Page at deep route (/en-us/products/email-api/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T17:36:17Z",
+        "confidence": "medium",
+        "evidence_id": "E-c01a3e397cd2"
+      },
+      {
+        "url": "https://www.twilio.com/en-us/support-plans",
+        "observation": "Page at deep route (/en-us/support-plans) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T17:36:17Z",
+        "confidence": "medium",
+        "evidence_id": "E-02053200398d"
+      },
+      {
+        "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/getting-started-smtp",
+        "observation": "Page at deep route (/docs/sendgrid/for-developers/sending-email/getting-started-smtp) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T17:36:17Z",
+        "confidence": "medium",
+        "evidence_id": "E-e243edbf43a4"
+      },
+      {
+        "url": "https://www.twilio.com/en-us/flex/use-cases/contact-center",
+        "observation": "Page at deep route (/en-us/flex/use-cases/contact-center) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T17:36:17Z",
+        "confidence": "medium",
+        "evidence_id": "E-21fbebbff799"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.twilio.com/en-us/products/email-api/pricing via jsonld_schema_extractor [2026-09-13T17:36:17Z]: Commercial/product page (https://www.twilio.com/en-us/products/email-api/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-a4d6706c47b9.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-a4d6706c47b9"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.twilio.com/en-us/products/email-api/pricing via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/products/email-api/pricing) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/en-us/support-plans via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/support-plans) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/docs/sendgrid/for-developers/sending-email/getting-started-smtp via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/docs/sendgrid/for-developers/sending-email/getting-started-smtp) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.twilio.com/en-us/flex/use-cases/contact-center via breadcrumb_markup_inspector [2026-09-13T17:36:17Z]: Page at deep route (/en-us/flex/use-cases/contact-center) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-02053200398d, E-21fbebbff799, E-c01a3e397cd2, E-e243edbf43a4.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-02053200398d",
+          "E-21fbebbff799",
+          "E-c01a3e397cd2",
+          "E-e243edbf43a4"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 5
+    }
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "site": {
+    "category": "marketplaces",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "gumroad.com",
+    "rank": 305,
+    "technical_type": "unknown",
+    "url": "https://gumroad.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:39:08.445240+00:00",
+  "finished_at": "2026-09-13T15:39:29.672907+00:00",
+  "elapsed_seconds": 21.228,
+  "error": null,
+  "report": {
+    "site": "https://gumroad.com",
+    "audited_at": "2026-09-13T15:39:29Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 2,
+      "medium": 1,
+      "low": 1,
+      "discoverability_findings": 3,
+      "engagement_findings": 1,
+      "citability_score": 75,
+      "citability_score_breakdown": {
+        "score": 75,
+        "base": 100,
+        "penalty": 25,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 18,
+          "medium": 5,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/pricing": 12,
+          "render:empty-raw-html-gap:/blog": 6,
+          "schema:root-organization-missing": 5,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://gumroad.com/pricing via jsonld_schema_extractor [2026-09-13T15:39:22Z]: Commercial/product page (https://gumroad.com/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/pricing",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Simple, transparent pricing\",\n  \"url\": \"https://gumroad.com/pricing\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Gumroad\"\n  },\n  \"description\": \"Direct sales: 10% + 50¢ per sale, $0 monthly. Discover marketplace sales: 30%. Gumroad handles sales tax worldwide as Merchant of Record, at no extra cost.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://gumroad.com/pricing\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://gumroad.com/pricing",
+          "observation": "Commercial/product page (https://gumroad.com/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:39:22Z",
+          "confidence": "high",
+          "evidence_id": "E-4b83da9df35b"
+        },
+        "evidence_refs": [
+          "E-4b83da9df35b"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://gumroad.com/blog via static_initial_html_shell_inspection [2026-09-13T15:39:22Z]: Raw HTML yields only 1 words of visible text and shows static shell signals (client-mount-marker, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/blog",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://gumroad.com/blog",
+          "observation": "Raw HTML yields only 1 words of visible text and shows static shell signals (client-mount-marker, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T15:39:22Z",
+          "confidence": "medium",
+          "evidence_id": "E-0db4459d53bf"
+        },
+        "evidence_refs": [
+          "E-0db4459d53bf"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://gumroad.com/ via jsonld_schema_extractor [2026-09-13T15:39:22Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Gumroad\",\n  \"url\": \"https://gumroad.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Start selling what you know, see what sticks, and get paid. Simple and effective.\",\n  \"telephone\": \"(800) 952-5210\",\n  \"email\": \"support@gumroad.com\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://gumroad.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:39:22Z",
+          "confidence": "high",
+          "evidence_id": "E-f7b2d009a8f4"
+        },
+        "evidence_refs": [
+          "E-f7b2d009a8f4"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://gumroad.com/ via heading_structure_inspection [2026-09-13T15:39:22Z]: Page defines 3 separate <h1> tags (Go from 0 to $1; $2,139,825; Share your work. Someone out there needs), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://gumroad.com/about via heading_structure_inspection [2026-09-13T15:39:22Z]: Page defines 3 separate <h1> tags (Go from 0 to $1; $2,139,825; Share your work. Someone out there needs), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://gumroad.com/",
+          "observation": "Page defines 3 separate <h1> tags (Go from 0 to $1; $2,139,825; Share your work. Someone out there needs), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:39:22Z",
+          "confidence": "high",
+          "evidence_id": "E-571ae210516c"
+        },
+        "evidence_refs": [
+          "E-571ae210516c",
+          "E-ae8f57ca7d7f"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://gumroad.com/pricing",
+          "score": 18,
+          "signals": [
+            "product_pricing:pricing",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://gumroad.com/about",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://gumroad.com/blog",
+          "score": 16,
+          "signals": [
+            "article_docs:blog",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://gumroad.com/terms",
+          "score": 16,
+          "signals": [
+            "product_landing:service",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://gumroad.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:39:22Z",
+        "confidence": "high",
+        "evidence_id": "E-f7b2d009a8f4"
+      },
+      {
+        "url": "https://gumroad.com/pricing",
+        "observation": "Commercial/product page (https://gumroad.com/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:39:22Z",
+        "confidence": "high",
+        "evidence_id": "E-4b83da9df35b"
+      },
+      {
+        "url": "https://gumroad.com/blog",
+        "observation": "Raw HTML yields only 1 words of visible text and shows static shell signals (client-mount-marker, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T15:39:22Z",
+        "confidence": "medium",
+        "evidence_id": "E-0db4459d53bf"
+      },
+      {
+        "url": "https://gumroad.com/",
+        "observation": "Page defines 3 separate <h1> tags (Go from 0 to $1; $2,139,825; Share your work. Someone out there needs), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:39:22Z",
+        "confidence": "high",
+        "evidence_id": "E-571ae210516c"
+      },
+      {
+        "url": "https://gumroad.com/about",
+        "observation": "Page defines 3 separate <h1> tags (Go from 0 to $1; $2,139,825; Share your work. Someone out there needs), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:39:22Z",
+        "confidence": "high",
+        "evidence_id": "E-ae8f57ca7d7f"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

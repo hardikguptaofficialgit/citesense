@@ -1,0 +1,503 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "adriver.ru",
+    "rank": 686,
+    "technical_type": "unknown",
+    "url": "https://adriver.ru/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:06:20.296966+00:00",
+  "finished_at": "2026-09-13T16:06:56.920125+00:00",
+  "elapsed_seconds": 36.623,
+  "error": null,
+  "report": {
+    "site": "https://www.adriver.ru",
+    "audited_at": "2026-09-13T16:06:56Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 1,
+      "medium": 3,
+      "low": 2,
+      "discoverability_findings": 5,
+      "engagement_findings": 1,
+      "citability_score": 73,
+      "citability_score_breakdown": {
+        "score": 73,
+        "base": 100,
+        "penalty": 27,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 12,
+          "low": 3
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "extractability:images-without-alt": 2,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.adriver.ru/ via heading_structure_inspection [2026-09-13T16:06:43Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.adriver.ru/doc/ via heading_structure_inspection [2026-09-13T16:06:43Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.adriver.ru/abouteng/ via heading_structure_inspection [2026-09-13T16:06:43Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.adriver.ru/news/ via heading_structure_inspection [2026-09-13T16:06:43Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adriver.ru/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:06:43Z",
+          "confidence": "high",
+          "evidence_id": "E-d0bfc176f0ec"
+        },
+        "evidence_refs": [
+          "E-3707f3de35d0",
+          "E-b0044ddec99a",
+          "E-bfa156af0a43",
+          "E-d0bfc176f0ec"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.adriver.ru/ via jsonld_schema_extractor [2026-09-13T16:06:43Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Adriver\",\n  \"url\": \"https://www.adriver.ru\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"email\": \"agency@adriver.ru\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adriver.ru/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:06:43Z",
+          "confidence": "high",
+          "evidence_id": "E-0a2eddc44031"
+        },
+        "evidence_refs": [
+          "E-0a2eddc44031"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.adriver.ru/ via html_meta_inspector [2026-09-13T16:06:43Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"AdRiver &#8212; Система управления и аудита интернет-рекламы\",\n  \"url\": \"https://www.adriver.ru/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Adriver\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.adriver.ru/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adriver.ru/",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T16:06:43Z",
+          "confidence": "high",
+          "evidence_id": "E-ea565f0c2354"
+        },
+        "evidence_refs": [
+          "E-ea565f0c2354"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.adriver.ru via onsite_identity_anchor_inspection [2026-09-13T16:06:56Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 7 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.adriver.ru",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 7 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:06:56Z",
+          "confidence": "medium",
+          "evidence_id": "E-56ceaac3929e"
+        },
+        "evidence_refs": [
+          "E-56ceaac3929e"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.adriver.ru/news/ via image_alt_coverage_inspection [2026-09-13T16:06:43Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adriver.ru/news/",
+          "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T16:06:43Z",
+          "confidence": "high",
+          "evidence_id": "E-5853ca94f79d"
+        },
+        "evidence_refs": [
+          "E-5853ca94f79d"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes Adriver different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.adriver.ru/ via onsite_answerability_probe [2026-09-13T16:06:56Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Adriver different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.adriver.ru/",
+          "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Adriver different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:06:56Z",
+          "confidence": "medium",
+          "evidence_id": "E-fdb4eee575ff"
+        },
+        "evidence_refs": [
+          "E-fdb4eee575ff"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.adriver.ru/about/",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.adriver.ru/doc/",
+          "score": 16,
+          "signals": [
+            "article_docs:faq",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.adriver.ru/abouteng/",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.adriver.ru/news/",
+          "score": 16,
+          "signals": [
+            "article_docs:news",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.adriver.ru/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:06:43Z",
+        "confidence": "high",
+        "evidence_id": "E-0a2eddc44031"
+      },
+      {
+        "url": "https://www.adriver.ru/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T16:06:43Z",
+        "confidence": "high",
+        "evidence_id": "E-ea565f0c2354"
+      },
+      {
+        "url": "https://www.adriver.ru/news/",
+        "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:06:43Z",
+        "confidence": "high",
+        "evidence_id": "E-5853ca94f79d"
+      },
+      {
+        "url": "https://www.adriver.ru/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:06:43Z",
+        "confidence": "high",
+        "evidence_id": "E-d0bfc176f0ec"
+      },
+      {
+        "url": "https://www.adriver.ru/doc/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:06:43Z",
+        "confidence": "high",
+        "evidence_id": "E-b0044ddec99a"
+      },
+      {
+        "url": "https://www.adriver.ru/abouteng/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:06:43Z",
+        "confidence": "high",
+        "evidence_id": "E-3707f3de35d0"
+      },
+      {
+        "url": "https://www.adriver.ru/news/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:06:43Z",
+        "confidence": "high",
+        "evidence_id": "E-bfa156af0a43"
+      },
+      {
+        "url": "https://www.adriver.ru/",
+        "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Adriver different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:06:56Z",
+        "confidence": "medium",
+        "evidence_id": "E-fdb4eee575ff"
+      },
+      {
+        "url": "https://www.adriver.ru",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 7 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:06:56Z",
+        "confidence": "medium",
+        "evidence_id": "E-56ceaac3929e"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "robots.txt was unavailable; no robots policy could be evaluated."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Adriver is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "2 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

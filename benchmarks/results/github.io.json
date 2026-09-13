@@ -1,0 +1,560 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "github.io",
+    "rank": 458,
+    "technical_type": "unknown",
+    "url": "https://github.io/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:47:31.617961+00:00",
+  "finished_at": "2026-09-13T15:47:34.497874+00:00",
+  "elapsed_seconds": 2.88,
+  "error": null,
+  "report": {
+    "site": "https://pages.github.com",
+    "audited_at": "2026-09-13T15:47:34Z",
+    "summary": {
+      "total_findings": 10,
+      "critical": 0,
+      "high": 2,
+      "medium": 3,
+      "low": 5,
+      "discoverability_findings": 4,
+      "engagement_findings": 6,
+      "citability_score": 62,
+      "citability_score_breakdown": {
+        "score": 62,
+        "base": 100,
+        "penalty": 38,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 9,
+          "low": 5
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-cta:/": 12,
+          "engagement:missing-viewport-meta": 12,
+          "schema:root-organization-missing": 5,
+          "engagement:few-internal-links": 2,
+          "citation:unanswerable:offering": 2,
+          "engagement:multiple-h1": 2,
+          "engagement:no-site-search": 1,
+          "engagement:no-personalization-readiness": 0,
+          "citation:unanswerable:audience": 1,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 10
+      }
+    },
+    "findings": [
+      {
+        "title": "Homepage lacks clear call-to-action buttons or interactive forms",
+        "category": "navigation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://pages.github.com/ via interactive_element_analysis [2026-09-13T15:47:34Z]: Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-cta:/",
+        "suggested_action": {
+          "summary": "Add prominent primary call-to-action (CTA) buttons.",
+          "priority": "high",
+          "how_to_fix": "Add visually distinct CTA buttons (e.g. 'Get Started', 'View Pricing', 'Contact Sales') above and below the fold.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+          "method": "interactive_element_analysis",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "high",
+          "evidence_id": "E-675c5bdecfca"
+        },
+        "evidence_refs": [
+          "E-675c5bdecfca"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://pages.github.com/ via mobile_viewport_inspector [2026-09-13T15:47:34Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "high",
+          "evidence_id": "E-2485cbe5de1c"
+        },
+        "evidence_refs": [
+          "E-2485cbe5de1c"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://pages.github.com/ via jsonld_schema_extractor [2026-09-13T15:47:34Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"GitHub Pages\",\n  \"url\": \"https://pages.github.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "high",
+          "evidence_id": "E-990f63b7b850"
+        },
+        "evidence_refs": [
+          "E-990f63b7b850"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Isolated page with insufficient internal navigation links",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://pages.github.com/ via internal_link_density_check [2026-09-13T15:47:34Z]: Page contains only 1 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:few-internal-links",
+        "suggested_action": {
+          "summary": "Incorporate related internal links and header/footer navigation.",
+          "priority": "medium",
+          "how_to_fix": "Add links to relevant documentation, related products, or category overview pages.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "Page contains only 1 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+          "method": "internal_link_density_check",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-dbc69b883e3c"
+        },
+        "evidence_refs": [
+          "E-dbc69b883e3c"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What does GitHub Pages offer?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://pages.github.com/ via onsite_answerability_probe [2026-09-13T15:47:34Z]: Across 1 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does GitHub Pages offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:offering",
+        "suggested_action": {
+          "summary": "Mark up the product or service catalogue.",
+          "priority": "medium",
+          "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "Across 1 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does GitHub Pages offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-d10fc2f66e98"
+        },
+        "evidence_refs": [
+          "E-d10fc2f66e98"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://pages.github.com/ via heading_structure_inspection [2026-09-13T15:47:34Z]: Page defines 3 separate <h1> tags (Websites for you and your projects.; Ready to get started? Build your own sit; Now that you’re up and running, here are), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "Page defines 3 separate <h1> tags (Websites for you and your projects.; Ready to get started? Build your own sit; Now that you’re up and running, here are), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "high",
+          "evidence_id": "E-9d456b79731f"
+        },
+        "evidence_refs": [
+          "E-9d456b79731f"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://pages.github.com via search_affordance_detection [2026-09-13T15:47:34Z]: None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com",
+          "observation": "None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-84a31df63321"
+        },
+        "evidence_refs": [
+          "E-84a31df63321"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://pages.github.com via returning_visitor_affordance_detection [2026-09-13T15:47:34Z]: Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com",
+          "observation": "Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-3ee86518dde2"
+        },
+        "evidence_refs": [
+          "E-3ee86518dde2"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"Who is GitHub Pages for?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://pages.github.com/ via onsite_answerability_probe [2026-09-13T15:47:34Z]: Across 1 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is GitHub Pages for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:audience",
+        "suggested_action": {
+          "summary": "State the intended audience in plain language.",
+          "priority": "low",
+          "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "Across 1 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is GitHub Pages for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-50c0b5bf9ae0"
+        },
+        "evidence_refs": [
+          "E-50c0b5bf9ae0"
+        ],
+        "id": "F-009",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes GitHub Pages different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://pages.github.com/ via onsite_answerability_probe [2026-09-13T15:47:34Z]: Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes GitHub Pages different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://pages.github.com/",
+          "observation": "Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes GitHub Pages different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:47:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-2192f86c4ddf"
+        },
+        "evidence_refs": [
+          "E-2192f86c4ddf"
+        ],
+        "id": "F-010",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 1,
+      "resources_observed": 0,
+      "readable_pages": 1,
+      "status_counts": {
+        "readable": 1
+      },
+      "limited": false,
+      "page_selection": []
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://pages.github.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "high",
+        "evidence_id": "E-990f63b7b850"
+      },
+      {
+        "url": "https://pages.github.com/",
+        "observation": "Page defines 3 separate <h1> tags (Websites for you and your projects.; Ready to get started? Build your own sit; Now that you’re up and running, here are), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "high",
+        "evidence_id": "E-9d456b79731f"
+      },
+      {
+        "url": "https://pages.github.com/",
+        "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+        "method": "interactive_element_analysis",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "high",
+        "evidence_id": "E-675c5bdecfca"
+      },
+      {
+        "url": "https://pages.github.com/",
+        "observation": "Page contains only 1 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+        "method": "internal_link_density_check",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-dbc69b883e3c"
+      },
+      {
+        "url": "https://pages.github.com/",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "high",
+        "evidence_id": "E-2485cbe5de1c"
+      },
+      {
+        "url": "https://pages.github.com",
+        "observation": "None of the 1 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-84a31df63321"
+      },
+      {
+        "url": "https://pages.github.com",
+        "observation": "Across 1 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-3ee86518dde2"
+      },
+      {
+        "url": "https://pages.github.com/",
+        "observation": "Across 1 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does GitHub Pages offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-d10fc2f66e98"
+      },
+      {
+        "url": "https://pages.github.com/",
+        "observation": "Across 1 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is GitHub Pages for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-50c0b5bf9ae0"
+      },
+      {
+        "url": "https://pages.github.com/",
+        "observation": "Across 1 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes GitHub Pages different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:47:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-2192f86c4ddf"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "1 of 1 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 1,
+    "readable_pages": 1,
+    "page_purposes": [
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

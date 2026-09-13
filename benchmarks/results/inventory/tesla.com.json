@@ -1,0 +1,550 @@
+{
+  "seed_url": "https://tesla.com/",
+  "origin": "https://tesla.com",
+  "robots_txt": {
+    "found": true,
+    "url": "https://tesla.com/robots.txt",
+    "status": 200,
+    "raw": "#\n# robots.txt\n#\n# This file is to prevent the crawling and indexing of certain parts\n# of your site by web crawlers and spiders run by sites like Yahoo!\n# and Google. By telling these \"robots\" where not to go on your site,\n# you save bandwidth and server resources.\n#\n# This file will be ignored unless it is at the root of your host:\n# Used:    http://example.com/robots.txt\n# Ignored: http://example.com/site/robots.txt\n#\n# For more information about the robots.txt standard, see:\n# http://www.robotstxt.org/robotstxt.html\n\nUser-agent: *\nCrawl-delay: 10\n# CSS, JS, Images\nAllow: /misc/*.css$\nAllow: /misc/*.css?\nAllow: /misc/*.js$\nAllow: /misc/*.js?\nAllow: /misc/*.gif\nAllow: /misc/*.jpg\nAllow: /misc/*.jpeg\nAllow: /misc/*.png\nAllow: /modules/*.css$\nAllow: /modules/*.css?\nAllow: /modules/*.js$\nAllow: /modules/*.js?\nAllow: /modules/*.gif\nAllow: /modules/*.jpg\nAllow: /modules/*.jpeg\nAllow: /modules/*.png\nAllow: /profiles/*.css$\nAllow: /profiles/*.css?\nAllow: /profiles/*.js$\nAllow: /profiles/*.js?\nAllow: /profiles/*.gif\nAllow: /profiles/*.jpg\nAllow: /profiles/*.jpeg\nAllow: /profiles/*.png\nAllow: /themes/*.css$\nAllow: /themes/*.css?\nAllow: /themes/*.js$\nAllow: /themes/*.js?\nAllow: /themes/*.gif\nAllow: /themes/*.jpg\nAllow: /themes/*.jpeg\nAllow: /themes/*.png\n# IMCE\nDisallow: /sites/default/files/\n# Directories\nDisallow: /includes/\nDisallow: /misc/\nDisallow: /modules/\nDisallow: /profiles/\nDisallow: /scripts/\nDisallow: /themes/\n# Files\nDisallow: /CHANGELOG.txt\nDisallow: /cron.php\nDisallow: /INSTALL.mysql.txt\nDisallow: /INSTALL.pgsql.txt\nDisallow: /INSTALL.sqlite.txt\nDisallow: /install.php\nDisallow: /INSTALL.txt\nDisallow: /LICENSE.txt\nDisallow: /MAINTAINERS.txt\nDisallow: /update.php\nDisallow: /UPGRADE.txt\nDisallow: /xmlrpc.php\n# Paths (clean URLs)\nDisallow: /admin/\nDisallow: /comment/reply/\nDisallow: /filter/tips/\nDisallow: /node/add/\nDisallow: /search/\nDisallow: /user/register/\nDisallow: /user/password/\nDisallow: /user/login/\nDisallow: /user/logout/\n# Paths (no clean URLs)\nDisallow: /?q=admin/\nDisallow: /?q=comment/reply/\nDisallow: /?q=filter/tips/\nDisallow: /?q=node/add/\nDisallow: /?q=search/\nDisallow: /?q=user/password/\nDisallow: /?q=user/register/\nDisallow: /?q=user/login/\nDisallow: /?q=user/logout/\nDisallow: /?q=user/q=node/\n\n# Disallow indexing of Node pages\nDisallow: /node/\nDisallow: /*/node/\n\nDisallow: /?q=node/\nDisallow: /?q=*/node/\n\n# Disallow indexing of nodequeue pages\nDisallow: /nodequeue/\nDisallow: /*/nodequeue/\n\n# Disallow indexing of pages with referral\nDisallow: /*?referral=\nDisallow: /?referral=\n\n##############################\n# START TESLA CONTENT.\n##############################\n\n# Tesla content landing pages.\nDisallow: /content/*\nDisallow: /new/*\nDisallow: /used/*\nDisallow: /preowned/*\nDisallow: /demo/*\nDisallow: /taxonomy/term/*\nDisallow: /*/taxonomy/term/*\nAllow: /content/dam/tesla-site/\n\n# No indexing of en_eu\nUser-agent: Googlebot\nDisallow: /en_eu/\nDisallow: /en_EU/\n\n##############################\n# STOP TESLA CONTENT.\n##############################\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      }
+    },
+    "partially_blocked_agents": {},
+    "sitemaps_declared": []
+  },
+  "sitemaps": [
+    {
+      "url": "https://tesla.com/sitemap.xml",
+      "found": false,
+      "status": 404,
+      "discovered_url_count": 0
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://tesla.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://tesla.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://tesla.com/ai.txt"
+    }
+  },
+  "pages": {
+    "https://www.tesla.com/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403",
+      "access_status": "http-blocked",
+      "url": "https://tesla.com/",
+      "final_url": "https://www.tesla.com/",
+      "status_code": 403,
+      "load_time_seconds": 2.42,
+      "raw_html": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;www&#46;tesla&#46;com&#47;\" on this server.<P>\nReference&#32;&#35;18&#46;469eda17&#46;1789319116&#46;13f9ba0e\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;469eda17&#46;1789319116&#46;13f9ba0e</P>\n<script type=\"text/javascript\"  src=\"/One2y_/6zH/VJt/xp1djQ/p6fuSbJ3NY/cVUPTClvAg/XkYIVi/1-FnMc?v=9fdc5e40-30d1-e1e0-6d96-70c9e6ff17da\" defer></script></BODY>\n</HTML>\n",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "Tesla",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 1,
+    "total_crawl_time_seconds": 16.92,
+    "page_selection": [],
+    "resources_observed": 0,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "http-blocked": 1
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {
+    "https://tesla.com/": "https://www.tesla.com/"
+  }
+}

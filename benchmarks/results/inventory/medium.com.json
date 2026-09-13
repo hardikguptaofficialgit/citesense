@@ -1,0 +1,679 @@
+{
+  "seed_url": "https://medium.com/",
+  "origin": "https://medium.com",
+  "robots_txt": {
+    "found": true,
+    "url": "https://medium.com/robots.txt",
+    "status": 200,
+    "raw": "User-Agent: *\nDisallow: /m/\nDisallow: /me/\nDisallow: /@me$\nDisallow: /@me/\nDisallow: /*/edit$\nDisallow: /*/*/edit$\nDisallow: /media/\nDisallow: /p/*/share\nDisallow: /r/\nDisallow: /trending\nDisallow: /search?q$\nDisallow: /search?q=\nDisallow: /*/search?q=\nDisallow: /*/search/*?q=\nDisallow: /*/*source=\nAllow: /_/api/users/*/meta\nAllow: /_/api/users/*/profile/stream\nAllow: /_/api/posts/*/responses\nAllow: /_/api/posts/*/responsesStream\nAllow: /_/api/posts/*/related\nUser-Agent: Amazonbot\nUser-Agent: Applebot-Extended\nUser-Agent: Bytespider\nUser-Agent: ClaudeBot\nUser-Agent: FacebookBot\nUser-Agent: GoogleOther\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nDisallow: /\nAllow: /about\nAllow: /business\nAllow: /earn\nAllow: /gift\nAllow: /membership\nAllow: /partner-program\nAllow: /verified-authors\nSitemap: https://medium.com/sitemap/sitemap.xml\nLicense: https://medium.com/license.xml\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /about",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /about",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /about",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /about",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /about",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /about",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      }
+    },
+    "partially_blocked_agents": {
+      "GPTBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/docs",
+        "/contact"
+      ],
+      "ClaudeBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/docs",
+        "/contact"
+      ],
+      "Applebot-Extended": [
+        "/",
+        "/pricing",
+        "/products",
+        "/docs",
+        "/contact"
+      ],
+      "Meta-ExternalAgent": [
+        "/",
+        "/pricing",
+        "/products",
+        "/docs",
+        "/contact"
+      ],
+      "Bytespider": [
+        "/",
+        "/pricing",
+        "/products",
+        "/docs",
+        "/contact"
+      ],
+      "Amazonbot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/docs",
+        "/contact"
+      ]
+    },
+    "sitemaps_declared": [
+      "https://medium.com/sitemap/sitemap.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://medium.com/sitemap/sitemap.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 27872
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://medium.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://medium.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://medium.com/ai.txt"
+    }
+  },
+  "pages": {
+    "https://medium.com/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 200 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://medium.com/",
+      "final_url": "https://medium.com/",
+      "status_code": 200,
+      "load_time_seconds": 0.27,
+      "raw_html": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><meta name=\"viewport\" content=\"width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1\"/><link rel=\"preload\" as=\"image\" href=\"https://miro.medium.com/v2/format:webp/4*SdjkdS98aKH76I8eD0_qjw.png\"/><style data-precedence=\"high\" data-href=\"lite-color-scheme-tokens\">:root{color-scheme:light;--invert-in-dark-mode: 0;--blend-in-dark-mode: normal;--color-bg-neutral-primary: #ffffff;--color-bg-neutral-secondary: #f2f2f2;--color-bg-neutral-tertiary: #f9f9f9;--color-bg-neutral-quaternary: #242424;--color-bg-brand-primary: #191919;--color-bg-brand-primary-hover: #080808;--color-bg-accent-secondary: #bbdbba;--color-bg-accent-secondary-hover: #9fcc9e;--color-bg-accent-tertiary: #d2e7d1;--color-bg-accent-quaternary: #e8f3e8;--color-bg-error-primary: #c94a4a;--color-bg-error-primary-hover: #b63636;--color-bg-utility-yellow-primary: #fffae1;--color-bg-utility-blue-primary: #e5f2ff;--color-bg-verified-book-author-intro: #e5f2ff;--color-border-verified-book-author-intro: transparent;--verified-book-author-intro-illustration-scale: 1;--color-fg-neutral-primary: #242424;--color-fg-neutral-primary-hover: #000000;--color-fg-neutral-secondary: #6b6b6b;--color-fg-neutral-secondary-hover: #3f3f3f;--color-fg-neutral-tertiary: #ffffff;--color-fg-accent-primary: #1a8917;--color-fg-accent-primary-hover: #156d12;--color-fg-error-primary: #c94a4a;--color-fg-error-primary-hover: #b63636;--color-fg-utility-blue-primary: #437aff;--color-border-neutral-primary: #f2f2f2;--color-border-neutral-primary-hover: #e5e5e5;--color-border-neutral-secondary: #242424;--color-border-neutral-secondary-hover: #000000;--color-border-neutral-tertiary: #e5e5e5;--color-border-neutral-tertiary-hover: #d2d2d2;--color-border-brand-primary: #191919;--color-border-accent-primary: #1a8917;--color-border-accent-primary-hover: #156d12;--color-border-error-primary: #c94a4a;--color-border-error-primary-hover: #b63636;--color-chart-accent-primary: #1a8917;--color-chart-accent-secondary: #9fcc9e;--color-chart-accent-tertiary: #bbdbba;--color-chart-accent-quaternary: #e8f3e8;--color-chart-utility-yellow-primary: #fea010;--color-chart-utility-yellow-secondary: #ffc017;--color-chart-utility-yellow-tertiary: #fffae1;--color-chart-neutral-primary: #b3b3b3;--color-chart-neutral-secondary: #b3b3b3;--color-chart-neutral-tertiary: #e5e5e5;--color-status-in-review-background: #e5f2ff;--color-status-in-review-text: #437aff;--color-status-edits-requested-background: #fffae1;--color-status-edits-requested-text: #be5b04;--color-story-footer-bg-subtle: #f7f4ed;--color-story-footer-bg-contrast: #242424;--color-story-footer-fg-subtle: #242424;--color-story-footer-fg-contrast: #ffffff;--color-story-footer-placeholder-light-grey: #d2d2d2;--color-story-footer-placeholder-dark-grey: #6b6b6b}</style><script src=\"https://www.google.com/recaptcha/enterprise.js?render=6Le-uGgpAAAAAPprRaokM8AKthQ9KNGdoxaGUvVp\" async=\"\"></script><link rel=\"icon\" href=\"https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19\"/><title>Medium</title><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"twitter:app:name:iphone\" content=\"Medium\"/><meta name=\"twitter:app:id:iphone\" content=\"828256236\"/><meta property=\"al:ios:app_name\" content=\"Medium\"/><meta property=\"al:ios:app_store_id\" content=\"828256236\"/><meta property=\"al:android:package\" content=\"com.medium.reader\"/><meta property=\"al:android:app_name\" content=\"Medium\"/><meta property=\"fb:app_id\" content=\"542599432471018\"/><meta property=\"og:site_name\" content=\"Medium\"/><meta name=\"apple-itunes-app\" content=\"app-id=828256236, app-argument=/, affiliate-data=pt=698524&amp;ct=smart_app_banner&amp;mt=8\"/><link rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"Medium\" href=\"/osd.xml\"/><link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"https://miro.medium.com/v2/resize:fill:304:304/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156\"/><link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"https://miro.medium.com/v2/resize:fill:240:240/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156\"/><link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"https://miro.medium.com/v2/resize:fill:152:152/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156\"/><link rel=\"apple-touch-icon\" sizes=\"60x60\" href=\"https://miro.medium.com/v2/resize:fill:120:120/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156\"/><link rel=\"mask-icon\" href=\"https://miro.medium.com/v2/resize:fill:1000:1000/7*GAOKVe--MXbEJmV9230oOQ.png\" color=\"#171717\"/><link rel=\"preconnect\" href=\"https://glyph.medium.com\" crossorigin=\"\"/><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"preconnect\" href=\"https://www.google.com\"/><link rel=\"preconnect\" href=\"https://www.gstatic.com\" crossorigin=\"\"/><link id=\"glyph_preload_link\" rel=\"preload\" as=\"style\" type=\"text/css\" href=\"https://glyph.medium.com/css/unbound.css\"/><meta name=\"robots\" content=\"index,follow\"/><title>Medium: Read and write stories.</title><meta name=\"title\" content=\"Medium: Read and write stories.\"/><meta name=\"description\" content=\"On Medium, anyone can share insightful perspectives, useful knowledge, and life wisdom with the world.\"/><meta name=\"twitter:card\" content=\"summary_large_image\"/><meta name=\"twitter:creator\" content=\"@Medium\"/><meta name=\"twitter:description\" content=\"On Medium, anyone can share insightful perspectives, useful knowledge, and life wisdom with the world.\"/><meta name=\"twitter:image:src\" content=\"https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0\"/><meta name=\"twitter:site\" content=\"@Medium\"/><meta name=\"twitter:title\" content=\"Medium: Read and write stories.\"/><meta property=\"og:description\" content=\"On Medium, anyone can share insightful perspectives, useful knowledge, and life wisdom with the world.\"/><meta property=\"og:image\" content=\"https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0\"/><meta property=\"og:site_name\" content=\"Medium\"/><meta property=\"og:title\" content=\"Medium: Read and write stories.\"/><meta property=\"og:type\" content=\"website\"/><meta property=\"og:url\" content=\"https://medium.com\"/><link rel=\"canonical\" href=\"https://medium.com\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/static/manifest-3cf8583e.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/entry-C9P2t20qJW.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-D0WnhmqRYc.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-C11jW0FiNe.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CrjQH3m-gW.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BZidLkaas_.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/entry-CwxkgI60OV.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DXScYH4iYt.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DpwhkAmq4W.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/entry-fBNTF2ig9x.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CXnHTW_oeV.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DnPkHBw3I_.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CYdEVPzgBO.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CQtFW-cnCb.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Ccx4bzDBz8.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CD5QG4Nr4u.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DdonUN-_p_.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-C0nqQaN4zj.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Dyqv3_ywby.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DlxwlCRnKY.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-x3yMr9Hj2M.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-D6hKjcUA3T.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-6-s_y3aqFJ.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BQYOJ-mO15.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DP3_7SVASi.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CjgOIT_e7P.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CzYDeZxwQf.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BHu-NPXwPu.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-HvNxSL9udh.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-ByFaBDnwQT.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk---sLyFDcIU.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Cwg9icNWml.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-I8cQABJjKJ.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-EPww8yA76c.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BW6VYw0uzE.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CZabPPB8tI.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CPynNJqWgE.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-6BSpMonAeB.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DuJ3wvjuqM.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BDd81HQSRF.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CH0gmOPEMW.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DxkCkufq5c.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CUCbM7l4Dj.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-cNcrfj78jd.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DTqgPoTD1a.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Bne5AQ4h-5.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CGhflpm2Hm.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CNPxQmRnXf.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BX3UAvcF5y.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CRPL1qQoWW.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BfU8uMdn42.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Bn3GEJ9G7e.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-4m7R-C0Uxl.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CeP5820RVI.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Q5o9bjyr7s.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-E3gD0vz4qE.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-C839jH4HYq.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Bn4kth2VY1.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Cgs_EYwel6.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-zgIIvDkvAP.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Cl_V_h5b8P.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-wS9mSISbp0.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BJsxkluEP9.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CvnM9G2Pye.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BSxQZl1sLA.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-KzP5Y5LLQP.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DfTA5uCdpU.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CmwWkCGGjS.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DTGFyXOJOa.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DuxEVP_C5g.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CBXapKR9BK.js\"/><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/entry-DzUoS_udyD.js\"/><script type=\"module\" src=\"https://cdn-client.medium.com/lite/assets/chunk-B7qecay4n7.js\"></script><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Dg8s6Pyjfd.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DaBIX5kF1t.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-48RYi7P5w4.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-4YTj7fZXRR.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DSfhCr3OKh.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-VOBjFqfycS.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BnQUBstig0.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CMTIR1k2Vp.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-B9W5mp7Pc-.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DetynJx9PY.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BaolDDrFXO.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CNLZGyuv8C.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-D8oOsL536F.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CJ9k-wmTwA.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-C5Yqs-oE3u.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DTomAmq_pV.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-D9y1tiYsrF.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BwMZZXxtMA.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DvptD6K6cu.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-D5ciu3l8Qw.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CbFLM138qE.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-1s_R4bonAJ.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-B857edO-xF.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DCC7-BJDuV.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DdbWhtMyTh.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BxOL7DBeLv.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DsHhLSyYeg.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BScX-f47RR.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CIAVaunxWo.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-DSy2ZEdAjr.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Z6E5M310NG.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BvfKfi9j2g.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-XXa34FULzH.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CBBuBl4K5e.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-B4miwgxpFB.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CbMw0xIIxH.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-Ba_Uf5H8ZL.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-CL-ZvphHYY.js\"><link rel=\"modulepreload\" href=\"https://cdn-client.medium.com/lite/assets/chunk-BXJRiGb0YM.js\"><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"STATIC\">html{box-sizing:border-box;-webkit-text-size-adjust:100%}*, *:before, *:after{box-sizing:inherit}body{margin:0;padding:0;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;color:var(--color-fg-neutral-primary);position:relative;min-height:100vh}h1, h2, h3, h4, h5, h6, dl, dd, ol, ul, menu, figure, blockquote, p, pre, form{margin:0}menu, ol, ul{padding:0;list-style:none;list-style-image:none}main{display:block}a{color:inherit;text-decoration:none}a, button, input{-webkit-tap-highlight-color:transparent}img, svg{vertical-align:middle}button{background:transparent;overflow:visible}button, input, optgroup, select, textarea{margin:0}:root{--reach-tabs:1;--reach-menu-button:1}#speechify-root{font-family:Sohne, sans-serif}div[data-popper-reference-hidden=\"true\"]{visibility:hidden;pointer-events:none}.grecaptcha-badge{visibility:hidden}\n:root {--color-syntax-keyword: #cf222e;--color-syntax-keyword: light-dark(#cf222e, #ff7b72);--color-syntax-entity: #8250df;--color-syntax-entity: light-dark(#8250df, #d2a8ff);--color-syntax-constant: #0550ae;--color-syntax-constant: light-dark(#0550ae, #79c0ff);--color-syntax-string: #0a3069;--color-syntax-string: light-dark(#0a3069, #a5d6ff);--color-syntax-variable: #953800;--color-syntax-variable: light-dark(#953800, #ffa657);--color-syntax-comment: #656d76;--color-syntax-comment: light-dark(#656d76, #8b949e);--color-syntax-tag: #116329;--color-syntax-tag: light-dark(#116329, #7ee787);--color-syntax-subst: #24292f;--color-syntax-subst: light-dark(#24292f, #c9d1d9);--color-syntax-heading: #0550ae;--color-syntax-heading: light-dark(#0550ae, #58a6ff);--color-syntax-bullet: #3b2300;--color-syntax-bullet: light-dark(#3b2300, #f2cc60);--color-syntax-inserted: #116329;--color-syntax-inserted: light-dark(#116329, #aff5b4);--color-syntax-inserted-bg: #dafbe1;--color-syntax-inserted-bg: light-dark(#dafbe1, #033a16);--color-syntax-deleted: #82071e;--color-syntax-deleted: light-dark(#82071e, #ffdcd7);--color-syntax-deleted-bg: #ffebe9;--color-syntax-deleted-bg: light-dark(#ffebe9, #67060c);\n}.hljs-doctag,\n.hljs-keyword,\n.hljs-meta .hljs-keyword,\n.hljs-template-tag,\n.hljs-template-variable,\n.hljs-type,\n.hljs-variable.language_ {color: var(--color-syntax-keyword);\n}.hljs-title,\n.hljs-title.class_,\n.hljs-title.class_.inherited__,\n.hljs-title.function_ {color: var(--color-syntax-entity);\n}.hljs-attr,\n.hljs-attribute,\n.hljs-literal,\n.hljs-meta,\n.hljs-number,\n.hljs-operator,\n.hljs-variable,\n.hljs-selector-attr,\n.hljs-selector-class,\n.hljs-selector-id {color: var(--color-syntax-constant);\n}.hljs-regexp,\n.hljs-string,\n.hljs-meta .hljs-string {color: var(--color-syntax-string);\n}.hljs-built_in,\n.hljs-symbol {color: var(--color-syntax-variable);\n}.hljs-code,\n.hljs-comment,\n.hljs-formula {color: var(--color-syntax-comment);\n}.hljs-name,\n.hljs-quote,\n.hljs-selector-tag,\n.hljs-selector-pseudo {color: var(--color-syntax-tag);\n}.hljs-subst {color: var(--color-syntax-subst);\n}.hljs-section {color: var(--color-syntax-heading);font-weight: bold;\n}.hljs-bullet {color: var(--color-syntax-bullet);\n}.hljs-addition {color: var(--color-syntax-inserted);background-color: var(--color-syntax-inserted-bg);\n}.hljs-deletion {color: var(--color-syntax-deleted);background-color: var(--color-syntax-deleted-bg);\n}.hljs-doctag,\n.hljs-strong {font-weight: bold;\n}.hljs-emphasis,\n.hljs-formula {font-style: italic;\n}\n</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\">.a{font-family:medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif}.b{font-weight:400}.c{background-color:var(--color-bg-neutral-primary)}.d{display:none}.e{height:100vh}.f{display:flex}.g{flex-direction:column}.h{position:absolute}.i{top:54%}.j{transform:translateY(-50%)}.k{left:782px}.z button{font-size:20px}.ab button{line-height:28px}.ac{background-color:light-dark(#F7F4ED,#121212)}.ae{min-height:560px}.af{overflow:hidden}.ag{flex:1 0 auto}.ah{position:relative}.ai{background:light-dark(#F7F4ED,#121212)}.aj{z-index:10}.ak{width:100%}.al{border-bottom:solid 1px var(--color-border-neutral-secondary)}.am{position:fixed}.an{top:0}.ao{left:0}.ap{right:0}.as{justify-content:center}.ay{max-width:1192px}.az{min-width:0}.ba{padding:25px 0}.bb{height:75px}.bc{align-items:center}.bd{flex-direction:row}.be{display:block}.bf{color:inherit}.bg{fill:inherit}.bh{font-size:inherit}.bi{border:inherit}.bj{font-family:inherit}.bk{letter-spacing:inherit}.bl{font-weight:inherit}.bm{padding:0}.bn{margin:0}.bo{cursor:pointer}.bp:disabled{cursor:not-allowed}.bq:disabled{color:var(--color-fg-neutral-secondary)}.br:disabled{fill:var(--color-fg-neutral-secondary)}.bu{width:auto}.bv path{fill:var(--color-fg-neutral-primary)}.bw{height:25px}.cc{margin-right:25px}.cd{font-family:sohne, \"Helvetica Neue\", Helvetica, Arial, sans-serif}.ce{font-size:14px}.cf{line-height:20px}.cg{color:var(--color-fg-neutral-primary)}.ci{color:var(--color-fg-neutral-tertiary)}.cj{padding:8px 16px}.ck{fill:var(--color-fg-neutral-tertiary)}.cl{background:var(--color-bg-brand-primary)}.cm{border-color:var(--color-border-brand-primary)}.cq:disabled{cursor:inherit !important}.cr:disabled{opacity:0.3}.cs:disabled:hover{background:var(--color-bg-brand-primary)}.ct:disabled:hover{border-color:var(--color-border-brand-primary)}.cu{border-radius:99em}.cv{border-width:1px}.cw{border-style:solid}.cx{box-sizing:border-box}.cy{display:inline-block}.cz{text-decoration:none}.da{text-align:center}.db{min-height:75px}.dc{height:100%}.do{max-width:720px}.dp{font-family:gt-super, Georgia, Cambria, \"Times New Roman\", Times, serif}.dq{font-size:70px}.dr{line-height:74px}.ds{letter-spacing:-0.05em}.dt{font-feature-settings:'pnum' on, 'lnum' on;}.du{color:var(--color-fg-neutral-primary-hover)}.dv{margin-bottom:48px}.dw{font-size:22px}.dx{line-height:28px}.ea{width:196px}.eb{font-size:16px}.ec{line-height:24px}.ed{color:#FFFFFF}.ee{padding:8px 20px}.ef{fill:#FFFFFF}.eg{background:#1A8917}.eh{border-color:var(--color-border-accent-primary)}.ek:disabled:hover{background:#1A8917}.el:disabled:hover{border-color:var(--color-border-accent-primary)}.em{border-top:1px solid var(--color-border-neutral-secondary)}.eo{height:72px}.ep{min-width:100vw}.eq{position:static}.er{bottom:0}.es{font-size:13px}.et{color:var(--color-fg-neutral-secondary)}.ev{margin-right:20px}.ew{height:0px}.ex{margin:0 24px}.fb{padding:24px 0}.fc{flex-wrap:wrap}.fd{margin-bottom:0px}.fe{margin-right:16px}.bs:hover:not(:disabled){color:var(--color-fg-neutral-primary)}.bt:hover:not(:disabled){fill:var(--color-fg-neutral-primary)}.cn:hover{background:var(--color-bg-brand-primary-hover)}.co:hover{border-color:var(--color-border-neutral-secondary)}.cp:hover{cursor:pointer}.ei:hover{background:#156D12}.ej:hover{border-color:var(--color-border-accent-primary-hover)}.eu:hover{text-decoration:underline}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (min-width: 1080px)\">.ax{margin:0 64px}.cb{display:inline-block}.dh{margin:75px 64px 0}.dn{margin-bottom:48px}.dz{display:none}.fa{max-width:680px}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (max-width: 551.98px)\">.at{margin:0 24px}.bx{display:none}.dd{margin:75px 24px 0}.dj{margin-bottom:32px}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (min-width: 904px) and (max-width: 1079.98px)\">.aw{margin:0 64px}.ca{display:inline-block}.dg{margin:75px 64px 0}.dm{margin-bottom:48px}.dy{display:none}.ez{max-width:680px}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (min-width: 728px) and (max-width: 903.98px)\">.av{margin:0 48px}.bz{display:inline-block}.df{margin:75px 48px 0}.di{display:none}.dl{margin-bottom:48px}.ey{max-width:680px}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (min-width: 552px) and (max-width: 727.98px)\">.au{margin:0 24px}.by{display:none}.ch{display:inline-block}.de{margin:75px 24px 0}.dk{margin-bottom:32px}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (min-width: 1243px)\">.l{left:unset}.m{right:0}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (max-width: 511px)\">.n{display:flex}.o{width:253px}.p{word-break:break-word}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (max-width: 727px)\">.q h2{font-size:80px}.r h2{line-height:72px}.s h2{letter-spacing:-0.055em}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (min-width: 728px)\">.t h2{font-size:106px}.u h2{line-height:95px}.v h2{letter-spacing:-0.055em}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"all and (min-width: 904px)\">.w h2{font-size:120px}.x h2{line-height:100px}.y h2{letter-spacing:-0.055em}</style><style type=\"text/css\" data-fela-rehydration=\"160\" data-fela-type=\"RULE\" media=\"(prefers-reduced-motion: no-preference)\">.aq{transition:background-color 300ms linear}.ar button{transition:background-color 300ms linear, color 300ms linear}</style></head><body><!--$--><!--/$--><div class=\"a b c\"><a href=\"/sitemap/sitemap.xml\" class=\"d\">Sitemap</a><link id=\"glyph_link\" rel=\"stylesheet\" type=\"text/css\" href=\"https://glyph.medium.com/css/unbound.css\"/><script>document.domain = document.domain;</script><div class=\"e f g\"><script type=\"application/ld+json\">{\"@context\":\"http:\\u002F\\u002Fschema.org\",\"@type\":\"Organization\",\"url\":\"https:\\u002F\\u002Fmedium.com\",\"name\":\"Medium\",\"description\":\"On Medium, anyone can share insightful perspectives, useful knowledge, and life wisdom with the world.\",\"publishingPrinciples\":\"https:\\u002F\\u002Fpolicy.medium.com\\u002Fmedium-terms-of-service-9db0094a1e0f\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https:\\u002F\\u002Fmiro.medium.com\\u002Fv2\\u002F7*V1_7XP4snlmqrc_0Njontw.png\",\"width\":500,\"height\":110}}</script><div class=\"ae af f g ag ah ai\"><div class=\"aj ac ak al am an ao ap aq\"><div class=\"f as\"><div class=\"at au av aw ax ay az ak\"><div class=\"ba bb f bc bd\"><div class=\"be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/\" data-discover=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"719\" height=\"160\" fill=\"none\" aria-labelledby=\"wordmark-medium-desc\" viewBox=\"0 0 719 160\" class=\"bu bv bw\"><desc>Medium Logo</desc><path fill=\"#242424\" d=\"m174.104 9.734.215-.047V8.02H130.39L89.6 103.89 48.81 8.021H1.472v1.666l.212.047c8.018 1.81 12.09 4.509 12.09 14.242V137.93c0 9.734-4.087 12.433-12.106 14.243l-.212.047v1.671h32.118v-1.665l-.213-.048c-8.018-1.809-12.089-4.509-12.089-14.242V30.586l52.399 123.305h2.972l53.925-126.743V140.75c-.687 7.688-4.721 10.062-11.982 11.701l-.215.05v1.652h55.948v-1.652l-.215-.05c-7.269-1.639-11.4-4.013-12.087-11.701l-.037-116.774h.037c0-9.733 4.071-12.432 12.087-14.242m25.555 75.488c.915-20.474 8.268-35.252 20.606-35.507 3.806.063 6.998 1.312 9.479 3.714 5.272 5.118 7.751 15.812 7.368 31.793zm-.553 5.77h65.573v-.275c-.186-15.656-4.721-27.834-13.466-36.196-7.559-7.227-18.751-11.203-30.507-11.203h-.263c-6.101 0-13.584 1.48-18.909 4.16-6.061 2.807-11.407 7.003-15.855 12.511-7.161 8.874-11.499 20.866-12.554 34.343q-.05.606-.092 1.212a50 50 0 0 0-.065 1.151 85.807 85.807 0 0 0-.094 5.689c.71 30.524 17.198 54.917 46.483 54.917 25.705 0 40.675-18.791 44.407-44.013l-1.886-.664c-6.557 13.556-18.334 21.771-31.738 20.769-18.297-1.369-32.314-19.922-31.042-42.395m139.722 41.359c-2.151 5.101-6.639 7.908-12.653 7.908s-11.513-4.129-15.418-11.63c-4.197-8.053-6.405-19.436-6.405-32.92 0-28.067 8.729-46.22 22.24-46.22 5.657 0 10.111 2.807 12.236 7.704zm43.499 20.008c-8.019-1.897-12.089-4.722-12.089-14.951V1.309l-48.716 14.353v1.757l.299-.024c6.72-.543 11.278.386 13.925 2.83 2.072 1.915 3.082 4.853 3.082 8.987v18.66c-4.803-3.067-10.516-4.56-17.448-4.56-14.059 0-26.909 5.92-36.176 16.672-9.66 11.205-14.767 26.518-14.767 44.278-.003 31.72 15.612 53.039 38.851 53.039 13.595 0 24.533-7.449 29.54-20.013v16.865h43.711v-1.746zM424.1 19.819c0-9.904-7.468-17.374-17.375-17.374-9.859 0-17.573 7.632-17.573 17.374s7.721 17.374 17.573 17.374c9.907 0 17.375-7.47 17.375-17.374m11.499 132.546c-8.019-1.897-12.089-4.722-12.089-14.951h-.035V43.635l-43.714 12.551v1.705l.263.024c9.458.842 12.047 4.1 12.047 15.152v81.086h43.751v-1.746zm112.013 0c-8.018-1.897-12.089-4.722-12.089-14.951V43.635l-41.621 12.137v1.71l.246.026c7.733.813 9.967 4.257 9.967 15.36v59.279c-2.578 5.102-7.415 8.131-13.274 8.336-9.503 0-14.736-6.419-14.736-18.073V43.638l-43.714 12.55v1.703l.262.024c9.459.84 12.05 4.097 12.05 15.152v50.17a56.3 56.3 0 0 0 .91 10.444l.787 3.423c3.701 13.262 13.398 20.197 28.59 20.197 12.868 0 24.147-7.966 29.115-20.43v17.311h43.714v-1.747zm169.818 1.788v-1.749l-.213-.05c-8.7-2.006-12.089-5.789-12.089-13.49v-63.79c0-19.89-11.171-31.761-29.883-31.761-13.64 0-25.141 7.882-29.569 20.16-3.517-13.01-13.639-20.16-28.606-20.16-13.146 0-23.449 6.938-27.869 18.657V43.643L545.487 55.68v1.715l.263.024c9.345.829 12.047 4.181 12.047 14.95v81.784h40.787v-1.746l-.215-.053c-6.941-1.631-9.181-4.606-9.181-12.239V66.998c1.836-4.289 5.537-9.37 12.853-9.37 9.086 0 13.692 6.296 13.692 18.697v77.828h40.797v-1.746l-.215-.053c-6.94-1.631-9.18-4.606-9.18-12.239V75.066a42 42 0 0 0-.578-7.26c1.947-4.661 5.86-10.177 13.475-10.177 9.214 0 13.691 6.114 13.691 18.696v77.828z\"></path></svg></a></div><div class=\"be ag\"></div><div class=\"f bc bd\"><div class=\"bx by bz ca cb\"><div class=\"cc be\"><p class=\"cd b ce cf cg\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/about?autoplay=1\" data-discover=\"true\">Our story</a></p></div></div><div class=\"bx by bz ca cb\"><div class=\"cc be\"><p class=\"cd b ce cf cg\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/membership\" data-discover=\"true\">Membership</a></p></div></div><div class=\"bx by bz ca cb\"><div class=\"cc be\"><p class=\"cd b ce cf cg\"><span data-dd-action-name=\"Susi presentation tracker new_post_topnav\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/m/signin?operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2Fnew-story&amp;source=--------------------------new_post_topnav--------------------\" data-discover=\"true\">Write</a></span></p></div></div><div class=\"bx ch bz ca cb\"><div class=\"cc be\"><p class=\"cd b ce cf cg\"><span data-dd-action-name=\"Susi presentation tracker lo_home_nav\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/m/signin?operation=login&amp;redirect=https%3A%2F%2Fmedium.com%2F&amp;source=--------------------------lo_home_nav--------------------\" data-discover=\"true\">Sign in</a></span></p></div></div><div class=\"ar\"><span data-dd-action-name=\"Susi presentation tracker lo_home_nav\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/m/signin?operation=register&amp;redirect=https%3A%2F%2Fmedium.com%2F&amp;source=--------------------------lo_home_nav--------------------\" data-discover=\"true\"><button class=\"cd b ce cf ci cj ck cl cm cn co cp cq cr cs ct cu cv cw cx cy cz da\">Get started</button></a></span></div></div></div></div></div></div><div class=\"db be\"></div><div class=\"dc ak af f bc as ah\"><div class=\"dd de df dg dh ak ay az be\"><div class=\"bx by di\"><div class=\"h i j k l m\"><img alt=\"\" class=\"\" src=\"https://miro.medium.com/v2/format:webp/4*SdjkdS98aKH76I8eD0_qjw.png\" width=\"460\" height=\"600\" loading=\"eager\" role=\"presentation\"/></div></div><div class=\"dj dk dl dm dn do be\"><span class=\"n o p q r s t u v w x y\"><h2 class=\"dp b dq dr ds dt du\">Human <br/>stories &amp; ideas</h2></span></div><div class=\"dv be\"><h3 class=\"cd b dw dx cg\">A place to read, write, and deepen your understanding</h3></div><div class=\"dy dz\"><div class=\"z ab\"><span data-dd-action-name=\"Susi presentation tracker lohp_hero_writing\" class=\"ea\"><button class=\"cd b eb ec ed ee ef eg eh ei ej cp cq cr ek el cu ea cv cw cx cy cz da\">Start reading</button></span></div></div><div class=\"bx by di\"><div class=\"z ab\"><span data-dd-action-name=\"Susi presentation tracker lohp_hero_writing\" class=\"ea\"><button class=\"cd b eb ec ci ee ck cl cm cn co cp cq cr cs ct cu ea cv cw cx cy cz da\">Start reading</button></span></div></div></div></div></div><div class=\"ac\"><div class=\"dy dz\"><div class=\"em eo ep f bc eq ap er ao\"><div class=\"f as\"><div class=\"at au av aw ax ay az ak\"><div class=\"be\"><p class=\"cd b es cf et\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br eu ev\" rel=\"noopener follow\" href=\"/about?autoplay=1\" data-discover=\"true\">About</a><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br eu ev\" href=\"https://help.medium.com/hc/en-us\" rel=\"noopener follow\">Help</a><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br eu ev\" href=\"https://policy.medium.com/medium-terms-of-service-9db0094a1e0f\" rel=\"noopener follow\">Terms</a><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br eu\" href=\"https://policy.medium.com/medium-privacy-policy-f03bf92035c9\" rel=\"noopener follow\">Privacy</a></p></div></div></div></div></div><div class=\"bx by di\"><div class=\"ew ak al\"></div><div class=\"f as\"><div class=\"az ak ex ey ez fa\"><div class=\"fb f bd fc\"><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://help.medium.com/hc/en-us\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Help</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://status.medium.com\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Status</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/about?autoplay=1\" data-discover=\"true\"><p class=\"cd b es cf et\">About</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" rel=\"noopener follow\" href=\"/jobs-at-medium/work-at-medium-959d1a85284e\" data-discover=\"true\"><p class=\"cd b es cf et\">Careers</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"mailto:pressinquiries@medium.com\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Press</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://blog.medium.com\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Blog</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://medium.com/store\" rel=\"noopener follow\" target=\"_blank\"><p class=\"cd b es cf et\">Store</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://policy.medium.com/medium-privacy-policy-f03bf92035c9\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Privacy</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://policy.medium.com/medium-rules-30e5502c4eb4\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Rules</p></a></div><div class=\"fd fe be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://policy.medium.com/medium-terms-of-service-9db0094a1e0f\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Terms</p></a></div><div class=\"fd be\"><a class=\"bf bg bh bi bj bk bl bm bn bo bp bq br bs bt\" href=\"https://speechify.com/medium\" rel=\"noopener follow\"><p class=\"cd b es cf et\">Text to speech</p></a></div></div></div></div></div></div></div></div><script>((storageKey2, restoreKey) => {\n    if (!window.history.state || !window.history.state.key) {\n      let key = Math.random().toString(32).slice(2);\n      window.history.replaceState({ key }, \"\");\n    }\n    try {\n      let positions = JSON.parse(sessionStorage.getItem(storageKey2) || \"{}\");\n      let storedY = positions[restoreKey || window.history.state.key];\n      if (typeof storedY === \"number\") {\n        window.scrollTo(0, storedY);\n      }\n    } catch (error) {\n      console.error(error);\n      sessionStorage.removeItem(storageKey2);\n    }\n  })(\"react-router-scroll-positions\", null)</script><script>window.__reactRouterContext = {\"basename\":\"/\",\"future\":{\"unstable_optimizeDeps\":true,\"v8_passThroughRequests\":false,\"v8_trailingSlashAwareDataRequests\":false,\"unstable_previewServerPrerendering\":false,\"v8_middleware\":true,\"v8_splitRouteModules\":false,\"v8_viteEnvironmentApi\":false},\"routeDiscovery\":{\"mode\":\"initial\"},\"ssr\":true,\"isSpaMode\":false};window.__reactRouterContext.stream = new ReadableStream({start(controller){window.__reactRouterContext.streamController = controller;}}).pipeThrough(new TextEncoderStream());</script><script type=\"module\" async=\"\">import \"https://cdn-client.medium.com/lite/static/manifest-3cf8583e.js\";\nimport * as route0 from \"https://cdn-client.medium.com/lite/assets/entry-fBNTF2ig9x.js\";\nimport * as route1 from \"https://cdn-client.medium.com/lite/assets/entry-DzUoS_udyD.js\";\n  \n  window.__reactRouterRouteModules = {\"root\":route0,\"routes/pages/entity-routes/ShowMediumRoot\":route1};\n\nimport(\"https://cdn-client.medium.com/lite/assets/entry-C9P2t20qJW.js\");</script><!--$--><script>window.__reactRouterContext.streamController.enqueue(\"[{\\\"_1\\\":2,\\\"_3\\\":-5,\\\"_4\\\":-5},\\\"loaderData\\\",{\\\"_5\\\":6},\\\"actionData\\\",\\\"errors\\\",\\\"routes/pages/entity-routes/ShowMediumRoot\\\",{}]\\n\");</script><!--$--><script>window.__reactRouterContext.streamController.close();</script><!--/$--><!--/$--><script>window.__APOLLO_STATE__ = {\"ROOT_QUERY\":{\"__typename\":\"Query\",\"viewer\":null,\"isLoggedIn\":false}};</script><script>window.__GRAPHQL_URI__ = \"\\u002F_\\u002Fgraphql\";</script><script>window.__PRELOADED_STATE__ = {\"algolia\":{\"queries\":{}},\"cache\":{\"experimentGroupSet\":true,\"reason\":\"\",\"group\":\"enabled\",\"tags\":[\"group-edgeCacheHome\",\"group-enableDarkModeV0\"],\"serverVariantState\":\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\",\"middlewareEnabled\":true,\"cacheStatus\":\"DYNAMIC\",\"shouldUseCache\":true,\"vary\":[],\"enableDarkModeV0\":false,\"storyPageWriterBioEnabled\":\"control\",\"expandedTopicPagesEnabled\":\"experiment\",\"exposureBatteryX3Enabled\":\"control\",\"enableUserCustomFooter\":false},\"client\":{\"hydrated\":false,\"isUs\":false,\"isNativeMedium\":false,\"isSafariMobile\":true,\"isSafari\":true,\"isFirefox\":false,\"routingEntity\":{\"type\":\"DEFAULT\",\"explicit\":false},\"viewerIsBot\":false,\"clientScore\":97},\"debug\":{\"requestId\":\"ac869ef8-4928-4ebe-8764-1f404f67a25b\",\"requestTag\":\"\",\"hybridDevServices\":[]},\"multiVote\":{\"clapsPerEntity\":{}},\"navigation\":{\"hideGoogleOneTap\":false,\"hasRenderedAlternateUserBanner\":null,\"currentLocation\":\"https:\\u002F\\u002Fmedium.com\\u002F\",\"host\":\"medium.com\",\"hostname\":\"medium.com\",\"referrer\":\"\",\"hasSetReferrer\":false,\"susiModal\":{\"step\":null,\"operation\":\"register\",\"rememberMe\":true},\"postRead\":false,\"paymentFunnel\":{},\"partnerProgram\":{\"selectedCountryCode\":null},\"staticRouterContext\":{\"route\":{\"name\":\"ShowHome\"},\"statusCode\":200},\"toastQueue\":[],\"currentToast\":null,\"queryString\":\"\",\"currentHash\":\"\"},\"config\":{\"nodeEnv\":\"production\",\"version\":\"main-20260911-235047-8654e8124b\",\"target\":\"production\",\"productName\":\"Medium\",\"publicUrl\":\"https:\\u002F\\u002Fcdn-client.medium.com\\u002Flite\",\"authDomain\":\"medium.com\",\"authGoogleClientId\":\"216296035834-k1k6qe060s2tp2a2jam4ljdcms00sttg.apps.googleusercontent.com\",\"favicon\":\"production\",\"iosAppId\":\"828256236\",\"glyphUrl\":\"https:\\u002F\\u002Fglyph.medium.com\",\"branchKey\":\"key_live_ofxXr2qTrrU9NqURK8ZwEhknBxiI6KBm\",\"algolia\":{\"appId\":\"MQ57UUUQZ2\",\"apiKeySearch\":\"394474ced050e3911ae2249ecc774921\",\"indexPrefix\":\"medium_\",\"host\":\"-dsn.algolia.net\"},\"recaptchaKey\":\"6Lfc37IUAAAAAKGGtC6rLS13R1Hrw_BqADfS1LRk\",\"recaptcha3Key\":\"6Lf8R9wUAAAAABMI_85Wb8melS7Zj6ziuf99Yot5\",\"recaptchaEnterpriseKeyId\":\"6Le-uGgpAAAAAPprRaokM8AKthQ9KNGdoxaGUvVp\",\"datadog\":{\"applicationId\":\"6702d87d-a7e0-42fe-bbcb-95b469547ea0\",\"clientToken\":\"pub853ea8d17ad6821d9f8f11861d23dfed\",\"rumToken\":\"pubf9cc52896502b9413b68ba36fc0c7162\",\"context\":{\"deployment\":{\"target\":\"production\",\"tag\":\"main-20260911-235047-8654e8124b\",\"commit\":\"8654e8124b64da937b7a19894acb51fdc2d0b94d\"}},\"datacenter\":\"us\"},\"googleAdsCode\":\"AW-17106321204\",\"googleAnalyticsCode\":\"G-7JY7T788PK\",\"googlePay\":{\"apiVersion\":\"2\",\"apiVersionMinor\":\"0\",\"merchantId\":\"BCR2DN6TV7EMTGBM\",\"merchantName\":\"Medium\",\"instanceMerchantId\":\"13685562959212738550\"},\"applePay\":{\"version\":3},\"signInWallCustomDomainCollectionIds\":[\"3a8144eabfe3\",\"336d898217ee\",\"61061eb0c96b\",\"138adf9c44c\",\"819cc2aaeee0\"],\"mediumMastodonDomainName\":\"me.dm\",\"mediumOwnedAndOperatedCollectionIds\":[\"8a9336e5bb4\",\"b7e45b22fec3\",\"193b68bd4fba\",\"8d6b8a439e32\",\"54c98c43354d\",\"3f6ecf56618\",\"d944778ce714\",\"92d2092dc598\",\"ae2a65f35510\",\"1285ba81cada\",\"544c7006046e\",\"fc8964313712\",\"40187e704f1c\",\"88d9857e584e\",\"7b6769f2748b\",\"bcc38c8f6edf\",\"cef6983b292\",\"cb8577c9149e\",\"444d13b52878\",\"713d7dbc99b0\",\"ef8e90590e66\",\"191186aaafa0\",\"55760f21cdc5\",\"9dc80918cc93\",\"bdc4052bbdba\",\"8ccfed20cbb2\"],\"tierOneDomains\":[\"medium.com\",\"thebolditalic.com\",\"arcdigital.media\",\"towardsdatascience.com\",\"uxdesign.cc\",\"codeburst.io\",\"psiloveyou.xyz\",\"writingcooperative.com\",\"entrepreneurshandbook.co\",\"prototypr.io\",\"betterhumans.coach.me\",\"theascent.pub\"],\"topicsToFollow\":[\"d61cf867d93f\",\"8a146bc21b28\",\"1eca0103fff3\",\"4d562ee63426\",\"aef1078a3ef5\",\"e15e46793f8d\",\"6158eb913466\",\"55f1c20aba7a\",\"3d18b94f6858\",\"4861fee224fd\",\"63c6f1f93ee\",\"1d98b3a9a871\",\"decb52b64abf\",\"ae5d4995e225\",\"830cded25262\"],\"topicToTagMappings\":{\"accessibility\":\"accessibility\",\"addiction\":\"addiction\",\"android-development\":\"android-development\",\"art\":\"art\",\"artificial-intelligence\":\"artificial-intelligence\",\"astrology\":\"astrology\",\"basic-income\":\"basic-income\",\"beauty\":\"beauty\",\"biotech\":\"biotech\",\"blockchain\":\"blockchain\",\"books\":\"books\",\"business\":\"business\",\"cannabis\":\"cannabis\",\"cities\":\"cities\",\"climate-change\":\"climate-change\",\"comics\":\"comics\",\"coronavirus\":\"coronavirus\",\"creativity\":\"creativity\",\"cryptocurrency\":\"cryptocurrency\",\"culture\":\"culture\",\"cybersecurity\":\"cybersecurity\",\"data-science\":\"data-science\",\"design\":\"design\",\"digital-life\":\"digital-life\",\"disability\":\"disability\",\"economy\":\"economy\",\"education\":\"education\",\"equality\":\"equality\",\"family\":\"family\",\"feminism\":\"feminism\",\"fiction\":\"fiction\",\"film\":\"film\",\"fitness\":\"fitness\",\"food\":\"food\",\"freelancing\":\"freelancing\",\"future\":\"future\",\"gadgets\":\"gadgets\",\"gaming\":\"gaming\",\"gun-control\":\"gun-control\",\"health\":\"health\",\"history\":\"history\",\"humor\":\"humor\",\"immigration\":\"immigration\",\"ios-development\":\"ios-development\",\"javascript\":\"javascript\",\"justice\":\"justice\",\"language\":\"language\",\"leadership\":\"leadership\",\"lgbtqia\":\"lgbtqia\",\"lifestyle\":\"lifestyle\",\"machine-learning\":\"machine-learning\",\"makers\":\"makers\",\"marketing\":\"marketing\",\"math\":\"math\",\"media\":\"media\",\"mental-health\":\"mental-health\",\"mindfulness\":\"mindfulness\",\"money\":\"money\",\"music\":\"music\",\"neuroscience\":\"neuroscience\",\"nonfiction\":\"nonfiction\",\"outdoors\":\"outdoors\",\"parenting\":\"parenting\",\"pets\":\"pets\",\"philosophy\":\"philosophy\",\"photography\":\"photography\",\"podcasts\":\"podcast\",\"poetry\":\"poetry\",\"politics\":\"politics\",\"privacy\":\"privacy\",\"product-management\":\"product-management\",\"productivity\":\"productivity\",\"programming\":\"programming\",\"psychedelics\":\"psychedelics\",\"psychology\":\"psychology\",\"race\":\"race\",\"relationships\":\"relationships\",\"religion\":\"religion\",\"remote-work\":\"remote-work\",\"san-francisco\":\"san-francisco\",\"science\":\"science\",\"self\":\"self\",\"self-driving-cars\":\"self-driving-cars\",\"sexuality\":\"sexuality\",\"social-media\":\"social-media\",\"society\":\"society\",\"software-engineering\":\"software-engineering\",\"space\":\"space\",\"spirituality\":\"spirituality\",\"sports\":\"sports\",\"startups\":\"startup\",\"style\":\"style\",\"technology\":\"technology\",\"transportation\":\"transportation\",\"travel\":\"travel\",\"true-crime\":\"true-crime\",\"tv\":\"tv\",\"ux\":\"ux\",\"venture-capital\":\"venture-capital\",\"visual-design\":\"visual-design\",\"work\":\"work\",\"world\":\"world\",\"writing\":\"writing\"},\"defaultImages\":{\"avatar\":{\"imageId\":\"1*dmbNkD5D-u45r44go_cf0g.png\",\"height\":150,\"width\":150},\"orgLogo\":{\"imageId\":\"7*V1_7XP4snlmqrc_0Njontw.png\",\"height\":110,\"width\":500},\"postLogo\":{\"imageId\":\"167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0\",\"height\":630,\"width\":1200},\"postPreviewImage\":{\"imageId\":\"bc1f8416df0cad099e43cda2872716e5864f18a73bda2a7547ea082aca9b5632\",\"height\":630,\"width\":1200}},\"embeddedPostIds\":{\"coronavirus\":\"cd3010f9d81f\"},\"sharedCdcMessaging\":{\"COVID_APPLICABLE_TAG_SLUGS\":[],\"COVID_APPLICABLE_TOPIC_NAMES\":[],\"COVID_APPLICABLE_TOPIC_NAMES_FOR_TOPIC_PAGE\":[],\"COVID_MESSAGES\":{\"tierA\":{\"text\":\"For more information on the novel coronavirus and Covid-19, visit cdc.gov.\",\"markups\":[{\"start\":66,\"end\":73,\"href\":\"https:\\u002F\\u002Fwww.cdc.gov\\u002Fcoronavirus\\u002F2019-nCoV\"}]},\"tierB\":{\"text\":\"Anyone can publish on Medium per our Policies, but we don\u2019t fact-check every story. For more info about the coronavirus, see cdc.gov.\",\"markups\":[{\"start\":37,\"end\":45,\"href\":\"https:\\u002F\\u002Fhelp.medium.com\\u002Fhc\\u002Fen-us\\u002Fcategories\\u002F201931128-Policies-Safety\"},{\"start\":125,\"end\":132,\"href\":\"https:\\u002F\\u002Fwww.cdc.gov\\u002Fcoronavirus\\u002F2019-nCoV\"}]},\"paywall\":{\"text\":\"This article has been made free for everyone, thanks to Medium Members. For more information on the novel coronavirus and Covid-19, visit cdc.gov.\",\"markups\":[{\"start\":56,\"end\":70,\"href\":\"https:\\u002F\\u002Fmedium.com\\u002Fmembership\"},{\"start\":138,\"end\":145,\"href\":\"https:\\u002F\\u002Fwww.cdc.gov\\u002Fcoronavirus\\u002F2019-nCoV\"}]},\"unbound\":{\"text\":\"This article is free for everyone, thanks to Medium Members. For more information on the novel coronavirus and Covid-19, visit cdc.gov.\",\"markups\":[{\"start\":45,\"end\":59,\"href\":\"https:\\u002F\\u002Fmedium.com\\u002Fmembership\"},{\"start\":127,\"end\":134,\"href\":\"https:\\u002F\\u002Fwww.cdc.gov\\u002Fcoronavirus\\u002F2019-nCoV\"}]}},\"COVID_BANNER_POST_ID_OVERRIDE_WHITELIST\":[\"3b31a67bff4a\"]},\"sharedVoteMessaging\":{\"TAGS\":[\"politics\",\"election-2020\",\"government\",\"us-politics\",\"election\",\"2020-presidential-race\",\"trump\",\"donald-trump\",\"democrats\",\"republicans\",\"congress\",\"republican-party\",\"democratic-party\",\"biden\",\"joe-biden\",\"maga\"],\"TOPICS\":[\"politics\",\"election\"],\"MESSAGE\":{\"text\":\"Find out more about the U.S. election results here.\",\"markups\":[{\"start\":46,\"end\":50,\"href\":\"https:\\u002F\\u002Fcookpolitical.com\\u002F2020-national-popular-vote-tracker\"}]},\"EXCLUDE_POSTS\":[\"397ef29e3ca5\"]},\"embedPostRules\":[],\"recircOptions\":{\"v1\":{\"limit\":3},\"v2\":{\"limit\":8}},\"braintreeClientKey\":\"production_zjkj96jm_m56f8fqpf7ngnrd4\",\"braintree\":{\"enabled\":true,\"merchantId\":\"m56f8fqpf7ngnrd4\",\"merchantAccountId\":{\"usd\":\"AMediumCorporation_instant\",\"eur\":\"amediumcorporation_EUR\",\"cad\":\"amediumcorporation_CAD\"},\"publicKey\":\"ds2nn34bg2z7j5gd\",\"braintreeEnvironment\":\"production\",\"dashboardUrl\":\"https:\\u002F\\u002Fwww.braintreegateway.com\\u002Fmerchants\",\"gracePeriodDurationInDays\":14,\"mediumMembershipPlanId\":{\"monthly\":\"ce105f8c57a3\",\"monthlyV2\":\"e8a5e126-792b-4ee6-8fba-d574c1b02fc5\",\"monthlyWithTrial\":\"d5ee3dbe3db8\",\"monthlyPremium\":\"fa741a9b47a2\",\"yearly\":\"a40ad4a43185\",\"yearlyV2\":\"3815d7d6-b8ca-4224-9b8c-182f9047866e\",\"yearlyStaff\":\"d74fb811198a\",\"yearlyWithTrial\":\"b3bc7350e5c7\",\"yearlyPremium\":\"e21bd2c12166\",\"monthlyOneYearFree\":\"e6c0637a-2bad-4171-ab4f-3c268633d83c\",\"monthly25PercentOffFirstYear\":\"235ecc62-0cdb-49ae-9378-726cd21c504b\",\"monthly20PercentOffFirstYear\":\"ba518864-9c13-4a99-91ca-411bf0cac756\",\"monthly15PercentOffFirstYear\":\"594c029b-9f89-43d5-88f8-8173af4e070e\",\"monthly10PercentOffFirstYear\":\"c6c7bc9a-40f2-4b51-8126-e28511d5bdb0\",\"monthlyForStudents\":\"629ebe51-da7d-41fd-8293-34cd2f2030a8\",\"yearlyOneYearFree\":\"78ba7be9-0d9f-4ece-aa3e-b54b826f2bf1\",\"yearly25PercentOffFirstYear\":\"2dbb010d-bb8f-4eeb-ad5c-a08509f42d34\",\"yearly20PercentOffFirstYear\":\"47565488-435b-47f8-bf93-40d5fbe0ebc8\",\"yearly15PercentOffFirstYear\":\"8259809b-0881-47d9-acf7-6c001c7f720f\",\"yearly10PercentOffFirstYear\":\"9dd694fb-96e1-472c-8d9e-3c868d5c1506\",\"yearlyForStudents\":\"e29345ef-ab1c-4234-95c5-70e50fe6bc23\",\"monthlyCad\":\"p52orjkaceei\",\"yearlyCad\":\"h4q9g2up9ktt\"},\"braintreeDiscountId\":{\"oneMonthFree\":\"MONTHS_FREE_01\",\"threeMonthsFree\":\"MONTHS_FREE_03\",\"sixMonthsFree\":\"MONTHS_FREE_06\",\"fiftyPercentOffOneYear\":\"FIFTY_PERCENT_OFF_ONE_YEAR\"},\"3DSecureVersion\":\"2\",\"defaultCurrency\":\"usd\",\"providerPlanIdCurrency\":{\"4ycw\":\"usd\",\"rz3b\":\"usd\",\"3kqm\":\"usd\",\"jzw6\":\"usd\",\"c2q2\":\"usd\",\"nnsw\":\"usd\",\"q8qw\":\"usd\",\"d9y6\":\"usd\",\"fx7w\":\"cad\",\"nwf2\":\"cad\"}},\"paypalClientId\":\"AXj1G4fotC2GE8KzWX9mSxCH1wmPE3nJglf4Z2ig_amnhvlMVX87otaq58niAg9iuLktVNF_1WCMnN7v\",\"paypal\":{\"host\":\"https:\\u002F\\u002Fapi.paypal.com:443\",\"clientMode\":\"production\",\"serverMode\":\"live\",\"webhookId\":\"4G466076A0294510S\",\"monthlyPlan\":{\"planId\":\"P-9WR0658853113943TMU5FDQA\",\"name\":\"Medium Membership (Monthly) with setup fee\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed monthly.\"},\"yearlyPlan\":{\"planId\":\"P-7N8963881P8875835MU5JOPQ\",\"name\":\"Medium Membership (Annual) with setup fee\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed annually.\"},\"oneYearGift\":{\"name\":\"Medium Membership (1 Year, Digital Gift Code)\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Gift codes can be redeemed at medium.com\\u002Fredeem.\",\"price\":\"50.00\",\"currency\":\"USD\",\"sku\":\"membership-gift-1-yr\"},\"oldMonthlyPlan\":{\"planId\":\"P-96U02458LM656772MJZUVH2Y\",\"name\":\"Medium Membership (Monthly)\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed monthly.\"},\"oldYearlyPlan\":{\"planId\":\"P-59P80963JF186412JJZU3SMI\",\"name\":\"Medium Membership (Annual)\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed annually.\"},\"monthlyPlanWithTrial\":{\"planId\":\"P-66C21969LR178604GJPVKUKY\",\"name\":\"Medium Membership (Monthly) with setup fee\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed monthly.\"},\"yearlyPlanWithTrial\":{\"planId\":\"P-6XW32684EX226940VKCT2MFA\",\"name\":\"Medium Membership (Annual) with setup fee\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed annually.\"},\"oldMonthlyPlanNoSetupFee\":{\"planId\":\"P-4N046520HR188054PCJC7LJI\",\"name\":\"Medium Membership (Monthly)\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed monthly.\"},\"oldYearlyPlanNoSetupFee\":{\"planId\":\"P-7A4913502Y5181304CJEJMXQ\",\"name\":\"Medium Membership (Annual)\",\"description\":\"Unlimited access to the best and brightest stories on Medium. Membership billed annually.\"},\"sdkUrl\":\"https:\\u002F\\u002Fwww.paypal.com\\u002Fsdk\\u002Fjs\"},\"stripePublishableKey\":\"pk_live_7FReX44VnNIInZwrIIx6ghjl\",\"log\":{\"json\":true,\"level\":\"info\"},\"imageUploadMaxSizeMb\":25,\"staffPicks\":{\"title\":\"Staff Picks\",\"catalogId\":\"c7bc6e1ee00f\"}},\"session\":{\"xsrf\":\"\"}};</script><script>window.__BUILD_ID__ = \"main-20260911-235047-8654e8124b\";</script><script>window.__MIDDLEWARE_STATE__={\"session\":{\"xsrf\":\"\"},\"cache\":{\"cacheStatus\":\"HIT\"}}</script><script>window.__CF$cv$params={r:'a3a8f67d395354fe',t:'MTc4OTMyMTQ5Nw==',u:'01a09bdf4a637ef3ae5b13283572f32f',ut:'TEYdSUdMljeI9BF6MjwJD.AwPCkLhveGdFcqB560wkw-1789321497-1.2.1.1-_cOupsLgM4QwNzB5CovCK430XFzTBGDraOzMNZw4fc.oymQ9YgMO7UvlL_up7N7rl2s0joUaMGzyKThnfSy__O2zvspjHgviMDoFKfITaYo',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495\" integrity=\"sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"0b5f665943484354a59c39c6833f7078\",\"spa\":2}' crossorigin=\"anonymous\"></script>\n</body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {
+    "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-10.xml": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-10.xml",
+      "final_url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-10.xml",
+      "status_code": 200,
+      "content_type": "binary/octet-stream",
+      "load_time_seconds": 0.62,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-14.xml": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-14.xml",
+      "final_url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-14.xml",
+      "status_code": 200,
+      "content_type": "binary/octet-stream",
+      "load_time_seconds": 0.47,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-15.xml": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-15.xml",
+      "final_url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-15.xml",
+      "status_code": 200,
+      "content_type": "binary/octet-stream",
+      "load_time_seconds": 0.52,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-16.xml": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-16.xml",
+      "final_url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-16.xml",
+      "status_code": 200,
+      "content_type": "binary/octet-stream",
+      "load_time_seconds": 0.46,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    }
+  },
+  "ground_truth": {
+    "brand_name": "Medium",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 1,
+    "total_crawl_time_seconds": 9.85,
+    "page_selection": [
+      {
+        "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-10.xml",
+        "score": -1,
+        "signals": [
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-14.xml",
+        "score": -1,
+        "signals": [
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-15.xml",
+        "score": -1,
+        "signals": [
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://medium.com/sitemap/catalogs/2021/catalogs-2021-06-16.xml",
+        "score": -1,
+        "signals": [
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      }
+    ],
+    "resources_observed": 4,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "anti-bot-challenge": 1
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {}
+}

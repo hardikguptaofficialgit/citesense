@@ -1,0 +1,492 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "cloudflare.net",
+    "rank": 417,
+    "technical_type": "unknown",
+    "url": "https://cloudflare.net/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:45:18.738563+00:00",
+  "finished_at": "2026-09-13T15:45:28.367684+00:00",
+  "elapsed_seconds": 9.629,
+  "error": null,
+  "report": {
+    "site": "https://cloudflare.net",
+    "audited_at": "2026-09-13T15:45:28Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 3,
+      "discoverability_findings": 5,
+      "engagement_findings": 1,
+      "citability_score": 82,
+      "citability_score_breakdown": {
+        "score": 82,
+        "base": 100,
+        "penalty": 18,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 15,
+          "low": 3
+        },
+        "penalty_by_root_cause": {
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "extractability:images-without-alt": 2,
+          "engagement:no-personalization-readiness": 0,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://cloudflare.net/sitemap.xml via http_get_sitemap_check [2026-09-13T15:45:23Z]: Request to https://cloudflare.net/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://cloudflare.net/sitemap.xml",
+          "observation": "Request to https://cloudflare.net/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T15:45:23Z",
+          "confidence": "high",
+          "evidence_id": "E-8bbad19da036"
+        },
+        "evidence_refs": [
+          "E-8bbad19da036"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://cloudflare.net/home/default.aspx via jsonld_schema_extractor [2026-09-13T15:45:23Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Cloudflare\",\n  \"url\": \"https://cloudflare.net\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"telephone\": \"(800) 077 0774\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://cloudflare.net/home/default.aspx",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:45:23Z",
+          "confidence": "high",
+          "evidence_id": "E-9ff3291a50b6"
+        },
+        "evidence_refs": [
+          "E-9ff3291a50b6"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://cloudflare.net/home/default.aspx via html_meta_inspector [2026-09-13T15:45:23Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Investor Relations\",\n  \"url\": \"https://cloudflare.net/home/default.aspx\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Cloudflare\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://cloudflare.net/home/default.aspx\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://cloudflare.net/home/default.aspx",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T15:45:23Z",
+          "confidence": "high",
+          "evidence_id": "E-2eb97c664b67"
+        },
+        "evidence_refs": [
+          "E-2eb97c664b67"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://cloudflare.net/home/default.aspx via image_alt_coverage_inspection [2026-09-13T15:45:23Z]: 8 of 10 images (80%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://cloudflare.net/news/default.aspx via image_alt_coverage_inspection [2026-09-13T15:45:23Z]: 7 of 9 images (78%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://cloudflare.net/resources/information-request-form/default.aspx via image_alt_coverage_inspection [2026-09-13T15:45:23Z]: 8 of 10 images (80%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://cloudflare.net/resources/investor-email-alerts/default.aspx via image_alt_coverage_inspection [2026-09-13T15:45:23Z]: 8 of 10 images (80%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://cloudflare.net/home/default.aspx",
+          "observation": "8 of 10 images (80%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:45:23Z",
+          "confidence": "high",
+          "evidence_id": "E-391fedf20b2e"
+        },
+        "evidence_refs": [
+          "E-391fedf20b2e",
+          "E-5d75a61ac0e4",
+          "E-8994afa4616f",
+          "E-cf33d368fc19"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://cloudflare.net via returning_visitor_affordance_detection [2026-09-13T15:45:23Z]: Across 4 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://cloudflare.net",
+          "observation": "Across 4 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T15:45:23Z",
+          "confidence": "medium",
+          "evidence_id": "E-c1a1e9432545"
+        },
+        "evidence_refs": [
+          "E-c1a1e9432545"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes Cloudflare different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://cloudflare.net/home/default.aspx via onsite_answerability_probe [2026-09-13T15:45:28Z]: Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cloudflare different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://cloudflare.net/home/default.aspx",
+          "observation": "Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cloudflare different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:45:28Z",
+          "confidence": "medium",
+          "evidence_id": "E-140c6ad48434"
+        },
+        "evidence_refs": [
+          "E-140c6ad48434"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4,
+        "anti-bot-challenge": 1
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://cloudflare.net/news/default.aspx",
+          "score": 14,
+          "signals": [
+            "article_docs:news",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://cloudflare.net/DownloadICal.aspx?id={{id}}&platform=GoogleCalendar",
+          "score": 16,
+          "signals": [
+            "product_landing:platform",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://cloudflare.net/resources/information-request-form/default.aspx",
+          "score": 14,
+          "signals": [
+            "article_docs:resources",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://cloudflare.net/resources/investor-email-alerts/default.aspx",
+          "score": 14,
+          "signals": [
+            "article_docs:resources",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://cloudflare.net/sitemap.xml",
+        "observation": "Request to https://cloudflare.net/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "high",
+        "evidence_id": "E-8bbad19da036"
+      },
+      {
+        "url": "https://cloudflare.net/home/default.aspx",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "high",
+        "evidence_id": "E-9ff3291a50b6"
+      },
+      {
+        "url": "https://cloudflare.net/home/default.aspx",
+        "observation": "8 of 10 images (80%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "high",
+        "evidence_id": "E-391fedf20b2e"
+      },
+      {
+        "url": "https://cloudflare.net/home/default.aspx",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "high",
+        "evidence_id": "E-2eb97c664b67"
+      },
+      {
+        "url": "https://cloudflare.net/news/default.aspx",
+        "observation": "7 of 9 images (78%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "high",
+        "evidence_id": "E-cf33d368fc19"
+      },
+      {
+        "url": "https://cloudflare.net/resources/information-request-form/default.aspx",
+        "observation": "8 of 10 images (80%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "high",
+        "evidence_id": "E-5d75a61ac0e4"
+      },
+      {
+        "url": "https://cloudflare.net/resources/investor-email-alerts/default.aspx",
+        "observation": "8 of 10 images (80%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "high",
+        "evidence_id": "E-8994afa4616f"
+      },
+      {
+        "url": "https://cloudflare.net",
+        "observation": "Across 4 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T15:45:23Z",
+        "confidence": "medium",
+        "evidence_id": "E-c1a1e9432545"
+      },
+      {
+        "url": "https://cloudflare.net/home/default.aspx",
+        "observation": "Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Cloudflare different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:45:28Z",
+        "confidence": "medium",
+        "evidence_id": "E-140c6ad48434"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "general",
+      "unknown"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "site": {
+    "category": "creator_websites",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "beacons.ai",
+    "rank": 372,
+    "technical_type": "unknown",
+    "url": "https://beacons.ai/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:43:37.290849+00:00",
+  "finished_at": "2026-09-13T15:43:49.938994+00:00",
+  "elapsed_seconds": 12.648,
+  "error": null,
+  "report": {
+    "site": "https://beacons.ai",
+    "audited_at": "2026-09-13T15:43:49Z",
+    "summary": {
+      "total_findings": 7,
+      "critical": 0,
+      "high": 1,
+      "medium": 2,
+      "low": 4,
+      "discoverability_findings": 3,
+      "engagement_findings": 4,
+      "citability_score": 81,
+      "citability_score_breakdown": {
+        "score": 81,
+        "base": 100,
+        "penalty": 19,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 6,
+          "medium": 7,
+          "low": 6
+        },
+        "penalty_by_root_cause": {
+          "schema:root-organization-missing": 6,
+          "engagement:broken-internal-links": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "extractability:images-without-alt": 2,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:multiple-h1": 2,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 7
+      }
+    },
+    "findings": [
+      {
+        "title": "No extractable answer on-site for \"What is Beacons?\"",
+        "category": "citation-omission",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://beacons.ai/i/blog/maddie-price-bio via onsite_answerability_probe [2026-09-13T15:43:49Z]: Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Beacons?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Publish a machine-readable identity statement on the homepage.",
+          "priority": "high",
+          "how_to_fix": "Add Organization JSON-LD (name, url, logo, description, sameAs) to the homepage, and a one-sentence plain-text description of what the brand does in the first screen of copy.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://beacons.ai/i/blog/maddie-price-bio",
+          "observation": "Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Beacons?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:43:49Z",
+          "confidence": "medium",
+          "evidence_id": "E-91ed38a2b6af"
+        },
+        "evidence_refs": [
+          "E-91ed38a2b6af"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://beacons.ai/?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=dd-maddie-price-bio via http_redirect_aware_link_checker [2026-09-13T15:43:49Z]: Sampled internal links returned broken HTTP errors: https://beacons.ai/?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=dd-maddie-price-bio (HTTP 403). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://beacons.ai/?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=dd-maddie-price-bio",
+          "observation": "Sampled internal links returned broken HTTP errors: https://beacons.ai/?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=dd-maddie-price-bio (HTTP 403).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T15:43:49Z",
+          "confidence": "high",
+          "evidence_id": "E-0a4fe953a35d"
+        },
+        "evidence_refs": [
+          "E-0a4fe953a35d"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://beacons.ai via onsite_identity_anchor_inspection [2026-09-13T15:43:49Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://beacons.ai",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T15:43:49Z",
+          "confidence": "medium",
+          "evidence_id": "E-f6db1caace8c"
+        },
+        "evidence_refs": [
+          "E-f6db1caace8c"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://beacons.ai/i/about-us via image_alt_coverage_inspection [2026-09-13T15:43:44Z]: 10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://beacons.ai/i/app-pages/store via image_alt_coverage_inspection [2026-09-13T15:43:44Z]: 5 of 17 images (29%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://beacons.ai/i/about-us",
+          "observation": "10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:43:44Z",
+          "confidence": "high",
+          "evidence_id": "E-f4a6b968ed79"
+        },
+        "evidence_refs": [
+          "E-659d591dff0b",
+          "E-f4a6b968ed79"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://beacons.ai/i/blog/maddie-price-bio via breadcrumb_markup_inspector [2026-09-13T15:43:44Z]: Page at deep route (/i/blog/maddie-price-bio) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://beacons.ai/i/about-us via breadcrumb_markup_inspector [2026-09-13T15:43:44Z]: Page at deep route (/i/about-us) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://beacons.ai/i/app-pages/store via breadcrumb_markup_inspector [2026-09-13T15:43:44Z]: Page at deep route (/i/app-pages/store) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://beacons.ai/i/blog/classy-instagram-bios-for-students via breadcrumb_markup_inspector [2026-09-13T15:43:44Z]: Page at deep route (/i/blog/classy-instagram-bios-for-students) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://beacons.ai/i/blog/maddie-price-bio",
+          "observation": "Page at deep route (/i/blog/maddie-price-bio) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:43:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-bded0a52bdb9"
+        },
+        "evidence_refs": [
+          "E-9df441b4ec24",
+          "E-acd10dce5171",
+          "E-bded0a52bdb9",
+          "E-de2a7f66a7ec"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://beacons.ai/i/about-us via heading_structure_inspection [2026-09-13T15:43:44Z]: Page defines 4 separate <h1> tags (new; To create; economic opportunities), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://beacons.ai/i/app-pages/store via heading_structure_inspection [2026-09-13T15:43:44Z]: Page defines 3 separate <h1> tags (Build an online store your fans will lov; Build an online store your fans will lov; Build an online store your fans will lov), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://beacons.ai/i/about-us",
+          "observation": "Page defines 4 separate <h1> tags (new; To create; economic opportunities), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:43:44Z",
+          "confidence": "high",
+          "evidence_id": "E-7d3113615e87"
+        },
+        "evidence_refs": [
+          "E-7d3113615e87",
+          "E-e5876343a1df"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://beacons.ai via search_affordance_detection [2026-09-13T15:43:44Z]: None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://beacons.ai",
+          "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:43:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-a3aeb8a0cde4"
+        },
+        "evidence_refs": [
+          "E-a3aeb8a0cde4"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "anti-bot-challenge": 1,
+        "readable": 4
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://beacons.ai/i/blog/maddie-price-bio",
+          "score": 24,
+          "signals": [
+            "product_pricing:price",
+            "article_docs:blog",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://beacons.ai/i/about-us",
+          "score": 12,
+          "signals": [
+            "contact_support:about",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://beacons.ai/i/app-pages/store",
+          "score": 12,
+          "signals": [
+            "product_landing:store",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://beacons.ai/i/blog/classy-instagram-bios-for-students",
+          "score": 22,
+          "signals": [
+            "article_docs:blog",
+            "audience:students",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://beacons.ai/i/about-us",
+        "observation": "10 of 25 images (40%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "high",
+        "evidence_id": "E-f4a6b968ed79"
+      },
+      {
+        "url": "https://beacons.ai/i/app-pages/store",
+        "observation": "5 of 17 images (29%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "high",
+        "evidence_id": "E-659d591dff0b"
+      },
+      {
+        "url": "https://beacons.ai/i/blog/maddie-price-bio",
+        "observation": "Page at deep route (/i/blog/maddie-price-bio) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-bded0a52bdb9"
+      },
+      {
+        "url": "https://beacons.ai/i/about-us",
+        "observation": "Page defines 4 separate <h1> tags (new; To create; economic opportunities), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "high",
+        "evidence_id": "E-7d3113615e87"
+      },
+      {
+        "url": "https://beacons.ai/i/about-us",
+        "observation": "Page at deep route (/i/about-us) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-acd10dce5171"
+      },
+      {
+        "url": "https://beacons.ai/i/app-pages/store",
+        "observation": "Page defines 3 separate <h1> tags (Build an online store your fans will lov; Build an online store your fans will lov; Build an online store your fans will lov), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "high",
+        "evidence_id": "E-e5876343a1df"
+      },
+      {
+        "url": "https://beacons.ai/i/app-pages/store",
+        "observation": "Page at deep route (/i/app-pages/store) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-9df441b4ec24"
+      },
+      {
+        "url": "https://beacons.ai/i/blog/classy-instagram-bios-for-students",
+        "observation": "Page at deep route (/i/blog/classy-instagram-bios-for-students) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-de2a7f66a7ec"
+      },
+      {
+        "url": "https://beacons.ai",
+        "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:43:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-a3aeb8a0cde4"
+      },
+      {
+        "url": "https://beacons.ai/?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=dd-maddie-price-bio",
+        "observation": "Sampled internal links returned broken HTTP errors: https://beacons.ai/?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=dd-maddie-price-bio (HTTP 403).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T15:43:49Z",
+        "confidence": "high",
+        "evidence_id": "E-0a4fe953a35d"
+      },
+      {
+        "url": "https://beacons.ai/i/blog/maddie-price-bio",
+        "observation": "Across 4 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Beacons?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:43:49Z",
+        "confidence": "medium",
+        "evidence_id": "E-91ed38a2b6af"
+      },
+      {
+        "url": "https://beacons.ai",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 13 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T15:43:49Z",
+        "confidence": "medium",
+        "evidence_id": "E-f6db1caace8c"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Beacons is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "product_landing",
+      "unknown"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

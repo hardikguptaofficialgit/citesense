@@ -229,7 +229,45 @@
             "items": {
               "type": "string"
             }
+          },
+          "fix_prompt": {
+            "type": "object",
+            "description": "Optional additive evidence-derived implementation brief; recommendation only.",
+            "required": ["target", "prompt", "validation"],
+            "properties": {
+              "target": {"type": "string", "const": "coding_agent"},
+              "prompt": {"type": "string"},
+              "validation": {"type": "array", "items": {"type": "string"}},
+              "finding_id": {"type": "string"},
+              "title": {"type": "string"},
+              "status": {"type": "string", "enum": ["confirmed", "likely-risk", "proactive"]},
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+              "role": {"type": "string"},
+              "problem": {"type": "string"},
+              "evidence_refs": {"type": "array", "items": {"type": "string"}},
+              "root_cause": {"type": "string"},
+              "task": {"type": "string"},
+              "constraints": {"type": "array", "items": {"type": "string"}},
+              "suggested_action": {"type": "object"}
+            }
           }
+        }
+      }
+    },
+    "fix_plan": {
+      "type": "array",
+      "description": "Optional additive prioritized fix prompts derived only from finalized findings and evidence refs.",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "execution_order", "priority", "reason", "prompt"],
+        "properties": {
+          "finding_id": {"type": "string"},
+          "execution_order": {"type": "integer", "minimum": 1},
+          "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+          "reason": {"type": "string"},
+          "prompt": {"type": "string"},
+          "validation": {"type": "array", "items": {"type": "string"}},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
         }
       }
     },

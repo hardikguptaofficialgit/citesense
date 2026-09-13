@@ -1,0 +1,548 @@
+{
+  "seed_url": "https://allegro.pl/",
+  "origin": "https://allegro.pl",
+  "robots_txt": {
+    "found": true,
+    "url": "https://allegro.pl/robots.txt",
+    "status": 200,
+    "raw": "user-agent: *\ndisallow: /showcase.php/\ndisallow: /SendMailToUser.php*\ndisallow: /report_item.php*\ndisallow: /events/clicks\ndisallow: /offer/\ndisallow: /ape\ndisallow: /payments\ndisallow: /recommendations/\ndisallow: /cart-aggregator/\ndisallow: /favourites/\ndisallow: /usertraits/\ndisallow: /mediation/\ndisallow: *snapshot=*\ndisallow: /language-dispatcher\ndisallow: *&source=allegro.com&welcome=1&shippingCountry=US*\ndisallow: /login/auth\ndisallow: /auth/oauth/authorize\ndisallow: /produkt/warianty/\ndisallow: /uzytkownik*&*\ndisallow: /opinie-produktowe/\ndisallow: /zglos-naruszenie/\ndisallow: /uzytkownik/*SHOP-TAG*\ndisallow: /magazyn-allegro/\ndisallow: /szukaj/multi?phrases*\ndisallow: /promowane/\ndisallow: /kampanie/*&*\ndisallow: *reco_id=*\ndisallow: *preco_id=*\ndisallow: /*?*=*&*=*&*=*&*=*&*=*&*=*&*=*&*=*&*=*&*=*&*\ndisallow: /kategoria/*?*=*&*=*&*=*&*=*&*=*&*=*&*\ndisallow: /moje-allegro/\ndisallow: /transakcja/\nallow: /uzytkownik/notfound?string*\nallow: /uzytkownik/*bi_s=archiwum_allegro*\nallow: /kategoria/*bi_s=archiwum_allegro*\n\nuser-agent: Mediapartners-Google\ndisallow: *origin_url=*\ndisallow: /transakcja/\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      }
+    },
+    "partially_blocked_agents": {},
+    "sitemaps_declared": []
+  },
+  "sitemaps": [
+    {
+      "url": "https://allegro.pl/sitemap.xml",
+      "found": false,
+      "status": null,
+      "discovered_url_count": 0
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": true,
+      "status": 200,
+      "url": "https://allegro.pl/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://allegro.pl/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://allegro.pl/ai.txt"
+    }
+  },
+  "pages": {
+    "https://allegro.pl/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://allegro.pl/",
+      "final_url": "https://allegro.pl/",
+      "status_code": 403,
+      "load_time_seconds": 1.14,
+      "raw_html": "<html lang=\"en\"><head><title>allegro.pl</title><style>#cmsg{animation: A 1.5s;}@keyframes A{0%{opacity:0;}99%{opacity:0;}100%{opacity:1;}}</style></head><body style=\"margin:0\"><p id=\"cmsg\">Please enable JS and disable any ad blocker</p><script data-cfasync=\"false\">var dd={'rt':'c','cid':'AHrlqAAAAAMAH-4-iLdyQS4AaBzcrg==','hsh':'77DC0FFBAA0B77570F6B414F8E5BDB','t':'bv','rr':'','qp':'','s':29701,'e':'c48d797f490ca40bee120753cbb5823e483824820e69b6adc6fd78585dec1d8752bfe12be367b959b68fc42a02410c94','host':'geo.captcha-delivery.com','cookie':'pOMYy6YfHyQ5DAT64LQPujwSbzs5C1mlpunBWl1uA2lsXCL6s54nARZR2Cfz3Qo3UmG0r0v9Igy9btU4i_6IiZzFzcyL~QNWaqoA7WwAzaiL5Q8_h1gEAE1PF7ftqDRX'}</script><script data-cfasync=\"false\" src=\"https://ct.captcha-delivery.com/c.js\"></script></body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "Allegro",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 1,
+    "total_crawl_time_seconds": 17.02,
+    "page_selection": [],
+    "resources_observed": 0,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "anti-bot-challenge": 1
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {}
+}

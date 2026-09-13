@@ -1,0 +1,573 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "adtrafficquality.google",
+    "rank": 483,
+    "technical_type": "unknown",
+    "url": "https://adtrafficquality.google/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:49:06.285195+00:00",
+  "finished_at": "2026-09-13T15:49:14.498735+00:00",
+  "elapsed_seconds": 8.214,
+  "error": null,
+  "report": {
+    "site": "https://www.google.com",
+    "audited_at": "2026-09-13T15:49:14Z",
+    "summary": {
+      "total_findings": 7,
+      "critical": 0,
+      "high": 2,
+      "medium": 4,
+      "low": 1,
+      "discoverability_findings": 3,
+      "engagement_findings": 4,
+      "citability_score": 55,
+      "citability_score_breakdown": {
+        "score": 55,
+        "base": 100,
+        "penalty": 45,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 20,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "engagement:missing-viewport-meta": 12,
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "engagement:broken-internal-links": 5,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 7
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.google.com/ via heading_structure_inspection [2026-09-13T15:49:10Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.google.com/ads/adtrafficquality/advertisers/ via heading_structure_inspection [2026-09-13T15:49:10Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.google.com/ads/adtrafficquality/publishers/ via heading_structure_inspection [2026-09-13T15:49:10Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.google.com/ads/adtrafficquality/how-we-prevent-it/ via heading_structure_inspection [2026-09-13T15:49:10Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.google.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:49:10Z",
+          "confidence": "high",
+          "evidence_id": "E-3234e240e2a8"
+        },
+        "evidence_refs": [
+          "E-3234e240e2a8",
+          "E-84f3cf9848cd",
+          "E-8659dec40010",
+          "E-8b6cbdaba7fa"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.google.com/ via mobile_viewport_inspector [2026-09-13T15:49:10Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.google.com/",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T15:49:10Z",
+          "confidence": "high",
+          "evidence_id": "E-0a27e46f9bf9"
+        },
+        "evidence_refs": [
+          "E-0a27e46f9bf9"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.google.com/sitemap.xml via http_get_sitemap_check [2026-09-13T15:49:10Z]: Request to https://www.google.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.google.com/sitemap.xml",
+          "observation": "Request to https://www.google.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T15:49:10Z",
+          "confidence": "high",
+          "evidence_id": "E-462fe0c41ee9"
+        },
+        "evidence_refs": [
+          "E-462fe0c41ee9"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.google.com/ads/adtrafficquality/ via jsonld_schema_extractor [2026-09-13T15:49:10Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.google.com/ via jsonld_schema_extractor [2026-09-13T15:49:10Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.google.com/ads/adtrafficquality/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:49:10Z",
+          "confidence": "high",
+          "evidence_id": "E-9d9ce50353ac"
+        },
+        "evidence_refs": [
+          "E-352c38a14a32",
+          "E-9d9ce50353ac"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.google.com/ads/adtrafficquality/ via html_meta_inspector [2026-09-13T15:49:10Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.google.com/ via html_meta_inspector [2026-09-13T15:49:10Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"We protect you from invalid activity and advertising fraud\",\n  \"url\": \"https://www.google.com/ads/adtrafficquality/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Google Ad Traffic Quality\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.google.com/ads/adtrafficquality/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.google.com/ads/adtrafficquality/",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T15:49:10Z",
+          "confidence": "high",
+          "evidence_id": "E-382f6aca594b"
+        },
+        "evidence_refs": [
+          "E-382f6aca594b",
+          "E-d166283400a7"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (3 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAU via http_redirect_aware_link_checker [2026-09-13T15:49:14Z]: Sampled internal links returned broken HTTP errors: https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAU (HTTP 429); https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=bn&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAY (HTTP 429); https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=te&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAc (HTTP 429). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAU",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAU (HTTP 429); https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=bn&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAY (HTTP 429); https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=te&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAc (HTTP 429).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T15:49:14Z",
+          "confidence": "high",
+          "evidence_id": "E-3ebb8c0126fe"
+        },
+        "evidence_refs": [
+          "E-3ebb8c0126fe"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.google.com/ads/adtrafficquality/ via breadcrumb_markup_inspector [2026-09-13T15:49:10Z]: Page at deep route (/ads/adtrafficquality/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.google.com/ads/adtrafficquality/advertisers/ via breadcrumb_markup_inspector [2026-09-13T15:49:10Z]: Page at deep route (/ads/adtrafficquality/advertisers/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.google.com/ads/adtrafficquality/publishers/ via breadcrumb_markup_inspector [2026-09-13T15:49:10Z]: Page at deep route (/ads/adtrafficquality/publishers/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.google.com/ads/adtrafficquality/how-we-prevent-it/ via breadcrumb_markup_inspector [2026-09-13T15:49:10Z]: Page at deep route (/ads/adtrafficquality/how-we-prevent-it/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.google.com/ads/adtrafficquality/",
+          "observation": "Page at deep route (/ads/adtrafficquality/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:49:10Z",
+          "confidence": "medium",
+          "evidence_id": "E-4398cfea429f"
+        },
+        "evidence_refs": [
+          "E-4398cfea429f",
+          "E-52582854f7aa",
+          "E-5cf6cd0b4b8c",
+          "E-97aa7c2b58b0"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.google.com/",
+          "score": 4,
+          "signals": [
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.google.com/ads/adtrafficquality/advertisers/",
+          "score": 14,
+          "signals": [
+            "article_docs:resources",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.google.com/ads/adtrafficquality/publishers/",
+          "score": 14,
+          "signals": [
+            "article_docs:resources",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.google.com/ads/adtrafficquality/how-we-prevent-it/",
+          "score": 4,
+          "signals": [
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.google.com/sitemap.xml",
+        "observation": "Request to https://www.google.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-462fe0c41ee9"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-9d9ce50353ac"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-382f6aca594b"
+      },
+      {
+        "url": "https://www.google.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-352c38a14a32"
+      },
+      {
+        "url": "https://www.google.com/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-d166283400a7"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/",
+        "observation": "Page at deep route (/ads/adtrafficquality/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "medium",
+        "evidence_id": "E-4398cfea429f"
+      },
+      {
+        "url": "https://www.google.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-3234e240e2a8"
+      },
+      {
+        "url": "https://www.google.com/",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-0a27e46f9bf9"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/advertisers/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-8b6cbdaba7fa"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/advertisers/",
+        "observation": "Page at deep route (/ads/adtrafficquality/advertisers/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "medium",
+        "evidence_id": "E-52582854f7aa"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/publishers/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-84f3cf9848cd"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/publishers/",
+        "observation": "Page at deep route (/ads/adtrafficquality/publishers/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "medium",
+        "evidence_id": "E-5cf6cd0b4b8c"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/how-we-prevent-it/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "high",
+        "evidence_id": "E-8659dec40010"
+      },
+      {
+        "url": "https://www.google.com/ads/adtrafficquality/how-we-prevent-it/",
+        "observation": "Page at deep route (/ads/adtrafficquality/how-we-prevent-it/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:49:10Z",
+        "confidence": "medium",
+        "evidence_id": "E-97aa7c2b58b0"
+      },
+      {
+        "url": "https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAU",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAU (HTTP 429); https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=bn&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAY (HTTP 429); https://www.google.com/setprefs?sig=0_gnCMIKJ4WGcEjNQwY0kT9sebm-s%3D&amp;hl=te&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwiDjsKP9OuWAxUOi-EIHV6FFckQ2ZgBCAc (HTTP 429).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T15:49:14Z",
+        "confidence": "high",
+        "evidence_id": "E-3ebb8c0126fe"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "robots.txt was unavailable; no robots policy could be evaluated."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "3 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "general",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

@@ -1,0 +1,419 @@
+{
+  "site": {
+    "category": "marketplaces",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "codecanyon.net",
+    "rank": 307,
+    "technical_type": "unknown",
+    "url": "https://codecanyon.net/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:39:24.522075+00:00",
+  "finished_at": "2026-09-13T15:39:51.289932+00:00",
+  "elapsed_seconds": 26.768,
+  "error": null,
+  "report": {
+    "site": "https://codecanyon.net",
+    "audited_at": "2026-09-13T15:39:51Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 0,
+      "high": 1,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 5,
+      "engagement_findings": 0,
+      "citability_score": 76,
+      "citability_score_breakdown": {
+        "score": 76,
+        "base": 100,
+        "penalty": 24,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 12,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/category/css/pricing-tables": 12,
+          "schema:root-organization-missing": 5,
+          "freshness:stale-claim:2020:https://codecanyon.net/item/contact-form-7-cost-calculator/21811375": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "robots:training-only-blocked": 0
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://codecanyon.net/category/css/pricing-tables via jsonld_schema_extractor [2026-09-13T15:39:43Z]: Commercial/product page (https://codecanyon.net/category/css/pricing-tables) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/category/css/pricing-tables",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"151 CSS Pricing Tables sorted by best sellers.\",\n  \"url\": \"https://codecanyon.net/category/css/pricing-tables\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"CodeCanyon\"\n  },\n  \"description\": \"Get 151 CSS pricing tables. All from our global community of web developers.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://codecanyon.net/category/css/pricing-tables\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://codecanyon.net/category/css/pricing-tables",
+          "observation": "Commercial/product page (https://codecanyon.net/category/css/pricing-tables) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:39:43Z",
+          "confidence": "high",
+          "evidence_id": "E-11699a334b19"
+        },
+        "evidence_refs": [
+          "E-11699a334b19"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://codecanyon.net/ via jsonld_schema_extractor [2026-09-13T15:39:43Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"CodeCanyon\",\n  \"url\": \"https://codecanyon.net\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Discover 38,751 Plugins, Code and Script for Bootstrap, Javascript, PHP, Wordpress, HTML5 and more. Save time, buy Code on CodeCanyon!\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://codecanyon.net/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:39:43Z",
+          "confidence": "high",
+          "evidence_id": "E-27f1f1c96d2c"
+        },
+        "evidence_refs": [
+          "E-27f1f1c96d2c"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Outdated time-sensitive claim or promotion found on active page (2020)",
+        "category": "freshness",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://codecanyon.net/item/contact-form-7-cost-calculator/21811375 via dated_claim_temporal_analysis [2026-09-13T15:39:43Z]: Page contains active time-sensitive statement referencing 2020 (6 years old): \"Price is in US dollars and excludes tax and handling fees azplugins View Portfolio Last Update 5 March 2020\". (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-claim:2020:https://codecanyon.net/item/contact-form-7-cost-calculator/21811375",
+        "suggested_action": {
+          "summary": "Update or archive expired time-sensitive offers and claims.",
+          "priority": "medium",
+          "how_to_fix": "Review the text referencing 2020 on https://codecanyon.net/item/contact-form-7-cost-calculator/21811375 and update with current pricing/event information or remove expired promotions.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://codecanyon.net/item/contact-form-7-cost-calculator/21811375",
+          "observation": "Page contains active time-sensitive statement referencing 2020 (6 years old): \"Price is in US dollars and excludes tax and handling fees azplugins View Portfolio Last Update 5 March 2020\".",
+          "method": "dated_claim_temporal_analysis",
+          "timestamp": "2026-09-13T15:39:43Z",
+          "confidence": "high",
+          "evidence_id": "E-c5cba367a9c3"
+        },
+        "evidence_refs": [
+          "E-c5cba367a9c3"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://codecanyon.net via onsite_identity_anchor_inspection [2026-09-13T15:39:51Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 25 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://codecanyon.net",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 25 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T15:39:51Z",
+          "confidence": "medium",
+          "evidence_id": "E-1b7e9faf928b"
+        },
+        "evidence_refs": [
+          "E-1b7e9faf928b"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://codecanyon.net/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:39:43Z]: robots.txt disallows root '/' for training crawlers (CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://codecanyon.net/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:39:43Z",
+          "confidence": "high",
+          "evidence_id": "E-18e63d3b31ee"
+        },
+        "evidence_refs": [
+          "E-18e63d3b31ee"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 3,
+      "readable_pages": 3,
+      "status_counts": {
+        "readable": 3,
+        "anti-bot-challenge": 2
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://codecanyon.net/item/dolam-business-it-solutions-company/33660684",
+          "score": 32,
+          "signals": [
+            "product_landing:solutions",
+            "contact_support:company",
+            "audience:solutions",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://codecanyon.net/category/php-scripts/help-and-support-tools",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://codecanyon.net/item/contact-form-7-cost-calculator/21811375",
+          "score": 24,
+          "signals": [
+            "product_pricing:cost",
+            "contact_support:contact",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://codecanyon.net/category/css/pricing-tables",
+          "score": 16,
+          "signals": [
+            "product_pricing:pricing",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://codecanyon.net/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (CCBot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:39:43Z",
+        "confidence": "high",
+        "evidence_id": "E-18e63d3b31ee"
+      },
+      {
+        "url": "https://codecanyon.net/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:39:43Z",
+        "confidence": "high",
+        "evidence_id": "E-27f1f1c96d2c"
+      },
+      {
+        "url": "https://codecanyon.net/category/css/pricing-tables",
+        "observation": "Commercial/product page (https://codecanyon.net/category/css/pricing-tables) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:39:43Z",
+        "confidence": "high",
+        "evidence_id": "E-11699a334b19"
+      },
+      {
+        "url": "https://codecanyon.net/item/contact-form-7-cost-calculator/21811375",
+        "observation": "Page contains active time-sensitive statement referencing 2020 (6 years old): \"Price is in US dollars and excludes tax and handling fees azplugins View Portfolio Last Update 5 March 2020\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T15:39:43Z",
+        "confidence": "high",
+        "evidence_id": "E-c5cba367a9c3"
+      },
+      {
+        "url": "https://codecanyon.net",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 25 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T15:39:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-1b7e9faf928b"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "3 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so CodeCanyon is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 3,
+    "page_purposes": [
+      "homepage",
+      "product_pricing",
+      "unknown"
+    ],
+    "resource_types": [
+      "javascript"
+    ],
+    "resources_seen": 3,
+    "access_summary": {}
+  }
+}

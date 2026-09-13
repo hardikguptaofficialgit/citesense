@@ -1,0 +1,423 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "adobe.com",
+    "rank": 423,
+    "technical_type": "unknown",
+    "url": "https://adobe.com/",
+    "validation": {
+      "reason": "public-dns-http-unavailable: The read operation timed out",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:45:28.633589+00:00",
+  "finished_at": "2026-09-13T15:45:34.600520+00:00",
+  "elapsed_seconds": 5.967,
+  "error": null,
+  "report": {
+    "site": "https://www.adobe.com",
+    "audited_at": "2026-09-13T15:45:34Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 0,
+      "high": 2,
+      "medium": 1,
+      "low": 2,
+      "discoverability_findings": 1,
+      "engagement_findings": 4,
+      "citability_score": 73,
+      "citability_score_breakdown": {
+        "score": 73,
+        "base": 100,
+        "penalty": 27,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 2,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-cta:/": 12,
+          "engagement:missing-h1": 12,
+          "citation:unanswerable:contact": 2,
+          "engagement:no-site-search": 1,
+          "engagement:no-personalization-readiness": 0
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "Homepage lacks clear call-to-action buttons or interactive forms",
+        "category": "navigation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.adobe.com/ via interactive_element_analysis [2026-09-13T15:45:32Z]: Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-cta:/",
+        "suggested_action": {
+          "summary": "Add prominent primary call-to-action (CTA) buttons.",
+          "priority": "high",
+          "how_to_fix": "Add visually distinct CTA buttons (e.g. 'Get Started', 'View Pricing', 'Contact Sales') above and below the fold.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adobe.com/",
+          "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+          "method": "interactive_element_analysis",
+          "timestamp": "2026-09-13T15:45:32Z",
+          "confidence": "high",
+          "evidence_id": "E-bce8ddcfe710"
+        },
+        "evidence_refs": [
+          "E-bce8ddcfe710"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.adobe.com/education/students/creativecloud.html via heading_structure_inspection [2026-09-13T15:45:32Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adobe.com/education/students/creativecloud.html",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:45:32Z",
+          "confidence": "high",
+          "evidence_id": "E-39f1cd7c9afa"
+        },
+        "evidence_refs": [
+          "E-39f1cd7c9afa"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"How do I contact Adobe?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.adobe.com/ via onsite_answerability_probe [2026-09-13T15:45:34Z]: Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Adobe?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:contact",
+        "suggested_action": {
+          "summary": "Expose a contact route as machine-readable text.",
+          "priority": "medium",
+          "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.adobe.com/",
+          "observation": "Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Adobe?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:45:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-13cff26eada6"
+        },
+        "evidence_refs": [
+          "E-13cff26eada6"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.adobe.com via search_affordance_detection [2026-09-13T15:45:32Z]: None of the 2 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adobe.com",
+          "observation": "None of the 2 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:45:32Z",
+          "confidence": "medium",
+          "evidence_id": "E-b349e4c99e82"
+        },
+        "evidence_refs": [
+          "E-b349e4c99e82"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.adobe.com via returning_visitor_affordance_detection [2026-09-13T15:45:32Z]: Across 2 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.adobe.com",
+          "observation": "Across 2 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T15:45:32Z",
+          "confidence": "medium",
+          "evidence_id": "E-0e805cdd9cfb"
+        },
+        "evidence_refs": [
+          "E-0e805cdd9cfb"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 2,
+      "resources_observed": 7,
+      "readable_pages": 2,
+      "status_counts": {
+        "readable": 2
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card",
+          "score": 14,
+          "signals": [
+            "product_landing:products",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "html_fragment",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.adobe.com/products.sitemap.cc.xml",
+          "score": 14,
+          "signals": [
+            "product_landing:products",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.adobe.com/education/students/creativecloud.html",
+          "score": 14,
+          "signals": [
+            "audience:students",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/news/news",
+          "score": 14,
+          "signals": [
+            "article_docs:news",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "html_fragment",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.adobe.com/",
+        "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+        "method": "interactive_element_analysis",
+        "timestamp": "2026-09-13T15:45:32Z",
+        "confidence": "high",
+        "evidence_id": "E-bce8ddcfe710"
+      },
+      {
+        "url": "https://www.adobe.com/education/students/creativecloud.html",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:45:32Z",
+        "confidence": "high",
+        "evidence_id": "E-39f1cd7c9afa"
+      },
+      {
+        "url": "https://www.adobe.com",
+        "observation": "None of the 2 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:45:32Z",
+        "confidence": "medium",
+        "evidence_id": "E-b349e4c99e82"
+      },
+      {
+        "url": "https://www.adobe.com",
+        "observation": "Across 2 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T15:45:32Z",
+        "confidence": "medium",
+        "evidence_id": "E-0e805cdd9cfb"
+      },
+      {
+        "url": "https://www.adobe.com/",
+        "observation": "Across 2 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Adobe?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:45:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-13cff26eada6"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "2 of 2 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Adobe is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 2,
+    "readable_pages": 2,
+    "page_purposes": [
+      "general",
+      "homepage"
+    ],
+    "resource_types": [
+      "html_fragment",
+      "svg",
+      "unknown"
+    ],
+    "resources_seen": 7,
+    "access_summary": {}
+  }
+}

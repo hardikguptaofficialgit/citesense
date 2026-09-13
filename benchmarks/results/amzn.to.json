@@ -1,0 +1,569 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "amzn.to",
+    "rank": 709,
+    "technical_type": "unknown",
+    "url": "https://amzn.to/",
+    "validation": {
+      "reason": "http-405",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:09:21.350483+00:00",
+  "finished_at": "2026-09-13T16:09:51.325862+00:00",
+  "elapsed_seconds": 29.975,
+  "error": null,
+  "report": {
+    "site": "https://www.amazon.com",
+    "audited_at": "2026-09-13T16:09:51Z",
+    "summary": {
+      "total_findings": 8,
+      "critical": 0,
+      "high": 2,
+      "medium": 2,
+      "low": 4,
+      "discoverability_findings": 3,
+      "engagement_findings": 5,
+      "citability_score": 59,
+      "citability_score_breakdown": {
+        "score": 59,
+        "base": 100,
+        "penalty": 41,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 10,
+          "low": 7
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "engagement:missing-viewport-meta": 12,
+          "schema:root-organization-missing": 5,
+          "engagement:broken-internal-links": 5,
+          "extractability:images-without-alt": 2,
+          "freshness:stale-copyright": 2,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 8
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.amazon.com/ via heading_structure_inspection [2026-09-13T16:09:39Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://ir.aboutamazon.com/overview/default.aspx via heading_structure_inspection [2026-09-13T16:09:39Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:09:39Z",
+          "confidence": "high",
+          "evidence_id": "E-ffddefdb53e8"
+        },
+        "evidence_refs": [
+          "E-b1fe8cf408c0",
+          "E-ffddefdb53e8"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.amazon.com/ via mobile_viewport_inspector [2026-09-13T16:09:39Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via mobile_viewport_inspector [2026-09-13T16:09:39Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T16:09:39Z",
+          "confidence": "high",
+          "evidence_id": "E-adb192b79593"
+        },
+        "evidence_refs": [
+          "E-15fa8cba5862",
+          "E-adb192b79593"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.amazon.com/ via jsonld_schema_extractor [2026-09-13T16:09:39Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Amzn\",\n  \"url\": \"https://www.amazon.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Free shipping on millions of items. Get the best of Shopping and Entertainment with Prime. Enjoy low prices and great deals on the largest selection of everyday essentials and other products, including fashion, home, beauty, electronics, Alexa Devices, sporting goods, toys, automotive, pets, baby, books, video games, musical instruments, office supplies, and more.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:09:39Z",
+          "confidence": "high",
+          "evidence_id": "E-527b92cc5a5f"
+        },
+        "evidence_refs": [
+          "E-527b92cc5a5f"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled via http_redirect_aware_link_checker [2026-09-13T16:09:51Z]: Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T16:09:51Z",
+          "confidence": "high",
+          "evidence_id": "E-9ecf872fdf17"
+        },
+        "evidence_refs": [
+          "E-9ecf872fdf17"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via image_alt_coverage_inspection [2026-09-13T16:09:39Z]: 6 of 25 images (24%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+          "observation": "6 of 25 images (24%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T16:09:39Z",
+          "confidence": "high",
+          "evidence_id": "E-5e11cc17261b"
+        },
+        "evidence_refs": [
+          "E-5e11cc17261b"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Stale copyright notice (1996) in site footer template",
+        "category": "freshness",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://ir.aboutamazon.com/overview/default.aspx via copyright_year_detector [2026-09-13T16:09:39Z]: Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged. (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-copyright",
+        "suggested_action": {
+          "summary": "Update the site footer copyright year.",
+          "priority": "low",
+          "how_to_fix": "Update the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://ir.aboutamazon.com/overview/default.aspx",
+          "observation": "Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged.",
+          "method": "copyright_year_detector",
+          "timestamp": "2026-09-13T16:09:39Z",
+          "confidence": "high",
+          "evidence_id": "E-366c3af2ce76"
+        },
+        "evidence_refs": [
+          "E-366c3af2ce76"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu via breadcrumb_markup_inspector [2026-09-13T16:09:39Z]: Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu",
+          "observation": "Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T16:09:39Z",
+          "confidence": "medium",
+          "evidence_id": "E-79d2413ca247"
+        },
+        "evidence_refs": [
+          "E-79d2413ca247"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via heading_structure_inspection [2026-09-13T16:09:39Z]: Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+          "observation": "Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:09:39Z",
+          "confidence": "high",
+          "evidence_id": "E-fec3c17dce3e"
+        },
+        "evidence_refs": [
+          "E-fec3c17dce3e"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4,
+        "http-error": 1
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.amazon.com/gp/help/customer/accessibility",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.amazon.com/b/?_encoding=UTF8&amp;ie=UTF8&amp;node=87586174011&amp;pd_rd_w=ePu7Z&amp;content-id=amzn1.sym.31f066d0-45a7-43c0-a30b-21b2971be7c8&amp;pf_rd_p=31f066d0-45a7-43c0-a30b-21b2971be7c8&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=KFqAo&amp;pd_rd_r=b6d6e957-1364-4f3d-9f22-98383c237fa4&amp;ref_=pd_hp_d_atf_unk",
+          "score": 16,
+          "signals": [
+            "product_landing:products,shop",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+          "score": 14,
+          "signals": [
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.amazon.com/ir",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.amazon.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-527b92cc5a5f"
+      },
+      {
+        "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+        "observation": "6 of 25 images (24%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-5e11cc17261b"
+      },
+      {
+        "url": "https://ir.aboutamazon.com/overview/default.aspx",
+        "observation": "Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged.",
+        "method": "copyright_year_detector",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-366c3af2ce76"
+      },
+      {
+        "url": "https://www.amazon.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-ffddefdb53e8"
+      },
+      {
+        "url": "https://www.amazon.com/",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-adb192b79593"
+      },
+      {
+        "url": "https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu",
+        "observation": "Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "medium",
+        "evidence_id": "E-79d2413ca247"
+      },
+      {
+        "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+        "observation": "Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-fec3c17dce3e"
+      },
+      {
+        "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=iJq3d&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=25TMWXNBBXFWTB8XK72J&amp;pd_rd_wg=1g4pp&amp;pd_rd_r=3ed674f4-414a-4711-8eb9-01f77586ef82&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-15fa8cba5862"
+      },
+      {
+        "url": "https://ir.aboutamazon.com/overview/default.aspx",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:09:39Z",
+        "confidence": "high",
+        "evidence_id": "E-b1fe8cf408c0"
+      },
+      {
+        "url": "https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T16:09:51Z",
+        "confidence": "high",
+        "evidence_id": "E-9ecf872fdf17"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 4,
+    "page_purposes": [
+      "contact_support",
+      "general",
+      "homepage",
+      "product_landing",
+      "unknown"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

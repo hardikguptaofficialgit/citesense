@@ -11,8 +11,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import socket
 import sys
 import threading
+from contextlib import ExitStack
+from unittest.mock import patch
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
@@ -31,6 +34,8 @@ from site_inventory import (
     classify_page_purpose,
     classify_resource_type,
 )
+
+_REAL_GETADDRINFO = socket.getaddrinfo
 
 
 CATEGORIES = [
@@ -181,11 +186,37 @@ def _audit_server(mode: str, category: str = "", tier: str = "") -> dict:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     try:
-        return run_full_audit(
-            f"http://127.0.0.1:{server.server_port}/",
-            max_pages=5,
-            timeout=2,
-        )
+        def resolve_fixture(host, port, *args, **kwargs):
+            if host == "127.0.0.1":
+                return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", (host, port))]
+            return _REAL_GETADDRINFO(host, port, *args, **kwargs)
+
+        # The fixture server is intentionally loopback-only. Permit only this
+        # deterministic test transport; production safe_fetch remains fail-closed.
+        with ExitStack() as stack:
+            stack.enter_context(patch("audit_common.socket.getaddrinfo", side_effect=resolve_fixture))
+            for module in list(sys.modules.values()):
+                if module is None:
+                    continue
+                target_validator = getattr(module, "_fetch_target_error", None)
+                if target_validator is not None:
+                    stack.enter_context(
+                        patch.object(
+                            module,
+                            "_fetch_target_error",
+                            side_effect=lambda url, original=target_validator: (
+                                None
+                                if urlparse(url).hostname == "127.0.0.1"
+                                and urlparse(url).port == server.server_port
+                                else original(url)
+                            ),
+                        )
+                    )
+            return run_full_audit(
+                f"http://127.0.0.1:{server.server_port}/",
+                max_pages=5,
+                timeout=2,
+            )
     finally:
         server.shutdown()
         server.server_close()

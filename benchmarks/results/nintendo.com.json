@@ -1,0 +1,546 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "nintendo.com",
+    "rank": 777,
+    "technical_type": "unknown",
+    "url": "https://nintendo.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:14:34.925869+00:00",
+  "finished_at": "2026-09-13T16:15:24.150521+00:00",
+  "elapsed_seconds": 49.225,
+  "error": null,
+  "report": {
+    "site": "https://www.nintendo.com",
+    "audited_at": "2026-09-13T16:15:24Z",
+    "summary": {
+      "total_findings": 7,
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 4,
+      "discoverability_findings": 5,
+      "engagement_findings": 2,
+      "citability_score": 86,
+      "citability_score_breakdown": {
+        "score": 86,
+        "base": 100,
+        "penalty": 14,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 12,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "robots:training-only-blocked": 0,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:no-personalization-readiness": 0,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 7
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.nintendo.com/region-selector/ via jsonld_schema_extractor [2026-09-13T16:14:59Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Nintendo Co., Ltd.\",\n  \"url\": \"https://www.nintendo.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"foundingDate\": \"1993\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nintendo.com/region-selector/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:14:59Z",
+          "confidence": "high",
+          "evidence_id": "E-58a9ea381aae"
+        },
+        "evidence_refs": [
+          "E-58a9ea381aae"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.nintendo.com/region-selector/ via html_meta_inspector [2026-09-13T16:14:59Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Region and Language Selector\",\n  \"url\": \"https://www.nintendo.com/region-selector/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Nintendo Co., Ltd.\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.nintendo.com/region-selector/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nintendo.com/region-selector/",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T16:14:59Z",
+          "confidence": "high",
+          "evidence_id": "E-5d88feb700bc"
+        },
+        "evidence_refs": [
+          "E-5d88feb700bc"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.nintendo.com via onsite_identity_anchor_inspection [2026-09-13T16:15:24Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 17 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.nintendo.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 17 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:15:24Z",
+          "confidence": "medium",
+          "evidence_id": "E-01cca535114a"
+        },
+        "evidence_refs": [
+          "E-01cca535114a"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://nintendo.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T16:14:59Z]: robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://nintendo.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T16:14:59Z",
+          "confidence": "high",
+          "evidence_id": "E-9a1110f397bc"
+        },
+        "evidence_refs": [
+          "E-9a1110f397bc"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.nintendo.com/au/support/articles/can-i-also-use-the-in-game-save-features/ via breadcrumb_markup_inspector [2026-09-13T16:14:59Z]: Page at deep route (/au/support/articles/can-i-also-use-the-in-game-save-features/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.nintendo.com/au/products/nintendo-sound-clock-alarmo/about-the-recommended-environment-for-your-bedroom/ via breadcrumb_markup_inspector [2026-09-13T16:14:59Z]: Page at deep route (/au/products/nintendo-sound-clock-alarmo/about-the-recommended-environment-for-your-bedroom/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.nintendo.com/au/about/ via breadcrumb_markup_inspector [2026-09-13T16:14:59Z]: Page at deep route (/au/about/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.nintendo.com/au/support/articles/does-the-wii-u-support-av-component-video/ via breadcrumb_markup_inspector [2026-09-13T16:14:59Z]: Page at deep route (/au/support/articles/does-the-wii-u-support-av-component-video/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nintendo.com/au/support/articles/can-i-also-use-the-in-game-save-features/",
+          "observation": "Page at deep route (/au/support/articles/can-i-also-use-the-in-game-save-features/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T16:14:59Z",
+          "confidence": "medium",
+          "evidence_id": "E-ab2411b9f8d5"
+        },
+        "evidence_refs": [
+          "E-9956500c9b81",
+          "E-9be9b0328c83",
+          "E-a9d0104924ef",
+          "E-ab2411b9f8d5"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.nintendo.com via returning_visitor_affordance_detection [2026-09-13T16:14:59Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nintendo.com",
+          "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T16:14:59Z",
+          "confidence": "medium",
+          "evidence_id": "E-51b3802adf98"
+        },
+        "evidence_refs": [
+          "E-51b3802adf98"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes Nintendo Co., Ltd. different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.nintendo.com/region-selector/ via onsite_answerability_probe [2026-09-13T16:15:24Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Nintendo Co., Ltd. different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.nintendo.com/region-selector/",
+          "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Nintendo Co., Ltd. different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:15:24Z",
+          "confidence": "medium",
+          "evidence_id": "E-799386d91087"
+        },
+        "evidence_refs": [
+          "E-799386d91087"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.nintendo.com/au/support/articles/can-i-also-use-the-in-game-save-features/",
+          "score": 32,
+          "signals": [
+            "product_landing:features",
+            "contact_support:support",
+            "audience:use",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.nintendo.com/au/products/nintendo-sound-clock-alarmo/about-the-recommended-environment-for-your-bedroom/",
+          "score": 22,
+          "signals": [
+            "product_landing:products",
+            "contact_support:about",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.nintendo.com/au/about/",
+          "score": 12,
+          "signals": [
+            "contact_support:about",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.nintendo.com/au/support/articles/does-the-wii-u-support-av-component-video/",
+          "score": 12,
+          "signals": [
+            "contact_support:support",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "html_fragment",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://nintendo.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "high",
+        "evidence_id": "E-9a1110f397bc"
+      },
+      {
+        "url": "https://www.nintendo.com/region-selector/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "high",
+        "evidence_id": "E-58a9ea381aae"
+      },
+      {
+        "url": "https://www.nintendo.com/region-selector/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "high",
+        "evidence_id": "E-5d88feb700bc"
+      },
+      {
+        "url": "https://www.nintendo.com/au/support/articles/can-i-also-use-the-in-game-save-features/",
+        "observation": "Page at deep route (/au/support/articles/can-i-also-use-the-in-game-save-features/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "medium",
+        "evidence_id": "E-ab2411b9f8d5"
+      },
+      {
+        "url": "https://www.nintendo.com/au/products/nintendo-sound-clock-alarmo/about-the-recommended-environment-for-your-bedroom/",
+        "observation": "Page at deep route (/au/products/nintendo-sound-clock-alarmo/about-the-recommended-environment-for-your-bedroom/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "medium",
+        "evidence_id": "E-9be9b0328c83"
+      },
+      {
+        "url": "https://www.nintendo.com/au/about/",
+        "observation": "Page at deep route (/au/about/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "medium",
+        "evidence_id": "E-9956500c9b81"
+      },
+      {
+        "url": "https://www.nintendo.com/au/support/articles/does-the-wii-u-support-av-component-video/",
+        "observation": "Page at deep route (/au/support/articles/does-the-wii-u-support-av-component-video/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "medium",
+        "evidence_id": "E-a9d0104924ef"
+      },
+      {
+        "url": "https://www.nintendo.com",
+        "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T16:14:59Z",
+        "confidence": "medium",
+        "evidence_id": "E-51b3802adf98"
+      },
+      {
+        "url": "https://www.nintendo.com/region-selector/",
+        "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Nintendo Co., Ltd. different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:15:24Z",
+        "confidence": "medium",
+        "evidence_id": "E-799386d91087"
+      },
+      {
+        "url": "https://www.nintendo.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 17 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:15:24Z",
+        "confidence": "medium",
+        "evidence_id": "E-01cca535114a"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Nintendo Co., Ltd. is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "general",
+      "html_fragment",
+      "product_landing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

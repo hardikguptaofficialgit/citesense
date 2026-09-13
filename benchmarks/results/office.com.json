@@ -1,0 +1,344 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "office.com",
+    "rank": 393,
+    "technical_type": "unknown",
+    "url": "https://office.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:44:17.975683+00:00",
+  "finished_at": "2026-09-13T15:44:52.919669+00:00",
+  "elapsed_seconds": 34.944,
+  "error": null,
+  "report": {
+    "site": "https://m365.cloud.microsoft",
+    "audited_at": "2026-09-13T15:44:52Z",
+    "summary": {
+      "total_findings": 3,
+      "critical": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 1,
+      "discoverability_findings": 2,
+      "engagement_findings": 1,
+      "citability_score": 88,
+      "citability_score_breakdown": {
+        "score": 88,
+        "base": 100,
+        "penalty": 12,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 6,
+          "medium": 5,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "render:empty-raw-html-gap:/common/oauth2/v2.0/authorize": 6,
+          "schema:root-organization-missing": 5,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 3
+      }
+    },
+    "findings": [
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=4765445b-32c6-49b0-83e6-1d93765276ca&redirect_uri=https%3A%2F%2Fm365.cloud.microsoft%2Flandingv2&response_type=code%20id_token&scope=openid%20profile%20offline_access%20https%3A%2F%2Fwww.office.com%2Fv2%2FOfficeHome.All&response_mode=form_post&nonce=639249110696587699.YjBkMjc5N2MtODRlYi00OTdhLTkzMDctNjlkOWY5Zjk4NGYwNDJkOTBkMWMtYjg1Yi00NDk5LWI1OGMtZTdiNGNiMGY4OGZm&client-request-id=8337aefc-7bc8-485e-8cc4-c2146df71741&state=fcHCpjXE9n6ntwWCcHlpt2BOJ3KAe_zzFdcDM_v_DKggtRLHV485eQ840dlnWte0kEeRcx1UCVYpDnHICYJHA-YwLLiPV8ciZEMs2ijuYOeoJrLm3nEhJBQP03uE3dsauZ66U9dvrIMLQ4Jh18RCig5JaYMLJn0-cCbsDdaNsnfJFLLfJGkvQUhx4BU8y5uCpluEp2lYwisfha_bvubwAdPUWuZNsueE4tbLnTTtJvsf8vfBiFvHvoH1AlaelG_UX1E9d3-DM5lmSFNFw-ddgO7QwOqgu-1184d28B3V0qnfSmLhc1cuWo-Hfg0qihzBDPMmcxW8jkkhAeM3q6IXFwFwlEhc16PGcO9A_oElvBMfQG9Y4VxRKHh4b1v61Dj8z7C39n5-i1wdDixreZGbxvL9GZfFmEBX5ykyeNCiL8k&x-client-SKU=ID_NET8_0&x-client-ver=8.14.0.0 via static_initial_html_shell_inspection [2026-09-13T15:44:32Z]: Raw HTML yields only 5 words of visible text and shows static shell signals (very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/common/oauth2/v2.0/authorize",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=4765445b-32c6-49b0-83e6-1d93765276ca&redirect_uri=https%3A%2F%2Fm365.cloud.microsoft%2Flandingv2&response_type=code%20id_token&scope=openid%20profile%20offline_access%20https%3A%2F%2Fwww.office.com%2Fv2%2FOfficeHome.All&response_mode=form_post&nonce=639249110696587699.YjBkMjc5N2MtODRlYi00OTdhLTkzMDctNjlkOWY5Zjk4NGYwNDJkOTBkMWMtYjg1Yi00NDk5LWI1OGMtZTdiNGNiMGY4OGZm&client-request-id=8337aefc-7bc8-485e-8cc4-c2146df71741&state=fcHCpjXE9n6ntwWCcHlpt2BOJ3KAe_zzFdcDM_v_DKggtRLHV485eQ840dlnWte0kEeRcx1UCVYpDnHICYJHA-YwLLiPV8ciZEMs2ijuYOeoJrLm3nEhJBQP03uE3dsauZ66U9dvrIMLQ4Jh18RCig5JaYMLJn0-cCbsDdaNsnfJFLLfJGkvQUhx4BU8y5uCpluEp2lYwisfha_bvubwAdPUWuZNsueE4tbLnTTtJvsf8vfBiFvHvoH1AlaelG_UX1E9d3-DM5lmSFNFw-ddgO7QwOqgu-1184d28B3V0qnfSmLhc1cuWo-Hfg0qihzBDPMmcxW8jkkhAeM3q6IXFwFwlEhc16PGcO9A_oElvBMfQG9Y4VxRKHh4b1v61Dj8z7C39n5-i1wdDixreZGbxvL9GZfFmEBX5ykyeNCiL8k&x-client-SKU=ID_NET8_0&x-client-ver=8.14.0.0",
+          "observation": "Raw HTML yields only 5 words of visible text and shows static shell signals (very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T15:44:32Z",
+          "confidence": "medium",
+          "evidence_id": "E-8cf97bc554eb"
+        },
+        "evidence_refs": [
+          "E-8cf97bc554eb"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://m365.cloud.microsoft/ via jsonld_schema_extractor [2026-09-13T15:44:32Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Office\",\n  \"url\": \"https://m365.cloud.microsoft\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Microsoft 365 includes Word, Excel, PowerPoint, Outlook, Teams, and OneDrive, with Microsoft Copilot built in to help you create, communicate, and summarize information. Formerly Office 365.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://m365.cloud.microsoft/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:44:32Z",
+          "confidence": "high",
+          "evidence_id": "E-bd71d39ec113"
+        },
+        "evidence_refs": [
+          "E-bd71d39ec113"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://m365.cloud.microsoft via search_affordance_detection [2026-09-13T15:44:32Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://m365.cloud.microsoft",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:44:32Z",
+          "confidence": "medium",
+          "evidence_id": "E-815bbf5215e4"
+        },
+        "evidence_refs": [
+          "E-815bbf5215e4"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://m365.cloud.microsoft/ai-image-generator",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://m365.cloud.microsoft/apps?fromcode=cmmcqkd9n3k",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://m365.cloud.microsoft/apps?fromcode=cmmiadtp424",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://m365.cloud.microsoft/chat?fromcode=cmmwuwpzorz",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://m365.cloud.microsoft/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:44:32Z",
+        "confidence": "high",
+        "evidence_id": "E-bd71d39ec113"
+      },
+      {
+        "url": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=4765445b-32c6-49b0-83e6-1d93765276ca&redirect_uri=https%3A%2F%2Fm365.cloud.microsoft%2Flandingv2&response_type=code%20id_token&scope=openid%20profile%20offline_access%20https%3A%2F%2Fwww.office.com%2Fv2%2FOfficeHome.All&response_mode=form_post&nonce=639249110696587699.YjBkMjc5N2MtODRlYi00OTdhLTkzMDctNjlkOWY5Zjk4NGYwNDJkOTBkMWMtYjg1Yi00NDk5LWI1OGMtZTdiNGNiMGY4OGZm&client-request-id=8337aefc-7bc8-485e-8cc4-c2146df71741&state=fcHCpjXE9n6ntwWCcHlpt2BOJ3KAe_zzFdcDM_v_DKggtRLHV485eQ840dlnWte0kEeRcx1UCVYpDnHICYJHA-YwLLiPV8ciZEMs2ijuYOeoJrLm3nEhJBQP03uE3dsauZ66U9dvrIMLQ4Jh18RCig5JaYMLJn0-cCbsDdaNsnfJFLLfJGkvQUhx4BU8y5uCpluEp2lYwisfha_bvubwAdPUWuZNsueE4tbLnTTtJvsf8vfBiFvHvoH1AlaelG_UX1E9d3-DM5lmSFNFw-ddgO7QwOqgu-1184d28B3V0qnfSmLhc1cuWo-Hfg0qihzBDPMmcxW8jkkhAeM3q6IXFwFwlEhc16PGcO9A_oElvBMfQG9Y4VxRKHh4b1v61Dj8z7C39n5-i1wdDixreZGbxvL9GZfFmEBX5ykyeNCiL8k&x-client-SKU=ID_NET8_0&x-client-ver=8.14.0.0",
+        "observation": "Raw HTML yields only 5 words of visible text and shows static shell signals (very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T15:44:32Z",
+        "confidence": "medium",
+        "evidence_id": "E-8cf97bc554eb"
+      },
+      {
+        "url": "https://m365.cloud.microsoft",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:44:32Z",
+        "confidence": "medium",
+        "evidence_id": "E-815bbf5215e4"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Office is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "general",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

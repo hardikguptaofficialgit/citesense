@@ -1,0 +1,530 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "g.page",
+    "rank": 669,
+    "technical_type": "unknown",
+    "url": "https://g.page/",
+    "validation": {
+      "reason": "http-404",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:03:41.259284+00:00",
+  "finished_at": "2026-09-13T16:04:39.064225+00:00",
+  "elapsed_seconds": 57.805,
+  "error": null,
+  "report": {
+    "site": "https://support.google.com",
+    "audited_at": "2026-09-13T16:04:39Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 0,
+      "medium": 5,
+      "low": 1,
+      "discoverability_findings": 5,
+      "engagement_findings": 1,
+      "citability_score": 76,
+      "citability_score_breakdown": {
+        "score": 76,
+        "base": 100,
+        "penalty": 24,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 22,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "extractability:images-without-alt": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://support.google.com/sitemap.xml via http_get_sitemap_check [2026-09-13T16:04:10Z]: Request to https://support.google.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://support.google.com/sitemap.xml",
+          "observation": "Request to https://support.google.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T16:04:10Z",
+          "confidence": "high",
+          "evidence_id": "E-671eea951273"
+        },
+        "evidence_refs": [
+          "E-671eea951273"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1 via jsonld_schema_extractor [2026-09-13T16:04:10Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://support.google.com/?tab=uu via jsonld_schema_extractor [2026-09-13T16:04:10Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:04:10Z",
+          "confidence": "high",
+          "evidence_id": "E-4b7218491f87"
+        },
+        "evidence_refs": [
+          "E-4b7218491f87",
+          "E-ba67ceff5c2d"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1 via html_meta_inspector [2026-09-13T16:04:10Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://support.google.com/?tab=uu via html_meta_inspector [2026-09-13T16:04:10Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Update your browser to manage your Business Profile\",\n  \"url\": \"https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"G\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T16:04:10Z",
+          "confidence": "high",
+          "evidence_id": "E-777d18062306"
+        },
+        "evidence_refs": [
+          "E-777d18062306",
+          "E-d19d36cb2e27"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://support.google.com/?tab=uu via image_alt_coverage_inspection [2026-09-13T16:04:10Z]: 20 of 23 images (87%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "medium",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://support.google.com/?tab=uu",
+          "observation": "20 of 23 images (87%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T16:04:10Z",
+          "confidence": "high",
+          "evidence_id": "E-c26de827adcf"
+        },
+        "evidence_refs": [
+          "E-c26de827adcf"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://support.google.com via onsite_identity_anchor_inspection [2026-09-13T16:04:39Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 12 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://support.google.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 12 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:04:39Z",
+          "confidence": "medium",
+          "evidence_id": "E-716b3f5750cb"
+        },
+        "evidence_refs": [
+          "E-716b3f5750cb"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1 via heading_structure_inspection [2026-09-13T16:04:10Z]: Page defines 3 separate <h1> tags (Update your browser to manage your Busin; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://support.google.com/business via heading_structure_inspection [2026-09-13T16:04:10Z]: Page defines 3 separate <h1> tags (How can we help you?; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://support.google.com/business/answer/10786874?hl=en&amp;ref_topic=4540086 via heading_structure_inspection [2026-09-13T16:04:10Z]: Page defines 3 separate <h1> tags (Product approval policies; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://support.google.com/?tab=uu via heading_structure_inspection [2026-09-13T16:04:10Z]: Page defines 3 separate <h1> tags (How can we help you?; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://support.google.com/business/?hl=en via heading_structure_inspection [2026-09-13T16:04:10Z]: Page defines 3 separate <h1> tags (How can we help you?; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1",
+          "observation": "Page defines 3 separate <h1> tags (Update your browser to manage your Busin; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:04:10Z",
+          "confidence": "high",
+          "evidence_id": "E-28fcb10f85b3"
+        },
+        "evidence_refs": [
+          "E-28fcb10f85b3",
+          "E-2cb17b982b80",
+          "E-4ecf6dd48877",
+          "E-61008d76ff52",
+          "E-b74c056ae759"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://support.google.com/business",
+          "score": 26,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://support.google.com/business/answer/10786874?hl=en&amp;ref_topic=4540086",
+          "score": 24,
+          "signals": [
+            "product_landing:product",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://support.google.com/?tab=uu",
+          "score": 14,
+          "signals": [
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://support.google.com/business/?hl=en",
+          "score": 26,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://support.google.com/sitemap.xml",
+        "observation": "Request to https://support.google.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-671eea951273"
+      },
+      {
+        "url": "https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-4b7218491f87"
+      },
+      {
+        "url": "https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-777d18062306"
+      },
+      {
+        "url": "https://support.google.com/?tab=uu",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-ba67ceff5c2d"
+      },
+      {
+        "url": "https://support.google.com/?tab=uu",
+        "observation": "20 of 23 images (87%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-c26de827adcf"
+      },
+      {
+        "url": "https://support.google.com/?tab=uu",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-d19d36cb2e27"
+      },
+      {
+        "url": "https://support.google.com/business/answer/3420286?visit_id=639249122307014209-3295459797&p=browser_support&rd=1",
+        "observation": "Page defines 3 separate <h1> tags (Update your browser to manage your Busin; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-28fcb10f85b3"
+      },
+      {
+        "url": "https://support.google.com/business",
+        "observation": "Page defines 3 separate <h1> tags (How can we help you?; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-61008d76ff52"
+      },
+      {
+        "url": "https://support.google.com/business/answer/10786874?hl=en&amp;ref_topic=4540086",
+        "observation": "Page defines 3 separate <h1> tags (Product approval policies; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-4ecf6dd48877"
+      },
+      {
+        "url": "https://support.google.com/?tab=uu",
+        "observation": "Page defines 3 separate <h1> tags (How can we help you?; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-2cb17b982b80"
+      },
+      {
+        "url": "https://support.google.com/business/?hl=en",
+        "observation": "Page defines 3 separate <h1> tags (How can we help you?; '+j7(r)+'; '+j7(r)+\"), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:04:10Z",
+        "confidence": "high",
+        "evidence_id": "E-b74c056ae759"
+      },
+      {
+        "url": "https://support.google.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 12 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:04:39Z",
+        "confidence": "medium",
+        "evidence_id": "E-716b3f5750cb"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "robots.txt was unavailable; no robots policy could be evaluated."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so G is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "3 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "2 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

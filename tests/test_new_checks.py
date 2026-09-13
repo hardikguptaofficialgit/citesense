@@ -17,6 +17,7 @@ for sub in ("crawl-render-audit", "engagement-audit"):
 from site_inventory import SiteInventory, analyze_page_html
 from render_and_data_scan import evaluate_page_render_and_data
 from engagement_scan import evaluate_site_level_engagement
+from crawlability_check import evaluate_crawlability
 
 
 def page(url, body, head="<title>T</title>"):
@@ -186,6 +187,17 @@ class SearchAndPersonalizationTests(unittest.TestCase):
         inv.pages["https://acme.test/"] = {"inconclusive": True, "status_code": 200}
         inv.ground_truth = {"brand_name": "Acme", "brand_name_source": "organization_schema"}
         self.assertEqual(evaluate_site_level_engagement(inv), [])
+
+    def test_unreadable_crawl_does_not_infer_missing_sitemap(self):
+        inv = SiteInventory("https://acme.test")
+        inv.origin = "https://acme.test"
+        inv.pages["https://acme.test/"] = {
+            "inconclusive": True,
+            "status_code": None,
+        }
+        inv.sitemaps = [{"url": "https://acme.test/sitemap.xml", "found": False}]
+        findings = evaluate_crawlability(inv)
+        self.assertNotIn("crawl:missing-xml-sitemap", {f.get("fingerprint") for f in findings})
 
 
 if __name__ == "__main__":

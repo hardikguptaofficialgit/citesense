@@ -1,0 +1,181 @@
+{
+  "site": {
+    "category": "creator_websites",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "linktr.ee",
+    "rank": 369,
+    "technical_type": "unknown",
+    "url": "https://linktr.ee/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:43:32.472013+00:00",
+  "finished_at": "2026-09-13T15:43:37.278294+00:00",
+  "elapsed_seconds": 4.806,
+  "error": null,
+  "report": {
+    "site": "https://linktr.ee",
+    "audited_at": "2026-09-13T15:43:37Z",
+    "summary": {
+      "total_findings": 1,
+      "critical": 1,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "discoverability_findings": 1,
+      "engagement_findings": 0,
+      "citability_score_unavailable": "No page could be read (all crawled URLs were non-200 or undecodable), so findings are not a measure of this site's citability."
+    },
+    "findings": [
+      {
+        "title": "Root site is disallowed for all crawlers including AI retrieval agents",
+        "category": "crawlability",
+        "severity": "critical",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "critical",
+        "evidence": "Observed at https://linktr.ee/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:43:37Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (Meta-ExternalAgent, Bytespider). (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:disallow-all-root",
+        "suggested_action": {
+          "summary": "Update robots.txt to allow crawling of public landing and product pages.",
+          "priority": "critical",
+          "how_to_fix": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://linktr.ee/robots.txt",
+          "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (Meta-ExternalAgent, Bytespider).",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:43:37Z",
+          "confidence": "high",
+          "evidence_id": "E-af3633551fd1"
+        },
+        "evidence_refs": [
+          "E-af3633551fd1"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 1,
+      "resources_observed": 0,
+      "readable_pages": 0,
+      "status_counts": {
+        "robots-disallowed": 1
+      },
+      "limited": true,
+      "page_selection": [
+        {
+          "url": "https://linktr.ee/blog/rethinking-recruitment-creative-cost-effective-strategies-from-the-linktree-talent-team",
+          "score": 34,
+          "signals": [
+            "product_pricing:cost",
+            "article_docs:blog",
+            "contact_support:team",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://linktr.ee/features/contact-forms",
+          "score": 22,
+          "signals": [
+            "product_landing:features",
+            "contact_support:contact",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://linktr.ee/solutions/build-your-following",
+          "score": 22,
+          "signals": [
+            "product_landing:solutions",
+            "audience:solutions",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://linktr.ee",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "homepage",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://linktr.ee/robots.txt",
+        "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (Meta-ExternalAgent, Bytespider).",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:43:37Z",
+        "confidence": "high",
+        "evidence_id": "E-af3633551fd1"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No sampled page was readable, so content-dependent checks were not assessed."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "Initial HTML was unavailable, so render-gap evidence could not be assessed."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No accessible page evidence was available for on-site answerability."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No readable page was available to inspect for explicit authority links."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 1,
+    "readable_pages": 0,
+    "page_purposes": [
+      "unknown"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

@@ -69,11 +69,14 @@ Every report contains:
 - an evidence ledger with stable IDs and finding references;
 - assessment statuses such as `confirmed`, `likely-risk`, `inconclusive`, and `not-assessed`;
 - proactive recommendations when the crawl provides a concrete basis;
+- optional evidence-derived `fix_prompt` objects and a prioritized `fix_plan`; these are
+  recommendation-only briefs and are omitted when evidence is inconclusive;
 - access, robots, page-selection, and limitation details.
 
-The audit is read-only, enforces `robots.txt`, uses a bounded crawl, and never bypasses
-CAPTCHA, WAF, login, or anti-bot protections. A typical run completes in seconds and stays
-within the five-minute evaluation budget.
+The audit is read-only, enforces `robots.txt`, uses a bounded crawl, rejects unsafe network
+targets and redirects, caps response bodies at 5 MiB, and never bypasses CAPTCHA, WAF, login,
+or anti-bot protections. A typical run completes in seconds and stays within the five-minute
+evaluation budget.
 
 Optional external discovery evidence may be supplied by an agent, but CiteSense never performs
 or fabricates search-engine or live AI results internally:
@@ -85,14 +88,6 @@ citesense audit https://example.com \
 ```
 
 If no external evidence is supplied, off-site discovery is reported as `not-assessed`.
-
-Pre-generated reports for real sites are available in
-`[validation-runs/](validation-runs/)`, with runtimes and severity counts in
-`[validation-runs/RUNS.md](validation-runs/RUNS.md)`.
-
-## Documentation
-
-- [Case study: the site that passes its checks and is still invisible](docs/CASE-STUDY.md)
 
 ---
 
@@ -135,10 +130,10 @@ to run the `citesense` command.
 ## Direct agent test prompt
 
 Copy the following prompt directly into an AI coding agent to run a controlled CiteSense
-1.1.0 audit of Adobe's website:
+1.1.3 audit of Adobe's website:
 
 ```text
-Use CiteSense 1.1.0 to audit ONLY this website:
+Use CiteSense 1.1.3 to audit ONLY this website:
 
 https://www.adobe.com/in
 
@@ -149,7 +144,7 @@ First verify:
 python -m pip install --upgrade --no-cache-dir citesense
 python -c "import importlib.metadata; print(importlib.metadata.version('citesense'))"
 
-The installed version must be 1.1.0 or newer.
+The installed version must be 1.1.3 or newer.
 
 Then run EXACTLY:
 
@@ -247,7 +242,7 @@ graph TD
 | **crawl-render-audit**              | Off-site discoverability, steps A-C                  | Is the crawler let in? Scored **by crawler class** -- blocking training crawlers (GPTBot, ClaudeBot) costs no citations and is a legitimate licensing stance; blocking search-index (OAI-SearchBot, Claude-SearchBot, PerplexityBot) or user-triggered (ChatGPT-User, Claude-User) agents is what makes a brand uncitable. Can it read the page without executing JS? Is structured data present and valid? Are facts locked inside images or canvas? |
 | **freshness-corroboration**         | Temporal + internal consistency (Appendix D, half 1) | Claim-based freshness: detects actual stale/conflicting facts (e.g. conflicting founding years, expired promotions) instead of treating missing `dateModified` as a defect.                                                                                                                                                                                                                                                                           |
 | **engagement-audit**                | On-site engagement                                   | Evaluates orientation, buttons/forms/CTAs, navigation, redirect-aware broken links, and mobile viewport.                                                                                                                                                                                                                                                                                                                                              |
-| **citation-simulator**              | Proof-of-failure                                     | Generates realistic questions about the brand, then tests **answerability**: given only the pages a retrieval bot actually fetched, could an assistant quote an answer? Also classifies supplied live-search results (omission / misattribution / staleness / contradiction) when an agent provides them.                                                                                                                                             |
+| **citation-simulator**              | Answerability evidence                                | Generates realistic questions about the brand, then tests **answerability**: given only the pages a retrieval bot actually fetched, could an assistant quote an answer? Also classifies supplied live-search results (omission / misattribution / staleness / contradiction) when an agent provides them.                                                                                                                                             |
 | **trust-corroboration-graph**       | External identity (Appendix D, half 2)               | Observable on-site: does any machine-readable path exist from the brand to an independent authority (`sameAs` URIs, outbound links to Wikidata/Wikipedia/Crunchbase/LinkedIn/registries)? Agent-supplied: scores real third-party corroboration and same-name collision risk.                                                                                                                                                                         |
 | **audit-orchestrator** (entrypoint) | Composition & Orchestration                          | Crawls pages once via `SiteInventory`, executes specialist skills to collect `CandidateFindings`, merges and deduplicates by root cause, prioritizes by severity and impact, adds proactive recommendations, and validates the report.                                                                                                                                                                                                                |
 
@@ -263,7 +258,8 @@ graph TD
 3. **Evidence-Verification Layer:** Every finding includes URL, observation, method, timestamp, and confidence rating (`Observed at <url> via <method> [<timestamp>]: <observation> (Confidence: <confidence>)`).
 4. **Finding Metadata:** Includes `status` (`confirmed` / `likely-risk` / `proactive`), `confidence` (`high` / `medium` / `low`), and `impact` (`critical` / `high` / `medium` / `low`).
 5. **False-Positive Elimination:**
-  - Follows HTTP redirects up to 5 hops; links redirecting to 200 are recognized as working.
+  - Follows HTTP redirects up to 5 hops only after validating each target; links redirecting to 200 are recognized as working.
+  - Rejects URL credentials, unsafe ports, private/loopback/link-local/metadata targets, and response bodies over 5 MiB.
   - 4xx/5xx responses are distinguished from transient network timeouts.
   - Missing `dateModified` or `datePublished` on static pages is **not** penalized.
   - Breadcrumbs are only evaluated on deep paths (`depth >= 2`), not on root/shallow pages.
@@ -273,7 +269,7 @@ graph TD
 7. **Advanced Engagement Detection:** Recognizes `<button>`, `<input type="submit">`, `<form>`, `role="button"`, and prominent CTA links.
 8. **Root-Cause Deduplication:** Consolidates findings sharing the same fingerprint across pages and skills, merging evidence and assigning highest severity.
 9. **Evidence-Based Proactive Recommendations:** Up to 6 beyond-defect suggestions derived from what the crawl observed and ordered strongest-evidence-first -- FAQPage markup for existing Q&A content, third-party entity anchoring, answer-first content structure, Article/WebSite/BreadcrumbList schema, explicit AI usage terms in robots.txt, an agent-facing NLWeb/MCP endpoint, and llms.txt reported with its real (weak) evidence base. Each fires only on an observed condition, so a well-optimised site correctly receives fewer. Basis: `skills/audit-orchestrator/references/ai-visibility-standards-2026.md`.
-10. **Strict Guardrails:** Recommend-only, 100% read-only, and robots.txt is **enforced on our own fetches** (`SiteInventory.may_fetch()` gates both page crawling and link probing against the `*` group; declined URLs are recorded in `skipped_by_robots`). Strictly budgeted under 5 minutes -- a typical audit runs in 2-20 seconds.
+10. **Strict Guardrails:** Recommend-only, 100% read-only, and robots.txt is **enforced on our own fetches** (`SiteInventory.may_fetch()` gates both page crawling and link probing against the `*` group; declined URLs are recorded in `skipped_by_robots`). Network targets are DNS/IP validated before each request and redirect, with a 5 MiB response limit. Strictly budgeted under 5 minutes -- a typical audit runs in 2-20 seconds.
 11. **Access Classification:** Distinguishes readable pages, robots-disallowed paths, HTTP blocks, anti-bot challenges, network failures, empty responses, and undecodable content. Evidence-dependent findings and scores are withheld when no page was readable; protections are never bypassed.
 12. **Report Schema Compliance:** Fully conforms to `skills/audit-orchestrator/references/report-schema.json`.
 13. **Auto-Generated Fix Snippets:** Structured-data findings carry a ready-to-paste JSON-LD block pre-populated from observed ground truth. Unknown values are explicit `REPLACE_WITH_...` markers, and a snippet that would be mostly placeholders is **suppressed** rather than shipped as a fix.
@@ -320,7 +316,7 @@ citesense batch websites.txt --output-dir reports
 ```
 
 Batch mode prints a machine-readable summary and continues when an individual URL fails.
-It returns exit code `0` when all sites finish, `1` for partial/complete audit failures,
+It returns exit code `0` when all sites finish, `1` when a batch needs attention,
 and `2` for invalid command input.
 
 ### 2. End-to-End Marketplace Orchestrator CLI
@@ -441,9 +437,12 @@ Run the complete unit, adversarial and regression suite:
 python -m unittest discover -s tests -v
 ```
 
-All tests run with the Python standard library and zero external dependencies.
+All tests run with the Python standard library and zero external dependencies. The current
+regression/package/marketplace suite contains 221 passing tests, including dedicated
+fix-prompt, evidence-integrity, access-control, resource-classification, scoring, and
+false-positive coverage.
 
-`tests/test_regressions.py` locks in every false positive and guardrail bug that has been fixed
+`tests/test_regressions.py` locks in every false positive and guardrail regression that has been fixed
 (gzip transport, copyright ranges, founding-claim prose, page-purpose classification, robots.txt
 enforcement, evidence honesty, brand-name extraction). If one fails, a regression was
 reintroduced -- see `Progress.md` for the original reproduction.
@@ -454,15 +453,69 @@ Run the deterministic broad-category benchmark separately:
 PYTHONPATH=src python benchmark_adversarial.py --output benchmark-results.json
 ```
 
+The repository also includes the resumable 1,000-site generalization benchmark:
+
+```bash
+python benchmarks/run_1000.py --prepare-dataset
+python benchmarks/run_1000.py --run --workers 5
+python benchmarks/run_1000.py --analyze
+```
+
+The completed baseline run processed 1,000 distinct public domains: 726 were
+readable, 4,324 evidence-backed findings were produced, and every evidence reference
+remained valid. The score median was 79 (mean 74.6), with a 17.2-second median audit
+time and 49.4-second P95. These are CiteSense behavior measurements, not AI citation
+accuracy. CiteSense also applies bounded streaming reads, response-size protection,
+timeout-safe network handling, and validated redirect controls so audits remain
+predictable on varied real-world websites.
+
+### 1,000-site benchmark at a glance
+
+```mermaid
+xychart-beta
+    title "Site access results"
+    x-axis ["Readable", "Unavailable"]
+    y-axis "Sites" 0 --> 1000
+    bar [726, 274]
+```
+
+```mermaid
+xychart-beta
+    title "Evidence integrity"
+    x-axis ["Findings", "Broken refs"]
+    y-axis "Count" 0 --> 4500
+    bar [4324, 0]
+```
+
+```mermaid
+xychart-beta
+    title "Typical audit runtime"
+    x-axis ["Median", "P95", "P99"]
+    y-axis "Seconds" 0 --> 120
+    bar [17.2, 49.4, 107.5]
+```
+
+The audit engine is designed for bounded, read-only operation across varied
+website responses, with explicit machine-readable access classifications and
+evidence-aware reporting. Detailed category, access, resource, score, finding, and
+performance data is stored under `benchmarks/`.
+
+### Fix prompts for coding agents
+
+Finalized evidence-backed findings may include an optional `fix_prompt` for a coding
+agent and the report may include a prioritized `fix_plan`. Prompts are generated
+deterministically from the finding, evidence references, root cause, and suggested
+action. They are recommendation-only: they never modify a website, bypass access
+controls, or invent missing names, prices, URLs, contacts, or schema values.
+
+Prompts are omitted for `inconclusive` and `not-assessed` findings. `likely-risk`
+prompts require verification before implementation, and proactive prompts are labelled
+as recommendations rather than defects. Review every prompt independently before
+applying it.
+
 It uses a disposable local HTTP server to cover 18 website categories, strong/average/poor
-tiers, access failures, resource types, page-purpose classification, scoring, and evidence
+tiers, access conditions, resource types, page-purpose classification, scoring, and evidence
 integrity without external search or browser automation.
-
-## Validation runs
-
-`validation-runs/` holds reports regenerated from the current pipeline across six sites of
-different shapes, plus `RUNS.md` with runtimes and severity counts. All six validate against
-`report-schema.json`.
 
 ## Evidence basis
 

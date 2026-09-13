@@ -1,0 +1,550 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "sagepub.com",
+    "rank": 790,
+    "technical_type": "unknown",
+    "url": "https://sagepub.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:15:41.706792+00:00",
+  "finished_at": "2026-09-13T16:16:05.976679+00:00",
+  "elapsed_seconds": 24.27,
+  "error": null,
+  "report": {
+    "site": "https://www.sagepub.com",
+    "audited_at": "2026-09-13T16:16:05Z",
+    "summary": {
+      "total_findings": 8,
+      "critical": 0,
+      "high": 2,
+      "medium": 4,
+      "low": 2,
+      "discoverability_findings": 5,
+      "engagement_findings": 3,
+      "citability_score": 61,
+      "citability_score_breakdown": {
+        "score": 61,
+        "base": 100,
+        "penalty": 39,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 14,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "engagement:missing-cta:/": 12,
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "engagement:few-internal-links": 2,
+          "citation:unanswerable:offering": 2,
+          "robots:training-only-blocked": 0,
+          "citation:unanswerable:audience": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 8
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://languageservices.sagepub.com/ via heading_structure_inspection [2026-09-13T16:15:56Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://languageservices.sagepub.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:15:56Z",
+          "confidence": "high",
+          "evidence_id": "E-553fe47840b1"
+        },
+        "evidence_refs": [
+          "E-553fe47840b1"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Homepage lacks clear call-to-action buttons or interactive forms",
+        "category": "navigation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://languageservices.sagepub.com/ via interactive_element_analysis [2026-09-13T16:15:56Z]: Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-cta:/",
+        "suggested_action": {
+          "summary": "Add prominent primary call-to-action (CTA) buttons.",
+          "priority": "high",
+          "how_to_fix": "Add visually distinct CTA buttons (e.g. 'Get Started', 'View Pricing', 'Contact Sales') above and below the fold.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://languageservices.sagepub.com/",
+          "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+          "method": "interactive_element_analysis",
+          "timestamp": "2026-09-13T16:15:56Z",
+          "confidence": "high",
+          "evidence_id": "E-5489b85ab4d3"
+        },
+        "evidence_refs": [
+          "E-5489b85ab4d3"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://services.sagepub.com/ via jsonld_schema_extractor [2026-09-13T16:15:56Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://languageservices.sagepub.com/ via jsonld_schema_extractor [2026-09-13T16:15:56Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://careers.sagepub.com/ via jsonld_schema_extractor [2026-09-13T16:15:56Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Sage Publishing\",\n  \"url\": \"https://www.sagepub.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Sage Publishing is an independent academic publisher founded in 1965, publishing more than 1,000 peer-reviewed journals and over 800 books per year across the social sciences, humanities, science, technology, and medicine.\",\n  \"foundingDate\": \"1965\",\n  \"sameAs\": [\n    \"https://en.wikipedia.org/wiki/Sage_Publishing\",\n    \"https://www.wikidata.org/wiki/Q251266\",\n    \"https://ror.org/05534qc24\",\n    \"https://isni.org/isni/0000000405025717\",\n    \"https://sherpa.ac.uk/romeo/pub/65/\",\n    \"https://www.linkedin.com/company/sage-publishing\",\n    \"https://www.facebook.com/SagePublications/\",\n    \"https://www.youtube.com/@SagePublications\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://services.sagepub.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:15:56Z",
+          "confidence": "high",
+          "evidence_id": "E-ace201fc748c"
+        },
+        "evidence_refs": [
+          "E-ace201fc748c",
+          "E-ba418c1286cb",
+          "E-edc806afdfdd"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://services.sagepub.com/ via html_meta_inspector [2026-09-13T16:15:56Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://languageservices.sagepub.com/ via html_meta_inspector [2026-09-13T16:15:56Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Drive impact with trusted publishing and advertising solutions\",\n  \"url\": \"https://services.sagepub.com/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Sage Publishing\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://services.sagepub.com/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://services.sagepub.com/",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T16:15:56Z",
+          "confidence": "high",
+          "evidence_id": "E-91dd267fc80e"
+        },
+        "evidence_refs": [
+          "E-87a649567427",
+          "E-91dd267fc80e"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Isolated page with insufficient internal navigation links",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://languageservices.sagepub.com/ via internal_link_density_check [2026-09-13T16:15:56Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:few-internal-links",
+        "suggested_action": {
+          "summary": "Incorporate related internal links and header/footer navigation.",
+          "priority": "medium",
+          "how_to_fix": "Add links to relevant documentation, related products, or category overview pages.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://languageservices.sagepub.com/",
+          "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+          "method": "internal_link_density_check",
+          "timestamp": "2026-09-13T16:15:56Z",
+          "confidence": "medium",
+          "evidence_id": "E-744e29661ab2"
+        },
+        "evidence_refs": [
+          "E-744e29661ab2"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What does Sage Publishing offer?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.sagepub.com/ via onsite_answerability_probe [2026-09-13T16:16:05Z]: Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Sage Publishing offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:offering",
+        "suggested_action": {
+          "summary": "Mark up the product or service catalogue.",
+          "priority": "medium",
+          "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.sagepub.com/",
+          "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Sage Publishing offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:16:05Z",
+          "confidence": "medium",
+          "evidence_id": "E-70063d218eaa"
+        },
+        "evidence_refs": [
+          "E-70063d218eaa"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://sagepub.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T16:15:56Z]: robots.txt disallows root '/' for training crawlers (CCBot, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://sagepub.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (CCBot, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T16:15:56Z",
+          "confidence": "high",
+          "evidence_id": "E-615490555957"
+        },
+        "evidence_refs": [
+          "E-615490555957"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"Who is Sage Publishing for?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.sagepub.com/ via onsite_answerability_probe [2026-09-13T16:16:05Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Sage Publishing for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:audience",
+        "suggested_action": {
+          "summary": "State the intended audience in plain language.",
+          "priority": "low",
+          "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.sagepub.com/",
+          "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Sage Publishing for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:16:05Z",
+          "confidence": "medium",
+          "evidence_id": "E-bd074f5ed68c"
+        },
+        "evidence_refs": [
+          "E-bd074f5ed68c"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.sagepub.com/help-and-support",
+          "score": 26,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.sagepub.com/about",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.sagepub.com/useful-tools/sage-author-service",
+          "score": 14,
+          "signals": [
+            "product_landing:service,services",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.sagepub.com/help-and-support/careers",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://sagepub.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (CCBot, Meta-ExternalAgent, Bytespider, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-615490555957"
+      },
+      {
+        "url": "https://services.sagepub.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-ace201fc748c"
+      },
+      {
+        "url": "https://services.sagepub.com/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-91dd267fc80e"
+      },
+      {
+        "url": "https://languageservices.sagepub.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-ba418c1286cb"
+      },
+      {
+        "url": "https://languageservices.sagepub.com/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-87a649567427"
+      },
+      {
+        "url": "https://careers.sagepub.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-edc806afdfdd"
+      },
+      {
+        "url": "https://languageservices.sagepub.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-553fe47840b1"
+      },
+      {
+        "url": "https://languageservices.sagepub.com/",
+        "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+        "method": "interactive_element_analysis",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "high",
+        "evidence_id": "E-5489b85ab4d3"
+      },
+      {
+        "url": "https://languageservices.sagepub.com/",
+        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+        "method": "internal_link_density_check",
+        "timestamp": "2026-09-13T16:15:56Z",
+        "confidence": "medium",
+        "evidence_id": "E-744e29661ab2"
+      },
+      {
+        "url": "https://www.sagepub.com/",
+        "observation": "Across 5 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Sage Publishing offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:16:05Z",
+        "confidence": "medium",
+        "evidence_id": "E-70063d218eaa"
+      },
+      {
+        "url": "https://www.sagepub.com/",
+        "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Sage Publishing for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:16:05Z",
+        "confidence": "medium",
+        "evidence_id": "E-bd074f5ed68c"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "contact_support",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

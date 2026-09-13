@@ -1,0 +1,652 @@
+{
+  "seed_url": "https://x.com/",
+  "origin": "https://x.com",
+  "robots_txt": {
+    "found": true,
+    "url": "https://x.com/robots.txt",
+    "status": 200,
+    "raw": "# Google / Bing Search Engine Robots\n# ==================================\n# Shared group so Googlebot and Bingbot always get the same rules.\nUser-agent: Googlebot\nUser-agent: Bingbot\n\nAllow: /*?s=\nAllow: /*?t=\nAllow: /*?ref_src=\nAllow: /hashtag/*?src=\nAllow: /search?q=%23\nAllow: /i/api/\n# Same length as the /*/likes and /*/media rules; RFC 9309 breaks the tie in\n# favor of Allow, so /i/api/ fetches stay crawlable.\nAllow: /i/api/*\nDisallow: /*?lang=en-ss\nAllow: /*?lang=\nDisallow: /search/realtime\nDisallow: /search/users\nDisallow: /search/*/grid\n\nDisallow: /*/analytics\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/verified_followers\n\nDisallow: /account/deactivated\nDisallow: /settings/deactivated\n\n# Only `*` and `$` are metacharacters here (RFC 9309); regex classes match\n# literally. /photo is anchored so /status/*/photo/1 media pages stay open.\nDisallow: /*/likes\nDisallow: /*/likes?\nDisallow: /*/retweets\nDisallow: /*/retweets?\nDisallow: /*/media\nDisallow: /*/media?\nDisallow: /*/photo$\nDisallow: /*/photo?\nAllow: /*?\n\nUser-agent: facebookexternalhit\n\nAllow: /*?lang=\nAllow: /*?s=\nAllow: /*?t=\nAllow: /*?ref_src=\nAllow: /hashtag/*?src=\nAllow: /search?*cashtagRestId=\nAllow: /i/api/\nAllow: /i/api/*\nDisallow: /search?q=\nDisallow: /search/realtime\nDisallow: /search/users\nDisallow: /search/*/grid\n\nDisallow: /*?\nDisallow: /*/followers\nDisallow: /*/following\nDisallow: /*/verified_followers\n\nDisallow: /account/deactivated\nDisallow: /settings/deactivated\n\nDisallow: /*/likes\nDisallow: /*/likes?\nDisallow: /*/retweets\nDisallow: /*/retweets?\nDisallow: /*/media\nDisallow: /*/media?\nDisallow: /*/photo$\nDisallow: /*/photo?\n\nUser-Agent: Google-Extended\nDisallow: *\n\nUser-Agent: FacebookBot\nDisallow: *\n\nUser-agent: Discordbot\nDisallow: *\n\n# Meta AI / product crawlers (product tokens; versions like /1.1 are ignored\n# under RFC 9309 token matching).\nUser-agent: meta-webindexer\nDisallow: *\n\nUser-agent: meta-externalagent\nDisallow: *\n\nUser-agent: meta-externalads\nDisallow: *\n\nUser-agent: meta-externalfetcher\nDisallow: *\n\n# Every bot that might possibly read and respect this file\n# ========================================================\nUser-agent: *\nDisallow: /\n\n\n# WHAT-4882 - Keep notification-email links (/i/u) out of search results.\n# Named crawlers stay un-blocked on purpose: they must crawl /i/u to see its\n# X-Robots-Tag noindex (the robots.txt Noindex directive died in 2019).\nDisallow: /i/u\n\n# Wait 1 second between successive requests. See ONBOARD-2698 for details.\nCrawl-delay: 1\n\n# Independent of user agent. Links in the sitemap are full URLs using https://\n# and need to match the protocol of the sitemap.\nSitemap: https://x.com/sitemap.xml\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      }
+    },
+    "partially_blocked_agents": {
+      "GPTBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "ClaudeBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "CCBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Applebot-Extended": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Bytespider": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Amazonbot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "OAI-SearchBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Claude-SearchBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "PerplexityBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "ChatGPT-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Claude-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Perplexity-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ]
+    },
+    "sitemaps_declared": [
+      "https://x.com/sitemap.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://x.com/sitemap.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 0
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": true,
+      "status": 200,
+      "url": "https://x.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": true,
+      "status": 200,
+      "url": "https://x.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": true,
+      "status": 200,
+      "url": "https://x.com/ai.txt"
+    }
+  },
+  "pages": {
+    "https://x.com/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "fetch skipped because robots.txt disallowed this path",
+      "access_status": "robots-disallowed",
+      "url": "https://x.com/",
+      "final_url": "https://x.com/",
+      "status_code": 0,
+      "load_time_seconds": null,
+      "raw_html": "",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "X",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 1,
+    "total_crawl_time_seconds": 4.12,
+    "page_selection": [],
+    "resources_observed": 0,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "robots-disallowed": 1
+    }
+  },
+  "skipped_by_robots": [
+    {
+      "url": "https://x.com/",
+      "matched_rule": "Disallow: /"
+    }
+  ],
+  "url_aliases": {}
+}

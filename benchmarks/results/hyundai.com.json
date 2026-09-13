@@ -1,0 +1,504 @@
+{
+  "site": {
+    "category": "automotive",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "hyundai.com",
+    "rank": 229,
+    "technical_type": "unknown",
+    "url": "https://hyundai.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:34:37.201706+00:00",
+  "finished_at": "2026-09-13T15:35:02.438797+00:00",
+  "elapsed_seconds": 25.237,
+  "error": null,
+  "report": {
+    "site": "https://www.hyundai.com",
+    "audited_at": "2026-09-13T15:35:02Z",
+    "summary": {
+      "total_findings": 7,
+      "critical": 0,
+      "high": 3,
+      "medium": 2,
+      "low": 2,
+      "discoverability_findings": 3,
+      "engagement_findings": 4,
+      "citability_score": 57,
+      "citability_score_breakdown": {
+        "score": 57,
+        "base": 100,
+        "penalty": 43,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 30,
+          "medium": 10,
+          "low": 3
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/in/en/click-to-buy/prices": 12,
+          "extractability:money-page-price-not-in-text:/in/en/click-to-buy/prices": 6,
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "engagement:broken-internal-links": 5,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 7
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.hyundai.com/in/en/click-to-buy/prices via jsonld_schema_extractor [2026-09-13T15:34:52Z]: Commercial/product page (https://www.hyundai.com/in/en/click-to-buy/prices) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/in/en/click-to-buy/prices",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Check out all Hyundai car Prices | Hyundai Motor India\",\n  \"url\": \"https://www.hyundai.com/in/en/click-to-buy/prices\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"HYUNDAI MOTORS\"\n  },\n  \"description\": \"Hyundai Cars price list in India! Select your Hyundai car and choose the city and dealership to check the latest 2026 price list of Hyundai Cars.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.hyundai.com/in/en/click-to-buy/prices\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.hyundai.com/in/en/click-to-buy/prices",
+          "observation": "Commercial/product page (https://www.hyundai.com/in/en/click-to-buy/prices) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:34:52Z",
+          "confidence": "high",
+          "evidence_id": "E-4bb882dadea8"
+        },
+        "evidence_refs": [
+          "E-4bb882dadea8"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Pricing page states no price in text or structured data",
+        "category": "fact-extractability",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.hyundai.com/in/en/click-to-buy/prices via money_page_price_extractability_check [2026-09-13T15:34:52Z]: Page classified as a pricing/product page carries 25 image(s) but no price string in its visible text and no Offer/PriceSpecification schema. If the figures are rendered inside those images, no assistant can quote them. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:money-page-price-not-in-text:/in/en/click-to-buy/prices",
+        "suggested_action": {
+          "summary": "Publish prices as selectable text plus Offer structured data.",
+          "priority": "high",
+          "how_to_fix": "Render prices as HTML text rather than baking them into images, and add Offer JSON-LD with price, priceCurrency and availability. If pricing is genuinely quote-only, state that in text -- an assistant can cite \"pricing is quote-based\" but cannot cite an empty page.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.hyundai.com/in/en/click-to-buy/prices",
+          "observation": "Page classified as a pricing/product page carries 25 image(s) but no price string in its visible text and no Offer/PriceSpecification schema. If the figures are rendered inside those images, no assistant can quote them.",
+          "method": "money_page_price_extractability_check",
+          "timestamp": "2026-09-13T15:34:52Z",
+          "confidence": "medium",
+          "evidence_id": "E-6707ea920a5a"
+        },
+        "evidence_refs": [
+          "E-6707ea920a5a"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.hyundai.com/in/en/blog/best-suvs-under-10lakh-india via heading_structure_inspection [2026-09-13T15:34:52Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.hyundai.com/in/en/blog/best-suvs-under-10lakh-india",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:34:52Z",
+          "confidence": "high",
+          "evidence_id": "E-2b59acc320ac"
+        },
+        "evidence_refs": [
+          "E-2b59acc320ac"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.hyundai.com/in/en via jsonld_schema_extractor [2026-09-13T15:34:52Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"HYUNDAI MOTORS\",\n  \"url\": \"https://www.hyundai.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Visit Hyundai India website, check offers and book new Hyundai car online. Find nearest dealer/showroom and request a latest Hyundai model test drive now.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.hyundai.com/in/en",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:34:52Z",
+          "confidence": "high",
+          "evidence_id": "E-54eaa888c34b"
+        },
+        "evidence_refs": [
+          "E-54eaa888c34b"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (4 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.hyundai.com/content/hyundai/in/en/login/my-account/dashboard.html via http_redirect_aware_link_checker [2026-09-13T15:35:02Z]: Sampled internal links returned broken HTTP errors: https://www.hyundai.com/content/hyundai/in/en/login/my-account/dashboard.html (HTTP 404); https://www.hyundai.com/content/hyundai/in/en/login/my-account/profile.html (HTTP 404); https://www.hyundai.com/content/hyundai/in/en/login/my-account/myvehicles.html (HTTP 404). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.hyundai.com/content/hyundai/in/en/login/my-account/dashboard.html",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.hyundai.com/content/hyundai/in/en/login/my-account/dashboard.html (HTTP 404); https://www.hyundai.com/content/hyundai/in/en/login/my-account/profile.html (HTTP 404); https://www.hyundai.com/content/hyundai/in/en/login/my-account/myvehicles.html (HTTP 404).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T15:35:02Z",
+          "confidence": "high",
+          "evidence_id": "E-dc1e2ed57667"
+        },
+        "evidence_refs": [
+          "E-dc1e2ed57667"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.hyundai.com/in/en via breadcrumb_markup_inspector [2026-09-13T15:34:52Z]: Page at deep route (/in/en) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.hyundai.com/in/en/blog/best-suvs-under-10lakh-india via breadcrumb_markup_inspector [2026-09-13T15:34:52Z]: Page at deep route (/in/en/blog/best-suvs-under-10lakh-india) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.hyundai.com/in/en",
+          "observation": "Page at deep route (/in/en) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:34:52Z",
+          "confidence": "medium",
+          "evidence_id": "E-07c37ecb7f29"
+        },
+        "evidence_refs": [
+          "E-07c37ecb7f29",
+          "E-2e5c12e89916"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.hyundai.com/in/en/click-to-buy/prices via heading_structure_inspection [2026-09-13T15:34:52Z]: Page defines 3 separate <h1> tags (Check out all Hyundai car Prices | Hyund; Check out all Hyundai car Prices | Hyund; Hyundai Cars Price in India - Check Late), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.hyundai.com/in/en/click-to-buy/prices",
+          "observation": "Page defines 3 separate <h1> tags (Check out all Hyundai car Prices | Hyund; Check out all Hyundai car Prices | Hyund; Hyundai Cars Price in India - Check Late), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:34:52Z",
+          "confidence": "high",
+          "evidence_id": "E-ba288dd72ecf"
+        },
+        "evidence_refs": [
+          "E-ba288dd72ecf"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 4,
+      "resources_observed": 2,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.hyundai.com/content/hyundai/in/en/click-to-buy/exter-price",
+          "score": 26,
+          "signals": [
+            "product_pricing:price",
+            "product_landing:buy",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.hyundai.com/content/hyundai/in/en/mobility-solutions",
+          "score": 24,
+          "signals": [
+            "product_landing:solutions",
+            "audience:solutions",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.hyundai.com/in/en/blog/best-suvs-under-10lakh-india",
+          "score": 24,
+          "signals": [
+            "product_landing:features",
+            "article_docs:blog",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.hyundai.com/worldwide/en/company/ir/ir-resources/ceo-investor-day",
+          "score": 22,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:company",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.hyundai.com/in/en",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:34:52Z",
+        "confidence": "high",
+        "evidence_id": "E-54eaa888c34b"
+      },
+      {
+        "url": "https://www.hyundai.com/in/en/click-to-buy/prices",
+        "observation": "Commercial/product page (https://www.hyundai.com/in/en/click-to-buy/prices) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:34:52Z",
+        "confidence": "high",
+        "evidence_id": "E-4bb882dadea8"
+      },
+      {
+        "url": "https://www.hyundai.com/in/en/click-to-buy/prices",
+        "observation": "Page classified as a pricing/product page carries 25 image(s) but no price string in its visible text and no Offer/PriceSpecification schema. If the figures are rendered inside those images, no assistant can quote them.",
+        "method": "money_page_price_extractability_check",
+        "timestamp": "2026-09-13T15:34:52Z",
+        "confidence": "medium",
+        "evidence_id": "E-6707ea920a5a"
+      },
+      {
+        "url": "https://www.hyundai.com/in/en",
+        "observation": "Page at deep route (/in/en) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:34:52Z",
+        "confidence": "medium",
+        "evidence_id": "E-07c37ecb7f29"
+      },
+      {
+        "url": "https://www.hyundai.com/in/en/click-to-buy/prices",
+        "observation": "Page defines 3 separate <h1> tags (Check out all Hyundai car Prices | Hyund; Check out all Hyundai car Prices | Hyund; Hyundai Cars Price in India - Check Late), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:34:52Z",
+        "confidence": "high",
+        "evidence_id": "E-ba288dd72ecf"
+      },
+      {
+        "url": "https://www.hyundai.com/in/en/blog/best-suvs-under-10lakh-india",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:34:52Z",
+        "confidence": "high",
+        "evidence_id": "E-2b59acc320ac"
+      },
+      {
+        "url": "https://www.hyundai.com/in/en/blog/best-suvs-under-10lakh-india",
+        "observation": "Page at deep route (/in/en/blog/best-suvs-under-10lakh-india) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:34:52Z",
+        "confidence": "medium",
+        "evidence_id": "E-2e5c12e89916"
+      },
+      {
+        "url": "https://www.hyundai.com/content/hyundai/in/en/login/my-account/dashboard.html",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.hyundai.com/content/hyundai/in/en/login/my-account/dashboard.html (HTTP 404); https://www.hyundai.com/content/hyundai/in/en/login/my-account/profile.html (HTTP 404); https://www.hyundai.com/content/hyundai/in/en/login/my-account/myvehicles.html (HTTP 404).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T15:35:02Z",
+        "confidence": "high",
+        "evidence_id": "E-dc1e2ed57667"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 4 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 4,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "general",
+      "product_pricing"
+    ],
+    "resource_types": [
+      "pdf",
+      "unknown"
+    ],
+    "resources_seen": 2,
+    "access_summary": {}
+  }
+}

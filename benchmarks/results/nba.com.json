@@ -1,0 +1,485 @@
+{
+  "site": {
+    "category": "sports",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "nba.com",
+    "rank": 272,
+    "technical_type": "unknown",
+    "url": "https://nba.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:37:32.457113+00:00",
+  "finished_at": "2026-09-13T15:37:51.182336+00:00",
+  "elapsed_seconds": 18.725,
+  "error": null,
+  "report": {
+    "site": "https://www.nba.com",
+    "audited_at": "2026-09-13T15:37:51Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 1,
+      "high": 1,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 5,
+      "engagement_findings": 1,
+      "citability_score": 53,
+      "citability_score_breakdown": {
+        "score": 53,
+        "base": 100,
+        "penalty": 47,
+        "penalty_by_severity": {
+          "critical": 25,
+          "high": 12,
+          "medium": 9,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "robots:citation-agents-blocked-root": 25,
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "citation:unanswerable:offering": 2,
+          "trust:no-independent-identity-anchor": 2,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "AI search and retrieval crawlers blocked from root (PerplexityBot, ChatGPT-User)",
+        "category": "crawlability",
+        "severity": "critical",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "critical",
+        "evidence": "Observed at https://nba.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:37:44Z]: robots.txt disallows root '/' for retrieval agents: PerplexityBot, ChatGPT-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Amazonbot) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:citation-agents-blocked-root",
+        "suggested_action": {
+          "summary": "Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+          "priority": "critical",
+          "how_to_fix": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://nba.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for retrieval agents: PerplexityBot, ChatGPT-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:37:44Z",
+          "confidence": "high",
+          "evidence_id": "E-60343f745054"
+        },
+        "evidence_refs": [
+          "E-60343f745054"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.nba.com/ via heading_structure_inspection [2026-09-13T15:37:44Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.nba.com/stats/help via heading_structure_inspection [2026-09-13T15:37:44Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nba.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:37:44Z",
+          "confidence": "high",
+          "evidence_id": "E-e4dc9bacadc7"
+        },
+        "evidence_refs": [
+          "E-e4dc9bacadc7",
+          "E-f6f0ac6306bb"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.nba.com/ via jsonld_schema_extractor [2026-09-13T15:37:44Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"NBA.com\",\n  \"url\": \"https://www.nba.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Follow the action on NBA scores, schedules, stats, news, teams, and players. Buy tickets or watch the games anywhere with NBA League Pass.\",\n  \"email\": \"NBASTATS@NBA.com\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.nba.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:37:44Z",
+          "confidence": "high",
+          "evidence_id": "E-da430f15d811"
+        },
+        "evidence_refs": [
+          "E-da430f15d811"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What does NBA.com offer?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.nba.com/news/2026-27-nba-schedule-notes-numbers-to-know via onsite_answerability_probe [2026-09-13T15:37:51Z]: Across 4 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does NBA.com offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:offering",
+        "suggested_action": {
+          "summary": "Mark up the product or service catalogue.",
+          "priority": "medium",
+          "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.nba.com/news/2026-27-nba-schedule-notes-numbers-to-know",
+          "observation": "Across 4 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does NBA.com offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:37:51Z",
+          "confidence": "medium",
+          "evidence_id": "E-12ae6a342fb7"
+        },
+        "evidence_refs": [
+          "E-12ae6a342fb7"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.nba.com via onsite_identity_anchor_inspection [2026-09-13T15:37:51Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 40 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.nba.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 40 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T15:37:51Z",
+          "confidence": "medium",
+          "evidence_id": "E-4cce0e63e231"
+        },
+        "evidence_refs": [
+          "E-4cce0e63e231"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes NBA.com different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.nba.com/ via onsite_answerability_probe [2026-09-13T15:37:51Z]: Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes NBA.com different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.nba.com/",
+          "observation": "Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes NBA.com different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:37:51Z",
+          "confidence": "medium",
+          "evidence_id": "E-227f87e14b69"
+        },
+        "evidence_refs": [
+          "E-227f87e14b69"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 4,
+      "resources_observed": 1,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.nba.com/news/2026-27-nba-schedule-notes-numbers-to-know",
+          "score": 24,
+          "signals": [
+            "article_docs:news",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://nba.com/sitemap_team_index.xml",
+          "score": 14,
+          "signals": [
+            "contact_support:team",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.nba.com/news/2026-27-schedule-team-by-team-index",
+          "score": 24,
+          "signals": [
+            "article_docs:news",
+            "contact_support:team",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.nba.com/stats/help",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://nba.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for retrieval agents: PerplexityBot, ChatGPT-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:37:44Z",
+        "confidence": "high",
+        "evidence_id": "E-60343f745054"
+      },
+      {
+        "url": "https://www.nba.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:37:44Z",
+        "confidence": "high",
+        "evidence_id": "E-da430f15d811"
+      },
+      {
+        "url": "https://www.nba.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:37:44Z",
+        "confidence": "high",
+        "evidence_id": "E-e4dc9bacadc7"
+      },
+      {
+        "url": "https://www.nba.com/stats/help",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:37:44Z",
+        "confidence": "high",
+        "evidence_id": "E-f6f0ac6306bb"
+      },
+      {
+        "url": "https://www.nba.com/news/2026-27-nba-schedule-notes-numbers-to-know",
+        "observation": "Across 4 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does NBA.com offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:37:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-12ae6a342fb7"
+      },
+      {
+        "url": "https://www.nba.com/",
+        "observation": "Across 4 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes NBA.com different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:37:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-227f87e14b69"
+      },
+      {
+        "url": "https://www.nba.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 40 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T15:37:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-4cce0e63e231"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 4 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so NBA.com is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 4,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "homepage"
+    ],
+    "resource_types": [
+      "unknown"
+    ],
+    "resources_seen": 1,
+    "access_summary": {}
+  }
+}

@@ -1,0 +1,433 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "lemonde.fr",
+    "rank": 830,
+    "technical_type": "unknown",
+    "url": "https://lemonde.fr/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:21:20.043854+00:00",
+  "finished_at": "2026-09-13T16:22:18.274467+00:00",
+  "elapsed_seconds": 58.231,
+  "error": null,
+  "report": {
+    "site": "https://www.lemonde.fr",
+    "audited_at": "2026-09-13T16:22:18Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 1,
+      "high": 1,
+      "medium": 2,
+      "low": 1,
+      "discoverability_findings": 4,
+      "engagement_findings": 1,
+      "citability_score": 60,
+      "citability_score_breakdown": {
+        "score": 60,
+        "base": 100,
+        "penalty": 40,
+        "penalty_by_severity": {
+          "critical": 25,
+          "high": 6,
+          "medium": 7,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "robots:citation-agents-blocked-root": 25,
+          "render:empty-raw-html-gap:/faq/": 6,
+          "schema:root-organization-missing": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "AI search and retrieval crawlers blocked from root (Claude-SearchBot, Claude-User)",
+        "category": "crawlability",
+        "severity": "critical",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "critical",
+        "evidence": "Observed at https://lemonde.fr/robots.txt via robots_txt_parser_longest_match [2026-09-13T16:22:06Z]: robots.txt disallows root '/' for retrieval agents: Claude-SearchBot, Claude-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:citation-agents-blocked-root",
+        "suggested_action": {
+          "summary": "Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+          "priority": "critical",
+          "how_to_fix": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://lemonde.fr/robots.txt",
+          "observation": "robots.txt disallows root '/' for retrieval agents: Claude-SearchBot, Claude-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T16:22:06Z",
+          "confidence": "high",
+          "evidence_id": "E-36966347d9d8"
+        },
+        "evidence_refs": [
+          "E-36966347d9d8"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.lemonde.fr/faq/?question=je-souhaite-contacter-le-service-client-du-monde via static_initial_html_shell_inspection [2026-09-13T16:22:06Z]: Raw HTML yields only 29 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/faq/",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.lemonde.fr/faq/?question=je-souhaite-contacter-le-service-client-du-monde",
+          "observation": "Raw HTML yields only 29 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T16:22:06Z",
+          "confidence": "medium",
+          "evidence_id": "E-c7ccb0b25832"
+        },
+        "evidence_refs": [
+          "E-c7ccb0b25832"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.lemonde.fr/en/ via jsonld_schema_extractor [2026-09-13T16:22:06Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Le Monde.fr\",\n  \"url\": \"https://www.lemonde.fr\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"France\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.lemonde.fr/en/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:22:06Z",
+          "confidence": "high",
+          "evidence_id": "E-c9387a39cbe9"
+        },
+        "evidence_refs": [
+          "E-c9387a39cbe9"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.lemonde.fr via onsite_identity_anchor_inspection [2026-09-13T16:22:18Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 19 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.lemonde.fr",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 19 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:22:18Z",
+          "confidence": "medium",
+          "evidence_id": "E-320ae4694dc9"
+        },
+        "evidence_refs": [
+          "E-320ae4694dc9"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.lemonde.fr/en/about-us/article/2022/04/06/groupe-le-monde-s-code-of-ethics-and-professional-conduct_5979823_115.html via heading_structure_inspection [2026-09-13T16:22:06Z]: Page defines 7 separate <h1> tags (Groupe Le Monde's Code of Ethics and Pro; Why are you seeing this message?; How can you stop seeing this message?), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.lemonde.fr/en/about-us/article/2022/04/06/groupe-le-monde-s-code-of-ethics-and-professional-conduct_5979823_115.html",
+          "observation": "Page defines 7 separate <h1> tags (Groupe Le Monde's Code of Ethics and Pro; Why are you seeing this message?; How can you stop seeing this message?), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:22:06Z",
+          "confidence": "high",
+          "evidence_id": "E-c4fc51ef4abc"
+        },
+        "evidence_refs": [
+          "E-c4fc51ef4abc"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 4,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.lemonde.fr/faq/?question=je-souhaite-contacter-le-service-client-du-monde",
+          "score": 36,
+          "signals": [
+            "product_landing:service",
+            "article_docs:faq",
+            "contact_support:contact,team",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.lemonde.fr/en/about-us/",
+          "score": 14,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.lemonde.fr/en",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.lemonde.fr/en/about-us/article/2022/04/06/groupe-le-monde-s-code-of-ethics-and-professional-conduct_5979823_115.html",
+          "score": 21,
+          "signals": [
+            "article_docs:article",
+            "contact_support:about",
+            "linked-from-homepage",
+            "dated-editorial-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://lemonde.fr/robots.txt",
+        "observation": "robots.txt disallows root '/' for retrieval agents: Claude-SearchBot, Claude-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T16:22:06Z",
+        "confidence": "high",
+        "evidence_id": "E-36966347d9d8"
+      },
+      {
+        "url": "https://www.lemonde.fr/en/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:22:06Z",
+        "confidence": "high",
+        "evidence_id": "E-c9387a39cbe9"
+      },
+      {
+        "url": "https://www.lemonde.fr/faq/?question=je-souhaite-contacter-le-service-client-du-monde",
+        "observation": "Raw HTML yields only 29 words of visible text and shows static shell signals (many-inline-or-external-scripts, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T16:22:06Z",
+        "confidence": "medium",
+        "evidence_id": "E-c7ccb0b25832"
+      },
+      {
+        "url": "https://www.lemonde.fr/en/about-us/article/2022/04/06/groupe-le-monde-s-code-of-ethics-and-professional-conduct_5979823_115.html",
+        "observation": "Page defines 7 separate <h1> tags (Groupe Le Monde's Code of Ethics and Pro; Why are you seeing this message?; How can you stop seeing this message?), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:22:06Z",
+        "confidence": "high",
+        "evidence_id": "E-c4fc51ef4abc"
+      },
+      {
+        "url": "https://www.lemonde.fr",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 19 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:22:18Z",
+        "confidence": "medium",
+        "evidence_id": "E-320ae4694dc9"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 4 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 4,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

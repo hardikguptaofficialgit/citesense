@@ -1,0 +1,725 @@
+{
+  "site": {
+    "category": "hotels",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "wyndhamhotels.com",
+    "rank": 195,
+    "technical_type": "unknown",
+    "url": "https://wyndhamhotels.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:46:56.399729+00:00",
+  "finished_at": "2026-09-13T17:47:18.413051+00:00",
+  "elapsed_seconds": 22.013,
+  "error": null,
+  "report": {
+    "site": "https://www.wyndhamhotels.com",
+    "audited_at": "2026-09-13T17:47:18Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 0,
+      "high": 1,
+      "medium": 2,
+      "low": 2,
+      "discoverability_findings": 4,
+      "engagement_findings": 1,
+      "citability_score": 80,
+      "citability_score_breakdown": {
+        "score": 80,
+        "base": 100,
+        "penalty": 20,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 4,
+          "low": 4
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "consistency:phone-number-mismatch": 2,
+          "trust:no-independent-identity-anchor": 2,
+          "schema:organization-missing-sameas": 2,
+          "extractability:images-without-alt": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.wyndhamhotels.com/en-uk via heading_structure_inspection [2026-09-13T17:47:09Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html via heading_structure_inspection [2026-09-13T17:47:09Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.wyndhamhotels.com/en-uk",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T17:47:09Z",
+          "confidence": "high",
+          "evidence_id": "E-70e737cc16a3"
+        },
+        "evidence_refs": [
+          "E-577f99565458",
+          "E-70e737cc16a3"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via heading_structure_inspection [2026-09-13T17:47:09Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html via heading_structure_inspection [2026-09-13T17:47:09Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-577f99565458, E-70e737cc16a3.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing primary H1 heading on landing page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing primary H1 heading on landing page",
+          "evidence_refs": [
+            "E-577f99565458",
+            "E-70e737cc16a3"
+          ],
+          "root_cause": "Use the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a clear, descriptive <h1> heading.",
+            "priority": "high",
+            "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.wyndhamhotels.com/en-uk via cross_page_contact_comparison [2026-09-13T17:47:09Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8444054141: found on 3 page(s); Number 8004079832: found on 3 page(s); Number 4110026916: found on 1 page(s); Number 8000621218: found on 1 page(s); Number 8009124668: found on 1 page(s); Number 8005072738: found on 1 page(s); Number 8776040069: found on 1 page(s); Number 8008547854: found on 1 page(s); Number 8000474766: found on 1 page(s); Number 8002660588: found on 1 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.wyndhamhotels.com/en-uk",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8444054141: found on 3 page(s); Number 8004079832: found on 3 page(s); Number 4110026916: found on 1 page(s); Number 8000621218: found on 1 page(s); Number 8009124668: found on 1 page(s); Number 8005072738: found on 1 page(s); Number 8776040069: found on 1 page(s); Number 8008547854: found on 1 page(s); Number 8000474766: found on 1 page(s); Number 8002660588: found on 1 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T17:47:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-6d7e9bf11aab"
+        },
+        "evidence_refs": [
+          "E-6d7e9bf11aab"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via cross_page_contact_comparison [2026-09-13T17:47:09Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8444054141: found on 3 page(s); Number 8004079832: found on 3 page(s); Number 4110026916: found on 1 page(s); Number 8000621218: found on 1 page(s); Number 8009124668: found on 1 page(s); Number 8005072738: found on 1 page(s); Number 8776040069: found on 1 page(s); Number 8008547854: found on 1 page(s); Number 8000474766: found on 1 page(s); Number 8002660588: found on 1 page(s). (Confidence: medium)\nEvidence references: E-6d7e9bf11aab.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Conflicting primary contact phone numbers published across site",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "content governance owner",
+          "problem": "Conflicting primary contact phone numbers published across site",
+          "evidence_refs": [
+            "E-6d7e9bf11aab"
+          ],
+          "root_cause": "Use the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Standardize customer service and contact phone numbers.",
+            "priority": "medium",
+            "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+            "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.wyndhamhotels.com via onsite_identity_anchor_inspection [2026-09-13T17:47:18Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.wyndhamhotels.com",
+          "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T17:47:18Z",
+          "confidence": "medium",
+          "evidence_id": "E-a4b3008e1809"
+        },
+        "evidence_refs": [
+          "E-a4b3008e1809"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com via onsite_identity_anchor_inspection [2026-09-13T17:47:18Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-a4b3008e1809.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-a4b3008e1809"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+        "category": "structured-data",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.wyndhamhotels.com/en-uk via jsonld_schema_extractor [2026-09-13T17:47:09Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:organization-missing-sameas",
+        "suggested_action": {
+          "summary": "Add sameAs URLs to Organization JSON-LD.",
+          "priority": "low",
+          "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Wyndham Hotels & Resorts\",\n  \"url\": \"https://www.wyndhamhotels.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Wyndham Hotels & Resorts offers best available rates, breakfast and wifi. Book today and save with Wyndham Rewards, the award-winning hotel rewards program.\",\n  \"telephone\": \"(844) 405-4141\",\n  \"email\": \"accessibility@wyndham.com\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.wyndhamhotels.com/en-uk",
+          "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:47:09Z",
+          "confidence": "high",
+          "evidence_id": "E-cdced987eb7c"
+        },
+        "evidence_refs": [
+          "E-cdced987eb7c"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via jsonld_schema_extractor [2026-09-13T17:47:09Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-cdced987eb7c.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+          "evidence_refs": [
+            "E-cdced987eb7c"
+          ],
+          "root_cause": "Use the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add sameAs URLs to Organization JSON-LD.",
+            "priority": "low",
+            "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Wyndham Hotels & Resorts\",\n  \"url\": \"https://www.wyndhamhotels.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Wyndham Hotels & Resorts offers best available rates, breakfast and wifi. Book today and save with Wyndham Rewards, the award-winning hotel rewards program.\",\n  \"telephone\": \"(844) 405-4141\",\n  \"email\": \"accessibility@wyndham.com\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.wyndhamhotels.com/en-uk via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.wyndhamhotels.com/en-uk/contact-us via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 17 images (53%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.wyndhamhotels.com/en-uk",
+          "observation": "9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T17:47:09Z",
+          "confidence": "high",
+          "evidence_id": "E-413a092e4645"
+        },
+        "evidence_refs": [
+          "E-413a092e4645",
+          "E-562f531b64bb",
+          "E-d1fdaf196b84"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.wyndhamhotels.com/en-uk/contact-us via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 17 images (53%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-413a092e4645, E-562f531b64bb, E-d1fdaf196b84.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Content images carry no text alternative, hiding any fact they display",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "content and frontend engineer",
+          "problem": "Content images carry no text alternative, hiding any fact they display",
+          "evidence_refs": [
+            "E-413a092e4645",
+            "E-562f531b64bb",
+            "E-d1fdaf196b84"
+          ],
+          "root_cause": "Use the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add descriptive alt text to every image that carries information.",
+            "priority": "low",
+            "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+            "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 3,
+      "resources_observed": 2,
+      "readable_pages": 3,
+      "status_counts": {
+        "readable": 3
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.wyndhamhotels.com/en-uk/contact-us",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.wyndhamhotels.com/sitemap_api_extended-hero-component-config_static.xml",
+          "score": 14,
+          "signals": [
+            "article_docs:api",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "html_fragment",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.wyndhamhotels.com/sitemap_api_locations.xml",
+          "score": 24,
+          "signals": [
+            "article_docs:api",
+            "contact_support:locations",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.wyndhamhotels.com/en-uk",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:47:09Z",
+        "confidence": "high",
+        "evidence_id": "E-cdced987eb7c"
+      },
+      {
+        "url": "https://www.wyndhamhotels.com/en-uk",
+        "observation": "9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T17:47:09Z",
+        "confidence": "high",
+        "evidence_id": "E-413a092e4645"
+      },
+      {
+        "url": "https://www.wyndhamhotels.com/en-uk/contact-us",
+        "observation": "9 of 17 images (53%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T17:47:09Z",
+        "confidence": "high",
+        "evidence_id": "E-d1fdaf196b84"
+      },
+      {
+        "url": "https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html",
+        "observation": "9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T17:47:09Z",
+        "confidence": "high",
+        "evidence_id": "E-562f531b64bb"
+      },
+      {
+        "url": "https://www.wyndhamhotels.com/en-uk",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8444054141: found on 3 page(s); Number 8004079832: found on 3 page(s); Number 4110026916: found on 1 page(s); Number 8000621218: found on 1 page(s); Number 8009124668: found on 1 page(s); Number 8005072738: found on 1 page(s); Number 8776040069: found on 1 page(s); Number 8008547854: found on 1 page(s); Number 8000474766: found on 1 page(s); Number 8002660588: found on 1 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T17:47:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-6d7e9bf11aab"
+      },
+      {
+        "url": "https://www.wyndhamhotels.com/en-uk",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:47:09Z",
+        "confidence": "high",
+        "evidence_id": "E-70e737cc16a3"
+      },
+      {
+        "url": "https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:47:09Z",
+        "confidence": "high",
+        "evidence_id": "E-577f99565458"
+      },
+      {
+        "url": "https://www.wyndhamhotels.com",
+        "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T17:47:18Z",
+        "confidence": "medium",
+        "evidence_id": "E-a4b3008e1809"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "3 of 3 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Wyndham Hotels & Resorts is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "3 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via heading_structure_inspection [2026-09-13T17:47:09Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html via heading_structure_inspection [2026-09-13T17:47:09Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-577f99565458, E-70e737cc16a3.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-577f99565458",
+          "E-70e737cc16a3"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content governance owner.\n\nPROBLEM\nConflicting primary contact phone numbers published across site.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via cross_page_contact_comparison [2026-09-13T17:47:09Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8444054141: found on 3 page(s); Number 8004079832: found on 3 page(s); Number 4110026916: found on 1 page(s); Number 8000621218: found on 1 page(s); Number 8009124668: found on 1 page(s); Number 8005072738: found on 1 page(s); Number 8776040069: found on 1 page(s); Number 8008547854: found on 1 page(s); Number 8000474766: found on 1 page(s); Number 8002660588: found on 1 page(s). (Confidence: medium)\nEvidence references: E-6d7e9bf11aab.\n\nROOT CAUSE\nUse the observed condition described by “Conflicting primary contact phone numbers published across site” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-6d7e9bf11aab"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com via onsite_identity_anchor_inspection [2026-09-13T17:47:18Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 9 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-a4b3008e1809.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-a4b3008e1809"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nOrganization JSON-LD lacks sameAs authority and disambiguation links.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via jsonld_schema_extractor [2026-09-13T17:47:09Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)\nEvidence references: E-cdced987eb7c.\n\nROOT CAUSE\nUse the observed condition described by “Organization JSON-LD lacks sameAs authority and disambiguation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInclude official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-cdced987eb7c"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.wyndhamhotels.com/en-uk via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.wyndhamhotels.com/en-uk/contact-us via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 17 images (53%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.wyndhamhotels.com/en-uk?lightbox=/content/whg-ecomm-responsive/en-gb/whg/about-us/privacy-notice-more-info.display.html via image_alt_coverage_inspection [2026-09-13T17:47:09Z]: 9 of 25 images (36%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-413a092e4645, E-562f531b64bb, E-d1fdaf196b84.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-413a092e4645",
+          "E-562f531b64bb",
+          "E-d1fdaf196b84"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 3,
+    "readable_pages": 3,
+    "page_purposes": [
+      "general",
+      "product_landing"
+    ],
+    "resource_type_counts": {
+      "unknown": 2
+    },
+    "resources_seen": 2,
+    "access_summary": {
+      "readable": 3
+    }
+  }
+}

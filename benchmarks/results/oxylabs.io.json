@@ -1,0 +1,377 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "oxylabs.io",
+    "rank": 794,
+    "technical_type": "unknown",
+    "url": "https://oxylabs.io/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:16:02.718294+00:00",
+  "finished_at": "2026-09-13T16:16:19.564952+00:00",
+  "elapsed_seconds": 16.847,
+  "error": null,
+  "report": {
+    "site": "https://oxylabs.io",
+    "audited_at": "2026-09-13T16:16:19Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 1,
+      "medium": 2,
+      "low": 1,
+      "discoverability_findings": 2,
+      "engagement_findings": 2,
+      "citability_score": 77,
+      "citability_score_breakdown": {
+        "score": 77,
+        "base": 100,
+        "penalty": 23,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 10,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/products/scraper-api/web/pricing": 12,
+          "freshness:stale-claim:2023:https://oxylabs.io/blog/best-buy-price-tracker": 5,
+          "engagement:broken-internal-links": 5,
+          "engagement:no-site-search": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://oxylabs.io/products/scraper-api/web/pricing via jsonld_schema_extractor [2026-09-13T16:16:12Z]: Commercial/product page (https://oxylabs.io/products/scraper-api/web/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/products/scraper-api/web/pricing",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Web Scraper API Pricing\",\n  \"url\": \"https://oxylabs.io/products/scraper-api/web/pricing\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Oxylabs\"\n  },\n  \"description\": \"Buy Web Scraper API and gather data from search engines, e-commerce sites, and other websites with ease. For just $49/month, you can access web data from even the most complex websites.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://oxylabs.io/products/scraper-api/web/pricing\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://oxylabs.io/products/scraper-api/web/pricing",
+          "observation": "Commercial/product page (https://oxylabs.io/products/scraper-api/web/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:16:12Z",
+          "confidence": "high",
+          "evidence_id": "E-24c4f260e288"
+        },
+        "evidence_refs": [
+          "E-24c4f260e288"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Outdated time-sensitive claim or promotion found on active page (2023)",
+        "category": "freshness",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://oxylabs.io/blog/best-buy-price-tracker via dated_claim_temporal_analysis [2026-09-13T16:16:12Z]: Page contains active time-sensitive statement referencing 2023 (3 years old): \"Price Tracker With Python Yelyzaveta Hayrapetyan Last updated on 2023\". (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-claim:2023:https://oxylabs.io/blog/best-buy-price-tracker",
+        "suggested_action": {
+          "summary": "Update or archive expired time-sensitive offers and claims.",
+          "priority": "medium",
+          "how_to_fix": "Review the text referencing 2023 on https://oxylabs.io/blog/best-buy-price-tracker and update with current pricing/event information or remove expired promotions.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://oxylabs.io/blog/best-buy-price-tracker",
+          "observation": "Page contains active time-sensitive statement referencing 2023 (3 years old): \"Price Tracker With Python Yelyzaveta Hayrapetyan Last updated on 2023\".",
+          "method": "dated_claim_temporal_analysis",
+          "timestamp": "2026-09-13T16:16:12Z",
+          "confidence": "high",
+          "evidence_id": "E-310694358428"
+        },
+        "evidence_refs": [
+          "E-310694358428"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (2 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://oxylabs.io/products/residential-proxy-pool via http_redirect_aware_link_checker [2026-09-13T16:16:19Z]: Sampled internal links returned broken HTTP errors: https://oxylabs.io/products/residential-proxy-pool (HTTP 429); https://oxylabs.io/products/datacenter-proxies (HTTP 429). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://oxylabs.io/products/residential-proxy-pool",
+          "observation": "Sampled internal links returned broken HTTP errors: https://oxylabs.io/products/residential-proxy-pool (HTTP 429); https://oxylabs.io/products/datacenter-proxies (HTTP 429).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T16:16:19Z",
+          "confidence": "high",
+          "evidence_id": "E-a507d090d9af"
+        },
+        "evidence_refs": [
+          "E-a507d090d9af"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://oxylabs.io via search_affordance_detection [2026-09-13T16:16:12Z]: None of the 3 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://oxylabs.io",
+          "observation": "None of the 3 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T16:16:12Z",
+          "confidence": "medium",
+          "evidence_id": "E-e3fd310984a3"
+        },
+        "evidence_refs": [
+          "E-e3fd310984a3"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 4,
+      "resources_observed": 1,
+      "readable_pages": 3,
+      "status_counts": {
+        "anti-bot-challenge": 1,
+        "readable": 3
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://oxylabs.io/products/scraper-api/web/pricing",
+          "score": 36,
+          "signals": [
+            "product_pricing:pricing",
+            "product_landing:products",
+            "article_docs:api",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://oxylabs.io/blog/best-buy-price-tracker",
+          "score": 34,
+          "signals": [
+            "product_pricing:price",
+            "product_landing:buy",
+            "article_docs:blog",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://oxylabs.io/resources/case-studies/reducing-data-acquisition-costs-for-search-intelligence-company",
+          "score": 22,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:company",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://oxylabs.io",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "homepage",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://oxylabs.io/products/scraper-api/web/pricing",
+        "observation": "Commercial/product page (https://oxylabs.io/products/scraper-api/web/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:16:12Z",
+        "confidence": "high",
+        "evidence_id": "E-24c4f260e288"
+      },
+      {
+        "url": "https://oxylabs.io/blog/best-buy-price-tracker",
+        "observation": "Page contains active time-sensitive statement referencing 2023 (3 years old): \"Price Tracker With Python Yelyzaveta Hayrapetyan Last updated on 2023\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T16:16:12Z",
+        "confidence": "high",
+        "evidence_id": "E-310694358428"
+      },
+      {
+        "url": "https://oxylabs.io",
+        "observation": "None of the 3 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T16:16:12Z",
+        "confidence": "medium",
+        "evidence_id": "E-e3fd310984a3"
+      },
+      {
+        "url": "https://oxylabs.io/products/residential-proxy-pool",
+        "observation": "Sampled internal links returned broken HTTP errors: https://oxylabs.io/products/residential-proxy-pool (HTTP 429); https://oxylabs.io/products/datacenter-proxies (HTTP 429).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T16:16:19Z",
+        "confidence": "high",
+        "evidence_id": "E-a507d090d9af"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "3 of 4 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 4,
+    "readable_pages": 3,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "product_pricing",
+      "unknown"
+    ],
+    "resource_types": [
+      "pdf"
+    ],
+    "resources_seen": 1,
+    "access_summary": {}
+  }
+}

@@ -1,0 +1,615 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "usps.com",
+    "rank": 904,
+    "technical_type": "unknown",
+    "url": "https://usps.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:28:48.732981+00:00",
+  "finished_at": "2026-09-13T16:29:09.006027+00:00",
+  "elapsed_seconds": 20.273,
+  "error": null,
+  "report": {
+    "site": "https://www.usps.com",
+    "audited_at": "2026-09-13T16:29:09Z",
+    "summary": {
+      "total_findings": 9,
+      "critical": 0,
+      "high": 3,
+      "medium": 5,
+      "low": 1,
+      "discoverability_findings": 4,
+      "engagement_findings": 5,
+      "citability_score": 47,
+      "citability_score_breakdown": {
+        "score": 47,
+        "base": 100,
+        "penalty": 53,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 36,
+          "medium": 16,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/business/prices.htm": 12,
+          "engagement:missing-h1": 12,
+          "engagement:missing-viewport-meta": 12,
+          "schema:missing-required-fields": 5,
+          "consistency:phone-number-mismatch": 2,
+          "engagement:few-internal-links": 2,
+          "engagement:deep-pages-anonymous": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 9
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.usps.com/business/prices.htm via jsonld_schema_extractor [2026-09-13T16:29:04Z]: Commercial/product page (https://www.usps.com/business/prices.htm) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/business/prices.htm",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Mailing &amp; Shipping Prices\",\n  \"url\": \"https://www.usps.com/business/prices.htm\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Welcome\"\n  },\n  \"description\": \"USPS postage rates offer low-cost mailing and shipping prices for domestic &amp; international customers. See Forever postage stamp prices and other postage rates.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.usps.com/business/prices.htm\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/business/prices.htm",
+          "observation": "Commercial/product page (https://www.usps.com/business/prices.htm) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "high",
+          "evidence_id": "E-cbdf18ae8a76"
+        },
+        "evidence_refs": [
+          "E-cbdf18ae8a76"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.usps.com/topjobs/ via heading_structure_inspection [2026-09-13T16:29:04Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/topjobs/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "high",
+          "evidence_id": "E-ce1fcfb9c550"
+        },
+        "evidence_refs": [
+          "E-ce1fcfb9c550"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.usps.com/topjobs/ via mobile_viewport_inspector [2026-09-13T16:29:04Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/topjobs/",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "high",
+          "evidence_id": "E-fd5eae487e0d"
+        },
+        "evidence_refs": [
+          "E-fd5eae487e0d"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.usps.com/ via schema_field_validator [2026-09-13T16:29:04Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.usps.com/smallbusiness/ via schema_field_validator [2026-09-13T16:29:04Z]: Schema entities are missing required properties: Organization missing name; Article missing datePublished. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.usps.com/business/prices.htm via schema_field_validator [2026-09-13T16:29:04Z]: Schema entities are missing required properties: Article missing headline, datePublished. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/",
+          "observation": "Schema entities are missing required properties: Organization missing name.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "high",
+          "evidence_id": "E-a37df0d0b51d"
+        },
+        "evidence_refs": [
+          "E-42e576e108bd",
+          "E-70257ca1b320",
+          "E-a37df0d0b51d"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.usps.com/help/contact-us.htm via cross_page_contact_comparison [2026-09-13T16:29:04Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8447377826: found on 1 page(s); Number 8006108734: found on 1 page(s); Number 8002758777: found on 1 page(s); Number 8002221811: found on 1 page(s); Number 8003447779: found on 1 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/help/contact-us.htm",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8447377826: found on 1 page(s); Number 8006108734: found on 1 page(s); Number 8002758777: found on 1 page(s); Number 8002221811: found on 1 page(s); Number 8003447779: found on 1 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "medium",
+          "evidence_id": "E-3182dbdeca2a"
+        },
+        "evidence_refs": [
+          "E-3182dbdeca2a"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Isolated page with insufficient internal navigation links",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.usps.com/topjobs/ via internal_link_density_check [2026-09-13T16:29:04Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:few-internal-links",
+        "suggested_action": {
+          "summary": "Incorporate related internal links and header/footer navigation.",
+          "priority": "medium",
+          "how_to_fix": "Add links to relevant documentation, related products, or category overview pages.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/topjobs/",
+          "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+          "method": "internal_link_density_check",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "medium",
+          "evidence_id": "E-861c138237af"
+        },
+        "evidence_refs": [
+          "E-861c138237af"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep pages never identify the brand, leaving cold arrivals unoriented",
+        "category": "orientation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.usps.com/business/prices.htm via cold_arrival_brand_mention_check [2026-09-13T16:29:04Z]: 2 deep page(s) contain no mention of \"Welcome\" in the title or body text (e.g. https://www.usps.com/business/prices.htm, https://www.usps.com/help/contact-us.htm). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:deep-pages-anonymous",
+        "suggested_action": {
+          "summary": "Name the brand in the header, title and footer of every page.",
+          "priority": "medium",
+          "how_to_fix": "Include the brand name in the <title> of every page and in a persistent header or footer, so a page that is the visitor's first contact still identifies its owner.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/business/prices.htm",
+          "observation": "2 deep page(s) contain no mention of \"Welcome\" in the title or body text (e.g. https://www.usps.com/business/prices.htm, https://www.usps.com/help/contact-us.htm). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+          "method": "cold_arrival_brand_mention_check",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "high",
+          "evidence_id": "E-52edf8a7bb56"
+        },
+        "evidence_refs": [
+          "E-52edf8a7bb56"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.usps.com via onsite_identity_anchor_inspection [2026-09-13T16:29:09Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 31 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com",
+          "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 31 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:29:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-6120185ebd7a"
+        },
+        "evidence_refs": [
+          "E-6120185ebd7a"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.usps.com/help/contact-us.htm via breadcrumb_markup_inspector [2026-09-13T16:29:04Z]: Page at deep route (/help/contact-us.htm) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.usps.com/help/contact-us.htm",
+          "observation": "Page at deep route (/help/contact-us.htm) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T16:29:04Z",
+          "confidence": "medium",
+          "evidence_id": "E-0a54e5447146"
+        },
+        "evidence_refs": [
+          "E-0a54e5447146"
+        ],
+        "id": "F-009",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.usps.com/smallbusiness/",
+          "score": 46,
+          "signals": [
+            "product_landing:solutions",
+            "article_docs:learn",
+            "contact_support:about",
+            "audience:solutions",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.usps.com/topjobs",
+          "score": 26,
+          "signals": [
+            "article_docs:learn",
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.usps.com/business/prices.htm",
+          "score": 16,
+          "signals": [
+            "product_pricing:prices",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.usps.com/help/contact-us.htm",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:contact,support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.usps.com/",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "high",
+        "evidence_id": "E-a37df0d0b51d"
+      },
+      {
+        "url": "https://www.usps.com/smallbusiness/",
+        "observation": "Schema entities are missing required properties: Organization missing name; Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "high",
+        "evidence_id": "E-70257ca1b320"
+      },
+      {
+        "url": "https://www.usps.com/business/prices.htm",
+        "observation": "Commercial/product page (https://www.usps.com/business/prices.htm) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "high",
+        "evidence_id": "E-cbdf18ae8a76"
+      },
+      {
+        "url": "https://www.usps.com/business/prices.htm",
+        "observation": "Schema entities are missing required properties: Article missing headline, datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "high",
+        "evidence_id": "E-42e576e108bd"
+      },
+      {
+        "url": "https://www.usps.com/help/contact-us.htm",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8447377826: found on 1 page(s); Number 8006108734: found on 1 page(s); Number 8002758777: found on 1 page(s); Number 8002221811: found on 1 page(s); Number 8003447779: found on 1 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "medium",
+        "evidence_id": "E-3182dbdeca2a"
+      },
+      {
+        "url": "https://www.usps.com/topjobs/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "high",
+        "evidence_id": "E-ce1fcfb9c550"
+      },
+      {
+        "url": "https://www.usps.com/topjobs/",
+        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+        "method": "internal_link_density_check",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "medium",
+        "evidence_id": "E-861c138237af"
+      },
+      {
+        "url": "https://www.usps.com/topjobs/",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "high",
+        "evidence_id": "E-fd5eae487e0d"
+      },
+      {
+        "url": "https://www.usps.com/help/contact-us.htm",
+        "observation": "Page at deep route (/help/contact-us.htm) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "medium",
+        "evidence_id": "E-0a54e5447146"
+      },
+      {
+        "url": "https://www.usps.com/business/prices.htm",
+        "observation": "2 deep page(s) contain no mention of \"Welcome\" in the title or body text (e.g. https://www.usps.com/business/prices.htm, https://www.usps.com/help/contact-us.htm). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+        "method": "cold_arrival_brand_mention_check",
+        "timestamp": "2026-09-13T16:29:04Z",
+        "confidence": "high",
+        "evidence_id": "E-52edf8a7bb56"
+      },
+      {
+        "url": "https://www.usps.com",
+        "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 31 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:29:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-6120185ebd7a"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Welcome is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "general",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

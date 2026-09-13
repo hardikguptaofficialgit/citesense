@@ -1,0 +1,482 @@
+{
+  "site": {
+    "category": "streaming",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "primevideo.com",
+    "rank": 266,
+    "technical_type": "unknown",
+    "url": "https://primevideo.com/",
+    "validation": {
+      "reason": "http-405",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:37:18.631433+00:00",
+  "finished_at": "2026-09-13T15:37:43.192537+00:00",
+  "elapsed_seconds": 24.561,
+  "error": null,
+  "report": {
+    "site": "https://www.primevideo.com",
+    "audited_at": "2026-09-13T15:37:43Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 1,
+      "high": 1,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 4,
+      "engagement_findings": 2,
+      "citability_score": 50,
+      "citability_score_breakdown": {
+        "score": 50,
+        "base": 100,
+        "penalty": 50,
+        "penalty_by_severity": {
+          "critical": 25,
+          "high": 12,
+          "medium": 12,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "robots:citation-agents-blocked-root": 25,
+          "engagement:missing-h1": 12,
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "AI search and retrieval crawlers blocked from root (PerplexityBot, ChatGPT-User, Claude-User)",
+        "category": "crawlability",
+        "severity": "critical",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "critical",
+        "evidence": "Observed at https://primevideo.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:37:32Z]: robots.txt disallows root '/' for retrieval agents: PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:citation-agents-blocked-root",
+        "suggested_action": {
+          "summary": "Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+          "priority": "critical",
+          "how_to_fix": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://primevideo.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for retrieval agents: PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:37:32Z",
+          "confidence": "high",
+          "evidence_id": "E-aac18a4d5b3a"
+        },
+        "evidence_refs": [
+          "E-aac18a4d5b3a"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.primevideo.com/ via heading_structure_inspection [2026-09-13T15:37:32Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.primevideo.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:37:32Z",
+          "confidence": "high",
+          "evidence_id": "E-2cf6d338b062"
+        },
+        "evidence_refs": [
+          "E-2cf6d338b062"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.primevideo.com/sitemap.xml via http_get_sitemap_check [2026-09-13T15:37:32Z]: Request to https://www.primevideo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.primevideo.com/sitemap.xml",
+          "observation": "Request to https://www.primevideo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T15:37:32Z",
+          "confidence": "high",
+          "evidence_id": "E-a6342fe62039"
+        },
+        "evidence_refs": [
+          "E-a6342fe62039"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.primevideo.com/ via jsonld_schema_extractor [2026-09-13T15:37:32Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.primevideo.com/tv?ref_=atv_hm_hom_c_9zZ8D2_hom via jsonld_schema_extractor [2026-09-13T15:37:32Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Primevideo\",\n  \"url\": \"https://www.primevideo.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Stream popular movies, TV shows, sports, and live TV included with Prime, and even more with add-on subscriptions. Watch anywhere, anytime.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.primevideo.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:37:32Z",
+          "confidence": "high",
+          "evidence_id": "E-a8d4d9b1b0ae"
+        },
+        "evidence_refs": [
+          "E-a8d4d9b1b0ae",
+          "E-b745965de70b"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.primevideo.com via onsite_identity_anchor_inspection [2026-09-13T15:37:43Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 6 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.primevideo.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 6 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T15:37:43Z",
+          "confidence": "medium",
+          "evidence_id": "E-af74908eddcf"
+        },
+        "evidence_refs": [
+          "E-af74908eddcf"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.primevideo.com/detail/0GG3232M44BDE60B8R46F4F6RK?jic=36%7CCgtmcmVld2l0aGFkcxIMc3Vic2NyaXB0aW9u&amp;ref_=atv_hm_hom_c_BsdL2x_brws_4_5 via breadcrumb_markup_inspector [2026-09-13T15:37:32Z]: Page at deep route (/detail/0GG3232M44BDE60B8R46F4F6RK) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.primevideo.com/detail/0GG3232M44BDE60B8R46F4F6RK?jic=36%7CCgtmcmVld2l0aGFkcxIMc3Vic2NyaXB0aW9u&amp;ref_=atv_hm_hom_c_BsdL2x_brws_4_5",
+          "observation": "Page at deep route (/detail/0GG3232M44BDE60B8R46F4F6RK) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:37:32Z",
+          "confidence": "medium",
+          "evidence_id": "E-8c4e9dea5997"
+        },
+        "evidence_refs": [
+          "E-8c4e9dea5997"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.primevideo.com/help?ref_=atv_ftr_hp",
+          "score": 16,
+          "signals": [
+            "article_docs:help",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.primevideo.com/detail/0GG3232M44BDE60B8R46F4F6RK?jic=36%7CCgtmcmVld2l0aGFkcxIMc3Vic2NyaXB0aW9u&amp;ref_=atv_hm_hom_c_BsdL2x_brws_4_5",
+          "score": 14,
+          "signals": [
+            "contact_support:company",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.primevideo.com/tv?ref_=atv_hm_hom_c_9zZ8D2_hom",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.primevideo.com/help?ref_=atv_nb_hp",
+          "score": 16,
+          "signals": [
+            "article_docs:help",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://primevideo.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for retrieval agents: PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:37:32Z",
+        "confidence": "high",
+        "evidence_id": "E-aac18a4d5b3a"
+      },
+      {
+        "url": "https://www.primevideo.com/sitemap.xml",
+        "observation": "Request to https://www.primevideo.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T15:37:32Z",
+        "confidence": "high",
+        "evidence_id": "E-a6342fe62039"
+      },
+      {
+        "url": "https://www.primevideo.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:37:32Z",
+        "confidence": "high",
+        "evidence_id": "E-a8d4d9b1b0ae"
+      },
+      {
+        "url": "https://www.primevideo.com/tv?ref_=atv_hm_hom_c_9zZ8D2_hom",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:37:32Z",
+        "confidence": "high",
+        "evidence_id": "E-b745965de70b"
+      },
+      {
+        "url": "https://www.primevideo.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:37:32Z",
+        "confidence": "high",
+        "evidence_id": "E-2cf6d338b062"
+      },
+      {
+        "url": "https://www.primevideo.com/detail/0GG3232M44BDE60B8R46F4F6RK?jic=36%7CCgtmcmVld2l0aGFkcxIMc3Vic2NyaXB0aW9u&amp;ref_=atv_hm_hom_c_BsdL2x_brws_4_5",
+        "observation": "Page at deep route (/detail/0GG3232M44BDE60B8R46F4F6RK) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:37:32Z",
+        "confidence": "medium",
+        "evidence_id": "E-8c4e9dea5997"
+      },
+      {
+        "url": "https://www.primevideo.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 6 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T15:37:43Z",
+        "confidence": "medium",
+        "evidence_id": "E-af74908eddcf"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Primevideo is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "1 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

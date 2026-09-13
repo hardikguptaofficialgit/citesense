@@ -19,7 +19,8 @@ from audit_common import (
     AI_USER_AGENTS, DEFAULT_TIMEOUT, USER_AGENT,
     normalize_url, canonicalize, parse_robots, robot_decision,
     visible_text, safe_fetch, classify_access,
-    ACCESS_READABLE, ACCESS_ROBOTS_DISALLOWED, ACCESS_AUTH_REQUIRED
+    ACCESS_READABLE, ACCESS_ROBOTS_DISALLOWED, ACCESS_AUTH_REQUIRED,
+    ACCESS_RESPONSE_TOO_LARGE
 )
 
 # Only explicit founding verbs count as an entity founding claim. A bare "since <year>"
@@ -244,6 +245,8 @@ def analyze_page_html(
             reason = f"HTTP {status_code} or response body indicates an anti-bot challenge"
         elif access_status == ACCESS_AUTH_REQUIRED:
             reason = "response is an authentication form; protected content was not assessed"
+        elif access_status == ACCESS_RESPONSE_TOO_LARGE:
+            reason = "response exceeded the bounded body-size limit"
         elif status_code != 200:
             reason = f"HTTP {status_code}"
         else:

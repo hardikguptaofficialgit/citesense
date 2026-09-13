@@ -1,0 +1,247 @@
+{
+  "site": {
+    "category": "marketplaces",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "fiverr.com",
+    "rank": 309,
+    "technical_type": "unknown",
+    "url": "https://fiverr.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:39:29.700521+00:00",
+  "finished_at": "2026-09-13T15:39:56.526508+00:00",
+  "elapsed_seconds": 26.826,
+  "error": null,
+  "report": {
+    "site": "https://www.fiverr.com",
+    "audited_at": "2026-09-13T15:39:56Z",
+    "summary": {
+      "total_findings": 1,
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "discoverability_findings": 0,
+      "engagement_findings": 1,
+      "citability_score": 95,
+      "citability_score_breakdown": {
+        "score": 95,
+        "base": 100,
+        "penalty": 5,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 5,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "engagement:broken-internal-links": 5
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 1
+      }
+    },
+    "findings": [
+      {
+        "title": "Broken internal navigation links detected (8 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fiverr.com/?source=top_nav via http_redirect_aware_link_checker [2026-09-13T15:39:56Z]: Sampled internal links returned broken HTTP errors: https://www.fiverr.com/?source=top_nav (HTTP 403); https://www.fiverr.com/start_selling?source=top_nav (HTTP 403); https://www.fiverr.com/login?source=top_nav (HTTP 403). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fiverr.com/?source=top_nav",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.fiverr.com/?source=top_nav (HTTP 403); https://www.fiverr.com/start_selling?source=top_nav (HTTP 403); https://www.fiverr.com/login?source=top_nav (HTTP 403).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T15:39:56Z",
+          "confidence": "high",
+          "evidence_id": "E-5692197b2832"
+        },
+        "evidence_refs": [
+          "E-5692197b2832"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.fiverr.com/categories/business/legal-consulting-services/legal-research?source=category_tree",
+          "score": 24,
+          "signals": [
+            "product_landing:services",
+            "article_docs:research",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fiverr.com/categories/writing-translation/buy/articles-blogposts/news-politics?source=category_tree&amp;ref=topic%3Anews_politics",
+          "score": 24,
+          "signals": [
+            "product_landing:buy",
+            "article_docs:news",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fiverr.com/categories/writing-translation/academic-support/research-source-structuring",
+          "score": 22,
+          "signals": [
+            "article_docs:research",
+            "contact_support:support",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.fiverr.com/categories/business/business-plans?source=category_tree",
+          "score": 16,
+          "signals": [
+            "product_pricing:plans",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.fiverr.com/?source=top_nav",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.fiverr.com/?source=top_nav (HTTP 403); https://www.fiverr.com/start_selling?source=top_nav (HTTP 403); https://www.fiverr.com/login?source=top_nav (HTTP 403).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T15:39:56Z",
+        "confidence": "high",
+        "evidence_id": "E-5692197b2832"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Fiverr is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

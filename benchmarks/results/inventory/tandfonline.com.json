@@ -1,0 +1,531 @@
+{
+  "seed_url": "https://tandfonline.com/",
+  "origin": "https://tandfonline.com",
+  "robots_txt": {
+    "found": true,
+    "url": "https://tandfonline.com/robots.txt",
+    "status": 200,
+    "raw": "Sitemap: https://www.tandfonline.com/sitemap-index-1.xml\nUser-agent: *\nDisallow: /action\nDisallow: /help\nDisallow: /search\nDisallow: /feedback\nDisallow: /rss\nDisallow: /page/account-confirmation-thanks\nDisallow: /media\nDisallow: /medical-research\nDisallow: /servlet/linkout\nDisallow: /na101/\nDisallow: /na101v1/\nDisallow: /na102/\nDisallow: /doi/mlt/\nDisallow: /topic\nDisallow: /author/\nDisallow: /doi/metrics/\nDisallow: /keyword/\nDisallow: /action/showPublications*ConceptID=*\nDisallow: /action/showPublications*alphabetRange=*\nDisallow: /doi/epdf/*\nDisallow: /pricing/*\nDisallow: /doi/epub/*\nDisallow: /authored-by/\nDisallow: /history/\nAllow: /action/showPublications\nAllow: /action/showXml\nAllow: /action/showCoverImage\nAllow: /action/showOpenGraphCoverImage\nAllow: /action/showGraphicalAbstractImage\nAllow: /doi/cover-img\nAllow: /action/journalInformation*aimsScope*\nAllow: /action/journalInformation*editorialBoard*\nAllow: /action/journalInformation*journalMetrics*\nAllow: /topic/articlecollection\nAllow: /topic/sections\nAllow: /action/journalInformation*societyInformation*\nAllow: /journals/*/about-this-journal\nAllow: /subjects/\nAllow: /action/showAxaArticles?journalCode=*\nAllow: /.well-known/tdmrep.json\nCrawl-delay: 1\n\nUser-agent: facebookexternalhit\nUser-agent: LinkedInBot\nUser-agent: Twitterbot\nAllow: /\nCrawl-delay: 1\n\nUser-agent: GPTBot\nDisallow: /\nCrawl-delay: 1\n\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      }
+    },
+    "partially_blocked_agents": {
+      "GPTBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ]
+    },
+    "sitemaps_declared": [
+      "https://www.tandfonline.com/sitemap-index-1.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://www.tandfonline.com/sitemap-index-1.xml",
+      "found": false,
+      "status": 403,
+      "discovered_url_count": 0
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://tandfonline.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://tandfonline.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 403,
+      "url": "https://tandfonline.com/ai.txt"
+    }
+  },
+  "pages": {},
+  "resources": {
+    "https://tandfonline.com/": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://tandfonline.com/",
+      "final_url": "https://tandfonline.com/",
+      "status_code": null,
+      "content_type": "",
+      "load_time_seconds": 16.08,
+      "access_status": "network-error",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    }
+  },
+  "ground_truth": {
+    "brand_name": "Tandfonline",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 0,
+    "total_crawl_time_seconds": 20.0,
+    "page_selection": [],
+    "resources_observed": 1,
+    "readable_pages": 0,
+    "access_status_counts": {}
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {}
+}

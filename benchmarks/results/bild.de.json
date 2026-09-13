@@ -1,0 +1,677 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "bild.de",
+    "rank": 875,
+    "technical_type": "unknown",
+    "url": "https://bild.de/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:25:26.407018+00:00",
+  "finished_at": "2026-09-13T16:25:53.421310+00:00",
+  "elapsed_seconds": 27.014,
+  "error": null,
+  "report": {
+    "site": "https://www.bild.de",
+    "audited_at": "2026-09-13T16:25:53Z",
+    "summary": {
+      "total_findings": 10,
+      "critical": 1,
+      "high": 1,
+      "medium": 5,
+      "low": 3,
+      "discoverability_findings": 7,
+      "engagement_findings": 3,
+      "citability_score": 42,
+      "citability_score_breakdown": {
+        "score": 42,
+        "base": 100,
+        "penalty": 58,
+        "penalty_by_severity": {
+          "critical": 25,
+          "high": 12,
+          "medium": 19,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "robots:citation-agents-blocked-root": 25,
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "extractability:images-without-alt": 5,
+          "engagement:deep-pages-anonymous": 5,
+          "citation:unanswerable:contact": 2,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:no-personalization-readiness": 0,
+          "citation:unanswerable:audience": 1,
+          "citation:unanswerable:differentiation": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 10
+      }
+    },
+    "findings": [
+      {
+        "title": "AI search and retrieval crawlers blocked from root (PerplexityBot, Perplexity-User)",
+        "category": "crawlability",
+        "severity": "critical",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "critical",
+        "evidence": "Observed at https://bild.de/robots.txt via robots_txt_parser_longest_match [2026-09-13T16:25:41Z]: robots.txt disallows root '/' for retrieval agents: PerplexityBot, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (CCBot, Applebot-Extended, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:citation-agents-blocked-root",
+        "suggested_action": {
+          "summary": "Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+          "priority": "critical",
+          "how_to_fix": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://bild.de/robots.txt",
+          "observation": "robots.txt disallows root '/' for retrieval agents: PerplexityBot, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (CCBot, Applebot-Extended, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-c83ae864fed6"
+        },
+        "evidence_refs": [
+          "E-c83ae864fed6"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.bild.de/ via heading_structure_inspection [2026-09-13T16:25:41Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-3364cd183f3b"
+        },
+        "evidence_refs": [
+          "E-3364cd183f3b"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.bild.de/ via jsonld_schema_extractor [2026-09-13T16:25:41Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Aktuelle Nachrichten\",\n  \"url\": \"https://www.bild.de\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"BILD.de: Die Seite 1 für aktuelle Nachrichten und Themen, Bilder und Videos aus den Bereichen News, Wirtschaft, Politik, Show, Sport, und Promis.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-154711986f99"
+        },
+        "evidence_refs": [
+          "E-154711986f99"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.bild.de/ via image_alt_coverage_inspection [2026-09-13T16:25:41Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd via image_alt_coverage_inspection [2026-09-13T16:25:41Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.bild.de/auto/service/sommerreifen/sommerreifen-76650128.bild.html via image_alt_coverage_inspection [2026-09-13T16:25:41Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.bild.de/sport/mehr-sport/nfl-team-versenkt-freiwillig-183-millionen-dollar-6aa58e369ed7514977b51856 via image_alt_coverage_inspection [2026-09-13T16:25:41Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.bild.de/auto/auto-news/elektroauto/elektroauto-alle-infos-78345868.bild.html via image_alt_coverage_inspection [2026-09-13T16:25:41Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "medium",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de/",
+          "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-558db4303fb2"
+        },
+        "evidence_refs": [
+          "E-558db4303fb2",
+          "E-9e08837b9b3e",
+          "E-ac0ccfe2f5e0",
+          "E-b9b1a34475ae",
+          "E-c46f6e19e82f"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep pages never identify the brand, leaving cold arrivals unoriented",
+        "category": "orientation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd via cold_arrival_brand_mention_check [2026-09-13T16:25:41Z]: 2 deep page(s) contain no mention of \"Aktuelle Nachrichten\" in the title or body text (e.g. https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd, https://www.bild.de/sport/mehr-sport/nfl-team-versenkt-freiwillig-183-millionen-dollar-6aa58e369ed7514977b51856). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:deep-pages-anonymous",
+        "suggested_action": {
+          "summary": "Name the brand in the header, title and footer of every page.",
+          "priority": "medium",
+          "how_to_fix": "Include the brand name in the <title> of every page and in a persistent header or footer, so a page that is the visitor's first contact still identifies its owner.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd",
+          "observation": "2 deep page(s) contain no mention of \"Aktuelle Nachrichten\" in the title or body text (e.g. https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd, https://www.bild.de/sport/mehr-sport/nfl-team-versenkt-freiwillig-183-millionen-dollar-6aa58e369ed7514977b51856). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+          "method": "cold_arrival_brand_mention_check",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "high",
+          "evidence_id": "E-bc38d68a29c6"
+        },
+        "evidence_refs": [
+          "E-bc38d68a29c6"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"How do I contact Aktuelle Nachrichten?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.bild.de/ via onsite_answerability_probe [2026-09-13T16:25:53Z]: Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Aktuelle Nachrichten?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:contact",
+        "suggested_action": {
+          "summary": "Expose a contact route as machine-readable text.",
+          "priority": "medium",
+          "how_to_fix": "Publish an email address or phone number as selectable text (not an image), and add ContactPoint JSON-LD to the Organization entity.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de/",
+          "observation": "Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Aktuelle Nachrichten?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:25:53Z",
+          "confidence": "medium",
+          "evidence_id": "E-fe4a853e8ece"
+        },
+        "evidence_refs": [
+          "E-fe4a853e8ece"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.bild.de via onsite_identity_anchor_inspection [2026-09-13T16:25:53Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 30 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 30 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:25:53Z",
+          "confidence": "medium",
+          "evidence_id": "E-427dd200932a"
+        },
+        "evidence_refs": [
+          "E-427dd200932a"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.bild.de via returning_visitor_affordance_detection [2026-09-13T16:25:41Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de",
+          "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T16:25:41Z",
+          "confidence": "medium",
+          "evidence_id": "E-6bf8ae44fb21"
+        },
+        "evidence_refs": [
+          "E-6bf8ae44fb21"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"Who is Aktuelle Nachrichten for?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd via onsite_answerability_probe [2026-09-13T16:25:53Z]: Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Aktuelle Nachrichten for?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:audience",
+        "suggested_action": {
+          "summary": "State the intended audience in plain language.",
+          "priority": "low",
+          "how_to_fix": "Add a concise audience statement near the primary offering, such as who it serves and the use case it supports.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd",
+          "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Aktuelle Nachrichten for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:25:53Z",
+          "confidence": "medium",
+          "evidence_id": "E-64e0d79a2cc8"
+        },
+        "evidence_refs": [
+          "E-64e0d79a2cc8"
+        ],
+        "id": "F-009",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What makes Aktuelle Nachrichten different?\"",
+        "category": "citation-omission",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.bild.de/ via onsite_answerability_probe [2026-09-13T16:25:53Z]: Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Aktuelle Nachrichten different?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:differentiation",
+        "suggested_action": {
+          "summary": "Make the brand's differentiator explicit and quotable.",
+          "priority": "low",
+          "how_to_fix": "Add a short, factual differentiator section tied to a specific capability, audience, outcome, or proof point.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.bild.de/",
+          "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Aktuelle Nachrichten different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:25:53Z",
+          "confidence": "medium",
+          "evidence_id": "E-8300553952ea"
+        },
+        "evidence_refs": [
+          "E-8300553952ea"
+        ],
+        "id": "F-010",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd",
+          "score": 24,
+          "signals": [
+            "product_landing:service",
+            "article_docs:news",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.bild.de/auto/service/sommerreifen/sommerreifen-76650128.bild.html",
+          "score": 14,
+          "signals": [
+            "product_landing:service",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.bild.de/sport/mehr-sport/nfl-team-versenkt-freiwillig-183-millionen-dollar-6aa58e369ed7514977b51856",
+          "score": 14,
+          "signals": [
+            "contact_support:team",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.bild.de/auto/auto-news/elektroauto/elektroauto-alle-infos-78345868.bild.html",
+          "score": 14,
+          "signals": [
+            "article_docs:news",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://bild.de/robots.txt",
+        "observation": "robots.txt disallows root '/' for retrieval agents: PerplexityBot, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (CCBot, Applebot-Extended, Bytespider, Amazonbot) are also blocked, which is a separate and legitimate licensing choice.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-c83ae864fed6"
+      },
+      {
+        "url": "https://www.bild.de/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-154711986f99"
+      },
+      {
+        "url": "https://www.bild.de/",
+        "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-558db4303fb2"
+      },
+      {
+        "url": "https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd",
+        "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-ac0ccfe2f5e0"
+      },
+      {
+        "url": "https://www.bild.de/auto/service/sommerreifen/sommerreifen-76650128.bild.html",
+        "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-b9b1a34475ae"
+      },
+      {
+        "url": "https://www.bild.de/sport/mehr-sport/nfl-team-versenkt-freiwillig-183-millionen-dollar-6aa58e369ed7514977b51856",
+        "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-c46f6e19e82f"
+      },
+      {
+        "url": "https://www.bild.de/auto/auto-news/elektroauto/elektroauto-alle-infos-78345868.bild.html",
+        "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-9e08837b9b3e"
+      },
+      {
+        "url": "https://www.bild.de/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-3364cd183f3b"
+      },
+      {
+        "url": "https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd",
+        "observation": "2 deep page(s) contain no mention of \"Aktuelle Nachrichten\" in the title or body text (e.g. https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd, https://www.bild.de/sport/mehr-sport/nfl-team-versenkt-freiwillig-183-millionen-dollar-6aa58e369ed7514977b51856). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+        "method": "cold_arrival_brand_mention_check",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "high",
+        "evidence_id": "E-bc38d68a29c6"
+      },
+      {
+        "url": "https://www.bild.de",
+        "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T16:25:41Z",
+        "confidence": "medium",
+        "evidence_id": "E-6bf8ae44fb21"
+      },
+      {
+        "url": "https://www.bild.de/",
+        "observation": "Across 5 crawled page(s), no email, phone number or contact affordance is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How do I contact Aktuelle Nachrichten?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:25:53Z",
+        "confidence": "medium",
+        "evidence_id": "E-fe4a853e8ece"
+      },
+      {
+        "url": "https://www.bild.de/service/news/live-das-beste-von-bildplay-68adc6afd6fbb97dca47abdd",
+        "observation": "Across 5 crawled page(s), no audience or intended-user statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"Who is Aktuelle Nachrichten for?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:25:53Z",
+        "confidence": "medium",
+        "evidence_id": "E-64e0d79a2cc8"
+      },
+      {
+        "url": "https://www.bild.de/",
+        "observation": "Across 5 crawled page(s), no explicit differentiator or benefit statement is extractable from the relevant crawled pages. An assistant that fetched these pages could not quote an answer to \"What makes Aktuelle Nachrichten different?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:25:53Z",
+        "confidence": "medium",
+        "evidence_id": "E-8300553952ea"
+      },
+      {
+        "url": "https://www.bild.de",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 30 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:25:53Z",
+        "confidence": "medium",
+        "evidence_id": "E-427dd200932a"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Aktuelle Nachrichten is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

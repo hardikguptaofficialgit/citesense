@@ -1,0 +1,871 @@
+{
+  "seed_url": "https://bloomberg.com/",
+  "origin": "https://bloomberg.com",
+  "robots_txt": {
+    "found": true,
+    "url": "https://bloomberg.com/robots.txt",
+    "status": 200,
+    "raw": "# Bot rules:\n# 1. A bot may not injure a human being or, through inaction, allow a human being to come to harm.\n# 2. A bot must obey orders given it by human beings except where such orders would conflict with the First Law.\n# 3. A bot must protect its own existence as long as such protection does not conflict with the First or Second Law.\n# If you can read this then you should apply here https://www.bloomberg.com/careers/\nUser-agent: *\nDisallow: /polska\nAllow: /account/newsletters\nDisallow: /account/*\nDisallow: /tosv*.html\nDisallow: /search\nDisallow: /company/search/\nDisallow: /professional/search/\nDisallow: /impact/search/\nDisallow: /ux/search/\nDisallow: /wnwi/search/\nDisallow: /gei/search/\nDisallow: /impact/search/\nDisallow: /netzeropathfinders/search/\nDisallow: /notices/search/\nDisallow: /distribution/search/\nDisallow: /ukinnovators/search/\nDisallow: /latam/search/\nDisallow: /faq/search/\nDisallow: /tc/search/\nDisallow: /subscriptions/group/manage/\nDisallow: /preview/lineup\nDisallow: /preview/articles\nDisallow: /explore/\nDisallow: /press-releases/\nDisallow: /artemis/\nDisallow: /sessions-publisher/\n\nUser-agent: Google-Extended\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\n\nUser-agent: Mediapartners-Google\nDisallow: /about/careers\nDisallow: /about/careers/\nDisallow: /offlinemessage/\nDisallow: /apps/fbk\nDisallow: /bb/newsarchive/\nDisallow: /apps/news\n\nUser-agent: Spinn3r\nDisallow: /podcasts/\nDisallow: /feed/podcast/\nDisallow: /bb/avfile/\n\nUser-agent: Googlebot-News\nDisallow: /sponsor/\nDisallow: /news/sponsors/*\nDisallow: /news/terminal/*\n\nUser-agent: Twitterbot\nAllow: /en/news/thp\n\nUser-agent: CCBot\nDisallow: /\n\n# Development Tools\nUser-agent: Python-urllib\nDisallow: /\nUser-agent: python-requests\nDisallow: /\nUser-agent: Python-http-client\nDisallow: /\n\n# AI/LLM Bots\nUser-agent: ChatGPT-User\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: GPTBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: Claude-Web\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: anthropic-ai\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: PerplexityBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: YouBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: ClaudeBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: Claude-User\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: Claude-SearchBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: OAI-SearchBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: DuckAssistBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: cohere-ai\nDisallow: /\n\n# Google Services\nUser-agent: Google-Apps\nDisallow: /\nUser-agent: Google-Apps-Script\nDisallow: /\nUser-agent: AppEngine-Google\nDisallow: /\nUser-agent: Google-Cloud\nDisallow: /\nUser-agent: Google-CloudVertexBot\nDisallow: /\n\n# Major Company Bots\nUser-agent: AmazonBot\nDisallow: /\nUser-agent: AmazonAdBot\nDisallow: /\nUser-agent: ByteSpider\nDisallow: /\nUser-agent: Meta-ExternalAgent\nDisallow: /\nUser-agent: Meta-ExternalFetcher\nDisallow: /\nUser-agent: Meta-ExternalAgent-Image\nDisallow: /\nUser-agent: Applebot-Extended\nDisallow: /\nUser-agent: Bytespider-Image\nDisallow: /\n\n# Feed & Content Aggregators\nUser-agent: Feedly\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: FeedlyBot\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: FeedlyApp\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: MWFeedParser\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\n\n# Analytics & Marketing\nUser-agent: comscore\nDisallow: /\nUser-agent: Comscore\nDisallow: /\nUser-agent: HubSpot\nDisallow: /\nUser-agent: hubspot\nDisallow: /\nUser-agent: Criteo\nDisallow: /\nUser-agent: criteo-bot\nDisallow: /\nUser-agent: Peer39_Crawler\nDisallow: /\nUser-agent: rogerbot\nDisallow: /\nUser-agent: linkdexbot\nDisallow: /\nUser-agent: NTENT\nDisallow: /\nUser-agent: AndersPinkBot\nDisallow: /\nUser-agent: IndeedBot\nDisallow: /\n\n# Search Engine Bots\nUser-agent: MJ12bot\nDisallow: /\nUser-agent: PetalBot\nDisallow: /\nUser-agent: YisouSpider\nDisallow: /\nUser-agent: 360Spider\nDisallow: /\nUser-agent: Qwantify\nDisallow: /\nUser-agent: ToutiaoSpider\nDisallow: /\n\n# Monitoring & Security\nUser-agent: Screaming Frog SEO Spider\nDisallow: /\nAllow: /professional\nAllow: /company\nAllow: /latam\nAllow: /faq\nAllow: /tc\nUser-agent: PRTG\nDisallow: /\nUser-agent: FreshpingBot\nDisallow: /\nUser-agent: Panopta\nDisallow: /\nUser-agent: DatadogSynthetics\nDisallow: /\nUser-agent: Rackspace\nDisallow: /\nUser-agent: censys\nDisallow: /\nUser-agent: burp\nDisallow: /\nUser-agent: Burp\nDisallow: /\nUser-agent: check_http\nDisallow: /\nUser-agent: DotcomMonitor\nDisallow: /\nUser-agent: WatchSumo\nDisallow: /\nUser-agent: WormlyBot\nDisallow: /\nUser-agent: CalibreBot\nDisallow: /\nUser-agent: AudistoBot\nDisallow: /\n\n# Social & Content\nUser-agent: Hatena\nDisallow: /\nUser-agent: Hatena-Bookmark\nDisallow: /\nUser-agent: EveryoneSocialBot\nDisallow: /\nUser-agent: Diffbot\nDisallow: /\nUser-agent: CCBot\nDisallow: /\nUser-agent: Netvibes\nDisallow: /\nUser-agent: WebCEO\nDisallow: /\nUser-agent: Postano\nDisallow: /\nUser-agent: RebelMouse\nDisallow: /\nUser-agent: Muck-Rack\nDisallow: /\nUser-agent: InstapaperViewer\nDisallow: /\nUser-agent: Twurly\nDisallow: /\nUser-agent: LivelapBot\nDisallow: /\nUser-agent: DatagnionBot\nDisallow: /\nUser-agent: Linespider\nDisallow: /\nUser-agent: Discourse\nDisallow: /\n\n# Potentially Malicious\nUser-agent: Medusa\nDisallow: /\nUser-agent: pingback\nDisallow: /\nUser-agent: WordPress\nDisallow: /\nUser-agent: wp_ping\nDisallow: /\nUser-agent: MauiBot\nDisallow: /\nUser-agent: ltx71\nDisallow: /\nUser-agent: WeSEE\nDisallow: /\nUser-agent: halebot\nDisallow: /\nUser-agent: BrightBot\nDisallow: /\n\n# Gaming/3D\nUser-agent: UnityPlayer\nDisallow: /\n\n# Sitemaps app\nSitemap: https://www.bloomberg.com/sitemaps/news/index.xml\nSitemap: https://www.bloomberg.com/sitemaps/news/latest.xml\nSitemap: https://www.bloomberg.com/sitemaps/collections/index.xml\nSitemap: https://www.bloomberg.com/sitemaps/media/video/index.xml\nSitemap: https://www.bloomberg.com/sitemaps/media/audio/index.xml\nSitemap: https://www.bloomberg.com/sitemaps/people/profiles/index.xml\nSitemap: https://www.bloomberg.com/sitemaps/companies/public-company/index.xml\nSitemap: https://www.bloomberg.com/sitemaps/companies/private-company/index.xml\nSitemap: https://www.bloomberg.com/sitemaps/securites/index.xml\n\n# Billionaires, owned by graphics\nSitemap: https://www.bloomberg.com/billionaires/sitemap.xml\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      }
+    },
+    "partially_blocked_agents": {
+      "GPTBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "ClaudeBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Google-Extended": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "CCBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Applebot-Extended": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Meta-ExternalAgent": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Bytespider": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Amazonbot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "OAI-SearchBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Claude-SearchBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "PerplexityBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "ChatGPT-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Claude-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ]
+    },
+    "sitemaps_declared": [
+      "https://www.bloomberg.com/sitemaps/news/index.xml",
+      "https://www.bloomberg.com/sitemaps/news/latest.xml",
+      "https://www.bloomberg.com/sitemaps/collections/index.xml",
+      "https://www.bloomberg.com/sitemaps/media/video/index.xml",
+      "https://www.bloomberg.com/sitemaps/media/audio/index.xml",
+      "https://www.bloomberg.com/sitemaps/people/profiles/index.xml",
+      "https://www.bloomberg.com/sitemaps/companies/public-company/index.xml",
+      "https://www.bloomberg.com/sitemaps/companies/private-company/index.xml",
+      "https://www.bloomberg.com/sitemaps/securites/index.xml",
+      "https://www.bloomberg.com/billionaires/sitemap.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://www.bloomberg.com/sitemaps/news/index.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 429
+    },
+    {
+      "url": "https://www.bloomberg.com/sitemaps/news/latest.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 138
+    },
+    {
+      "url": "https://www.bloomberg.com/sitemaps/collections/index.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 4
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 403,
+      "url": "https://bloomberg.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 403,
+      "url": "https://bloomberg.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 403,
+      "url": "https://bloomberg.com/ai.txt"
+    }
+  },
+  "pages": {
+    "https://www.bloomberg.com/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://bloomberg.com/",
+      "final_url": "https://www.bloomberg.com/",
+      "status_code": 403,
+      "load_time_seconds": 1.31,
+      "raw_html": "<!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n            <title>Bloomberg - Are you a robot?</title> \n            <style rel=\"stylesheet\">\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 400;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-7998fbcba8.eot');\n                    src: local('?'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-5cf5733cd9.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-a1ea4fd367.woff') format('woff')\n                }\n\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 700;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-de8c77cce2.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-506363704e.woff') format('woff')\n                }\n            </style>\n            <style rel=\"stylesheet\">\n                html, body, div, span, applet, object, iframe,\n                h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n                a, abbr, acronym, address, big, cite, code,\n                del, dfn, em, img, ins, kbd, q, s, samp,\n                small, strike, strong, sub, sup, tt, var,\n                b, u, i, center,\n                dl, dt, dd, ol, ul, li,\n                fieldset, form, label, legend,\n                table, caption, tbody, tfoot, thead, tr, th, td,\n                article, aside, canvas, details, embed,\n                figure, figcaption, footer, header, hgroup,\n                menu, nav, output, ruby, section, summary,\n                time, mark, audio, video {\n                    margin: 0;\n                    padding: 0;\n                    border: 0;\n                    font-size: 100%;\n                    font: inherit;\n                    vertical-align: baseline;\n                }\n\n                /* HTML5 display-role reset for older browsers */\n                article, aside, details, figcaption, figure,\n                footer, header, hgroup, menu, nav, section {\n                    display: block;\n                }\n\n                body {\n                    line-height: 1;\n                }\n\n                ol, ul {\n                    list-style: none;\n                }\n\n                blockquote, q {\n                    quotes: none;\n                }\n\n                blockquote:before, blockquote:after,\n                q:before, q:after {\n                    content: '';\n                    content: none;\n                }\n\n                table {\n                    border-collapse: collapse;\n                    border-spacing: 0;\n                }\n\n                * {\n                    box-sizing: border-box;\n                }\n\n                body {\n                    background-color: #f2f2f2;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    line-height: 1.2;\n                }\n\n                .header {\n                    margin: 0;\n                    height: 60px;\n                    width: 100%;\n                    background-color: black;\n                    color: white;\n                    overflow-x: hidden;\n                }\n\n                .logo {\n                    float: left;\n                    margin: 0 20px;\n                    height: 60px;\n                    width: 140px;\n                    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTcuNzUgNDcuNjMiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Qmxvb21iZXJnX05IR193aHQ8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgxLjczLDExMzhIMTAwLjZjMy41NywwLDYuMzIuODcsOC4yNiwyLjQ1YTkuNDUsOS40NSwwLDAsMSwzLjM3LDcuNmMwLDMuNjctMS40OCw2LTQuNTQsNy4zOXYwLjE1YzQsMS4zMyw2LjI3LDQuOSw2LjI3LDkuMjMsMCw0LjEzLTEuNTgsNy4zNC00LjE4LDkuMjgtMi4xOSwxLjU4LTUsMi4zNS04LjgyLDIuMzVIODEuNzNWMTEzOFptMTcsMTVjMiwwLDMuNTItMS4xMiwzLjUyLTMuMzdzLTEuNTMtMy4yNi0zLjU3LTMuMjZIOTIuMTlWMTE1M2g2LjUzWm0xLDE0Ljg5YTMuOTMsMy45MywwLDEsMC0uMDUtNy44NUg5Mi4xOXY3Ljg1aDcuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTUuOCwxMTM4aDkuODl2MzguNDVIMTE1LjhWMTEzOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNjksMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTI3LjY5LDExNzEuNDgsMTI3LjY5LDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNDYuMzUsMTE2Ny42MSwxNDYuMzUsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTcuMzIsMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTU3LjMyLDExNzEuNDgsMTU3LjMyLDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNzYsMTE2Ny42MSwxNzYsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xODcuNzYsMTE0OWg5LjE4djQuMTNoMC4xNWMxLjg0LTMuMjEsNC4zMy00Ljk1LDguMjYtNC45NWE3LjY2LDcuNjYsMCwwLDEsNy4zOSw0Ljc0aDAuMTVhOS4yMSw5LjIxLDAsMCwxLDguNTItNC43NGM2LjM3LDAsOS4xMyw0LjY5LDkuMTMsMTF2MTcuMjRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjRWMTE0OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNDIuNjksMTE3Mi44NmgtMC4xdjMuNTdoLTkuMThWMTEzOEgyNDN2MTMuODdoMC4xNWE5LjEyLDkuMTIsMCwwLDEsNy44LTMuNjdjNi44OCwwLDEwLjg2LDYuMjIsMTAuODYsMTQuNDgsMCw5LjMzLTQuMzMsMTQuNjktMTEuNDcsMTQuNjlBOC42Nyw4LjY3LDAsMCwxLDI0Mi42OSwxMTcyLjg2Wm05LjM4LTEwLjNjMC00LjQ0LTEuNjMtNy4yOS00LjU0LTcuMjlzLTQuODQsMi44Ni00Ljg0LDcuMjksMS44OSw3LjI5LDQuODQsNy4yOVMyNTIuMDcsMTE2NywyNTIuMDcsMTE2Mi41NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjMsMTE2Mi42NmMwLTguNTcsNS42Ni0xNC41MywxMy44Ny0xNC41M2ExMy4zNCwxMy4zNCwwLDAsMSw5LjY0LDMuNTdjMy4xNiwzLjA2LDQuNTksNy44NSw0LjQ5LDEzLjUxSDI3Mi42M2MwLjQxLDMuNDIsMiw1LjE1LDQuOTUsNS4xNWEzLjcsMy43LDAsMCwwLDMuNzctMi42aDkuMjhjLTEuNjMsNi4yNy02LjQ4LDkuNDQtMTMuMzYsOS40NEMyNjguNzUsMTE3Ny4yLDI2MywxMTcxLjQzLDI2MywxMTYyLjY2Wm05LjU5LTIuODZoOC43N2MtMC4xNS0zLjMxLTItNS00LjI4LTVDMjc0LjQ2LDExNTQuNzYsMjczLDExNTYuNjQsMjcyLjYzLDExNTkuODFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODEuNzMgLTExMzcuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzAyLDExNTMuNjloMC4xNWMyLTMuODIsNC41OS01LjI1LDcuOS01LjI1YTMuNzIsMy43MiwwLDAsMSwxLjU4LjI1djguNDFoLTAuMmMtNS42Ni0xLTksMS42OC05LDcuODV2MTEuNDdoLTkuNjRWMTE0OUgzMDJ2NC42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMTIuNjYsMTE3Ni40OGg5LjI4YzAuMzYsMS4xNywxLjU4LDIuMzUsMy44OCwyLjM1LDMuMTEsMCw0LjE4LTEuOTQsNC4xOC00Ljc5di0yaC0wLjJhOC4yNiw4LjI2LDAsMCwxLTYuNTgsMy4xMWMtNS45MiwwLTExLjA3LTQuMzgtMTEuMDctMTMsMC03Ljg1LDQuMjMtMTQsMTAuNjEtMTQsMy42NywwLDUuOTEsMS40OCw3LjM5LDMuODJoMC4xNXYtM2g5LjE4djIzLjc2YzAsNC4zOC0xLjUzLDcuOC0zLjgyLDkuODRzLTUuODEsMy05LjY5LDNDMzE4LjY4LDExODUuNjEsMzEzLjU4LDExODIuNiwzMTIuNjYsMTE3Ni40OFptMTcuNzUtMTQuNzljMC0zLjQyLTEuNjMtNi4xNy00LjQ0LTYuMTdzLTQuNDQsMi40NS00LjQ0LDYuMTcsMS43Myw2LjMyLDQuNDQsNi4zMlMzMzAuNDEsMTE2NS4zMSwzMzAuNDEsMTE2MS42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48L3N2Zz4=');\n                    background-repeat: no-repeat;\n                    background-position: center;\n                    font-size: 0;\n                }\n\n                .contact-us {\n                    float: right;\n                    margin: 0 20px;\n                    line-height: 60px;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-size: 14px;\n                    color: white;\n                    text-decoration: underline;\n                }\n\n                .box {\n                    margin: 30px auto;\n                    padding: 30px;\n                    width: 680px;\n                    background-color: white;\n                }\n\n                @media (max-width: 760px) {\n                    .box {\n                        width: calc(100% - 20px);\n                    }\n                }\n\n                .main__heading, .info__heading {\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-weight: bold;\n                }\n\n                .main__heading {\n                    font-size: 19px;\n                    padding-bottom: 9px;\n                }\n\n                .continue {\n                    font-size: 18px;\n                }\n\n                #px-captcha {\n                    width: 320px;\n                    margin: 20px auto 0;\n                    min-height: 80px;\n                }\n\n                .info {\n                    border-top: dotted 1px black;\n                    padding-top: 9px;\n                }\n\n                .info + .info {\n                    margin-top: 30px;\n                }\n\n                .info__link {\n                    color: black;\n                    text-decoration: underline;\n                }\n\n                .info__heading {\n                    font-size: 16px;\n                    line-height: 20px;\n                    padding-bottom: 9px;\n                }\n\n                .info__text {\n                    padding-bottom: 9px;\n                }\n                \n                .subscribe__btn {\n                    padding: 18px 24px;\n                    color: #fff;\n                    background-color: #000;\n                    border-radius: 8px;\n                    font-size: x-large;\n                    font-weight: bold;\n                    font-family: 'BWHaasGroteskWeb';\n                    text-decoration: none;\n                    display: block;\n                    margin: 18px auto 0;\n                    width: fit-content;\n                }\n\n                #block_uuid {\n                    display: inline-block;\n                    padding: 6px;\n                    background-color: #f2f2f2;\n                    font-family: monospace;\n                    font-size: 14px;\n                }\n            </style>\n        </head>\n        <body>\n            <header class=\"header\">\n                <h1 class=\"logo\">Bloomberg</h1>\n                <a class=\"contact-us\" href=\"/feedback\" target=\"_blank\">Need help? Contact us</a>\n            </header>\n            <section class=\"box main\">\n                <h2 class=\"main__heading\">We've detected unusual activity from your computer network</h2>\n                <p class=\"continue\">To continue, please click the box below to let us know you're not a robot.</p>\n                <div id=\"px-captcha\"></div>\n            </section>\n            <section class=\"box\">\n            <section class=\"info\">\n                <h3 class=\"info__heading\">Why did this happen?</h3>\n                <p class=\"info__text\">Please make sure your browser supports JavaScript and cookies and that you are not\n                    blocking them from loading.\n                    For more information you can review our <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Terms of Service</a> \n                    and <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Cookie Policy</a>.</p>\n                </section>\n                <section class=\"info\">\n                    <h3 class=\"info__heading\">Need Help?</h3>\n                    <p class=\"info__text\">For inquiries related to this message please <a class=\"info__link\" href=\"/feedback\" target=\"_blank\">contact\n                        our support team</a> and provide the reference ID below.</p>\n                    <div id=\"block_uuid\">Block reference ID:22bdec17-af8c-11f1-a439-f1af9dc3257a</div>\n                </section>\n                <section class=\"info\">\n                    <p>Get the most important global markets news at your fingertips with a <a class=\"info__link\" href=\"https://bloomberg.com\" target=\"_blank\">Bloomberg.com</a> subscription.</p>\n                    <a href=\"/subscription\" target=\"_blank\" class=\"subscribe__btn\" onclick=\"dataLayer.push({ event: 'tos_subscribe'})\">SUBSCRIBE NOW</a>\n                </section>\n            </section>\n            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n            new Date().getTime(),event:'gtm.js'});w[l].push({event:'tos_pageview'});var f=d.getElementsByTagName(s)[0],\n        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-N67DF79H');</script>\n            <script>\n                window._pxVid = '';\n                window._pxUuid = '22bdec17-af8c-11f1-a439-f1af9dc3257a';\n                window._pxAppId = 'PX8FCGYgk4';\n                window._pxHostUrl = '/8FCGYgk4/xhr';\n                window._pxCustomLogo = '';\n                window._pxJsClientSrc = '/8FCGYgk4/init.js';\n                window._pxFirstPartyEnabled = 'true';\n                \n                var script = document.createElement('script');\n                    script.src = 'https://captcha.px-cloud.net/PX8FCGYgk4/captcha.js?a=c&u=22bdec17-af8c-11f1-a439-f1af9dc3257a&v=&m=0&h=R0VU';\n                \n                    document.head.appendChild(script);\n            </script></body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.bloomberg.com/news/articles/2026-09-11/from-campbell-s-to-conagra-food-industry-warns-of-price-hikes": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-11/from-campbell-s-to-conagra-food-industry-warns-of-price-hikes",
+      "final_url": "https://www.bloomberg.com/news/articles/2026-09-11/from-campbell-s-to-conagra-food-industry-warns-of-price-hikes",
+      "status_code": 403,
+      "load_time_seconds": 0.34,
+      "raw_html": "<!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n            <title>Bloomberg - Are you a robot?</title> \n            <style rel=\"stylesheet\">\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 400;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-7998fbcba8.eot');\n                    src: local('?'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-5cf5733cd9.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-a1ea4fd367.woff') format('woff')\n                }\n\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 700;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-de8c77cce2.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-506363704e.woff') format('woff')\n                }\n            </style>\n            <style rel=\"stylesheet\">\n                html, body, div, span, applet, object, iframe,\n                h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n                a, abbr, acronym, address, big, cite, code,\n                del, dfn, em, img, ins, kbd, q, s, samp,\n                small, strike, strong, sub, sup, tt, var,\n                b, u, i, center,\n                dl, dt, dd, ol, ul, li,\n                fieldset, form, label, legend,\n                table, caption, tbody, tfoot, thead, tr, th, td,\n                article, aside, canvas, details, embed,\n                figure, figcaption, footer, header, hgroup,\n                menu, nav, output, ruby, section, summary,\n                time, mark, audio, video {\n                    margin: 0;\n                    padding: 0;\n                    border: 0;\n                    font-size: 100%;\n                    font: inherit;\n                    vertical-align: baseline;\n                }\n\n                /* HTML5 display-role reset for older browsers */\n                article, aside, details, figcaption, figure,\n                footer, header, hgroup, menu, nav, section {\n                    display: block;\n                }\n\n                body {\n                    line-height: 1;\n                }\n\n                ol, ul {\n                    list-style: none;\n                }\n\n                blockquote, q {\n                    quotes: none;\n                }\n\n                blockquote:before, blockquote:after,\n                q:before, q:after {\n                    content: '';\n                    content: none;\n                }\n\n                table {\n                    border-collapse: collapse;\n                    border-spacing: 0;\n                }\n\n                * {\n                    box-sizing: border-box;\n                }\n\n                body {\n                    background-color: #f2f2f2;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    line-height: 1.2;\n                }\n\n                .header {\n                    margin: 0;\n                    height: 60px;\n                    width: 100%;\n                    background-color: black;\n                    color: white;\n                    overflow-x: hidden;\n                }\n\n                .logo {\n                    float: left;\n                    margin: 0 20px;\n                    height: 60px;\n                    width: 140px;\n                    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTcuNzUgNDcuNjMiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Qmxvb21iZXJnX05IR193aHQ8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgxLjczLDExMzhIMTAwLjZjMy41NywwLDYuMzIuODcsOC4yNiwyLjQ1YTkuNDUsOS40NSwwLDAsMSwzLjM3LDcuNmMwLDMuNjctMS40OCw2LTQuNTQsNy4zOXYwLjE1YzQsMS4zMyw2LjI3LDQuOSw2LjI3LDkuMjMsMCw0LjEzLTEuNTgsNy4zNC00LjE4LDkuMjgtMi4xOSwxLjU4LTUsMi4zNS04LjgyLDIuMzVIODEuNzNWMTEzOFptMTcsMTVjMiwwLDMuNTItMS4xMiwzLjUyLTMuMzdzLTEuNTMtMy4yNi0zLjU3LTMuMjZIOTIuMTlWMTE1M2g2LjUzWm0xLDE0Ljg5YTMuOTMsMy45MywwLDEsMC0uMDUtNy44NUg5Mi4xOXY3Ljg1aDcuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTUuOCwxMTM4aDkuODl2MzguNDVIMTE1LjhWMTEzOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNjksMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTI3LjY5LDExNzEuNDgsMTI3LjY5LDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNDYuMzUsMTE2Ny42MSwxNDYuMzUsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTcuMzIsMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTU3LjMyLDExNzEuNDgsMTU3LjMyLDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNzYsMTE2Ny42MSwxNzYsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xODcuNzYsMTE0OWg5LjE4djQuMTNoMC4xNWMxLjg0LTMuMjEsNC4zMy00Ljk1LDguMjYtNC45NWE3LjY2LDcuNjYsMCwwLDEsNy4zOSw0Ljc0aDAuMTVhOS4yMSw5LjIxLDAsMCwxLDguNTItNC43NGM2LjM3LDAsOS4xMyw0LjY5LDkuMTMsMTF2MTcuMjRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjRWMTE0OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNDIuNjksMTE3Mi44NmgtMC4xdjMuNTdoLTkuMThWMTEzOEgyNDN2MTMuODdoMC4xNWE5LjEyLDkuMTIsMCwwLDEsNy44LTMuNjdjNi44OCwwLDEwLjg2LDYuMjIsMTAuODYsMTQuNDgsMCw5LjMzLTQuMzMsMTQuNjktMTEuNDcsMTQuNjlBOC42Nyw4LjY3LDAsMCwxLDI0Mi42OSwxMTcyLjg2Wm05LjM4LTEwLjNjMC00LjQ0LTEuNjMtNy4yOS00LjU0LTcuMjlzLTQuODQsMi44Ni00Ljg0LDcuMjksMS44OSw3LjI5LDQuODQsNy4yOVMyNTIuMDcsMTE2NywyNTIuMDcsMTE2Mi41NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjMsMTE2Mi42NmMwLTguNTcsNS42Ni0xNC41MywxMy44Ny0xNC41M2ExMy4zNCwxMy4zNCwwLDAsMSw5LjY0LDMuNTdjMy4xNiwzLjA2LDQuNTksNy44NSw0LjQ5LDEzLjUxSDI3Mi42M2MwLjQxLDMuNDIsMiw1LjE1LDQuOTUsNS4xNWEzLjcsMy43LDAsMCwwLDMuNzctMi42aDkuMjhjLTEuNjMsNi4yNy02LjQ4LDkuNDQtMTMuMzYsOS40NEMyNjguNzUsMTE3Ny4yLDI2MywxMTcxLjQzLDI2MywxMTYyLjY2Wm05LjU5LTIuODZoOC43N2MtMC4xNS0zLjMxLTItNS00LjI4LTVDMjc0LjQ2LDExNTQuNzYsMjczLDExNTYuNjQsMjcyLjYzLDExNTkuODFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODEuNzMgLTExMzcuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzAyLDExNTMuNjloMC4xNWMyLTMuODIsNC41OS01LjI1LDcuOS01LjI1YTMuNzIsMy43MiwwLDAsMSwxLjU4LjI1djguNDFoLTAuMmMtNS42Ni0xLTksMS42OC05LDcuODV2MTEuNDdoLTkuNjRWMTE0OUgzMDJ2NC42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMTIuNjYsMTE3Ni40OGg5LjI4YzAuMzYsMS4xNywxLjU4LDIuMzUsMy44OCwyLjM1LDMuMTEsMCw0LjE4LTEuOTQsNC4xOC00Ljc5di0yaC0wLjJhOC4yNiw4LjI2LDAsMCwxLTYuNTgsMy4xMWMtNS45MiwwLTExLjA3LTQuMzgtMTEuMDctMTMsMC03Ljg1LDQuMjMtMTQsMTAuNjEtMTQsMy42NywwLDUuOTEsMS40OCw3LjM5LDMuODJoMC4xNXYtM2g5LjE4djIzLjc2YzAsNC4zOC0xLjUzLDcuOC0zLjgyLDkuODRzLTUuODEsMy05LjY5LDNDMzE4LjY4LDExODUuNjEsMzEzLjU4LDExODIuNiwzMTIuNjYsMTE3Ni40OFptMTcuNzUtMTQuNzljMC0zLjQyLTEuNjMtNi4xNy00LjQ0LTYuMTdzLTQuNDQsMi40NS00LjQ0LDYuMTcsMS43Myw2LjMyLDQuNDQsNi4zMlMzMzAuNDEsMTE2NS4zMSwzMzAuNDEsMTE2MS42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48L3N2Zz4=');\n                    background-repeat: no-repeat;\n                    background-position: center;\n                    font-size: 0;\n                }\n\n                .contact-us {\n                    float: right;\n                    margin: 0 20px;\n                    line-height: 60px;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-size: 14px;\n                    color: white;\n                    text-decoration: underline;\n                }\n\n                .box {\n                    margin: 30px auto;\n                    padding: 30px;\n                    width: 680px;\n                    background-color: white;\n                }\n\n                @media (max-width: 760px) {\n                    .box {\n                        width: calc(100% - 20px);\n                    }\n                }\n\n                .main__heading, .info__heading {\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-weight: bold;\n                }\n\n                .main__heading {\n                    font-size: 19px;\n                    padding-bottom: 9px;\n                }\n\n                .continue {\n                    font-size: 18px;\n                }\n\n                #px-captcha {\n                    width: 320px;\n                    margin: 20px auto 0;\n                    min-height: 80px;\n                }\n\n                .info {\n                    border-top: dotted 1px black;\n                    padding-top: 9px;\n                }\n\n                .info + .info {\n                    margin-top: 30px;\n                }\n\n                .info__link {\n                    color: black;\n                    text-decoration: underline;\n                }\n\n                .info__heading {\n                    font-size: 16px;\n                    line-height: 20px;\n                    padding-bottom: 9px;\n                }\n\n                .info__text {\n                    padding-bottom: 9px;\n                }\n                \n                .subscribe__btn {\n                    padding: 18px 24px;\n                    color: #fff;\n                    background-color: #000;\n                    border-radius: 8px;\n                    font-size: x-large;\n                    font-weight: bold;\n                    font-family: 'BWHaasGroteskWeb';\n                    text-decoration: none;\n                    display: block;\n                    margin: 18px auto 0;\n                    width: fit-content;\n                }\n\n                #block_uuid {\n                    display: inline-block;\n                    padding: 6px;\n                    background-color: #f2f2f2;\n                    font-family: monospace;\n                    font-size: 14px;\n                }\n            </style>\n        </head>\n        <body>\n            <header class=\"header\">\n                <h1 class=\"logo\">Bloomberg</h1>\n                <a class=\"contact-us\" href=\"/feedback\" target=\"_blank\">Need help? Contact us</a>\n            </header>\n            <section class=\"box main\">\n                <h2 class=\"main__heading\">We've detected unusual activity from your computer network</h2>\n                <p class=\"continue\">To continue, please click the box below to let us know you're not a robot.</p>\n                <div id=\"px-captcha\"></div>\n            </section>\n            <section class=\"box\">\n            <section class=\"info\">\n                <h3 class=\"info__heading\">Why did this happen?</h3>\n                <p class=\"info__text\">Please make sure your browser supports JavaScript and cookies and that you are not\n                    blocking them from loading.\n                    For more information you can review our <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Terms of Service</a> \n                    and <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Cookie Policy</a>.</p>\n                </section>\n                <section class=\"info\">\n                    <h3 class=\"info__heading\">Need Help?</h3>\n                    <p class=\"info__text\">For inquiries related to this message please <a class=\"info__link\" href=\"/feedback\" target=\"_blank\">contact\n                        our support team</a> and provide the reference ID below.</p>\n                    <div id=\"block_uuid\">Block reference ID:22fab44b-af8c-11f1-bd88-a252781a49d5</div>\n                </section>\n                <section class=\"info\">\n                    <p>Get the most important global markets news at your fingertips with a <a class=\"info__link\" href=\"https://bloomberg.com\" target=\"_blank\">Bloomberg.com</a> subscription.</p>\n                    <a href=\"/subscription\" target=\"_blank\" class=\"subscribe__btn\" onclick=\"dataLayer.push({ event: 'tos_subscribe'})\">SUBSCRIBE NOW</a>\n                </section>\n            </section>\n            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n            new Date().getTime(),event:'gtm.js'});w[l].push({event:'tos_pageview'});var f=d.getElementsByTagName(s)[0],\n        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-N67DF79H');</script>\n            <script>\n                window._pxVid = '';\n                window._pxUuid = '22fab44b-af8c-11f1-bd88-a252781a49d5';\n                window._pxAppId = 'PX8FCGYgk4';\n                window._pxHostUrl = '/8FCGYgk4/xhr';\n                window._pxCustomLogo = '';\n                window._pxJsClientSrc = '/8FCGYgk4/init.js';\n                window._pxFirstPartyEnabled = 'true';\n                \n                var script = document.createElement('script');\n                    script.src = 'https://captcha.px-cloud.net/PX8FCGYgk4/captcha.js?a=c&u=22fab44b-af8c-11f1-bd88-a252781a49d5&v=&m=0&h=R0VU';\n                \n                    document.head.appendChild(script);\n            </script></body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.bloomberg.com/news/articles/2026-09-11/futures-rise-with-help-from-oracle-s-beat-and-cooler-oil-prices": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-11/futures-rise-with-help-from-oracle-s-beat-and-cooler-oil-prices",
+      "final_url": "https://www.bloomberg.com/news/articles/2026-09-11/futures-rise-with-help-from-oracle-s-beat-and-cooler-oil-prices",
+      "status_code": 403,
+      "load_time_seconds": 0.43,
+      "raw_html": "<!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n            <title>Bloomberg - Are you a robot?</title> \n            <style rel=\"stylesheet\">\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 400;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-7998fbcba8.eot');\n                    src: local('?'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-5cf5733cd9.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-a1ea4fd367.woff') format('woff')\n                }\n\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 700;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-de8c77cce2.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-506363704e.woff') format('woff')\n                }\n            </style>\n            <style rel=\"stylesheet\">\n                html, body, div, span, applet, object, iframe,\n                h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n                a, abbr, acronym, address, big, cite, code,\n                del, dfn, em, img, ins, kbd, q, s, samp,\n                small, strike, strong, sub, sup, tt, var,\n                b, u, i, center,\n                dl, dt, dd, ol, ul, li,\n                fieldset, form, label, legend,\n                table, caption, tbody, tfoot, thead, tr, th, td,\n                article, aside, canvas, details, embed,\n                figure, figcaption, footer, header, hgroup,\n                menu, nav, output, ruby, section, summary,\n                time, mark, audio, video {\n                    margin: 0;\n                    padding: 0;\n                    border: 0;\n                    font-size: 100%;\n                    font: inherit;\n                    vertical-align: baseline;\n                }\n\n                /* HTML5 display-role reset for older browsers */\n                article, aside, details, figcaption, figure,\n                footer, header, hgroup, menu, nav, section {\n                    display: block;\n                }\n\n                body {\n                    line-height: 1;\n                }\n\n                ol, ul {\n                    list-style: none;\n                }\n\n                blockquote, q {\n                    quotes: none;\n                }\n\n                blockquote:before, blockquote:after,\n                q:before, q:after {\n                    content: '';\n                    content: none;\n                }\n\n                table {\n                    border-collapse: collapse;\n                    border-spacing: 0;\n                }\n\n                * {\n                    box-sizing: border-box;\n                }\n\n                body {\n                    background-color: #f2f2f2;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    line-height: 1.2;\n                }\n\n                .header {\n                    margin: 0;\n                    height: 60px;\n                    width: 100%;\n                    background-color: black;\n                    color: white;\n                    overflow-x: hidden;\n                }\n\n                .logo {\n                    float: left;\n                    margin: 0 20px;\n                    height: 60px;\n                    width: 140px;\n                    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTcuNzUgNDcuNjMiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Qmxvb21iZXJnX05IR193aHQ8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgxLjczLDExMzhIMTAwLjZjMy41NywwLDYuMzIuODcsOC4yNiwyLjQ1YTkuNDUsOS40NSwwLDAsMSwzLjM3LDcuNmMwLDMuNjctMS40OCw2LTQuNTQsNy4zOXYwLjE1YzQsMS4zMyw2LjI3LDQuOSw2LjI3LDkuMjMsMCw0LjEzLTEuNTgsNy4zNC00LjE4LDkuMjgtMi4xOSwxLjU4LTUsMi4zNS04LjgyLDIuMzVIODEuNzNWMTEzOFptMTcsMTVjMiwwLDMuNTItMS4xMiwzLjUyLTMuMzdzLTEuNTMtMy4yNi0zLjU3LTMuMjZIOTIuMTlWMTE1M2g2LjUzWm0xLDE0Ljg5YTMuOTMsMy45MywwLDEsMC0uMDUtNy44NUg5Mi4xOXY3Ljg1aDcuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTUuOCwxMTM4aDkuODl2MzguNDVIMTE1LjhWMTEzOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNjksMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTI3LjY5LDExNzEuNDgsMTI3LjY5LDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNDYuMzUsMTE2Ny42MSwxNDYuMzUsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTcuMzIsMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTU3LjMyLDExNzEuNDgsMTU3LjMyLDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNzYsMTE2Ny42MSwxNzYsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xODcuNzYsMTE0OWg5LjE4djQuMTNoMC4xNWMxLjg0LTMuMjEsNC4zMy00Ljk1LDguMjYtNC45NWE3LjY2LDcuNjYsMCwwLDEsNy4zOSw0Ljc0aDAuMTVhOS4yMSw5LjIxLDAsMCwxLDguNTItNC43NGM2LjM3LDAsOS4xMyw0LjY5LDkuMTMsMTF2MTcuMjRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjRWMTE0OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNDIuNjksMTE3Mi44NmgtMC4xdjMuNTdoLTkuMThWMTEzOEgyNDN2MTMuODdoMC4xNWE5LjEyLDkuMTIsMCwwLDEsNy44LTMuNjdjNi44OCwwLDEwLjg2LDYuMjIsMTAuODYsMTQuNDgsMCw5LjMzLTQuMzMsMTQuNjktMTEuNDcsMTQuNjlBOC42Nyw4LjY3LDAsMCwxLDI0Mi42OSwxMTcyLjg2Wm05LjM4LTEwLjNjMC00LjQ0LTEuNjMtNy4yOS00LjU0LTcuMjlzLTQuODQsMi44Ni00Ljg0LDcuMjksMS44OSw3LjI5LDQuODQsNy4yOVMyNTIuMDcsMTE2NywyNTIuMDcsMTE2Mi41NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjMsMTE2Mi42NmMwLTguNTcsNS42Ni0xNC41MywxMy44Ny0xNC41M2ExMy4zNCwxMy4zNCwwLDAsMSw5LjY0LDMuNTdjMy4xNiwzLjA2LDQuNTksNy44NSw0LjQ5LDEzLjUxSDI3Mi42M2MwLjQxLDMuNDIsMiw1LjE1LDQuOTUsNS4xNWEzLjcsMy43LDAsMCwwLDMuNzctMi42aDkuMjhjLTEuNjMsNi4yNy02LjQ4LDkuNDQtMTMuMzYsOS40NEMyNjguNzUsMTE3Ny4yLDI2MywxMTcxLjQzLDI2MywxMTYyLjY2Wm05LjU5LTIuODZoOC43N2MtMC4xNS0zLjMxLTItNS00LjI4LTVDMjc0LjQ2LDExNTQuNzYsMjczLDExNTYuNjQsMjcyLjYzLDExNTkuODFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODEuNzMgLTExMzcuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzAyLDExNTMuNjloMC4xNWMyLTMuODIsNC41OS01LjI1LDcuOS01LjI1YTMuNzIsMy43MiwwLDAsMSwxLjU4LjI1djguNDFoLTAuMmMtNS42Ni0xLTksMS42OC05LDcuODV2MTEuNDdoLTkuNjRWMTE0OUgzMDJ2NC42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMTIuNjYsMTE3Ni40OGg5LjI4YzAuMzYsMS4xNywxLjU4LDIuMzUsMy44OCwyLjM1LDMuMTEsMCw0LjE4LTEuOTQsNC4xOC00Ljc5di0yaC0wLjJhOC4yNiw4LjI2LDAsMCwxLTYuNTgsMy4xMWMtNS45MiwwLTExLjA3LTQuMzgtMTEuMDctMTMsMC03Ljg1LDQuMjMtMTQsMTAuNjEtMTQsMy42NywwLDUuOTEsMS40OCw3LjM5LDMuODJoMC4xNXYtM2g5LjE4djIzLjc2YzAsNC4zOC0xLjUzLDcuOC0zLjgyLDkuODRzLTUuODEsMy05LjY5LDNDMzE4LjY4LDExODUuNjEsMzEzLjU4LDExODIuNiwzMTIuNjYsMTE3Ni40OFptMTcuNzUtMTQuNzljMC0zLjQyLTEuNjMtNi4xNy00LjQ0LTYuMTdzLTQuNDQsMi40NS00LjQ0LDYuMTcsMS43Myw2LjMyLDQuNDQsNi4zMlMzMzAuNDEsMTE2NS4zMSwzMzAuNDEsMTE2MS42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48L3N2Zz4=');\n                    background-repeat: no-repeat;\n                    background-position: center;\n                    font-size: 0;\n                }\n\n                .contact-us {\n                    float: right;\n                    margin: 0 20px;\n                    line-height: 60px;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-size: 14px;\n                    color: white;\n                    text-decoration: underline;\n                }\n\n                .box {\n                    margin: 30px auto;\n                    padding: 30px;\n                    width: 680px;\n                    background-color: white;\n                }\n\n                @media (max-width: 760px) {\n                    .box {\n                        width: calc(100% - 20px);\n                    }\n                }\n\n                .main__heading, .info__heading {\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-weight: bold;\n                }\n\n                .main__heading {\n                    font-size: 19px;\n                    padding-bottom: 9px;\n                }\n\n                .continue {\n                    font-size: 18px;\n                }\n\n                #px-captcha {\n                    width: 320px;\n                    margin: 20px auto 0;\n                    min-height: 80px;\n                }\n\n                .info {\n                    border-top: dotted 1px black;\n                    padding-top: 9px;\n                }\n\n                .info + .info {\n                    margin-top: 30px;\n                }\n\n                .info__link {\n                    color: black;\n                    text-decoration: underline;\n                }\n\n                .info__heading {\n                    font-size: 16px;\n                    line-height: 20px;\n                    padding-bottom: 9px;\n                }\n\n                .info__text {\n                    padding-bottom: 9px;\n                }\n                \n                .subscribe__btn {\n                    padding: 18px 24px;\n                    color: #fff;\n                    background-color: #000;\n                    border-radius: 8px;\n                    font-size: x-large;\n                    font-weight: bold;\n                    font-family: 'BWHaasGroteskWeb';\n                    text-decoration: none;\n                    display: block;\n                    margin: 18px auto 0;\n                    width: fit-content;\n                }\n\n                #block_uuid {\n                    display: inline-block;\n                    padding: 6px;\n                    background-color: #f2f2f2;\n                    font-family: monospace;\n                    font-size: 14px;\n                }\n            </style>\n        </head>\n        <body>\n            <header class=\"header\">\n                <h1 class=\"logo\">Bloomberg</h1>\n                <a class=\"contact-us\" href=\"/feedback\" target=\"_blank\">Need help? Contact us</a>\n            </header>\n            <section class=\"box main\">\n                <h2 class=\"main__heading\">We've detected unusual activity from your computer network</h2>\n                <p class=\"continue\">To continue, please click the box below to let us know you're not a robot.</p>\n                <div id=\"px-captcha\"></div>\n            </section>\n            <section class=\"box\">\n            <section class=\"info\">\n                <h3 class=\"info__heading\">Why did this happen?</h3>\n                <p class=\"info__text\">Please make sure your browser supports JavaScript and cookies and that you are not\n                    blocking them from loading.\n                    For more information you can review our <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Terms of Service</a> \n                    and <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Cookie Policy</a>.</p>\n                </section>\n                <section class=\"info\">\n                    <h3 class=\"info__heading\">Need Help?</h3>\n                    <p class=\"info__text\">For inquiries related to this message please <a class=\"info__link\" href=\"/feedback\" target=\"_blank\">contact\n                        our support team</a> and provide the reference ID below.</p>\n                    <div id=\"block_uuid\">Block reference ID:2339e695-af8c-11f1-a626-f1af9dc3257a</div>\n                </section>\n                <section class=\"info\">\n                    <p>Get the most important global markets news at your fingertips with a <a class=\"info__link\" href=\"https://bloomberg.com\" target=\"_blank\">Bloomberg.com</a> subscription.</p>\n                    <a href=\"/subscription\" target=\"_blank\" class=\"subscribe__btn\" onclick=\"dataLayer.push({ event: 'tos_subscribe'})\">SUBSCRIBE NOW</a>\n                </section>\n            </section>\n            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n            new Date().getTime(),event:'gtm.js'});w[l].push({event:'tos_pageview'});var f=d.getElementsByTagName(s)[0],\n        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-N67DF79H');</script>\n            <script>\n                window._pxVid = '';\n                window._pxUuid = '2339e695-af8c-11f1-a626-f1af9dc3257a';\n                window._pxAppId = 'PX8FCGYgk4';\n                window._pxHostUrl = '/8FCGYgk4/xhr';\n                window._pxCustomLogo = '';\n                window._pxJsClientSrc = '/8FCGYgk4/init.js';\n                window._pxFirstPartyEnabled = 'true';\n                \n                var script = document.createElement('script');\n                    script.src = 'https://captcha.px-cloud.net/PX8FCGYgk4/captcha.js?a=c&u=2339e695-af8c-11f1-a626-f1af9dc3257a&v=&m=0&h=R0VU';\n                \n                    document.head.appendChild(script);\n            </script></body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.bloomberg.com/news/articles/2026-09-11/ground-beef-prices-rose-in-august-impeding-trump-efforts": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-11/ground-beef-prices-rose-in-august-impeding-trump-efforts",
+      "final_url": "https://www.bloomberg.com/news/articles/2026-09-11/ground-beef-prices-rose-in-august-impeding-trump-efforts",
+      "status_code": 403,
+      "load_time_seconds": 0.43,
+      "raw_html": "<!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n            <title>Bloomberg - Are you a robot?</title> \n            <style rel=\"stylesheet\">\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 400;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-7998fbcba8.eot');\n                    src: local('?'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-5cf5733cd9.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-a1ea4fd367.woff') format('woff')\n                }\n\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 700;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-de8c77cce2.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-506363704e.woff') format('woff')\n                }\n            </style>\n            <style rel=\"stylesheet\">\n                html, body, div, span, applet, object, iframe,\n                h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n                a, abbr, acronym, address, big, cite, code,\n                del, dfn, em, img, ins, kbd, q, s, samp,\n                small, strike, strong, sub, sup, tt, var,\n                b, u, i, center,\n                dl, dt, dd, ol, ul, li,\n                fieldset, form, label, legend,\n                table, caption, tbody, tfoot, thead, tr, th, td,\n                article, aside, canvas, details, embed,\n                figure, figcaption, footer, header, hgroup,\n                menu, nav, output, ruby, section, summary,\n                time, mark, audio, video {\n                    margin: 0;\n                    padding: 0;\n                    border: 0;\n                    font-size: 100%;\n                    font: inherit;\n                    vertical-align: baseline;\n                }\n\n                /* HTML5 display-role reset for older browsers */\n                article, aside, details, figcaption, figure,\n                footer, header, hgroup, menu, nav, section {\n                    display: block;\n                }\n\n                body {\n                    line-height: 1;\n                }\n\n                ol, ul {\n                    list-style: none;\n                }\n\n                blockquote, q {\n                    quotes: none;\n                }\n\n                blockquote:before, blockquote:after,\n                q:before, q:after {\n                    content: '';\n                    content: none;\n                }\n\n                table {\n                    border-collapse: collapse;\n                    border-spacing: 0;\n                }\n\n                * {\n                    box-sizing: border-box;\n                }\n\n                body {\n                    background-color: #f2f2f2;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    line-height: 1.2;\n                }\n\n                .header {\n                    margin: 0;\n                    height: 60px;\n                    width: 100%;\n                    background-color: black;\n                    color: white;\n                    overflow-x: hidden;\n                }\n\n                .logo {\n                    float: left;\n                    margin: 0 20px;\n                    height: 60px;\n                    width: 140px;\n                    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTcuNzUgNDcuNjMiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Qmxvb21iZXJnX05IR193aHQ8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgxLjczLDExMzhIMTAwLjZjMy41NywwLDYuMzIuODcsOC4yNiwyLjQ1YTkuNDUsOS40NSwwLDAsMSwzLjM3LDcuNmMwLDMuNjctMS40OCw2LTQuNTQsNy4zOXYwLjE1YzQsMS4zMyw2LjI3LDQuOSw2LjI3LDkuMjMsMCw0LjEzLTEuNTgsNy4zNC00LjE4LDkuMjgtMi4xOSwxLjU4LTUsMi4zNS04LjgyLDIuMzVIODEuNzNWMTEzOFptMTcsMTVjMiwwLDMuNTItMS4xMiwzLjUyLTMuMzdzLTEuNTMtMy4yNi0zLjU3LTMuMjZIOTIuMTlWMTE1M2g2LjUzWm0xLDE0Ljg5YTMuOTMsMy45MywwLDEsMC0uMDUtNy44NUg5Mi4xOXY3Ljg1aDcuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTUuOCwxMTM4aDkuODl2MzguNDVIMTE1LjhWMTEzOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNjksMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTI3LjY5LDExNzEuNDgsMTI3LjY5LDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNDYuMzUsMTE2Ny42MSwxNDYuMzUsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTcuMzIsMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTU3LjMyLDExNzEuNDgsMTU3LjMyLDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNzYsMTE2Ny42MSwxNzYsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xODcuNzYsMTE0OWg5LjE4djQuMTNoMC4xNWMxLjg0LTMuMjEsNC4zMy00Ljk1LDguMjYtNC45NWE3LjY2LDcuNjYsMCwwLDEsNy4zOSw0Ljc0aDAuMTVhOS4yMSw5LjIxLDAsMCwxLDguNTItNC43NGM2LjM3LDAsOS4xMyw0LjY5LDkuMTMsMTF2MTcuMjRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjRWMTE0OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNDIuNjksMTE3Mi44NmgtMC4xdjMuNTdoLTkuMThWMTEzOEgyNDN2MTMuODdoMC4xNWE5LjEyLDkuMTIsMCwwLDEsNy44LTMuNjdjNi44OCwwLDEwLjg2LDYuMjIsMTAuODYsMTQuNDgsMCw5LjMzLTQuMzMsMTQuNjktMTEuNDcsMTQuNjlBOC42Nyw4LjY3LDAsMCwxLDI0Mi42OSwxMTcyLjg2Wm05LjM4LTEwLjNjMC00LjQ0LTEuNjMtNy4yOS00LjU0LTcuMjlzLTQuODQsMi44Ni00Ljg0LDcuMjksMS44OSw3LjI5LDQuODQsNy4yOVMyNTIuMDcsMTE2NywyNTIuMDcsMTE2Mi41NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjMsMTE2Mi42NmMwLTguNTcsNS42Ni0xNC41MywxMy44Ny0xNC41M2ExMy4zNCwxMy4zNCwwLDAsMSw5LjY0LDMuNTdjMy4xNiwzLjA2LDQuNTksNy44NSw0LjQ5LDEzLjUxSDI3Mi42M2MwLjQxLDMuNDIsMiw1LjE1LDQuOTUsNS4xNWEzLjcsMy43LDAsMCwwLDMuNzctMi42aDkuMjhjLTEuNjMsNi4yNy02LjQ4LDkuNDQtMTMuMzYsOS40NEMyNjguNzUsMTE3Ny4yLDI2MywxMTcxLjQzLDI2MywxMTYyLjY2Wm05LjU5LTIuODZoOC43N2MtMC4xNS0zLjMxLTItNS00LjI4LTVDMjc0LjQ2LDExNTQuNzYsMjczLDExNTYuNjQsMjcyLjYzLDExNTkuODFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODEuNzMgLTExMzcuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzAyLDExNTMuNjloMC4xNWMyLTMuODIsNC41OS01LjI1LDcuOS01LjI1YTMuNzIsMy43MiwwLDAsMSwxLjU4LjI1djguNDFoLTAuMmMtNS42Ni0xLTksMS42OC05LDcuODV2MTEuNDdoLTkuNjRWMTE0OUgzMDJ2NC42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMTIuNjYsMTE3Ni40OGg5LjI4YzAuMzYsMS4xNywxLjU4LDIuMzUsMy44OCwyLjM1LDMuMTEsMCw0LjE4LTEuOTQsNC4xOC00Ljc5di0yaC0wLjJhOC4yNiw4LjI2LDAsMCwxLTYuNTgsMy4xMWMtNS45MiwwLTExLjA3LTQuMzgtMTEuMDctMTMsMC03Ljg1LDQuMjMtMTQsMTAuNjEtMTQsMy42NywwLDUuOTEsMS40OCw3LjM5LDMuODJoMC4xNXYtM2g5LjE4djIzLjc2YzAsNC4zOC0xLjUzLDcuOC0zLjgyLDkuODRzLTUuODEsMy05LjY5LDNDMzE4LjY4LDExODUuNjEsMzEzLjU4LDExODIuNiwzMTIuNjYsMTE3Ni40OFptMTcuNzUtMTQuNzljMC0zLjQyLTEuNjMtNi4xNy00LjQ0LTYuMTdzLTQuNDQsMi40NS00LjQ0LDYuMTcsMS43Myw2LjMyLDQuNDQsNi4zMlMzMzAuNDEsMTE2NS4zMSwzMzAuNDEsMTE2MS42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48L3N2Zz4=');\n                    background-repeat: no-repeat;\n                    background-position: center;\n                    font-size: 0;\n                }\n\n                .contact-us {\n                    float: right;\n                    margin: 0 20px;\n                    line-height: 60px;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-size: 14px;\n                    color: white;\n                    text-decoration: underline;\n                }\n\n                .box {\n                    margin: 30px auto;\n                    padding: 30px;\n                    width: 680px;\n                    background-color: white;\n                }\n\n                @media (max-width: 760px) {\n                    .box {\n                        width: calc(100% - 20px);\n                    }\n                }\n\n                .main__heading, .info__heading {\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-weight: bold;\n                }\n\n                .main__heading {\n                    font-size: 19px;\n                    padding-bottom: 9px;\n                }\n\n                .continue {\n                    font-size: 18px;\n                }\n\n                #px-captcha {\n                    width: 320px;\n                    margin: 20px auto 0;\n                    min-height: 80px;\n                }\n\n                .info {\n                    border-top: dotted 1px black;\n                    padding-top: 9px;\n                }\n\n                .info + .info {\n                    margin-top: 30px;\n                }\n\n                .info__link {\n                    color: black;\n                    text-decoration: underline;\n                }\n\n                .info__heading {\n                    font-size: 16px;\n                    line-height: 20px;\n                    padding-bottom: 9px;\n                }\n\n                .info__text {\n                    padding-bottom: 9px;\n                }\n                \n                .subscribe__btn {\n                    padding: 18px 24px;\n                    color: #fff;\n                    background-color: #000;\n                    border-radius: 8px;\n                    font-size: x-large;\n                    font-weight: bold;\n                    font-family: 'BWHaasGroteskWeb';\n                    text-decoration: none;\n                    display: block;\n                    margin: 18px auto 0;\n                    width: fit-content;\n                }\n\n                #block_uuid {\n                    display: inline-block;\n                    padding: 6px;\n                    background-color: #f2f2f2;\n                    font-family: monospace;\n                    font-size: 14px;\n                }\n            </style>\n        </head>\n        <body>\n            <header class=\"header\">\n                <h1 class=\"logo\">Bloomberg</h1>\n                <a class=\"contact-us\" href=\"/feedback\" target=\"_blank\">Need help? Contact us</a>\n            </header>\n            <section class=\"box main\">\n                <h2 class=\"main__heading\">We've detected unusual activity from your computer network</h2>\n                <p class=\"continue\">To continue, please click the box below to let us know you're not a robot.</p>\n                <div id=\"px-captcha\"></div>\n            </section>\n            <section class=\"box\">\n            <section class=\"info\">\n                <h3 class=\"info__heading\">Why did this happen?</h3>\n                <p class=\"info__text\">Please make sure your browser supports JavaScript and cookies and that you are not\n                    blocking them from loading.\n                    For more information you can review our <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Terms of Service</a> \n                    and <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Cookie Policy</a>.</p>\n                </section>\n                <section class=\"info\">\n                    <h3 class=\"info__heading\">Need Help?</h3>\n                    <p class=\"info__text\">For inquiries related to this message please <a class=\"info__link\" href=\"/feedback\" target=\"_blank\">contact\n                        our support team</a> and provide the reference ID below.</p>\n                    <div id=\"block_uuid\">Block reference ID:23770e4a-af8c-11f1-a707-f1af9dc3257a</div>\n                </section>\n                <section class=\"info\">\n                    <p>Get the most important global markets news at your fingertips with a <a class=\"info__link\" href=\"https://bloomberg.com\" target=\"_blank\">Bloomberg.com</a> subscription.</p>\n                    <a href=\"/subscription\" target=\"_blank\" class=\"subscribe__btn\" onclick=\"dataLayer.push({ event: 'tos_subscribe'})\">SUBSCRIBE NOW</a>\n                </section>\n            </section>\n            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n            new Date().getTime(),event:'gtm.js'});w[l].push({event:'tos_pageview'});var f=d.getElementsByTagName(s)[0],\n        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-N67DF79H');</script>\n            <script>\n                window._pxVid = '';\n                window._pxUuid = '23770e4a-af8c-11f1-a707-f1af9dc3257a';\n                window._pxAppId = 'PX8FCGYgk4';\n                window._pxHostUrl = '/8FCGYgk4/xhr';\n                window._pxCustomLogo = '';\n                window._pxJsClientSrc = '/8FCGYgk4/init.js';\n                window._pxFirstPartyEnabled = 'true';\n                \n                var script = document.createElement('script');\n                    script.src = 'https://captcha.px-cloud.net/PX8FCGYgk4/captcha.js?a=c&u=23770e4a-af8c-11f1-a707-f1af9dc3257a&v=&m=0&h=R0VU';\n                \n                    document.head.appendChild(script);\n            </script></body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.bloomberg.com/news/articles/2026-09-11/here-s-what-us-export-controls-on-fuel-would-mean-for-prices-and-markets": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-11/here-s-what-us-export-controls-on-fuel-would-mean-for-prices-and-markets",
+      "final_url": "https://www.bloomberg.com/news/articles/2026-09-11/here-s-what-us-export-controls-on-fuel-would-mean-for-prices-and-markets",
+      "status_code": 403,
+      "load_time_seconds": 0.53,
+      "raw_html": "<!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n            <title>Bloomberg - Are you a robot?</title> \n            <style rel=\"stylesheet\">\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 400;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-7998fbcba8.eot');\n                    src: local('?'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-5cf5733cd9.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-55Roman-Web-a1ea4fd367.woff') format('woff')\n                }\n\n                @font-face {\n                    font-family: BWHaasGroteskWeb;\n                    font-display: swap;\n                    font-weight: 700;\n                    font-style: normal;\n                    src: url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-de8c77cce2.woff2') format('woff2'), url('https://assets.bwbx.io/s3/fontservice/fonts/BWHaasGrotesk-75Bold-Web-506363704e.woff') format('woff')\n                }\n            </style>\n            <style rel=\"stylesheet\">\n                html, body, div, span, applet, object, iframe,\n                h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n                a, abbr, acronym, address, big, cite, code,\n                del, dfn, em, img, ins, kbd, q, s, samp,\n                small, strike, strong, sub, sup, tt, var,\n                b, u, i, center,\n                dl, dt, dd, ol, ul, li,\n                fieldset, form, label, legend,\n                table, caption, tbody, tfoot, thead, tr, th, td,\n                article, aside, canvas, details, embed,\n                figure, figcaption, footer, header, hgroup,\n                menu, nav, output, ruby, section, summary,\n                time, mark, audio, video {\n                    margin: 0;\n                    padding: 0;\n                    border: 0;\n                    font-size: 100%;\n                    font: inherit;\n                    vertical-align: baseline;\n                }\n\n                /* HTML5 display-role reset for older browsers */\n                article, aside, details, figcaption, figure,\n                footer, header, hgroup, menu, nav, section {\n                    display: block;\n                }\n\n                body {\n                    line-height: 1;\n                }\n\n                ol, ul {\n                    list-style: none;\n                }\n\n                blockquote, q {\n                    quotes: none;\n                }\n\n                blockquote:before, blockquote:after,\n                q:before, q:after {\n                    content: '';\n                    content: none;\n                }\n\n                table {\n                    border-collapse: collapse;\n                    border-spacing: 0;\n                }\n\n                * {\n                    box-sizing: border-box;\n                }\n\n                body {\n                    background-color: #f2f2f2;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    line-height: 1.2;\n                }\n\n                .header {\n                    margin: 0;\n                    height: 60px;\n                    width: 100%;\n                    background-color: black;\n                    color: white;\n                    overflow-x: hidden;\n                }\n\n                .logo {\n                    float: left;\n                    margin: 0 20px;\n                    height: 60px;\n                    width: 140px;\n                    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTcuNzUgNDcuNjMiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+Qmxvb21iZXJnX05IR193aHQ8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgxLjczLDExMzhIMTAwLjZjMy41NywwLDYuMzIuODcsOC4yNiwyLjQ1YTkuNDUsOS40NSwwLDAsMSwzLjM3LDcuNmMwLDMuNjctMS40OCw2LTQuNTQsNy4zOXYwLjE1YzQsMS4zMyw2LjI3LDQuOSw2LjI3LDkuMjMsMCw0LjEzLTEuNTgsNy4zNC00LjE4LDkuMjgtMi4xOSwxLjU4LTUsMi4zNS04LjgyLDIuMzVIODEuNzNWMTEzOFptMTcsMTVjMiwwLDMuNTItMS4xMiwzLjUyLTMuMzdzLTEuNTMtMy4yNi0zLjU3LTMuMjZIOTIuMTlWMTE1M2g2LjUzWm0xLDE0Ljg5YTMuOTMsMy45MywwLDEsMC0uMDUtNy44NUg5Mi4xOXY3Ljg1aDcuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTUuOCwxMTM4aDkuODl2MzguNDVIMTE1LjhWMTEzOFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjcuNjksMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTI3LjY5LDExNzEuNDgsMTI3LjY5LDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNDYuMzUsMTE2Ny42MSwxNDYuMzUsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTcuMzIsMTE2Mi43N2MwLTguNjcsNS42MS0xNC41NCwxNC4yOC0xNC41NHMxNC4xOCw1Ljg3LDE0LjE4LDE0LjU0LTUuNTEsMTQuNTMtMTQuMTgsMTQuNTNTMTU3LjMyLDExNzEuNDgsMTU3LjMyLDExNjIuNzdabTE4LjY2LDBjMC00Ljc5LTEuNTMtNy44LTQuNDktNy44cy00LjM5LDMtNC4zOSw3LjgsMS40Myw3Ljg1LDQuMzksNy44NVMxNzYsMTE2Ny42MSwxNzYsMTE2Mi43N1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xODcuNzYsMTE0OWg5LjE4djQuMTNoMC4xNWMxLjg0LTMuMjEsNC4zMy00Ljk1LDguMjYtNC45NWE3LjY2LDcuNjYsMCwwLDEsNy4zOSw0Ljc0aDAuMTVhOS4yMSw5LjIxLDAsMCwxLDguNTItNC43NGM2LjM3LDAsOS4xMyw0LjY5LDkuMTMsMTF2MTcuMjRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjR2LTE1LjVjMC0yLjgtLjg3LTQuNjQtMy4zMS00LjY0cy0zLjYyLDIuMjQtMy42Miw1LjJ2MTQuOTRoLTkuNjRWMTE0OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNDIuNjksMTE3Mi44NmgtMC4xdjMuNTdoLTkuMThWMTEzOEgyNDN2MTMuODdoMC4xNWE5LjEyLDkuMTIsMCwwLDEsNy44LTMuNjdjNi44OCwwLDEwLjg2LDYuMjIsMTAuODYsMTQuNDgsMCw5LjMzLTQuMzMsMTQuNjktMTEuNDcsMTQuNjlBOC42Nyw4LjY3LDAsMCwxLDI0Mi42OSwxMTcyLjg2Wm05LjM4LTEwLjNjMC00LjQ0LTEuNjMtNy4yOS00LjU0LTcuMjlzLTQuODQsMi44Ni00Ljg0LDcuMjksMS44OSw3LjI5LDQuODQsNy4yOVMyNTIuMDcsMTE2NywyNTIuMDcsMTE2Mi41NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjMsMTE2Mi42NmMwLTguNTcsNS42Ni0xNC41MywxMy44Ny0xNC41M2ExMy4zNCwxMy4zNCwwLDAsMSw5LjY0LDMuNTdjMy4xNiwzLjA2LDQuNTksNy44NSw0LjQ5LDEzLjUxSDI3Mi42M2MwLjQxLDMuNDIsMiw1LjE1LDQuOTUsNS4xNWEzLjcsMy43LDAsMCwwLDMuNzctMi42aDkuMjhjLTEuNjMsNi4yNy02LjQ4LDkuNDQtMTMuMzYsOS40NEMyNjguNzUsMTE3Ny4yLDI2MywxMTcxLjQzLDI2MywxMTYyLjY2Wm05LjU5LTIuODZoOC43N2MtMC4xNS0zLjMxLTItNS00LjI4LTVDMjc0LjQ2LDExNTQuNzYsMjczLDExNTYuNjQsMjcyLjYzLDExNTkuODFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODEuNzMgLTExMzcuOTgpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzAyLDExNTMuNjloMC4xNWMyLTMuODIsNC41OS01LjI1LDcuOS01LjI1YTMuNzIsMy43MiwwLDAsMSwxLjU4LjI1djguNDFoLTAuMmMtNS42Ni0xLTksMS42OC05LDcuODV2MTEuNDdoLTkuNjRWMTE0OUgzMDJ2NC42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMTIuNjYsMTE3Ni40OGg5LjI4YzAuMzYsMS4xNywxLjU4LDIuMzUsMy44OCwyLjM1LDMuMTEsMCw0LjE4LTEuOTQsNC4xOC00Ljc5di0yaC0wLjJhOC4yNiw4LjI2LDAsMCwxLTYuNTgsMy4xMWMtNS45MiwwLTExLjA3LTQuMzgtMTEuMDctMTMsMC03Ljg1LDQuMjMtMTQsMTAuNjEtMTQsMy42NywwLDUuOTEsMS40OCw3LjM5LDMuODJoMC4xNXYtM2g5LjE4djIzLjc2YzAsNC4zOC0xLjUzLDcuOC0zLjgyLDkuODRzLTUuODEsMy05LjY5LDNDMzE4LjY4LDExODUuNjEsMzEzLjU4LDExODIuNiwzMTIuNjYsMTE3Ni40OFptMTcuNzUtMTQuNzljMC0zLjQyLTEuNjMtNi4xNy00LjQ0LTYuMTdzLTQuNDQsMi40NS00LjQ0LDYuMTcsMS43Myw2LjMyLDQuNDQsNi4zMlMzMzAuNDEsMTE2NS4zMSwzMzAuNDEsMTE2MS42OVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MS43MyAtMTEzNy45OCkiLz48L3N2Zz4=');\n                    background-repeat: no-repeat;\n                    background-position: center;\n                    font-size: 0;\n                }\n\n                .contact-us {\n                    float: right;\n                    margin: 0 20px;\n                    line-height: 60px;\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-size: 14px;\n                    color: white;\n                    text-decoration: underline;\n                }\n\n                .box {\n                    margin: 30px auto;\n                    padding: 30px;\n                    width: 680px;\n                    background-color: white;\n                }\n\n                @media (max-width: 760px) {\n                    .box {\n                        width: calc(100% - 20px);\n                    }\n                }\n\n                .main__heading, .info__heading {\n                    font-family: \"BWHaasGroteskWeb\", Helvetica, Arial, sans-serif;\n                    font-weight: bold;\n                }\n\n                .main__heading {\n                    font-size: 19px;\n                    padding-bottom: 9px;\n                }\n\n                .continue {\n                    font-size: 18px;\n                }\n\n                #px-captcha {\n                    width: 320px;\n                    margin: 20px auto 0;\n                    min-height: 80px;\n                }\n\n                .info {\n                    border-top: dotted 1px black;\n                    padding-top: 9px;\n                }\n\n                .info + .info {\n                    margin-top: 30px;\n                }\n\n                .info__link {\n                    color: black;\n                    text-decoration: underline;\n                }\n\n                .info__heading {\n                    font-size: 16px;\n                    line-height: 20px;\n                    padding-bottom: 9px;\n                }\n\n                .info__text {\n                    padding-bottom: 9px;\n                }\n                \n                .subscribe__btn {\n                    padding: 18px 24px;\n                    color: #fff;\n                    background-color: #000;\n                    border-radius: 8px;\n                    font-size: x-large;\n                    font-weight: bold;\n                    font-family: 'BWHaasGroteskWeb';\n                    text-decoration: none;\n                    display: block;\n                    margin: 18px auto 0;\n                    width: fit-content;\n                }\n\n                #block_uuid {\n                    display: inline-block;\n                    padding: 6px;\n                    background-color: #f2f2f2;\n                    font-family: monospace;\n                    font-size: 14px;\n                }\n            </style>\n        </head>\n        <body>\n            <header class=\"header\">\n                <h1 class=\"logo\">Bloomberg</h1>\n                <a class=\"contact-us\" href=\"/feedback\" target=\"_blank\">Need help? Contact us</a>\n            </header>\n            <section class=\"box main\">\n                <h2 class=\"main__heading\">We've detected unusual activity from your computer network</h2>\n                <p class=\"continue\">To continue, please click the box below to let us know you're not a robot.</p>\n                <div id=\"px-captcha\"></div>\n            </section>\n            <section class=\"box\">\n            <section class=\"info\">\n                <h3 class=\"info__heading\">Why did this happen?</h3>\n                <p class=\"info__text\">Please make sure your browser supports JavaScript and cookies and that you are not\n                    blocking them from loading.\n                    For more information you can review our <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Terms of Service</a> \n                    and <a class=\"info__link\" href=\"/notices/tos\" target=\"_blank\">Cookie Policy</a>.</p>\n                </section>\n                <section class=\"info\">\n                    <h3 class=\"info__heading\">Need Help?</h3>\n                    <p class=\"info__text\">For inquiries related to this message please <a class=\"info__link\" href=\"/feedback\" target=\"_blank\">contact\n                        our support team</a> and provide the reference ID below.</p>\n                    <div id=\"block_uuid\">Block reference ID:23cafed2-af8c-11f1-b1b7-9ab8954f30bd</div>\n                </section>\n                <section class=\"info\">\n                    <p>Get the most important global markets news at your fingertips with a <a class=\"info__link\" href=\"https://bloomberg.com\" target=\"_blank\">Bloomberg.com</a> subscription.</p>\n                    <a href=\"/subscription\" target=\"_blank\" class=\"subscribe__btn\" onclick=\"dataLayer.push({ event: 'tos_subscribe'})\">SUBSCRIBE NOW</a>\n                </section>\n            </section>\n            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n            new Date().getTime(),event:'gtm.js'});w[l].push({event:'tos_pageview'});var f=d.getElementsByTagName(s)[0],\n        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n    })(window,document,'script','dataLayer','GTM-N67DF79H');</script>\n            <script>\n                window._pxVid = '';\n                window._pxUuid = '23cafed2-af8c-11f1-b1b7-9ab8954f30bd';\n                window._pxAppId = 'PX8FCGYgk4';\n                window._pxHostUrl = '/8FCGYgk4/xhr';\n                window._pxCustomLogo = '';\n                window._pxJsClientSrc = '/8FCGYgk4/init.js';\n                window._pxFirstPartyEnabled = 'true';\n                \n                var script = document.createElement('script');\n                    script.src = 'https://captcha.px-cloud.net/PX8FCGYgk4/captcha.js?a=c&u=23cafed2-af8c-11f1-b1b7-9ab8954f30bd&v=&m=0&h=R0VU';\n                \n                    document.head.appendChild(script);\n            </script></body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "Bloomberg",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 5,
+    "total_crawl_time_seconds": 11.08,
+    "page_selection": [
+      {
+        "url": "https://www.bloomberg.com/news/articles/2026-09-11/from-campbell-s-to-conagra-food-industry-warns-of-price-hikes",
+        "score": 24,
+        "signals": [
+          "product_pricing:price",
+          "article_docs:news",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.bloomberg.com/news/articles/2026-09-11/futures-rise-with-help-from-oracle-s-beat-and-cooler-oil-prices",
+        "score": 24,
+        "signals": [
+          "product_pricing:prices",
+          "article_docs:help,news",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.bloomberg.com/news/articles/2026-09-11/ground-beef-prices-rose-in-august-impeding-trump-efforts",
+        "score": 24,
+        "signals": [
+          "product_pricing:prices",
+          "article_docs:news",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.bloomberg.com/news/articles/2026-09-11/here-s-what-us-export-controls-on-fuel-would-mean-for-prices-and-markets",
+        "score": 24,
+        "signals": [
+          "product_pricing:prices",
+          "article_docs:news",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      }
+    ],
+    "resources_observed": 0,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "anti-bot-challenge": 5
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {
+    "https://bloomberg.com/": "https://www.bloomberg.com/"
+  }
+}

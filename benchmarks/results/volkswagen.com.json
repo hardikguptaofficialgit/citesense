@@ -1,0 +1,476 @@
+{
+  "site": {
+    "category": "automotive",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "volkswagen.com",
+    "rank": 228,
+    "technical_type": "unknown",
+    "url": "https://volkswagen.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:34:27.100284+00:00",
+  "finished_at": "2026-09-13T15:35:39.928331+00:00",
+  "elapsed_seconds": 72.828,
+  "error": null,
+  "report": {
+    "site": "https://www.volkswagen.co.in",
+    "audited_at": "2026-09-13T15:35:39Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 4,
+      "discoverability_findings": 3,
+      "engagement_findings": 3,
+      "citability_score": 78,
+      "citability_score_breakdown": {
+        "score": 78,
+        "base": 100,
+        "penalty": 22,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 5,
+          "low": 5
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/app/site/servicecostcalculator/": 12,
+          "schema:missing-required-fields": 5,
+          "schema:organization-missing-sameas": 2,
+          "engagement:multiple-h1": 2,
+          "engagement:no-site-search": 1,
+          "engagement:no-personalization-readiness": 0
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via jsonld_schema_extractor [2026-09-13T15:35:33Z]: Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/app/site/servicecostcalculator/",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"The Service Cost Calculator is currently undergoing maintenance and will be available shortly. We regret the inconvenience caused...\",\n  \"url\": \"https://www.volkswagen.co.in/app/site/servicecostcalculator/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Welcome to Volkswagen India\"\n  },\n  \"description\": \"Volkswagen Service Cost Calculator - Get an estimate of your service needs before booking. Click here to generate the estimate for your car hassle-free.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.volkswagen.co.in/app/site/servicecostcalculator/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.volkswagen.co.in/app/site/servicecostcalculator/",
+          "observation": "Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:35:33Z",
+          "confidence": "high",
+          "evidence_id": "E-34955e5d3968"
+        },
+        "evidence_refs": [
+          "E-34955e5d3968"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.volkswagen.co.in/en.html via schema_field_validator [2026-09-13T15:35:33Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html via schema_field_validator [2026-09-13T15:35:33Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html via schema_field_validator [2026-09-13T15:35:33Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.volkswagen.co.in/en.html",
+          "observation": "Schema entities are missing required properties: Organization missing name.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T15:35:33Z",
+          "confidence": "high",
+          "evidence_id": "E-c7b59dc2be87"
+        },
+        "evidence_refs": [
+          "E-789214a24d2f",
+          "E-c7b59dc2be87",
+          "E-ca1aa13ee6d2"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+        "category": "structured-data",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.volkswagen.co.in/en.html via jsonld_schema_extractor [2026-09-13T15:35:33Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:organization-missing-sameas",
+        "suggested_action": {
+          "summary": "Add sameAs URLs to Organization JSON-LD.",
+          "priority": "low",
+          "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Welcome to Volkswagen India\",\n  \"url\": \"https://www.volkswagen.co.in\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Explore our German-engineered cars: globally renowned Tiguan R-Line, the iconic Golf GTI, Tayron and 5-star GNCAP rated Virtus &amp; Taigun. Check out offers, service packages, accessories &amp; more.\",\n  \"telephone\": \"800 102 0909\",\n  \"email\": \"customer.care@volkswagen.co.in\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.volkswagen.co.in/en.html",
+          "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:35:33Z",
+          "confidence": "high",
+          "evidence_id": "E-6c7cd9772603"
+        },
+        "evidence_refs": [
+          "E-6c7cd9772603"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.volkswagen.co.in/en.html via heading_structure_inspection [2026-09-13T15:35:33Z]: Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.volkswagen.co.in/app/site/servicecostcalculator/ via heading_structure_inspection [2026-09-13T15:35:33Z]: Page defines 5 separate <h1> tags (The Service Cost Calculator is currently; Cost of care, calculated.; Service estimation for your Volkswagen), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.volkswagen.co.in/en.html",
+          "observation": "Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:35:33Z",
+          "confidence": "high",
+          "evidence_id": "E-5fef422a95fc"
+        },
+        "evidence_refs": [
+          "E-3456c1b45827",
+          "E-5fef422a95fc"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.volkswagen.co.in via search_affordance_detection [2026-09-13T15:35:33Z]: None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.volkswagen.co.in",
+          "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T15:35:33Z",
+          "confidence": "medium",
+          "evidence_id": "E-abd8d5b7f877"
+        },
+        "evidence_refs": [
+          "E-abd8d5b7f877"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.volkswagen.co.in via returning_visitor_affordance_detection [2026-09-13T15:35:33Z]: Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.volkswagen.co.in",
+          "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T15:35:33Z",
+          "confidence": "medium",
+          "evidence_id": "E-bc62b86d12f7"
+        },
+        "evidence_refs": [
+          "E-bc62b86d12f7"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.volkswagen.co.in/app/site/servicecostcalculator/",
+          "score": 26,
+          "signals": [
+            "product_pricing:cost",
+            "product_landing:service",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.volkswagen.co.in/app/site/contactus/",
+          "score": 14,
+          "signals": [
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html",
+          "score": 14,
+          "signals": [
+            "article_docs:news",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html",
+          "score": 24,
+          "signals": [
+            "product_landing:service,services",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.volkswagen.co.in/en.html",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "high",
+        "evidence_id": "E-6c7cd9772603"
+      },
+      {
+        "url": "https://www.volkswagen.co.in/en.html",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "high",
+        "evidence_id": "E-c7b59dc2be87"
+      },
+      {
+        "url": "https://www.volkswagen.co.in/app/site/servicecostcalculator/",
+        "observation": "Commercial/product page (https://www.volkswagen.co.in/app/site/servicecostcalculator/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "high",
+        "evidence_id": "E-34955e5d3968"
+      },
+      {
+        "url": "https://www.volkswagen.co.in/en/discover-volkswagen/news/news-and-updates.html",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "high",
+        "evidence_id": "E-789214a24d2f"
+      },
+      {
+        "url": "https://www.volkswagen.co.in/en/owners-and-services/service-and-parts/mobile-support-and-breakdown-assistance.html",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "high",
+        "evidence_id": "E-ca1aa13ee6d2"
+      },
+      {
+        "url": "https://www.volkswagen.co.in/en.html",
+        "observation": "Page defines 7 separate <h1> tags (With you for every journey; Virtus Anniversary Edition​; Tayron Life), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "high",
+        "evidence_id": "E-5fef422a95fc"
+      },
+      {
+        "url": "https://www.volkswagen.co.in/app/site/servicecostcalculator/",
+        "observation": "Page defines 5 separate <h1> tags (The Service Cost Calculator is currently; Cost of care, calculated.; Service estimation for your Volkswagen), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "high",
+        "evidence_id": "E-3456c1b45827"
+      },
+      {
+        "url": "https://www.volkswagen.co.in",
+        "observation": "None of the 5 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "medium",
+        "evidence_id": "E-abd8d5b7f877"
+      },
+      {
+        "url": "https://www.volkswagen.co.in",
+        "observation": "Across 5 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T15:35:33Z",
+        "confidence": "medium",
+        "evidence_id": "E-bc62b86d12f7"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "general",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

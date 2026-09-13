@@ -1,0 +1,489 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "erome.com",
+    "rank": 913,
+    "technical_type": "unknown",
+    "url": "https://erome.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:29:30.432917+00:00",
+  "finished_at": "2026-09-13T16:30:00.038561+00:00",
+  "elapsed_seconds": 29.606,
+  "error": null,
+  "report": {
+    "site": "https://www.erome.com",
+    "audited_at": "2026-09-13T16:30:00Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 2,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 3,
+      "engagement_findings": 3,
+      "citability_score": 63,
+      "citability_score_breakdown": {
+        "score": 63,
+        "base": 100,
+        "penalty": 37,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 12,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "engagement:missing-cta:/": 12,
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.erome.com/ via heading_structure_inspection [2026-09-13T16:29:51Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.erome.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:29:51Z",
+          "confidence": "high",
+          "evidence_id": "E-453ea1d83878"
+        },
+        "evidence_refs": [
+          "E-453ea1d83878"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Homepage lacks clear call-to-action buttons or interactive forms",
+        "category": "navigation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.erome.com/ via interactive_element_analysis [2026-09-13T16:29:51Z]: Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-cta:/",
+        "suggested_action": {
+          "summary": "Add prominent primary call-to-action (CTA) buttons.",
+          "priority": "high",
+          "how_to_fix": "Add visually distinct CTA buttons (e.g. 'Get Started', 'View Pricing', 'Contact Sales') above and below the fold.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.erome.com/",
+          "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+          "method": "interactive_element_analysis",
+          "timestamp": "2026-09-13T16:29:51Z",
+          "confidence": "high",
+          "evidence_id": "E-ee133795c91c"
+        },
+        "evidence_refs": [
+          "E-ee133795c91c"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.erome.com/sitemap.xml via http_get_sitemap_check [2026-09-13T16:29:51Z]: Request to https://www.erome.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.erome.com/sitemap.xml",
+          "observation": "Request to https://www.erome.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T16:29:51Z",
+          "confidence": "high",
+          "evidence_id": "E-529f82728fcf"
+        },
+        "evidence_refs": [
+          "E-529f82728fcf"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.erome.com/ via jsonld_schema_extractor [2026-09-13T16:29:51Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Erome\",\n  \"url\": \"https://www.erome.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"EroMe is the best place to share your erotic pics and porn videos. Every day, thousands of people use EroMe to enjoy free photos and videos. Come share your amateur horny pictures and films.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.erome.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:29:51Z",
+          "confidence": "high",
+          "evidence_id": "E-82faf7c5c126"
+        },
+        "evidence_refs": [
+          "E-82faf7c5c126"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.erome.com via onsite_identity_anchor_inspection [2026-09-13T16:30:00Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.erome.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T16:30:00Z",
+          "confidence": "medium",
+          "evidence_id": "E-e0ca80987b80"
+        },
+        "evidence_refs": [
+          "E-e0ca80987b80"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.erome.com/s/contact via breadcrumb_markup_inspector [2026-09-13T16:29:51Z]: Page at deep route (/s/contact) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.erome.com/s/faq via breadcrumb_markup_inspector [2026-09-13T16:29:51Z]: Page at deep route (/s/faq) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S-1491987361%3A1789316987419299&client_id=3414710240-mnib3l8mejg8thkh83141uhgn86emt3a.apps.googleusercontent.com&o2v=1&redirect_uri=https%3A%2F%2Fwww.erome.com%2Flogin%2Fgoogle%2Fcallback&response_type=code&scope=openid+profile+email&service=lso&state=cCeLpKiPB64mLJKPgb0HRrlD2Cxu9aTa42KtQ7cE&flowName=GeneralOAuthLite&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Flegacy%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hANEqtQiAIqYF-PHDoVE34mCN-_p_Fwals4FszEM9-2a1LyoWiCYl32KvdceGlNFL_EZrW0biokSzfK5u2l7PwwR9D_IMX-atG0Vp7i7LMf0GxaycGH87f0DOvrXXs7G8JM1OPOoC5S7QbJqwzQcYdJshrwy1e3lhXc5YX6UmHwrjVCO4d5bUOIJRSqoQUmdtXkarBZOtxIYbHXGlllEJW7WnA4187QjFD_AFc_krE6o0MOVrGPEjxGOPvJ8g3D18PzsIFkziDWslO8yowKkFVF0_EJobZfuYauBXTlbYu6-Bu2h1pfrmbPGzfP5P8sfu9pGzK3wso456y5eb6rGwDKCDD53k4Ib_cMTsvyOB775RzLRuoFiccGCgIuuKGk4w-u05nWzRgpS9vKwiGdhO4_RPwxQ2iYzQXwyDQUikKkAT8PafWz47pu22tJ2rbOOUqWpwx5ribxdYxBeEb9Iu-Vs5ueguA%26flowName%3DGeneralOAuthFlow%26as%3DS-1491987361%253A1789316987419299%26client_id%3D3414710240-mnib3l8mejg8thkh83141uhgn86emt3a.apps.googleusercontent.com%23&app_domain=https%3A%2F%2Fwww.erome.com&rart=ANgoxcd3e-YpKB92yD_vuw1Ju3k2mmVWzlsxynLedzGy4DCSYiIx9ht_CqBG6pKoo0Ir6j1ZZ4hmTIACMFBLMhgxQTEDS3Y3zJXxssLGuIO2tAZqzf11Gi8 via breadcrumb_markup_inspector [2026-09-13T16:29:51Z]: Page at deep route (/v3/signin/identifier) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.erome.com/s/contact",
+          "observation": "Page at deep route (/s/contact) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T16:29:51Z",
+          "confidence": "medium",
+          "evidence_id": "E-2f73087fc6c4"
+        },
+        "evidence_refs": [
+          "E-2f73087fc6c4",
+          "E-8566f2b7a33d",
+          "E-e4b5dc07bb99"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.erome.com/s/contact",
+          "score": 14,
+          "signals": [
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.erome.com/s/faq",
+          "score": 14,
+          "signals": [
+            "article_docs:faq",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.erome.com/explore",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.erome.com/login/google",
+          "score": 4,
+          "signals": [
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.erome.com/sitemap.xml",
+        "observation": "Request to https://www.erome.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T16:29:51Z",
+        "confidence": "high",
+        "evidence_id": "E-529f82728fcf"
+      },
+      {
+        "url": "https://www.erome.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:29:51Z",
+        "confidence": "high",
+        "evidence_id": "E-82faf7c5c126"
+      },
+      {
+        "url": "https://www.erome.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:29:51Z",
+        "confidence": "high",
+        "evidence_id": "E-453ea1d83878"
+      },
+      {
+        "url": "https://www.erome.com/",
+        "observation": "Page classified as 'homepage' contains 0 CTA buttons, 0 interactive forms, and 0 action links, leaving an arriving visitor no obvious next step.",
+        "method": "interactive_element_analysis",
+        "timestamp": "2026-09-13T16:29:51Z",
+        "confidence": "high",
+        "evidence_id": "E-ee133795c91c"
+      },
+      {
+        "url": "https://www.erome.com/s/contact",
+        "observation": "Page at deep route (/s/contact) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:29:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-2f73087fc6c4"
+      },
+      {
+        "url": "https://www.erome.com/s/faq",
+        "observation": "Page at deep route (/s/faq) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:29:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-e4b5dc07bb99"
+      },
+      {
+        "url": "https://accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S-1491987361%3A1789316987419299&client_id=3414710240-mnib3l8mejg8thkh83141uhgn86emt3a.apps.googleusercontent.com&o2v=1&redirect_uri=https%3A%2F%2Fwww.erome.com%2Flogin%2Fgoogle%2Fcallback&response_type=code&scope=openid+profile+email&service=lso&state=cCeLpKiPB64mLJKPgb0HRrlD2Cxu9aTa42KtQ7cE&flowName=GeneralOAuthLite&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Flegacy%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hANEqtQiAIqYF-PHDoVE34mCN-_p_Fwals4FszEM9-2a1LyoWiCYl32KvdceGlNFL_EZrW0biokSzfK5u2l7PwwR9D_IMX-atG0Vp7i7LMf0GxaycGH87f0DOvrXXs7G8JM1OPOoC5S7QbJqwzQcYdJshrwy1e3lhXc5YX6UmHwrjVCO4d5bUOIJRSqoQUmdtXkarBZOtxIYbHXGlllEJW7WnA4187QjFD_AFc_krE6o0MOVrGPEjxGOPvJ8g3D18PzsIFkziDWslO8yowKkFVF0_EJobZfuYauBXTlbYu6-Bu2h1pfrmbPGzfP5P8sfu9pGzK3wso456y5eb6rGwDKCDD53k4Ib_cMTsvyOB775RzLRuoFiccGCgIuuKGk4w-u05nWzRgpS9vKwiGdhO4_RPwxQ2iYzQXwyDQUikKkAT8PafWz47pu22tJ2rbOOUqWpwx5ribxdYxBeEb9Iu-Vs5ueguA%26flowName%3DGeneralOAuthFlow%26as%3DS-1491987361%253A1789316987419299%26client_id%3D3414710240-mnib3l8mejg8thkh83141uhgn86emt3a.apps.googleusercontent.com%23&app_domain=https%3A%2F%2Fwww.erome.com&rart=ANgoxcd3e-YpKB92yD_vuw1Ju3k2mmVWzlsxynLedzGy4DCSYiIx9ht_CqBG6pKoo0Ir6j1ZZ4hmTIACMFBLMhgxQTEDS3Y3zJXxssLGuIO2tAZqzf11Gi8",
+        "observation": "Page at deep route (/v3/signin/identifier) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T16:29:51Z",
+        "confidence": "medium",
+        "evidence_id": "E-8566f2b7a33d"
+      },
+      {
+        "url": "https://www.erome.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 2 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T16:30:00Z",
+        "confidence": "medium",
+        "evidence_id": "E-e0ca80987b80"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Erome is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "general",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

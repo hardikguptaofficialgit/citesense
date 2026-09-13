@@ -1,0 +1,654 @@
+{
+  "site": {
+    "category": "real_estate",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "zillow.com",
+    "rank": 310,
+    "technical_type": "unknown",
+    "url": "https://zillow.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:39:34.818314+00:00",
+  "finished_at": "2026-09-13T15:40:15.317376+00:00",
+  "elapsed_seconds": 40.499,
+  "error": null,
+  "report": {
+    "site": "https://www.zillow.com",
+    "audited_at": "2026-09-13T15:40:15Z",
+    "summary": {
+      "total_findings": 10,
+      "critical": 0,
+      "high": 3,
+      "medium": 4,
+      "low": 3,
+      "discoverability_findings": 8,
+      "engagement_findings": 2,
+      "citability_score": 52,
+      "citability_score_breakdown": {
+        "score": 52,
+        "base": 100,
+        "penalty": 48,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 30,
+          "medium": 14,
+          "low": 4
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/plan": 12,
+          "extractability:money-page-price-not-in-text:/plan": 6,
+          "engagement:missing-h1": 12,
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "citation:unanswerable:transactional": 2,
+          "trust:no-independent-identity-anchor": 2,
+          "robots:training-only-blocked": 0,
+          "extractability:images-without-alt": 2,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 10
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.zillow.com/plan via jsonld_schema_extractor [2026-09-13T15:40:00Z]: Commercial/product page (https://www.zillow.com/plan) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/plan",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Plan\",\n  \"url\": \"https://www.zillow.com/plan\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Zillow\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.zillow.com/plan\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/plan",
+          "observation": "Commercial/product page (https://www.zillow.com/plan) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "high",
+          "evidence_id": "E-d1eb5da6cd54"
+        },
+        "evidence_refs": [
+          "E-d1eb5da6cd54"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Pricing page states no price in text or structured data",
+        "category": "fact-extractability",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.zillow.com/plan via money_page_price_extractability_check [2026-09-13T15:40:00Z]: Page classified as a pricing/product page carries 5 image(s) but no price string in its visible text and no Offer/PriceSpecification schema. If the figures are rendered inside those images, no assistant can quote them. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:money-page-price-not-in-text:/plan",
+        "suggested_action": {
+          "summary": "Publish prices as selectable text plus Offer structured data.",
+          "priority": "high",
+          "how_to_fix": "Render prices as HTML text rather than baking them into images, and add Offer JSON-LD with price, priceCurrency and availability. If pricing is genuinely quote-only, state that in text -- an assistant can cite \"pricing is quote-based\" but cannot cite an empty page.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/plan",
+          "observation": "Page classified as a pricing/product page carries 5 image(s) but no price string in its visible text and no Offer/PriceSpecification schema. If the figures are rendered inside those images, no assistant can quote them.",
+          "method": "money_page_price_extractability_check",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "medium",
+          "evidence_id": "E-f920fa6dc304"
+        },
+        "evidence_refs": [
+          "E-f920fa6dc304"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.zillow.com/plan via heading_structure_inspection [2026-09-13T15:40:00Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.zillow.com/c/info/contact-us/ via heading_structure_inspection [2026-09-13T15:40:00Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/plan",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "high",
+          "evidence_id": "E-04c8c7d85cf8"
+        },
+        "evidence_refs": [
+          "E-04c8c7d85cf8",
+          "E-30018866b247"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.zillow.com/ via jsonld_schema_extractor [2026-09-13T15:40:00Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Zillow\",\n  \"url\": \"https://www.zillow.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"The leading real estate marketplace. Search millions of for-sale and rental listings, compare Zestimate® home values and connect with local professionals.\",\n  \"telephone\": \"877-313-8601\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "high",
+          "evidence_id": "E-f9636f2f01a4"
+        },
+        "evidence_refs": [
+          "E-f9636f2f01a4"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.zillow.com/plan via html_meta_inspector [2026-09-13T15:40:00Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Plan\",\n  \"url\": \"https://www.zillow.com/plan\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Zillow\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.zillow.com/plan\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/plan",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "high",
+          "evidence_id": "E-a2c5009fbcd9"
+        },
+        "evidence_refs": [
+          "E-a2c5009fbcd9"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"How much does Zillow cost?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.zillow.com/plan via onsite_answerability_probe [2026-09-13T15:40:15Z]: Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Zillow cost?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:transactional",
+        "suggested_action": {
+          "summary": "Make pricing extractable as text, not just as an image or a gated flow.",
+          "priority": "medium",
+          "how_to_fix": "State prices in plain HTML text and add Offer JSON-LD with price and priceCurrency. If pricing is genuinely quote-only, say so explicitly in text -- an assistant can cite \"pricing is quote-based\" but cannot cite silence.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/plan",
+          "observation": "Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Zillow cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T15:40:15Z",
+          "confidence": "medium",
+          "evidence_id": "E-553422d26eb6"
+        },
+        "evidence_refs": [
+          "E-553422d26eb6"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.zillow.com via onsite_identity_anchor_inspection [2026-09-13T15:40:15Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 16 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com",
+          "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 16 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T15:40:15Z",
+          "confidence": "medium",
+          "evidence_id": "E-4609095dc84e"
+        },
+        "evidence_refs": [
+          "E-4609095dc84e"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Training-only AI crawlers are blocked; search and retrieval agents remain allowed",
+        "category": "crawlability",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://zillow.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T15:40:00Z]: robots.txt disallows root '/' for training crawlers (Applebot-Extended, Meta-ExternalAgent, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:training-only-blocked",
+        "suggested_action": {
+          "summary": "No change needed; confirm this is intentional and state the policy explicitly.",
+          "priority": "low",
+          "how_to_fix": "If deliberate, make it legible by adding a Content Signals Policy block or RSL licensing terms to robots.txt so the distinction between training and retrieval is machine-readable rather than inferred from which agents you named.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://zillow.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for training crawlers (Applebot-Extended, Meta-ExternalAgent, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "high",
+          "evidence_id": "E-2e6fabd4f004"
+        },
+        "evidence_refs": [
+          "E-2e6fabd4f004"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.zillow.com/buy/app-download/ via image_alt_coverage_inspection [2026-09-13T15:40:00Z]: 12 of 19 images (63%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/buy/app-download/",
+          "observation": "12 of 19 images (63%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "high",
+          "evidence_id": "E-4ba4b7a506c1"
+        },
+        "evidence_refs": [
+          "E-4ba4b7a506c1"
+        ],
+        "id": "F-009",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.zillow.com/buy/app-download/ via heading_structure_inspection [2026-09-13T15:40:00Z]: Page defines 3 separate <h1> tags (Scan the QR code to get the Zillow App; Download the Zillow app; Scan the QR code to get the Zillow App), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.zillow.com/buy/app-download/",
+          "observation": "Page defines 3 separate <h1> tags (Scan the QR code to get the Zillow App; Download the Zillow app; Scan the QR code to get the Zillow App), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:40:00Z",
+          "confidence": "high",
+          "evidence_id": "E-50a8ec3299b8"
+        },
+        "evidence_refs": [
+          "E-50a8ec3299b8"
+        ],
+        "id": "F-010",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.zillow.com/plan",
+          "score": 18,
+          "signals": [
+            "product_pricing:plan",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.zillow.com/learn/",
+          "score": 16,
+          "signals": [
+            "article_docs:learn",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.zillow.com/buy/app-download/",
+          "score": 14,
+          "signals": [
+            "product_landing:buy",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.zillow.com/c/info/contact-us/",
+          "score": 14,
+          "signals": [
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://zillow.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for training crawlers (Applebot-Extended, Meta-ExternalAgent, Amazonbot) while leaving search-index and user-triggered agents allowed. This is a coherent licensing stance and does not prevent the brand being cited in AI answers.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-2e6fabd4f004"
+      },
+      {
+        "url": "https://www.zillow.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-f9636f2f01a4"
+      },
+      {
+        "url": "https://www.zillow.com/plan",
+        "observation": "Commercial/product page (https://www.zillow.com/plan) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-d1eb5da6cd54"
+      },
+      {
+        "url": "https://www.zillow.com/plan",
+        "observation": "Page classified as a pricing/product page carries 5 image(s) but no price string in its visible text and no Offer/PriceSpecification schema. If the figures are rendered inside those images, no assistant can quote them.",
+        "method": "money_page_price_extractability_check",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "medium",
+        "evidence_id": "E-f920fa6dc304"
+      },
+      {
+        "url": "https://www.zillow.com/plan",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-a2c5009fbcd9"
+      },
+      {
+        "url": "https://www.zillow.com/buy/app-download/",
+        "observation": "12 of 19 images (63%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-4ba4b7a506c1"
+      },
+      {
+        "url": "https://www.zillow.com/plan",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-04c8c7d85cf8"
+      },
+      {
+        "url": "https://www.zillow.com/buy/app-download/",
+        "observation": "Page defines 3 separate <h1> tags (Scan the QR code to get the Zillow App; Download the Zillow app; Scan the QR code to get the Zillow App), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-50a8ec3299b8"
+      },
+      {
+        "url": "https://www.zillow.com/c/info/contact-us/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:40:00Z",
+        "confidence": "high",
+        "evidence_id": "E-30018866b247"
+      },
+      {
+        "url": "https://www.zillow.com/plan",
+        "observation": "Across 5 crawled page(s), no price, currency or pricing language is extractable from the crawled text. An assistant that fetched these pages could not quote an answer to \"How much does Zillow cost?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:40:15Z",
+        "confidence": "medium",
+        "evidence_id": "E-553422d26eb6"
+      },
+      {
+        "url": "https://www.zillow.com",
+        "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 16 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T15:40:15Z",
+        "confidence": "medium",
+        "evidence_id": "E-4609095dc84e"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Zillow is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

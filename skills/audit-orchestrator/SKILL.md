@@ -11,6 +11,10 @@ allowed-tools: Bash, Read, Write
 - **Recommend-only.** Never modify the live site. Everything is read-only.
 - **robots.txt is enforced, not just parsed.** Every fetch goes through `SiteInventory.may_fetch()`, which resolves the path against the `*` group and refuses disallowed URLs; declined URLs are recorded in `skipped_by_robots`. This gates page crawling and the broken-link sampler alike.
 - **No destructive, authenticated-area, or rate-abusing actions.**
+- **Network boundary.** Fetches accept only public HTTP(S) targets without URL credentials;
+  loopback, private, link-local, multicast, unspecified, reserved, metadata, and unsafe-port
+  targets are rejected after DNS resolution. Every redirect is validated before it is followed,
+  and response bodies are bounded at 5 MiB before and after decompression.
 - **Do not bypass access controls.** HTTP blocks, CAPTCHA/WAF challenges, network failures,
   empty responses, and undecodable bodies are recorded as access-limited/inconclusive. Never
   solve challenges, use authenticated sessions, rotate identities, or treat missing content as
@@ -63,6 +67,9 @@ the file is absent. Such observations are labeled `external` in the evidence led
 - **Diff two runs.** `python3 scripts/compare_reports.py before.json after.json --output diff.json`
   buckets findings into resolved / new / unchanged by `fingerprint` and reports a weighted
   `score_delta`.
+- **Fix prompts (automatic, optional).** Finalized findings may receive evidence-derived
+  `fix_prompt` objects and a prioritized `fix_plan`. These are recommendation-only briefs;
+  inconclusive and not-assessed findings are omitted and no unobserved site facts are invented.
 
 ## References
 - `references/report-schema.json` -- the output contract.

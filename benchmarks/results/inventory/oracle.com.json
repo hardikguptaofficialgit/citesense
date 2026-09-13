@@ -1,0 +1,675 @@
+{
+  "seed_url": "https://oracle.com/",
+  "origin": "https://oracle.com",
+  "robots_txt": {
+    "found": true,
+    "url": "https://oracle.com/robots.txt",
+    "status": 200,
+    "raw": "# /robots.txt for www.oracle.com\n##############################################\n# Sitemaps                                   #\n##############################################\nSitemap: https://www.oracle.com/sitemap.xml\nSitemap: https://www.oracle.com/international.xml\n\n##############################################\n# Future use for AI                          #\n##############################################\n# LLMs: https://www.oracle.com/llms.yaml\n# LLMs: https://www.oracle.com/llms.txt\n\n##############################################\n# AI Crawlers.                               #\n##############################################\nUser-agent: OAI-SearchBot     # Search (shows my webpages as links inside ChatGPT search). NOT used for model training\nUser-agent: ChatGPT-User      # User-driven browsing from ChatGPT and Custom GPTs. Acts after a human click.\nUser-agent: ChatGPT-User/2.0  # User-driven browsing from ChatGPT and Custom GPTs. Acts after a human click.\nUser-agent: GPTBot            # Model-training crawler. Opt-out here if I don\u2019t want content in GPT-4o or GPT-5.\nUser-agent: anthropic-ai      # Anthropic bulk model training\nUser-agent: ClaudeBot         # Anthropic chat citation fetch\nUser-agent: claude-web        # Anthropic web-focused crawl\nUser-agent: PerplexityBot     # Perplexity index builder\nUser-agent: Perplexity-User   # Perplexity human-triggered visit\nUser-agent: Google-Extended   # Google (Gemini)\nUser-agent: BingBot           # Microsoft Bing Copilot\nUser-agent: Applebot          # Apple\nUser-agent: Applebot-Extended # Apple\nUser-agent: LinkedInBot       # Linkedin\nUser-agent: Amazonbot         # Amazon\nDisallow: /a/ocom/docs/gated/\nDisallow: /splash/\nDisallow: /us/\nDisallow: /_qa/\nDisallow: /a/ocom/resources/\nDisallow: /financial-services/ofss/\nDisallow: /a/ocom/docs/corporate/pricing/\nDisallow: /assets/managed-cloud-services-sd-4738082.pdf\nDisallow: /us/corporate/contracts/mcs-iaas-service-desc-3014939.pdf\nDisallow: /us/corporate/contracts/mcs-saas-service-desc-3762902.pdf\nAllow: /\n\n##############################################\n# Search Crawlers                            #\n##############################################\nUser-agent: *\n# Disallow: /cis/*\nDisallow: /corporate/contracts/\nDisallow: /a/ocom/docs/gated/\nDisallow: /splash/\nDisallow: /test/\nDisallow: /us\nDisallow: /_qa/\nDisallow: /a/ocom/resources/\nDisallow: /financial-services/ofss/\nDisallow: /a/ocom/docs/corporate/pricing/\nDisallow: /assets/managed-cloud-services-sd-4738082.pdf\nDisallow: /us/corporate/contracts/mcs-iaas-service-desc-3014939.pdf\nDisallow: /us/corporate/contracts/mcs-saas-service-desc-3762902.pdf\nAllow: /\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      }
+    },
+    "partially_blocked_agents": {},
+    "sitemaps_declared": [
+      "https://www.oracle.com/sitemap.xml",
+      "https://www.oracle.com/international.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://www.oracle.com/sitemap.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 9
+    },
+    {
+      "url": "https://www.oracle.com/international.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 93
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://oracle.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://oracle.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://oracle.com/ai.txt"
+    }
+  },
+  "pages": {
+    "https://www.oracle.com/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403",
+      "access_status": "http-blocked",
+      "url": "https://oracle.com/",
+      "final_url": "https://www.oracle.com/",
+      "status_code": 403,
+      "load_time_seconds": 1.7,
+      "raw_html": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t\n<title>fw_error_www</title>\n\n</head>\n \n<body>\n<div align=\"center\">\n\t<div align=\"center\">\n<p>&nbsp;</p>\n</div>\n<table width=\"449\" align=\"center\" border=\"0\">\n    <tbody>\n        <tr>\n            <td width=\"68%\" valign=\"top\">\n            <div align=\"center\">\n\t    <p><img alt=\"\" src=\"https://www.oracle.com/splash/oralogo_small.gif\" width=\"154\" height=\"19\" /></p>\n            <p align=\"justify\"><font face=\"Arial, Helvetica, sans-serif\">This site </font><font face=\"Arial, Helvetica, sans-serif\"> is experiencing technical difficulty. We are aware of the issue and are working as quickly as possible to correct the issue. <br />\n            <br />\n            We apologize for any        inconvenience this may have caused. <br />\n            <br />\n            To speak with an Oracle sales representative: 1.800.ORACLE1.<br />\n            <br />\n            To contact Oracle Corporate Headquarters from anywhere in the world: 1.650.506.7000.<br />\n<br />\n            To get technical support in the United States: 1.800.633.0738.\n\t\t<br><br><br><p style=\"font-size: 18px\" align=\"left\"><b>Incident Number: 0.1f523617.1789320911.463a95a</b></p></font><br />\n            &nbsp;</p>\n            </div>\n            </td>\n        </tr>\n    </tbody>\n</table>\n</p>\n<script type=\"text/javascript\"  src=\"/yCZ0/hjoH/yyt/VJm/iLXw/rhuiwkaVOiX5/GhosAQ/EGFsR/UEYJkcd?v=3ae46db9-5095-e785-f4b3-fbcf649c1736\" defer></script></body>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.oracle.com/sitemap-news.xml": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 404",
+      "access_status": "http-error",
+      "url": "https://www.oracle.com/sitemap-news.xml",
+      "final_url": "https://www.oracle.com/sitemap-news.xml",
+      "status_code": 404,
+      "load_time_seconds": 0.58,
+      "raw_html": "<!DOCTYPE html>\r\n<html lang=\"en-US\" class=\"no-js\">\r\n\r\n<head>\r\n\t<title>Page not found | Oracle</title>\r\n\t<meta name=\"Title\" content=\"Page not found | Oracle\">\r\n\t<meta name=\"Description\" content=\"We can't find the page you were looking for\">\r\n\t<meta name=\"robots\" content=\"noindex, nofollow\">\r\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n\t<meta name=\"viewport\" content=\"width=device-width\">\r\n\t<style>\r\n\t\tbody,\r\n\t\thtml {\r\n\t\t\tpadding: 0;\r\n\t\t\tmargin: 0;\r\n\t\t\tbackground: #fff;\r\n\t\t\tfont-size: 0;\r\n\t\t\tborder: 0;\r\n\t\t\theight: 100%;\r\n\t\t\twidth: 100%\r\n\t\t}\r\n\r\n\t\tiframe {\r\n\t\t\twebkit-overflow-scrolling: touch;\r\n\t\t\toverflow: auto;\r\n\t\t\tposition: absolute;\r\n\t\t\ttop: 0;\r\n\t\t\tbottom: 0;\r\n\t\t\tleft: 0;\r\n\t\t\tright: 0;\r\n\t\t\twidth: 100%;\r\n\t\t\theight: 100%;\r\n\t\t\tbox-sizing: border-box;\r\n\t\t\tborder: 0;\r\n\t\t\tborder-right: #dadee0 .6px solid\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body class=\"f11 f11v4\">\r\n\t<div class=\"f11v4w1\">\r\n\t\t<div class=\"f11v4w2\">\r\n\t\t\t<iframe id=\"notfoundpage\" src=\"\"></iframe>\r\n\r\n\t\t\t<noscript>\r\n\t\t\t\t<iframe src=\"/404-error-page.html\"></iframe>\r\n\t\t\t</noscript>\r\n\t\t</div>\r\n\t</div>\r\n<script type=\"text/javascript\"  src=\"/yCZ0/hjoH/yyt/VJm/iLXw/rhuiwkaVOiX5/GhosAQ/EGFsR/UEYJkcd?v=60b50b0e-5824-46e8-2fb8-ec9746501736\" defer></script></body>\r\n\r\n<script type=\"text/javascript\">\r\n\r\n\tvar targetsrc = '/LOCAL_DIR/404-error-page.html';\r\n\r\n\t//set to file path using \"LOCAL\" as a placeholder for location directory\r\n\tvar defaultpg = '/404-error-page.html';\r\n\t// this should be the same as the noscript iframe src \r\n\r\n\tvar white = ',tw,cn,ua,tr,se,si,sk,cis,md,ro,pt,br,pl,no,nl,be-nl,mn,lv,lt,kr,jp,it,hu,hr,il,fr,ch-fr,ca-fr,be-fr,fi,ve,uy,py,pr,pe,pa,ni,mx,latam,hn,gt,es,ec,cr,co,cl,bz,bo,ar,za,ye,vn,th,sn,sg,sa,rs,qa,pk,ph,om,nz,np,ng,my,mv,mt,middleeast,me,ma,lu,lk,lb,la,kw,kh,ke,jo,iq,in,il-en,ie,id,hk,gh,uk,europe,eg,ee,dz,cy,ca-en,bt,bn,bh,be,bd,ba,au,asean,apac,africa,ae,gr,de,ch-de,at,dk,cz,bg,ye-ar,sa-ar,qa-ar,om-ar,middleeast-ar,lb-ar,kw-ar,jo-ar,iq-ar,eg-ar,bh-ar,ae-ar,ko,ja,pt-br,zh-tw,ru,zh-cn,sv,en';\r\n\tvar local = (/oracle.com\\/[^\\/]+\\//i.test(document.location.href)) ? document.location.href.split('oracle.com/')[1].split('/')[0] : '';\r\n\t///marketincloud/ site specic error page\r\n\t//var omgdefaultpg = '/marketingcloud/404-error-page.html';\r\n\t//var omgtargetsrc = '/LOCAL_DIR/marketingcloud/404-error-page.html';\r\n\t//var omcurl = (/oracle.com\\/[^\\/]+\\//i.test(document.location.href)) ? document.location.href.split('oracle.com/')[1] : '';\r\n\t//if(omcurl.indexOf('marketingcloud/') > -1){\r\n\t//targetsrc = (white.indexOf(','+local+',') > -1) ? omgtargetsrc.replace(/LOCAL_DIR/,local) : omgdefaultpg;\r\n\t//} else {\r\n\ttargetsrc = (white.indexOf(',' + local + ',') > -1) ? targetsrc.replace(/LOCAL_DIR/, local) : defaultpg;\r\n\t//}\r\n\r\n\tdocument.getElementById('notfoundpage').src = targetsrc;\r\n\r\n</script>\r\n\r\n<!-- Start SiteCatalyst code -->\r\n<script language=\"JavaScript\" src=\"https://www.oracle.com/us/assets/metrics/ora_error.js\"></script>\r\n<!-- End SiteCatalyst code -->\r\n\r\n</html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {
+    "https://www.oracle.com/sitemap-support.xml": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://www.oracle.com/sitemap-support.xml",
+      "final_url": "https://www.oracle.com/sitemap-support.xml",
+      "status_code": 200,
+      "content_type": "text/xml; charset=UTF-8",
+      "load_time_seconds": 0.3,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://www.oracle.com/sitemap-customers.xml": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://www.oracle.com/sitemap-customers.xml",
+      "final_url": "https://www.oracle.com/sitemap-customers.xml",
+      "status_code": 200,
+      "content_type": "text/xml; charset=UTF-8",
+      "load_time_seconds": 0.65,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://www.oracle.com/sitemap-ai-world.xml": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://www.oracle.com/sitemap-ai-world.xml",
+      "final_url": "https://www.oracle.com/sitemap-ai-world.xml",
+      "status_code": 200,
+      "content_type": "application/xml",
+      "load_time_seconds": 0.38,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    }
+  },
+  "ground_truth": {
+    "brand_name": "Oracle",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 2,
+    "total_crawl_time_seconds": 14.31,
+    "page_selection": [
+      {
+        "url": "https://www.oracle.com/sitemap-news.xml",
+        "score": 14,
+        "signals": [
+          "article_docs:news",
+          "listed-in-sitemap",
+          "shallow-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.oracle.com/sitemap-support.xml",
+        "score": 14,
+        "signals": [
+          "contact_support:support",
+          "listed-in-sitemap",
+          "shallow-route"
+        ],
+        "purpose_hint": "contact_support",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.oracle.com/sitemap-customers.xml",
+        "score": 14,
+        "signals": [
+          "audience:customers",
+          "listed-in-sitemap",
+          "shallow-route"
+        ],
+        "purpose_hint": "general",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.oracle.com/sitemap-ai-world.xml",
+        "score": 4,
+        "signals": [
+          "listed-in-sitemap",
+          "shallow-route"
+        ],
+        "purpose_hint": "general",
+        "source": "sitemap"
+      }
+    ],
+    "resources_observed": 3,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "http-blocked": 1,
+      "http-error": 1
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {
+    "https://oracle.com/": "https://www.oracle.com/"
+  }
+}

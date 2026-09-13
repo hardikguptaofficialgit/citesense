@@ -1,0 +1,499 @@
+{
+  "site": {
+    "category": "marketplaces",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "reverb.com",
+    "rank": 302,
+    "technical_type": "unknown",
+    "url": "https://reverb.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:39:02.746015+00:00",
+  "finished_at": "2026-09-13T15:39:34.787785+00:00",
+  "elapsed_seconds": 32.042,
+  "error": null,
+  "report": {
+    "site": "https://reverb.com",
+    "audited_at": "2026-09-13T15:39:34Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 1,
+      "medium": 4,
+      "low": 1,
+      "discoverability_findings": 3,
+      "engagement_findings": 3,
+      "citability_score": 69,
+      "citability_score_breakdown": {
+        "score": 69,
+        "base": 100,
+        "penalty": 31,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 17,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "schema:missing-required-fields": 5,
+          "freshness:stale-claim:1981:https://reverb.com/brands": 5,
+          "engagement:broken-internal-links": 5,
+          "trust:no-independent-identity-anchor": 2,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://reverb.com/ via heading_structure_inspection [2026-09-13T15:39:25Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:39:25Z",
+          "confidence": "high",
+          "evidence_id": "E-f451c5e1a206"
+        },
+        "evidence_refs": [
+          "E-f451c5e1a206"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://reverb.com/ via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/price-guide via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/news via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://reverb.com/brands via schema_field_validator [2026-09-13T15:39:25Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com/",
+          "observation": "Schema entities are missing required properties: Organization missing name.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T15:39:25Z",
+          "confidence": "high",
+          "evidence_id": "E-dfb8f2576d8e"
+        },
+        "evidence_refs": [
+          "E-4ed2eba8d85e",
+          "E-53bbe40ee759",
+          "E-db703ed151c2",
+          "E-dfb8f2576d8e"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Outdated time-sensitive claim or promotion found on active page (1981)",
+        "category": "freshness",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://reverb.com/brands via dated_claim_temporal_analysis [2026-09-13T15:39:25Z]: Page contains active time-sensitive statement referencing 1981 (45 years old): \"Price Guide Seller Hub Shops Artist Shops Reverb Gives Help Center Top Brands on Reverb # 1010 Music 1981\". (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-claim:1981:https://reverb.com/brands",
+        "suggested_action": {
+          "summary": "Update or archive expired time-sensitive offers and claims.",
+          "priority": "medium",
+          "how_to_fix": "Review the text referencing 1981 on https://reverb.com/brands and update with current pricing/event information or remove expired promotions.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com/brands",
+          "observation": "Page contains active time-sensitive statement referencing 1981 (45 years old): \"Price Guide Seller Hub Shops Artist Shops Reverb Gives Help Center Top Brands on Reverb # 1010 Music 1981\".",
+          "method": "dated_claim_temporal_analysis",
+          "timestamp": "2026-09-13T15:39:25Z",
+          "confidence": "high",
+          "evidence_id": "E-a0b5f1d76d69"
+        },
+        "evidence_refs": [
+          "E-a0b5f1d76d69"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (2 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://reverb.com/promo/top-sellers-recent-releases via http_redirect_aware_link_checker [2026-09-13T15:39:34Z]: Sampled internal links returned broken HTTP errors: https://reverb.com/promo/top-sellers-recent-releases (HTTP 403); https://reverb.com/cart (HTTP 403). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com/promo/top-sellers-recent-releases",
+          "observation": "Sampled internal links returned broken HTTP errors: https://reverb.com/promo/top-sellers-recent-releases (HTTP 403); https://reverb.com/cart (HTTP 403).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T15:39:34Z",
+          "confidence": "high",
+          "evidence_id": "E-425bb6c62015"
+        },
+        "evidence_refs": [
+          "E-425bb6c62015"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://reverb.com via onsite_identity_anchor_inspection [2026-09-13T15:39:34Z]: Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com",
+          "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T15:39:34Z",
+          "confidence": "medium",
+          "evidence_id": "E-5d1d59d8e27a"
+        },
+        "evidence_refs": [
+          "E-5d1d59d8e27a"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://reverb.com/news via heading_structure_inspection [2026-09-13T15:39:25Z]: Page defines 4 separate <h1> tags (Standout Finds on Reverb This Week; New Bestsellers on Reverb This Month; Top Collector-Grade Instruments Recently), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://reverb.com/news",
+          "observation": "Page defines 4 separate <h1> tags (Standout Finds on Reverb This Week; New Bestsellers on Reverb This Month; Top Collector-Grade Instruments Recently), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:39:25Z",
+          "confidence": "high",
+          "evidence_id": "E-3ad52a2ec7ae"
+        },
+        "evidence_refs": [
+          "E-3ad52a2ec7ae"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 4,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://reverb.com/price-guide",
+          "score": 26,
+          "signals": [
+            "product_pricing:price",
+            "article_docs:guide",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://reverb.com",
+          "score": 2,
+          "signals": [
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "homepage",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://reverb.com/news",
+          "score": 14,
+          "signals": [
+            "article_docs:news",
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://reverb.com/brands",
+          "score": 4,
+          "signals": [
+            "listed-in-sitemap",
+            "shallow-route"
+          ],
+          "purpose_hint": "general",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://reverb.com/",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:39:25Z",
+        "confidence": "high",
+        "evidence_id": "E-dfb8f2576d8e"
+      },
+      {
+        "url": "https://reverb.com/price-guide",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:39:25Z",
+        "confidence": "high",
+        "evidence_id": "E-53bbe40ee759"
+      },
+      {
+        "url": "https://reverb.com/news",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:39:25Z",
+        "confidence": "high",
+        "evidence_id": "E-4ed2eba8d85e"
+      },
+      {
+        "url": "https://reverb.com/brands",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:39:25Z",
+        "confidence": "high",
+        "evidence_id": "E-db703ed151c2"
+      },
+      {
+        "url": "https://reverb.com/brands",
+        "observation": "Page contains active time-sensitive statement referencing 1981 (45 years old): \"Price Guide Seller Hub Shops Artist Shops Reverb Gives Help Center Top Brands on Reverb # 1010 Music 1981\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T15:39:25Z",
+        "confidence": "high",
+        "evidence_id": "E-a0b5f1d76d69"
+      },
+      {
+        "url": "https://reverb.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:39:25Z",
+        "confidence": "high",
+        "evidence_id": "E-f451c5e1a206"
+      },
+      {
+        "url": "https://reverb.com/news",
+        "observation": "Page defines 4 separate <h1> tags (Standout Finds on Reverb This Week; New Bestsellers on Reverb This Month; Top Collector-Grade Instruments Recently), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:39:25Z",
+        "confidence": "high",
+        "evidence_id": "E-3ad52a2ec7ae"
+      },
+      {
+        "url": "https://reverb.com/promo/top-sellers-recent-releases",
+        "observation": "Sampled internal links returned broken HTTP errors: https://reverb.com/promo/top-sellers-recent-releases (HTTP 403); https://reverb.com/cart (HTTP 403).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T15:39:34Z",
+        "confidence": "high",
+        "evidence_id": "E-425bb6c62015"
+      },
+      {
+        "url": "https://reverb.com",
+        "observation": "Across the crawled pages, Organization schema is present but declares 0 sameAs URIs, and 0 of 8 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T15:39:34Z",
+        "confidence": "medium",
+        "evidence_id": "E-5d1d59d8e27a"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 4 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Build third-party presence so Reverb is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "2 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 4,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "general",
+      "homepage"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

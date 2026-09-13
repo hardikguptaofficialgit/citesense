@@ -1,0 +1,478 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "perplexity.ai",
+    "rank": 814,
+    "technical_type": "unknown",
+    "url": "https://perplexity.ai/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:18:39.983605+00:00",
+  "finished_at": "2026-09-13T16:19:22.237455+00:00",
+  "elapsed_seconds": 42.254,
+  "error": null,
+  "report": {
+    "site": "https://www.perplexity.ai",
+    "audited_at": "2026-09-13T16:19:22Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 1,
+      "medium": 3,
+      "low": 2,
+      "discoverability_findings": 3,
+      "engagement_findings": 3,
+      "citability_score": 81,
+      "citability_score_breakdown": {
+        "score": 81,
+        "base": 100,
+        "penalty": 19,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 6,
+          "medium": 12,
+          "low": 1
+        },
+        "penalty_by_root_cause": {
+          "render:empty-raw-html-gap:/": 6,
+          "schema:missing-required-fields": 5,
+          "engagement:broken-internal-links": 5,
+          "citation:unanswerable:offering": 2,
+          "engagement:no-site-search": 1,
+          "engagement:no-personalization-readiness": 0
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.perplexity.ai/ via static_initial_html_shell_inspection [2026-09-13T16:19:09Z]: Raw HTML yields only 1 words of visible text and shows static shell signals (client-mount-marker, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.perplexity.ai/",
+          "observation": "Raw HTML yields only 1 words of visible text and shows static shell signals (client-mount-marker, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T16:19:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-695b7142e6ce"
+        },
+        "evidence_refs": [
+          "E-695b7142e6ce"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.perplexity.ai/help-center/store/de/articles/10062107-customer-support via schema_field_validator [2026-09-13T16:19:09Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.perplexity.ai/help-center/store/de/collections/10630917-about-the-perplexity-supply-store via schema_field_validator [2026-09-13T16:19:09Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.perplexity.ai/help-center/store/de/collections/10632618-cutomer-support-for-the-perplexity-supply-store via schema_field_validator [2026-09-13T16:19:09Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.perplexity.ai/help-center/store/de/articles/10062107-customer-support",
+          "observation": "Schema entities are missing required properties: Article missing datePublished.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T16:19:09Z",
+          "confidence": "high",
+          "evidence_id": "E-3315eb0cd049"
+        },
+        "evidence_refs": [
+          "E-1ac504051b26",
+          "E-3315eb0cd049",
+          "E-c2a2e81447f3"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.perplexity.ai/llms.txt via http_redirect_aware_link_checker [2026-09-13T16:19:22Z]: Sampled internal links returned broken HTTP errors: https://www.perplexity.ai/llms.txt (HTTP 404). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.perplexity.ai/llms.txt",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.perplexity.ai/llms.txt (HTTP 404).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T16:19:22Z",
+          "confidence": "high",
+          "evidence_id": "E-63d832eed501"
+        },
+        "evidence_refs": [
+          "E-63d832eed501"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No extractable answer on-site for \"What does Perplexity AI offer?\"",
+        "category": "citation-omission",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.perplexity.ai/help-center/store/de/articles/10062107-customer-support via onsite_answerability_probe [2026-09-13T16:19:22Z]: Across 4 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Perplexity AI offer?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "citation-simulator",
+        "fingerprint": "citation:unanswerable:offering",
+        "suggested_action": {
+          "summary": "Mark up the product or service catalogue.",
+          "priority": "medium",
+          "how_to_fix": "Add Product or Service JSON-LD to the pages describing what you sell, so an assistant can quote the offering rather than paraphrasing navigation labels.",
+          "expected_benefit": "Improves citation omission by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "citation-simulator"
+        ],
+        "evidence_details": {
+          "url": "https://www.perplexity.ai/help-center/store/de/articles/10062107-customer-support",
+          "observation": "Across 4 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Perplexity AI offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+          "method": "onsite_answerability_probe",
+          "timestamp": "2026-09-13T16:19:22Z",
+          "confidence": "medium",
+          "evidence_id": "E-6bc5c4472c5c"
+        },
+        "evidence_refs": [
+          "E-6bc5c4472c5c"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No site search affordance found on any crawled page",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.perplexity.ai via search_affordance_detection [2026-09-13T16:19:09Z]: None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-site-search",
+        "suggested_action": {
+          "summary": "Add a site search box to the persistent header.",
+          "priority": "low",
+          "how_to_fix": "Add a search input in the global header and expose it with role=\"search\". Add WebSite JSON-LD with a potentialAction SearchAction so assistants can surface your search directly.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.perplexity.ai",
+          "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+          "method": "search_affordance_detection",
+          "timestamp": "2026-09-13T16:19:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-3ba24c4880f3"
+        },
+        "evidence_refs": [
+          "E-3ba24c4880f3"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "No returning-visitor or account affordance detected",
+        "category": "personalization-readiness",
+        "severity": "low",
+        "status": "proactive",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.perplexity.ai via returning_visitor_affordance_detection [2026-09-13T16:19:09Z]: Across 4 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:no-personalization-readiness",
+        "suggested_action": {
+          "summary": "Give returning visitors a way to be recognised, and use it.",
+          "priority": "low",
+          "how_to_fix": "Add an account or saved-state affordance appropriate to the site (sign-in, saved items, recently viewed, or a lightweight preference stored locally), then use it to surface relevant content on return rather than resetting every visitor to a cold start.",
+          "expected_benefit": "Improves personalization readiness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.perplexity.ai",
+          "observation": "Across 4 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+          "method": "returning_visitor_affordance_detection",
+          "timestamp": "2026-09-13T16:19:09Z",
+          "confidence": "medium",
+          "evidence_id": "E-9c5193a21817"
+        },
+        "evidence_refs": [
+          "E-9c5193a21817"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 4,
+      "resources_observed": 1,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.perplexity.ai/help-center/store/de/articles/10062107-customer-support",
+          "score": 32,
+          "signals": [
+            "product_landing:store",
+            "article_docs:help",
+            "contact_support:support",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.perplexity.ai/sitemap/api-platform.xml",
+          "score": 22,
+          "signals": [
+            "product_landing:platform",
+            "article_docs:api",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.perplexity.ai/help-center/store/de/collections/10630917-about-the-perplexity-supply-store",
+          "score": 32,
+          "signals": [
+            "product_landing:store",
+            "article_docs:help",
+            "contact_support:about",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.perplexity.ai/help-center/store/de/collections/10632618-cutomer-support-for-the-perplexity-supply-store",
+          "score": 32,
+          "signals": [
+            "product_landing:store",
+            "article_docs:help",
+            "contact_support:support",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.perplexity.ai/",
+        "observation": "Raw HTML yields only 1 words of visible text and shows static shell signals (client-mount-marker, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T16:19:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-695b7142e6ce"
+      },
+      {
+        "url": "https://www.perplexity.ai/help-center/store/de/articles/10062107-customer-support",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:19:09Z",
+        "confidence": "high",
+        "evidence_id": "E-3315eb0cd049"
+      },
+      {
+        "url": "https://www.perplexity.ai/help-center/store/de/collections/10630917-about-the-perplexity-supply-store",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:19:09Z",
+        "confidence": "high",
+        "evidence_id": "E-1ac504051b26"
+      },
+      {
+        "url": "https://www.perplexity.ai/help-center/store/de/collections/10632618-cutomer-support-for-the-perplexity-supply-store",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T16:19:09Z",
+        "confidence": "high",
+        "evidence_id": "E-c2a2e81447f3"
+      },
+      {
+        "url": "https://www.perplexity.ai",
+        "observation": "None of the 4 crawled pages expose a search input, a search form or role=\"search\". A visitor who arrives on the wrong page from an AI answer has no way to find the right one without returning to the assistant.",
+        "method": "search_affordance_detection",
+        "timestamp": "2026-09-13T16:19:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-3ba24c4880f3"
+      },
+      {
+        "url": "https://www.perplexity.ai",
+        "observation": "Across 4 crawled pages there is no sign-in, account, saved-items or recently-viewed affordance in the visible text. Every visitor is therefore treated as anonymous and first-time, so nothing the brand already knows about a returning visitor can shape what they are shown.",
+        "method": "returning_visitor_affordance_detection",
+        "timestamp": "2026-09-13T16:19:09Z",
+        "confidence": "medium",
+        "evidence_id": "E-9c5193a21817"
+      },
+      {
+        "url": "https://www.perplexity.ai/llms.txt",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.perplexity.ai/llms.txt (HTTP 404).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T16:19:22Z",
+        "confidence": "high",
+        "evidence_id": "E-63d832eed501"
+      },
+      {
+        "url": "https://www.perplexity.ai/help-center/store/de/articles/10062107-customer-support",
+        "observation": "Across 4 crawled page(s), no Product/Service/Offer schema describes the offering. An assistant that fetched these pages could not quote an answer to \"What does Perplexity AI offer?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T16:19:22Z",
+        "confidence": "medium",
+        "evidence_id": "E-6bc5c4472c5c"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 4 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Perplexity AI is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 4,
+    "readable_pages": 4,
+    "page_purposes": [
+      "article_docs",
+      "homepage"
+    ],
+    "resource_types": [
+      "unknown"
+    ],
+    "resources_seen": 1,
+    "access_summary": {}
+  }
+}

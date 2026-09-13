@@ -1,0 +1,501 @@
+{
+  "site": {
+    "category": "universities",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "ox.ac.uk",
+    "rank": 63,
+    "technical_type": "unknown",
+    "url": "https://ox.ac.uk/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:37:21.054759+00:00",
+  "finished_at": "2026-09-13T17:37:36.654870+00:00",
+  "elapsed_seconds": 15.6,
+  "error": null,
+  "report": {
+    "site": "https://www.ox.ac.uk",
+    "audited_at": "2026-09-13T17:37:36Z",
+    "summary": {
+      "total_findings": 3,
+      "critical": 0,
+      "high": 1,
+      "medium": 2,
+      "low": 0,
+      "discoverability_findings": 2,
+      "engagement_findings": 1,
+      "citability_score": 78,
+      "citability_score_breakdown": {
+        "score": 78,
+        "base": 100,
+        "penalty": 22,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 12,
+          "medium": 10,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/about/how-we-are-run/strategic-plan": 12,
+          "schema:root-organization-missing": 5,
+          "engagement:broken-internal-links": 5
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 3
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.ox.ac.uk/about/how-we-are-run/strategic-plan via jsonld_schema_extractor [2026-09-13T17:37:34Z]: Commercial/product page (https://www.ox.ac.uk/about/how-we-are-run/strategic-plan) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/about/how-we-are-run/strategic-plan",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Strategic plan 2025-2030\",\n  \"url\": \"https://www.ox.ac.uk/about/how-we-are-run/strategic-plan\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Oxford University\"\n  },\n  \"description\": \"The University of Oxford’s Strategic Plan 2025–2030 sets out our shared ambitions for the next five years.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.ox.ac.uk/about/how-we-are-run/strategic-plan\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.ox.ac.uk/about/how-we-are-run/strategic-plan",
+          "observation": "Commercial/product page (https://www.ox.ac.uk/about/how-we-are-run/strategic-plan) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:37:34Z",
+          "confidence": "high",
+          "evidence_id": "E-c692d167d08a"
+        },
+        "evidence_refs": [
+          "E-c692d167d08a"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.ox.ac.uk/about/how-we-are-run/strategic-plan via jsonld_schema_extractor [2026-09-13T17:37:34Z]: Commercial/product page (https://www.ox.ac.uk/about/how-we-are-run/strategic-plan) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-c692d167d08a.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Missing Schema.org Product and Offer structured data on commercial page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Product and Offer structured data on commercial page",
+          "evidence_refs": [
+            "E-c692d167d08a"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+            "priority": "high",
+            "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Strategic plan 2025-2030\",\n  \"url\": \"https://www.ox.ac.uk/about/how-we-are-run/strategic-plan\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Oxford University\"\n  },\n  \"description\": \"The University of Oxford’s Strategic Plan 2025–2030 sets out our shared ambitions for the next five years.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.ox.ac.uk/about/how-we-are-run/strategic-plan\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.ox.ac.uk/ via jsonld_schema_extractor [2026-09-13T17:37:34Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Oxford University\",\n  \"url\": \"https://www.ox.ac.uk\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Oxford University provides world-class research and education to benefit society on a local, regional, national and global scale.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.ox.ac.uk/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:37:34Z",
+          "confidence": "high",
+          "evidence_id": "E-f9b1db3dc7fd"
+        },
+        "evidence_refs": [
+          "E-f9b1db3dc7fd"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.ox.ac.uk/ via jsonld_schema_extractor [2026-09-13T17:37:34Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-f9b1db3dc7fd.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-f9b1db3dc7fd"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Oxford University\",\n  \"url\": \"https://www.ox.ac.uk\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Oxford University provides world-class research and education to benefit society on a local, regional, national and global scale.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Broken internal navigation links detected (7 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.ox.ac.uk/admissions via http_redirect_aware_link_checker [2026-09-13T17:37:36Z]: Sampled internal links returned broken HTTP errors: https://www.ox.ac.uk/admissions (HTTP 403); https://www.ox.ac.uk/research (HTTP 403); https://www.ox.ac.uk/search (HTTP 403). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.ox.ac.uk/admissions",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.ox.ac.uk/admissions (HTTP 403); https://www.ox.ac.uk/research (HTTP 403); https://www.ox.ac.uk/search (HTTP 403).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T17:37:36Z",
+          "confidence": "high",
+          "evidence_id": "E-3637aeef82a9"
+        },
+        "evidence_refs": [
+          "E-3637aeef82a9"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (7 link(s)).\n\nEVIDENCE\nObserved at https://www.ox.ac.uk/admissions via http_redirect_aware_link_checker [2026-09-13T17:37:36Z]: Sampled internal links returned broken HTTP errors: https://www.ox.ac.uk/admissions (HTTP 403); https://www.ox.ac.uk/research (HTTP 403); https://www.ox.ac.uk/search (HTTP 403). (Confidence: high)\nEvidence references: E-3637aeef82a9.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (7 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Broken internal navigation links detected (7 link(s))",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Broken internal navigation links detected (7 link(s))",
+          "evidence_refs": [
+            "E-3637aeef82a9"
+          ],
+          "root_cause": "Use the observed condition described by “Broken internal navigation links detected (7 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix or redirect broken internal destination URLs.",
+            "priority": "medium",
+            "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 3,
+      "status_counts": {
+        "readable": 3,
+        "anti-bot-challenge": 2
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.ox.ac.uk/research/support/about-research-services",
+          "score": 34,
+          "signals": [
+            "product_landing:services",
+            "article_docs:research",
+            "contact_support:about,support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.ox.ac.uk/about/how-we-are-run/strategic-plan",
+          "score": 26,
+          "signals": [
+            "product_pricing:plan",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.ox.ac.uk/about/how-we-are-run/equality-diversity/access-guide",
+          "score": 24,
+          "signals": [
+            "article_docs:guide",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.ox.ac.uk/careers/who-we-support/disability-and-careers",
+          "score": 24,
+          "signals": [
+            "contact_support:support",
+            "audience:students",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.ox.ac.uk/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:37:34Z",
+        "confidence": "high",
+        "evidence_id": "E-f9b1db3dc7fd"
+      },
+      {
+        "url": "https://www.ox.ac.uk/about/how-we-are-run/strategic-plan",
+        "observation": "Commercial/product page (https://www.ox.ac.uk/about/how-we-are-run/strategic-plan) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:37:34Z",
+        "confidence": "high",
+        "evidence_id": "E-c692d167d08a"
+      },
+      {
+        "url": "https://www.ox.ac.uk/admissions",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.ox.ac.uk/admissions (HTTP 403); https://www.ox.ac.uk/research (HTTP 403); https://www.ox.ac.uk/search (HTTP 403).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T17:37:36Z",
+        "confidence": "high",
+        "evidence_id": "E-3637aeef82a9"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "3 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "2 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Product and Offer structured data on commercial page.\n\nEVIDENCE\nObserved at https://www.ox.ac.uk/about/how-we-are-run/strategic-plan via jsonld_schema_extractor [2026-09-13T17:37:34Z]: Commercial/product page (https://www.ox.ac.uk/about/how-we-are-run/strategic-plan) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)\nEvidence references: E-c692d167d08a.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Product and Offer structured data on commercial page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEmbed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-c692d167d08a"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.ox.ac.uk/ via jsonld_schema_extractor [2026-09-13T17:37:34Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-f9b1db3dc7fd.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-f9b1db3dc7fd"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (7 link(s)).\n\nEVIDENCE\nObserved at https://www.ox.ac.uk/admissions via http_redirect_aware_link_checker [2026-09-13T17:37:36Z]: Sampled internal links returned broken HTTP errors: https://www.ox.ac.uk/admissions (HTTP 403); https://www.ox.ac.uk/research (HTTP 403); https://www.ox.ac.uk/search (HTTP 403). (Confidence: high)\nEvidence references: E-3637aeef82a9.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (7 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-3637aeef82a9"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 3,
+    "page_purposes": [
+      "contact_support",
+      "homepage",
+      "product_pricing",
+      "unknown"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 3,
+      "anti-bot-challenge": 2
+    }
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "site": {
+    "category": "consulting",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "kpmg.com",
+    "rank": 337,
+    "technical_type": "unknown",
+    "url": "https://kpmg.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:41:32.333248+00:00",
+  "finished_at": "2026-09-13T15:41:39.614224+00:00",
+  "elapsed_seconds": 7.281,
+  "error": null,
+  "report": {
+    "site": "https://kpmg.com",
+    "audited_at": "2026-09-13T15:41:39Z",
+    "summary": {
+      "total_findings": 7,
+      "critical": 0,
+      "high": 2,
+      "medium": 2,
+      "low": 3,
+      "discoverability_findings": 2,
+      "engagement_findings": 5,
+      "citability_score": 64,
+      "citability_score_breakdown": {
+        "score": 64,
+        "base": 100,
+        "penalty": 36,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 7,
+          "low": 5
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-h1": 12,
+          "engagement:missing-viewport-meta": 12,
+          "engagement:few-internal-links": 2,
+          "engagement:deep-pages-anonymous": 5,
+          "schema:organization-missing-sameas": 2,
+          "extractability:images-without-alt": 2,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 7
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html via heading_structure_inspection [2026-09-13T15:41:35Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:41:35Z",
+          "confidence": "high",
+          "evidence_id": "E-28b6c8c73632"
+        },
+        "evidence_refs": [
+          "E-28b6c8c73632"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html via mobile_viewport_inspector [2026-09-13T15:41:35Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T15:41:35Z",
+          "confidence": "high",
+          "evidence_id": "E-81d59a330369"
+        },
+        "evidence_refs": [
+          "E-81d59a330369"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Isolated page with insufficient internal navigation links",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html via internal_link_density_check [2026-09-13T15:41:35Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:few-internal-links",
+        "suggested_action": {
+          "summary": "Incorporate related internal links and header/footer navigation.",
+          "priority": "medium",
+          "how_to_fix": "Add links to relevant documentation, related products, or category overview pages.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+          "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+          "method": "internal_link_density_check",
+          "timestamp": "2026-09-13T15:41:35Z",
+          "confidence": "medium",
+          "evidence_id": "E-d2288f08c90b"
+        },
+        "evidence_refs": [
+          "E-d2288f08c90b"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep pages never identify the brand, leaving cold arrivals unoriented",
+        "category": "orientation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html via cold_arrival_brand_mention_check [2026-09-13T15:41:35Z]: 1 deep page(s) contain no mention of \"KPMG International | Home\" in the title or body text (e.g. https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:deep-pages-anonymous",
+        "suggested_action": {
+          "summary": "Name the brand in the header, title and footer of every page.",
+          "priority": "medium",
+          "how_to_fix": "Include the brand name in the <title> of every page and in a persistent header or footer, so a page that is the visitor's first contact still identifies its owner.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+          "observation": "1 deep page(s) contain no mention of \"KPMG International | Home\" in the title or body text (e.g. https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+          "method": "cold_arrival_brand_mention_check",
+          "timestamp": "2026-09-13T15:41:35Z",
+          "confidence": "high",
+          "evidence_id": "E-5a1ed99e38ef"
+        },
+        "evidence_refs": [
+          "E-5a1ed99e38ef"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+        "category": "structured-data",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://kpmg.com/xx/en.html via jsonld_schema_extractor [2026-09-13T15:41:35Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:organization-missing-sameas",
+        "suggested_action": {
+          "summary": "Add sameAs URLs to Organization JSON-LD.",
+          "priority": "low",
+          "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"KPMG International | Home\",\n  \"url\": \"https://kpmg.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Welcome to KPMG International.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://kpmg.com/xx/en.html",
+          "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:41:35Z",
+          "confidence": "high",
+          "evidence_id": "E-9f6029f19a7e"
+        },
+        "evidence_refs": [
+          "E-9f6029f19a7e"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://kpmg.com/xx/en.html via image_alt_coverage_inspection [2026-09-13T15:41:35Z]: 8 of 12 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://kpmg.com/xx/en/about/make-the-difference.html via image_alt_coverage_inspection [2026-09-13T15:41:35Z]: 6 of 18 images (33%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://kpmg.com/xx/en/about.html via image_alt_coverage_inspection [2026-09-13T15:41:35Z]: 5 of 10 images (50%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://kpmg.com/xx/en/what-we-do/services.html via image_alt_coverage_inspection [2026-09-13T15:41:35Z]: 5 of 9 images (56%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://kpmg.com/xx/en.html",
+          "observation": "8 of 12 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:41:35Z",
+          "confidence": "high",
+          "evidence_id": "E-3356c56c9c9d"
+        },
+        "evidence_refs": [
+          "E-3356c56c9c9d",
+          "E-3e56005a4871",
+          "E-4e94e8ec6b90",
+          "E-6f08bfc7d14d"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://kpmg.com/xx/en.html via breadcrumb_markup_inspector [2026-09-13T15:41:35Z]: Page at deep route (/xx/en.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://kpmg.com/xx/en/about/make-the-difference.html via breadcrumb_markup_inspector [2026-09-13T15:41:35Z]: Page at deep route (/xx/en/about/make-the-difference.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html via breadcrumb_markup_inspector [2026-09-13T15:41:35Z]: Page at deep route (/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://kpmg.com/xx/en/about.html via breadcrumb_markup_inspector [2026-09-13T15:41:35Z]: Page at deep route (/xx/en/about.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://kpmg.com/xx/en/what-we-do/services.html via breadcrumb_markup_inspector [2026-09-13T15:41:35Z]: Page at deep route (/xx/en/what-we-do/services.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://kpmg.com/xx/en.html",
+          "observation": "Page at deep route (/xx/en.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:41:35Z",
+          "confidence": "medium",
+          "evidence_id": "E-d05f67e6917b"
+        },
+        "evidence_refs": [
+          "E-3bcd1bd7c018",
+          "E-aa072e83be90",
+          "E-d05f67e6917b",
+          "E-ebaa611aac0f",
+          "E-f3f3b279e68c"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://kpmg.com/xx/en/about/make-the-difference.html",
+          "score": 24,
+          "signals": [
+            "article_docs:learn",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+          "score": 14,
+          "signals": [
+            "contact_support:location",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "html_fragment",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://kpmg.com/xx/en/about.html",
+          "score": 14,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://kpmg.com/xx/en/what-we-do/services.html",
+          "score": 14,
+          "signals": [
+            "product_landing:services",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://kpmg.com/xx/en.html",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-9f6029f19a7e"
+      },
+      {
+        "url": "https://kpmg.com/xx/en.html",
+        "observation": "8 of 12 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-3356c56c9c9d"
+      },
+      {
+        "url": "https://kpmg.com/xx/en/about/make-the-difference.html",
+        "observation": "6 of 18 images (33%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-4e94e8ec6b90"
+      },
+      {
+        "url": "https://kpmg.com/xx/en/about.html",
+        "observation": "5 of 10 images (50%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-3e56005a4871"
+      },
+      {
+        "url": "https://kpmg.com/xx/en/what-we-do/services.html",
+        "observation": "5 of 9 images (56%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-6f08bfc7d14d"
+      },
+      {
+        "url": "https://kpmg.com/xx/en.html",
+        "observation": "Page at deep route (/xx/en.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "medium",
+        "evidence_id": "E-d05f67e6917b"
+      },
+      {
+        "url": "https://kpmg.com/xx/en/about/make-the-difference.html",
+        "observation": "Page at deep route (/xx/en/about/make-the-difference.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "medium",
+        "evidence_id": "E-aa072e83be90"
+      },
+      {
+        "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-28b6c8c73632"
+      },
+      {
+        "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+        "method": "internal_link_density_check",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "medium",
+        "evidence_id": "E-d2288f08c90b"
+      },
+      {
+        "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+        "observation": "Page at deep route (/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "medium",
+        "evidence_id": "E-3bcd1bd7c018"
+      },
+      {
+        "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-81d59a330369"
+      },
+      {
+        "url": "https://kpmg.com/xx/en/about.html",
+        "observation": "Page at deep route (/xx/en/about.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "medium",
+        "evidence_id": "E-ebaa611aac0f"
+      },
+      {
+        "url": "https://kpmg.com/xx/en/what-we-do/services.html",
+        "observation": "Page at deep route (/xx/en/what-we-do/services.html) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "medium",
+        "evidence_id": "E-f3f3b279e68c"
+      },
+      {
+        "url": "https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html",
+        "observation": "1 deep page(s) contain no mention of \"KPMG International | Home\" in the title or body text (e.g. https://kpmg.com/content/experience-fragments/kpmgpublic/xx/en/site/rfp-form-location-selector-overlay/master.html). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+        "method": "cold_arrival_brand_mention_check",
+        "timestamp": "2026-09-13T15:41:35Z",
+        "confidence": "high",
+        "evidence_id": "E-5a1ed99e38ef"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "5 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "contact_support",
+      "general",
+      "html_fragment",
+      "product_landing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

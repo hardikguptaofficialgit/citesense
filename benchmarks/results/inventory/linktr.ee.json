@@ -1,0 +1,646 @@
+{
+  "seed_url": "https://linktr.ee/",
+  "origin": "https://linktr.ee",
+  "robots_txt": {
+    "found": true,
+    "url": "https://linktr.ee/robots.txt",
+    "status": 200,
+    "raw": "\n# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n#   (a) If a content-signal = yes, you may collect content for the corresponding use.\n#   (b) If a content-signal = no, you may not collect content for the corresponding use.\n#   (c) If no content signal is present for a corresponding use, the website operator\n#       neither grants nor restricts permission via content signal for that use.\n# The content signals and their meanings are:\n#   search:   building a search index and providing search results (e.g., returning\n#             hyperlinks and short excerpts). Search does not include providing\n#             AI-generated search summaries.\n#   ai-input: inputting content into one or more AI models (e.g., retrieval augmented\n#             generation, grounding, or other real-time taking of content for\n#             generative AI search answers).\n#   ai-train: training or fine-tuning AI models.\n# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF RIGHTS\n# UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT AND RELATED\n# RIGHTS IN THE DIGITAL SINGLE MARKET.\n#\n# llms.txt: https://linktr.ee/llms.txt\n#\n# /s/about/trust-center/report is disallowed because every profile footer's \"Report\"\n# link appends a unique ?field86145911=<profile url> param, so crawlers discover one\n# report URL per profile\n\nUser-agent: Applebot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Applebot-Extended controls use of content for Apple Intelligence / generative model training\nUser-agent: Applebot-Extended\nAllow: /\n\nUser-agent: baiduspider\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Bingbot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Discordbot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: facebookexternalhit\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Googlebot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Googlebot-Image\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Google-InspectionTool\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: ia_archiver\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: LinkedInBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: msnbot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Naverbot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Pinterestbot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Screaming Frog SEO Spider\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: seznambot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Slurp\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: teoma\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: TelegramBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Twitterbot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Yandex\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Yeti\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: SnapchatAdsBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: SemrushBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# OpenAI\nUser-agent: OAI-SearchBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: ChatGPT-User\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: ChatGPT-User/2.0\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: ChatGPT Agent\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: OpenAI\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: GPTBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Anthropic\nUser-agent: Claude-SearchBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Claude-User\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Claude-Web\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: ClaudeBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Perplexity\nUser-agent: PerplexityBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Perplexity-User\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Mistral\nUser-agent: MistralAI-User\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: MistralAI-User/1.0\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Meta\nUser-agent: Meta-ExternalFetcher\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Google\n# Google-Extended controls use of content for Gemini training and grounding (Gemini Apps + Vertex AI)\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Google\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Google-NotebookLM\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: NotebookLM\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Gemini-Deep-Research\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: GoogleAgent-Mariner\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Google-CloudVertexBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Amazon\nUser-agent: Amazonbot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: amazon-kendra\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: AmazonBuyForMe\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: NovaAct\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Misc AI Bots\nUser-agent: CCBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: atlassian-bot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Cloudflare-AutoRAG\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: KlaviyoAIBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: ShapBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Bravebot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: DuckAssistBot\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\nUser-agent: Devin\nContent-Signal: ai-train=no, search=yes\nDisallow: /admin$\nDisallow: /admin/\nDisallow: /admin?\nDisallow: /s/about/trust-center/report\n\n# Fallback, disallow scraping\nUser-agent: *\nDisallow: /\n\nSitemap: https://linktr.ee/discover/profile-directory/sitemapindex.xml\nSitemap: https://linktr.ee/marketplace/sitemap.xml\nSitemap: https://linktr.ee/s/wf/sitemap.xml\n  ",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "explicit"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "explicit"
+        }
+      }
+    },
+    "partially_blocked_agents": {
+      "Meta-ExternalAgent": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Bytespider": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ]
+    },
+    "sitemaps_declared": [
+      "https://linktr.ee/discover/profile-directory/sitemapindex.xml",
+      "https://linktr.ee/marketplace/sitemap.xml",
+      "https://linktr.ee/s/wf/sitemap.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://linktr.ee/discover/profile-directory/sitemapindex.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 1
+    },
+    {
+      "url": "https://linktr.ee/marketplace/sitemap.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 69
+    },
+    {
+      "url": "https://linktr.ee/s/wf/sitemap.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 976
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": true,
+      "status": 200,
+      "url": "https://linktr.ee/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://linktr.ee/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://linktr.ee/ai.txt"
+    }
+  },
+  "pages": {
+    "https://linktr.ee/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "fetch skipped because robots.txt disallowed this path",
+      "access_status": "robots-disallowed",
+      "url": "https://linktr.ee/",
+      "final_url": "https://linktr.ee/",
+      "status_code": 0,
+      "load_time_seconds": null,
+      "raw_html": "",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "Linktr",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 1,
+    "total_crawl_time_seconds": 4.8,
+    "page_selection": [
+      {
+        "url": "https://linktr.ee/blog/rethinking-recruitment-creative-cost-effective-strategies-from-the-linktree-talent-team",
+        "score": 34,
+        "signals": [
+          "product_pricing:cost",
+          "article_docs:blog",
+          "contact_support:team",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://linktr.ee/features/contact-forms",
+        "score": 22,
+        "signals": [
+          "product_landing:features",
+          "contact_support:contact",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "contact_support",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://linktr.ee/solutions/build-your-following",
+        "score": 22,
+        "signals": [
+          "product_landing:solutions",
+          "audience:solutions",
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "product_landing",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://linktr.ee",
+        "score": 2,
+        "signals": [
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "homepage",
+        "source": "sitemap"
+      }
+    ],
+    "resources_observed": 0,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "robots-disallowed": 1
+    }
+  },
+  "skipped_by_robots": [
+    {
+      "url": "https://linktr.ee/",
+      "matched_rule": "Disallow: /"
+    },
+    {
+      "url": "https://linktr.ee/blog/rethinking-recruitment-creative-cost-effective-strategies-from-the-linktree-talent-team",
+      "matched_rule": "Disallow: /"
+    },
+    {
+      "url": "https://linktr.ee/features/contact-forms",
+      "matched_rule": "Disallow: /"
+    },
+    {
+      "url": "https://linktr.ee/solutions/build-your-following",
+      "matched_rule": "Disallow: /"
+    },
+    {
+      "url": "https://linktr.ee",
+      "matched_rule": "Disallow: /"
+    }
+  ],
+  "url_aliases": {}
+}

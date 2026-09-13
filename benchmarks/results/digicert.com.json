@@ -1,0 +1,312 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "digicert.com",
+    "rank": 407,
+    "technical_type": "unknown",
+    "url": "https://digicert.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:44:46.934481+00:00",
+  "finished_at": "2026-09-13T15:45:16.237156+00:00",
+  "elapsed_seconds": 29.303,
+  "error": null,
+  "report": {
+    "site": "https://www.digicert.com",
+    "audited_at": "2026-09-13T15:45:16Z",
+    "summary": {
+      "total_findings": 2,
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 2,
+      "discoverability_findings": 0,
+      "engagement_findings": 2,
+      "citability_score": 97,
+      "citability_score_breakdown": {
+        "score": 97,
+        "base": 100,
+        "penalty": 3,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 3
+        },
+        "penalty_by_root_cause": {
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 2
+      }
+    },
+    "findings": [
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.digicert.com/about/events/paris-pki-solutions via breadcrumb_markup_inspector [2026-09-13T15:45:11Z]: Page at deep route (/about/events/paris-pki-solutions) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.digicert.com/support/resources/hosted-assets/ebook/x9-pki-certificate-terms-of-use via breadcrumb_markup_inspector [2026-09-13T15:45:11Z]: Page at deep route (/support/resources/hosted-assets/ebook/x9-pki-certificate-terms-of-use) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.digicert.com/about/events/paris-pki-solutions",
+          "observation": "Page at deep route (/about/events/paris-pki-solutions) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:45:11Z",
+          "confidence": "medium",
+          "evidence_id": "E-292fea32e692"
+        },
+        "evidence_refs": [
+          "E-03eb184fcfe0",
+          "E-292fea32e692"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.digicert.com/blog/cloud-security-solutions via heading_structure_inspection [2026-09-13T15:45:11Z]: Page defines 3 separate <h1> tags (DigiCert’s 2029 post-quantum infrastruct; The degradation of trust in the age of A; Certificate lifecycle management reaches), diluting semantic structure. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.digicert.com/blog/automated-security-key-component-to-digital-transformation via heading_structure_inspection [2026-09-13T15:45:11Z]: Page defines 3 separate <h1> tags (DigiCert’s 2029 post-quantum infrastruct; The degradation of trust in the age of A; Certificate lifecycle management reaches), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.digicert.com/blog/cloud-security-solutions",
+          "observation": "Page defines 3 separate <h1> tags (DigiCert’s 2029 post-quantum infrastruct; The degradation of trust in the age of A; Certificate lifecycle management reaches), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:45:11Z",
+          "confidence": "high",
+          "evidence_id": "E-347d1770de61"
+        },
+        "evidence_refs": [
+          "E-347d1770de61",
+          "E-e23d30a17bb0"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 1406,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.digicert.com/about/events/paris-pki-solutions",
+          "score": 32,
+          "signals": [
+            "product_landing:solutions",
+            "contact_support:about",
+            "audience:solutions",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.digicert.com/blog/cloud-security-solutions",
+          "score": 32,
+          "signals": [
+            "product_landing:solutions",
+            "article_docs:blog",
+            "audience:solutions",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.digicert.com/support/resources/hosted-assets/ebook/x9-pki-certificate-terms-of-use",
+          "score": 32,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:support",
+            "audience:use",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.digicert.com/blog/automated-security-key-component-to-digital-transformation",
+          "score": 12,
+          "signals": [
+            "article_docs:blog",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "html_fragment",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.digicert.com/about/events/paris-pki-solutions",
+        "observation": "Page at deep route (/about/events/paris-pki-solutions) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:45:11Z",
+        "confidence": "medium",
+        "evidence_id": "E-292fea32e692"
+      },
+      {
+        "url": "https://www.digicert.com/blog/cloud-security-solutions",
+        "observation": "Page defines 3 separate <h1> tags (DigiCert’s 2029 post-quantum infrastruct; The degradation of trust in the age of A; Certificate lifecycle management reaches), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:45:11Z",
+        "confidence": "high",
+        "evidence_id": "E-347d1770de61"
+      },
+      {
+        "url": "https://www.digicert.com/support/resources/hosted-assets/ebook/x9-pki-certificate-terms-of-use",
+        "observation": "Page at deep route (/support/resources/hosted-assets/ebook/x9-pki-certificate-terms-of-use) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:45:11Z",
+        "confidence": "medium",
+        "evidence_id": "E-03eb184fcfe0"
+      },
+      {
+        "url": "https://www.digicert.com/blog/automated-security-key-component-to-digital-transformation",
+        "observation": "Page defines 3 separate <h1> tags (DigiCert’s 2029 post-quantum infrastruct; The degradation of trust in the age of A; Certificate lifecycle management reaches), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:45:11Z",
+        "confidence": "high",
+        "evidence_id": "E-e23d30a17bb0"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "4 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "html_fragment",
+      "product_landing"
+    ],
+    "resource_types": [
+      "pdf"
+    ],
+    "resources_seen": 1406,
+    "access_summary": {}
+  }
+}

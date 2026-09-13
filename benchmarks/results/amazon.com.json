@@ -1,0 +1,1081 @@
+{
+  "site": {
+    "category": "ecommerce",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "amazon.com",
+    "rank": 11,
+    "technical_type": "unknown",
+    "url": "https://amazon.com/",
+    "validation": {
+      "reason": "http-405",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:34:03.085680+00:00",
+  "finished_at": "2026-09-13T17:34:38.850490+00:00",
+  "elapsed_seconds": 35.765,
+  "error": null,
+  "report": {
+    "site": "https://www.amazon.com",
+    "audited_at": "2026-09-13T17:34:38Z",
+    "summary": {
+      "total_findings": 9,
+      "critical": 1,
+      "high": 2,
+      "medium": 3,
+      "low": 3,
+      "discoverability_findings": 4,
+      "engagement_findings": 5,
+      "citability_score": 31,
+      "citability_score_breakdown": {
+        "score": 31,
+        "base": 100,
+        "penalty": 69,
+        "penalty_by_severity": {
+          "critical": 25,
+          "high": 24,
+          "medium": 15,
+          "low": 5
+        },
+        "penalty_by_root_cause": {
+          "robots:citation-agents-blocked-root": 25,
+          "engagement:missing-h1": 12,
+          "engagement:missing-viewport-meta": 12,
+          "crawl:missing-xml-sitemap": 5,
+          "schema:root-organization-missing": 5,
+          "engagement:broken-internal-links": 5,
+          "freshness:stale-copyright": 2,
+          "engagement:missing-breadcrumbs": 1,
+          "engagement:multiple-h1": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 9
+      }
+    },
+    "findings": [
+      {
+        "title": "AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)",
+        "category": "crawlability",
+        "severity": "critical",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "critical",
+        "evidence": "Observed at https://amazon.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:34:29Z]: robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:citation-agents-blocked-root",
+        "suggested_action": {
+          "summary": "Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+          "priority": "critical",
+          "how_to_fix": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://amazon.com/robots.txt",
+          "observation": "robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice.",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "high",
+          "evidence_id": "E-e63c2ce708f2"
+        },
+        "evidence_refs": [
+          "E-e63c2ce708f2"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nAI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot).\n\nEVIDENCE\nObserved at https://amazon.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:34:29Z]: robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)\nEvidence references: E-e63c2ce708f2.\n\nROOT CAUSE\nUse the observed condition described by “AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIn robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)",
+          "status": "confirmed",
+          "priority": "critical",
+          "role": "technical SEO and platform engineer",
+          "problem": "AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)",
+          "evidence_refs": [
+            "E-e63c2ce708f2"
+          ],
+          "root_cause": "Use the observed condition described by “AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Allow AI search and user-triggered retrieval agents, even if training crawlers stay blocked.",
+            "priority": "critical",
+            "how_to_fix": "In robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.amazon.com/ via heading_structure_inspection [2026-09-13T17:34:29Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://ir.aboutamazon.com/overview/default.aspx via heading_structure_inspection [2026-09-13T17:34:29Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "high",
+          "evidence_id": "E-ffddefdb53e8"
+        },
+        "evidence_refs": [
+          "E-b1fe8cf408c0",
+          "E-ffddefdb53e8"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.amazon.com/ via heading_structure_inspection [2026-09-13T17:34:29Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://ir.aboutamazon.com/overview/default.aspx via heading_structure_inspection [2026-09-13T17:34:29Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-b1fe8cf408c0, E-ffddefdb53e8.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Missing primary H1 heading on landing page",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing primary H1 heading on landing page",
+          "evidence_refs": [
+            "E-b1fe8cf408c0",
+            "E-ffddefdb53e8"
+          ],
+          "root_cause": "Use the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add a clear, descriptive <h1> heading.",
+            "priority": "high",
+            "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Missing viewport meta tag hampers mobile user engagement",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.amazon.com/ via mobile_viewport_inspector [2026-09-13T17:34:29Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via mobile_viewport_inspector [2026-09-13T17:34:29Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-viewport-meta",
+        "suggested_action": {
+          "summary": "Add responsive viewport meta tag to HTML head.",
+          "priority": "high",
+          "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/",
+          "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+          "method": "mobile_viewport_inspector",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "high",
+          "evidence_id": "E-adb192b79593"
+        },
+        "evidence_refs": [
+          "E-2983ca58e12f",
+          "E-adb192b79593"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing viewport meta tag hampers mobile user engagement.\n\nEVIDENCE\nObserved at https://www.amazon.com/ via mobile_viewport_inspector [2026-09-13T17:34:29Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via mobile_viewport_inspector [2026-09-13T17:34:29Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nEvidence references: E-2983ca58e12f, E-adb192b79593.\n\nROOT CAUSE\nUse the observed condition described by “Missing viewport meta tag hampers mobile user engagement” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInsert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Missing viewport meta tag hampers mobile user engagement",
+          "status": "confirmed",
+          "priority": "high",
+          "role": "UX and content designer",
+          "problem": "Missing viewport meta tag hampers mobile user engagement",
+          "evidence_refs": [
+            "E-2983ca58e12f",
+            "E-adb192b79593"
+          ],
+          "root_cause": "Use the observed condition described by “Missing viewport meta tag hampers mobile user engagement” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add responsive viewport meta tag to HTML head.",
+            "priority": "high",
+            "how_to_fix": "Insert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+        "category": "crawlability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.amazon.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:34:29Z]: Request to https://www.amazon.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "crawl:missing-xml-sitemap",
+        "suggested_action": {
+          "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+          "priority": "medium",
+          "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/sitemap.xml",
+          "observation": "Request to https://www.amazon.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+          "method": "http_get_sitemap_check",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "high",
+          "evidence_id": "E-58b98de9c17e"
+        },
+        "evidence_refs": [
+          "E-58b98de9c17e"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://www.amazon.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:34:29Z]: Request to https://www.amazon.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-58b98de9c17e.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "technical SEO and platform engineer",
+          "problem": "Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
+          "evidence_refs": [
+            "E-58b98de9c17e"
+          ],
+          "root_cause": "Use the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish an XML sitemap and declare its location in robots.txt.",
+            "priority": "medium",
+            "how_to_fix": "Generate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.amazon.com/ via jsonld_schema_extractor [2026-09-13T17:34:29Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Amazon\",\n  \"url\": \"https://www.amazon.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Free shipping on millions of items. Get the best of Shopping and Entertainment with Prime. Enjoy low prices and great deals on the largest selection of everyday essentials and other products, including fashion, home, beauty, electronics, Alexa Devices, sporting goods, toys, automotive, pets, baby, books, video games, musical instruments, office supplies, and more.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "high",
+          "evidence_id": "E-527b92cc5a5f"
+        },
+        "evidence_refs": [
+          "E-527b92cc5a5f"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.amazon.com/ via jsonld_schema_extractor [2026-09-13T17:34:29Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-527b92cc5a5f.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Missing Schema.org Organization structured data on root landing page",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Missing Schema.org Organization structured data on root landing page",
+          "evidence_refs": [
+            "E-527b92cc5a5f"
+          ],
+          "root_cause": "Use the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add Organization JSON-LD markup to the homepage.",
+            "priority": "medium",
+            "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+            "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Amazon\",\n  \"url\": \"https://www.amazon.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Free shipping on millions of items. Get the best of Shopping and Entertainment with Prime. Enjoy low prices and great deals on the largest selection of everyday essentials and other products, including fashion, home, beauty, electronics, Alexa Devices, sporting goods, toys, automotive, pets, baby, books, video games, musical instruments, office supplies, and more.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+          }
+        }
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled via http_redirect_aware_link_checker [2026-09-13T17:34:38Z]: Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T17:34:38Z",
+          "confidence": "high",
+          "evidence_id": "E-9ecf872fdf17"
+        },
+        "evidence_refs": [
+          "E-9ecf872fdf17"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled via http_redirect_aware_link_checker [2026-09-13T17:34:38Z]: Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404). (Confidence: high)\nEvidence references: E-9ecf872fdf17.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-006.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-006",
+          "title": "Broken internal navigation links detected (1 link(s))",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Broken internal navigation links detected (1 link(s))",
+          "evidence_refs": [
+            "E-9ecf872fdf17"
+          ],
+          "root_cause": "Use the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix or redirect broken internal destination URLs.",
+            "priority": "medium",
+            "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Stale copyright notice (1996) in site footer template",
+        "category": "freshness",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://ir.aboutamazon.com/overview/default.aspx via copyright_year_detector [2026-09-13T17:34:29Z]: Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged. (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-copyright",
+        "suggested_action": {
+          "summary": "Update the site footer copyright year.",
+          "priority": "low",
+          "how_to_fix": "Update the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://ir.aboutamazon.com/overview/default.aspx",
+          "observation": "Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged.",
+          "method": "copyright_year_detector",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "high",
+          "evidence_id": "E-366c3af2ce76"
+        },
+        "evidence_refs": [
+          "E-366c3af2ce76"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content operations owner.\n\nPROBLEM\nStale copyright notice (1996) in site footer template.\n\nEVIDENCE\nObserved at https://ir.aboutamazon.com/overview/default.aspx via copyright_year_detector [2026-09-13T17:34:29Z]: Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged. (Confidence: high)\nEvidence references: E-366c3af2ce76.\n\nROOT CAUSE\nUse the observed condition described by “Stale copyright notice (1996) in site footer template” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-007.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-007.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-007",
+          "title": "Stale copyright notice (1996) in site footer template",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "content operations owner",
+          "problem": "Stale copyright notice (1996) in site footer template",
+          "evidence_refs": [
+            "E-366c3af2ce76"
+          ],
+          "root_cause": "Use the observed condition described by “Stale copyright notice (1996) in site footer template” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Update the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Update the site footer copyright year.",
+            "priority": "low",
+            "how_to_fix": "Update the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.",
+            "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu via breadcrumb_markup_inspector [2026-09-13T17:34:29Z]: Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu",
+          "observation": "Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "medium",
+          "evidence_id": "E-79d2413ca247"
+        },
+        "evidence_refs": [
+          "E-79d2413ca247"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu via breadcrumb_markup_inspector [2026-09-13T17:34:29Z]: Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-79d2413ca247.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-008.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-008.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-008",
+          "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "status": "likely-risk",
+          "priority": "low",
+          "role": "UX and frontend engineer",
+          "problem": "Deep hierarchical page lacks breadcrumb navigation trail",
+          "evidence_refs": [
+            "E-79d2413ca247"
+          ],
+          "root_cause": "Use the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+            "priority": "low",
+            "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+        "category": "orientation",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via heading_structure_inspection [2026-09-13T17:34:29Z]: Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:multiple-h1",
+        "suggested_action": {
+          "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+          "priority": "low",
+          "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+          "observation": "Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T17:34:29Z",
+          "confidence": "high",
+          "evidence_id": "E-ca9dcf644066"
+        },
+        "evidence_refs": [
+          "E-ca9dcf644066"
+        ],
+        "id": "F-009",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via heading_structure_inspection [2026-09-13T17:34:29Z]: Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure. (Confidence: high)\nEvidence references: E-ca9dcf644066.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-009.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-009.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-009",
+          "title": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "UX and content designer",
+          "problem": "Multiple competing <h1> headings cause ambiguous page hierarchy",
+          "evidence_refs": [
+            "E-ca9dcf644066"
+          ],
+          "root_cause": "Use the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Consolidate heading hierarchy to a single primary <h1>.",
+            "priority": "low",
+            "how_to_fix": "Keep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.",
+            "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 4,
+      "status_counts": {
+        "readable": 4,
+        "http-error": 1
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.amazon.com/gp/help/customer/accessibility",
+          "score": 24,
+          "signals": [
+            "article_docs:help",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.amazon.com/b/?_encoding=UTF8&amp;ie=UTF8&amp;node=87586174011&amp;pd_rd_w=RqjRp&amp;content-id=amzn1.sym.31f066d0-45a7-43c0-a30b-21b2971be7c8&amp;pf_rd_p=31f066d0-45a7-43c0-a30b-21b2971be7c8&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=7rcEg&amp;pd_rd_r=8cc2b5ad-524f-43f1-bccf-e74919f489a7&amp;ref_=pd_hp_d_atf_unk",
+          "score": 16,
+          "signals": [
+            "product_landing:products,shop",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+          "score": 14,
+          "signals": [
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.amazon.com/ir",
+          "score": 6,
+          "signals": [
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "homepage",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://amazon.com/robots.txt",
+        "observation": "robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice.",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-e63c2ce708f2"
+      },
+      {
+        "url": "https://www.amazon.com/sitemap.xml",
+        "observation": "Request to https://www.amazon.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt.",
+        "method": "http_get_sitemap_check",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-58b98de9c17e"
+      },
+      {
+        "url": "https://www.amazon.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-527b92cc5a5f"
+      },
+      {
+        "url": "https://ir.aboutamazon.com/overview/default.aspx",
+        "observation": "Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged.",
+        "method": "copyright_year_detector",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-366c3af2ce76"
+      },
+      {
+        "url": "https://www.amazon.com/",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-ffddefdb53e8"
+      },
+      {
+        "url": "https://www.amazon.com/",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-adb192b79593"
+      },
+      {
+        "url": "https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu",
+        "observation": "Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "medium",
+        "evidence_id": "E-79d2413ca247"
+      },
+      {
+        "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+        "observation": "Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-ca9dcf644066"
+      },
+      {
+        "url": "https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966",
+        "observation": "HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale.",
+        "method": "mobile_viewport_inspector",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-2983ca58e12f"
+      },
+      {
+        "url": "https://ir.aboutamazon.com/overview/default.aspx",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T17:34:29Z",
+        "confidence": "high",
+        "evidence_id": "E-b1fe8cf408c0"
+      },
+      {
+        "url": "https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T17:34:38Z",
+        "confidence": "high",
+        "evidence_id": "E-9ecf872fdf17"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "4 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "critical",
+        "reason": "confirmed finding with existing critical priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nAI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot).\n\nEVIDENCE\nObserved at https://amazon.com/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:34:29Z]: robots.txt disallows root '/' for retrieval agents: OAI-SearchBot, Claude-SearchBot, PerplexityBot, ChatGPT-User, Claude-User, Perplexity-User. These build the indexes AI answers are assembled from, or fetch a page live when a user asks about it, so the brand cannot be cited at all. Training-only crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot, Meta-ExternalAgent, Bytespider) are also blocked, which is a separate and legitimate licensing choice. (Confidence: high)\nEvidence references: E-e63c2ce708f2.\n\nROOT CAUSE\nUse the observed condition described by “AI search and retrieval crawlers blocked from root (OAI-SearchBot, Claude-SearchBot, PerplexityBot)” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nIn robots.txt, allow OAI-SearchBot, Claude-SearchBot and PerplexityBot (search indexes) and ChatGPT-User, Claude-User and Perplexity-User (live user fetches). You can keep GPTBot, ClaudeBot, Google-Extended and CCBot disallowed if you do not want your content used for model training -- the two decisions are independent.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-e63c2ce708f2"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing primary H1 heading on landing page.\n\nEVIDENCE\nObserved at https://www.amazon.com/ via heading_structure_inspection [2026-09-13T17:34:29Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://ir.aboutamazon.com/overview/default.aspx via heading_structure_inspection [2026-09-13T17:34:29Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nEvidence references: E-b1fe8cf408c0, E-ffddefdb53e8.\n\nROOT CAUSE\nUse the observed condition described by “Missing primary H1 heading on landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a single <h1> heading tag at the top of the main content summarizing the page's purpose.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-b1fe8cf408c0",
+          "E-ffddefdb53e8"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "high",
+        "reason": "confirmed finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMissing viewport meta tag hampers mobile user engagement.\n\nEVIDENCE\nObserved at https://www.amazon.com/ via mobile_viewport_inspector [2026-09-13T17:34:29Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via mobile_viewport_inspector [2026-09-13T17:34:29Z]: HTML <head> lacks <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">, causing mobile browsers to render desktop scale. (Confidence: high)\nEvidence references: E-2983ca58e12f, E-adb192b79593.\n\nROOT CAUSE\nUse the observed condition described by “Missing viewport meta tag hampers mobile user engagement” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nInsert <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> into the document <head>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-2983ca58e12f",
+          "E-adb192b79593"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nMissing XML sitemap declared in robots.txt or available at /sitemap.xml.\n\nEVIDENCE\nObserved at https://www.amazon.com/sitemap.xml via http_get_sitemap_check [2026-09-13T17:34:29Z]: Request to https://www.amazon.com/sitemap.xml did not return a valid sitemap and no 'Sitemap:' directive was found in robots.txt. (Confidence: high)\nEvidence references: E-58b98de9c17e.\n\nROOT CAUSE\nUse the observed condition described by “Missing XML sitemap declared in robots.txt or available at /sitemap.xml” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGenerate an XML sitemap for public indexable URLs and add 'Sitemap: https://yourdomain.com/sitemap.xml' to robots.txt.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-58b98de9c17e"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nMissing Schema.org Organization structured data on root landing page.\n\nEVIDENCE\nObserved at https://www.amazon.com/ via jsonld_schema_extractor [2026-09-13T17:34:29Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nEvidence references: E-527b92cc5a5f.\n\nROOT CAUSE\nUse the observed condition described by “Missing Schema.org Organization structured data on root landing page” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nAdd a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-527b92cc5a5f"
+        ]
+      },
+      {
+        "finding_id": "F-006",
+        "execution_order": 6,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nBroken internal navigation links detected (1 link(s)).\n\nEVIDENCE\nObserved at https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled via http_redirect_aware_link_checker [2026-09-13T17:34:38Z]: Sampled internal links returned broken HTTP errors: https://www.amazon.com/gp/site-directory?ref_=nav_em_js_disabled (HTTP 404). (Confidence: high)\nEvidence references: E-9ecf872fdf17.\n\nROOT CAUSE\nUse the observed condition described by “Broken internal navigation links detected (1 link(s))” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate broken link hrefs to their canonical working URLs or configure 301 redirects on the server.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-006.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-006.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-9ecf872fdf17"
+        ]
+      },
+      {
+        "finding_id": "F-007",
+        "execution_order": 7,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content operations owner.\n\nPROBLEM\nStale copyright notice (1996) in site footer template.\n\nEVIDENCE\nObserved at https://ir.aboutamazon.com/overview/default.aspx via copyright_year_detector [2026-09-13T17:34:29Z]: Footer copyright notice resolves to 1996 (gap of 30 years) on 1 crawled page(s): https://ir.aboutamazon.com/overview/default.aspx. Year ranges such as '2005-2026' are read as current and not flagged. (Confidence: high)\nEvidence references: E-366c3af2ce76.\n\nROOT CAUSE\nUse the observed condition described by “Stale copyright notice (1996) in site footer template” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nUpdate the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-007.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-007.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-366c3af2ce76"
+        ]
+      },
+      {
+        "finding_id": "F-008",
+        "execution_order": 8,
+        "priority": "low",
+        "reason": "likely-risk finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nDeep hierarchical page lacks breadcrumb navigation trail.\n\nEVIDENCE\nObserved at https://www.amazon.com/hz/contact-us/foresight/hubgateway-ap?ref_=Accessibility&source=cu via breadcrumb_markup_inspector [2026-09-13T17:34:29Z]: Page at deep route (/hz/contact-us/foresight/hubgateway-ap) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nEvidence references: E-79d2413ca247.\n\nROOT CAUSE\nUse the observed condition described by “Deep hierarchical page lacks breadcrumb navigation trail” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-008.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-008.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-79d2413ca247"
+        ]
+      },
+      {
+        "finding_id": "F-009",
+        "execution_order": 9,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and content designer.\n\nPROBLEM\nMultiple competing <h1> headings cause ambiguous page hierarchy.\n\nEVIDENCE\nObserved at https://www.amazon.com/MoKo-Generation-Stand-Translucent-Support/dp/B0B8STRJYJ/?_encoding=UTF8&amp;pd_rd_w=YE2E4&amp;content-id=amzn1.sym.9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_p=9929d3ab-edb7-4ef5-a232-26d90f828fa5&amp;pf_rd_r=M9W3CBMDN51452FH7RKC&amp;pd_rd_wg=dkleW&amp;pd_rd_r=c3af06b5-ad8f-4d02-ac3c-7a8e02cc7cac&amp;ref_=pd_hp_d_btf_crs_zg_bs_541966 via heading_structure_inspection [2026-09-13T17:34:29Z]: Page defines 8 separate <h1> tags (MoKo for iPad (A16) 11th Generation Case; About this item; All-new iPad (A16) 11 inch 2025 Video), diluting semantic structure. (Confidence: high)\nEvidence references: E-ca9dcf644066.\n\nROOT CAUSE\nUse the observed condition described by “Multiple competing <h1> headings cause ambiguous page hierarchy” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nKeep one top-level <h1> for the primary topic and convert subordinate headings to <h2> or <h3>.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-009.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-009.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-ca9dcf644066"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 4,
+    "page_purposes": [
+      "contact_support",
+      "general",
+      "homepage",
+      "product_landing",
+      "unknown"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 4,
+      "http-error": 1
+    }
+  }
+}

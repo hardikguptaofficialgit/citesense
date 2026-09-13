@@ -1,0 +1,852 @@
+{
+  "seed_url": "https://scorecardresearch.com/",
+  "origin": "https://www.scorecardresearch.com",
+  "robots_txt": {
+    "found": false,
+    "url": "https://scorecardresearch.com/robots.txt",
+    "status": 404,
+    "raw": "",
+    "agent_decisions": {},
+    "partially_blocked_agents": {},
+    "sitemaps_declared": []
+  },
+  "sitemaps": [
+    {
+      "url": "https://scorecardresearch.com/sitemap.xml",
+      "found": false,
+      "status": 404,
+      "discovered_url_count": 0
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://scorecardresearch.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://scorecardresearch.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://scorecardresearch.com/ai.txt"
+    }
+  },
+  "pages": {
+    "https://www.scorecardresearch.com/Home.aspx": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://scorecardresearch.com/",
+      "final_url": "https://www.scorecardresearch.com/Home.aspx",
+      "status_code": 200,
+      "load_time_seconds": 3.52,
+      "raw_html": "\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head id=\"Head1\"><title>\r\n\tHome Page - Scorecard Research\r\n</title><meta name=\"robots\" content=\"index,follow\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" /><meta name=\"Author\" content=\"scorecardresearch.com\" /><meta name=\"Description\" content=\"Online market research community enabling members to earn cash and prizes for participating in surveys.\" /><meta name=\"Keywords\" content=\"surveys, sweepstakes, earn cash, opinions, earn prizes, paid surveys, free sweepstakes, market research community, research panel\" /><meta content=\"C#\" name=\"CODE_LANGUAGE\" /><meta content=\"JavaScript\" name=\"vs_defaultClientScript\" /><link href=\"Css/SR_Styles.css\" type=\"text/css\" rel=\"stylesheet\" />\r\n    <script type=\"text/javascript\" src=\"Css/sitecommon.js\"></script>\r\n    \r\n    \r\n    <!-- Google Tag Manager -->\r\n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\r\n    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\r\n    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\r\n    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\r\n    })(window,document,'script','dataLayer','GTM-NSNGHZX');</script>\r\n    <!-- End Google Tag Manager -->\r\n    \r\n\r\n    <script type=\"text/javascript\">\r\n        function init()\r\n        { }\r\n\r\n        function setId() {\r\n            var bodytag = document.getElementsByTagName(\"body\")[0];\r\n            var pagename_ext = location.pathname.substring(location.pathname.lastIndexOf(\"/\") + 1);\r\n            var pagename = pagename_ext.split('.')[0].toLowerCase();\r\n            //alert(pagename);\r\n            if (pagename == \"home\")\r\n                bodytag.setAttribute(\"id\", \"home\");\r\n            else if (pagename == \"about\")\r\n                bodytag.setAttribute(\"id\", \"about\");\r\n            else if (pagename == \"preferences\")\r\n                bodytag.setAttribute(\"id\", \"preferences\");\r\n            else if (pagename == \"supportform\")\r\n                bodytag.setAttribute(\"id\", \"support\");\r\n            else if (pagename == \"privacy\")\r\n                bodytag.setAttribute(\"id\", \"privacy\");\r\n            else if (pagename == \"principle\")\r\n                bodytag.setAttribute(\"id\", \"Principles\");\r\n            else if (pagename == \"termsofservice\")\r\n                bodytag.setAttribute(\"id\", \"TermsOfService\");\r\n        }\r\n        function changecolor(obj) {\r\n            obj.style.backgroundColor = \"#868575\";\r\n        }\r\n\r\n        //$(document).ready(function () {\r\n        //    $(\".link-white\").click(function (event) {\r\n        //        event.target.style.backgroundColor = \"#868575\";\r\n        //    });\r\n        //});\r\n    </script>\r\n    \r\n<script>\r\n    function slideDown(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '-' + height + 'px';\r\n\r\n        var y = height * -1;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = height / totalframes;\r\n        \r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function slideUp(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '0px';\r\n\r\n        var y = 0;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = (height / totalframes) * -1;\r\n\r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function closePop() {\r\n        // HIDE THE INFOR BANNER AND UPDATE COOKIE VALUE TO 99 TO NOT SHOW ON NEXT EVENT\r\n        slideUp(document.getElementById('info_banner'), 1, 120, 0);\r\n        createCookie(100);\r\n\r\n    }\r\n\r\n    function loadPopCheck() {\r\n        \r\n    }\r\n    function createCookie(value) {\r\n        var date = new Date();\r\n        date.setTime(date.getTime() + (24 * 60 * 60 * 1000));\r\n        var expires = \"; expires=\" + date.toGMTString();\r\n        document.cookie = \"cookie_consent_js=\" + value + expires + \"; path=/\";\r\n    }\r\n\r\n    function showed_count() {\r\n        var nameEQ = \"cookie_consent_js=\";\r\n        var ca = document.cookie.split(';');\r\n        for (var i = 0; i < ca.length; i++) {\r\n            var c = ca[i];\r\n            while (c.charAt(0) == ' ') c = c.substring(1, c.length);\r\n            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);\r\n        }\r\n        return null;\r\n    }\r\n</script>\r\n\r\n<meta name=\"viewport\" content=\"width=device-width\" />\r\n\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/ui/1.13.0/jquery-ui.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css\" />\r\n\r\n  <script type=\"text/javascript\">\r\n\r\n      $(function () {\r\n          if ('False' == 'True') {\r\n              $(\"#dialog\").dialog({\r\n                  autoOpen: false,\r\n                  show: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  hide: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  position: {\r\n                      my: \"center\",\r\n                      at: \"top\",\r\n                  },\r\n              });\r\n\r\n              $(\"#dialog\").dialog(\"option\", \"width\", \"80%\");\r\n              $(\"#dialog\").dialog(\"option\", \"height\", \"auto\");\r\n              $(\"#dialog\").dialog(\"open\");\r\n          }\r\n  });\r\n  </script>\r\n\r\n</head>\r\n<body class=\"Normal\" lang=\"EN-US\" leftmargin=\"0\" topmargin=\"0\" onload=\"setId();\" marginheight=\"0\" marginwidth=\"0\" >\r\n    \r\n\r\n    <!-- Google Tag Manager (noscript) -->\r\n    <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-NSNGHZX\"\r\n    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\r\n    <!-- End Google Tag Manager (noscript) -->\r\n    \r\n\r\n    <div class=\"container\">\r\n        <form method=\"post\" action=\"./Home.aspx\" id=\"Form1\">\r\n<div class=\"aspNetHidden\">\r\n\r\n</div>\r\n\r\n            <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n                <tbody>\r\n                    <tr>\r\n                        <td colspan=\"3\">\r\n                            <div class=\"header\">\r\n                                <table width=\"100%\" valign=\"top\" cellpadding=\"0\" cellspacing=\"0\">\r\n                                    <tbody>\r\n                                        <tr>\r\n                                            <td align=\"left\" width=\"300px\" style=\"padding-left: 148px; padding-right: 20px;\"><a href=\"default.aspx\">\r\n                                                <img src=\"Images/ScorecardResearch_01_Small.jpg\"></a></td>\r\n                                            <td align=\"left\" width=\"900px\" style=\"font-size: 11px\">\r\n                                                <div id=\"LanguageDiv\">\r\n                                                        <a href=\"javascript:ProcessHomePage(1)\" id=\"Tag1\" class=\"link-white\" style=\"background-color:#868575;\">English</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(14)\" id=\"Tag14\" class=\"link-white\">Espa\u00f1ol</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(18)\" id=\"Tag18\" class=\"link-white\">Nederlands</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(23)\" id=\"Tag23\" class=\"link-white\">Svenska</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(5)\" id=\"Tag5\" class=\"link-white\">Portugu\u00eas do Brasil</a>\r\n                                                        <br/>\r\n                                                        <br/>\r\n                                                        <a href=\"javascript:ProcessHomePage(22)\" id=\"Tag22\" class=\"link-white\">Norsk</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(20)\" id=\"Tag20\" class=\"link-white\">\u4e2d\u6587</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(9)\" id=\"Tag9\" class=\"link-white\">\u65e5\u672c\u8a9e</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(7)\" id=\"Tag7\" class=\"link-white\">Italiano</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(3)\" id=\"Tag3\" class=\"link-white\">Deutsch</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(2)\" id=\"Tag2\" class=\"link-white\">Fran\u00e7ais</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(21)\" id=\"Tag21\" class=\"link-white\">Suomi</a> | \r\n                                                    </div>\r\n                                             </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                                <div class=\"header-content\">\r\n                                    <div class=\"nav\">\r\n                                        <div class=\"nav-position\">\r\n                                            <div class=\"nav-align home\"><a href=\"home.aspx\" id=\"HomeMenuItem\" class=\"home\">Home</a></div>\r\n                                            <div class=\"nav-align about\"><a href=\"about.aspx\" id=\"AboutMenuItem\" class=\"about\">About</a></div>\r\n                                            <div class=\"nav-align preferences\"><a href=\"preferences.aspx\" id=\"PreferencesMenuItem\" class=\"preferences\">Preferences</a></div>\r\n                                            <div class=\"nav-align contact\"><a href=\"contact.aspx\" id=\"ContactUsMenuItem\" class=\"contact\">Contact Us</a></div>\r\n                                            <div class=\"nav-align privacy\"><a href=\"privacy.aspx\" id=\"PrivacyPolicyMenuItem\" class=\"privacy\">Privacy Policy</a></div>\r\n                                            <div class=\"nav-align TermsOfService\"><a href=\"TermsOfService.aspx\" id=\"TermsOfServiceMenuItem\" class=\"TermsOfService\">Terms of Service</a></div>\r\n                                            <div class=\"nav-align Principles\"><a href=\"Principle.aspx\" id=\"PrinciplesMenuItem\" class=\"Principles\">Principles</a></div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"color\"></div>\r\n                                </div>\r\n\r\n                            </div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr valign=\"top\">\r\n                        <td>\r\n                            <div id=\"leftContent\"></div>\r\n                        </td>\r\n                        <td align=\"center\">\r\n                            <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                                <tbody>\r\n                                    <tr>\r\n                                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                                            <div id=\"body\">\r\n                                                \r\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n        <tr>\r\n            <td align=\"center\">\r\n                <span id=\"MainContent_LayoutPlusContentLabel\"><table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">      <tr>          <td width=\"751\" height=\"200\" valign=\"top\">              <table width=\"80%\" valign=\"top\" align=\"center\" cellspacing=\"0\" cellpadding=\"10\" border=\"0\">                  <tr>                      <td valign=\"top\">                          <br>                          <br>                          <div class=\"body\">                              <div class=\"\">                                  <h1 class=\"title-home\">Welcome              </h1>                              </div>                              <div class=\"\">                                  <p>ScorecardResearch, a service of <a href=\"http://www.fullcirclestudies.com\">Full Circle Studies, Inc.</a>, is part of the Comscore, Inc. market research community, a leading global market research effort that studies and reports on Internet trends and behavior. ScorecardResearch conducts research by collecting Internet web browsing data and then uses that data to help show how people use the Internet, what they like about it, and what they don&rsquo;t.<br />  <br />  ScorecardResearch collects data through from two main sources: surveys and web tagging. For our surveys, we invite people on the Internet to provide us with anonymous demographic and Internet usage information that we can use to refine our reporting. These surveys are always voluntary, and are never used to collect personal information. For web tagging, participating websites agree to deploy a special code throughout their sites. Again, no personally identifiable information is ever transmitted by, or linked to, the web tags.<br /><br/>\r\n<div id=\"dialog\" style=\"display:none;\">IMPORTANT NOTICE: Full Circle Studies, Inc. has updated our privacy policy and terms of service for our online websites, panels, and applications. In our privacy policy, we have updated how we collect, use and share data with our affiliates and unaffiliated third parties, and added information such as our participation in the EU-US Privacy Shield. In our terms of service, among other changes, we have updated the governing law and arbitration provisions. Please take time to read the full privacy policy and terms of service before proceeding. By continuing to use and participate in the Full Circle Studies, Inc. websites and panels, you agree to the updated privacy policy and terms of service.</div>              </p>                                  <br>                                  <p><a href=\"About.aspx\">Learn more about ScorecardResearch and our market research programs.</a></a></p>                                  <br>                              </div>                          </div>                      </td>                  </tr>              </table>          </td>      </tr>  </table></span>\r\n            </td>\r\n        </tr>\r\n    </table>\r\n\r\n                                            </div>\r\n                                        </td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </td>\r\n                        <td>\r\n                            <div id=\"rightContent\"></div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td></td>\r\n                        <td class=\"footer\">\r\n                            <div class=\"copyright\">\r\n                                <div id=\"FooterLinkDiv\" style=\"margin-top:-5px\">\r\n                                    <a href=\"https://www.comscore.com/About/Privacy/Data-Subject-Rights\" id=\"FooterLink\" target=\"_blank\" style=\"font-weight:bold\">Your Privacy Choices <img src=\"images/privacyoptions.png\" style=\"width:auto; height: 1em; vertical-align: text-top; padding-left: 3px;\"></a>\r\n                                </div>\r\n                                <span id=\"CopyRightLabel\">\u00a9 2026 ScorecardResearch, All Rights Reserved</span>\r\n                            </div>\r\n                        </td>\r\n                        <td></td>\r\n                    </tr>\r\n                    <!-- Begin comScore Tag -->\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            document.write(unescape(\"%3Cscript src='\" + (document.location.protocol == \"https:\" ? \"https://sb\" : \"http://b\")\r\n                                + \".scorecardresearch.com/beacon.js' %3E%3C/script%3E\"));\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        function ProcessHomePage(languageid) {\r\n                            window.location = location.pathname + '?newLanguage=' + languageid;\r\n                            //var ele = document.getElementById(languageid);\r\n                            //ele.style.backgroundColor = \"#868575\";\r\n                            //return false;\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            COMSCORE.beacon({\r\n                                c1: 2,\r\n                                c2: \"1000001\",\r\n                                c3: \"\",\r\n                                c4: \"\",\r\n                                c5: \"Market Research\",\r\n                                c6: \"\",\r\n                                c15: \"\"\r\n                            });\r\n                        }\r\n                    </script>\r\n                    <noscript>\r\n                        <img src=\"https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1\"\r\nstyle=\"display:none\" width=\"0\" height=\"0\" alt=\"\" />\r\n                    </noscript>\r\n                    <!-- End comScore Tag -->\r\n                </tbody>\r\n            </table>\r\n        \r\n<div class=\"aspNetHidden\">\r\n\r\n\t\r\n</div>\r\n<script type=\"text/javascript\">document.getElementById('FooterLink').style.display = 'none';</script></form>\r\n    </div>\r\n</body>\r\n    \r\n<script type=\"text/javascript\">\r\n    loadPopCheck();\r\n\r\n    function removeURLParameter(url, parameter) {\r\n        //prefer to use l.search if you have a location/link object\r\n        var urlparts = url.split('?');\r\n        if (urlparts.length >= 2) {\r\n\r\n            var prefix = encodeURIComponent(parameter) + '=';\r\n            var pars = urlparts[1].split(/[&;]/g);\r\n\r\n            //reverse iteration as may be destructive\r\n            for (var i = pars.length; i-- > 0;) {\r\n                //idiom for string.startsWith\r\n                if (pars[i].lastIndexOf(prefix, 0) !== -1) {\r\n                    pars.splice(i, 1);\r\n                }\r\n            }\r\n\r\n            url = urlparts[0] + '?' + pars.join('&');\r\n            return url;\r\n        } else {\r\n            return url;\r\n        }\r\n    }\r\n\r\n\r\n    var querystring = \"newlanguage=\" + \"1\";\r\n\r\n\tvar links = document.getElementsByTagName('a');\r\n\r\n\tfor (var l in links) {\r\n\t    var currentHref = links[l].href;\r\n\r\n\t    if (currentHref !== undefined && currentHref.indexOf('javascript') == -1 && currentHref.toLowerCase().indexOf('scorecardresearch') > -1 && currentHref.indexOf('#') == -1) {\r\n\t        currentHref = removeURLParameter(currentHref, 'newlanguage');\r\n\t        var newHref = currentHref + (currentHref.match(/\\?/) ? '&' : '?') + querystring; //+ \"#section1\";\r\n\r\n\t        links[l].href = newHref;\r\n\t    }\r\n\t}\r\n</script>\r\n</html>",
+      "visible_text": "Home Page - Scorecard Research English | Espa\u00f1ol | Nederlands | Svenska | Portugu\u00eas do Brasil Norsk | \u4e2d\u6587 | \u65e5\u672c\u8a9e | Italiano | Deutsch | Fran\u00e7ais | Suomi | Home About Preferences Contact Us Privacy Policy Terms of Service Principles Welcome ScorecardResearch, a service of Full Circle Studies, Inc. , is part of the Comscore, Inc. market research community, a leading global market research effort that studies and reports on Internet trends and behavior. ScorecardResearch conducts research by collecting Internet web browsing data and then uses that data to help show how people use the Internet, what they like about it, and what they don&rsquo;t. ScorecardResearch collects data through from two main sources: surveys and web tagging. For our surveys, we invite people on the Internet to provide us with anonymous demographic and Internet usage information that we can use to refine our reporting. These surveys are always voluntary, and are never used to collect personal information. For web tagging, participating websites agree to deploy a special code throughout their sites. Again, no personally identifiable information is ever transmitted by, or linked to, the web tags. IMPORTANT NOTICE: Full Circle Studies, Inc. has updated our privacy policy and terms of service for our online websites, panels, and applications. In our privacy policy, we have updated how we collect, use and share data with our affiliates and unaffiliated third parties, and added information such as our participation in the EU-US Privacy Shield. In our terms of service, among other changes, we have updated the governing law and arbitration provisions. Please take time to read the full privacy policy and terms of service before proceeding. By continuing to use and participate in the Full Circle Studies, Inc. websites and panels, you agree to the updated privacy policy and terms of service. Learn more about ScorecardResearch and our market research programs. Your Privacy Choices \u00a9 2026 ScorecardResearch, All Rights Reserved",
+      "word_count": 318,
+      "title": "Home Page - Scorecard Research",
+      "meta_description": "Online market research community enabling members to earn cash and prizes for participating in surveys.",
+      "og_site_name": "",
+      "viewport_meta_present": true,
+      "canonical_url": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Welcome"
+        }
+      ],
+      "h1_texts": [
+        "Welcome"
+      ],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [
+        {
+          "href": "https://www.scorecardresearch.com/default.aspx",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/home.aspx",
+          "text": "Home",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/about.aspx",
+          "text": "About",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/preferences.aspx",
+          "text": "Preferences",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/contact.aspx",
+          "text": "Contact Us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/privacy.aspx",
+          "text": "Privacy Policy",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/TermsOfService.aspx",
+          "text": "Terms of Service",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/Principle.aspx",
+          "text": "Principles",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/About.aspx",
+          "text": "Learn more about ScorecardResearch and our market research programs.",
+          "rel": ""
+        }
+      ],
+      "external_links": [
+        {
+          "href": "http://www.fullcirclestudies.com/",
+          "text": "Full Circle Studies, Inc.",
+          "rel": ""
+        },
+        {
+          "href": "https://www.comscore.com/About/Privacy/Data-Subject-Rights",
+          "text": "Your Privacy Choices",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [
+          {
+            "action": "./Home.aspx",
+            "method": "post"
+          }
+        ],
+        "cta_links": [
+          {
+            "href": "https://www.scorecardresearch.com/contact.aspx",
+            "text": "Contact Us",
+            "rel": ""
+          }
+        ]
+      },
+      "media_elements": {
+        "images": [
+          {
+            "src": "https://www.scorecardresearch.com/Images/ScorecardResearch_01_Small.jpg",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://www.scorecardresearch.com/images/privacyoptions.png",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          }
+        ],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {
+        "copyright_years": [
+          2026
+        ],
+        "newest_copyright_year": 2026,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "general",
+      "is_deep_page": false,
+      "render_gap": false,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [
+          "many-inline-or-external-scripts"
+        ],
+        "script_count": 12,
+        "mount_markers": []
+      }
+    },
+    "https://www.scorecardresearch.com/About.aspx": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://www.scorecardresearch.com/About.aspx",
+      "final_url": "https://www.scorecardresearch.com/About.aspx",
+      "status_code": 200,
+      "load_time_seconds": 1.21,
+      "raw_html": "\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head id=\"Head1\"><title>\r\n\tAbout Page - Scorecard Research\r\n</title><meta name=\"robots\" content=\"index,follow\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" /><meta name=\"Author\" content=\"scorecardresearch.com\" /><meta name=\"Description\" content=\"Online market research community enabling members to earn cash and prizes for participating in surveys.\" /><meta name=\"Keywords\" content=\"surveys, sweepstakes, earn cash, opinions, earn prizes, paid surveys, free sweepstakes, market research community, research panel\" /><meta content=\"C#\" name=\"CODE_LANGUAGE\" /><meta content=\"JavaScript\" name=\"vs_defaultClientScript\" /><link href=\"Css/SR_Styles.css\" type=\"text/css\" rel=\"stylesheet\" />\r\n    <script type=\"text/javascript\" src=\"Css/sitecommon.js\"></script>\r\n    \r\n    \r\n    <!-- Google Tag Manager -->\r\n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\r\n    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\r\n    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\r\n    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\r\n    })(window,document,'script','dataLayer','GTM-NSNGHZX');</script>\r\n    <!-- End Google Tag Manager -->\r\n    \r\n\r\n    <script type=\"text/javascript\">\r\n        function init()\r\n        { }\r\n\r\n        function setId() {\r\n            var bodytag = document.getElementsByTagName(\"body\")[0];\r\n            var pagename_ext = location.pathname.substring(location.pathname.lastIndexOf(\"/\") + 1);\r\n            var pagename = pagename_ext.split('.')[0].toLowerCase();\r\n            //alert(pagename);\r\n            if (pagename == \"home\")\r\n                bodytag.setAttribute(\"id\", \"home\");\r\n            else if (pagename == \"about\")\r\n                bodytag.setAttribute(\"id\", \"about\");\r\n            else if (pagename == \"preferences\")\r\n                bodytag.setAttribute(\"id\", \"preferences\");\r\n            else if (pagename == \"supportform\")\r\n                bodytag.setAttribute(\"id\", \"support\");\r\n            else if (pagename == \"privacy\")\r\n                bodytag.setAttribute(\"id\", \"privacy\");\r\n            else if (pagename == \"principle\")\r\n                bodytag.setAttribute(\"id\", \"Principles\");\r\n            else if (pagename == \"termsofservice\")\r\n                bodytag.setAttribute(\"id\", \"TermsOfService\");\r\n        }\r\n        function changecolor(obj) {\r\n            obj.style.backgroundColor = \"#868575\";\r\n        }\r\n\r\n        //$(document).ready(function () {\r\n        //    $(\".link-white\").click(function (event) {\r\n        //        event.target.style.backgroundColor = \"#868575\";\r\n        //    });\r\n        //});\r\n    </script>\r\n    \r\n<script>\r\n    function slideDown(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '-' + height + 'px';\r\n\r\n        var y = height * -1;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = height / totalframes;\r\n        \r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function slideUp(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '0px';\r\n\r\n        var y = 0;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = (height / totalframes) * -1;\r\n\r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function closePop() {\r\n        // HIDE THE INFOR BANNER AND UPDATE COOKIE VALUE TO 99 TO NOT SHOW ON NEXT EVENT\r\n        slideUp(document.getElementById('info_banner'), 1, 120, 0);\r\n        createCookie(100);\r\n\r\n    }\r\n\r\n    function loadPopCheck() {\r\n        \r\n    }\r\n    function createCookie(value) {\r\n        var date = new Date();\r\n        date.setTime(date.getTime() + (24 * 60 * 60 * 1000));\r\n        var expires = \"; expires=\" + date.toGMTString();\r\n        document.cookie = \"cookie_consent_js=\" + value + expires + \"; path=/\";\r\n    }\r\n\r\n    function showed_count() {\r\n        var nameEQ = \"cookie_consent_js=\";\r\n        var ca = document.cookie.split(';');\r\n        for (var i = 0; i < ca.length; i++) {\r\n            var c = ca[i];\r\n            while (c.charAt(0) == ' ') c = c.substring(1, c.length);\r\n            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);\r\n        }\r\n        return null;\r\n    }\r\n</script>\r\n\r\n<meta name=\"viewport\" content=\"width=device-width\" />\r\n\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/ui/1.13.0/jquery-ui.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css\" />\r\n\r\n  <script type=\"text/javascript\">\r\n\r\n      $(function () {\r\n          if ('False' == 'True') {\r\n              $(\"#dialog\").dialog({\r\n                  autoOpen: false,\r\n                  show: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  hide: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  position: {\r\n                      my: \"center\",\r\n                      at: \"top\",\r\n                  },\r\n              });\r\n\r\n              $(\"#dialog\").dialog(\"option\", \"width\", \"80%\");\r\n              $(\"#dialog\").dialog(\"option\", \"height\", \"auto\");\r\n              $(\"#dialog\").dialog(\"open\");\r\n          }\r\n  });\r\n  </script>\r\n\r\n</head>\r\n<body class=\"Normal\" lang=\"EN-US\" leftmargin=\"0\" topmargin=\"0\" onload=\"setId();\" marginheight=\"0\" marginwidth=\"0\" >\r\n    \r\n\r\n    <!-- Google Tag Manager (noscript) -->\r\n    <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-NSNGHZX\"\r\n    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\r\n    <!-- End Google Tag Manager (noscript) -->\r\n    \r\n\r\n    <div class=\"container\">\r\n        <form method=\"post\" action=\"./About.aspx\" id=\"Form1\">\r\n<div class=\"aspNetHidden\">\r\n\r\n</div>\r\n\r\n\r\n<script type=\"text/javascript\">\r\n//<![CDATA[\r\nvar storyblokData = { sbToken: 'GYIM3lEwxeoIsHJqVqbmrgtt', tokenVersion: 'published', sbReleaseId: '', sbLang: '', detectedSbLang: '' };//]]>\r\n</script>\r\n\r\n            <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n                <tbody>\r\n                    <tr>\r\n                        <td colspan=\"3\">\r\n                            <div class=\"header\">\r\n                                <table width=\"100%\" valign=\"top\" cellpadding=\"0\" cellspacing=\"0\">\r\n                                    <tbody>\r\n                                        <tr>\r\n                                            <td align=\"left\" width=\"300px\" style=\"padding-left: 148px; padding-right: 20px;\"><a href=\"default.aspx\">\r\n                                                <img src=\"Images/ScorecardResearch_01_Small.jpg\"></a></td>\r\n                                            <td align=\"left\" width=\"900px\" style=\"font-size: 11px\">\r\n                                                <div id=\"LanguageDiv\">\r\n                                                        <a href=\"javascript:ProcessHomePage(1)\" id=\"Tag1\" class=\"link-white\" style=\"background-color:#868575;\">English</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(14)\" id=\"Tag14\" class=\"link-white\">Espa\u00f1ol</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(18)\" id=\"Tag18\" class=\"link-white\">Nederlands</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(23)\" id=\"Tag23\" class=\"link-white\">Svenska</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(5)\" id=\"Tag5\" class=\"link-white\">Portugu\u00eas do Brasil</a>\r\n                                                        <br/>\r\n                                                        <br/>\r\n                                                        <a href=\"javascript:ProcessHomePage(22)\" id=\"Tag22\" class=\"link-white\">Norsk</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(20)\" id=\"Tag20\" class=\"link-white\">\u4e2d\u6587</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(9)\" id=\"Tag9\" class=\"link-white\">\u65e5\u672c\u8a9e</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(7)\" id=\"Tag7\" class=\"link-white\">Italiano</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(3)\" id=\"Tag3\" class=\"link-white\">Deutsch</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(2)\" id=\"Tag2\" class=\"link-white\">Fran\u00e7ais</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(21)\" id=\"Tag21\" class=\"link-white\">Suomi</a> | \r\n                                                    </div>\r\n                                             </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                                <div class=\"header-content\">\r\n                                    <div class=\"nav\">\r\n                                        <div class=\"nav-position\">\r\n                                            <div class=\"nav-align home\"><a href=\"home.aspx\" id=\"HomeMenuItem\" class=\"home\">Home</a></div>\r\n                                            <div class=\"nav-align about\"><a href=\"about.aspx\" id=\"AboutMenuItem\" class=\"about\">About</a></div>\r\n                                            <div class=\"nav-align preferences\"><a href=\"preferences.aspx\" id=\"PreferencesMenuItem\" class=\"preferences\">Preferences</a></div>\r\n                                            <div class=\"nav-align contact\"><a href=\"contact.aspx\" id=\"ContactUsMenuItem\" class=\"contact\">Contact Us</a></div>\r\n                                            <div class=\"nav-align privacy\"><a href=\"privacy.aspx\" id=\"PrivacyPolicyMenuItem\" class=\"privacy\">Privacy Policy</a></div>\r\n                                            <div class=\"nav-align TermsOfService\"><a href=\"TermsOfService.aspx\" id=\"TermsOfServiceMenuItem\" class=\"TermsOfService\">Terms of Service</a></div>\r\n                                            <div class=\"nav-align Principles\"><a href=\"Principle.aspx\" id=\"PrinciplesMenuItem\" class=\"Principles\">Principles</a></div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"color\"></div>\r\n                                </div>\r\n\r\n                            </div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr valign=\"top\">\r\n                        <td>\r\n                            <div id=\"leftContent\"></div>\r\n                        </td>\r\n                        <td align=\"center\">\r\n                            <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                                <tbody>\r\n                                    <tr>\r\n                                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                                            <div id=\"body\">\r\n                                                \r\n    <style>\r\n        strong {\r\n            color: blue\r\n        }\r\n\r\n        ul {\r\n            margin-left: 30px;\r\n        }\r\n\r\n        p, ul{\r\n            margin-bottom: 15px;\r\n        }\r\n    </style>\r\n\r\n    \r\n    <script src=\"Common/js/vue.min.js\"></script>\r\n    <script src=\"Common/js/marked.js\"></script>\r\n    <script src=\"Common/js/storyblok/index.standalone.js\"></script>\r\n    <script src=\"Common/js/storyblok/rich-text-resolver.standalone.js\"></script>\r\n    <script src=\"Common/js/storyblok/storyblok-vue.js\"></script>\r\n\r\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n        <tr>\r\n            <td align=\"center\">\r\n                <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                    <tr>\r\n                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                            <table width=\"80%\" valign=\"top\" align=\"center\" cellspacing=\"0\" cellpadding=\"10\" border=\"0\">\r\n                                <tr>\r\n                                    <td valign=\"top\">\r\n                                        <div class=\"body\">\r\n                                            <div id=\"SbAboutContent\"></div>\r\n                                            <br>\r\n                                        </div>\r\n                                    </td>\r\n                                </tr>\r\n                            </table>\r\n                        </td>\r\n                    </tr>\r\n                </table>\r\n\r\n\r\n            </td>\r\n        </tr>\r\n    </table>\r\n\r\n    <script src=\"Common/js/custom/vue_components.js\"></script>\r\n    <script src=\"Common/js/custom/vue_main_storyblok.js\"></script>\r\n    <script>\r\n        GenerateContent(\"#SbAboutContent\", \"common/about-sr\");\r\n    </script>\r\n\r\n                                            </div>\r\n                                        </td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </td>\r\n                        <td>\r\n                            <div id=\"rightContent\"></div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td></td>\r\n                        <td class=\"footer\">\r\n                            <div class=\"copyright\">\r\n                                <div id=\"FooterLinkDiv\" style=\"margin-top:-5px\">\r\n                                    <a href=\"https://www.comscore.com/About/Privacy/Data-Subject-Rights\" id=\"FooterLink\" target=\"_blank\" style=\"font-weight:bold\">Your Privacy Choices <img src=\"images/privacyoptions.png\" style=\"width:auto; height: 1em; vertical-align: text-top; padding-left: 3px;\"></a>\r\n                                </div>\r\n                                <span id=\"CopyRightLabel\">\u00a9 2026 ScorecardResearch, All Rights Reserved</span>\r\n                            </div>\r\n                        </td>\r\n                        <td></td>\r\n                    </tr>\r\n                    <!-- Begin comScore Tag -->\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            document.write(unescape(\"%3Cscript src='\" + (document.location.protocol == \"https:\" ? \"https://sb\" : \"http://b\")\r\n                                + \".scorecardresearch.com/beacon.js' %3E%3C/script%3E\"));\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        function ProcessHomePage(languageid) {\r\n                            window.location = location.pathname + '?newLanguage=' + languageid;\r\n                            //var ele = document.getElementById(languageid);\r\n                            //ele.style.backgroundColor = \"#868575\";\r\n                            //return false;\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            COMSCORE.beacon({\r\n                                c1: 2,\r\n                                c2: \"1000001\",\r\n                                c3: \"\",\r\n                                c4: \"\",\r\n                                c5: \"Market Research\",\r\n                                c6: \"\",\r\n                                c15: \"\"\r\n                            });\r\n                        }\r\n                    </script>\r\n                    <noscript>\r\n                        <img src=\"https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1\"\r\nstyle=\"display:none\" width=\"0\" height=\"0\" alt=\"\" />\r\n                    </noscript>\r\n                    <!-- End comScore Tag -->\r\n                </tbody>\r\n            </table>\r\n        \r\n<div class=\"aspNetHidden\">\r\n\r\n\t\r\n</div>\r\n<script type=\"text/javascript\">document.getElementById('FooterLink').style.display = 'none';</script></form>\r\n    </div>\r\n</body>\r\n    \r\n<script type=\"text/javascript\">\r\n    loadPopCheck();\r\n\r\n    function removeURLParameter(url, parameter) {\r\n        //prefer to use l.search if you have a location/link object\r\n        var urlparts = url.split('?');\r\n        if (urlparts.length >= 2) {\r\n\r\n            var prefix = encodeURIComponent(parameter) + '=';\r\n            var pars = urlparts[1].split(/[&;]/g);\r\n\r\n            //reverse iteration as may be destructive\r\n            for (var i = pars.length; i-- > 0;) {\r\n                //idiom for string.startsWith\r\n                if (pars[i].lastIndexOf(prefix, 0) !== -1) {\r\n                    pars.splice(i, 1);\r\n                }\r\n            }\r\n\r\n            url = urlparts[0] + '?' + pars.join('&');\r\n            return url;\r\n        } else {\r\n            return url;\r\n        }\r\n    }\r\n\r\n\r\n    var querystring = \"newlanguage=\" + \"1\";\r\n\r\n\tvar links = document.getElementsByTagName('a');\r\n\r\n\tfor (var l in links) {\r\n\t    var currentHref = links[l].href;\r\n\r\n\t    if (currentHref !== undefined && currentHref.indexOf('javascript') == -1 && currentHref.toLowerCase().indexOf('scorecardresearch') > -1 && currentHref.indexOf('#') == -1) {\r\n\t        currentHref = removeURLParameter(currentHref, 'newlanguage');\r\n\t        var newHref = currentHref + (currentHref.match(/\\?/) ? '&' : '?') + querystring; //+ \"#section1\";\r\n\r\n\t        links[l].href = newHref;\r\n\t    }\r\n\t}\r\n</script>\r\n</html>",
+      "visible_text": "About Page - Scorecard Research English | Espa\u00f1ol | Nederlands | Svenska | Portugu\u00eas do Brasil Norsk | \u4e2d\u6587 | \u65e5\u672c\u8a9e | Italiano | Deutsch | Fran\u00e7ais | Suomi | Home About Preferences Contact Us Privacy Policy Terms of Service Principles Your Privacy Choices \u00a9 2026 ScorecardResearch, All Rights Reserved",
+      "word_count": 50,
+      "title": "About Page - Scorecard Research",
+      "meta_description": "Online market research community enabling members to earn cash and prizes for participating in surveys.",
+      "og_site_name": "",
+      "viewport_meta_present": true,
+      "canonical_url": null,
+      "headings": [],
+      "h1_texts": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [
+        {
+          "href": "https://www.scorecardresearch.com/default.aspx",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/home.aspx",
+          "text": "Home",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/about.aspx",
+          "text": "About",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/preferences.aspx",
+          "text": "Preferences",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/contact.aspx",
+          "text": "Contact Us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/privacy.aspx",
+          "text": "Privacy Policy",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/TermsOfService.aspx",
+          "text": "Terms of Service",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/Principle.aspx",
+          "text": "Principles",
+          "rel": ""
+        }
+      ],
+      "external_links": [
+        {
+          "href": "https://www.comscore.com/About/Privacy/Data-Subject-Rights",
+          "text": "Your Privacy Choices",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [
+          {
+            "action": "./About.aspx",
+            "method": "post"
+          }
+        ],
+        "cta_links": [
+          {
+            "href": "https://www.scorecardresearch.com/contact.aspx",
+            "text": "Contact Us",
+            "rel": ""
+          }
+        ]
+      },
+      "media_elements": {
+        "images": [
+          {
+            "src": "https://www.scorecardresearch.com/Images/ScorecardResearch_01_Small.jpg",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://www.scorecardresearch.com/images/privacyoptions.png",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          }
+        ],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {
+        "copyright_years": [
+          2026
+        ],
+        "newest_copyright_year": 2026,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "contact_support",
+      "is_deep_page": false,
+      "render_gap": false,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [
+          "many-inline-or-external-scripts"
+        ],
+        "script_count": 21,
+        "mount_markers": []
+      }
+    },
+    "https://www.scorecardresearch.com/TermsOfService.aspx": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://www.scorecardresearch.com/TermsOfService.aspx",
+      "final_url": "https://www.scorecardresearch.com/TermsOfService.aspx",
+      "status_code": 200,
+      "load_time_seconds": 1.4,
+      "raw_html": "\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head id=\"Head1\"><title>\r\n\tTerms of Service Page - Scorecard Research\r\n</title><meta name=\"robots\" content=\"index,follow\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" /><meta name=\"Author\" content=\"scorecardresearch.com\" /><meta name=\"Description\" content=\"Online market research community enabling members to earn cash and prizes for participating in surveys.\" /><meta name=\"Keywords\" content=\"surveys, sweepstakes, earn cash, opinions, earn prizes, paid surveys, free sweepstakes, market research community, research panel\" /><meta content=\"C#\" name=\"CODE_LANGUAGE\" /><meta content=\"JavaScript\" name=\"vs_defaultClientScript\" /><link href=\"Css/SR_Styles.css\" type=\"text/css\" rel=\"stylesheet\" />\r\n    <script type=\"text/javascript\" src=\"Css/sitecommon.js\"></script>\r\n    \r\n    \r\n    <!-- Google Tag Manager -->\r\n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\r\n    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\r\n    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\r\n    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\r\n    })(window,document,'script','dataLayer','GTM-NSNGHZX');</script>\r\n    <!-- End Google Tag Manager -->\r\n    \r\n\r\n    <script type=\"text/javascript\">\r\n        function init()\r\n        { }\r\n\r\n        function setId() {\r\n            var bodytag = document.getElementsByTagName(\"body\")[0];\r\n            var pagename_ext = location.pathname.substring(location.pathname.lastIndexOf(\"/\") + 1);\r\n            var pagename = pagename_ext.split('.')[0].toLowerCase();\r\n            //alert(pagename);\r\n            if (pagename == \"home\")\r\n                bodytag.setAttribute(\"id\", \"home\");\r\n            else if (pagename == \"about\")\r\n                bodytag.setAttribute(\"id\", \"about\");\r\n            else if (pagename == \"preferences\")\r\n                bodytag.setAttribute(\"id\", \"preferences\");\r\n            else if (pagename == \"supportform\")\r\n                bodytag.setAttribute(\"id\", \"support\");\r\n            else if (pagename == \"privacy\")\r\n                bodytag.setAttribute(\"id\", \"privacy\");\r\n            else if (pagename == \"principle\")\r\n                bodytag.setAttribute(\"id\", \"Principles\");\r\n            else if (pagename == \"termsofservice\")\r\n                bodytag.setAttribute(\"id\", \"TermsOfService\");\r\n        }\r\n        function changecolor(obj) {\r\n            obj.style.backgroundColor = \"#868575\";\r\n        }\r\n\r\n        //$(document).ready(function () {\r\n        //    $(\".link-white\").click(function (event) {\r\n        //        event.target.style.backgroundColor = \"#868575\";\r\n        //    });\r\n        //});\r\n    </script>\r\n    \r\n<script>\r\n    function slideDown(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '-' + height + 'px';\r\n\r\n        var y = height * -1;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = height / totalframes;\r\n        \r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function slideUp(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '0px';\r\n\r\n        var y = 0;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = (height / totalframes) * -1;\r\n\r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function closePop() {\r\n        // HIDE THE INFOR BANNER AND UPDATE COOKIE VALUE TO 99 TO NOT SHOW ON NEXT EVENT\r\n        slideUp(document.getElementById('info_banner'), 1, 120, 0);\r\n        createCookie(100);\r\n\r\n    }\r\n\r\n    function loadPopCheck() {\r\n        \r\n    }\r\n    function createCookie(value) {\r\n        var date = new Date();\r\n        date.setTime(date.getTime() + (24 * 60 * 60 * 1000));\r\n        var expires = \"; expires=\" + date.toGMTString();\r\n        document.cookie = \"cookie_consent_js=\" + value + expires + \"; path=/\";\r\n    }\r\n\r\n    function showed_count() {\r\n        var nameEQ = \"cookie_consent_js=\";\r\n        var ca = document.cookie.split(';');\r\n        for (var i = 0; i < ca.length; i++) {\r\n            var c = ca[i];\r\n            while (c.charAt(0) == ' ') c = c.substring(1, c.length);\r\n            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);\r\n        }\r\n        return null;\r\n    }\r\n</script>\r\n\r\n<meta name=\"viewport\" content=\"width=device-width\" />\r\n\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/ui/1.13.0/jquery-ui.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css\" />\r\n\r\n  <script type=\"text/javascript\">\r\n\r\n      $(function () {\r\n          if ('False' == 'True') {\r\n              $(\"#dialog\").dialog({\r\n                  autoOpen: false,\r\n                  show: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  hide: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  position: {\r\n                      my: \"center\",\r\n                      at: \"top\",\r\n                  },\r\n              });\r\n\r\n              $(\"#dialog\").dialog(\"option\", \"width\", \"80%\");\r\n              $(\"#dialog\").dialog(\"option\", \"height\", \"auto\");\r\n              $(\"#dialog\").dialog(\"open\");\r\n          }\r\n  });\r\n  </script>\r\n\r\n</head>\r\n<body class=\"Normal\" lang=\"EN-US\" leftmargin=\"0\" topmargin=\"0\" onload=\"setId();\" marginheight=\"0\" marginwidth=\"0\" >\r\n    \r\n\r\n    <!-- Google Tag Manager (noscript) -->\r\n    <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-NSNGHZX\"\r\n    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\r\n    <!-- End Google Tag Manager (noscript) -->\r\n    \r\n\r\n    <div class=\"container\">\r\n        <form method=\"post\" action=\"./TermsOfService.aspx\" id=\"Form1\">\r\n<div class=\"aspNetHidden\">\r\n\r\n</div>\r\n\r\n\r\n<script type=\"text/javascript\">\r\n//<![CDATA[\r\nvar storyblokData = { sbToken: 'GYIM3lEwxeoIsHJqVqbmrgtt', tokenVersion: 'published', sbReleaseId: '', sbLang: '', detectedSbLang: '' };//]]>\r\n</script>\r\n\r\n            <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n                <tbody>\r\n                    <tr>\r\n                        <td colspan=\"3\">\r\n                            <div class=\"header\">\r\n                                <table width=\"100%\" valign=\"top\" cellpadding=\"0\" cellspacing=\"0\">\r\n                                    <tbody>\r\n                                        <tr>\r\n                                            <td align=\"left\" width=\"300px\" style=\"padding-left: 148px; padding-right: 20px;\"><a href=\"default.aspx\">\r\n                                                <img src=\"Images/ScorecardResearch_01_Small.jpg\"></a></td>\r\n                                            <td align=\"left\" width=\"900px\" style=\"font-size: 11px\">\r\n                                                <div id=\"LanguageDiv\">\r\n                                                        <a href=\"javascript:ProcessHomePage(1)\" id=\"Tag1\" class=\"link-white\" style=\"background-color:#868575;\">English</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(14)\" id=\"Tag14\" class=\"link-white\">Espa\u00f1ol</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(18)\" id=\"Tag18\" class=\"link-white\">Nederlands</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(23)\" id=\"Tag23\" class=\"link-white\">Svenska</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(5)\" id=\"Tag5\" class=\"link-white\">Portugu\u00eas do Brasil</a>\r\n                                                        <br/>\r\n                                                        <br/>\r\n                                                        <a href=\"javascript:ProcessHomePage(22)\" id=\"Tag22\" class=\"link-white\">Norsk</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(20)\" id=\"Tag20\" class=\"link-white\">\u4e2d\u6587</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(9)\" id=\"Tag9\" class=\"link-white\">\u65e5\u672c\u8a9e</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(7)\" id=\"Tag7\" class=\"link-white\">Italiano</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(3)\" id=\"Tag3\" class=\"link-white\">Deutsch</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(2)\" id=\"Tag2\" class=\"link-white\">Fran\u00e7ais</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(21)\" id=\"Tag21\" class=\"link-white\">Suomi</a> | \r\n                                                    </div>\r\n                                             </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                                <div class=\"header-content\">\r\n                                    <div class=\"nav\">\r\n                                        <div class=\"nav-position\">\r\n                                            <div class=\"nav-align home\"><a href=\"home.aspx\" id=\"HomeMenuItem\" class=\"home\">Home</a></div>\r\n                                            <div class=\"nav-align about\"><a href=\"about.aspx\" id=\"AboutMenuItem\" class=\"about\">About</a></div>\r\n                                            <div class=\"nav-align preferences\"><a href=\"preferences.aspx\" id=\"PreferencesMenuItem\" class=\"preferences\">Preferences</a></div>\r\n                                            <div class=\"nav-align contact\"><a href=\"contact.aspx\" id=\"ContactUsMenuItem\" class=\"contact\">Contact Us</a></div>\r\n                                            <div class=\"nav-align privacy\"><a href=\"privacy.aspx\" id=\"PrivacyPolicyMenuItem\" class=\"privacy\">Privacy Policy</a></div>\r\n                                            <div class=\"nav-align TermsOfService\"><a href=\"TermsOfService.aspx\" id=\"TermsOfServiceMenuItem\" class=\"TermsOfService\">Terms of Service</a></div>\r\n                                            <div class=\"nav-align Principles\"><a href=\"Principle.aspx\" id=\"PrinciplesMenuItem\" class=\"Principles\">Principles</a></div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"color\"></div>\r\n                                </div>\r\n\r\n                            </div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr valign=\"top\">\r\n                        <td>\r\n                            <div id=\"leftContent\"></div>\r\n                        </td>\r\n                        <td align=\"center\">\r\n                            <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                                <tbody>\r\n                                    <tr>\r\n                                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                                            <div id=\"body\">\r\n                                                \r\n    <style>\r\n        ul {\r\n            margin-left: 30px;\r\n        }\r\n\r\n        p, ul{\r\n            margin-bottom: 15px;\r\n        }\r\n    </style>\r\n\r\n    \r\n    <script src=\"Common/js/vue.min.js\"></script>\r\n    <script src=\"Common/js/marked.js\"></script>\r\n    <script src=\"Common/js/storyblok/index.standalone.js\"></script>\r\n    <script src=\"Common/js/storyblok/rich-text-resolver.standalone.js\"></script>\r\n    <script src=\"Common/js/storyblok/storyblok-vue.js\"></script>\r\n\r\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n        <tr>\r\n            <td align=\"center\">\r\n                <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                    <tr>\r\n                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                            <table width=\"80%\" valign=\"top\" align=\"center\" cellspacing=\"0\" cellpadding=\"10\" border=\"0\">\r\n                                <tr>\r\n                                    <td valign=\"top\">\r\n                                        <div class=\"body\">\r\n                                            <div id=\"SbtosContent\"></div>\r\n                                            <br>\r\n                                        </div>\r\n                                    </td>\r\n                                </tr>\r\n                            </table>\r\n                        </td>\r\n                    </tr>\r\n                </table>\r\n\r\n\r\n            </td>\r\n        </tr>\r\n    </table>\r\n\r\n \r\n    <script src=\"Common/js/custom/vue_components.js\"></script>\r\n    <script src=\"Common/js/custom/vue_main_storyblok.js\"></script>\r\n        <script>\r\n            GenerateContent(\"#SbtosContent\", \"common/termsofservice-v2\");\r\n        </script>\r\n\r\n                                            </div>\r\n                                        </td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </td>\r\n                        <td>\r\n                            <div id=\"rightContent\"></div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td></td>\r\n                        <td class=\"footer\">\r\n                            <div class=\"copyright\">\r\n                                <div id=\"FooterLinkDiv\" style=\"margin-top:-5px\">\r\n                                    <a href=\"https://www.comscore.com/About/Privacy/Data-Subject-Rights\" id=\"FooterLink\" target=\"_blank\" style=\"font-weight:bold\">Your Privacy Choices <img src=\"images/privacyoptions.png\" style=\"width:auto; height: 1em; vertical-align: text-top; padding-left: 3px;\"></a>\r\n                                </div>\r\n                                <span id=\"CopyRightLabel\">\u00a9 2026 ScorecardResearch, All Rights Reserved</span>\r\n                            </div>\r\n                        </td>\r\n                        <td></td>\r\n                    </tr>\r\n                    <!-- Begin comScore Tag -->\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            document.write(unescape(\"%3Cscript src='\" + (document.location.protocol == \"https:\" ? \"https://sb\" : \"http://b\")\r\n                                + \".scorecardresearch.com/beacon.js' %3E%3C/script%3E\"));\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        function ProcessHomePage(languageid) {\r\n                            window.location = location.pathname + '?newLanguage=' + languageid;\r\n                            //var ele = document.getElementById(languageid);\r\n                            //ele.style.backgroundColor = \"#868575\";\r\n                            //return false;\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            COMSCORE.beacon({\r\n                                c1: 2,\r\n                                c2: \"1000001\",\r\n                                c3: \"\",\r\n                                c4: \"\",\r\n                                c5: \"Market Research\",\r\n                                c6: \"\",\r\n                                c15: \"\"\r\n                            });\r\n                        }\r\n                    </script>\r\n                    <noscript>\r\n                        <img src=\"https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1\"\r\nstyle=\"display:none\" width=\"0\" height=\"0\" alt=\"\" />\r\n                    </noscript>\r\n                    <!-- End comScore Tag -->\r\n                </tbody>\r\n            </table>\r\n        \r\n<div class=\"aspNetHidden\">\r\n\r\n\t\r\n</div>\r\n<script type=\"text/javascript\">document.getElementById('FooterLink').style.display = 'none';</script></form>\r\n    </div>\r\n</body>\r\n    \r\n<script type=\"text/javascript\">\r\n    loadPopCheck();\r\n\r\n    function removeURLParameter(url, parameter) {\r\n        //prefer to use l.search if you have a location/link object\r\n        var urlparts = url.split('?');\r\n        if (urlparts.length >= 2) {\r\n\r\n            var prefix = encodeURIComponent(parameter) + '=';\r\n            var pars = urlparts[1].split(/[&;]/g);\r\n\r\n            //reverse iteration as may be destructive\r\n            for (var i = pars.length; i-- > 0;) {\r\n                //idiom for string.startsWith\r\n                if (pars[i].lastIndexOf(prefix, 0) !== -1) {\r\n                    pars.splice(i, 1);\r\n                }\r\n            }\r\n\r\n            url = urlparts[0] + '?' + pars.join('&');\r\n            return url;\r\n        } else {\r\n            return url;\r\n        }\r\n    }\r\n\r\n\r\n    var querystring = \"newlanguage=\" + \"1\";\r\n\r\n\tvar links = document.getElementsByTagName('a');\r\n\r\n\tfor (var l in links) {\r\n\t    var currentHref = links[l].href;\r\n\r\n\t    if (currentHref !== undefined && currentHref.indexOf('javascript') == -1 && currentHref.toLowerCase().indexOf('scorecardresearch') > -1 && currentHref.indexOf('#') == -1) {\r\n\t        currentHref = removeURLParameter(currentHref, 'newlanguage');\r\n\t        var newHref = currentHref + (currentHref.match(/\\?/) ? '&' : '?') + querystring; //+ \"#section1\";\r\n\r\n\t        links[l].href = newHref;\r\n\t    }\r\n\t}\r\n</script>\r\n</html>",
+      "visible_text": "Terms of Service Page - Scorecard Research English | Espa\u00f1ol | Nederlands | Svenska | Portugu\u00eas do Brasil Norsk | \u4e2d\u6587 | \u65e5\u672c\u8a9e | Italiano | Deutsch | Fran\u00e7ais | Suomi | Home About Preferences Contact Us Privacy Policy Terms of Service Principles Your Privacy Choices \u00a9 2026 ScorecardResearch, All Rights Reserved",
+      "word_count": 52,
+      "title": "Terms of Service Page - Scorecard Research",
+      "meta_description": "Online market research community enabling members to earn cash and prizes for participating in surveys.",
+      "og_site_name": "",
+      "viewport_meta_present": true,
+      "canonical_url": null,
+      "headings": [],
+      "h1_texts": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [
+        {
+          "href": "https://www.scorecardresearch.com/default.aspx",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/home.aspx",
+          "text": "Home",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/about.aspx",
+          "text": "About",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/preferences.aspx",
+          "text": "Preferences",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/contact.aspx",
+          "text": "Contact Us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/privacy.aspx",
+          "text": "Privacy Policy",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/TermsOfService.aspx",
+          "text": "Terms of Service",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/Principle.aspx",
+          "text": "Principles",
+          "rel": ""
+        }
+      ],
+      "external_links": [
+        {
+          "href": "https://www.comscore.com/About/Privacy/Data-Subject-Rights",
+          "text": "Your Privacy Choices",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [
+          {
+            "action": "./TermsOfService.aspx",
+            "method": "post"
+          }
+        ],
+        "cta_links": [
+          {
+            "href": "https://www.scorecardresearch.com/contact.aspx",
+            "text": "Contact Us",
+            "rel": ""
+          }
+        ]
+      },
+      "media_elements": {
+        "images": [
+          {
+            "src": "https://www.scorecardresearch.com/Images/ScorecardResearch_01_Small.jpg",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://www.scorecardresearch.com/images/privacyoptions.png",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          }
+        ],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {
+        "copyright_years": [
+          2026
+        ],
+        "newest_copyright_year": 2026,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "product_landing",
+      "is_deep_page": false,
+      "render_gap": false,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [
+          "many-inline-or-external-scripts"
+        ],
+        "script_count": 21,
+        "mount_markers": []
+      }
+    },
+    "https://www.scorecardresearch.com/about.aspx": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://www.scorecardresearch.com/about.aspx",
+      "final_url": "https://www.scorecardresearch.com/about.aspx",
+      "status_code": 200,
+      "load_time_seconds": 1.45,
+      "raw_html": "\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head id=\"Head1\"><title>\r\n\tAbout Page - Scorecard Research\r\n</title><meta name=\"robots\" content=\"index,follow\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" /><meta name=\"Author\" content=\"scorecardresearch.com\" /><meta name=\"Description\" content=\"Online market research community enabling members to earn cash and prizes for participating in surveys.\" /><meta name=\"Keywords\" content=\"surveys, sweepstakes, earn cash, opinions, earn prizes, paid surveys, free sweepstakes, market research community, research panel\" /><meta content=\"C#\" name=\"CODE_LANGUAGE\" /><meta content=\"JavaScript\" name=\"vs_defaultClientScript\" /><link href=\"Css/SR_Styles.css\" type=\"text/css\" rel=\"stylesheet\" />\r\n    <script type=\"text/javascript\" src=\"Css/sitecommon.js\"></script>\r\n    \r\n    \r\n    <!-- Google Tag Manager -->\r\n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\r\n    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\r\n    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\r\n    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\r\n    })(window,document,'script','dataLayer','GTM-NSNGHZX');</script>\r\n    <!-- End Google Tag Manager -->\r\n    \r\n\r\n    <script type=\"text/javascript\">\r\n        function init()\r\n        { }\r\n\r\n        function setId() {\r\n            var bodytag = document.getElementsByTagName(\"body\")[0];\r\n            var pagename_ext = location.pathname.substring(location.pathname.lastIndexOf(\"/\") + 1);\r\n            var pagename = pagename_ext.split('.')[0].toLowerCase();\r\n            //alert(pagename);\r\n            if (pagename == \"home\")\r\n                bodytag.setAttribute(\"id\", \"home\");\r\n            else if (pagename == \"about\")\r\n                bodytag.setAttribute(\"id\", \"about\");\r\n            else if (pagename == \"preferences\")\r\n                bodytag.setAttribute(\"id\", \"preferences\");\r\n            else if (pagename == \"supportform\")\r\n                bodytag.setAttribute(\"id\", \"support\");\r\n            else if (pagename == \"privacy\")\r\n                bodytag.setAttribute(\"id\", \"privacy\");\r\n            else if (pagename == \"principle\")\r\n                bodytag.setAttribute(\"id\", \"Principles\");\r\n            else if (pagename == \"termsofservice\")\r\n                bodytag.setAttribute(\"id\", \"TermsOfService\");\r\n        }\r\n        function changecolor(obj) {\r\n            obj.style.backgroundColor = \"#868575\";\r\n        }\r\n\r\n        //$(document).ready(function () {\r\n        //    $(\".link-white\").click(function (event) {\r\n        //        event.target.style.backgroundColor = \"#868575\";\r\n        //    });\r\n        //});\r\n    </script>\r\n    \r\n<script>\r\n    function slideDown(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '-' + height + 'px';\r\n\r\n        var y = height * -1;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = height / totalframes;\r\n        \r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function slideUp(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '0px';\r\n\r\n        var y = 0;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = (height / totalframes) * -1;\r\n\r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function closePop() {\r\n        // HIDE THE INFOR BANNER AND UPDATE COOKIE VALUE TO 99 TO NOT SHOW ON NEXT EVENT\r\n        slideUp(document.getElementById('info_banner'), 1, 120, 0);\r\n        createCookie(100);\r\n\r\n    }\r\n\r\n    function loadPopCheck() {\r\n        \r\n    }\r\n    function createCookie(value) {\r\n        var date = new Date();\r\n        date.setTime(date.getTime() + (24 * 60 * 60 * 1000));\r\n        var expires = \"; expires=\" + date.toGMTString();\r\n        document.cookie = \"cookie_consent_js=\" + value + expires + \"; path=/\";\r\n    }\r\n\r\n    function showed_count() {\r\n        var nameEQ = \"cookie_consent_js=\";\r\n        var ca = document.cookie.split(';');\r\n        for (var i = 0; i < ca.length; i++) {\r\n            var c = ca[i];\r\n            while (c.charAt(0) == ' ') c = c.substring(1, c.length);\r\n            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);\r\n        }\r\n        return null;\r\n    }\r\n</script>\r\n\r\n<meta name=\"viewport\" content=\"width=device-width\" />\r\n\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/ui/1.13.0/jquery-ui.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css\" />\r\n\r\n  <script type=\"text/javascript\">\r\n\r\n      $(function () {\r\n          if ('False' == 'True') {\r\n              $(\"#dialog\").dialog({\r\n                  autoOpen: false,\r\n                  show: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  hide: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  position: {\r\n                      my: \"center\",\r\n                      at: \"top\",\r\n                  },\r\n              });\r\n\r\n              $(\"#dialog\").dialog(\"option\", \"width\", \"80%\");\r\n              $(\"#dialog\").dialog(\"option\", \"height\", \"auto\");\r\n              $(\"#dialog\").dialog(\"open\");\r\n          }\r\n  });\r\n  </script>\r\n\r\n</head>\r\n<body class=\"Normal\" lang=\"EN-US\" leftmargin=\"0\" topmargin=\"0\" onload=\"setId();\" marginheight=\"0\" marginwidth=\"0\" >\r\n    \r\n\r\n    <!-- Google Tag Manager (noscript) -->\r\n    <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-NSNGHZX\"\r\n    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\r\n    <!-- End Google Tag Manager (noscript) -->\r\n    \r\n\r\n    <div class=\"container\">\r\n        <form method=\"post\" action=\"./about.aspx\" id=\"Form1\">\r\n<div class=\"aspNetHidden\">\r\n\r\n</div>\r\n\r\n\r\n<script type=\"text/javascript\">\r\n//<![CDATA[\r\nvar storyblokData = { sbToken: 'GYIM3lEwxeoIsHJqVqbmrgtt', tokenVersion: 'published', sbReleaseId: '', sbLang: '', detectedSbLang: '' };//]]>\r\n</script>\r\n\r\n            <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n                <tbody>\r\n                    <tr>\r\n                        <td colspan=\"3\">\r\n                            <div class=\"header\">\r\n                                <table width=\"100%\" valign=\"top\" cellpadding=\"0\" cellspacing=\"0\">\r\n                                    <tbody>\r\n                                        <tr>\r\n                                            <td align=\"left\" width=\"300px\" style=\"padding-left: 148px; padding-right: 20px;\"><a href=\"default.aspx\">\r\n                                                <img src=\"Images/ScorecardResearch_01_Small.jpg\"></a></td>\r\n                                            <td align=\"left\" width=\"900px\" style=\"font-size: 11px\">\r\n                                                <div id=\"LanguageDiv\">\r\n                                                        <a href=\"javascript:ProcessHomePage(1)\" id=\"Tag1\" class=\"link-white\" style=\"background-color:#868575;\">English</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(14)\" id=\"Tag14\" class=\"link-white\">Espa\u00f1ol</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(18)\" id=\"Tag18\" class=\"link-white\">Nederlands</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(23)\" id=\"Tag23\" class=\"link-white\">Svenska</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(5)\" id=\"Tag5\" class=\"link-white\">Portugu\u00eas do Brasil</a>\r\n                                                        <br/>\r\n                                                        <br/>\r\n                                                        <a href=\"javascript:ProcessHomePage(22)\" id=\"Tag22\" class=\"link-white\">Norsk</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(20)\" id=\"Tag20\" class=\"link-white\">\u4e2d\u6587</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(9)\" id=\"Tag9\" class=\"link-white\">\u65e5\u672c\u8a9e</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(7)\" id=\"Tag7\" class=\"link-white\">Italiano</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(3)\" id=\"Tag3\" class=\"link-white\">Deutsch</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(2)\" id=\"Tag2\" class=\"link-white\">Fran\u00e7ais</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(21)\" id=\"Tag21\" class=\"link-white\">Suomi</a> | \r\n                                                    </div>\r\n                                             </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                                <div class=\"header-content\">\r\n                                    <div class=\"nav\">\r\n                                        <div class=\"nav-position\">\r\n                                            <div class=\"nav-align home\"><a href=\"home.aspx\" id=\"HomeMenuItem\" class=\"home\">Home</a></div>\r\n                                            <div class=\"nav-align about\"><a href=\"about.aspx\" id=\"AboutMenuItem\" class=\"about\">About</a></div>\r\n                                            <div class=\"nav-align preferences\"><a href=\"preferences.aspx\" id=\"PreferencesMenuItem\" class=\"preferences\">Preferences</a></div>\r\n                                            <div class=\"nav-align contact\"><a href=\"contact.aspx\" id=\"ContactUsMenuItem\" class=\"contact\">Contact Us</a></div>\r\n                                            <div class=\"nav-align privacy\"><a href=\"privacy.aspx\" id=\"PrivacyPolicyMenuItem\" class=\"privacy\">Privacy Policy</a></div>\r\n                                            <div class=\"nav-align TermsOfService\"><a href=\"TermsOfService.aspx\" id=\"TermsOfServiceMenuItem\" class=\"TermsOfService\">Terms of Service</a></div>\r\n                                            <div class=\"nav-align Principles\"><a href=\"Principle.aspx\" id=\"PrinciplesMenuItem\" class=\"Principles\">Principles</a></div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"color\"></div>\r\n                                </div>\r\n\r\n                            </div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr valign=\"top\">\r\n                        <td>\r\n                            <div id=\"leftContent\"></div>\r\n                        </td>\r\n                        <td align=\"center\">\r\n                            <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                                <tbody>\r\n                                    <tr>\r\n                                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                                            <div id=\"body\">\r\n                                                \r\n    <style>\r\n        strong {\r\n            color: blue\r\n        }\r\n\r\n        ul {\r\n            margin-left: 30px;\r\n        }\r\n\r\n        p, ul{\r\n            margin-bottom: 15px;\r\n        }\r\n    </style>\r\n\r\n    \r\n    <script src=\"Common/js/vue.min.js\"></script>\r\n    <script src=\"Common/js/marked.js\"></script>\r\n    <script src=\"Common/js/storyblok/index.standalone.js\"></script>\r\n    <script src=\"Common/js/storyblok/rich-text-resolver.standalone.js\"></script>\r\n    <script src=\"Common/js/storyblok/storyblok-vue.js\"></script>\r\n\r\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n        <tr>\r\n            <td align=\"center\">\r\n                <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                    <tr>\r\n                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                            <table width=\"80%\" valign=\"top\" align=\"center\" cellspacing=\"0\" cellpadding=\"10\" border=\"0\">\r\n                                <tr>\r\n                                    <td valign=\"top\">\r\n                                        <div class=\"body\">\r\n                                            <div id=\"SbAboutContent\"></div>\r\n                                            <br>\r\n                                        </div>\r\n                                    </td>\r\n                                </tr>\r\n                            </table>\r\n                        </td>\r\n                    </tr>\r\n                </table>\r\n\r\n\r\n            </td>\r\n        </tr>\r\n    </table>\r\n\r\n    <script src=\"Common/js/custom/vue_components.js\"></script>\r\n    <script src=\"Common/js/custom/vue_main_storyblok.js\"></script>\r\n    <script>\r\n        GenerateContent(\"#SbAboutContent\", \"common/about-sr\");\r\n    </script>\r\n\r\n                                            </div>\r\n                                        </td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </td>\r\n                        <td>\r\n                            <div id=\"rightContent\"></div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td></td>\r\n                        <td class=\"footer\">\r\n                            <div class=\"copyright\">\r\n                                <div id=\"FooterLinkDiv\" style=\"margin-top:-5px\">\r\n                                    <a href=\"https://www.comscore.com/About/Privacy/Data-Subject-Rights\" id=\"FooterLink\" target=\"_blank\" style=\"font-weight:bold\">Your Privacy Choices <img src=\"images/privacyoptions.png\" style=\"width:auto; height: 1em; vertical-align: text-top; padding-left: 3px;\"></a>\r\n                                </div>\r\n                                <span id=\"CopyRightLabel\">\u00a9 2026 ScorecardResearch, All Rights Reserved</span>\r\n                            </div>\r\n                        </td>\r\n                        <td></td>\r\n                    </tr>\r\n                    <!-- Begin comScore Tag -->\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            document.write(unescape(\"%3Cscript src='\" + (document.location.protocol == \"https:\" ? \"https://sb\" : \"http://b\")\r\n                                + \".scorecardresearch.com/beacon.js' %3E%3C/script%3E\"));\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        function ProcessHomePage(languageid) {\r\n                            window.location = location.pathname + '?newLanguage=' + languageid;\r\n                            //var ele = document.getElementById(languageid);\r\n                            //ele.style.backgroundColor = \"#868575\";\r\n                            //return false;\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            COMSCORE.beacon({\r\n                                c1: 2,\r\n                                c2: \"1000001\",\r\n                                c3: \"\",\r\n                                c4: \"\",\r\n                                c5: \"Market Research\",\r\n                                c6: \"\",\r\n                                c15: \"\"\r\n                            });\r\n                        }\r\n                    </script>\r\n                    <noscript>\r\n                        <img src=\"https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1\"\r\nstyle=\"display:none\" width=\"0\" height=\"0\" alt=\"\" />\r\n                    </noscript>\r\n                    <!-- End comScore Tag -->\r\n                </tbody>\r\n            </table>\r\n        \r\n<div class=\"aspNetHidden\">\r\n\r\n\t\r\n</div>\r\n<script type=\"text/javascript\">document.getElementById('FooterLink').style.display = 'none';</script></form>\r\n    </div>\r\n</body>\r\n    \r\n<script type=\"text/javascript\">\r\n    loadPopCheck();\r\n\r\n    function removeURLParameter(url, parameter) {\r\n        //prefer to use l.search if you have a location/link object\r\n        var urlparts = url.split('?');\r\n        if (urlparts.length >= 2) {\r\n\r\n            var prefix = encodeURIComponent(parameter) + '=';\r\n            var pars = urlparts[1].split(/[&;]/g);\r\n\r\n            //reverse iteration as may be destructive\r\n            for (var i = pars.length; i-- > 0;) {\r\n                //idiom for string.startsWith\r\n                if (pars[i].lastIndexOf(prefix, 0) !== -1) {\r\n                    pars.splice(i, 1);\r\n                }\r\n            }\r\n\r\n            url = urlparts[0] + '?' + pars.join('&');\r\n            return url;\r\n        } else {\r\n            return url;\r\n        }\r\n    }\r\n\r\n\r\n    var querystring = \"newlanguage=\" + \"1\";\r\n\r\n\tvar links = document.getElementsByTagName('a');\r\n\r\n\tfor (var l in links) {\r\n\t    var currentHref = links[l].href;\r\n\r\n\t    if (currentHref !== undefined && currentHref.indexOf('javascript') == -1 && currentHref.toLowerCase().indexOf('scorecardresearch') > -1 && currentHref.indexOf('#') == -1) {\r\n\t        currentHref = removeURLParameter(currentHref, 'newlanguage');\r\n\t        var newHref = currentHref + (currentHref.match(/\\?/) ? '&' : '?') + querystring; //+ \"#section1\";\r\n\r\n\t        links[l].href = newHref;\r\n\t    }\r\n\t}\r\n</script>\r\n</html>",
+      "visible_text": "About Page - Scorecard Research English | Espa\u00f1ol | Nederlands | Svenska | Portugu\u00eas do Brasil Norsk | \u4e2d\u6587 | \u65e5\u672c\u8a9e | Italiano | Deutsch | Fran\u00e7ais | Suomi | Home About Preferences Contact Us Privacy Policy Terms of Service Principles Your Privacy Choices \u00a9 2026 ScorecardResearch, All Rights Reserved",
+      "word_count": 50,
+      "title": "About Page - Scorecard Research",
+      "meta_description": "Online market research community enabling members to earn cash and prizes for participating in surveys.",
+      "og_site_name": "",
+      "viewport_meta_present": true,
+      "canonical_url": null,
+      "headings": [],
+      "h1_texts": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [
+        {
+          "href": "https://www.scorecardresearch.com/default.aspx",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/home.aspx",
+          "text": "Home",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/about.aspx",
+          "text": "About",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/preferences.aspx",
+          "text": "Preferences",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/contact.aspx",
+          "text": "Contact Us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/privacy.aspx",
+          "text": "Privacy Policy",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/TermsOfService.aspx",
+          "text": "Terms of Service",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/Principle.aspx",
+          "text": "Principles",
+          "rel": ""
+        }
+      ],
+      "external_links": [
+        {
+          "href": "https://www.comscore.com/About/Privacy/Data-Subject-Rights",
+          "text": "Your Privacy Choices",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [
+          {
+            "action": "./about.aspx",
+            "method": "post"
+          }
+        ],
+        "cta_links": [
+          {
+            "href": "https://www.scorecardresearch.com/contact.aspx",
+            "text": "Contact Us",
+            "rel": ""
+          }
+        ]
+      },
+      "media_elements": {
+        "images": [
+          {
+            "src": "https://www.scorecardresearch.com/Images/ScorecardResearch_01_Small.jpg",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://www.scorecardresearch.com/images/privacyoptions.png",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          }
+        ],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {
+        "copyright_years": [
+          2026
+        ],
+        "newest_copyright_year": 2026,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "contact_support",
+      "is_deep_page": false,
+      "render_gap": false,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [
+          "many-inline-or-external-scripts"
+        ],
+        "script_count": 21,
+        "mount_markers": []
+      }
+    },
+    "https://www.scorecardresearch.com/SupportForm.aspx?newlanguage=1": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://www.scorecardresearch.com/contact.aspx",
+      "final_url": "https://www.scorecardresearch.com/SupportForm.aspx?newlanguage=1",
+      "status_code": 200,
+      "load_time_seconds": 2.33,
+      "raw_html": "\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head id=\"Head1\"><title>\r\n\t - Scorecard Research\r\n</title><meta name=\"robots\" content=\"index,follow\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" /><meta name=\"Author\" content=\"scorecardresearch.com\" /><meta name=\"Description\" content=\"Online market research community enabling members to earn cash and prizes for participating in surveys.\" /><meta name=\"Keywords\" content=\"surveys, sweepstakes, earn cash, opinions, earn prizes, paid surveys, free sweepstakes, market research community, research panel\" /><meta content=\"C#\" name=\"CODE_LANGUAGE\" /><meta content=\"JavaScript\" name=\"vs_defaultClientScript\" /><link href=\"Css/SR_Styles.css\" type=\"text/css\" rel=\"stylesheet\" />\r\n    <script type=\"text/javascript\" src=\"Css/sitecommon.js\"></script>\r\n    \r\n    \r\n    <!-- Google Tag Manager -->\r\n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\r\n    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\r\n    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\r\n    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\r\n    })(window,document,'script','dataLayer','GTM-NSNGHZX');</script>\r\n    <!-- End Google Tag Manager -->\r\n    \r\n\r\n    <script type=\"text/javascript\">\r\n        function init()\r\n        { }\r\n\r\n        function setId() {\r\n            var bodytag = document.getElementsByTagName(\"body\")[0];\r\n            var pagename_ext = location.pathname.substring(location.pathname.lastIndexOf(\"/\") + 1);\r\n            var pagename = pagename_ext.split('.')[0].toLowerCase();\r\n            //alert(pagename);\r\n            if (pagename == \"home\")\r\n                bodytag.setAttribute(\"id\", \"home\");\r\n            else if (pagename == \"about\")\r\n                bodytag.setAttribute(\"id\", \"about\");\r\n            else if (pagename == \"preferences\")\r\n                bodytag.setAttribute(\"id\", \"preferences\");\r\n            else if (pagename == \"supportform\")\r\n                bodytag.setAttribute(\"id\", \"support\");\r\n            else if (pagename == \"privacy\")\r\n                bodytag.setAttribute(\"id\", \"privacy\");\r\n            else if (pagename == \"principle\")\r\n                bodytag.setAttribute(\"id\", \"Principles\");\r\n            else if (pagename == \"termsofservice\")\r\n                bodytag.setAttribute(\"id\", \"TermsOfService\");\r\n        }\r\n        function changecolor(obj) {\r\n            obj.style.backgroundColor = \"#868575\";\r\n        }\r\n\r\n        //$(document).ready(function () {\r\n        //    $(\".link-white\").click(function (event) {\r\n        //        event.target.style.backgroundColor = \"#868575\";\r\n        //    });\r\n        //});\r\n    </script>\r\n    \r\n<script>\r\n    function slideDown(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '-' + height + 'px';\r\n\r\n        var y = height * -1;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = height / totalframes;\r\n        \r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function slideUp(element, duration, height, finalTop, callback) {\r\n        var s = element.style;\r\n        s.top = '0px';\r\n\r\n        var y = 0;\r\n        var framerate = 10;\r\n        var one_second = 1000;\r\n        var interval = one_second * duration / framerate;\r\n        var totalframes = one_second * duration / interval;\r\n        var heightincrement = (height / totalframes) * -1;\r\n\r\n        var tween = function () {\r\n            y += heightincrement;\r\n            s.top = y + 'px';\r\n            if (y < finalTop) {\r\n                setTimeout(tween, interval);\r\n            }\r\n        }\r\n        tween();\r\n    }\r\n\r\n    function closePop() {\r\n        // HIDE THE INFOR BANNER AND UPDATE COOKIE VALUE TO 99 TO NOT SHOW ON NEXT EVENT\r\n        slideUp(document.getElementById('info_banner'), 1, 120, 0);\r\n        createCookie(100);\r\n\r\n    }\r\n\r\n    function loadPopCheck() {\r\n        \r\n    }\r\n    function createCookie(value) {\r\n        var date = new Date();\r\n        date.setTime(date.getTime() + (24 * 60 * 60 * 1000));\r\n        var expires = \"; expires=\" + date.toGMTString();\r\n        document.cookie = \"cookie_consent_js=\" + value + expires + \"; path=/\";\r\n    }\r\n\r\n    function showed_count() {\r\n        var nameEQ = \"cookie_consent_js=\";\r\n        var ca = document.cookie.split(';');\r\n        for (var i = 0; i < ca.length; i++) {\r\n            var c = ca[i];\r\n            while (c.charAt(0) == ' ') c = c.substring(1, c.length);\r\n            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);\r\n        }\r\n        return null;\r\n    }\r\n</script>\r\n\r\n<meta name=\"viewport\" content=\"width=device-width\" />\r\n\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\r\n  <script type=\"text/javascript\" src=\"https://code.jquery.com/ui/1.13.0/jquery-ui.min.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css\" />\r\n\r\n  <script type=\"text/javascript\">\r\n\r\n      $(function () {\r\n          if ('False' == 'True') {\r\n              $(\"#dialog\").dialog({\r\n                  autoOpen: false,\r\n                  show: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  hide: {\r\n                      effect: \"blind\",\r\n                      duration: 500\r\n                  },\r\n                  position: {\r\n                      my: \"center\",\r\n                      at: \"top\",\r\n                  },\r\n              });\r\n\r\n              $(\"#dialog\").dialog(\"option\", \"width\", \"80%\");\r\n              $(\"#dialog\").dialog(\"option\", \"height\", \"auto\");\r\n              $(\"#dialog\").dialog(\"open\");\r\n          }\r\n  });\r\n  </script>\r\n\r\n</head>\r\n<body class=\"Normal\" lang=\"EN-US\" leftmargin=\"0\" topmargin=\"0\" onload=\"setId();\" marginheight=\"0\" marginwidth=\"0\" >\r\n    \r\n\r\n    <!-- Google Tag Manager (noscript) -->\r\n    <noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-NSNGHZX\"\r\n    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\r\n    <!-- End Google Tag Manager (noscript) -->\r\n    \r\n\r\n    <div class=\"container\">\r\n        <form method=\"post\" action=\"./SupportForm.aspx?newlanguage=1\" id=\"Form1\">\r\n<div class=\"aspNetHidden\">\r\n<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"4Fe60tGcy3c2qKwg1Hj6S1hP0kQ0K9hvMDuVPJJom6FhAwahFwqUREvzScwv6tQtHp2Q5p7IWhvrHm5GYISaNzDn+lTw5lB6auAZiSII49IOFmHlGZTRO2pvvpwLwWr3VGMuUkhruzkSJ3rY0En308L5OpfuK4nPokgOUI6JQLYZs8YFy1AvJGssaU6Gs1Ad5RsI4dLF9iDvmkiK5JPvM7pD6DWWBI5BEAsQqOH04GanBFDaPvzilwJqy43whFLCLM+sIyiNTPMIoFVKDqNHrG7fEXASYa0YHW907I1MYu7h2RLZIG2yEl90spIa3FMItDknEc7dNV8b34T568bAbFZ+r+TzzoUlJCrHwLccqRE24XRCaleDm7nxHUoK1yOCPIf3mNN9GLNIH3v2Pnmo6k9sCrwB0DCIFUY12ErFreZQPligQUBOgKLraNrI+58UvjTJQetPcNWPYHUbx6SmhX7CUSA4W2PuxoQr/s9tI1uJLpcEZlYEfR3NhlEzD7XZWuawqm2xI8ZKdOiUCu4tFmRTF1iSr5NgbxhDVYo6PC7sCxXVKoO1RtcGoKB/ajDbt05+KLp8+d3TR4mclkjCcpco6FEU3j9gJpTiAQGMdW5EXEuHO+fPZpHWPauoRjoExhGnwItePfBtLOprk2OY0W0X4D3osIX+q9bm9juJMz6btnv3zVz86Xt/Z0AK3V23pxwRl800xw6hMPa2eVZGLN6k3vp7aqyyaeCtVH74s6XqsOmJYL+eW+NZSQ1O8u+QpnB2PrlOzul9hOSyCVYuCbCKlzwWatMXcJL14I9wOG4TIbDaLS0eH+YlybBltErDQjNXamksZXb2a7ym4s9goxTr6fQnS+BZy5gTjvpbwEPAdUn/2SeNZanXc3W2+PIbzSkkxJEkxvhhxQoSiHTx3DiGwI/kCu0hDw3fKRuz7NVnDxEZZjvvZ0lma5GUVr12Mxwl4u3JcH+XwFoVH/dpBCjHp8HSMiH8tDSkDkESWQwVE/7PFelEQpt9RmNdLwCgACVxLHJYWwURgj2vjiSXvwuzcDj0Kf/6Zmc7V/Z9vJgpcb9GsWw4VBZPK5qjI0lTAfBvZDzuwjh2UCctrAjrykINMPmcIB6Sgq/fCyQHsI8JahAA5+Nq/tj3c388M2WnhAwDsKSZxXjGNo1flEzcntnk6QPpGXW8YwbSeDMeLT0mvp0MAlgDbsoDq4BmIzcSWUDDTuS0UO9Tt/8XJjskTlzDnr+4WM5T75kIyLFVzMaeTOOFVUK4xfqxv35o/CpV\" />\r\n</div>\r\n\r\n            <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n                <tbody>\r\n                    <tr>\r\n                        <td colspan=\"3\">\r\n                            <div class=\"header\">\r\n                                <table width=\"100%\" valign=\"top\" cellpadding=\"0\" cellspacing=\"0\">\r\n                                    <tbody>\r\n                                        <tr>\r\n                                            <td align=\"left\" width=\"300px\" style=\"padding-left: 148px; padding-right: 20px;\"><a href=\"default.aspx\">\r\n                                                <img src=\"Images/ScorecardResearch_01_Small.jpg\"></a></td>\r\n                                            <td align=\"left\" width=\"900px\" style=\"font-size: 11px\">\r\n                                                <div id=\"LanguageDiv\">\r\n                                                        <a href=\"javascript:ProcessHomePage(1)\" id=\"Tag1\" class=\"link-white\" style=\"background-color:#868575;\">English</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(14)\" id=\"Tag14\" class=\"link-white\">Espa\u00f1ol</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(18)\" id=\"Tag18\" class=\"link-white\">Nederlands</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(23)\" id=\"Tag23\" class=\"link-white\">Svenska</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(5)\" id=\"Tag5\" class=\"link-white\">Portugu\u00eas do Brasil</a>\r\n                                                        <br/>\r\n                                                        <br/>\r\n                                                        <a href=\"javascript:ProcessHomePage(22)\" id=\"Tag22\" class=\"link-white\">Norsk</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(20)\" id=\"Tag20\" class=\"link-white\">\u4e2d\u6587</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(9)\" id=\"Tag9\" class=\"link-white\">\u65e5\u672c\u8a9e</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(7)\" id=\"Tag7\" class=\"link-white\">Italiano</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(3)\" id=\"Tag3\" class=\"link-white\">Deutsch</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(2)\" id=\"Tag2\" class=\"link-white\">Fran\u00e7ais</a> | \r\n                                                        <a href=\"javascript:ProcessHomePage(21)\" id=\"Tag21\" class=\"link-white\">Suomi</a> | \r\n                                                    </div>\r\n                                             </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                                <div class=\"header-content\">\r\n                                    <div class=\"nav\">\r\n                                        <div class=\"nav-position\">\r\n                                            <div class=\"nav-align home\"><a href=\"home.aspx\" id=\"HomeMenuItem\" class=\"home\">Home</a></div>\r\n                                            <div class=\"nav-align about\"><a href=\"about.aspx\" id=\"AboutMenuItem\" class=\"about\">About</a></div>\r\n                                            <div class=\"nav-align preferences\"><a href=\"preferences.aspx\" id=\"PreferencesMenuItem\" class=\"preferences\">Preferences</a></div>\r\n                                            <div class=\"nav-align contact\"><a href=\"contact.aspx\" id=\"ContactUsMenuItem\" class=\"contact\">Contact Us</a></div>\r\n                                            <div class=\"nav-align privacy\"><a href=\"privacy.aspx\" id=\"PrivacyPolicyMenuItem\" class=\"privacy\">Privacy Policy</a></div>\r\n                                            <div class=\"nav-align TermsOfService\"><a href=\"TermsOfService.aspx\" id=\"TermsOfServiceMenuItem\" class=\"TermsOfService\">Terms of Service</a></div>\r\n                                            <div class=\"nav-align Principles\"><a href=\"Principle.aspx\" id=\"PrinciplesMenuItem\" class=\"Principles\">Principles</a></div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"color\"></div>\r\n                                </div>\r\n\r\n                            </div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr valign=\"top\">\r\n                        <td>\r\n                            <div id=\"leftContent\"></div>\r\n                        </td>\r\n                        <td align=\"center\">\r\n                            <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bgcolor=\"white\">\r\n                                <tbody>\r\n                                    <tr>\r\n                                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                                            <div id=\"body\">\r\n                                                \r\n    <script src=\"https://www.google.com/recaptcha/enterprise.js?render=6LcKwa0rAAAAAGYq_W7WKglgsaEdqAk0gJV1Oe6_\"></script>\r\n    <table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" border=\"0\">\r\n        <tr>\r\n            <td colspan=\"3\" align=\"left\"><span id=\"MainContent_MessageLabel\"></span></td>\r\n        </tr>\r\n        <tr>\r\n            <td>\r\n                <table width=\"745\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"white\">\r\n                    <tr>\r\n                        <td width=\"751\" height=\"200\" valign=\"top\">\r\n                            \r\n                            <div id=\"MainContent_ControlsPanel\">\r\n\t\r\n                                <table width=\"80%\" align=\"center\" cellspacing=\"0\" cellpadding=\"10\" border=\"0\">\r\n                                    <tr>\r\n                                        <td valign=\"top\">\r\n                                            <div class=\"body\">\r\n                                                <table>\r\n                                                    <tr>\r\n                                                        <td colspan=\"2\">\r\n                                                            <h1 class=\"title-contact\">\r                                                                <span id=\"MainContent_ContactUsLabel\"><h1 class=\"title-contact\">\r\nContact Us\r\n</h1></span></h1>\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    <tr>\r\n                                                        <td colspan=\"2\">\r\n                                                            <span id=\"MainContent_CompleteFormLabel\"><p>\r\nPlease complete the form below to contact ScorecardResearch.\r\n</p></span>\r\n                                                            <br />\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    <tr>\r\n                                                        <td colspan=\"2\">\r\n                                                            <br />\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    <tr>\r\n                                                        <td width=\"200\">\r\n                                                            <span id=\"MainContent_ToLabel\"><div class=\"C_TD\">To:</div></span>\r\n                                                        </td>\r\n                                                        <td>\r\n                                                            <span id=\"MainContent_SRSupportLabel\"><div class=\"C_TD\">ScorecardResearch Support</div></span>\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    <tr valign=\"top\">\r\n                                                        <td>\r\n                                                            <span id=\"MainContent_FromEmailLabel\"><div class=\"C_TD\">From: (e-mail)</div></span>\r\n                                                        </td>\r\n                                                        <td>\r\n                                                            <input name=\"ctl00$MainContent$EmailTextBox\" type=\"text\" id=\"MainContent_EmailTextBox\" />\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    <tr valign=\"top\">\r\n                                                        <td>\r\n                                                            <span id=\"MainContent_SubjectLabel\"><div class=\"C_TD\">Subject:</div></span>\r\n                                                        </td>\r\n                                                        <td>\r\n                                                            <input name=\"ctl00$MainContent$SubjectTextBox\" type=\"text\" id=\"MainContent_SubjectTextBox\" />\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    <tr>\r\n                                                        <td>\r\n                                                            <span id=\"MainContent_CommentLabel\"><div class=\"C_TD\">Comment:</div></span>\r\n                                                        </td>\r\n                                                        <td>\r\n                                                            <textarea name=\"ctl00$MainContent$CommentTextBox\" rows=\"5\" cols=\"50\" id=\"MainContent_CommentTextBox\" align=\"left\">\r\n</textarea>\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                    <tr>\r\n                                                        <td></td>\r\n                                                        <td>\r\n                                                            <br />\r\n                                                            <input type=\"hidden\" name=\"ctl00$MainContent$hfRecaptchaToken\" id=\"MainContent_hfRecaptchaToken\" />\r\n                                                            <input type=\"button\" name=\"ctl00$MainContent$SendButton\" value=\"Send\" onclick=\"handleFormSubmit(); return false;__doPostBack(&#39;ctl00$MainContent$SendButton&#39;,&#39;&#39;)\" id=\"MainContent_SendButton\" />\r\n                                                        </td>\r\n                                                    </tr>\r\n                                                </table>\r\n                                            </div>\r\n                                        </td>\r\n                                    </tr>\r\n                                </table>\r\n                            \r\n</div>\r\n                        </td>\r\n                    </tr>\r\n                </table>\r\n            </td>\r\n        </tr>\r\n        <tr>\r\n            <td colspan=\"3\"></td>\r\n        </tr>\r\n    </table>\r\n\r\n      <script>\n      function handleFormSubmit() {\n          if (!window.grecaptcha || !grecaptcha.enterprise) {\n              console.error('reCAPTCHA not loaded');\n              return;\n          }\n\n          grecaptcha.enterprise.ready(function () {\n              grecaptcha.enterprise.execute('6LcKwa0rAAAAAGYq_W7WKglgsaEdqAk0gJV1Oe6_', { action: 'contact_submit' })\n                  .then(function (token) {\n                      console.log(\"captcha submitted. token: \" + token);\n                      document.getElementById('MainContent_hfRecaptchaToken').value = token;\n                    \n                    // Add hidden field to indicate the button was clicked\n                    var hiddenField = document.createElement('input');\n                    hiddenField.type = 'hidden';\n                    hiddenField.name = 'ctl00$MainContent$SendButton';\n                      hiddenField.value = 'Send';\n                      document.forms[0].appendChild(hiddenField);\n\n                      // Submit the form\n                      document.forms[0].submit();\n                  })\n                  .catch(function (err) {\n                      console.error('reCAPTCHA execute failed', err);\n                  });\n          });\n      }\n</script>\r\n\r\n                                            </div>\r\n                                        </td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </td>\r\n                        <td>\r\n                            <div id=\"rightContent\"></div>\r\n                        </td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td></td>\r\n                        <td class=\"footer\">\r\n                            <div class=\"copyright\">\r\n                                <div id=\"FooterLinkDiv\" style=\"margin-top:-5px\">\r\n                                    <a href=\"https://www.comscore.com/About/Privacy/Data-Subject-Rights\" id=\"FooterLink\" target=\"_blank\" style=\"font-weight:bold\">Your Privacy Choices <img src=\"images/privacyoptions.png\" style=\"width:auto; height: 1em; vertical-align: text-top; padding-left: 3px;\"></a>\r\n                                </div>\r\n                                <span id=\"CopyRightLabel\">\u00a9 2026 ScorecardResearch, All Rights Reserved</span>\r\n                            </div>\r\n                        </td>\r\n                        <td></td>\r\n                    </tr>\r\n                    <!-- Begin comScore Tag -->\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            document.write(unescape(\"%3Cscript src='\" + (document.location.protocol == \"https:\" ? \"https://sb\" : \"http://b\")\r\n                                + \".scorecardresearch.com/beacon.js' %3E%3C/script%3E\"));\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        function ProcessHomePage(languageid) {\r\n                            window.location = location.pathname + '?newLanguage=' + languageid;\r\n                            //var ele = document.getElementById(languageid);\r\n                            //ele.style.backgroundColor = \"#868575\";\r\n                            //return false;\r\n                        }\r\n                    </script>\r\n                    <script type=\"text/javascript\">\r\n                        if ('' != '') {\r\n                            COMSCORE.beacon({\r\n                                c1: 2,\r\n                                c2: \"1000001\",\r\n                                c3: \"\",\r\n                                c4: \"\",\r\n                                c5: \"Market Research\",\r\n                                c6: \"\",\r\n                                c15: \"\"\r\n                            });\r\n                        }\r\n                    </script>\r\n                    <noscript>\r\n                        <img src=\"https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1\"\r\nstyle=\"display:none\" width=\"0\" height=\"0\" alt=\"\" />\r\n                    </noscript>\r\n                    <!-- End comScore Tag -->\r\n                </tbody>\r\n            </table>\r\n        \r\n<div class=\"aspNetHidden\">\r\n\r\n\t<input type=\"hidden\" name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"BF0AD029\" />\r\n\t<input type=\"hidden\" name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"ZJDXZlFWpIMEvbhjyy6hALTCQ/PT5AcqRyoNcNbUONLm+Imeo5sjA2R1mZonq5xr3qJS+NpzufXsUXamsWKob/v06qHGzL6Oc3tj+9aC/a9aG5lSE6QvCjUHfK+Jh/Vwr/wPJisxK+w4Bw60b3X7Mc1tLVnutm+TACjrh4QQ5nFopCgx0P5OhiACeQ8R0fQlr79IpqEXEQtxVH8pa2thgQ==\" />\r\n</div>\r\n<script type=\"text/javascript\">document.getElementById('FooterLink').style.display = 'none';</script></form>\r\n    </div>\r\n</body>\r\n    \r\n<script type=\"text/javascript\">\r\n    loadPopCheck();\r\n\r\n    function removeURLParameter(url, parameter) {\r\n        //prefer to use l.search if you have a location/link object\r\n        var urlparts = url.split('?');\r\n        if (urlparts.length >= 2) {\r\n\r\n            var prefix = encodeURIComponent(parameter) + '=';\r\n            var pars = urlparts[1].split(/[&;]/g);\r\n\r\n            //reverse iteration as may be destructive\r\n            for (var i = pars.length; i-- > 0;) {\r\n                //idiom for string.startsWith\r\n                if (pars[i].lastIndexOf(prefix, 0) !== -1) {\r\n                    pars.splice(i, 1);\r\n                }\r\n            }\r\n\r\n            url = urlparts[0] + '?' + pars.join('&');\r\n            return url;\r\n        } else {\r\n            return url;\r\n        }\r\n    }\r\n\r\n\r\n    var querystring = \"newlanguage=\" + \"1\";\r\n\r\n\tvar links = document.getElementsByTagName('a');\r\n\r\n\tfor (var l in links) {\r\n\t    var currentHref = links[l].href;\r\n\r\n\t    if (currentHref !== undefined && currentHref.indexOf('javascript') == -1 && currentHref.toLowerCase().indexOf('scorecardresearch') > -1 && currentHref.indexOf('#') == -1) {\r\n\t        currentHref = removeURLParameter(currentHref, 'newlanguage');\r\n\t        var newHref = currentHref + (currentHref.match(/\\?/) ? '&' : '?') + querystring; //+ \"#section1\";\r\n\r\n\t        links[l].href = newHref;\r\n\t    }\r\n\t}\r\n</script>\r\n</html>",
+      "visible_text": "- Scorecard Research English | Espa\u00f1ol | Nederlands | Svenska | Portugu\u00eas do Brasil Norsk | \u4e2d\u6587 | \u65e5\u672c\u8a9e | Italiano | Deutsch | Fran\u00e7ais | Suomi | Home About Preferences Contact Us Privacy Policy Terms of Service Principles Contact Us Please complete the form below to contact ScorecardResearch. To: ScorecardResearch Support From: (e-mail) Subject: Comment: Your Privacy Choices \u00a9 2026 ScorecardResearch, All Rights Reserved",
+      "word_count": 65,
+      "title": "- Scorecard Research",
+      "meta_description": "Online market research community enabling members to earn cash and prizes for participating in surveys.",
+      "og_site_name": "",
+      "viewport_meta_present": true,
+      "canonical_url": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Contact Us"
+        }
+      ],
+      "h1_texts": [
+        "Contact Us"
+      ],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [
+        {
+          "href": "https://www.scorecardresearch.com/default.aspx",
+          "text": "",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/home.aspx",
+          "text": "Home",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/about.aspx",
+          "text": "About",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/preferences.aspx",
+          "text": "Preferences",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/contact.aspx",
+          "text": "Contact Us",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/privacy.aspx",
+          "text": "Privacy Policy",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/TermsOfService.aspx",
+          "text": "Terms of Service",
+          "rel": ""
+        },
+        {
+          "href": "https://www.scorecardresearch.com/Principle.aspx",
+          "text": "Principles",
+          "rel": ""
+        }
+      ],
+      "external_links": [
+        {
+          "href": "https://www.comscore.com/About/Privacy/Data-Subject-Rights",
+          "text": "Your Privacy Choices",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [
+          {
+            "text": "Send",
+            "type": "button",
+            "tag": "input"
+          }
+        ],
+        "forms": [
+          {
+            "action": "./SupportForm.aspx?newlanguage=1",
+            "method": "post"
+          }
+        ],
+        "cta_links": [
+          {
+            "href": "https://www.scorecardresearch.com/contact.aspx",
+            "text": "Contact Us",
+            "rel": ""
+          }
+        ]
+      },
+      "media_elements": {
+        "images": [
+          {
+            "src": "https://www.scorecardresearch.com/Images/ScorecardResearch_01_Small.jpg",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://www.scorecardresearch.com/images/privacyoptions.png",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": false,
+            "decorative": false
+          },
+          {
+            "src": "https://sb.scorecardresearch.com/b?c1=2&amp;c2=1000001&amp;c3=&amp;c4=&amp;c5=Market Research&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1",
+            "alt": "",
+            "has_alt": false,
+            "alt_attr_present": true,
+            "decorative": true
+          }
+        ],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {
+        "copyright_years": [
+          2026
+        ],
+        "newest_copyright_year": 2026,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [
+          {
+            "context": "From: (e-mail) Subject: Comment: Your Privacy Choices \u00a9 2026",
+            "year": 2026,
+            "age_years": 0
+          }
+        ],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "contact_support",
+      "is_deep_page": false,
+      "render_gap": false,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [
+          "many-inline-or-external-scripts"
+        ],
+        "script_count": 14,
+        "mount_markers": []
+      }
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "Scorecardresearch",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 5,
+    "total_crawl_time_seconds": 15.58,
+    "page_selection": [
+      {
+        "url": "https://www.scorecardresearch.com/About.aspx",
+        "score": 26,
+        "signals": [
+          "article_docs:learn,research",
+          "contact_support:about",
+          "linked-from-homepage",
+          "shallow-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "homepage-link"
+      },
+      {
+        "url": "https://www.scorecardresearch.com/TermsOfService.aspx",
+        "score": 16,
+        "signals": [
+          "product_landing:service",
+          "linked-from-homepage",
+          "shallow-route"
+        ],
+        "purpose_hint": "product_landing",
+        "source": "homepage-link"
+      },
+      {
+        "url": "https://www.scorecardresearch.com/about.aspx",
+        "score": 16,
+        "signals": [
+          "contact_support:about",
+          "linked-from-homepage",
+          "shallow-route"
+        ],
+        "purpose_hint": "contact_support",
+        "source": "homepage-link"
+      },
+      {
+        "url": "https://www.scorecardresearch.com/contact.aspx",
+        "score": 16,
+        "signals": [
+          "contact_support:contact",
+          "linked-from-homepage",
+          "shallow-route"
+        ],
+        "purpose_hint": "contact_support",
+        "source": "homepage-link"
+      }
+    ],
+    "resources_observed": 0,
+    "readable_pages": 5,
+    "access_status_counts": {
+      "readable": 5
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {
+    "https://scorecardresearch.com/": "https://www.scorecardresearch.com/Home.aspx",
+    "https://www.scorecardresearch.com/contact.aspx": "https://www.scorecardresearch.com/SupportForm.aspx?newlanguage=1"
+  }
+}

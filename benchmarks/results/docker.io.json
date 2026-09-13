@@ -1,0 +1,351 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "docker.io",
+    "rank": 990,
+    "technical_type": "unknown",
+    "url": "https://docker.io/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:36:21.882745+00:00",
+  "finished_at": "2026-09-13T16:36:36.508303+00:00",
+  "elapsed_seconds": 14.626,
+  "error": null,
+  "report": {
+    "site": "https://www.docker.com",
+    "audited_at": "2026-09-13T16:36:36Z",
+    "summary": {
+      "total_findings": 3,
+      "critical": 0,
+      "high": 2,
+      "medium": 1,
+      "low": 0,
+      "discoverability_findings": 3,
+      "engagement_findings": 0,
+      "citability_score": 71,
+      "citability_score_breakdown": {
+        "score": 71,
+        "base": 100,
+        "penalty": 29,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 5,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/pricing/contact-sales/": 12,
+          "schema:product-offer-missing:/pricing/": 12,
+          "freshness:stale-claim:2024:https://www.docker.com/pricing/faq/": 5
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 3
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.docker.com/pricing/contact-sales/ via jsonld_schema_extractor [2026-09-13T16:36:33Z]: Commercial/product page (https://www.docker.com/pricing/contact-sales/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/pricing/contact-sales/",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Let’s get to know each other\",\n  \"url\": \"https://www.docker.com/pricing/contact-sales/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Docker\"\n  },\n  \"description\": \"Interested in getting started with Docker Business? Contact our sales team to access premium features for medium to large businesses.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.docker.com/pricing/contact-sales/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.docker.com/pricing/contact-sales/",
+          "observation": "Commercial/product page (https://www.docker.com/pricing/contact-sales/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:36:33Z",
+          "confidence": "high",
+          "evidence_id": "E-e79521fd5a65"
+        },
+        "evidence_refs": [
+          "E-e79521fd5a65"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.docker.com/pricing/ via jsonld_schema_extractor [2026-09-13T16:36:33Z]: Commercial/product page (https://www.docker.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/pricing/",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Find Your Perfect Docker Plan\",\n  \"url\": \"https://www.docker.com/pricing/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Docker\"\n  },\n  \"description\": \"Docker licensing is always free for personal use. But what if your team or business wants to use Docker? Compare our pricing options and features.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.docker.com/pricing/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.docker.com/pricing/",
+          "observation": "Commercial/product page (https://www.docker.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T16:36:33Z",
+          "confidence": "high",
+          "evidence_id": "E-c099057d8f19"
+        },
+        "evidence_refs": [
+          "E-c099057d8f19"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Outdated time-sensitive claim or promotion found on active page (2024)",
+        "category": "freshness",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.docker.com/pricing/faq/ via dated_claim_temporal_analysis [2026-09-13T16:36:33Z]: Page contains active time-sensitive statement referencing 2024 (2 years old): \"pricing goes into effect on December 10, 2024\". (Confidence: high)\nAdditional evidence (freshness-corroboration): Observed at https://www.docker.com/pricing/faq/ via dated_claim_temporal_analysis [2026-09-13T16:36:33Z]: Page contains active time-sensitive statement referencing 2024 (2 years old): \"pricing will take effect on your next renewal date after December 9, 2024\". (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-claim:2024:https://www.docker.com/pricing/faq/",
+        "suggested_action": {
+          "summary": "Update or archive expired time-sensitive offers and claims.",
+          "priority": "medium",
+          "how_to_fix": "Review the text referencing 2024 on https://www.docker.com/pricing/faq/ and update with current pricing/event information or remove expired promotions.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.docker.com/pricing/faq/",
+          "observation": "Page contains active time-sensitive statement referencing 2024 (2 years old): \"pricing goes into effect on December 10, 2024\".",
+          "method": "dated_claim_temporal_analysis",
+          "timestamp": "2026-09-13T16:36:33Z",
+          "confidence": "high",
+          "evidence_id": "E-41c37580d026"
+        },
+        "evidence_refs": [
+          "E-3a1abac10f04",
+          "E-41c37580d026"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.docker.com/pricing/contact-sales/",
+          "score": 26,
+          "signals": [
+            "product_pricing:pricing",
+            "contact_support:contact",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.docker.com/pricing/faq/",
+          "score": 26,
+          "signals": [
+            "product_pricing:pricing",
+            "article_docs:faq",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.docker.com/products/ai-governance/",
+          "score": 24,
+          "signals": [
+            "product_landing:products",
+            "contact_support:team",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.docker.com/pricing/",
+          "score": 18,
+          "signals": [
+            "product_pricing:pricing",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.docker.com/pricing/contact-sales/",
+        "observation": "Commercial/product page (https://www.docker.com/pricing/contact-sales/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:36:33Z",
+        "confidence": "high",
+        "evidence_id": "E-e79521fd5a65"
+      },
+      {
+        "url": "https://www.docker.com/pricing/",
+        "observation": "Commercial/product page (https://www.docker.com/pricing/) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T16:36:33Z",
+        "confidence": "high",
+        "evidence_id": "E-c099057d8f19"
+      },
+      {
+        "url": "https://www.docker.com/pricing/faq/",
+        "observation": "Page contains active time-sensitive statement referencing 2024 (2 years old): \"pricing goes into effect on December 10, 2024\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T16:36:33Z",
+        "confidence": "high",
+        "evidence_id": "E-41c37580d026"
+      },
+      {
+        "url": "https://www.docker.com/pricing/faq/",
+        "observation": "Page contains active time-sensitive statement referencing 2024 (2 years old): \"pricing will take effect on your next renewal date after December 9, 2024\".",
+        "method": "dated_claim_temporal_analysis",
+        "timestamp": "2026-09-13T16:36:33Z",
+        "confidence": "high",
+        "evidence_id": "E-3a1abac10f04"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Mark up existing question-and-answer content with FAQPage schema",
+        "rationale": "The site already contains question-shaped content, but none of it is marked as FAQPage. FAQPage is the highest-leverage schema type for AI citation because its question/answer structure matches how retrieval systems chunk content and lift a quotable answer. The content already exists; only the markup is missing.",
+        "suggested_action": {
+          "summary": "Add FAQPage JSON-LD to pages that already answer common questions.",
+          "priority": "high",
+          "how_to_fix": "Wrap each question and its answer in FAQPage JSON-LD with mainEntity -> Question -> acceptedAnswer. Mark up the answers you already publish rather than writing new ones."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

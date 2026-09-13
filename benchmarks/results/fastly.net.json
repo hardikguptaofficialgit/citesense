@@ -1,0 +1,412 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "fastly.net",
+    "rank": 401,
+    "technical_type": "unknown",
+    "url": "https://fastly.net/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:44:28.568758+00:00",
+  "finished_at": "2026-09-13T15:44:37.504675+00:00",
+  "elapsed_seconds": 8.936,
+  "error": null,
+  "report": {
+    "site": "https://www.fastly.com",
+    "audited_at": "2026-09-13T15:44:37Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 4,
+      "engagement_findings": 0,
+      "citability_score": 83,
+      "citability_score_breakdown": {
+        "score": 83,
+        "base": 100,
+        "penalty": 17,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 15,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "schema:root-organization-missing": 5,
+          "meta:missing-description": 5,
+          "schema:syntax-error": 5,
+          "extractability:images-without-alt": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fastly.com/ via jsonld_schema_extractor [2026-09-13T15:44:34Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "medium",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fastly.com/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:44:34Z",
+          "confidence": "high",
+          "evidence_id": "E-22f682214fe0"
+        },
+        "evidence_refs": [
+          "E-22f682214fe0"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing meta description on key landing page",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fastly.com/ via html_meta_inspector [2026-09-13T15:44:34Z]: Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-description",
+        "suggested_action": {
+          "summary": "Add an informative meta description tag.",
+          "priority": "medium",
+          "how_to_fix": "Add <meta name=\"description\" content=\"...\"> summarizing the brand and page offerings.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Build, Secure, and Deliver. Instantly.\",\n  \"url\": \"https://www.fastly.com/\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Fastly\"\n  },\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.fastly.com/\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fastly.com/",
+          "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T15:44:34Z",
+          "confidence": "high",
+          "evidence_id": "E-83a89b08ce33"
+        },
+        "evidence_refs": [
+          "E-83a89b08ce33"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Syntax error in JSON-LD structured data script",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.fastly.com/services/support-plans via jsonld_parser [2026-09-13T15:44:34Z]: Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fastly.com/blog/fastly-is-faster-at-time-to-first-byte via jsonld_parser [2026-09-13T15:44:34Z]: Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fastly.com/products/web-application-api-protection via jsonld_parser [2026-09-13T15:44:34Z]: Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fastly.com/company via jsonld_parser [2026-09-13T15:44:34Z]: Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197). (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:syntax-error",
+        "suggested_action": {
+          "summary": "Fix JSON-LD syntax errors to ensure search and AI parsers can read metadata.",
+          "priority": "medium",
+          "how_to_fix": "Validate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fastly.com/services/support-plans",
+          "observation": "Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197).",
+          "method": "jsonld_parser",
+          "timestamp": "2026-09-13T15:44:34Z",
+          "confidence": "high",
+          "evidence_id": "E-6aa9ded55e23"
+        },
+        "evidence_refs": [
+          "E-48b87af417bb",
+          "E-6aa9ded55e23",
+          "E-9f912f7a8200",
+          "E-ff0b77f2f3a7"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.fastly.com/products/web-application-api-protection via image_alt_coverage_inspection [2026-09-13T15:44:34Z]: 11 of 16 images (69%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.fastly.com/company via image_alt_coverage_inspection [2026-09-13T15:44:34Z]: 24 of 25 images (96%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.fastly.com/products/web-application-api-protection",
+          "observation": "11 of 16 images (69%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:44:34Z",
+          "confidence": "high",
+          "evidence_id": "E-6e49a07d18cc"
+        },
+        "evidence_refs": [
+          "E-6e49a07d18cc",
+          "E-af2a417b9abc"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.fastly.com/services/support-plans",
+          "score": 36,
+          "signals": [
+            "product_pricing:plans",
+            "product_landing:services",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fastly.com/blog/fastly-is-faster-at-time-to-first-byte",
+          "score": 24,
+          "signals": [
+            "article_docs:blog",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fastly.com/products/web-application-api-protection",
+          "score": 24,
+          "signals": [
+            "product_landing:products",
+            "article_docs:api",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.fastly.com/company",
+          "score": 16,
+          "signals": [
+            "contact_support:about,company",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.fastly.com/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-22f682214fe0"
+      },
+      {
+        "url": "https://www.fastly.com/",
+        "observation": "Page HTML contains no <meta name=\"description\"> tag, depriving search and AI engines of an authoritative snippet summary.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-83a89b08ce33"
+      },
+      {
+        "url": "https://www.fastly.com/services/support-plans",
+        "observation": "Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-6aa9ded55e23"
+      },
+      {
+        "url": "https://www.fastly.com/blog/fastly-is-faster-at-time-to-first-byte",
+        "observation": "Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-ff0b77f2f3a7"
+      },
+      {
+        "url": "https://www.fastly.com/products/web-application-api-protection",
+        "observation": "Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-48b87af417bb"
+      },
+      {
+        "url": "https://www.fastly.com/products/web-application-api-protection",
+        "observation": "11 of 16 images (69%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-6e49a07d18cc"
+      },
+      {
+        "url": "https://www.fastly.com/company",
+        "observation": "Found 1 malformed JSON-LD script block(s): Block 2: Invalid control character at: line 6 column 72 (char 197).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-9f912f7a8200"
+      },
+      {
+        "url": "https://www.fastly.com/company",
+        "observation": "24 of 25 images (96%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:44:34Z",
+        "confidence": "high",
+        "evidence_id": "E-af2a417b9abc"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

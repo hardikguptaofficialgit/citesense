@@ -1,0 +1,430 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "crashlytics.com",
+    "rank": 588,
+    "technical_type": "unknown",
+    "url": "https://crashlytics.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:57:05.270051+00:00",
+  "finished_at": "2026-09-13T15:57:32.954335+00:00",
+  "elapsed_seconds": 27.684,
+  "error": null,
+  "report": {
+    "site": "https://firebase.google.com",
+    "audited_at": "2026-09-13T15:57:32Z",
+    "summary": {
+      "total_findings": 4,
+      "critical": 0,
+      "high": 2,
+      "medium": 2,
+      "low": 0,
+      "discoverability_findings": 4,
+      "engagement_findings": 0,
+      "citability_score": 66,
+      "citability_score_breakdown": {
+        "score": 66,
+        "base": 100,
+        "penalty": 34,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 10,
+          "low": 0
+        },
+        "penalty_by_root_cause": {
+          "schema:root-organization-missing": 12,
+          "schema:product-offer-missing:/pricing": 12,
+          "schema:missing-required-fields": 5,
+          "extractability:images-without-alt": 5
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 4
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Organization structured data on root landing page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://firebase.google.com/products/crashlytics/ via jsonld_schema_extractor [2026-09-13T15:57:22Z]: Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks. (Confidence: high)\nAdditional evidence (citation-simulator): Observed at https://firebase.google.com/products/crashlytics/ via onsite_answerability_probe [2026-09-13T15:57:32Z]: Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Firebase?\" from this site, so it must fall back to third-party sources or omit the brand. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:root-organization-missing",
+        "suggested_action": {
+          "summary": "Add Organization JSON-LD markup to the homepage.",
+          "priority": "high",
+          "how_to_fix": "Add a JSON-LD script on the homepage declaring @type 'Organization' with name, url, logo, and sameAs links to authoritative profiles.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Firebase\",\n  \"url\": \"https://firebase.google.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Explore how Firebase Crashlytics provides realtime app crash &amp;amp; stability reporting for iOS, Android, Flutter, and Unity apps so you can fix crashes faster.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "citation-simulator",
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://firebase.google.com/products/crashlytics/",
+          "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:57:22Z",
+          "confidence": "high",
+          "evidence_id": "E-d51695e58ab6"
+        },
+        "evidence_refs": [
+          "E-a82d358ecac6",
+          "E-d51695e58ab6"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://firebase.google.com/pricing via jsonld_schema_extractor [2026-09-13T15:57:22Z]: Commercial/product page (https://firebase.google.com/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/pricing",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Explore pricing plans, and if eligible, get $300 in free credit\",\n  \"url\": \"https://firebase.google.com/pricing\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Firebase\"\n  },\n  \"description\": \"Get started with Firebase at no cost, and then scale worldwide to millions of users, paying only for what you use.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://firebase.google.com/pricing\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://firebase.google.com/pricing",
+          "observation": "Commercial/product page (https://firebase.google.com/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:57:22Z",
+          "confidence": "high",
+          "evidence_id": "E-0dccfe79e07b"
+        },
+        "evidence_refs": [
+          "E-0dccfe79e07b"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://firebase.google.com/products/crashlytics/ via schema_field_validator [2026-09-13T15:57:22Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://firebase.google.com/solutions via schema_field_validator [2026-09-13T15:57:22Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://firebase.google.com/support/faq/ via schema_field_validator [2026-09-13T15:57:22Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://firebase.google.com/pricing via schema_field_validator [2026-09-13T15:57:22Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://firebase.google.com/support via schema_field_validator [2026-09-13T15:57:22Z]: Schema entities are missing required properties: Article missing datePublished. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://firebase.google.com/products/crashlytics/",
+          "observation": "Schema entities are missing required properties: Article missing datePublished.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T15:57:22Z",
+          "confidence": "high",
+          "evidence_id": "E-3c98bebf5ecb"
+        },
+        "evidence_refs": [
+          "E-28c6d4d813f6",
+          "E-3c98bebf5ecb",
+          "E-6f1957673c81",
+          "E-92522bf498c1",
+          "E-d0ed038ec241"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://firebase.google.com/solutions via image_alt_coverage_inspection [2026-09-13T15:57:22Z]: 23 of 25 images (92%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://firebase.google.com/pricing via image_alt_coverage_inspection [2026-09-13T15:57:22Z]: 23 of 25 images (92%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "medium",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://firebase.google.com/solutions",
+          "observation": "23 of 25 images (92%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T15:57:22Z",
+          "confidence": "high",
+          "evidence_id": "E-e7e6c809925e"
+        },
+        "evidence_refs": [
+          "E-0eb881a6d37a",
+          "E-e7e6c809925e"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://firebase.google.com/solutions",
+          "score": 26,
+          "signals": [
+            "product_landing:solutions",
+            "audience:solutions",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://firebase.google.com/support/faq/",
+          "score": 24,
+          "signals": [
+            "article_docs:faq",
+            "contact_support:support",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://firebase.google.com/pricing",
+          "score": 18,
+          "signals": [
+            "product_pricing:pricing",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://firebase.google.com/support",
+          "score": 16,
+          "signals": [
+            "contact_support:support",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://firebase.google.com/products/crashlytics/",
+        "observation": "Root homepage contains 0 Organization or LocalBusiness JSON-LD schema blocks.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-d51695e58ab6"
+      },
+      {
+        "url": "https://firebase.google.com/products/crashlytics/",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-3c98bebf5ecb"
+      },
+      {
+        "url": "https://firebase.google.com/solutions",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-6f1957673c81"
+      },
+      {
+        "url": "https://firebase.google.com/solutions",
+        "observation": "23 of 25 images (92%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-e7e6c809925e"
+      },
+      {
+        "url": "https://firebase.google.com/support/faq/",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-28c6d4d813f6"
+      },
+      {
+        "url": "https://firebase.google.com/pricing",
+        "observation": "Commercial/product page (https://firebase.google.com/pricing) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-0dccfe79e07b"
+      },
+      {
+        "url": "https://firebase.google.com/pricing",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-d0ed038ec241"
+      },
+      {
+        "url": "https://firebase.google.com/pricing",
+        "observation": "23 of 25 images (92%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-0eb881a6d37a"
+      },
+      {
+        "url": "https://firebase.google.com/support",
+        "observation": "Schema entities are missing required properties: Article missing datePublished.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:57:22Z",
+        "confidence": "high",
+        "evidence_id": "E-92522bf498c1"
+      },
+      {
+        "url": "https://firebase.google.com/products/crashlytics/",
+        "observation": "Across 5 crawled page(s), no Organization/LocalBusiness schema states who the brand is in machine-readable form. An assistant that fetched these pages could not quote an answer to \"What is Firebase?\" from this site, so it must fall back to third-party sources or omit the brand.",
+        "method": "onsite_answerability_probe",
+        "timestamp": "2026-09-13T15:57:32Z",
+        "confidence": "medium",
+        "evidence_id": "E-a82d358ecac6"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

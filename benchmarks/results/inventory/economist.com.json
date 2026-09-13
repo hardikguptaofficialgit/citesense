@@ -1,0 +1,848 @@
+{
+  "seed_url": "https://economist.com/",
+  "origin": "https://economist.com",
+  "robots_txt": {
+    "found": true,
+    "url": "https://economist.com/robots.txt",
+    "status": 200,
+    "raw": "# robots.txt\n\n# Sitemaps\n\nSitemap: https://www.economist.com/sitemap.xml\nSitemap: https://www.economist.com/googlenews.xml\n\n# ==========================================\n# USER-FACING LLM BOTS\n# Allowed to fetch on behalf of a user\n# ==========================================\n\nUser-agent: ChatGPT-User\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\nUser-agent: Claude-SearchBot\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\nUser-agent: Claude-User\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\nUser-agent: Claude-Web\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\nUser-agent: PerplexityBot\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\nUser-agent: Perplexity-User\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\n# I have added OAI-SearchBot (OpenAI's live search agent) \n# as it behaves the same way as ChatGPT-User.\nUser-agent: OAI-SearchBot\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\n# ==========================================\n# TRAINING BOTS & MASS SCRAPERS\n# Completely blocked from the entire site\n# ==========================================\n\nUser-agent: GPTBot\nDisallow: /\n\n# Google-Extended is used by the Gemini app for searches on\n# behalf of the user but it also used for training\nUser-agent: Google-Extended\nAllow: /pro$\nAllow: /pro/\nAllow: /syndication$\nAllow: /syndication/\nDisallow: /\n\nUser-agent: anthropic-ai\nDisallow: /\n\nUser-agent: Applebot-Extended\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n\n# ==========================================\n# OTHER MISCELLANEOUS BOTS\n# Completely blocked\n# ==========================================\n\nUser-agent: PiplBot\nDisallow: /\n\nUser-agent: TurnitinBot\nDisallow: /\n\nUser-agent: PetalBot\nDisallow: /\n\nUser-agent: MoodleBot\nDisallow: /\n\nUser-agent: magpie-crawler\nDisallow: /\n\nUser-agent: ia_archiver\nDisallow: /\n\nUser-Agent: Mozilla/5.0 (compatible; parse.ly scraper/0.16; +http://parsely.com)\nDisallow: /checkout\n\n# ==========================================\n# GENERAL CRAWLERS (e.g., Googlebot, Bingbot)\n# Allowed by default, but blocked from select paths\n# ==========================================\nUser-agent: *\nDisallow: /5605/\nDisallow: /pubads.g.doubleclick.net/\nDisallow: /assets/infographic/\nDisallow: /search/\nDisallow: /search?q=\nDisallow: /graphql\nDisallow: /subscribe/getstarted/\nDisallow: /checkout\nDisallow: /switch*\nDisallow: /audio-edition-podcast/*/index.xml",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": null,
+          "scope": "wildcard/default"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/pricing": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/products": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/about": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/docs": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        },
+        "/contact": {
+          "allowed": false,
+          "matched_rule": "Disallow: /",
+          "scope": "explicit"
+        }
+      }
+    },
+    "partially_blocked_agents": {
+      "GPTBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "ClaudeBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Google-Extended": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "CCBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Applebot-Extended": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Bytespider": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "OAI-SearchBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Claude-SearchBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "PerplexityBot": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "ChatGPT-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Claude-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ],
+      "Perplexity-User": [
+        "/",
+        "/pricing",
+        "/products",
+        "/about",
+        "/docs",
+        "/contact"
+      ]
+    },
+    "sitemaps_declared": [
+      "https://www.economist.com/sitemap.xml",
+      "https://www.economist.com/googlenews.xml"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://www.economist.com/sitemap.xml",
+      "found": false,
+      "status": 403,
+      "discovered_url_count": 0
+    },
+    {
+      "url": "https://www.economist.com/googlenews.xml",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 8
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 403,
+      "url": "https://economist.com/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 403,
+      "url": "https://economist.com/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 403,
+      "url": "https://economist.com/ai.txt"
+    }
+  },
+  "pages": {
+    "https://www.economist.com/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://economist.com/",
+      "final_url": "https://www.economist.com/",
+      "status_code": 403,
+      "load_time_seconds": 0.4,
+      "raw_html": "<html lang=\"en\"><head><title>economist.com</title><style>#cmsg{animation: A 1.5s;}@keyframes A{0%{opacity:0;}99%{opacity:0;}100%{opacity:1;}}</style></head><body style=\"margin:0\"><p id=\"cmsg\">Please enable JS and disable any ad blocker</p><script data-cfasync=\"false\">var dd={'rt':'i','cid':'AHrlqAAAAAMApGZ5r298qfQAaBzcqQ==','hsh':'E0FE600416DD870936AC00539B6667','b':4202,'s':62959,'e':'e06add766d6a993815ff3c6b038464fb4157ea9becfec999074611f385189b4565bbb3e6b998ecf5eef4c112b87c25ca','qp':'','host':'geo.captcha-delivery.com','cookie':'mtsjbn0XO9PV9Ck9TQwcUelCzOrHoSIRUZXNi4HtZKb3k8YwFfrcOxGpod01YsprL~p8bjuNoAZ4JUsA3TPFdckEoyopggG0Xfcg3dD84Qi_FbjaFDGr9my406tKddLX'}</script><script data-cfasync=\"false\" src=\"https://ct.captcha-delivery.com/i.js\"></script><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495\" integrity=\"sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"f993f726f4db4f3d9107d9ff749c804b\",\"spa\":2}' crossorigin=\"anonymous\"></script>\n</body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.economist.com/asia/2026/09/13/why-indians-are-unhappy-about-78-growth": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.economist.com/asia/2026/09/13/why-indians-are-unhappy-about-78-growth",
+      "final_url": "https://www.economist.com/asia/2026/09/13/why-indians-are-unhappy-about-78-growth",
+      "status_code": 403,
+      "load_time_seconds": 0.19,
+      "raw_html": "<html lang=\"en\"><head><title>economist.com</title><style>#cmsg{animation: A 1.5s;}@keyframes A{0%{opacity:0;}99%{opacity:0;}100%{opacity:1;}}</style></head><body style=\"margin:0\"><p id=\"cmsg\">Please enable JS and disable any ad blocker</p><script data-cfasync=\"false\">var dd={'rt':'i','cid':'AHrlqAAAAAMAYcSUcVG1RD4AaBzcqQ==','hsh':'E0FE600416DD870936AC00539B6667','b':4202,'s':62125,'e':'82aeea2eec2a2212b994c32f1fc80c4c7d9523054ac6bac9273a0491f17eabc24afbd2767b17de666bb0ff421793c911','qp':'','host':'geo.captcha-delivery.com','cookie':'UUi6YxhjDgU0WuEupxU0YnUoqtIMzAM1SNs5RkYIKYyGFi_vBd5OwXAN1ZzYPQbcl2_iezTYSOUZb0Pxpe3gLXi5KZekv7OOcy2cA0gUE8CrVPRw1Me6UJEGz_02ayo2'}</script><script data-cfasync=\"false\" src=\"https://ct.captcha-delivery.com/i.js\"></script><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495\" integrity=\"sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"f993f726f4db4f3d9107d9ff749c804b\",\"spa\":2}' crossorigin=\"anonymous\"></script>\n</body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.economist.com/business/2026/09/13/how-an-oil-supply-crisis-could-bring-about-an-investment-boom": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.economist.com/business/2026/09/13/how-an-oil-supply-crisis-could-bring-about-an-investment-boom",
+      "final_url": "https://www.economist.com/business/2026/09/13/how-an-oil-supply-crisis-could-bring-about-an-investment-boom",
+      "status_code": 403,
+      "load_time_seconds": 0.19,
+      "raw_html": "<html lang=\"en\"><head><title>economist.com</title><style>#cmsg{animation: A 1.5s;}@keyframes A{0%{opacity:0;}99%{opacity:0;}100%{opacity:1;}}</style></head><body style=\"margin:0\"><p id=\"cmsg\">Please enable JS and disable any ad blocker</p><script data-cfasync=\"false\">var dd={'rt':'i','cid':'AHrlqAAAAAMAYD7QKJCnZ8UAaBzcqQ==','hsh':'E0FE600416DD870936AC00539B6667','b':4202,'s':60183,'e':'53dacbdd40715203ddf8a19c4d76a50803dbe8e419d30d40afc482269db46af93327b79da4acf8efd7b53192db7b37e6','qp':'','host':'geo.captcha-delivery.com','cookie':'lF9xhvCTG6iaLKqK8XZoBPELwxsYvF3e4DFwgnPefVd4m4s_1R6r0nwU2kdiGFFiyy7U1BKtJZUntA_vkg0I1epQxGxrzInmgAbGPGI9y58QuCcdxqs_2BAtzLqNHBRJ'}</script><script data-cfasync=\"false\" src=\"https://ct.captcha-delivery.com/i.js\"></script><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495\" integrity=\"sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"f993f726f4db4f3d9107d9ff749c804b\",\"spa\":2}' crossorigin=\"anonymous\"></script>\n</body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.economist.com/united-states/2026/09/11/checks-and-balance-newsletter-what-america-can-learn-from-new-yorks-resilience-after-911": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.economist.com/united-states/2026/09/11/checks-and-balance-newsletter-what-america-can-learn-from-new-yorks-resilience-after-911",
+      "final_url": "https://www.economist.com/united-states/2026/09/11/checks-and-balance-newsletter-what-america-can-learn-from-new-yorks-resilience-after-911",
+      "status_code": 403,
+      "load_time_seconds": 0.22,
+      "raw_html": "<html lang=\"en\"><head><title>economist.com</title><style>#cmsg{animation: A 1.5s;}@keyframes A{0%{opacity:0;}99%{opacity:0;}100%{opacity:1;}}</style></head><body style=\"margin:0\"><p id=\"cmsg\">Please enable JS and disable any ad blocker</p><script data-cfasync=\"false\">var dd={'rt':'i','cid':'AHrlqAAAAAMAigcopNPTCMMAaBzcqQ==','hsh':'E0FE600416DD870936AC00539B6667','b':4202,'s':62127,'e':'0b00957764d2e72e8874f86e804f9f431c44a4fc64004648241f8bae2cd73890d6a98de1982898735f5ac49ce638be8e','qp':'','host':'geo.captcha-delivery.com','cookie':'InlAGs~ue8I1RB8AnLBtfztFQX759YDIAza36E3ruBnYx_vPgYQEcqmIH0vKcIqtWd~qnNIYHVERpOJSWCI~NbSF1H~rEVze9_tYMZvGgQht18dPdctuiUktafacjOnP'}</script><script data-cfasync=\"false\" src=\"https://ct.captcha-delivery.com/i.js\"></script><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495\" integrity=\"sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"f993f726f4db4f3d9107d9ff749c804b\",\"spa\":2}' crossorigin=\"anonymous\"></script>\n</body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    },
+    "https://www.economist.com/finance-and-economics/2026/09/12/wanted-new-business-finance-and-economics-interns": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": true,
+      "inconclusive_reason": "HTTP 403 or response body indicates an anti-bot challenge",
+      "access_status": "anti-bot-challenge",
+      "url": "https://www.economist.com/finance-and-economics/2026/09/12/wanted-new-business-finance-and-economics-interns",
+      "final_url": "https://www.economist.com/finance-and-economics/2026/09/12/wanted-new-business-finance-and-economics-interns",
+      "status_code": 403,
+      "load_time_seconds": 0.19,
+      "raw_html": "<html lang=\"en\"><head><title>economist.com</title><style>#cmsg{animation: A 1.5s;}@keyframes A{0%{opacity:0;}99%{opacity:0;}100%{opacity:1;}}</style></head><body style=\"margin:0\"><p id=\"cmsg\">Please enable JS and disable any ad blocker</p><script data-cfasync=\"false\">var dd={'rt':'i','cid':'AHrlqAAAAAMABLqm7LKg5ccAaBzcqQ==','hsh':'E0FE600416DD870936AC00539B6667','b':4202,'s':60184,'e':'0765d90375ac8f935e012ca79ab3663c6d28fa00767374a924e7473e3fd77eb2db6147ce45221e8a6ba79d1149d2b3c4','qp':'','host':'geo.captcha-delivery.com','cookie':'CwZ8f~QCKWw5f86Ee5CbNzzjNipzYix~AdniRu6t9F3f45hpDOoFk~Hqt7z1IOJnJ9JRlhHjNs5L3OcHApBLyHRCT_6lsi0fQGEnIF3qR5lky6PVasVt4hFFY9v6eiNS'}</script><script data-cfasync=\"false\" src=\"https://ct.captcha-delivery.com/i.js\"></script><script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495\" integrity=\"sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"f993f726f4db4f3d9107d9ff749c804b\",\"spa\":2}' crossorigin=\"anonymous\"></script>\n</body></html>",
+      "visible_text": "",
+      "word_count": 0,
+      "title": "",
+      "meta_description": "",
+      "viewport_meta_present": false,
+      "canonical_url": null,
+      "headings": [],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 0
+      },
+      "dates_and_claims": {},
+      "page_purpose": "unknown",
+      "is_deep_page": false
+    }
+  },
+  "resources": {},
+  "ground_truth": {
+    "brand_name": "Economist",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "domain_label"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 5,
+    "total_crawl_time_seconds": 4.75,
+    "page_selection": [
+      {
+        "url": "https://www.economist.com/asia/2026/09/13/why-indians-are-unhappy-about-78-growth",
+        "score": 9,
+        "signals": [
+          "contact_support:about",
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.economist.com/business/2026/09/13/how-an-oil-supply-crisis-could-bring-about-an-investment-boom",
+        "score": 9,
+        "signals": [
+          "contact_support:about",
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.economist.com/united-states/2026/09/11/checks-and-balance-newsletter-what-america-can-learn-from-new-yorks-resilience-after-911",
+        "score": 9,
+        "signals": [
+          "article_docs:learn",
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://www.economist.com/finance-and-economics/2026/09/12/wanted-new-business-finance-and-economics-interns",
+        "score": -1,
+        "signals": [
+          "listed-in-sitemap",
+          "dated-editorial-route"
+        ],
+        "purpose_hint": "article_docs",
+        "source": "sitemap"
+      }
+    ],
+    "resources_observed": 0,
+    "readable_pages": 0,
+    "access_status_counts": {
+      "anti-bot-challenge": 5
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {
+    "https://economist.com/": "https://www.economist.com/"
+  }
+}

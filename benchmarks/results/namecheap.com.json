@@ -1,0 +1,580 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "namecheap.com",
+    "rank": 575,
+    "technical_type": "unknown",
+    "url": "https://namecheap.com/",
+    "validation": {
+      "reason": "http-200",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T15:56:17.107994+00:00",
+  "finished_at": "2026-09-13T15:56:53.279565+00:00",
+  "elapsed_seconds": 36.172,
+  "error": null,
+  "report": {
+    "site": "https://www.namecheap.com",
+    "audited_at": "2026-09-13T15:56:53Z",
+    "summary": {
+      "total_findings": 8,
+      "critical": 0,
+      "high": 3,
+      "medium": 3,
+      "low": 2,
+      "discoverability_findings": 5,
+      "engagement_findings": 3,
+      "citability_score": 46,
+      "citability_score_breakdown": {
+        "score": 46,
+        "base": 100,
+        "penalty": 54,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 36,
+          "medium": 15,
+          "low": 3
+        },
+        "penalty_by_root_cause": {
+          "schema:product-offer-missing:/wordpress/overview/": 12,
+          "meta:missing-title": 12,
+          "engagement:missing-h1": 12,
+          "schema:missing-required-fields": 5,
+          "schema:syntax-error": 5,
+          "engagement:broken-internal-links": 5,
+          "schema:organization-missing-sameas": 2,
+          "engagement:missing-breadcrumbs": 1
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 8
+      }
+    },
+    "findings": [
+      {
+        "title": "Missing Schema.org Product and Offer structured data on commercial page",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly via jsonld_schema_extractor [2026-09-13T15:56:44Z]: Commercial/product page (https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly) contains no Product or Offer structured data to convey machine-readable pricing and features. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:product-offer-missing:/wordpress/overview/",
+        "suggested_action": {
+          "summary": "Add Schema.org Product and Offer JSON-LD to commercial and pricing pages.",
+          "priority": "high",
+          "how_to_fix": "Embed JSON-LD with @type 'Product' or 'Service' and nested 'Offer' elements defining prices, currency, billing cycles, and availability.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"Hosting for WordPress Plans Overview\",\n  \"url\": \"https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"Namecheap\"\n  },\n  \"description\": \"Compare EasyWP Hosting for WordPress plans. Choose from Starter, Turbo, or Supersonic plans with features like free domain, SSL, CDN, and automated backups.\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly\",\n    \"price\": \"REPLACE_WITH_PRICE_AMOUNT\",\n    \"priceCurrency\": \"REPLACE_WITH_ISO_4217_CURRENCY_CODE\"\n  }\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly",
+          "observation": "Commercial/product page (https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:56:44Z",
+          "confidence": "high",
+          "evidence_id": "E-4ea7a4ff10e3"
+        },
+        "evidence_refs": [
+          "E-4ea7a4ff10e3"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing HTML document <title> tag",
+        "category": "structured-data",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year via html_meta_inspector [2026-09-13T15:56:44Z]: Page HTML contains no <title> tag. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "meta:missing-title",
+        "suggested_action": {
+          "summary": "Add a descriptive <title> tag.",
+          "priority": "high",
+          "how_to_fix": "Add a unique, informative <title> tag inside the <head> element.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year",
+          "observation": "Page HTML contains no <title> tag.",
+          "method": "html_meta_inspector",
+          "timestamp": "2026-09-13T15:56:44Z",
+          "confidence": "high",
+          "evidence_id": "E-8f6c34db7253"
+        },
+        "evidence_refs": [
+          "E-8f6c34db7253"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly via heading_structure_inspection [2026-09-13T15:56:44Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)\nAdditional evidence (engagement-audit): Observed at https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year via heading_structure_inspection [2026-09-13T15:56:44Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T15:56:44Z",
+          "confidence": "high",
+          "evidence_id": "E-e192d3dcb9d5"
+        },
+        "evidence_refs": [
+          "E-e12e20a87f7e",
+          "E-e192d3dcb9d5"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Incomplete Schema.org entity fields in JSON-LD markup",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.namecheap.com/ via schema_field_validator [2026-09-13T15:56:44Z]: Schema entities are missing required properties: Organization missing name. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:missing-required-fields",
+        "suggested_action": {
+          "summary": "Populate required Schema.org properties.",
+          "priority": "medium",
+          "how_to_fix": "Ensure all required fields (e.g. name, price, priceCurrency, headline) are populated in declared Schema.org blocks.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/",
+          "observation": "Schema entities are missing required properties: Organization missing name.",
+          "method": "schema_field_validator",
+          "timestamp": "2026-09-13T15:56:44Z",
+          "confidence": "high",
+          "evidence_id": "E-4afe95dff6bc"
+        },
+        "evidence_refs": [
+          "E-4afe95dff6bc"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Syntax error in JSON-LD structured data script",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.namecheap.com/domains/registration/gtld/blog/ via jsonld_parser [2026-09-13T15:56:44Z]: Found 1 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1). (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:syntax-error",
+        "suggested_action": {
+          "summary": "Fix JSON-LD syntax errors to ensure search and AI parsers can read metadata.",
+          "priority": "medium",
+          "how_to_fix": "Validate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/domains/registration/gtld/blog/",
+          "observation": "Found 1 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1).",
+          "method": "jsonld_parser",
+          "timestamp": "2026-09-13T15:56:44Z",
+          "confidence": "high",
+          "evidence_id": "E-e4b9152986ea"
+        },
+        "evidence_refs": [
+          "E-e4b9152986ea"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Broken internal navigation links detected (1 link(s))",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.namecheap.com/support/payment/currency-exchange-rates/ via http_redirect_aware_link_checker [2026-09-13T15:56:53Z]: Sampled internal links returned broken HTTP errors: https://www.namecheap.com/support/payment/currency-exchange-rates/ (HTTP 403). (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:broken-internal-links",
+        "suggested_action": {
+          "summary": "Fix or redirect broken internal destination URLs.",
+          "priority": "medium",
+          "how_to_fix": "Update broken link hrefs to their canonical working URLs or configure 301 redirects on the server.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/support/payment/currency-exchange-rates/",
+          "observation": "Sampled internal links returned broken HTTP errors: https://www.namecheap.com/support/payment/currency-exchange-rates/ (HTTP 403).",
+          "method": "http_redirect_aware_link_checker",
+          "timestamp": "2026-09-13T15:56:53Z",
+          "confidence": "high",
+          "evidence_id": "E-0016d19f654a"
+        },
+        "evidence_refs": [
+          "E-0016d19f654a"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Organization JSON-LD lacks sameAs authority and disambiguation links",
+        "category": "structured-data",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.namecheap.com/ via jsonld_schema_extractor [2026-09-13T15:56:44Z]: Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:organization-missing-sameas",
+        "suggested_action": {
+          "summary": "Add sameAs URLs to Organization JSON-LD.",
+          "priority": "low",
+          "how_to_fix": "Include official external profile URLs (Wikipedia, Wikidata, Crunchbase, GitHub) in the Organization sameAs array.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience.",
+          "fix_snippet": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Namecheap\",\n  \"url\": \"https://www.namecheap.com\",\n  \"logo\": \"REPLACE_WITH_YOUR_LOGO_URL\",\n  \"description\": \"Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 18 million domains under management, you know you’re in good hands.\",\n  \"sameAs\": [\n    \"REPLACE_WITH_YOUR_WIKIPEDIA_OR_LINKEDIN_URL\"\n  ]\n}\n</script>"
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/",
+          "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+          "method": "jsonld_schema_extractor",
+          "timestamp": "2026-09-13T15:56:44Z",
+          "confidence": "high",
+          "evidence_id": "E-39cc5e055af6"
+        },
+        "evidence_refs": [
+          "E-39cc5e055af6"
+        ],
+        "id": "F-007",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep hierarchical page lacks breadcrumb navigation trail",
+        "category": "navigation",
+        "severity": "low",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "low",
+        "evidence": "Observed at https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly via breadcrumb_markup_inspector [2026-09-13T15:56:44Z]: Page at deep route (/wordpress/overview/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)\nAdditional evidence (engagement-audit): Observed at https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year via breadcrumb_markup_inspector [2026-09-13T15:56:44Z]: Page at deep route (/hosting/purchase/hosting-customization/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-breadcrumbs",
+        "suggested_action": {
+          "summary": "Add breadcrumb navigation trail with BreadcrumbList schema.",
+          "priority": "low",
+          "how_to_fix": "Add visual breadcrumb navigation and accompanying Schema.org BreadcrumbList JSON-LD to assist user orientation.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly",
+          "observation": "Page at deep route (/wordpress/overview/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+          "method": "breadcrumb_markup_inspector",
+          "timestamp": "2026-09-13T15:56:44Z",
+          "confidence": "medium",
+          "evidence_id": "E-80778678b34a"
+        },
+        "evidence_refs": [
+          "E-6e6da461edae",
+          "E-80778678b34a"
+        ],
+        "id": "F-008",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly",
+          "score": 26,
+          "signals": [
+            "product_pricing:plan",
+            "product_landing:platform",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.namecheap.com/domains/registration/gtld/blog/",
+          "score": 24,
+          "signals": [
+            "article_docs:blog",
+            "contact_support:about",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.namecheap.com/about/",
+          "score": 16,
+          "signals": [
+            "contact_support:about",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year",
+          "score": 26,
+          "signals": [
+            "product_pricing:plan",
+            "product_landing:product",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "general",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.namecheap.com/",
+        "observation": "Organization schema exists but does not include 'sameAs' URIs pointing to official Wikipedia, Wikidata, LinkedIn, or social profiles.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "high",
+        "evidence_id": "E-39cc5e055af6"
+      },
+      {
+        "url": "https://www.namecheap.com/",
+        "observation": "Schema entities are missing required properties: Organization missing name.",
+        "method": "schema_field_validator",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "high",
+        "evidence_id": "E-4afe95dff6bc"
+      },
+      {
+        "url": "https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly",
+        "observation": "Commercial/product page (https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly) contains no Product or Offer structured data to convey machine-readable pricing and features.",
+        "method": "jsonld_schema_extractor",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "high",
+        "evidence_id": "E-4ea7a4ff10e3"
+      },
+      {
+        "url": "https://www.namecheap.com/domains/registration/gtld/blog/",
+        "observation": "Found 1 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 1 column 2 (char 1).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "high",
+        "evidence_id": "E-e4b9152986ea"
+      },
+      {
+        "url": "https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year",
+        "observation": "Page HTML contains no <title> tag.",
+        "method": "html_meta_inspector",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "high",
+        "evidence_id": "E-8f6c34db7253"
+      },
+      {
+        "url": "https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "high",
+        "evidence_id": "E-e192d3dcb9d5"
+      },
+      {
+        "url": "https://www.namecheap.com/wordpress/overview/?plan=starter&amp;cycle=yearly",
+        "observation": "Page at deep route (/wordpress/overview/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-80778678b34a"
+      },
+      {
+        "url": "https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "high",
+        "evidence_id": "E-e12e20a87f7e"
+      },
+      {
+        "url": "https://www.namecheap.com/hosting/purchase/hosting-customization/?product=quasar&amp;addons=operating-system%3Doperating-system-almalinux%3Boperating-system-version%3Dalmalinux-9-blank-64bit%3Bweb-panel%3Dno%20cpanel%3Binterworx%3Dnone%3Bwebuzo%3Dnone%3Bsoftaculous%3Dno%20script%20installer%3Bserver-management-plan%3Dself%C2%ADmanaged%3Bvps-ram%3Dvps-ram-6gb%3Bvps-disk-space%3Dvps-disk-space-120gb%3Bcpguard%3Dnone%3Bweb-panel%3Dnone&amp;duration=1&amp;durationtype=year",
+        "observation": "Page at deep route (/hosting/purchase/hosting-customization/) lacks breadcrumb UI or Schema.org BreadcrumbList markup for parent context.",
+        "method": "breadcrumb_markup_inspector",
+        "timestamp": "2026-09-13T15:56:44Z",
+        "confidence": "medium",
+        "evidence_id": "E-6e6da461edae"
+      },
+      {
+        "url": "https://www.namecheap.com/support/payment/currency-exchange-rates/",
+        "observation": "Sampled internal links returned broken HTTP errors: https://www.namecheap.com/support/payment/currency-exchange-rates/ (HTTP 403).",
+        "method": "http_redirect_aware_link_checker",
+        "timestamp": "2026-09-13T15:56:53Z",
+        "confidence": "high",
+        "evidence_id": "E-0016d19f654a"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Namecheap is resolvable away from its own domain",
+        "rationale": "Only 1 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "Add BreadcrumbList schema to deep pages",
+        "rationale": "3 crawled page(s) sit two or more levels deep with no BreadcrumbList markup. Breadcrumbs give both a visitor arriving cold from an AI answer and the assistant itself the parent context a deep URL otherwise lacks.",
+        "suggested_action": {
+          "summary": "Add BreadcrumbList JSON-LD alongside visible breadcrumb navigation.",
+          "priority": "low",
+          "how_to_fix": "Emit BreadcrumbList JSON-LD listing each ancestor with position, name and item URL, and render the same trail visibly at the top of the page."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "general",
+      "homepage",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

@@ -1,0 +1,460 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "bluehost.com",
+    "rank": 672,
+    "technical_type": "unknown",
+    "url": "https://bluehost.com/",
+    "validation": {
+      "reason": "http-403",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T16:04:07.455686+00:00",
+  "finished_at": "2026-09-13T16:04:22.246167+00:00",
+  "elapsed_seconds": 14.79,
+  "error": null,
+  "report": {
+    "site": "https://www.bluehost.com",
+    "audited_at": "2026-09-13T16:04:22Z",
+    "summary": {
+      "total_findings": 6,
+      "critical": 0,
+      "high": 3,
+      "medium": 2,
+      "low": 1,
+      "discoverability_findings": 4,
+      "engagement_findings": 2,
+      "citability_score": 67,
+      "citability_score_breakdown": {
+        "score": 67,
+        "base": 100,
+        "penalty": 33,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 24,
+          "medium": 7,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "render:empty-raw-html-gap:/checkout/web-hosting/domain-search": 6,
+          "render:empty-raw-html-gap:/support": 6,
+          "engagement:missing-h1": 12,
+          "consistency:phone-number-mismatch": 2,
+          "engagement:deep-pages-anonymous": 5,
+          "freshness:stale-copyright": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 6
+      }
+    },
+    "findings": [
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119 via static_initial_html_shell_inspection [2026-09-13T16:04:16Z]: Raw HTML yields only 1 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/checkout/web-hosting/domain-search",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119",
+          "observation": "Raw HTML yields only 1 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T16:04:16Z",
+          "confidence": "medium",
+          "evidence_id": "E-8c4c05ae279b"
+        },
+        "evidence_refs": [
+          "E-8c4c05ae279b"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.bluehost.com/support via static_initial_html_shell_inspection [2026-09-13T16:04:16Z]: Raw HTML yields only 7 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/support",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bluehost.com/support",
+          "observation": "Raw HTML yields only 7 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T16:04:16Z",
+          "confidence": "medium",
+          "evidence_id": "E-d5c45ffadc10"
+        },
+        "evidence_refs": [
+          "E-d5c45ffadc10"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Missing primary H1 heading on landing page",
+        "category": "orientation",
+        "severity": "high",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "high",
+        "evidence": "Observed at https://www.bluehost.com/pricing via heading_structure_inspection [2026-09-13T16:04:16Z]: Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:missing-h1",
+        "suggested_action": {
+          "summary": "Add a clear, descriptive <h1> heading.",
+          "priority": "high",
+          "how_to_fix": "Add a single <h1> heading tag at the top of the main content summarizing the page's purpose.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bluehost.com/pricing",
+          "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+          "method": "heading_structure_inspection",
+          "timestamp": "2026-09-13T16:04:16Z",
+          "confidence": "high",
+          "evidence_id": "E-5d0b450a58e1"
+        },
+        "evidence_refs": [
+          "E-5d0b450a58e1"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Conflicting primary contact phone numbers published across site",
+        "category": "internal-consistency",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.bluehost.com/ via cross_page_contact_comparison [2026-09-13T16:04:16Z]: Multiple distinct phone numbers are published across different pages without branch context: Number 8557328209: found on 1 page(s); Number 8017659400: found on 4 page(s); Number 8557388839: found on 1 page(s); Number 8443031730: found on 3 page(s); Number 8553723679: found on 1 page(s); Number 8884014678: found on 3 page(s). (Confidence: medium)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "consistency:phone-number-mismatch",
+        "suggested_action": {
+          "summary": "Standardize customer service and contact phone numbers.",
+          "priority": "medium",
+          "how_to_fix": "Ensure primary contact numbers are consistent across headers, footers, and Contact pages, with clear labels for departmental lines.",
+          "expected_benefit": "Improves internal consistency by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.bluehost.com/",
+          "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8557328209: found on 1 page(s); Number 8017659400: found on 4 page(s); Number 8557388839: found on 1 page(s); Number 8443031730: found on 3 page(s); Number 8553723679: found on 1 page(s); Number 8884014678: found on 3 page(s).",
+          "method": "cross_page_contact_comparison",
+          "timestamp": "2026-09-13T16:04:16Z",
+          "confidence": "medium",
+          "evidence_id": "E-af533ce51bb2"
+        },
+        "evidence_refs": [
+          "E-af533ce51bb2"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Deep pages never identify the brand, leaving cold arrivals unoriented",
+        "category": "orientation",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119 via cold_arrival_brand_mention_check [2026-09-13T16:04:16Z]: 1 deep page(s) contain no mention of \"Bluehost\" in the title or body text (e.g. https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote. (Confidence: high)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:deep-pages-anonymous",
+        "suggested_action": {
+          "summary": "Name the brand in the header, title and footer of every page.",
+          "priority": "medium",
+          "how_to_fix": "Include the brand name in the <title> of every page and in a persistent header or footer, so a page that is the visitor's first contact still identifies its owner.",
+          "expected_benefit": "Improves orientation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119",
+          "observation": "1 deep page(s) contain no mention of \"Bluehost\" in the title or body text (e.g. https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+          "method": "cold_arrival_brand_mention_check",
+          "timestamp": "2026-09-13T16:04:16Z",
+          "confidence": "high",
+          "evidence_id": "E-8dd95199ed17"
+        },
+        "evidence_refs": [
+          "E-8dd95199ed17"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect."
+      },
+      {
+        "title": "Stale copyright notice (2002) in site footer template",
+        "category": "freshness",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.bluehost.com/help/article/bh-ai-store-ai-action-plan via copyright_year_detector [2026-09-13T16:04:16Z]: Footer copyright notice resolves to 2002 (gap of 24 years) on 1 crawled page(s): https://www.bluehost.com/help/article/bh-ai-store-ai-action-plan. Year ranges such as '2005-2026' are read as current and not flagged. (Confidence: high)",
+        "source_skill": "freshness-corroboration",
+        "fingerprint": "freshness:stale-copyright",
+        "suggested_action": {
+          "summary": "Update the site footer copyright year.",
+          "priority": "low",
+          "how_to_fix": "Update the footer copyright notice to 2026, or render the year dynamically server-side so it never goes stale.",
+          "expected_benefit": "Improves freshness by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "freshness-corroboration"
+        ],
+        "evidence_details": {
+          "url": "https://www.bluehost.com/help/article/bh-ai-store-ai-action-plan",
+          "observation": "Footer copyright notice resolves to 2002 (gap of 24 years) on 1 crawled page(s): https://www.bluehost.com/help/article/bh-ai-store-ai-action-plan. Year ranges such as '2005-2026' are read as current and not flagged.",
+          "method": "copyright_year_detector",
+          "timestamp": "2026-09-13T16:04:16Z",
+          "confidence": "high",
+          "evidence_id": "E-51b2966506e8"
+        },
+        "evidence_refs": [
+          "E-51b2966506e8"
+        ],
+        "id": "F-006",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect."
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.bluehost.com/help/article/bh-ai-store-ai-action-plan",
+          "score": 34,
+          "signals": [
+            "product_pricing:plan",
+            "product_landing:store",
+            "article_docs:article,help",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.bluehost.com/api/v1.0/cart/packages/dediEnhanced?term=3y",
+          "score": 26,
+          "signals": [
+            "product_pricing:cart",
+            "article_docs:api",
+            "linked-from-homepage"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.bluehost.com/support",
+          "score": 26,
+          "signals": [
+            "article_docs:resources",
+            "contact_support:support",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "homepage-link"
+        },
+        {
+          "url": "https://www.bluehost.com/pricing",
+          "score": 18,
+          "signals": [
+            "product_pricing:pricing",
+            "linked-from-homepage",
+            "shallow-route"
+          ],
+          "purpose_hint": "product_pricing",
+          "source": "homepage-link"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119",
+        "observation": "Raw HTML yields only 1 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T16:04:16Z",
+        "confidence": "medium",
+        "evidence_id": "E-8c4c05ae279b"
+      },
+      {
+        "url": "https://www.bluehost.com/support",
+        "observation": "Raw HTML yields only 7 words of visible text and shows static shell signals (many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T16:04:16Z",
+        "confidence": "medium",
+        "evidence_id": "E-d5c45ffadc10"
+      },
+      {
+        "url": "https://www.bluehost.com/",
+        "observation": "Multiple distinct phone numbers are published across different pages without branch context: Number 8557328209: found on 1 page(s); Number 8017659400: found on 4 page(s); Number 8557388839: found on 1 page(s); Number 8443031730: found on 3 page(s); Number 8553723679: found on 1 page(s); Number 8884014678: found on 3 page(s).",
+        "method": "cross_page_contact_comparison",
+        "timestamp": "2026-09-13T16:04:16Z",
+        "confidence": "medium",
+        "evidence_id": "E-af533ce51bb2"
+      },
+      {
+        "url": "https://www.bluehost.com/help/article/bh-ai-store-ai-action-plan",
+        "observation": "Footer copyright notice resolves to 2002 (gap of 24 years) on 1 crawled page(s): https://www.bluehost.com/help/article/bh-ai-store-ai-action-plan. Year ranges such as '2005-2026' are read as current and not flagged.",
+        "method": "copyright_year_detector",
+        "timestamp": "2026-09-13T16:04:16Z",
+        "confidence": "high",
+        "evidence_id": "E-51b2966506e8"
+      },
+      {
+        "url": "https://www.bluehost.com/pricing",
+        "observation": "Page lacks a primary <h1> heading tag to establish core topic and orientation for arriving visitors.",
+        "method": "heading_structure_inspection",
+        "timestamp": "2026-09-13T16:04:16Z",
+        "confidence": "high",
+        "evidence_id": "E-5d0b450a58e1"
+      },
+      {
+        "url": "https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119",
+        "observation": "1 deep page(s) contain no mention of \"Bluehost\" in the title or body text (e.g. https://www.bluehost.com/checkout/web-hosting/domain-search?packageName=dediEnhanced&productId=2151119). A visitor arriving here from an AI citation, with no homepage context, cannot tell whose site they are on -- and neither can an assistant attributing the quote.",
+        "method": "cold_arrival_brand_mention_check",
+        "timestamp": "2026-09-13T16:04:16Z",
+        "confidence": "high",
+        "evidence_id": "E-8dd95199ed17"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Restructure long pages so each section answers one question on its own",
+        "rationale": "1 crawled page(s) carry long runs of prose with few headings to break them up. Retrieval systems lift a passage out of its surroundings; a section that only makes sense after the paragraphs above it cannot be quoted safely, so it tends not to be quoted at all. Self-contained, answer-first sections under sequential headings are consistently the most citable shape.",
+        "suggested_action": {
+          "summary": "Break long pages into self-contained sections that lead with the answer.",
+          "priority": "medium",
+          "how_to_fix": "Give each section a heading phrased the way a user would ask the question, then open with the answer in the first sentence and support it below. Keep paragraphs to two to four sentences and keep the heading hierarchy sequential (h1 -> h2 -> h3, no skipped levels)."
+        }
+      },
+      {
+        "title": "Add Article schema with author and dateModified to editorial pages",
+        "rationale": "1 crawled page(s) are editorial or documentation content carrying no Article schema. Authorship and a machine-readable modification date are the signals assistants use to decide whether a passage is current and attributable -- without them, an assistant that finds a good answer on the page still has no basis to date it or credit it.",
+        "suggested_action": {
+          "summary": "Mark editorial and documentation pages with Article JSON-LD.",
+          "priority": "medium",
+          "how_to_fix": "Add Article or TechArticle JSON-LD with headline, author (a Person or Organization with a real profile URL), datePublished and dateModified. Update dateModified when the content genuinely changes, not on every deploy."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "contact_support",
+      "homepage",
+      "product_landing",
+      "product_pricing"
+    ],
+    "resource_types": [],
+    "resources_seen": 0,
+    "access_summary": {}
+  }
+}

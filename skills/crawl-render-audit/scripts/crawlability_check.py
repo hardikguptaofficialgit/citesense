@@ -179,8 +179,14 @@ def evaluate_crawlability(inventory: SiteInventory) -> List[Dict[str, Any]]:
     sitemaps = inventory.sitemaps
     valid_sitemaps = [s for s in sitemaps if s.get("found")]
     sitemaps_declared = robots_data.get("sitemaps_declared", [])
+    readable_pages = int((inventory.crawl_budget or {}).get("readable_pages", 0) or 0)
+    if not readable_pages:
+        readable_pages = sum(
+            1 for page in (inventory.pages or {}).values()
+            if not page.get("inconclusive") and page.get("status_code") == 200
+        )
 
-    if not valid_sitemaps and not sitemaps_declared:
+    if readable_pages and not valid_sitemaps and not sitemaps_declared:
         f = create_candidate_finding(
             title="Missing XML sitemap declared in robots.txt or available at /sitemap.xml",
             category="crawlability",

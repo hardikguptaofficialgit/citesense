@@ -18,6 +18,7 @@ for d in (current_dir, crawl_scripts_dir):
         sys.path.insert(0, d)
 
 from fix_snippets import attach_fix_snippets
+from fix_prompt_generator import build_fix_plan, generate_fix_prompts, validate_fix_prompt
 from scored import annotate_report
 
 # Single source of truth: these sets live in models.py. Redefining them here let the two
@@ -247,6 +248,18 @@ def build_final_report(
     # Additive 0-100 AI-Citability Score (see references/citability-score.md).
     annotate_report(report, pages=pages)
 
+    # Additive prompts are generated only after IDs, deduplication, scoring, and evidence
+    # references are finalized. They cannot affect detection or scoring.
+    ledger = report.get("evidence_ledger", [])
+    fix_plan = generate_fix_prompts(validated_findings, evidence_ledger=ledger)
+    if fix_plan:
+        prompts_by_id = {prompt["finding_id"]: prompt for prompt in fix_plan}
+        for finding in validated_findings:
+            prompt = prompts_by_id.get(finding.get("id"))
+            if prompt:
+                finding["fix_prompt"] = prompt
+        report["fix_plan"] = build_fix_plan(fix_plan)
+
     return report
 
 
@@ -358,6 +371,34 @@ def validate_mode(args):
             errors.append("external_discovery must identify agent-supplied evidence and no internal lookup")
         if not set(external.get("evidence_refs", [])) <= ledger_ids:
             errors.append("external_discovery has unresolved evidence_refs")
+
+    fix_plan = report.get("fix_plan")
+    if fix_plan is not None:
+        if not isinstance(fix_plan, list):
+            errors.append("fix_plan must be an array")
+        else:
+            for prompt in fix_plan:
+                if not isinstance(prompt, dict):
+                    errors.append("fix_plan item must be an object")
+                    continue
+                for field in ("finding_id", "reason", "prompt"):
+                    if not isinstance(prompt.get(field), str) or not prompt[field].strip():
+                        errors.append(f"fix_plan item missing {field}")
+                if not isinstance(prompt.get("execution_order"), int) or prompt["execution_order"] < 1:
+                    errors.append("fix_plan item execution_order must be a positive integer")
+                if prompt.get("priority") not in VALID_SEVERITIES:
+                    errors.append("fix_plan item priority must preserve an existing severity priority")
+                if not isinstance(prompt.get("validation"), list) or not prompt["validation"]:
+                    errors.append("fix_plan item validation must be a non-empty array")
+                refs = prompt.get("evidence_refs", [])
+                if not isinstance(refs, list) or not set(refs) <= ledger_ids:
+                    errors.append("fix_plan item has unresolved evidence_refs")
+    for finding in report.get("findings", []):
+        if "fix_prompt" in finding:
+            errors.extend(f"finding {finding.get('id', '?')} fix_prompt: {error}"
+                          for error in validate_fix_prompt(
+                              finding["fix_prompt"], finding=finding, evidence_ledger=ledger
+                          ))
 
     if errors:
         print(json.dumps({"valid": False, "errors": errors}, indent=2))

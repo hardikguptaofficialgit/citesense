@@ -1,0 +1,190 @@
+{
+  "site": {
+    "category": "unknown",
+    "country_region": "unknown",
+    "dataset_source": "Tranco latest standard list",
+    "domain": "vkontakte.ru",
+    "rank": 821,
+    "technical_type": "unknown",
+    "url": "https://vkontakte.ru/",
+    "validation": {
+      "reason": "http-418",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:15:44.491966+00:00",
+  "finished_at": "2026-09-13T17:15:58.146425+00:00",
+  "elapsed_seconds": 13.654,
+  "error": null,
+  "report": {
+    "site": "https://vkontakte.ru",
+    "audited_at": "2026-09-13T17:15:58Z",
+    "summary": {
+      "total_findings": 1,
+      "critical": 1,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "discoverability_findings": 1,
+      "engagement_findings": 0,
+      "citability_score_unavailable": "No page could be read (all crawled URLs were non-200 or undecodable), so findings are not a measure of this site's citability."
+    },
+    "findings": [
+      {
+        "title": "Root site is disallowed for all crawlers including AI retrieval agents",
+        "category": "crawlability",
+        "severity": "critical",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "critical",
+        "evidence": "Observed at https://vkontakte.ru/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:15:58Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "robots:disallow-all-root",
+        "suggested_action": {
+          "summary": "Update robots.txt to allow crawling of public landing and product pages.",
+          "priority": "critical",
+          "how_to_fix": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+          "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://vkontakte.ru/robots.txt",
+          "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot).",
+          "method": "robots_txt_parser_longest_match",
+          "timestamp": "2026-09-13T17:15:58Z",
+          "confidence": "high",
+          "evidence_id": "E-3e7a36cc7af9"
+        },
+        "evidence_refs": [
+          "E-3e7a36cc7af9"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated critical because the observed evidence indicates critical impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nRoot site is disallowed for all crawlers including AI retrieval agents.\n\nEVIDENCE\nObserved at https://vkontakte.ru/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:15:58Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)\nEvidence references: E-3e7a36cc7af9.\n\nROOT CAUSE\nUse the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Root site is disallowed for all crawlers including AI retrieval agents",
+          "status": "confirmed",
+          "priority": "critical",
+          "role": "technical SEO and platform engineer",
+          "problem": "Root site is disallowed for all crawlers including AI retrieval agents",
+          "evidence_refs": [
+            "E-3e7a36cc7af9"
+          ],
+          "root_cause": "Use the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Update robots.txt to allow crawling of public landing and product pages.",
+            "priority": "critical",
+            "how_to_fix": "Ensure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.",
+            "expected_benefit": "Improves crawlability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 1,
+      "resources_observed": 0,
+      "readable_pages": 0,
+      "status_counts": {
+        "robots-disallowed": 1
+      },
+      "limited": true,
+      "page_selection": []
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://vkontakte.ru/robots.txt",
+        "observation": "robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot).",
+        "method": "robots_txt_parser_longest_match",
+        "timestamp": "2026-09-13T17:15:58Z",
+        "confidence": "high",
+        "evidence_id": "E-3e7a36cc7af9"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No sampled page was readable, so content-dependent checks were not assessed."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "Initial HTML was unavailable, so render-gap evidence could not be assessed."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No accessible page evidence was available for on-site answerability."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "inconclusive",
+        "result": "limited",
+        "reason": "No readable page was available to inspect for explicit authority links."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "priority": 1,
+        "reason": "confirmed finding with existing critical priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a technical SEO and platform engineer.\n\nPROBLEM\nRoot site is disallowed for all crawlers including AI retrieval agents.\n\nEVIDENCE\nObserved at https://vkontakte.ru/robots.txt via robots_txt_parser_longest_match [2026-09-13T17:15:58Z]: robots.txt disallows root '/' for user-agent '*', blocking all AI bots (GPTBot, ClaudeBot, Google-Extended, CCBot). (Confidence: high)\nEvidence references: E-3e7a36cc7af9.\n\nROOT CAUSE\nUse the observed condition described by “Root site is disallowed for all crawlers including AI retrieval agents” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nEnsure 'User-agent: * / Disallow: /' is removed or narrowed to private authenticated directories only.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-3e7a36cc7af9"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 1,
+    "readable_pages": 0,
+    "page_purposes": [
+      "unknown"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "robots-disallowed": 1
+    }
+  }
+}

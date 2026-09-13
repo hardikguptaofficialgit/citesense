@@ -1,8 +1,12 @@
 """Small, dependency-free primitives shared by read-only audit scripts."""
 import re
 import gzip
+import io
+import ipaddress
+import socket
 import zlib
 import time
+import threading
 import urllib.request
 import urllib.error
 from typing import Optional
@@ -59,6 +63,12 @@ ACCESS_NETWORK_ERROR = "network-error"
 ACCESS_EMPTY = "empty-response"
 ACCESS_UNREADABLE = "undecodable"
 ACCESS_AUTH_REQUIRED = "authentication-required"
+ACCESS_RESPONSE_TOO_LARGE = "response-too-large"
+MAX_RESPONSE_BYTES = 5 * 1024 * 1024
+SAFE_HTTP_PORTS = {80, 443}
+RESPONSE_TOO_LARGE_MARKER = "[citesense:response-too-large]"
+READ_TIMEOUT_MARKER = "[citesense:read-timeout]"
+FETCH_REJECTED_MARKER = "[citesense:fetch-rejected]"
 
 ANTI_BOT_MARKER_RE = re.compile(
     r"(?is)(?:captcha|recaptcha|verify\s+you(?:r)?self|verify\s+you\s+are\s+human|"
@@ -125,6 +135,45 @@ def decompress_body(raw: bytes, content_encoding: str) -> bytes:
     return raw
 
 
+class _ResponseTooLarge(Exception):
+    """Internal signal used to stop reading oversized raw or decompressed bodies."""
+
+
+class _ResponseTimeout(Exception):
+    """Internal signal used to stop a continuously streaming response at the deadline."""
+
+
+def _decompress_bounded(raw: bytes, content_encoding: str, max_bytes: int) -> bytes:
+    """Decompress while bounding expansion, preventing compressed-body bombs."""
+    enc = (content_encoding or "").lower().strip()
+    is_gzip_magic = raw[:2] == b"\x1f\x8b"
+    try:
+        if enc == "gzip" or is_gzip_magic:
+            with gzip.GzipFile(fileobj=io.BytesIO(raw)) as stream:
+                output = stream.read(max_bytes + 1)
+            if len(output) > max_bytes:
+                raise _ResponseTooLarge
+            return output
+        if enc == "deflate":
+            for window_bits in (zlib.MAX_WBITS, -zlib.MAX_WBITS):
+                try:
+                    decoder = zlib.decompressobj(window_bits)
+                    output = decoder.decompress(raw, max_bytes + 1)
+                    output += decoder.flush(max_bytes + 1 - len(output))
+                    if len(output) > max_bytes or decoder.unconsumed_tail:
+                        raise _ResponseTooLarge
+                    return output
+                except zlib.error:
+                    continue
+    except _ResponseTooLarge:
+        raise
+    except Exception:
+        return raw
+    if len(raw) > max_bytes:
+        raise _ResponseTooLarge
+    return raw
+
+
 def decode_body(raw: bytes, content_type: str) -> str:
     """Decode bytes to text using the declared charset, then the HTML meta charset, then UTF-8."""
     if not raw:
@@ -174,9 +223,11 @@ def content_is_unreadable(text: str) -> bool:
 
 def classify_access(status_code: Optional[int], body: str = "") -> str:
     """Classify whether a response is readable without bypassing access controls."""
+    sample = (body or "")[:12000]
+    if sample.startswith(RESPONSE_TOO_LARGE_MARKER):
+        return ACCESS_RESPONSE_TOO_LARGE
     if status_code is None:
         return ACCESS_NETWORK_ERROR
-    sample = (body or "")[:12000]
     if status_code in (401, 403, 429, 503):
         if re.search(
             r"(?is)(?:captcha|recaptcha|verify\s+you(?:r)?self|verify\s+you\s+are\s+human|"
@@ -262,6 +313,68 @@ def visible_text(html: str) -> str:
     return re.sub(r"\s+", " ", html).strip()
 
 
+def _resolve_public_addresses(hostname: str, port: int, timeout: float):
+    """Resolve a host on a daemon thread so a stuck system resolver cannot hang an audit."""
+    result = []
+    error = []
+
+    def resolve():
+        try:
+            result.extend(socket.getaddrinfo(hostname, port, type=socket.SOCK_STREAM))
+        except (OSError, socket.gaierror) as exc:
+            error.append(exc)
+
+    worker = threading.Thread(target=resolve, daemon=True)
+    worker.start()
+    worker.join(max(0.0, timeout))
+    if worker.is_alive():
+        return None, "hostname resolution timed out"
+    if error:
+        return None, "hostname could not be resolved"
+    return result, None
+
+
+def _fetch_target_error(url: str, timeout: float = DEFAULT_TIMEOUT) -> Optional[str]:
+    """Reject unsafe network targets before urllib performs a connection."""
+    parsed = urlparse(url)
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.hostname:
+        return "unsupported or malformed URL"
+    if parsed.username or parsed.password:
+        return "URL credentials are not allowed"
+    try:
+        port = parsed.port
+    except ValueError:
+        return "invalid URL port"
+    if port is not None and port not in SAFE_HTTP_PORTS:
+        return f"unsafe HTTP port: {port}"
+
+    hostname = parsed.hostname.strip().rstrip(".")
+    resolved, resolve_error = _resolve_public_addresses(
+        hostname,
+        port or (443 if parsed.scheme.lower() == "https" else 80),
+        timeout,
+    )
+    if resolve_error:
+        return resolve_error
+    addresses = {result[4][0] for result in resolved}
+    for address in addresses:
+        try:
+            ip = ipaddress.ip_address(address)
+        except ValueError:
+            return "resolved address was invalid"
+        if (
+            ip.is_private
+            or ip.is_loopback
+            or ip.is_link_local
+            or ip.is_multicast
+            or ip.is_unspecified
+            or ip.is_reserved
+            or str(ip) == "169.254.169.254"
+        ):
+            return f"resolved address is not public: {ip}"
+    return None
+
+
 def safe_fetch(url: str, method: str = "GET", timeout: int = DEFAULT_TIMEOUT, max_redirects: int = 5):
     """
     Safely fetches a URL, following redirects and recording the status chain.
@@ -277,13 +390,40 @@ def safe_fetch(url: str, method: str = "GET", timeout: int = DEFAULT_TIMEOUT, ma
         headers_dict = dict(resp.headers.items()) if hasattr(resp, "headers") else {}
         if method != "GET":
             return "", headers_dict
-        raw = resp.read()
-        raw = decompress_body(raw, header_get(headers_dict, "Content-Encoding", ""))
+        content_length = header_get(headers_dict, "Content-Length")
+        try:
+            if content_length and int(content_length) > MAX_RESPONSE_BYTES:
+                raise _ResponseTooLarge
+        except ValueError:
+            pass
+        deadline = time.monotonic() + max(0.001, float(timeout))
+        chunks = []
+        bytes_read = 0
+        while bytes_read <= MAX_RESPONSE_BYTES:
+            if time.monotonic() >= deadline:
+                raise _ResponseTimeout
+            chunk = resp.read(min(64 * 1024, MAX_RESPONSE_BYTES + 1 - bytes_read))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            bytes_read += len(chunk)
+        if bytes_read > MAX_RESPONSE_BYTES:
+            raise _ResponseTooLarge
+        raw = b"".join(chunks)
+        raw = _decompress_bounded(
+            raw,
+            header_get(headers_dict, "Content-Encoding", ""),
+            MAX_RESPONSE_BYTES,
+        )
         text = decode_body(raw, header_get(headers_dict, "Content-Type", ""))
         return text, headers_dict
 
     for _ in range(max_redirects + 1):
         redirect_chain.append(current_url)
+        target_error = _fetch_target_error(current_url, timeout=timeout)
+        if target_error:
+            elapsed = time.time() - start_time
+            return None, f"{FETCH_REJECTED_MARKER} {target_error}", current_url, redirect_chain, elapsed, {}
         try:
             req = urllib.request.Request(
                 current_url,
@@ -318,6 +458,12 @@ def safe_fetch(url: str, method: str = "GET", timeout: int = DEFAULT_TIMEOUT, ma
                 elapsed = time.time() - start_time
                 return e.code, body, current_url, redirect_chain, elapsed, headers_dict
 
+        except _ResponseTooLarge:
+            elapsed = time.time() - start_time
+            return None, RESPONSE_TOO_LARGE_MARKER, current_url, redirect_chain, elapsed, {}
+        except _ResponseTimeout:
+            elapsed = time.time() - start_time
+            return None, READ_TIMEOUT_MARKER, current_url, redirect_chain, elapsed, {}
         except urllib.error.URLError as e:
             elapsed = time.time() - start_time
             return None, str(e.reason), current_url, redirect_chain, elapsed, {}

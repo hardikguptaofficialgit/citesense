@@ -1,0 +1,723 @@
+{
+  "site": {
+    "category": "banking",
+    "country_region": "unknown",
+    "dataset_source": "curated-seed",
+    "domain": "citi.com",
+    "rank": 110,
+    "technical_type": "unknown",
+    "url": "https://citi.com/",
+    "validation": {
+      "reason": "http-403",
+      "valid": true
+    }
+  },
+  "status": "completed",
+  "started_at": "2026-09-13T17:40:56.456116+00:00",
+  "finished_at": "2026-09-13T17:41:20.706873+00:00",
+  "elapsed_seconds": 24.251,
+  "error": null,
+  "report": {
+    "site": "https://www.citi.com",
+    "audited_at": "2026-09-13T17:41:20Z",
+    "summary": {
+      "total_findings": 5,
+      "critical": 0,
+      "high": 1,
+      "medium": 3,
+      "low": 1,
+      "discoverability_findings": 4,
+      "engagement_findings": 1,
+      "citability_score": 83,
+      "citability_score_breakdown": {
+        "score": 83,
+        "base": 100,
+        "penalty": 17,
+        "penalty_by_severity": {
+          "critical": 0,
+          "high": 6,
+          "medium": 9,
+          "low": 2
+        },
+        "penalty_by_root_cause": {
+          "render:empty-raw-html-gap:/": 6,
+          "schema:syntax-error": 5,
+          "engagement:few-internal-links": 2,
+          "trust:no-independent-identity-anchor": 2,
+          "extractability:images-without-alt": 2
+        },
+        "status_factors": {
+          "confirmed": 1.0,
+          "likely-risk": 0.5,
+          "inconclusive": 0.0,
+          "not-assessed": 0.0,
+          "proactive": 0.0
+        },
+        "excluded_duplicate_fingerprints": [],
+        "corroboration_credit": 0,
+        "counted_findings": 5
+      }
+    },
+    "findings": [
+      {
+        "title": "Client-side rendering gap: raw HTML contains minimal text content",
+        "category": "render-gap",
+        "severity": "high",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "high",
+        "evidence": "Observed at https://www.citi.com/ via static_initial_html_shell_inspection [2026-09-13T17:41:16Z]: Raw HTML yields only 11 words of visible text and shows static shell signals (client-mount-marker, many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "render:empty-raw-html-gap:/",
+        "suggested_action": {
+          "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+          "priority": "high",
+          "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.citi.com/",
+          "observation": "Raw HTML yields only 11 words of visible text and shows static shell signals (client-mount-marker, many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+          "method": "static_initial_html_shell_inspection",
+          "timestamp": "2026-09-13T17:41:16Z",
+          "confidence": "medium",
+          "evidence_id": "E-e567273ba1b0"
+        },
+        "evidence_refs": [
+          "E-e567273ba1b0"
+        ],
+        "id": "F-001",
+        "severity_rationale": "Rated high because the observed evidence indicates high impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a frontend and technical SEO engineer.\n\nPROBLEM\nClient-side rendering gap: raw HTML contains minimal text content.\n\nEVIDENCE\nObserved at https://www.citi.com/ via static_initial_html_shell_inspection [2026-09-13T17:41:16Z]: Raw HTML yields only 11 words of visible text and shows static shell signals (client-mount-marker, many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)\nEvidence references: E-e567273ba1b0.\n\nROOT CAUSE\nUse the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-001.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-001",
+          "title": "Client-side rendering gap: raw HTML contains minimal text content",
+          "status": "likely-risk",
+          "priority": "high",
+          "role": "frontend and technical SEO engineer",
+          "problem": "Client-side rendering gap: raw HTML contains minimal text content",
+          "evidence_refs": [
+            "E-e567273ba1b0"
+          ],
+          "root_cause": "Use the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Implement server-side rendering (SSR) or static pre-rendering for core content.",
+            "priority": "high",
+            "how_to_fix": "Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.",
+            "expected_benefit": "Improves render gap by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Syntax error in JSON-LD structured data script",
+        "category": "structured-data",
+        "severity": "medium",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "medium",
+        "evidence": "Observed at https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel via jsonld_parser [2026-09-13T17:41:16Z]: Found 5 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 2: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 3: Expecting property name enclosed in double quotes: line 2 column 1 (char 3). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/knowledge-center via jsonld_parser [2026-09-13T17:41:16Z]: Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 51 column 13 (char 1382). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later via jsonld_parser [2026-09-13T17:41:16Z]: Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 1 column 1 (char 0). (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "schema:syntax-error",
+        "suggested_action": {
+          "summary": "Fix JSON-LD syntax errors to ensure search and AI parsers can read metadata.",
+          "priority": "medium",
+          "how_to_fix": "Validate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.",
+          "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel",
+          "observation": "Found 5 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 2: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 3: Expecting property name enclosed in double quotes: line 2 column 1 (char 3).",
+          "method": "jsonld_parser",
+          "timestamp": "2026-09-13T17:41:16Z",
+          "confidence": "high",
+          "evidence_id": "E-a3a57c8ca09c"
+        },
+        "evidence_refs": [
+          "E-8ac6bcb2aa11",
+          "E-a1c75af3e90a",
+          "E-a3a57c8ca09c"
+        ],
+        "id": "F-002",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nSyntax error in JSON-LD structured data script.\n\nEVIDENCE\nObserved at https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel via jsonld_parser [2026-09-13T17:41:16Z]: Found 5 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 2: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 3: Expecting property name enclosed in double quotes: line 2 column 1 (char 3). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/knowledge-center via jsonld_parser [2026-09-13T17:41:16Z]: Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 51 column 13 (char 1382). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later via jsonld_parser [2026-09-13T17:41:16Z]: Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 1 column 1 (char 0). (Confidence: high)\nEvidence references: E-8ac6bcb2aa11, E-a1c75af3e90a, E-a3a57c8ca09c.\n\nROOT CAUSE\nUse the observed condition described by “Syntax error in JSON-LD structured data script” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nValidate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-002.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-002",
+          "title": "Syntax error in JSON-LD structured data script",
+          "status": "confirmed",
+          "priority": "medium",
+          "role": "structured-data and technical SEO engineer",
+          "problem": "Syntax error in JSON-LD structured data script",
+          "evidence_refs": [
+            "E-8ac6bcb2aa11",
+            "E-a1c75af3e90a",
+            "E-a3a57c8ca09c"
+          ],
+          "root_cause": "Use the observed condition described by “Syntax error in JSON-LD structured data script” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Validate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Fix JSON-LD syntax errors to ensure search and AI parsers can read metadata.",
+            "priority": "medium",
+            "how_to_fix": "Validate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.",
+            "expected_benefit": "Improves structured data by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Isolated page with insufficient internal navigation links",
+        "category": "navigation",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.citi.com/credit-cards/citi-best-buy-credit-cards via internal_link_density_check [2026-09-13T17:41:16Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)",
+        "source_skill": "engagement-audit",
+        "fingerprint": "engagement:few-internal-links",
+        "suggested_action": {
+          "summary": "Incorporate related internal links and header/footer navigation.",
+          "priority": "medium",
+          "how_to_fix": "Add links to relevant documentation, related products, or category overview pages.",
+          "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "engagement-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.citi.com/credit-cards/citi-best-buy-credit-cards",
+          "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+          "method": "internal_link_density_check",
+          "timestamp": "2026-09-13T17:41:16Z",
+          "confidence": "medium",
+          "evidence_id": "E-5b975a2e9c68"
+        },
+        "evidence_refs": [
+          "E-5b975a2e9c68"
+        ],
+        "id": "F-003",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nIsolated page with insufficient internal navigation links.\n\nEVIDENCE\nObserved at https://www.citi.com/credit-cards/citi-best-buy-credit-cards via internal_link_density_check [2026-09-13T17:41:16Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)\nEvidence references: E-5b975a2e9c68.\n\nROOT CAUSE\nUse the observed condition described by “Isolated page with insufficient internal navigation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add links to relevant documentation, related products, or category overview pages.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-003.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-003",
+          "title": "Isolated page with insufficient internal navigation links",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "UX and frontend engineer",
+          "problem": "Isolated page with insufficient internal navigation links",
+          "evidence_refs": [
+            "E-5b975a2e9c68"
+          ],
+          "root_cause": "Use the observed condition described by “Isolated page with insufficient internal navigation links” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add links to relevant documentation, related products, or category overview pages.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Incorporate related internal links and header/footer navigation.",
+            "priority": "medium",
+            "how_to_fix": "Add links to relevant documentation, related products, or category overview pages.",
+            "expected_benefit": "Improves navigation by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Brand identity is not anchored to any independent authority source",
+        "category": "corroboration",
+        "severity": "medium",
+        "status": "likely-risk",
+        "confidence": "medium",
+        "impact": "medium",
+        "evidence": "Observed at https://www.citi.com via onsite_identity_anchor_inspection [2026-09-13T17:41:20Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)",
+        "source_skill": "trust-corroboration-graph",
+        "fingerprint": "trust:no-independent-identity-anchor",
+        "suggested_action": {
+          "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+          "priority": "medium",
+          "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "trust-corroboration-graph"
+        ],
+        "evidence_details": {
+          "url": "https://www.citi.com",
+          "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+          "method": "onsite_identity_anchor_inspection",
+          "timestamp": "2026-09-13T17:41:20Z",
+          "confidence": "medium",
+          "evidence_id": "E-b610192968fe"
+        },
+        "evidence_refs": [
+          "E-b610192968fe"
+        ],
+        "id": "F-004",
+        "severity_rationale": "Rated medium because the observed evidence indicates medium impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.citi.com via onsite_identity_anchor_inspection [2026-09-13T17:41:20Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-b610192968fe.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-004.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-004",
+          "title": "Brand identity is not anchored to any independent authority source",
+          "status": "likely-risk",
+          "priority": "medium",
+          "role": "brand and digital-PR owner",
+          "problem": "Brand identity is not anchored to any independent authority source",
+          "evidence_refs": [
+            "E-b610192968fe"
+          ],
+          "root_cause": "Use the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "First verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+          "constraints": [
+            "Treat this as a likely risk, not a confirmed defect; verify it before changing production.",
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Publish machine-readable identity anchors linking the brand to independent authorities.",
+            "priority": "medium",
+            "how_to_fix": "Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.",
+            "expected_benefit": "Improves corroboration by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      },
+      {
+        "title": "Content images carry no text alternative, hiding any fact they display",
+        "category": "fact-extractability",
+        "severity": "low",
+        "status": "confirmed",
+        "confidence": "high",
+        "impact": "low",
+        "evidence": "Observed at https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 6 of 9 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/knowledge-center via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 5 of 8 images (62%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)",
+        "source_skill": "crawl-render-audit",
+        "fingerprint": "extractability:images-without-alt",
+        "suggested_action": {
+          "summary": "Add descriptive alt text to every image that carries information.",
+          "priority": "low",
+          "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+        },
+        "source_skills": [
+          "crawl-render-audit"
+        ],
+        "evidence_details": {
+          "url": "https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel",
+          "observation": "6 of 9 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+          "method": "image_alt_coverage_inspection",
+          "timestamp": "2026-09-13T17:41:16Z",
+          "confidence": "high",
+          "evidence_id": "E-3065fb97c54b"
+        },
+        "evidence_refs": [
+          "E-24203aa97311",
+          "E-3065fb97c54b",
+          "E-abb4f0604018"
+        ],
+        "id": "F-005",
+        "severity_rationale": "Rated low because the observed evidence indicates low impact; unavailable evidence is not treated as a defect.",
+        "fix_prompt": {
+          "target": "coding_agent",
+          "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 6 of 9 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/knowledge-center via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 5 of 8 images (62%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-24203aa97311, E-3065fb97c54b, E-abb4f0604018.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+          "validation": [
+            "Re-run the check represented by finding F-005.",
+            "Confirm the reported condition is resolved using fresh evidence.",
+            "Confirm no conflicting metadata or unrelated behavior was introduced."
+          ],
+          "finding_id": "F-005",
+          "title": "Content images carry no text alternative, hiding any fact they display",
+          "status": "confirmed",
+          "priority": "low",
+          "role": "content and frontend engineer",
+          "problem": "Content images carry no text alternative, hiding any fact they display",
+          "evidence_refs": [
+            "E-24203aa97311",
+            "E-3065fb97c54b",
+            "E-abb4f0604018"
+          ],
+          "root_cause": "Use the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.",
+          "task": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+          "constraints": [
+            "Do not invent facts, URLs, prices, contacts, schema values, or technologies.",
+            "Use only information supported by the cited evidence refs.",
+            "Preserve existing functionality and design unless this finding requires a content or design change.",
+            "Do not make unrelated changes or remove valid metadata.",
+            "Avoid duplicate or conflicting structured data and follow the site's existing architecture.",
+            "Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.",
+            "Review the change before applying it; this prompt is recommendation-only."
+          ],
+          "suggested_action": {
+            "summary": "Add descriptive alt text to every image that carries information.",
+            "priority": "low",
+            "how_to_fix": "Give each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.",
+            "expected_benefit": "Improves fact extractability by making the observed information clearer and more extractable for the intended audience."
+          }
+        }
+      }
+    ],
+    "access_summary": {
+      "pages_sampled": 5,
+      "resources_observed": 0,
+      "readable_pages": 5,
+      "status_counts": {
+        "readable": 5
+      },
+      "limited": false,
+      "page_selection": [
+        {
+          "url": "https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel",
+          "score": 22,
+          "signals": [
+            "article_docs:guide",
+            "audience:use",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.citi.com/credit-cards/citi-best-buy-credit-cards",
+          "score": 12,
+          "signals": [
+            "product_landing:buy",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "product_landing",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.citi.com/credit-cards/money-management/4-things-to-know-about-holiday-spending",
+          "score": 12,
+          "signals": [
+            "contact_support:about",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "contact_support",
+          "source": "sitemap"
+        },
+        {
+          "url": "https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later",
+          "score": 22,
+          "signals": [
+            "product_landing:buy",
+            "article_docs:guide",
+            "listed-in-sitemap"
+          ],
+          "purpose_hint": "article_docs",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "evidence_ledger": [
+      {
+        "url": "https://www.citi.com/",
+        "observation": "Raw HTML yields only 11 words of visible text and shows static shell signals (client-mount-marker, many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause.",
+        "method": "static_initial_html_shell_inspection",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "medium",
+        "evidence_id": "E-e567273ba1b0"
+      },
+      {
+        "url": "https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel",
+        "observation": "Found 5 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 2: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 3: Expecting property name enclosed in double quotes: line 2 column 1 (char 3).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "high",
+        "evidence_id": "E-a3a57c8ca09c"
+      },
+      {
+        "url": "https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel",
+        "observation": "6 of 9 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "high",
+        "evidence_id": "E-3065fb97c54b"
+      },
+      {
+        "url": "https://www.citi.com/credit-cards/knowledge-center",
+        "observation": "Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 51 column 13 (char 1382).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "high",
+        "evidence_id": "E-8ac6bcb2aa11"
+      },
+      {
+        "url": "https://www.citi.com/credit-cards/knowledge-center",
+        "observation": "25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "high",
+        "evidence_id": "E-abb4f0604018"
+      },
+      {
+        "url": "https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later",
+        "observation": "Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 1 column 1 (char 0).",
+        "method": "jsonld_parser",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "high",
+        "evidence_id": "E-a1c75af3e90a"
+      },
+      {
+        "url": "https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later",
+        "observation": "5 of 8 images (62%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot.",
+        "method": "image_alt_coverage_inspection",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "high",
+        "evidence_id": "E-24203aa97311"
+      },
+      {
+        "url": "https://www.citi.com/credit-cards/citi-best-buy-credit-cards",
+        "observation": "Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand.",
+        "method": "internal_link_density_check",
+        "timestamp": "2026-09-13T17:41:16Z",
+        "confidence": "medium",
+        "evidence_id": "E-5b975a2e9c68"
+      },
+      {
+        "url": "https://www.citi.com",
+        "observation": "Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched.",
+        "method": "onsite_identity_anchor_inspection",
+        "timestamp": "2026-09-13T17:41:20Z",
+        "confidence": "medium",
+        "evidence_id": "E-b610192968fe"
+      }
+    ],
+    "assessments": [
+      {
+        "check": "page_access",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "5 of 5 sampled page(s) were readable."
+      },
+      {
+        "check": "robots_enforcement",
+        "status": "confirmed",
+        "result": "passed",
+        "reason": "robots.txt was fetched and its rules were applied to page and link fetches."
+      },
+      {
+        "check": "static_render_gap",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Initial HTML was inspected for shell signals; no browser rendering was used."
+      },
+      {
+        "check": "citation_answerability",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Answerability was checked against accessible on-site text and structured data only."
+      },
+      {
+        "check": "trust_corroboration",
+        "status": "confirmed",
+        "result": "assessed",
+        "reason": "Only explicitly linked authority domains were inspected; external sources were not fabricated or searched."
+      },
+      {
+        "check": "off_site_discovery",
+        "status": "not-assessed",
+        "result": "not-assessed",
+        "reason": "No agent-supplied external discovery evidence was provided; no external search was performed."
+      }
+    ],
+    "proactive_recommendations": [
+      {
+        "title": "Build third-party presence so Citi is resolvable away from its own domain",
+        "rationale": "Only 0 independent authority domain(s) are referenced from the crawled pages. Assistants weight facts that several unrelated sources agree on, and the major platforms draw on largely different source pools -- analyses of 2026 citation data find roughly 11% domain overlap between ChatGPT and Perplexity. A brand described only on its own site is a single fragile source no matter how well that site is built.",
+        "suggested_action": {
+          "summary": "Establish and maintain the brand on independent platforms, then link them via sameAs.",
+          "priority": "high",
+          "how_to_fix": "Create or claim a Wikidata item, a LinkedIn company page, and the profiles that matter in your sector (Crunchbase, GitHub, G2, industry registries). Keep the core facts identical across them, then reference them from Organization sameAs so the identity is machine-linkable."
+        }
+      },
+      {
+        "title": "Declare a WebSite entity with SearchAction",
+        "rationale": "No WebSite schema was found. WebSite ties the domain to the brand entity and, with a potentialAction SearchAction, lets assistants point users straight into your own search instead of guessing at URLs. It is a small, stable addition that anchors everything else on the page to a named site.",
+        "suggested_action": {
+          "summary": "Add WebSite JSON-LD with a SearchAction pointing at your search endpoint.",
+          "priority": "medium",
+          "how_to_fix": "Add WebSite JSON-LD on the homepage with name, url, a publisher reference to your Organization @id, and potentialAction -> SearchAction with a target URL template."
+        }
+      },
+      {
+        "title": "State AI usage terms explicitly in robots.txt",
+        "rationale": "robots.txt names which agents may crawl but says nothing about what may be done with the content once fetched. Emerging conventions -- Cloudflare's Content Signals Policy (released CC0) and RSL licensing terms -- let a publisher separate training use from search indexing and answer generation in machine-readable form, instead of leaving that distinction to be inferred from which user agents happen to be listed.",
+        "suggested_action": {
+          "summary": "Add machine-readable content-usage signals to robots.txt.",
+          "priority": "low",
+          "how_to_fix": "Add a Content Signals Policy block declaring your position on search, ai-input and ai-train separately, or publish RSL licensing terms. Keep it consistent with the agents you actually allow, or the two signals will contradict each other."
+        }
+      },
+      {
+        "title": "Expose an agent-facing endpoint (NLWeb / MCP) built on existing structured data",
+        "rationale": "The site already publishes structured data, which is the input NLWeb uses to serve a conversational endpoint that AI agents can query directly rather than scraping HTML. Because it builds on schema.org markup, sitemaps and feeds you already maintain, it is incremental rather than a rebuild, and it moves the brand from being read by agents to being queryable by them.",
+        "suggested_action": {
+          "summary": "Evaluate an NLWeb instance exposing an /ask and /mcp endpoint over existing content.",
+          "priority": "low",
+          "how_to_fix": "Point an NLWeb instance at your existing schema.org data and sitemap, and expose /ask and /mcp. Start with the content an agent is most likely to be asked about -- catalogue, docs, pricing."
+        }
+      },
+      {
+        "title": "Consider publishing llms.txt, with realistic expectations",
+        "rationale": "No /llms.txt is published. Be aware this is a low-evidence convention rather than an established standard: 2026 measurements find major AI crawlers almost never request the file, and Google has stated it has no effect on Search or AI Overviews. It costs very little to publish and may matter if uptake improves, but it should be treated as optionality -- not as a substitute for the structured data and third-party presence that demonstrably drive citation today.",
+        "suggested_action": {
+          "summary": "Optionally publish /llms.txt, after the higher-leverage items above.",
+          "priority": "low",
+          "how_to_fix": "If you publish one, keep it to a short markdown index of your canonical product, docs, pricing and company pages, and keep it in sync with the site. Do not deprioritise schema work for it."
+        }
+      }
+    ],
+    "fix_plan": [
+      {
+        "finding_id": "F-001",
+        "execution_order": 1,
+        "priority": "high",
+        "reason": "likely-risk finding with existing high priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a frontend and technical SEO engineer.\n\nPROBLEM\nClient-side rendering gap: raw HTML contains minimal text content.\n\nEVIDENCE\nObserved at https://www.citi.com/ via static_initial_html_shell_inspection [2026-09-13T17:41:16Z]: Raw HTML yields only 11 words of visible text and shows static shell signals (client-mount-marker, many-inline-or-external-scripts, very-low-readable-text, markup-to-text-imbalance). Search crawlers and AI bots that do not execute client JS may not extract brand facts from this page. Other page-level checks were suppressed here: a missing heading, CTA, meta description or schema on an empty shell are all symptoms of this one root cause. (Confidence: medium)\nEvidence references: E-e567273ba1b0.\n\nROOT CAUSE\nUse the observed condition described by “Client-side rendering gap: raw HTML contains minimal text content” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Use static site generation (SSG) or SSR so that primary textual facts and headers are present in initial HTTP responses without JS execution.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-001.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-001.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-e567273ba1b0"
+        ]
+      },
+      {
+        "finding_id": "F-002",
+        "execution_order": 2,
+        "priority": "medium",
+        "reason": "confirmed finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a structured-data and technical SEO engineer.\n\nPROBLEM\nSyntax error in JSON-LD structured data script.\n\nEVIDENCE\nObserved at https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel via jsonld_parser [2026-09-13T17:41:16Z]: Found 5 malformed JSON-LD script block(s): Block 1: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 2: Expecting property name enclosed in double quotes: line 2 column 1 (char 3); Block 3: Expecting property name enclosed in double quotes: line 2 column 1 (char 3). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/knowledge-center via jsonld_parser [2026-09-13T17:41:16Z]: Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 51 column 13 (char 1382). (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later via jsonld_parser [2026-09-13T17:41:16Z]: Found 1 malformed JSON-LD script block(s): Block 1: Expecting value: line 1 column 1 (char 0). (Confidence: high)\nEvidence references: E-8ac6bcb2aa11, E-a1c75af3e90a, E-a3a57c8ca09c.\n\nROOT CAUSE\nUse the observed condition described by “Syntax error in JSON-LD structured data script” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nValidate JSON-LD blocks with a JSON validator and correct syntax issues like trailing commas or unescaped quotes.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-002.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-002.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-8ac6bcb2aa11",
+          "E-a1c75af3e90a",
+          "E-a3a57c8ca09c"
+        ]
+      },
+      {
+        "finding_id": "F-003",
+        "execution_order": 3,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a UX and frontend engineer.\n\nPROBLEM\nIsolated page with insufficient internal navigation links.\n\nEVIDENCE\nObserved at https://www.citi.com/credit-cards/citi-best-buy-credit-cards via internal_link_density_check [2026-09-13T17:41:16Z]: Page contains only 0 internal link(s), leaving visitors with limited navigation pathways to explore the brand. (Confidence: medium)\nEvidence references: E-5b975a2e9c68.\n\nROOT CAUSE\nUse the observed condition described by “Isolated page with insufficient internal navigation links” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add links to relevant documentation, related products, or category overview pages.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-003.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-003.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-5b975a2e9c68"
+        ]
+      },
+      {
+        "finding_id": "F-004",
+        "execution_order": 4,
+        "priority": "medium",
+        "reason": "likely-risk finding with existing medium priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a brand and digital-PR owner.\n\nPROBLEM\nBrand identity is not anchored to any independent authority source.\n\nEVIDENCE\nObserved at https://www.citi.com via onsite_identity_anchor_inspection [2026-09-13T17:41:20Z]: Across the crawled pages, no Organization schema is present, so no sameAs URIs can be declared, and 0 of 4 distinct outbound link domains point to an independent authority (Wikipedia, Wikidata, Crunchbase, LinkedIn, GitHub, regulatory registries). No explicit independent-authority link was observed in the sampled pages; external corroboration was not searched. (Confidence: medium)\nEvidence references: E-b610192968fe.\n\nROOT CAUSE\nUse the observed condition described by “Brand identity is not anchored to any independent authority source” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nFirst verify the condition using the cited evidence, then Add Organization JSON-LD with a stable @id, legalName, and a sameAs array pointing to the brand's Wikidata item, Wikipedia article, LinkedIn company page and Crunchbase profile. Create those external profiles first if they do not exist -- sameAs pointing at nothing does not corroborate anything.\n\nCONSTRAINTS\n- Treat this as a likely risk, not a confirmed defect; verify it before changing production.\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-004.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-004.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-b610192968fe"
+        ]
+      },
+      {
+        "finding_id": "F-005",
+        "execution_order": 5,
+        "priority": "low",
+        "reason": "confirmed finding with existing low priority; resolve higher-impact findings first.",
+        "prompt": "ROLE\nYou are fixing a CiteSense website audit finding as a content and frontend engineer.\n\nPROBLEM\nContent images carry no text alternative, hiding any fact they display.\n\nEVIDENCE\nObserved at https://www.citi.com/credit-cards/flex-pay-guide/how-to-use-citi-flex-pay-for-travel via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 6 of 9 images (67%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/knowledge-center via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 25 of 25 images (100%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nAdditional evidence (crawl-render-audit): Observed at https://www.citi.com/credit-cards/flex-pay-guide/what-is-buy-now-pay-later via image_alt_coverage_inspection [2026-09-13T17:41:16Z]: 5 of 8 images (62%) have no alt attribute at all (images correctly marked decorative with alt=\"\" are excluded). Any figure, price, spec or claim rendered inside those images is unreadable to a retrieval bot. (Confidence: high)\nEvidence references: E-24203aa97311, E-3065fb97c54b, E-abb4f0604018.\n\nROOT CAUSE\nUse the observed condition described by “Content images carry no text alternative, hiding any fact they display” as the root-cause hypothesis; confirm it against the cited evidence.\n\nTASK\nGive each informational image an alt attribute stating the fact it conveys (\"Pro plan: $49 per user per month\"), not a filename. Mark purely decorative images with alt=\"\" so they are correctly skipped rather than left unlabelled.\n\nCONSTRAINTS\n- Do not invent facts, URLs, prices, contacts, schema values, or technologies.\n- Use only information supported by the cited evidence refs.\n- Preserve existing functionality and design unless this finding requires a content or design change.\n- Do not make unrelated changes or remove valid metadata.\n- Avoid duplicate or conflicting structured data and follow the site's existing architecture.\n- Do not bypass robots.txt, authentication, WAF, anti-bot controls, or security boundaries.\n- Review the change before applying it; this prompt is recommendation-only.\n\nVALIDATION\nRe-run the check represented by finding F-005.\nConfirm the reported condition is resolved using fresh evidence.\nConfirm no conflicting metadata or unrelated behavior was introduced.",
+        "validation": [
+          "Re-run the check represented by finding F-005.",
+          "Confirm the reported condition is resolved using fresh evidence.",
+          "Confirm no conflicting metadata or unrelated behavior was introduced."
+        ],
+        "evidence_refs": [
+          "E-24203aa97311",
+          "E-3065fb97c54b",
+          "E-abb4f0604018"
+        ]
+      }
+    ]
+  },
+  "inventory_summary": {
+    "pages_sampled": 5,
+    "readable_pages": 5,
+    "page_purposes": [
+      "article_docs",
+      "general",
+      "homepage",
+      "product_landing"
+    ],
+    "resource_type_counts": {},
+    "resources_seen": 0,
+    "access_summary": {
+      "readable": 5
+    }
+  }
+}

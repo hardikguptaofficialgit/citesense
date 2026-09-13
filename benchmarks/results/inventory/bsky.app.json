@@ -1,0 +1,676 @@
+{
+  "seed_url": "https://bsky.app/",
+  "origin": "https://bsky.app",
+  "robots_txt": {
+    "found": true,
+    "url": "https://bsky.app/robots.txt",
+    "status": 200,
+    "raw": "# Hello Friends!\n# If you are considering bulk or automated crawling, you may want to look in\n# to our protocol (API), including a firehose of updates. See: https://atproto.com/\n\n# By default, may crawl anything on this domain. HTTP 429 (\"backoff\") status\n# codes are used for rate-limiting. Up to a handful concurrent requests should\n# be ok.\nUser-Agent: *\nDisallow: /intent/compose\nAllow: /\n\nSitemap: https://bsky.app/sitemap/users.xml.gz\n",
+    "agent_decisions": {
+      "GPTBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "ClaudeBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Google-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "CCBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Applebot-Extended": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Meta-ExternalAgent": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Bytespider": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Amazonbot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "OAI-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Claude-SearchBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "PerplexityBot": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "ChatGPT-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Claude-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      },
+      "Perplexity-User": {
+        "/": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/pricing": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/products": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/about": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/docs": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        },
+        "/contact": {
+          "allowed": true,
+          "matched_rule": "Allow: /",
+          "scope": "wildcard"
+        }
+      }
+    },
+    "partially_blocked_agents": {},
+    "sitemaps_declared": [
+      "https://bsky.app/sitemap/users.xml.gz"
+    ]
+  },
+  "sitemaps": [
+    {
+      "url": "https://bsky.app/sitemap/users.xml.gz",
+      "found": true,
+      "status": 200,
+      "discovered_url_count": 1462
+    }
+  ],
+  "special_files": {
+    "llms_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://bsky.app/llms.txt"
+    },
+    "llms-full_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://bsky.app/llms-full.txt"
+    },
+    "ai_txt": {
+      "found": false,
+      "status": 404,
+      "url": "https://bsky.app/ai.txt"
+    }
+  },
+  "pages": {
+    "https://bsky.app/": {
+      "is_page": true,
+      "resource_type": "html_document",
+      "inconclusive": false,
+      "access_status": "readable",
+      "url": "https://bsky.app/",
+      "final_url": "https://bsky.app/",
+      "status_code": 200,
+      "load_time_seconds": 1.45,
+      "raw_html": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover\">\n  <meta name=\"referrer\" content=\"origin-when-cross-origin\">\n  <!--\n    Preconnect to essential domains\n  -->\n  <link rel=\"preconnect\" href=\"https://bsky.social\">\n  <link rel=\"preconnect\" href=\"https://go.bsky.app\">\n  <title>Bluesky</title>\n\n  <!-- Hello Humans! API docs at https://atproto.com -->\n\n  <link rel=\"preload\" as=\"font\" type=\"font/woff2\" href=\"https://web-cdn.bsky.app/static/media/InterVariable.c504db5c06caaf7cdfba.woff2\" crossorigin>\n\n  <style>\n    /**\n     * Minimum styles required to render splash.\n     *\n     * ALL OTHER STYLES BELONG IN `src/style.css`\n     *\n     * THIS NEEDS TO BE DUPLICATED IN `bskyweb/templates/base.html`\n     */\n    @font-face {\n      font-family: 'InterVariable';\n      src: url(\"https://web-cdn.bsky.app/static/media/InterVariable.c504db5c06caaf7cdfba.woff2\") format('woff2');\n      font-weight: 300 1000;\n      font-style: normal;\n      font-display: swap;\n    }\n    @font-face {\n      font-family: 'InterVariableItalic';\n      src: url(\"https://web-cdn.bsky.app/static/media/InterVariable-Italic.01dcbad1bac635f9c9cd.woff2\") format('woff2');\n      font-weight: 300 1000;\n      font-style: italic;\n      font-display: swap;\n    }\n    html,\n    body {\n      margin: 0px;\n      padding: 0px;\n      font-family: InterVariable, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Liberation Sans', Helvetica, Arial, sans-serif;\n      text-rendering: optimizeLegibility;\n      /* Platform-specific reset */\n      -webkit-overflow-scrolling: touch;\n      -webkit-text-size-adjust: 100%;\n      -webkit-font-smoothing: antialiased;\n      -moz-osx-font-smoothing: grayscale;\n      -ms-overflow-style: scrollbar;\n      font-synthesis-weight: none;\n    }\n    :root {\n      --text: black;\n      --background: white;\n      --backgroundLight: #e2e7ee;\n    }\n    @media (prefers-color-scheme: dark) {\n      :root {\n        color-scheme: dark;\n        --text: white;\n        --background: black;\n        --backgroundLight: #232e3e;\n      }\n    }\n    html,\n    body,\n    #root {\n      display: flex;\n      flex: 1 0 auto;\n      min-height: 100%;\n      width: 100%;\n    }\n    html.theme--light,\n    html.theme--light body,\n    html.theme--light #root {\n      background-color: white;\n      --text: black;\n      --background: white;\n      --backgroundLight: #DCE2EA;\n    }\n    html.theme--dark,\n    html.theme--dark body,\n    html.theme--dark #root {\n      color-scheme: dark;\n      background-color: black;\n      --text: white;\n      --background: black;\n      --backgroundLight: #232E3E;\n    }\n    html.theme--dim,\n    html.theme--dim body,\n    html.theme--dim #root {\n      color-scheme: dark;\n      background-color: #151D28;\n      --text: white;\n      --background: #151D28;\n      --backgroundLight: #2C3A4E;\n    }\n    #splash {\n      display: flex;\n      position: fixed;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      right: 0;\n      align-items: center;\n      justify-content: center;\n    }\n    #splash svg {\n      position: relative;\n      top: -50px;\n      width: 100px;\n    }\n    /**\n     * We need these styles to prevent shifting due to scrollbar show/hide on\n     * OSs that have them enabled by default. This also handles cases where the\n     * screen wouldn't otherwise scroll, and therefore hide the scrollbar and\n     * shift the content, by forcing the page to show a scrollbar.\n     */\n    body {\n      width: 100%;\n      overflow-y: scroll;\n    }\n  </style>\n  <script>\n    const theme = localStorage.getItem('ALF_THEME')\n    if (theme) {\n      document.documentElement.classList.add(`theme--${theme}`)\n    }\n  </script>\n\n  <script defer=\"defer\" src=\"https://web-cdn.bsky.app/static/js/3035.acfb0c22.js\"></script>\n<link rel=\"stylesheet\" href=\"https://web-cdn.bsky.app/static/css/main.dbb4f61c.css\">\n<script defer=\"defer\" src=\"https://web-cdn.bsky.app/static/js/main.6613a9b0.js\"></script>\n  <link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"https://web-cdn.bsky.app/static/apple-touch-icon.png\">\n  <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"https://web-cdn.bsky.app/static/favicon-32x32.png\">\n  <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"https://web-cdn.bsky.app/static/favicon-16x16.png\">\n  <link rel=\"mask-icon\" href=\"https://web-cdn.bsky.app/static/safari-pinned-tab.svg\" color=\"#1185fe\">\n  <meta name=\"theme-color\">\n  <meta name=\"application-name\" content=\"Bluesky\">\n  <meta name=\"generator\" content=\"bskyweb\">\n  \n  <meta property=\"og:site_name\" content=\"Bluesky Social\">\n  <meta property=\"og:logo\" content=\"https://web-cdn.bsky.app/static/favicon.png\">\n  <meta name=\"twitter:site\" content=\"@bluesky\" />\n  <link type=\"application/activity+json\" href=\"\" />\n\n  <meta property=\"og:title\" content=\"Bluesky\" />\n  <meta name=\"twitter:title\" content=\"Bluesky\" />\n\n  <meta name=\"description\" content=\"Social media as it should be. Find your community among millions of users, unleash your creativity, and have some fun again.\" />\n  <meta name=\"og:description\" content=\"Social media as it should be. Find your community among millions of users, unleash your creativity, and have some fun again.\" />\n  <meta name=\"twitter:description\" content=\"Social media as it should be. Find your community among millions of users, unleash your creativity, and have some fun again.\" />\n\n  <meta property=\"og:url\" content=\"https://bsky.app\" />\n  <meta name=\"twitter:url\" content=\"https://bsky.app\" />\n  <link rel=\"canonical\" href=\"https://bsky.app\" />\n\n  <meta property=\"og:image\" content=\"https://bsky.app/static/social-card-default-gradient.png\" />\n  <meta property=\"twitter:image\" content=\"https://bsky.app/static/social-card-default-gradient.png\"  />\n\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n</head>\n<body>\n  <div id=\"splash\">\n    <!-- Bluesky SVG -->\n    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 57\"><path fill=\"#006AFF\" d=\"M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z\"/></svg>\n  </div>\n  <div id=\"root\">\n  </div>\n\n  <noscript>\n    <h1 lang=\"en\">JavaScript Required</h1>\n    <p lang=\"en\">This is a heavily interactive web application, and JavaScript is required. Simple HTML interfaces are possible, but that is not what this is.\n    <p lang=\"en\">Learn more about Bluesky at <a href=\"https://bsky.social\">bsky.social</a> and <a href=\"https://atproto.com\">atproto.com</a>.\n    \n<p>This is the home page.\n\n  </noscript>\n</body>\n</html>\n",
+      "visible_text": "Bluesky",
+      "word_count": 1,
+      "title": "Bluesky",
+      "meta_description": "Social media as it should be. Find your community among millions of users, unleash your creativity, and have some fun again.",
+      "og_site_name": "Bluesky Social",
+      "viewport_meta_present": true,
+      "canonical_url": "https://bsky.app/",
+      "headings": [
+        {
+          "level": 1,
+          "text": "JavaScript Required"
+        }
+      ],
+      "h1_texts": [
+        "JavaScript Required"
+      ],
+      "jsonld_blocks": [],
+      "jsonld_parsed": [],
+      "jsonld_errors": [],
+      "internal_links": [],
+      "external_links": [
+        {
+          "href": "https://bsky.social/",
+          "text": "bsky.social",
+          "rel": ""
+        },
+        {
+          "href": "https://atproto.com/",
+          "text": "atproto.com",
+          "rel": ""
+        }
+      ],
+      "interactive_elements": {
+        "buttons": [],
+        "forms": [],
+        "cta_links": []
+      },
+      "media_elements": {
+        "images": [],
+        "canvas_count": 0,
+        "svg_count": 1
+      },
+      "dates_and_claims": {
+        "copyright_years": [],
+        "newest_copyright_year": null,
+        "founding_years": [],
+        "phones": [],
+        "emails": [],
+        "dated_claims": [],
+        "stale_dated_claims": [],
+        "meta_modified_time": null,
+        "visible_last_updated": null,
+        "jsonld_dates": {}
+      },
+      "page_purpose": "homepage",
+      "is_deep_page": false,
+      "render_gap": true,
+      "render_diff": {
+        "available": false,
+        "note": "Static inspection performed; no browser rendering was used.",
+        "signals": [
+          "client-mount-marker",
+          "very-low-readable-text",
+          "markup-to-text-imbalance"
+        ],
+        "script_count": 3,
+        "mount_markers": [
+          "id=[\"\\'](?:root|app|__next)[\"\\']"
+        ]
+      }
+    }
+  },
+  "resources": {
+    "https://bsky.app/sitemap/users/2022-11-17/1.xml.gz": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://bsky.app/sitemap/users/2022-11-17/1.xml.gz",
+      "final_url": "https://bsky.app/sitemap/users/2022-11-17/1.xml.gz",
+      "status_code": 200,
+      "content_type": "application/xml",
+      "load_time_seconds": 1.43,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://bsky.app/sitemap/users/2022-11-18/1.xml.gz": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://bsky.app/sitemap/users/2022-11-18/1.xml.gz",
+      "final_url": "https://bsky.app/sitemap/users/2022-11-18/1.xml.gz",
+      "status_code": 200,
+      "content_type": "application/xml",
+      "load_time_seconds": 1.2,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://bsky.app/sitemap/users/2022-11-22/1.xml.gz": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://bsky.app/sitemap/users/2022-11-22/1.xml.gz",
+      "final_url": "https://bsky.app/sitemap/users/2022-11-22/1.xml.gz",
+      "status_code": 200,
+      "content_type": "application/xml",
+      "load_time_seconds": 1.43,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    },
+    "https://bsky.app/sitemap/users/2022-11-23/1.xml.gz": {
+      "is_page": false,
+      "resource_type": "unknown",
+      "url": "https://bsky.app/sitemap/users/2022-11-23/1.xml.gz",
+      "final_url": "https://bsky.app/sitemap/users/2022-11-23/1.xml.gz",
+      "status_code": 200,
+      "content_type": "application/xml",
+      "load_time_seconds": 1.2,
+      "access_status": "readable",
+      "observation": "Non-HTML response excluded from normal webpage audit checks."
+    }
+  },
+  "ground_truth": {
+    "brand_name": "Bluesky Social",
+    "category": "",
+    "location": "",
+    "key_facts": {},
+    "brand_name_source": "og_site_name"
+  },
+  "crawl_budget": {
+    "max_pages": 5,
+    "http_timeout_seconds": 8,
+    "pages_crawled": 1,
+    "total_crawl_time_seconds": 14.13,
+    "page_selection": [
+      {
+        "url": "https://bsky.app/sitemap/users/2022-11-17/1.xml.gz",
+        "score": 2,
+        "signals": [
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "general",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://bsky.app/sitemap/users/2022-11-18/1.xml.gz",
+        "score": 2,
+        "signals": [
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "general",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://bsky.app/sitemap/users/2022-11-22/1.xml.gz",
+        "score": 2,
+        "signals": [
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "general",
+        "source": "sitemap"
+      },
+      {
+        "url": "https://bsky.app/sitemap/users/2022-11-23/1.xml.gz",
+        "score": 2,
+        "signals": [
+          "listed-in-sitemap"
+        ],
+        "purpose_hint": "general",
+        "source": "sitemap"
+      }
+    ],
+    "resources_observed": 4,
+    "readable_pages": 1,
+    "access_status_counts": {
+      "readable": 1
+    }
+  },
+  "skipped_by_robots": [],
+  "url_aliases": {}
+}
